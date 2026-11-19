@@ -78102,7 +78102,7 @@ function bossRansom(){
 
 /* ---------- boss pictures ---------- */
 function bertImg(cls, face){ return '<img class="bert ' + (cls || "") + '" src="img/boss/' + (face ? 'bert-' + face : 'bert') + '.webp" alt="Bert the butcher, a cheeky cartoon butcher with a big moustache and a wooden spoon' + (face === "scowl" ? ', scowling' : face === "laugh" ? ', laughing' : '') + '" width="' + (face ? 360 : 256) + '" height="' + (face ? 504 : 360) + '">'; }
-function bossShopImg(cls){ return '<img class="bshop ' + (cls || "") + '" src="img/boss/butcher-shop.webp" alt="Bert\'s Butchers: Bert outside his shop and Britney in a cage in the window with a Not For Sale sign" width="900" height="600" loading="lazy">'; }
+function bossShopImg(cls){ return '<img class="bshop ' + (cls || "") + '" src="img/boss/butcher-shop.webp" alt="Bert\'s Butchers: Bert outside his shop and Britney in a cage in the window" width="900" height="600" loading="lazy">'; }
 function bossChestSvg(open){
   return '<svg class="bchest' + (open ? " open" : "") + '" viewBox="0 0 200 150" aria-hidden="true">' +
     '<g class="coinsp">' + [[60,40],[90,28],[120,36],[100,46],[140,48],[75,52]].map(function(p){ return '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="10" fill="#FFD43B" stroke="#B8860B" stroke-width="2"/>'; }).join("") + '<path d="M40 30l6-10M160 30l-6-10M100 8v-8" stroke="#FFD43B" stroke-width="4" stroke-linecap="round"/></g>' +
