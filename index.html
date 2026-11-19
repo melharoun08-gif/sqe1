@@ -213,9 +213,12 @@ table.t th{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:va
 .chart .c{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;font-size:12px;color:var(--muted)}
 .chart .c i{display:block;width:70%;max-width:40px;background:var(--t2);border-radius:5px 5px 0 0;min-height:2px}
 .chart .c b{color:var(--ink);font-size:12px}
-.confirm{display:inline-flex;gap:6px;align-items:center}
+.confirm{display:inline-flex;gap:6px;align-items:center;flex-wrap:wrap}
+.confirm .btn{white-space:nowrap}
+@media (max-width:600px){.confirm > b{flex-basis:100%}}
 .hide{display:none!important}
 .kbd{font-size:12px;color:var(--muted)}
+@media (hover:none) and (pointer:coarse){.keyhint{display:none!important}} /* keyboard shortcuts mean nothing on a phone */
 .side summary.subj span:first-child{flex:1;margin-left:4px;text-align:left}
 .wrap{padding-bottom:100px}
 @media (max-width:600px){
@@ -456,6 +459,7 @@ body.tabdragging{cursor:grabbing}
 .hol{color:#C0392B;font-size:16px}
 .pday.flash2{background:#FFF4B8;border-radius:8px}
 @media (max-width:520px){.calc{min-height:52px;font-size:10px;padding:3px}.calc b{font-size:11px}}
+.calc{padding-bottom:17px}.calc.empty{padding-bottom:3px} /* room for the review badge so it never sits on the topic names */
 /* ============ CBA chicken game ============ */
 .cbag{--surface:#FFFFFF;--ink:#2D2A32;--muted:#6B6475;--line:#EADFD3;--alt:#FFF4E8;--accent:#E0457B;--accent-ink:#FFFFFF;--good:#23704A;--good-bg:#E3F5E9;--bad:#A23B3B;--bad-bg:#FCE6E6;--pale:#FFF8EC;--focus:#E0457B;
   color:var(--ink);max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:12px;color-scheme:light}
@@ -1036,7 +1040,8 @@ a.bpalcard{display:flex;align-items:center;gap:12px;text-decoration:none;color:v
 .podparts{display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--muted);white-space:nowrap}
 .podpn{min-width:34px;min-height:34px;border:1px solid var(--line);border-radius:999px;background:var(--card,#fff);color:inherit;cursor:pointer;font-size:12px}
 .podpn:disabled{opacity:.35;cursor:default}
-.podrow.off{display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--muted);opacity:.6}
+.podrow.off{display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--muted);opacity:.85}
+.podrow.off .podt{display:block;flex:1}
 .podsoon{flex:none;font-size:13px;border:1px dashed var(--line);border-radius:999px;padding:1px 10px;white-space:nowrap}
 .podrow.done .podt > span:not(.podlen) b{color:var(--good)}
 @media (max-width:600px){.podp{margin-left:0}.podp audio{width:100%}}
@@ -1191,6 +1196,14 @@ a.bpalcard{display:flex;align-items:center;gap:12px;text-decoration:none;color:v
   .spalace{width:26%}
   .scene.haspalace .sswing,.sswing{left:25%;bottom:30%;width:10%}
   .scene.haspalace .snestbox,.snestbox{left:17%;bottom:12%;width:8%}
+  /* phone: give Britney her own space so the swing, sock line and shelf don't sit behind her */
+  .stracy{width:30%;left:55%}
+  .spalace{left:0;width:24%}
+  .scene.haspalace .sswing,.sswing{left:24%;bottom:26%;width:10%}
+  .sline{left:26%;top:8%;width:13%;height:42%}
+  .slouise{right:0;width:16%}
+  .sshelf{right:16%;width:20%}
+  .sbonnie{right:17%;width:15%}
 }
 .layout.v-home{grid-template-columns:minmax(0,1fr)!important}.layout.v-home>.side{display:none!important}
 /* How it works: short list, show/hide */
@@ -1215,6 +1228,11 @@ details.hiw[open] .hiwtog::after{content:"Hide ▴"}
 .head{--bar-ink:#0b2340!important;--bar-muted:#163556!important;color:#0b2340}
 .head .stat b,.head h1,.head .ttl,.head .brand{color:#0b2340!important}
 .head .stat span,.head .sub,.head .muted,.head small{color:#163556!important;font-weight:700}
+/* QA: on desktop every tab stays visible (wraps to a second row when the sidebar leaves less room) instead of Hours log / Progress / Settings hiding off the right */
+@media (min-width:721px){
+.head .tabs{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(70px,1fr));overflow:visible}
+.head .tabs a,.head .tabs a.two{width:auto!important}
+}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -75335,7 +75353,7 @@ SESSIONS.forEach(function(se){
 var TBYKEY = {}; TOPICS.forEach(function(x){ TBYKEY[x.key] = x; });
 
 /* ============ STORAGE ============ */
-var KEY = "sqe1-revision-v1";
+var KEY = "sqe1-revision-v2";
 var DEF = function(){ return {
   v:1, created:Date.now(),
   settings:{weekday:2, weekend:6, daysOff:["2026-12-25","2027-01-01"], name:"", exam1:"2027-01-11", exam2:"2027-01-18", theme:"auto"},
@@ -75409,7 +75427,7 @@ function md(src){
     }
     if (/^### /.test(line)) { out.push("<h4>" + inl(line.slice(4)) + "</h4>"); continue; }
     if (/^## /.test(line)) out.push("<h3>" + inl(line.slice(3)) + "</h3>");
-    else if (/^> /.test(line)) out.push('<div class="tip">' + inl(line.slice(2)) + "</div>");
+    else if (/^> /.test(line)) out.push('<div class="tip">' + inl(line.slice(2).replace(/^\*{0,2}Exam tip:?\*{0,2}:?\s*/i, "").replace(/^[a-z]/, function(c){ return c.toUpperCase(); })) + "</div>"); /* the box already says "Exam tip", so drop a repeated one */
     else if (/^!! /.test(line)) out.push('<div class="trap">' + inl(line.slice(3)) + "</div>");
     else out.push("<p>" + inl(line) + "</p>");
   }
@@ -75936,7 +75954,7 @@ function cbaScene(small){
   if (o.swing) h += '<div class="sitem sswing' + nw("swing") + '">' + cbaItemPic("swing") + '</div>';
   if (o.nestbox) h += '<div class="sitem snestbox' + nw("nestbox") + '">' + cbaItemPic("nestbox") + '</div>';
   if (o.bonnie) h += '<div class="sitem sbonnie' + nw("bonnie") + '">' + cbaItemPic("bonnie") + '</div>';
-  if (cbaAte("cookies")) h += '<div class="sitem scookies' + nw("cookies") + '">' + cbaItemPic("cookies") + '</div>';
+  if (cbaAte("cookies") && (L.stage === "hen" || L.stage === "chick")) h += '<div class="sitem scookies' + nw("cookies") + '">' + cbaItemPic("cookies") + '</div>';
   h += broodScene();
   if (o.ball) h += '<div class="sitem sball">' + cbaItemPic("ball") + '</div>';
   h += '</div>';
@@ -76743,7 +76761,7 @@ VIEW.quick = function(r){
       h += '<button class="' + cls + '" data-act="qfpick" data-o="' + oi + '"' + (QF.ans !== null ? " disabled" : "") + '><span class="L">' + "ABCD"[pos] + '</span><span>' + inl(x.o[oi]) + '</span></button>';
     });
     h += '</div>';
-    if (QF.ans === null) h += '<div class="btns"><button class="btn sm" data-act="qfprev"' + (QF.i ? '' : ' disabled') + '>‹ Previous</button><button class="btn sm" data-act="qfskip">Skip ›</button></div>' + '<div class="kbd" style="margin-top:8px">Keys: A, B, C or D</div>';
+    if (QF.ans === null) h += '<div class="btns"><button class="btn sm" data-act="qfprev"' + (QF.i ? '' : ' disabled') + '>‹ Previous</button><button class="btn sm" data-act="qfskip">Skip ›</button></div>' + '<div class="kbd keyhint" style="margin-top:8px">Keys: A, B, C or D</div>';
     else {
       var ok = QF.ans === 0;
       h += '<div class="qfres" style="background:' + (ok ? "var(--good-bg)" : "var(--bad-bg)") + '"><b style="color:' + (ok ? "var(--good)" : "var(--bad)") + '">' + (ok ? "✓ Right" : "✗ Not quite. It's: " + inl(x.o[0])) + '</b><br><b>Why:</b> ' + inl(x.e) + '</div>' +
@@ -76793,7 +76811,7 @@ VIEW.cards = function(r){
       '<div class="face"><small>' + esc(d.s.title) + '</small>' + inl(d.c[0]) + '<div class="kbd" style="margin-top:14px">Tap to flip</div></div>' +
       '<div class="face back"><small>Answer</small><div class="cardq">' + inl(d.c[0]) + '</div><div class="notes">' + md(oneSentencePerLine(d.c[1])) + '</div></div></div></div>' +
       '<div class="btns" style="justify-content:center">' + (FC.flip ? '<span class="rate-lab">How well did you know it?</span><button class="rate" data-act="fcmark" data-v="0" aria-label="Didn\'t know it">🔴<span>Didn\'t know</span></button><button class="rate" data-act="fcmark" data-v="0.5" aria-label="Partly knew it">🟠<span>Sort of</span></button><button class="rate" data-act="fcmark" data-v="1" aria-label="Knew it">🟢<span>Knew it</span></button>' : '<button class="btn primary" data-act="fcflip">Show answer</button>') + '</div>' +
-      '<div class="btns" style="justify-content:center"><button class="btn sm" data-act="fcprev"' + (FC.i ? '' : ' disabled') + '>‹ Previous card</button><button class="btn sm" data-act="fcskip">Next card ›</button></div>' + '<div class="kbd" style="text-align:center;margin-top:6px">Keys: Space = flip, then 1 🔴, 2 🟠, 3 🟢</div></div>';
+      '<div class="btns" style="justify-content:center"><button class="btn sm" data-act="fcprev"' + (FC.i ? '' : ' disabled') + '>‹ Previous card</button><button class="btn sm" data-act="fcskip">Next card ›</button></div>' + '<div class="kbd keyhint" style="text-align:center;margin-top:6px">Keys: Space = flip, then 1 🔴, 2 🟠, 3 🟢</div></div>';
   }
   var h = '<div class="card"><h2>Revision cards</h2><p class="muted" style="margin:0">Flip a card, then rate it 🔴 🟠 or 🟢. Any card that isn\'t a 🟢 yet can be drilled on its own.</p><div class="btns"><a class="btn primary" href="#/cards/all">Shuffle every card</a><a class="btn" href="#/cards/all/learning">Only cards not yet 🟢</a></div></div><div class="card">';
   SESSIONS.forEach(function(se){
@@ -76886,7 +76904,7 @@ function mockQuestion(){
     (MK.i + 1 < n ? '<button class="btn primary" data-act="mkgo" data-i="' + (MK.i + 1) + '">Next ›</button>' : '') + '</div>' +
     '<div class="btns">' + (MK.confirm ? '<span class="confirm mk-confirm"><b>Submit now?</b>' + (answered < n ? ' <span class="small">' + (n - answered) + ' unanswered.</span>' : '') + (flagged ? ' <span class="small">' + flagged + ' flagged.</span>' : '') + '<button class="btn good" data-act="mkfinish">Yes, submit</button><button class="btn" data-act="mkconfirm" data-v="0">Keep going</button></span>' : '<button class="btn good" data-act="mkconfirm" data-v="1">Submit mock</button>') + '</div>' +
     '<div class="palette mk-strip">' + MK.items.map(function(x, i){ return '<button class="' + (x.pick !== null ? "ans " : "") + (x.flag ? "flag " : "") + (i === MK.i ? "cur" : "") + '" data-act="mkgo" data-i="' + i + '" aria-label="Question ' + (i + 1) + (x.pick !== null ? ', answered' : '') + (x.flag ? ', flagged' : '') + '">' + (i + 1) + '</button>'; }).join("") + '</div>' +
-    '<div class="kbd" style="margin-top:6px">Blue = answered · orange line = flagged. Keys: A to E answer, ← → move.</div></div>';
+    '<div class="kbd" style="margin-top:6px">Blue = answered · orange line = flagged.<span class="keyhint"> Keys: A to E answer, ← → move.</span></div></div>';
   return h;
 }
 function mockFinish(){
@@ -76997,7 +77015,7 @@ VIEW.progress = function(){
   var twice = TOPICS.filter(function(x){ var r = trec(x.key); return r && r.n >= 2; }).length;
   var h0 = '<div class="card"><h2>Progress</h2><div class="charts">' +
     '<div><h3>Topic coverage</h3>' + donut([{n:cc[1], c:"var(--good)", l:"🟢 Green"}, {n:cc[0.5], c:"var(--warn)", l:"🟠 Amber"}, {n:cc[0], c:"var(--bad)", l:"🔴 Red"}].concat(cc.r ? [{n:cc.r, c:"var(--accent)", l:"✓ Reviewed, not rated"}] : []).concat([{n:untouched, c:"var(--line)", l:"Not reviewed yet"}]), Math.round((TOPICS.length - untouched) / Math.max(1, TOPICS.length) * 100) + "%", "reviewed", "Topic coverage") + '<p class="small muted" style="margin:6px 0 0">' + twice + ' topics reviewed twice or more.</p></div>' +
-    '<div><h3>Model questions</h3>' + donut([{n:rAll, c:"var(--good)", l:"Right last time"}, {n:wrongN, c:"var(--bad)", l:"Wrong last time"}, {n:qAll.length - tAll.length, c:"var(--line)", l:"Not tried yet"}], tAll.length ? Math.round(rAll / tAll.length * 100) + "%" : "-", "right", "Model questions") + '</div>' +
+    '<div><h3>Model questions</h3>' + donut([{n:rAll, c:"var(--good)", l:"Right last time"}, {n:wrongN, c:"var(--bad)", l:"Wrong last time"}, {n:qAll.length - tAll.length, c:"var(--line)", l:"Not tried yet"}], tAll.length ? Math.round(rAll / tAll.length * 100) + "%" : "0", tAll.length ? "right" : "tried", "Model questions") + '</div>' +
     '<div><h3>Revision cards</h3>' + donut([{n:ck[1], c:"var(--good)", l:"🟢 Knew it"}, {n:ck[0.5], c:"var(--warn)", l:"🟠 Sort of"}, {n:ck[0], c:"var(--bad)", l:"🔴 Didn\'t know"}, {n:cardIds.length - ck[1] - ck[0.5] - ck[0], c:"var(--line)", l:"Not seen yet"}], Math.round(ck[1] / Math.max(1, cardIds.length) * 100) + "%", "known", "Revision cards") + '</div>' +
     '</div></div>';
   h0 += '<div class="card"><h3>Coverage by subject</h3><p class="small muted" style="margin:0 0 8px">Each bar is one subject\'s topics, coloured by how confident you feel.</p><div class="cov">' + SESSIONS.map(function(se){
@@ -77013,7 +77031,7 @@ VIEW.progress = function(){
   if (low.length) h0 += '<div class="card"><h3>🔴 Topics to go back to</h3>' + low.map(function(x){ return '<div class="subjrow"><a href="#/topic/' + x.s.id + '/' + x.t.id + '">' + esc(x.t.title) + '</a><span class="small muted">' + esc(x.s.title) + ' · ' + ago(trec(x.key).at) + '</span></div>'; }).join("") + '</div>';
   var h = h0 + '<div class="grid2">' +
     '<div class="card"><h3>Topics reviewed</h3><p style="font-size:26px;margin:0"><b>' + tdAll + '</b> / ' + TOPICS.length + '</p><div class="bar"><i style="width:' + (tdAll / Math.max(1, TOPICS.length) * 100) + '%"></i></div></div>' +
-    '<div class="card"><h3>Model questions</h3><p style="font-size:26px;margin:0"><b>' + (tAll.length ? Math.round(rAll / tAll.length * 100) + "%" : "-") + '</b> right</p><div class="small muted">' + tAll.length + ' of ' + qAll.length + ' tried</div></div>' +
+    '<div class="card"><h3>Model questions</h3><p style="font-size:26px;margin:0">' + (tAll.length ? '<b>' + Math.round(rAll / tAll.length * 100) + '%</b> right' : '<b>None tried yet</b>') + '</p><div class="small muted">' + tAll.length + ' of ' + qAll.length + ' tried</div></div>' +
     '<div class="card"><h3>Hours</h3><p style="font-size:26px;margin:0"><b>' + fmtH(totalMins()) + '</b></p><div class="small muted">Your routine adds about ' + Math.round(plannedUntil(S.settings.exam1) / 60) + 'h more before FLK1 and ' + Math.round(plannedUntil(S.settings.exam2) / 60) + 'h before FLK2.</div></div></div>';
   h += '<div class="card"><h3>Where you are going wrong</h3>' + (weak.length ? '<p class="small muted" style="margin:0 0 6px">Subjects where you\'re getting under 60% (after at least 3 questions):</p>' + weak.sort(function(a, b){ return a.acc - b.acc; }).map(function(w){ return '<div class="subjrow"><a href="#/subject/' + w.s.id + '">' + esc(w.s.title) + '</a><span><span class="pill b">' + w.acc + '%</span> <a class="btn sm" href="#/questions/' + w.s.id + '">Practise</a></span></div>'; }).join("") : '<p class="muted" style="margin:0">Nothing flagged yet. Subjects where you score under 60% will show up here.</p>') + '</div>';
   h += '<div class="card"><h3>Subject by subject</h3><div style="overflow-x:auto"><table class="t"><tr><th>Subject</th><th>Topics reviewed</th><th>Questions</th><th>Right</th><th>Cards known</th><th>Hours</th></tr>' +
