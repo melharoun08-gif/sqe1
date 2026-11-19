@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261119181732";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261119184535";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -1887,7 +1887,8 @@ body.podcar-on .startnext{bottom:110px}
 /* wide screens (19 Nov): centre the page column and let it grow, instead of a 1000px column stuck to the left with empty space on the right */
 @media (min-width:1300px){.main>.wrap{margin-left:auto!important;margin-right:auto!important;max-width:min(1240px,100%)!important}}
 /* compact banner (all pages except Home): keep cloud-Layla clear of the progress ring above her (interim until the new full-body drawing) */
-.head.compact .stlayla{transform-box:fill-box;transform-origin:50% 100%;transform:scale(.82)}
+.head.compact .stlayla{transform-box:fill-box;transform-origin:50% 90%;transform:scale(.54)}
+@media (max-width:720px){.head:not(.compact) .stlayla{transform-box:fill-box;transform-origin:50% 90%;transform:scale(.86)}}
 @media (max-width:640px){.lrn-tbl td{display:block!important;position:relative;padding-left:calc(45% + 22px)!important}.lrn-tbl td::before{position:absolute;left:12px;top:10px;width:45%}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
@@ -78685,23 +78686,23 @@ function shopInside(done){
 var SCENES = window.SQE_SCENES = window.SQE_SCENES || {};
 SCENES["blp/business-structures"] = {
   name: "The Sweet Shop", enter: "🍭 Enter the sweet shop", treat: "treat", treats: "treats",
-  outside: { img: null, svg: shopOutside, ratio: 1000 / 640, alt: "The front of the sweet shop on Cluckington High Street, with a striped awning, a window full of sweet jars and a teal door",
+  outside: { img: "img/scene/sweetshop-outside.webp", svg: shopOutside, ratio: 1376 / 768, alt: "The front of the sweet shop on Cluckington High Street, with a striped awning, a window full of sweet jars and a teal door",
     gate: { sec: "the five structures", idx: 0 },
-    hotspots: [ { id: "door", x: 58, y: 45.6, w: 18, h: 42.2, label: "🚪 Tap the door to go in", leaf: shopDoorLeaf } ] },
-  inside: { img: null, svg: shopInside, ratio: 1000 / 640, alt: "Inside the sweet shop: a shelf of five jars, a chalkboard, a lollipop stand, a bowl of gobstoppers, a pick 'n' mix tray, Layla's purse, the scales and the till",
+    hotspots: [ { id: "door", x: 70.2, y: 32, w: 13.8, h: 56.5, label: "🚪 Tap the door to go in", leaf: shopDoorLeaf } ] },
+  inside: { img: "img/scene/sweetshop-inside.webp", svg: shopInside, ratio: 1376 / 768, alt: "Inside the sweet shop: a shelf of five jars, a chalkboard, a lollipop stand, a bowl of gobstoppers, a pick 'n' mix tray, Layla's purse, the scales and the till",
     hotspots: [
-      { id: "chalk",   x: 75, y: 5,  w: 22, h: 30, icon: "🖍️", label: "Chalkboard: the big idea",       big: true, cards: [[0]] },
-      { id: "jar1",    x: 3,  y: 6,  w: 13, h: 27, icon: "🍬", label: "Jar: Sole trader",                title: "Sole trader",          cards: [[1, 0, "Partnership:"]],   check: null },
-      { id: "jar2",    x: 17, y: 6,  w: 13, h: 27, icon: "🍬", label: "Jar: Partnership",                title: "General partnership",  cards: [[1, "Partnership:", "LLP:"]],  check: null },
-      { id: "jar3",    x: 31, y: 6,  w: 13, h: 27, icon: "🍬", label: "Jar: LLP",                        title: "Limited liability partnership (LLP)", cards: [[1, "LLP:", "Ltd:"]], check: null },
-      { id: "jar4",    x: 45, y: 6,  w: 13, h: 27, icon: "🍬", label: "Jar: Ltd company",                title: "Private limited company (Ltd)", cards: [[1, "Ltd:", "plc:"]], check: null },
-      { id: "jar5",    x: 59, y: 6,  w: 13, h: 27, icon: "🍬", label: "Jar: plc",                        title: "Public limited company (plc), plus an example", cards: [[1, "plc:"]], check: { sec: "the five structures", idx: [1] } },
-      { id: "pickmix", x: 36, y: 41, w: 19, h: 23, icon: "🧺", label: "Pick ’n’ mix: side by side",      cards: [[2]] },
-      { id: "gob",     x: 17, y: 41, w: 17, h: 23, icon: "🔮", label: "Gobstoppers: its own person",     cards: [[3]] },
-      { id: "lolly",   x: 2,  y: 39, w: 13, h: 53, icon: "🍭", label: "Lollipops: limited liability",    cards: [[4]] },
-      { id: "purse",   x: 18, y: 68, w: 17, h: 25, icon: "👛", label: "Layla’s purse: personal liability", cards: [[5]] },
-      { id: "scale",   x: 57, y: 38, w: 15, h: 24, icon: "⚖️", label: "Scales: piercing the veil",       cards: [[6]] },
-      { id: "till",    x: 74, y: 36, w: 18, h: 26, icon: "💷", label: "Till: choosing a structure",      cards: [[7]] }
+      { id: "chalk",   x: 52, y: 12.5, w: 15.8, h: 21.5, icon: "🖍️", label: "Chalkboard: the big idea",       big: true, cards: [[0]] },
+      { id: "jar1",    x: 10.2, y: 9.5, w: 7.3, h: 22, icon: "🍬", label: "Jar: Sole trader",                title: "Sole trader",          cards: [[1, 0, "Partnership:"]],   check: null },
+      { id: "jar2",    x: 17.8, y: 9.5, w: 7.3, h: 22, icon: "🍬", label: "Jar: Partnership",                title: "General partnership",  cards: [[1, "Partnership:", "LLP:"]],  check: null },
+      { id: "jar3",    x: 25.5, y: 9.5, w: 7.3, h: 22, icon: "🍬", label: "Jar: LLP",                        title: "Limited liability partnership (LLP)", cards: [[1, "LLP:", "Ltd:"]], check: null },
+      { id: "jar4",    x: 33.1, y: 9.5, w: 7.3, h: 22, icon: "🍬", label: "Jar: Ltd company",                title: "Private limited company (Ltd)", cards: [[1, "Ltd:", "plc:"]], check: null },
+      { id: "jar5",    x: 40.8, y: 9.5, w: 7.3, h: 22, icon: "🍬", label: "Jar: plc",                        title: "Public limited company (plc), plus an example", cards: [[1, "plc:"]], check: { sec: "the five structures", idx: [1] } },
+      { id: "pickmix", x: 47.5, y: 45.5, w: 24, h: 33, icon: "🧺", label: "Pick ’n’ mix: side by side",      cards: [[2]] },
+      { id: "gob",     x: 22, y: 54, w: 13.2, h: 18, icon: "🔮", label: "Gobstoppers: its own person",     cards: [[3]] },
+      { id: "lolly",   x: 5, y: 37, w: 14, h: 55, icon: "🍭", label: "Lollipops: limited liability",    cards: [[4]] },
+      { id: "purse",   x: 79.5, y: 61, w: 7, h: 19, icon: "👛", label: "Layla’s purse: personal liability", cards: [[5]] },
+      { id: "scale",   x: 72.5, y: 38.5, w: 14, h: 23.5, icon: "⚖️", label: "Scales: piercing the veil",       cards: [[6]] },
+      { id: "till",    x: 86.8, y: 46.5, w: 12.8, h: 21, icon: "💷", label: "Till: choosing a structure",      cards: [[7]] }
     ] }
 };
 
@@ -78722,6 +78723,7 @@ var CSS = [
 '.scn-lab{display:block;max-width:100%;padding:3px 9px;border:2.5px solid #1b1b1b;border-radius:99px;background:#FFFDF2;color:#111;font-weight:700;font-size:13px;line-height:1.2;text-align:center;box-shadow:2px 2px 0 #1b1b1b;pointer-events:none}',
 '.scn-pin{display:none;position:absolute;left:-4px;top:-4px;width:26px;height:26px;border:2.5px solid #1b1b1b;border-radius:50%;background:#FFE14D;color:#111;font:700 14px/21px var(--font);text-align:center;pointer-events:none}',
 '.scn-hs.done .scn-lab{background:#B8F2C9}',
+'.scn-hs[data-id^=jar] .scn-lab,.scn-hs[data-id=purse] .scn-lab{max-width:none;white-space:nowrap;font-size:12px}.scn-hs[data-id=jar2],.scn-hs[data-id=jar4]{align-items:center}',
 '.scn-hs.done .scn-pin{background:#B8F2C9}',
 '.scn-hs .scn-tick{position:absolute;right:4px;top:4px;width:34px;height:34px;border:3px solid #1b1b1b;border-radius:50%;background:#2E9E5B;color:#fff;font:900 20px/28px var(--font);text-align:center;transform:rotate(-8deg);pointer-events:none}',
 '.scn-hs.next{border-color:#FF2D8A;border-style:solid;animation:scnGlow 1.3s ease-in-out infinite}',
@@ -78734,7 +78736,7 @@ var CSS = [
 '.scn-hs.door.open .scn-leaf{transform:rotateY(-108deg)}',
 '.scn-hs.door.open .scn-lab{display:none}',
 '@keyframes scnBob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,-6px)}}',
-'.scn-art.zoom>svg,.scn-art.zoom>img,.scn-art.zoom>.scn-hs{transform-origin:67% 66%;animation:scnZoom .9s ease-in .75s forwards}',
+'.scn-art.zoom>svg,.scn-art.zoom>img,.scn-art.zoom>.scn-hs{transform-origin:77% 60%;animation:scnZoom .9s ease-in .75s forwards}',
 '.scn-art.zoom>.scn-hs{transform-origin:50% 50%}',
 '@keyframes scnZoom{to{transform:scale(2.2);opacity:0}}',
 '.scn-list{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px}',
@@ -78832,7 +78834,7 @@ window.SQE_SCENE = function(A){
     var nx = mode === 'inside' ? nextId(k) : null;
     var hs = view.hotspots.map(function(h, i){
       var dn = done && done[h.id], pos = 'left:' + h.x + '%;top:' + h.y + '%;width:' + h.w + '%;height:' + h.h + '%';
-      if (h.leaf) return '<button type="button" class="scn-hs door' + (SC.entering ? ' open' : '') + '" style="' + pos + '" data-scn="door" aria-label="' + esc(h.label.replace(/^\S+\s/, '')) + '"><span class="scn-leaf">' + h.leaf() + '</span><span class="scn-lab">' + esc(h.label) + '</span></button>';
+      if (h.leaf) return '<button type="button" class="scn-hs door' + (SC.entering ? ' open' : '') + '" style="' + pos + (view.img ? ';background:#FFE08A' : '') + '" data-scn="door" aria-label="' + esc(h.label.replace(/^\S+\s/, '')) + '"><span class="scn-leaf"' + (view.img ? ' style="background:url(' + esc(view.img) + ') ' + (h.x / (100 - h.w) * 100).toFixed(2) + '% ' + (h.y / (100 - h.h) * 100).toFixed(2) + '%/' + (10000 / h.w).toFixed(2) + '% ' + (10000 / h.h).toFixed(2) + '% no-repeat">' : '>' + h.leaf()) + '</span><span class="scn-lab">' + esc(h.label) + '</span></button>';
       return '<button type="button" class="scn-hs' + (dn ? ' done' : '') + (h.id === nx ? ' next' : '') + '" style="' + pos + '" data-scn="obj" data-id="' + esc(h.id) + '" aria-label="' + (i + 1) + '. ' + esc(h.label) + (dn ? ' (opened)' : '') + '"><span class="scn-pin" aria-hidden="true">' + (i + 1) + '</span><span class="scn-lab">' + esc(h.label) + '</span>' + (dn ? '<span class="scn-tick" aria-hidden="true">✓</span>' : '') + '</button>';
     }).join('');
     return '<div class="scn-art' + (SC.entering ? ' zoom' : '') + '">' + pic + hs + '</div>';
@@ -79176,7 +79178,7 @@ function streakHTML(){
   }
   var lp = pos[Math.min(n, PRESENT_STEPS)], lx = lp[0], ly = lp[1] - 30;
   /* full-body Layla (felt-tip, 294x565) with her feet on top of the cloud */
-  svg += '<image class="stlayla" href="img/layla-cloud.webp" x="' + (lx - 38).toFixed(1) + '" y="' + (lp[1] - 126) + '" width="76" height="132"/>';
+  svg += (function(h){ var w = h * 284 / 600; return '<image class="stlayla" href="img/layla-cloud.webp" x="' + (lx - w / 2).toFixed(1) + '" y="' + (lp[1] - h * 0.9).toFixed(1) + '" width="' + w.toFixed(1) + '" height="' + h + '"/>'; })(n ? 130 : 185);
   /* rainbow between two clouds, present on top */
   var rx = 308, ry = 70;
   ["#E0457B","#F59F2A","#F7D038","#4CB963","#3B8FE0","#8A5CD6"].forEach(function(c, j){ var r = 34 - j * 4; svg += '<path d="M' + (rx - r) + ' ' + ry + 'a' + r + ' ' + r + ' 0 0 1 ' + (2 * r) + ' 0" fill="none" stroke="' + c + '" stroke-width="4.2"/>'; });
