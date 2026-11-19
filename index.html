@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261119231919";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261119233020";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -1117,13 +1117,13 @@ a.bpalcard{display:flex;align-items:center;gap:12px;text-decoration:none;color:v
 .mbag .mbn::after{content:" in your bag"}
 /* v5: one picture BEHIND the header: plain sky and grass where the writing is, the scene on the right (Monnie 04:00) */
 .head .hscene,.head.compact .hscene{display:none!important}
-.head{background:#c2e3f8 url(img/banner-bg.webp) right bottom/auto 100% no-repeat!important}
+.head{background:#c2e3f8 url(img/banner-bg2.webp) right bottom/auto 100% no-repeat!important}
 .head .row1,.head .row2{max-width:calc(100% - 520px)}
 .head.compact .row1,.head.compact .row2{max-width:calc(100% - 360px)}
 .head .kw,.head .cheer{background:rgba(255,255,255,.55);border-radius:12px}
 .head .kw{border:0}
 .head .tabs{background:rgba(255,255,255,.85)}
-@media (max-width:720px){.head{background:#c2e3f8 url(img/banner-bg.webp) right bottom/auto 210px no-repeat!important;padding-bottom:210px!important}.head .row1,.head .row2,.head.compact .row1,.head.compact .row2{max-width:none}.head.compact{padding-bottom:12px!important;background-size:0 0!important}.head .tabs{position:relative;top:0}}
+@media (max-width:720px){.head{background:#c2e3f8 url(img/banner-bg2.webp) right bottom/auto 210px no-repeat!important;padding-bottom:210px!important}.head .row1,.head .row2,.head.compact .row1,.head.compact .row2{max-width:none}.head.compact{padding-bottom:12px!important;background-size:0 0!important}.head .tabs{position:relative;top:0}}
 @media (min-width:721px){.head .row1,.head .row2{max-width:calc(100% - 650px)}.head.compact .row1,.head.compact .row2{max-width:calc(100% - 420px)}.head .cheer{display:none}.head .row1{flex-wrap:wrap}}
 /* side panel: light blue to match the header, no beige/green (Monnie 04:01) */
 .side{background:#EAF6FE!important;border-left:3px solid #8FD2F8!important}
@@ -1158,11 +1158,11 @@ a.bpalcard{display:flex;align-items:center;gap:12px;text-decoration:none;color:v
 .cnrow input{font:inherit;font-size:16px;padding:6px 10px;border:2px solid #F3E3CC;border-radius:10px;max-width:180px;background:#fff;color:#2A2622}
 /* v7: seamless banner — picture ends above a solid tab bar; crayon sky texture behind everything */
 @media (min-width:721px){
-.head{background-color:#fff!important;background-image:url(img/banner-bg.webp),url(img/sky-tile.webp)!important;background-repeat:no-repeat,repeat!important;background-position:right bottom var(--tabh,50px),left top!important;background-size:auto calc(100% - var(--tabh,50px)),800px auto!important}
+.head{background-color:#fff!important;background-image:url(img/banner-bg2.webp),url(img/sky-tile.webp)!important;background-repeat:no-repeat,repeat!important;background-position:right bottom var(--tabh,50px),left top!important;background-size:auto calc(100% - var(--tabh,50px)),800px auto!important}
 .head .tabs{background:#fff!important;margin-bottom:0}
 }
 @media (max-width:720px){
-.head{background-image:url(img/banner-bg.webp),url(img/sky-tile.webp)!important;background-repeat:no-repeat,repeat!important;background-position:right bottom,left top!important;background-size:auto 210px,800px auto!important}
+.head{background-image:url(img/banner-bg2.webp),url(img/sky-tile.webp)!important;background-repeat:no-repeat,repeat!important;background-position:right bottom,left top!important;background-size:auto 210px,800px auto!important}
 .head.compact{background-size:0 0,800px auto!important}
 }
 /* Bolu photo, royal palace, medicine card */
@@ -1714,7 +1714,7 @@ body.podcar-on .startnext{bottom:110px}
 .streak .stsvg{overflow:visible}
 /* 19 Nov: whole banner scene always visible (never cropped): fit to banner height, plain sky/grass continues to the left */
 @media (min-width:721px){
-.head,.head.compact{background-image:url(img/banner-bg.webp),url(img/banner-ext.webp)!important;background-repeat:no-repeat,repeat-x!important;background-size:auto calc(100% - var(--tabh,50px)),auto calc(100% - var(--tabh,50px))!important;background-position:right bottom var(--tabh,50px),right bottom var(--tabh,50px)!important;background-color:#c2e3f8!important}
+.head,.head.compact{background-image:url(img/banner-bg2.webp),url(img/banner-ext.webp)!important;background-repeat:no-repeat,repeat-x!important;background-size:auto calc(100% - var(--tabh,50px)),auto calc(100% - var(--tabh,50px))!important;background-position:right bottom var(--tabh,50px),right bottom var(--tabh,50px)!important;background-color:#c2e3f8!important}
 }
 
 .c2pt{font-family:"Comic Sans MS","Chalkboard SE","Comic Neue",system-ui,sans-serif;font-weight:700;color:#1a2a6c;text-align:left;justify-content:flex-start;align-items:flex-start;padding:3% 4%;line-height:1.2}
@@ -2473,6 +2473,37 @@ html.dfv-on{overflow:hidden}
  .head.bl-on .streak .stline.stgoal,.head.bl-on .streak .stline.stready{left:calc(100% + 26px)!important;right:auto!important;top:auto!important;bottom:6%!important;width:225px!important;height:64px}
 }
 @media (min-width:721px) and (max-width:1300px){ .head.bl-on .streak{width:clamp(250px,24vw,372px)!important} }
+/* tidy-game: Bert the butcher pages, coin chest, captive panel, Britney's shop cards */
+.bossg .bsay{text-align:center;margin:12px 4px 4px}
+.bossg .bdanger{justify-content:center}
+.bossg .bnostake{margin:2px 8px 10px}
+.bres .bert.bsmall{margin:0 auto 6px}
+.bcaptb .btns,.bcapt .btns{justify-content:center}
+.bcapt .btn[disabled],.bossg .btn[disabled]{opacity:1;background:#EDE7E3!important;color:#5A4E44!important;border-color:#D8CFC8!important;box-shadow:none}
+.bchestcard p b{white-space:nowrap}
+.palace .bcard.bchestcard,.palace .bcard.bcapt{border:2.5px solid #111;box-shadow:3px 3px 0 #111}
+.palace .bcard.bchestcard{background:#FFFBEA}
+.palace .sitm>.sprice{margin-top:auto;padding-top:4px}
+.palace .sitm>.sdesc{flex:0 0 auto}
+.palace .sitm>.sown,.palace .sitm>.sneed,.palace .sitm>.btn{min-height:42px;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box}
+@media (max-width:600px){.palace .sitm>.sown,.palace .sitm>.sneed,.palace .sitm>.btn{min-height:46px}}
+.palace .sitm.have>.sown{margin-top:auto}
+.palace .sitm>.btn[disabled]{opacity:1;background:#F1ECE6!important;color:#5A4E44!important;border-color:#8C8077!important;box-shadow:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .palace .bcard:is(.bchestcard,.bcapt){border-color:#E9E2D2;box-shadow:3px 3px 0 #000}}
+:root[data-theme="dark"] .palace .bcard:is(.bchestcard,.bcapt){border-color:#E9E2D2;box-shadow:3px 3px 0 #000}
+@media (max-width:600px){
+ .bossg .bcard,.bossg .cbacard{padding-left:14px;padding-right:14px}
+ .bcaptb .btns .btn{flex:1 1 auto;justify-content:center}
+}
+/* end tidy-game */
+
+/* 23:30 Monnie: Remember card + ring/coin bag more central; streak ribbon narrower and taller; scene redrawn with more room (banner-bg2) */
+@media (min-width:721px){
+ .head:not(.bl-on) .kw{left:max(352px,calc(50% - 300px))}
+ .head:not(.bl-on) .row2{margin-left:max(336px,calc(50% - 316px))!important}
+ .head .streak .stline.stgoal,.head.compact .streak .stline.stgoal{right:auto;width:64%;top:-6px}
+ .head .streak .stgoal small{white-space:normal}
+}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -35423,7 +35454,7 @@ window.SQE_LEARN["blp/business-structures"] = {sections:[
    {t:"reveal", i:"🤔", title:"Which two structures are NOT separate legal persons?", body:"**Sole traders** and **general partnerships**. Companies (Ltd and plc) and LLPs are."},
    {t:"card", i:"🛡️", title:"Question 2: is the owners' liability limited?", body:"If the business can't pay its **creditors** (people it owes money to), can they take the owners' savings, house and car?"},
    {t:"compare", i:"⚖️", title:"Unlimited vs limited liability", cols:["", "Sole trader / partner", "Shareholder / LLP member"], rows:[["Creditors can take personal assets?","✅ Yes","❌ No"],["Name","🔓 Unlimited liability","🔒 Limited liability"],["Most you can lose","💸 Everything","💷 What you put in or agreed to put in"]]},
-   {t:"card", i:"🗺️", title:"What this topic covers (and what's elsewhere)", body:"This topic: the structures, legal personality, limited liability, when courts **pierce the corporate veil**, and choosing a structure. Elsewhere: setting each one up (**Forming a company, partnership or LLP**), partners' authority and agreements (**Partnerships and LLPs**), directors' duties (**Directors**)."},
+   {t:"card", i:"🗺️", title:"What this topic covers (and what's elsewhere)", body:"This topic: the structures, legal personality, limited liability, when courts **pierce the corporate veil**, and choosing a structure.\n\nElsewhere: setting each one up (**Forming a company, partnership or LLP**), partners' authority and agreements (**Partnerships and LLPs**), directors' duties (**Directors**)."},
    {t:"card", i:"💡", title:"Exam tip: label the structure first", body:"Ask: '**Registered at Companies House?**' If not, it's a sole trader or partnership, so **unlimited liability**. Watch for two people 'just starting to work together': a partnership may already exist."},
    {t:"reveal", i:"🤔", title:"If a sole trader's business fails, can creditors take their house?", body:"**Yes.** A sole trader has **unlimited liability**: business debts are their personal debts."}
  ]},
@@ -80491,8 +80522,8 @@ window.addEventListener("resize", tabH); window.addEventListener("load", tabH); 
    A layout saved in a browser (localStorage "sqe_banner_layout") wins on that device only. Bake one in with bake.js. */
 /* 19 Nov: null, so Today uses the same banner layout as every other page (the old baked Today-only layout put the present clouds mid-banner on Today but bottom-left everywhere else)
    was: {"wide":{"title":{"x":1.14,"y":4.58},"stats":{"x":1.14,"y":36.68},"home":{"x":93.82,"y":0},"ring":{"x":1.14,"y":71.06},"bag":{"x":37.53,"y":18.34},"kw":{"x":30.7,"y":68.77},"cheer":{"x":30.7,"y":48},"streak":{"x":28.6,"y":40}}} */
-var BANNER_LAYOUT = {"wide":{"title":{"x":1.14,"y":4.58},"stats":{"x":1.14,"y":36.68},"home":{"x":93.82,"y":0},"ring":{"x":1.14,"y":71.06},"bag":{"x":37.53,"y":18.34},"kw":{"x":30.7,"y":68.77},"cheer":{"x":30.7,"y":48},"streak":{"x":28.6,"y":21}}}; /* 23:15 restored: Monnie's own arrangement, Layla + clouds in the MIDDLE */
-var BL_KEY = "sqe_banner_layout", BL = null; /* 22:45: old saved layouts ignored (one put cloud-Layla over the numbers on Monnie's laptop) */
+var BANNER_LAYOUT = null; /* 23:30 Monnie changed her mind: keep Layla on the LEFT (default layout) */
+var BL_KEY = "sqe_banner_layout_v2", BL = null; /* 22:45: old saved layouts ignored (one put cloud-Layla over the numbers on Monnie's laptop) */
 var BL_NAMES = {title:"Title and dates", stats:"Numbers", home:"Home button", ring:"Progress ring", bag:"Coin bag", kw:"Remember card", cheer:"Cheer line", streak:"Present clouds"};
 /* the drawn girls (with the rabbit) and the hens, as fractions of img/banner-bg.webp (2400 x 770): [left, top, right, bottom] */
 var BL_ZONES = [[0.865, 0.32, 1, 1], [0.6, 0.62, 0.875, 1]], BL_IMG = 2400 / 770;
