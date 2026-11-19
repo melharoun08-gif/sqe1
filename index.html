@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261119205340";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261119220311";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -2058,6 +2058,214 @@ body.podcar-on .startnext{bottom:110px}
  .head .streak .stflame{width:38px;height:38px;margin-top:-19px;left:-19px}
  .head .streak .stflame svg{width:26px;height:26px}
 }
+
+/* ============ QUICKFIRE (19 Nov, page: quickfire): Business Law 1 quick-fire in the sweet-shop skin (.qfcard/.qfend + .skin-sweet from skinOf).
+   Bold dark outlines, candy pills for the numbers, sweet-wrapper answer buttons, dark text on every pale fill. ============ */
+.skin-sweet.qfcard .qsq .sq{border:2px solid var(--sw-ink);border-radius:999px;background:var(--sw-cream);color:var(--sw-ink);min-width:32px;height:32px}
+.skin-sweet.qfcard .qsq .sq.ok{background:#7ED9B0;color:var(--sw-ink)}
+.skin-sweet.qfcard .qsq .sq.bad{background:#FF8FB8;color:var(--sw-ink)}
+.skin-sweet.qfcard .qsq .sq.cur{background:var(--sw-lemon);color:var(--sw-ink);box-shadow:0 3px 0 var(--sw-ink);transform:translateY(-2px)}
+.skin-sweet.qfcard .small.muted{color:#4A3448}
+.skin-sweet.qfcard .qf{color:#1D2433}
+.skin-sweet.qfcard .opt{border:2.5px solid var(--sw-ink);border-radius:16px;background:var(--sw-cream);color:#1D2433;box-shadow:0 3px 0 var(--sw-ink);margin-bottom:4px;transition:transform .1s}
+.skin-sweet.qfcard .opt:hover:not([disabled]){border-color:var(--sw-ink);background:#FFF1F7;transform:translateY(-2px)}
+.skin-sweet.qfcard .opt:active:not([disabled]){transform:translateY(2px);box-shadow:0 1px 0 var(--sw-ink)}
+.skin-sweet.qfcard .opt .L{width:26px;height:26px;background:var(--sw-pink);color:var(--sw-ink);border:2px solid var(--sw-ink)}
+.skin-sweet.qfcard .opt:nth-child(2) .L{background:var(--sw-lemon)}
+.skin-sweet.qfcard .opt:nth-child(3) .L{background:var(--sw-mint)}
+.skin-sweet.qfcard .opt:nth-child(4) .L{background:#7FC8F8}
+.skin-sweet.qfcard .opt.right{background:#CFF3E0;border-color:var(--sw-ink)}
+.skin-sweet.qfcard .opt.wrong{background:#FFD3DE;border-color:var(--sw-ink)}
+.skin-sweet.qfcard .opt[disabled]{box-shadow:none}
+.skin-sweet.qfcard .qfres{border:2.5px solid var(--sw-ink);border-radius:16px;padding:10px 14px;color:#1D2433;box-shadow:0 3px 0 var(--sw-ink)}
+.skin-sweet.qfcard .qfres b[style]{color:#1D2433!important}
+.skin-sweet.qfcard .kbd{color:#4A3448}
+.skin-sweet.qfend .muted{color:#4A3448}
+.skin-sweet.qfend p b{display:inline-block;background:var(--sw-lemon);color:var(--sw-ink);border:2.5px solid var(--sw-ink);border-radius:999px;padding:2px 18px;box-shadow:0 3px 0 var(--sw-ink)}
+@media (max-width:640px){
+ .skin-sweet.qfcard .qsq{gap:5px}
+ .skin-sweet.qfcard .qsq .sq{min-width:30px;height:30px;font-size:13px}
+ .skin-sweet.qfcard .opt{padding:9px 10px}
+ .skin-sweet.qfend .btns .btn{flex:1 1 100%;justify-content:center}
+}
+
+/* ============ BL1 PACKAGE: notes (19 Nov) — Syllabus notes page for Business Law topics (.card.skin-sweet.swnotes, set in VIEW.topic when mode is notes).
+   Same candy look as the Sweet Shop, revision cards and framework: dark ink outlines, cream/candy fills, dark text. Plus the "Go to the Sweet Shop" strip. ============ */
+.swnotes{--sw-ink:#2A1B2E}
+.swnotes .viewtabs a{border:2px solid var(--sw-ink);color:var(--sw-ink);background:#FFFDF6;box-shadow:0 2px 0 var(--sw-ink);font-weight:700}
+.swnotes .viewtabs a.on{background:#C2185B;color:#fff}
+.swnotes .viewtabs .vt-off{border:2px dashed #8A7387;color:#5A4458}
+.swn-shop{display:flex;align-items:center;gap:12px;margin:12px 0 6px;padding:12px 14px;border:2.5px solid var(--sw-ink);border-radius:18px;box-shadow:0 4px 0 var(--sw-ink);color:#2A1B2E;background:linear-gradient(var(--sw-ink),var(--sw-ink)) 0 12px/100% 2.5px no-repeat,repeating-linear-gradient(90deg,#FF8FB8 0 16px,#FFFFFF 16px 32px) 0 0/100% 12px no-repeat,#FFF1F7;padding-top:24px}
+.swn-shopic{flex:none;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-size:28px;background:#FFE27A;border:2.5px solid var(--sw-ink)}
+.swn-shopt{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;font-size:14.5px;line-height:1.35;color:#2A1B2E}
+.swn-shopt b{font-size:16px;color:#2A1B2E}
+.swn-shopt span{color:#3D2A3B}
+.swnotes .swn-shopb{flex:none;white-space:nowrap;font-weight:800}
+.swnotes .lrn-tog{margin:12px 0 6px}
+.swnotes .lrn-link{text-decoration:none;color:var(--sw-ink);background:#CFF3E0;border:2px solid var(--sw-ink);border-radius:999px;box-shadow:0 3px 0 var(--sw-ink);padding:6px 14px;font-size:14.5px}
+.swnotes .lrn-link:active{transform:translateY(2px);box-shadow:0 1px 0 var(--sw-ink)}
+/* section headings that open (tap-through cards): candy-stripe edge, dark outline, a sweet chip for "Tap to open" */
+.swnotes .nsd>summary{border:2.5px solid var(--sw-ink);border-left:12px solid var(--sc,#C2185B);box-shadow:0 4px 0 var(--sw-ink);background:#FFFDF6;border-radius:14px;padding:11px 14px}
+.swnotes .nsd>summary h2,.swnotes .nsd>summary h3{color:#2A1B2E!important}
+.swnotes .nsdh{color:#2A1B2E;background:#FFE27A;border:2px solid var(--sw-ink);border-radius:999px;padding:2px 10px}
+.swnotes .nsd[open]>summary .nsdh{padding:2px 10px;background:#FFD3DE}
+.swnotes .nsd[open]>summary{border-radius:14px 14px 0 0;box-shadow:none}
+.swnotes .nsd[open]{border:2.5px solid var(--sw-ink);border-top:0;border-radius:0 0 14px 14px;margin-bottom:14px}
+.swnotes .nsd[open]>summary{margin:0 -2.5px}
+.swnotes .nsd[open]>:not(summary){margin-left:14px;margin-right:14px}
+.swnotes .nsec{margin-bottom:12px}
+/* quick checks after each section: candy jar label look */
+.swnotes .nck{--nk:#2A1B2E;--nk-bg:#FFF6D6;--nk-line:#2A1B2E;border:2.5px solid #2A1B2E;box-shadow:0 4px 0 #2A1B2E;border-radius:18px}
+.swnotes .nck-badge{background:#C2185B;color:#fff;border:2px solid #2A1B2E}
+.swnotes .nck-n{color:#2A1B2E}
+.swnotes .nck-o{border:2px solid #2A1B2E;border-radius:14px}
+.swnotes .nck-o:hover:not([disabled]){background:#FFF1F7}
+.swnotes .nck-l{background:#FFE27A;border-color:#2A1B2E;color:#2A1B2E}
+.swnotes .nck-again{color:#2A1B2E}
+.swnotes .nck.ok{border-color:#2E7D32;box-shadow:0 4px 0 #2E7D32}
+.swnotes .nck.no{border-color:#C62828;box-shadow:0 4px 0 #C62828}
+.swnotes .nck-o.dim{opacity:.8;color:#3D2A3B}
+/* five-structure cards and the big idea box get the same ink */
+.swnotes .scard{border-color:var(--sw-ink);box-shadow:0 4px 0 var(--sw-ink)}
+.swnotes .scard-h{border-bottom:2.5px solid var(--sw-ink)}
+.swnotes .biread>summary{border-color:var(--sw-ink)}
+/* RAG faces: sweet buttons (skin-sweet .rate) with a bigger face */
+.swnotes .review{border-top:2.5px dashed #E59CBE}
+.swnotes .review .rate .ragf{width:40px;height:40px}
+.swnotes .review>b{color:#2A1B2E}
+:root[data-theme="dark"] .swnotes .review>b{color:var(--ink)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .swnotes .review>b{color:var(--ink)}}
+@media (max-width:640px){
+ .swn-shop{flex-wrap:wrap}
+ .swnotes .swn-shopb{width:100%;justify-content:center;text-align:center}
+ .swn-shopic{width:42px;height:42px;font-size:24px}
+ .swnotes .nsd[open]>:not(summary){margin-left:10px;margin-right:10px}
+}
+/* ============ end BL1 PACKAGE: notes ============ */
+
+/* ============ [cards] BL1 PACKAGE (19 Nov): revision cards page. Sweet-shop look for Business Law (blp) on the Revision cards tab,
+   the cards sidebar and the end-of-deck "Next step" box. Dark outlines, dark text. ============ */
+.subjrow.cardrow .cr-t{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:0}
+.subjrow.cardrow.swrow{margin:6px -10px;padding:12px 10px 12px 58px;position:relative;border:2.5px solid #2A1B2E;border-radius:16px;box-shadow:0 4px 0 #2A1B2E;background:linear-gradient(#2A1B2E,#2A1B2E) 0 12px/100% 2px no-repeat,repeating-linear-gradient(90deg,#FF8FB8 0 14px,#fff 14px 28px) 0 0/100% 12px no-repeat,#FFF0F6;padding-top:22px}
+.subjrow.cardrow.swrow + .subjrow{border-top:0}
+.subjrow.cardrow.swrow::before{content:"";position:absolute;left:10px;top:50%;margin-top:-14px;width:38px;height:38px;background:center/contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M20 25v13' stroke='%232A1B2E' stroke-width='4.4' stroke-linecap='round'/%3E%3Cpath d='M20 25v13' stroke='%23fff' stroke-width='1.8' stroke-linecap='round'/%3E%3Ccircle cx='20' cy='15' r='11.5' fill='%23FFD43B' stroke='%232A1B2E' stroke-width='2.2'/%3E%3Cpath d='M20 15m-1.5 0a1.5 1.5 0 1 1 3 0a4 4 0 1 1-7 0a6.5 6.5 0 1 1 12 0' fill='none' stroke='%23E8457F' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E")}
+.subjrow.cardrow.swrow > .cr-t > a:first-child{color:#2A1B2E;font-size:17px}
+.subjrow.cardrow.swrow .cr-x a{color:#8A1546;font-weight:700}
+.subjrow.cardrow.swrow .cr-ring,.subjrow.cardrow.swrow .cr-ring *{color:#2A1B2E}
+.swdeck{display:inline-block;white-space:nowrap;background:#C2185B;color:#fff!important;border:2px solid #2A1B2E;border-radius:999px;box-shadow:0 3px 0 #2A1B2E;padding:3px 12px;font-size:13px;font-weight:800;text-decoration:none}
+.swdeck:hover{filter:brightness(1.08)}
+.skin-sweet .swnext{margin:16px auto 0;max-width:520px;padding:12px 14px 4px;border:2.5px dashed #2A1B2E;border-radius:16px;background:#FFF6D6}
+.skin-sweet .swnext > b{display:block;color:#2A1B2E;font-size:15px}
+.side details.swside{margin:4px 0;border:2px solid #2A1B2E;border-radius:12px;background:#FFF0F6;box-shadow:0 3px 0 #2A1B2E;overflow:hidden}
+.side details.swside > summary.subj{background:repeating-linear-gradient(90deg,#FFD6E6 0 14px,#FFF0F6 14px 28px);color:#2A1B2E;font-weight:800;padding:6px 8px}
+.side details.swside > summary.subj span{color:#2A1B2E}
+.side details.swside[open]{padding-bottom:6px}
+.side details.swside .tp{margin-left:6px;margin-right:6px;border-color:#2A1B2E}
+@media (max-width:640px){.subjrow.cardrow.swrow{margin:6px -4px;padding-left:52px}.subjrow.cardrow.swrow::before{left:8px}}
+.skin-sweet.qfcard .qsq .sq.cur.ok{background:#7ED9B0}.skin-sweet.qfcard .qsq .sq.cur.bad{background:#FF8FB8}
+/* ============ end QUICKFIRE ============ */
+
+/* ============ BL1 PACKAGE: framework (19 Nov): sweet-shop look for the framework page's controls, step-by-step box and self-test counter ============ */
+.fwtest.skin-sweet{gap:10px 12px;padding:10px 12px;border:2.5px solid #2A1B2E;border-radius:16px;background:#FFF1F7;box-shadow:0 3px 0 #2A1B2E}
+.fwtest.skin-sweet .btn{font-weight:800}
+.fwtest.skin-sweet .fwshop{margin-left:auto}
+.fwtest.skin-sweet .fwhint{flex-basis:100%;color:#3A2A3C!important;font-weight:600}
+.fwtest .fwcount{display:inline-block;padding:3px 12px;border:2px solid #2A1B2E;border-radius:999px;background:#FFE27A;color:#2A1B2E;font-weight:800;font-size:14px}
+.fwtest .fwcount.done{background:#7ED9B0}
+.skin-sweet .fwsteps{max-width:720px;margin-top:16px;border:2.5px solid #2A1B2E;border-radius:16px;background:#FFFDF6;box-shadow:0 3px 0 #2A1B2E;padding:10px 14px}
+.skin-sweet .fwsteps summary{color:#2A1B2E;font-weight:800}
+.skin-sweet .fwsteps .fwstep{border:2px solid #2A1B2E;border-radius:14px;background:#fff}
+.skin-sweet .fwsteps .fwarrow{color:#C2185B;font-weight:800}
+.skin-sweet .mmwrap{margin-left:auto;margin-right:auto}
+@media (max-width:640px){
+ .fwtest.skin-sweet{padding:8px 10px}
+ .fwtest.skin-sweet .fwshop{margin-left:0}
+ .skin-sweet .mmli{border-left-width:6px}
+}
+
+/* ============ cartoon-today (19 Nov): BL1 Cartoon tab in the sweet-shop look + tap-to-read viewer ============ */
+.swcart .dfhint{color:#2A1B2E;font-weight:600;background:#FFF1F7;border:2px solid #2A1B2E;border-radius:12px;padding:6px 10px;display:inline-block}
+.swcart .dfstrip img{border:2.5px solid #2A1B2E;border-radius:14px;box-shadow:0 4px 0 #2A1B2E;transition:transform .12s}
+.swcart .dfstrip a{display:block;border-radius:14px;cursor:zoom-in}
+.swcart .dfstrip a:hover img{transform:translateY(-2px)}
+.swcart .dfstrip a:focus-visible{outline:3px solid #C2185B;outline-offset:3px}
+.swcart .dfnum{background:#FF8FB8;color:#2A1B2E;border:2px solid #2A1B2E;box-shadow:0 2px 0 #2A1B2E}
+.swcart .dfstrip:nth-child(3n+2) .dfnum{background:#7ED9B0}
+.swcart .dfstrip:nth-child(3n) .dfnum{background:#FFE27A}
+html.dfv-on{overflow:hidden}
+.dfview{position:fixed;inset:0;z-index:9999;background:#2A1B2E;overflow-y:auto;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column;align-items:center;padding:0 8px 24px}
+.dfvbar{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:10px;justify-content:center;width:100%;max-width:820px;padding:10px 0;background:rgba(42,27,46,.96)}
+.dfvb{min-width:46px;height:46px;border-radius:999px;border:2.5px solid #2A1B2E;background:#FFE27A;color:#2A1B2E;font-size:24px;font-weight:800;line-height:1;cursor:pointer;box-shadow:0 3px 0 #000}
+.dfvb[disabled]{opacity:.4;cursor:default}
+.dfvx{margin-left:auto;background:#FF8FB8;font-size:20px}
+.dfvn{background:#FFFDF6;color:#2A1B2E;border:2.5px solid #2A1B2E;border-radius:999px;padding:6px 14px;font-weight:800;font-size:16px}
+.dfvn span{font-weight:600;font-size:13px}
+.dfvpic{width:100%;max-width:820px;display:flex;justify-content:center}
+.dfvpic img{display:block;width:100%;height:auto;background:#fff;border:3px solid #2A1B2E;border-radius:14px}
+.dfvnext{margin-top:14px;font-size:17px;padding:12px 22px;background:#C2185B!important;border:2.5px solid #2A1B2E!important;color:#fff!important;box-shadow:0 3px 0 #000}
+@media (max-width:640px){
+ .card.swcart{padding-left:10px;padding-right:10px}
+ .dfview{padding:0 0 24px}
+ .dfvbar{padding:8px 8px}
+ .dfvpic img{border-width:0;border-radius:0}
+}
+
+/* ============ [examqs] 19 Nov: Business Law 1 Model Q&A (topic set + day-10 review) and its CBA tab in the Sweet Shop skin. Bold dark outlines, dark text, candy fills. ============ */
+.exq-top{display:flex;align-items:center;gap:10px;margin:2px 2px 10px}
+.exq-top .cbaback{color:#A3215B}
+.exq-lab{background:#FFE27A;color:#2A1B2E;border:2px solid #2A1B2E;border-radius:999px;padding:2px 12px;font-weight:800;font-size:14px}
+.card.exq.skin-sweet .qtext{color:#1D2433;font-size:17px;line-height:1.55}
+.skin-sweet.exq .qsq.strip .sq{border:2px solid #2A1B2E;background:#FFFDF6;color:#2A1B2E;border-radius:50%}
+.skin-sweet.exq .qsq.strip .sq.ok{background:#7ED9B0;color:#12351F}
+.skin-sweet.exq .qsq.strip .sq.bad{background:#FF9DB5;color:#4A0F22}
+.skin-sweet.exq .qsq.strip .sq.cur{box-shadow:0 0 0 3px #FFE27A,0 0 0 5px #2A1B2E}
+.skin-sweet.exq .opts{display:flex;flex-direction:column;gap:9px}
+.skin-sweet.exq .opt,.cbag.skin-sweet .opt{border:2px solid #2A1B2E;border-radius:14px;background:#FFFDF6;color:#1D2433;box-shadow:0 3px 0 #2A1B2E;padding:11px 12px;transition:transform .08s}
+.skin-sweet.exq .opt .L,.cbag.skin-sweet .opt .L{background:#FFD6E6;color:#2A1B2E;border:2px solid #2A1B2E;width:26px;height:26px}
+.skin-sweet.exq .opt:hover:not([disabled]),.cbag.skin-sweet .opt:hover:not([disabled]){background:#FFF0F7;transform:translateY(-1px)}
+.skin-sweet.exq .opt.right,.cbag.skin-sweet .opt.right{background:#CFF3E0}
+.skin-sweet.exq .opt.right .L,.cbag.skin-sweet .opt.right .L{background:#7ED9B0}
+.skin-sweet.exq .opt.wrong,.cbag.skin-sweet .opt.wrong{background:#FFD3DE}
+.skin-sweet.exq .opt.wrong .L,.cbag.skin-sweet .opt.wrong .L{background:#FF8FB8}
+.skin-sweet.exq .explain{border:2.5px solid #2A1B2E;border-radius:16px;background:linear-gradient(#2A1B2E,#2A1B2E) 0 14px/100% 2px no-repeat,repeating-linear-gradient(90deg,#FF8FB8 0 14px,#fff 14px 28px) 0 0/100% 14px no-repeat,#FFF8FB;padding:24px 16px 12px;color:#1D2433}
+.skin-sweet.exq .explain h4{color:#8E1446!important}
+.skin-sweet.exq .explain h4[style*="good"]{color:#1E6B43!important}
+.skin-sweet.exq .explain .notes,.skin-sweet.exq .explain .notes *{color:#1D2433}
+.skin-sweet.exq .kbd{color:#4A3448}
+.exq-end .exq-score{font-size:22px;margin:6px 0;color:#1D2433}
+.exq-end .exq-tick{display:inline-block;background:#CFF3E0;color:#12351F;border:2px solid #2A1B2E;border-radius:999px;padding:3px 12px;font-weight:700}
+/* CBA tab, Business Law 1 */
+.cbag.skin-sweet .cbacard{border:2.5px solid #2A1B2E;box-shadow:0 5px 0 #2A1B2E;border-radius:22px}
+.cbag.skin-sweet .cbacard.learn{background:linear-gradient(#2A1B2E,#2A1B2E) 0 16px/100% 2.5px no-repeat,repeating-linear-gradient(90deg,#FFE27A 0 16px,#fff 16px 32px) 0 0/100% 16px no-repeat,#FFFDF6;padding-top:34px}
+.cbag.skin-sweet .cbacard.ask{background:linear-gradient(#2A1B2E,#2A1B2E) 0 16px/100% 2.5px no-repeat,repeating-linear-gradient(90deg,#FF8FB8 0 16px,#fff 16px 32px) 0 0/100% 16px no-repeat,#fff;padding-top:34px}
+.cbag.skin-sweet .cbatag{display:inline-block;color:#2A1B2E;background:#FFD6E6;border:2px solid #2A1B2E;border-radius:999px;padding:1px 12px;font-weight:800}
+.cbag.skin-sweet .cbatext,.cbag.skin-sweet .cbaq{color:#1D2433}
+.cbag.skin-sweet .cbaback{color:#A3215B}
+.cbag.skin-sweet .cbattl{color:#2A1B2E;font-weight:800}
+.cbag.skin-sweet .ctrack{border:2px solid #2A1B2E;background:#FFFDF6;height:16px}
+.cbag.skin-sweet .ctrack i{background:repeating-linear-gradient(135deg,#FF6FB5 0 8px,#FF9DC9 8px 16px)}
+.cbag.skin-sweet .cpips i{border:1.5px solid #2A1B2E}
+.cbag.skin-sweet .cbalock[disabled]{opacity:1;background:#F7C1D6;color:#2A1B2E;border-color:#2A1B2E}
+.cbag.skin-sweet .cbalock .fill{background:#FF8FB8}
+.cbag.skin-sweet .cbalock[disabled] span{color:#2A1B2E}
+.cbag.skin-sweet .cbafb{border:2.5px solid #2A1B2E;color:#1D2433}
+.cbag.skin-sweet .cbafb.ok{background:#CFF3E0}.cbag.skin-sweet .cbafb.no{background:#FFE1E8}
+.cbag.skin-sweet .cbafb .cb{color:#8E1446}
+.cbag.skin-sweet .spill.coin{border:2px solid #2A1B2E}
+@media (max-width:640px){
+ .exq-top{margin:0 0 8px}
+ .card.exq.skin-sweet .qtext{font-size:16px}
+ .skin-sweet.exq .explain{padding:22px 12px 10px}
+ .cbag.skin-sweet .cbacard{padding-left:14px;padding-right:14px}
+}
+.skin-sweet.exq .qmeta span{border-radius:14px}
+/* ============ [examqs] end ============ */
+/* cartoon-today: the sweet-shop topic's Today step also links its Cartoon tab (the shop scene has no cartoon) */
+.tdsteps .tdalt{margin-left:8px;display:inline-block;font-size:13px;font-weight:700;color:#2A1B2E;background:#FFF1F7;border:2px solid #2A1B2E;border-radius:999px;padding:0 9px;text-decoration:none;white-space:nowrap}
+.tdsteps .tdalt:hover{background:#FF8FB8}
+.tdsteps li:has(.tdalt){flex-wrap:wrap;row-gap:4px}
+.tdsteps li:has(.tdalt)::after{content:"";order:2;flex-basis:100%;height:0}
+.tdsteps li .tdalt{order:3;margin-left:36px}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -2073,7 +2281,7 @@ window.SQE_SUBJECTS.push({
   {
    "id": "business-structures",
    "title": "Business structures and legal personality",
-   "notes": "## The big idea in one paragraph\nEvery business is run through a **business structure** (also called a **business vehicle**). The SQE1 syllabus covers five: **sole trader**, **general partnership**, **limited liability partnership (LLP)**, **private limited company (Ltd)** and **public limited company (plc)**. Two questions decide almost everything about them:\n- **Does the business have separate legal personality?** In other words, is the business a \"person\" in law in its own right, separate from the people who own it? Companies and LLPs are. Sole traders and general partnerships are not.\n- **Is the owners' liability limited?** If the business cannot pay its debts, can the creditors (the people it owes money to) take the owners' own savings, house and car? For sole traders and partners, yes (**unlimited liability**). For company shareholders and LLP members, no: they lose only what they put in or agreed to put in (**limited liability**).\n- This topic covers the structures, legal personality, limited liability, when the courts will **pierce the corporate veil**, and how to choose a structure. How to set each one up is in **Forming a company, partnership or LLP**; partners' authority and partnership agreements are in **Partnerships and LLPs**; directors' duties are in **Directors**.\n\n## The five structures\n- **Sole trader**: one individual who owns and runs a business on their own account (they can still employ staff).\n  - **No separate legal personality**: the business is just the person. Business assets and debts are the owner's personal assets and debts.\n  - **Unlimited personal liability** for every business debt. If the business fails, the owner can be made **bankrupt**.\n  - **No formation formalities**: the owner just starts trading. They must register with **HMRC** (HM Revenue & Customs, the UK tax authority) for **self-assessment** (the system where you file your own tax return).\n  - **Privacy**: nothing is filed at **Companies House** (the public register of companies and LLPs). The accounts stay private.\n  - **Business name**: if they trade under a name other than their own surname, their name and an address must appear on business documents and at the premises (CA 2006 Part 41).\n  - **Tax**: profits are the owner's **trading income**, taxed with **income tax** and **Class 4 National Insurance contributions (NICs)** in the tax year they are made, whether or not the owner takes the money out.\n- **General partnership** (usually just \"partnership\"): defined by the **Partnership Act 1890 (PA 1890) s.1** as the relationship between **persons carrying on a business in common with a view of profit**.\n  - It arises **automatically from the facts**. No written agreement, registration or even intention to be partners is needed. If two people run a business together and aim to make a profit, they are partners. Under **s.2**, receiving a **share of the profits** is evidence of partnership, but not conclusive. Merely **co-owning property** (s.2(1)) or **sharing gross returns** (takings before expenses, s.2(2)) does not by itself make people partners.\n  - **No separate legal personality** in England and Wales. \"The firm\" is just the collective name for the partners (s.4). The firm can sue and be sued in the firm's name for convenience (a court procedure rule), but that does not make it a legal person.\n  - **Unlimited liability**: every partner is personally liable for the firm's debts incurred while they were a partner (s.9), and for wrongs (torts) committed by a partner in the ordinary course of the firm's business (ss.10 and 12). Liability is **joint** for the firm's debts and obligations (s.9) and **joint and several** for wrongs (s.12). Either way, a creditor can recover the **whole debt from any one partner** (a judgment against one partner does not stop the creditor suing the others: Civil Liability (Contribution) Act 1978 s.3), and that partner must then claim a share back from the others.\n  - **Continuity**: by default a partnership is **dissolved** when a partner **dies or becomes bankrupt** (s.33) or, where there is no fixed term (a **partnership at will**), when any partner **gives notice** (ss.26 and 32), unless the partnership agreement says otherwise.\n  - **Tax**: the firm itself pays no tax. Each partner pays income tax and Class 4 NICs on their **own share** of the profits. The firm files a **partnership tax return** with HMRC.\n  - **Business name**: as for a sole trader, if the firm trades under a name other than the partners' surnames, each partner's name and an address must appear on business documents and at the premises (CA 2006 Part 41).\n- **Limited liability partnership (LLP)**: created only by **registering at Companies House** under the **Limited Liability Partnerships Act 2000 (LLPA 2000)**. Popular with professional firms (solicitors, accountants). Its name must end \"limited liability partnership\" or \"LLP\".\n  - It **is a separate legal person** (a **body corporate**, s.1). It owns its own property, makes contracts and is liable for its own debts. Each member is an **agent of the LLP**, not of the other members.\n  - **Members' liability is limited** to what they agreed to contribute (usually their capital), so creditors of the LLP cannot normally pursue the members personally.\n  - Needs at least **2 members**, and at least **2 designated members** (members with extra legal duties, such as signing and filing the accounts and the **confirmation statement**, the yearly check that the public record is up to date). If the LLP names fewer than two designated members, **every member is a designated member** (LLPA 2000 s.8(2)).\n  - **Internal flexibility**: members can organise management and profit-sharing however they like in a **members' agreement**, much like a partnership. There are no directors or shareholders.\n  - **Publicity**: it must file **annual accounts** and a confirmation statement at Companies House, like a company. Its details are public.\n  - **Tax transparent**: for tax, it is treated like a partnership. The LLP itself pays no income or corporation tax; each member is taxed on their own share of the profits.\n- **Private limited company (Ltd)**: formed by **registering at Companies House** under the **Companies Act 2006 (CA 2006)**. By far the most common structure for trading businesses. Its name must end \"limited\" or \"Ltd\" (CA 2006 s.59).\n  - **Separate legal person**, owned by its **shareholders** (also called **members**) and run by its **directors**. One person can be the only shareholder and the only director.\n  - **Shareholders' liability is limited** to any amount **unpaid on their shares**. Once shares are fully paid, a shareholder has nothing more to lose.\n  - Needs at least **1 shareholder** and **1 director**, and at least one director must be a **natural person** (a human, not a company). A **company secretary** is optional.\n  - **No minimum share capital**: there is no minimum share capital for a private company; it can be formed with a **single share of 1p**. Only a **plc** must have allotted share capital of at least **£50,000**.\n  - **Cannot offer its shares to the public** (CA 2006 s.755).\n  - **Publicity**: must file annual accounts and a yearly confirmation statement (which updates the shareholder details) at Companies House. It must also notify changes of directors and of people with significant control (PSCs) within 14 days, and file a return of allotment when it issues new shares. All of this is open to public inspection.\n  - **Tax**: the company pays **corporation tax** on its profits. Shareholders pay income tax only on **dividends** they receive, and directors and employees pay income tax and NICs on their **salaries**.\n- **Public limited company (plc)**: a company that **may offer its shares to the public**. Its name must end \"public limited company\" or \"plc\".\n  - Same legal personality and limited liability as a private company.\n  - Extra requirements: at least **2 directors**, a **qualified company secretary**, and allotted share capital of at least **£50,000** (the **authorised minimum**), with each share paid up to at least **one quarter** of its nominal (face) value plus the whole of any **premium** (the amount paid above nominal value).\n  - A company formed as a plc needs a **trading certificate** from Companies House (**CA 2006 s.761**, confirming the £50,000 minimum is met) **before it does business or borrows**. A private company that **re-registers** as a plc does not need one.\n  - The syllabus covers only **unlisted** plcs. An unlisted plc can offer its shares to the public, but they are not admitted to the **Official List** (the list of shares traded on a regulated market such as the London Stock Exchange Main Market). Listing rules are outside the SQE1 syllabus.\n- **Example:** Priya and Tom start making and selling candles together at markets. They buy materials jointly, pay the stall fees out of the takings and split what is left (the profit) equally. They sign nothing and register nothing. **They are a general partnership** (carrying on a business in common with a view of profit), so both have unlimited liability for the stall's debts.\n\n> Exam tip: label the structure first. Ask \"has it been **registered at Companies House**?\" If not, it can only be a sole trader or a partnership, so the owners have **unlimited liability**. Questions often describe two people \"just starting to work together\" to test whether you spot that a partnership already exists without any paperwork.\n\n## Side-by-side comparison\n| Feature | Sole trader | General partnership | LLP | Private company (Ltd) | Public company (plc) |\n|---|---|---|---|---|---|\n| **How formed** | Just start trading; register with HMRC | Arises automatically when PA 1890 s.1 test met; written agreement advisable | Register at Companies House (LLPA 2000) | Register at Companies House (CA 2006) | Register at Companies House; needs **trading certificate** (s.761) before trading |\n| **Minimum people** | 1 | 2 partners | 2 members, 2 designated members | 1 shareholder, 1 director | 1 shareholder, **2 directors** + qualified secretary |\n| **Separate legal personality** | **No** | **No** | **Yes** | **Yes** | **Yes** |\n| **Owners' liability** | **Unlimited** | **Unlimited** (each partner can be made to pay the whole debt) | **Limited** to agreed contribution | **Limited** to amount unpaid on shares | **Limited** to amount unpaid on shares |\n| **Who manages** | The owner | All partners (by default) | All members (by default), or as members' agreement says | **Directors**; shareholders vote on key matters | **Directors**; shareholders vote on key matters |\n| **Filing and publicity** | Nothing public | Nothing public | Public: accounts, confirmation statement, members | Public: accounts, confirmation statement, officers, shareholders, constitution | As Ltd, with shorter accounts deadline |\n| **Tax** | Income tax + Class 4 NICs on all profits | Each partner: income tax + Class 4 NICs on own share | **Transparent**: each member taxed like a partner | **Corporation tax** on company profits; owners taxed on salary/dividends | As Ltd |\n| **Who owns the profits** | The owner, all of them | The partners (equally by default) | The LLP, shared among members as agreed (equally by default) | **The company**; shareholders get only dividends declared | As Ltd |\n| **Raising money** | Own money and bank loans (secured by mortgage or fixed charge); **no floating charge** | Partners' capital and bank loans (secured by mortgage or fixed charge); **no floating charge**; cannot issue shares | Members' capital; can give a **floating charge** | Loans, **floating charge**, sell shares privately | As Ltd, plus **offer shares to the public** |\n| **If an owner dies or leaves** | Business ends with the owner | Dissolved by default unless agreement says otherwise | LLP continues | Company continues (**perpetual succession**) | Company continues |\n\n- A **floating charge** is security over a changing pool of assets (such as stock) that the business can keep using and selling until the charge \"crystallises\". In practice only companies and LLPs can grant one. See **Debt finance and security**.\n- Accounts must be filed within **9 months** of the year end for a private company or LLP and **6 months** for a plc. (Different deadlines apply to a company's first accounts.) The ECCTA 2023 Companies House reforms (identity verification, registered email address) are covered in **Forming a company**.\n\n!! Watch out: an **LLP** is not the same as a **limited partnership (LP)** under the **Limited Partnerships Act 1907**. An LP must have at least one **general partner with unlimited liability**; only its \"limited partners\" have limited liability, and they lose it if they take part in management. An LP in England and Wales has **no separate legal personality**. If a question asks for limited liability for **all** the owners, an LP is wrong.\n\n## Separate legal personality\n- **Salomon v A Salomon & Co Ltd** (1897): Mr Salomon sold his boot-making business to a company he set up. He held 20,001 of the 20,007 shares (his wife and five children held one each). Part of the price the company paid him was left owing to him as a debt secured by **debentures** (a charge over the company's assets), so he was also a **secured creditor**. When the company became insolvent, the unsecured creditors argued the company was really just Mr Salomon. The House of Lords held that, once properly registered, the company was a **different person** from him, even though he controlled it. He was **not liable** for its debts and his secured loan was repaid first.\n  - Rule: a validly formed company is a separate person from its shareholders and directors, **even a one-person company**. The same applies to an LLP.\n- Consequences of separate personality:\n  - The company **owns its own property**. **Macaura v Northern Assurance** (1925): Mr Macaura sold his timber to a company he owned, then insured the timber in his own name. It burned down. He could not claim, because the timber belonged to the company and he had no **insurable interest** in it. Rule: a shareholder does not own the company's assets, even if they own all the shares.\n  - The company can **contract with its own shareholders and directors**. **Lee v Lee's Air Farming** (1961): Mr Lee was the controlling shareholder and sole director of a crop-spraying company and also its pilot. When he died in a crash, his widow could claim compensation as the widow of an **employee**, because he had a contract of employment with the company, a separate person.\n  - The company **makes contracts, sues and is sued** in its own name, and is liable for its own debts and its own torts.\n  - **Perpetual succession**: the company continues to exist when shareholders sell their shares, or directors resign or die. It ends only when it is dissolved (usually after liquidation).\n  - In a **group** of companies, each company (parent and each subsidiary) is a separate person. A parent is **not automatically liable** for its subsidiary's debts (**Adams v Cape Industries** 1990, below).\n- **Example:** Ben is the only shareholder and director of Ben's Bikes Ltd. The company buys £20,000 of stock on credit and cannot pay. **The supplier's claim is against the company, not Ben**, because the company is a separate person and Ben's liability as shareholder is limited to any amount unpaid on his shares.\n\n## Limited liability\n- **Limited liability is a feature of the members, not of the company.** The company itself is liable without limit for its own debts, to the full extent of its assets. What is limited is how much its **shareholders** (or LLP members) can be made to contribute.\n- Company limited by shares: a shareholder's maximum liability is the amount **unpaid on their shares** (nominal value plus any premium they agreed to pay). If shares are **fully paid**, the shareholder owes nothing more, however large the company's debts.\n- A **company limited by guarantee** (used for charities and clubs, not trading companies) has members who promise to pay a fixed sum if it is wound up. An **unlimited company** also exists, but is rare.\n- Separate legal personality and limited liability usually go together but are **different ideas**: personality means the business is its own person; limited liability means the owners' contribution is capped.\n- **Example:** Asha holds 1,000 £1 shares in Fern Ltd, issued at £1.50 each. She has paid £1,000 so far. Fern Ltd goes into insolvent liquidation owing £200,000. **Asha can be made to pay only the £500 still unpaid on her shares** (the balance of the issue price, including premium), and nothing towards the rest of the debts.\n\n> Exam tip: wrong options often swap the two ideas, e.g. \"the company has limited liability\" or \"the shareholders are protected because the company is a separate person\". The best answer says the **company** is liable for its own debts and the **shareholder's** liability is limited to any amount unpaid on their shares.\n\n## When owners and directors can still be personally liable\nLimited liability protects people only in their capacity as shareholders. They can still become liable in other ways. **None of these is \"piercing the veil\"**: the company remains a separate person, and the individual is liable under contract, tort or a statute.\n- **Personal guarantees** (contract): banks and landlords commonly make directors of small companies **guarantee** the company's debts. If the company defaults, the director pays under the guarantee. This is the most common way limited liability is lost in practice.\n- **Contracting in their own name**: a director who signs a contract personally (rather than on behalf of the company), or makes a contract for a company that has not yet been formed (a **pre-incorporation contract**, CA 2006 s.51; see **Forming a company**), is personally liable on it.\n- **Torts the individual commits**: a director is not personally liable for the company's negligent advice unless they **personally assumed responsibility** to the claimant (**Williams v Natural Life Health Foods** 1998: a director who had helped prepare a company's negligent business forecasts was not personally liable, because he had not dealt with the claimants personally or assumed responsibility to them). A director is liable for their own fraud or deceit.\n- **Statute** (the main examples; details in **Clawback, directors' liability and order of priority**):\n  - **Fraudulent trading** (Insolvency Act 1986 (IA 1986) s.213): anyone knowingly party to carrying on business with intent to defraud creditors can be ordered to contribute to the company's assets.\n  - **Wrongful trading** (IA 1986 s.214): directors who continued trading after they knew, or ought to have concluded, there was no reasonable prospect of avoiding insolvent liquidation or administration, and did not take every step to minimise loss to creditors.\n  - **Phoenix companies** (IA 1986 ss.216-217): a person who was a director in the **12 months before** a company went into insolvent liquidation must not, for **5 years**, be involved with another business using the **same or a similar name** (a \"prohibited name\") without court permission. If they do, they commit a crime and are **personally liable** for the new business's debts incurred while they were involved.\n  - **Disqualified directors**: someone who acts as a director while disqualified is personally liable for the company's debts incurred while they did so (Company Directors Disqualification Act 1986 s.15).\n  - **Plc trading without a trading certificate** (CA 2006 s.767): the transaction is still valid, but if the company fails to meet its obligations within **21 days** of being called on to do so, the **directors** are **jointly and severally liable** to indemnify the other party.\n  - **LLP with only one member** (LLPA 2000 s.4A): if an LLP carries on business with only one member for **more than 6 months**, that member (if they know) is personally liable, jointly and severally with the LLP, for debts incurred after the 6 months.\n  - **LLP members' withdrawals** (IA 1986 s.214A): withdrawals in the **2 years** before winding up can be clawed back if the member knew or had reasonable grounds to believe the LLP was unable to pay its debts, or would become unable to as a result of the withdrawal.\n\n> Exam tip: questions often describe a director who signed a **personal guarantee**, then ask why they must pay. The answer is the **guarantee** (a separate contract), not that the veil has been pierced or that limited liability does not apply to small companies.\n\n## Piercing (lifting) the corporate veil\n**Piercing the veil** means the court ignores the company's separate personality and treats the company's rights or liabilities as those of the person controlling it. It is **very rare**.\n- **The modern rule: Prest v Petrodel Resources Ltd** (2013). In a divorce, Mr Prest, a wealthy oil trader, held several London properties through companies he controlled. His wife asked the court to treat them as his so they could be transferred to her. The Supreme Court refused to pierce the veil, because he had **not used the companies to evade an existing legal obligation**: the properties were put into the companies long before the divorce. However, on the facts the companies held the properties **on trust** for Mr Prest (he had provided the money and they were held for him), so they were his anyway and could be transferred to his wife.\n- Lord Sumption explained two principles:\n  - **Evasion principle** (true veil piercing): the court may pierce the veil only where a person is under an **existing legal obligation or restriction** and **deliberately evades it**, or frustrates its enforcement, by putting a company they control in the way. Even then, it is a **last resort**, used only if no other remedy (trust, agency, tort) works.\n  - **Concealment principle** (not true piercing): where a company is used to **hide** the real facts or the real actors, the court simply looks behind it to find out what is really going on, without disregarding the company's personality.\n- The two classic evasion cases (both still good law):\n  - **Gilford Motor Co v Horne** (1933): Mr Horne had promised his former employer not to approach its customers after leaving (a valid **restrictive covenant**). He set up a company, run in his wife's name, to approach them instead. The court granted an injunction against **both him and the company**. Rule: you cannot escape your own existing obligation by acting through a company.\n  - **Jones v Lipman** (1962): Mr Lipman contracted to sell his house, changed his mind, and transferred it to a company he controlled to avoid the sale. The court ordered **specific performance** against him and the company. Rule: same, for a contract to sell land.\n- Situations where the courts will **not** pierce the veil:\n  - Just because it would be **fair** or in the interests of justice (**Adams v Cape Industries** 1990: claimants who had won judgments in the USA for asbestos injuries could not enforce them against the English parent company by treating it and its American subsidiary as one, because a group is not a \"single economic unit\" and using a subsidiary to limit future liability is legitimate).\n  - Just because one person **owns and controls** the company (Salomon).\n  - Just because the company is **insolvent** and creditors are unpaid.\n  - Just because the company is **part of a group**.\n- A **parent company** can, however, be liable in **tort** for harm caused by its subsidiary's operations if the parent itself owed a **direct duty of care**, e.g. by controlling or advising on the relevant activity (**Vedanta Resources v Lungowe** 2019, following **Chandler v Cape** 2012). That is ordinary negligence, not veil piercing.\n- **Example:** Dev sells his café and validly promises the buyer not to open a competing café within one mile for 2 years. Six months later he forms Dev's Coffee Ltd, which opens a café next door. **The court can pierce the veil and grant an injunction against Dev and the company**, because he is using the company to evade an existing obligation (like Gilford Motor v Horne). Contrast Prest: there, the properties had been put into the companies long before Mr Prest owed his wife anything, so the companies were not being used to evade an existing obligation, and the veil could not be pierced.\n\n> Exam tip: in veil-piercing questions, first check whether a **more ordinary route** gives the answer: a trust (as in Prest), a personal guarantee, the director's own tort, or a statutory claim such as wrongful trading. Choose veil piercing only when the facts show someone **already under a legal obligation** who then **interposed a company to evade it**.\n\n!! Watch out: **wrongful trading and fraudulent trading are not veil piercing.** They are statutory claims against the individual. An option saying \"the court will pierce the veil because the director traded while insolvent\" is wrong.\n\n## Choosing a business structure\nThere is no single right answer: the best structure depends on what the client cares about most. Work through these steps:\n- **Step 1: Who is involved?** One person working alone can be a **sole trader** or a **company** (one shareholder/director). Two or more people working together are already a **partnership** unless they form an LLP or company.\n- **Step 2: How much risk is there?** If the business could run up large debts or claims (borrowing, stock, employees, risky work), the owners will want **limited liability**: an **LLP** or a **company**. Remember that banks may still ask for **personal guarantees**, and insurance may cover some risks.\n- **Step 3: How important are privacy and low cost?** Sole traders and partnerships need **no registration** and file **nothing public**. Companies and LLPs must register, keep filing at Companies House and make their accounts public, and the people involved must verify their identity.\n- **Step 4: How will the owners be taxed?** Sole traders, partners and LLP members pay income tax and NICs on **all the profits as they are made**, whether drawn or not. A company pays **corporation tax**, usually at a lower rate than higher-rate income tax, and owners pay tax only on what they **take out** as salary or dividends, so profits can be left in the business. Whether a company saves tax depends on the figures, which the exam will give you. See **Income tax** and **Corporation tax**.\n- **Step 5: How will the business raise money?** Only a company can raise money by **selling shares** to investors, and only a **plc** can offer shares to the **public**. Companies and LLPs can give lenders a **floating charge**.\n- **Step 6: How do the owners want to run it and take profits?** Partnerships and LLPs are **flexible**: the members decide management and profit shares by agreement and can withdraw profits freely. A company has a fixed structure (directors manage, shareholders vote, CA 2006 formalities) and can pay dividends only out of **distributable profits** (see **Distributions, dividends and accounting**).\n- **Step 7: Does the business need to outlast its owners?** A company or LLP continues regardless of changes in owners; a sole trader's business ends with them, and a partnership dissolves by default.\n- Common answers the exam is looking for:\n  - Wants **limited liability** plus **partnership-style flexibility and tax transparency** (often professionals): **LLP**.\n  - Wants to **offer shares to the public**: **plc**.\n  - Wants limited liability, plans to **reinvest profits**, or to bring in **outside investors** privately: **private limited company**.\n  - Wants **simplicity, privacy and low cost**, and the risk is low: **sole trader** (alone) or **partnership** (with others), ideally with a written partnership agreement.\n- **Example:** Kemi and Leon, two architects, want to work together, protect their homes if a big negligence claim exceeds their insurance, keep profit-sharing flexible and be taxed on profits as individuals. **The best structure is an LLP**: limited liability for members, flexible members' agreement, tax transparent. A company would also give limited liability but taxes profits at company level and is less flexible; a general partnership gives no limited liability.\n\n> Exam tip: tax distractors are common. A **company** pays **corporation tax**, never income tax, on its trading profits; an **LLP** and a **partnership** pay **no tax themselves** because the members or partners are taxed on their shares.\n\n## Sources\n- legislation.gov.uk: Partnership Act 1890 ss.1-4 (https://www.legislation.gov.uk/ukpga/Vict/53-54/39)\n- legislation.gov.uk: Limited Liability Partnerships Act 2000 s.1 (https://www.legislation.gov.uk/ukpga/2000/12/section/1)\n- legislation.gov.uk: Companies Act 2006 s.761 trading certificate (https://www.legislation.gov.uk/ukpga/2006/46/section/761)\n- legislation.gov.uk: Insolvency Act 1986 s.214 wrongful trading (https://www.legislation.gov.uk/ukpga/1986/45/section/214)\n- BAILII: Salomon v A Salomon & Co Ltd [1896] UKHL 1 (https://www.bailii.org/uk/cases/UKHL/1896/1.html)\n- BAILII: Prest v Petrodel Resources Ltd [2013] UKSC 34 (https://www.bailii.org/uk/cases/UKSC/2013/34.html)",
+   "notes": "## The big idea in one paragraph\nEvery business is run through a **business structure** (also called a **business vehicle**). The SQE1 syllabus covers five: **sole trader**, **general partnership**, **limited liability partnership (LLP)**, **private limited company (Ltd)** and **public limited company (plc)**. Two questions decide almost everything about them:\n- **Does the business have separate legal personality?** In other words, is the business a \"person\" in law in its own right, separate from the people who own it? Companies and LLPs are. Sole traders and general partnerships are not.\n- **Is the owners' liability limited?** If the business cannot pay its debts, can the creditors (the people it owes money to) take the owners' own savings, house and car? For sole traders and partners, yes (**unlimited liability**). For company shareholders and LLP members, no: they lose only what they put in or agreed to put in (**limited liability**).\n- This topic covers the structures, legal personality, limited liability, when the courts will **pierce the corporate veil**, and how to choose a structure. How to set each one up is in **Forming a company, partnership or LLP**; partners' authority and partnership agreements are in **Partnerships and LLPs**; directors' duties are in **Directors**.\n\n## The five structures\n- **Sole trader**: one individual who owns and runs a business on their own account (they can still employ staff).\n  - **No separate legal personality**: the business is just the person. Business assets and debts are the owner's personal assets and debts.\n  - **Unlimited personal liability** for every business debt. If the business fails, the owner can be made **bankrupt**.\n  - **No formation formalities**: the owner just starts trading. They must register with **HMRC** (HM Revenue & Customs, the UK tax authority) for **self-assessment** (the system where you file your own tax return).\n  - **Privacy**: nothing is filed at **Companies House** (the public register of companies and LLPs). The accounts stay private.\n  - **Business name**: if they trade under a name other than their own surname, their name and an address must appear on business documents and at the premises (CA 2006 Part 41).\n  - **Tax**: profits are the owner's **trading income**, taxed with **income tax** and **Class 4 National Insurance contributions (NICs)** in the tax year they are made, whether or not the owner takes the money out.\n- **General partnership** (usually just \"partnership\"): defined by the **Partnership Act 1890 (PA 1890) s.1** as the relationship between **persons carrying on a business in common with a view of profit**. It's the **aim** of profit that counts: a business that makes a **loss** can still be a partnership.\n  - It arises **automatically from the facts**. No written agreement, registration or even intention to be partners is needed. If two people run a business together and aim to make a profit, they are partners. Under **s.2**, receiving a **share of the profits** is evidence of partnership, but not conclusive. Merely **co-owning property** (s.2(1)) or **sharing gross returns** (takings before expenses, s.2(2)) does not by itself make people partners.\n  - **No separate legal personality** in England and Wales. \"The firm\" is just the collective name for the partners (s.4). The firm can sue and be sued in the firm's name for convenience (a court procedure rule), but that does not make it a legal person.\n  - **Unlimited liability**: every partner is personally liable for the firm's debts incurred while they were a partner (s.9), and for wrongs (torts) committed by a partner in the ordinary course of the firm's business (ss.10 and 12). Liability is **joint** for the firm's debts and obligations (s.9) and **joint and several** for wrongs (s.12). Either way, a creditor can recover the **whole debt from any one partner** (a judgment against one partner does not stop the creditor suing the others: Civil Liability (Contribution) Act 1978 s.3), and that partner must then claim a share back from the others.\n  - **Continuity**: by default a partnership is **dissolved** when a partner **dies or becomes bankrupt** (s.33) or, where there is no fixed term (a **partnership at will**), when any partner **gives notice** (ss.26 and 32), unless the partnership agreement says otherwise.\n  - **Tax**: the firm itself pays no tax. Each partner pays income tax and Class 4 NICs on their **own share** of the profits. The firm files a **partnership tax return** with HMRC.\n  - **Business name**: as for a sole trader, if the firm trades under a name other than the partners' surnames, each partner's name and an address must appear on business documents and at the premises (CA 2006 Part 41).\n- **Limited liability partnership (LLP)**: created only by **registering at Companies House** under the **Limited Liability Partnerships Act 2000 (LLPA 2000)**. Popular with professional firms (solicitors, accountants). Its name must end \"limited liability partnership\" or \"LLP\".\n  - It **is a separate legal person** (a **body corporate**, s.1). It owns its own property, makes contracts and is liable for its own debts. Each member is an **agent of the LLP**, not of the other members.\n  - **Members' liability is limited** to what they agreed to contribute (usually their capital), so creditors of the LLP cannot normally pursue the members personally.\n  - Needs at least **2 members**, and at least **2 designated members** (members with extra legal duties, such as signing and filing the accounts and the **confirmation statement**, the yearly check that the public record is up to date). If the LLP names fewer than two designated members, **every member is a designated member** (LLPA 2000 s.8(2)).\n  - **Internal flexibility**: members can organise management and profit-sharing however they like in a **members' agreement**, much like a partnership. There are no directors or shareholders.\n  - **Publicity**: it must file **annual accounts** and a confirmation statement at Companies House, like a company. Its details are public.\n  - **Tax transparent**: for tax, it is treated like a partnership. The LLP itself pays no income or corporation tax; each member is taxed on their own share of the profits.\n- **Private limited company (Ltd)**: formed by **registering at Companies House** under the **Companies Act 2006 (CA 2006)**. By far the most common structure for trading businesses. Its name must end \"limited\" or \"Ltd\" (CA 2006 s.59).\n  - **Separate legal person**, owned by its **shareholders** (also called **members**) and run by its **directors**. One person can be the only shareholder and the only director.\n  - **Shareholders' liability is limited** to any amount **unpaid on their shares**. Once shares are fully paid, a shareholder has nothing more to lose.\n  - Needs at least **1 shareholder** and **1 director**, and at least one director must be a **natural person** (a human, not a company). A **company secretary** is optional.\n  - **No minimum share capital**: there is no minimum share capital for a private company; it can be formed with a **single share of 1p**. Only a **plc** must have allotted share capital of at least **£50,000**.\n  - **Cannot offer its shares to the public** (CA 2006 s.755).\n  - **Publicity**: must file annual accounts and a yearly confirmation statement (which updates the shareholder details) at Companies House. It must also notify changes of directors and of people with significant control (PSCs) within 14 days, and file a return of allotment when it issues new shares. All of this is open to public inspection.\n  - **Tax**: the company pays **corporation tax** on its profits. Shareholders pay income tax only on **dividends** they receive, and directors and employees pay income tax and NICs on their **salaries**.\n- **Public limited company (plc)**: a company that **may offer its shares to the public**. Its name must end \"public limited company\" or \"plc\".\n  - Same legal personality and limited liability as a private company.\n  - Extra requirements: at least **2 directors**, a **qualified company secretary**, and allotted share capital of at least **£50,000** (the **authorised minimum**), with each share paid up to at least **one quarter** of its nominal (face) value plus the whole of any **premium** (the amount paid above nominal value).\n  - A company formed as a plc needs a **trading certificate** from Companies House (**CA 2006 s.761**, confirming the £50,000 minimum is met) **before it does business or borrows**. A private company that **re-registers** as a plc does not need one.\n  - The syllabus covers only **unlisted** plcs. An unlisted plc can offer its shares to the public, but they are not admitted to the **Official List** (the list of shares traded on a regulated market such as the London Stock Exchange Main Market). Listing rules are outside the SQE1 syllabus.\n- **Example:** Priya and Tom start making and selling candles together at markets. They buy materials jointly, pay the stall fees out of the takings and split what is left (the profit) equally. They sign nothing and register nothing. **They are a general partnership** (carrying on a business in common with a view of profit), so both have unlimited liability for the stall's debts.\n\n> Exam tip: label the structure first. Ask \"has it been **registered at Companies House**?\" If not, it can only be a sole trader or a partnership, so the owners have **unlimited liability**. Questions often describe two people \"just starting to work together\" to test whether you spot that a partnership already exists without any paperwork.\n\n## Side-by-side comparison\n| Feature | Sole trader | General partnership | LLP | Private company (Ltd) | Public company (plc) |\n|---|---|---|---|---|---|\n| **How formed** | Just start trading; register with HMRC | Arises automatically when PA 1890 s.1 test met; written agreement advisable | Register at Companies House (LLPA 2000) | Register at Companies House (CA 2006) | Register at Companies House; needs **trading certificate** (s.761) before trading |\n| **Minimum people** | 1 | 2 partners | 2 members, 2 designated members | 1 shareholder, 1 director | 1 shareholder, **2 directors** + qualified secretary |\n| **Separate legal personality** | **No** | **No** | **Yes** | **Yes** | **Yes** |\n| **Owners' liability** | **Unlimited** | **Unlimited** (each partner can be made to pay the whole debt) | **Limited** to agreed contribution | **Limited** to amount unpaid on shares | **Limited** to amount unpaid on shares |\n| **Who manages** | The owner | All partners (by default) | All members (by default), or as members' agreement says | **Directors**; shareholders vote on key matters | **Directors**; shareholders vote on key matters |\n| **Filing and publicity** | Nothing public | Nothing public | Public: accounts, confirmation statement, members | Public: accounts, confirmation statement, officers, shareholders, constitution | As Ltd, with shorter accounts deadline |\n| **Tax** | Income tax + Class 4 NICs on all profits | Each partner: income tax + Class 4 NICs on own share | **Transparent**: each member taxed like a partner | **Corporation tax** on company profits; owners taxed on salary/dividends | As Ltd |\n| **Who owns the profits** | The owner, all of them | The partners (equally by default) | The LLP, shared among members as agreed (equally by default) | **The company**; shareholders get only dividends declared | As Ltd |\n| **Raising money** | Own money and bank loans (secured by mortgage or fixed charge); **no floating charge** | Partners' capital and bank loans (secured by mortgage or fixed charge); **no floating charge**; cannot issue shares | Members' capital; can give a **floating charge** | Loans, **floating charge**, sell shares privately | As Ltd, plus **offer shares to the public** |\n| **If an owner dies or leaves** | Business ends with the owner | Dissolved by default unless agreement says otherwise | LLP continues | Company continues (**perpetual succession**) | Company continues |\n\n- A **floating charge** is security over a changing pool of assets (such as stock) that the business can keep using and selling until the charge \"crystallises\". In practice only companies and LLPs can grant one. See **Debt finance and security**.\n- Accounts must be filed within **9 months** of the year end for a private company or LLP and **6 months** for a plc. (Different deadlines apply to a company's first accounts.) The ECCTA 2023 Companies House reforms (identity verification, registered email address) are covered in **Forming a company**.\n\n!! Watch out: an **LLP** is not the same as a **limited partnership (LP)** under the **Limited Partnerships Act 1907**. An LP must have at least one **general partner with unlimited liability**; only its \"limited partners\" have limited liability, and they lose it if they take part in management. An LP in England and Wales has **no separate legal personality**. If a question asks for limited liability for **all** the owners, an LP is wrong.\n\n## Separate legal personality\n- **Salomon v A Salomon & Co Ltd** (1897): Mr Salomon sold his boot-making business to a company he set up. He held 20,001 of the 20,007 shares (his wife and five children held one each). Part of the price the company paid him was left owing to him as a debt secured by **debentures** (a charge over the company's assets), so he was also a **secured creditor**. When the company became insolvent, the unsecured creditors argued the company was really just Mr Salomon. The House of Lords held that, once properly registered, the company was a **different person** from him, even though he controlled it. He was **not liable** for its debts and his secured loan was repaid first.\n  - Rule: a validly formed company is a separate person from its shareholders and directors, **even a one-person company**. The same applies to an LLP.\n- Consequences of separate personality:\n  - The company **owns its own property**. **Macaura v Northern Assurance** (1925): Mr Macaura sold his timber to a company he owned, then insured the timber in his own name. It burned down. He could not claim, because the timber belonged to the company and he had no **insurable interest** in it. Rule: a shareholder does not own the company's assets, even if they own all the shares.\n  - The company can **contract with its own shareholders and directors**. **Lee v Lee's Air Farming** (1961): Mr Lee was the controlling shareholder and sole director of a crop-spraying company and also its pilot. When he died in a crash, his widow could claim compensation as the widow of an **employee**, because he had a contract of employment with the company, a separate person.\n  - The company **makes contracts, sues and is sued** in its own name, and is liable for its own debts and its own torts.\n  - **Perpetual succession**: the company continues to exist when shareholders sell their shares, or directors resign or die. It ends only when it is dissolved (usually after liquidation).\n  - In a **group** of companies, each company (parent and each subsidiary) is a separate person. A parent is **not automatically liable** for its subsidiary's debts (**Adams v Cape Industries** 1990, below).\n- **Example:** Ben is the only shareholder and director of Ben's Bikes Ltd. The company buys £20,000 of stock on credit and cannot pay. **The supplier's claim is against the company, not Ben**, because the company is a separate person and Ben's liability as shareholder is limited to any amount unpaid on his shares.\n\n## Limited liability\n- **Limited liability is a feature of the members, not of the company.** The company itself is liable without limit for its own debts, to the full extent of its assets. What is limited is how much its **shareholders** (or LLP members) can be made to contribute.\n- Company limited by shares: a shareholder's maximum liability is the amount **unpaid on their shares** (nominal value plus any premium they agreed to pay). If shares are **fully paid**, the shareholder owes nothing more, however large the company's debts.\n- A **company limited by guarantee** (used for charities and clubs, not trading companies) has members who promise to pay a fixed sum if it is wound up. An **unlimited company** also exists, but is rare.\n- Separate legal personality and limited liability usually go together but are **different ideas**: personality means the business is its own person; limited liability means the owners' contribution is capped.\n- **Example:** Asha holds 1,000 £1 shares in Fern Ltd, issued at £1.50 each. She has paid £1,000 so far. Fern Ltd goes into insolvent liquidation owing £200,000. **Asha can be made to pay only the £500 still unpaid on her shares** (the balance of the issue price, including premium), and nothing towards the rest of the debts.\n\n> Exam tip: wrong options often swap the two ideas, e.g. \"the company has limited liability\" or \"the shareholders are protected because the company is a separate person\". The best answer says the **company** is liable for its own debts and the **shareholder's** liability is limited to any amount unpaid on their shares.\n\n## When owners and directors can still be personally liable\nLimited liability protects people only in their capacity as shareholders. They can still become liable in other ways. **None of these is \"piercing the veil\"**: the company remains a separate person, and the individual is liable under contract, tort or a statute.\n- **Personal guarantees** (contract): banks and landlords commonly make directors of small companies **guarantee** the company's debts. If the company defaults, the director pays under the guarantee. This is the most common way limited liability is lost in practice.\n- **Contracting in their own name**: a director who signs a contract personally (rather than on behalf of the company), or makes a contract for a company that has not yet been formed (a **pre-incorporation contract**, CA 2006 s.51; see **Forming a company**), is personally liable on it.\n- **Torts the individual commits**: a director is not personally liable for the company's negligent advice unless they **personally assumed responsibility** to the claimant (**Williams v Natural Life Health Foods** 1998: a director who had helped prepare a company's negligent business forecasts was not personally liable, because he had not dealt with the claimants personally or assumed responsibility to them). A director is liable for their own fraud or deceit.\n- **Statute** (the main examples; details in **Clawback, directors' liability and order of priority**):\n  - **Fraudulent trading** (Insolvency Act 1986 (IA 1986) s.213): anyone knowingly party to carrying on business with intent to defraud creditors can be ordered to contribute to the company's assets.\n  - **Wrongful trading** (IA 1986 s.214): directors who continued trading after they knew, or ought to have concluded, there was no reasonable prospect of avoiding insolvent liquidation or administration, and did not take every step to minimise loss to creditors.\n  - **Phoenix companies** (IA 1986 ss.216-217): a person who was a director in the **12 months before** a company went into insolvent liquidation must not, for **5 years**, be involved with another business using the **same or a similar name** (a \"prohibited name\") without court permission. If they do, they commit a crime and are **personally liable** for the new business's debts incurred while they were involved.\n  - **Disqualified directors**: someone who acts as a director while disqualified is personally liable for the company's debts incurred while they did so (Company Directors Disqualification Act 1986 s.15).\n  - **Plc trading without a trading certificate** (CA 2006 s.767): the transaction is still valid, but if the company fails to meet its obligations within **21 days** of being called on to do so, the **directors** are **jointly and severally liable** to indemnify the other party.\n  - **LLP with only one member** (LLPA 2000 s.4A): if an LLP carries on business with only one member for **more than 6 months**, that member (if they know) is personally liable, jointly and severally with the LLP, for debts incurred after the 6 months.\n  - **LLP members' withdrawals** (IA 1986 s.214A): withdrawals in the **2 years** before winding up can be clawed back if the member knew or had reasonable grounds to believe the LLP was unable to pay its debts, or would become unable to as a result of the withdrawal.\n\n> Exam tip: questions often describe a director who signed a **personal guarantee**, then ask why they must pay. The answer is the **guarantee** (a separate contract), not that the veil has been pierced or that limited liability does not apply to small companies.\n\n## Piercing (lifting) the corporate veil\n**Piercing the veil** means the court ignores the company's separate personality and treats the company's rights or liabilities as those of the person controlling it. It is **very rare**.\n- **The modern rule: Prest v Petrodel Resources Ltd** (2013). In a divorce, Mr Prest, a wealthy oil trader, held several London properties through companies he controlled. His wife asked the court to treat them as his so they could be transferred to her. The Supreme Court refused to pierce the veil, because he had **not used the companies to evade an existing legal obligation**: the properties were put into the companies long before the divorce. However, on the facts the companies held the properties **on trust** for Mr Prest (he had provided the money and they were held for him), so they were his anyway and could be transferred to his wife.\n- Lord Sumption explained two principles:\n  - **Evasion principle** (true veil piercing): the court may pierce the veil only where a person is under an **existing legal obligation or restriction** and **deliberately evades it**, or frustrates its enforcement, by putting a company they control in the way. Even then, it is a **last resort**, used only if no other remedy (trust, agency, tort) works.\n  - **Concealment principle** (not true piercing): where a company is used to **hide** the real facts or the real actors, the court simply looks behind it to find out what is really going on, without disregarding the company's personality.\n- The two classic evasion cases (both still good law):\n  - **Gilford Motor Co v Horne** (1933): Mr Horne had promised his former employer not to approach its customers after leaving (a valid **restrictive covenant**). He set up a company, run in his wife's name, to approach them instead. The court granted an injunction against **both him and the company**. Rule: you cannot escape your own existing obligation by acting through a company.\n  - **Jones v Lipman** (1962): Mr Lipman contracted to sell his house, changed his mind, and transferred it to a company he controlled to avoid the sale. The court ordered **specific performance** against him and the company. Rule: same, for a contract to sell land.\n- Situations where the courts will **not** pierce the veil:\n  - Just because it would be **fair** or in the interests of justice (**Adams v Cape Industries** 1990: claimants who had won judgments in the USA for asbestos injuries could not enforce them against the English parent company by treating it and its American subsidiary as one, because a group is not a \"single economic unit\" and using a subsidiary to limit future liability is legitimate).\n  - Just because one person **owns and controls** the company (Salomon).\n  - Just because the company is **insolvent** and creditors are unpaid.\n  - Just because the company is **part of a group**.\n- A **parent company** can, however, be liable in **tort** for harm caused by its subsidiary's operations if the parent itself owed a **direct duty of care**, e.g. by controlling or advising on the relevant activity (**Vedanta Resources v Lungowe** 2019, following **Chandler v Cape** 2012). That is ordinary negligence, not veil piercing.\n- **Example:** Dev sells his café and validly promises the buyer not to open a competing café within one mile for 2 years. Six months later he forms Dev's Coffee Ltd, which opens a café next door. **The court can pierce the veil and grant an injunction against Dev and the company**, because he is using the company to evade an existing obligation (like Gilford Motor v Horne). Contrast Prest: there, the properties had been put into the companies long before Mr Prest owed his wife anything, so the companies were not being used to evade an existing obligation, and the veil could not be pierced.\n\n> Exam tip: in veil-piercing questions, first check whether a **more ordinary route** gives the answer: a trust (as in Prest), a personal guarantee, the director's own tort, or a statutory claim such as wrongful trading. Choose veil piercing only when the facts show someone **already under a legal obligation** who then **interposed a company to evade it**.\n\n!! Watch out: **wrongful trading and fraudulent trading are not veil piercing.** They are statutory claims against the individual. An option saying \"the court will pierce the veil because the director traded while insolvent\" is wrong.\n\n## Choosing a business structure\nThere is no single right answer: the best structure depends on what the client cares about most. Work through these steps:\n- **Step 1: Who is involved?** One person working alone can be a **sole trader** or a **company** (one shareholder/director). Two or more people working together are already a **partnership** unless they form an LLP or company.\n- **Step 2: How much risk is there?** If the business could run up large debts or claims (borrowing, stock, employees, risky work), the owners will want **limited liability**: an **LLP** or a **company**. Remember that banks may still ask for **personal guarantees**, and insurance may cover some risks.\n- **Step 3: How important are privacy and low cost?** Sole traders and partnerships need **no registration** and file **nothing public**. Companies and LLPs must register, keep filing at Companies House and make their accounts public, and the people involved must verify their identity.\n- **Step 4: How will the owners be taxed?** Sole traders, partners and LLP members pay income tax and NICs on **all the profits as they are made**, whether drawn or not. A company pays **corporation tax**, usually at a lower rate than higher-rate income tax, and owners pay tax only on what they **take out** as salary or dividends, so profits can be left in the business. Whether a company saves tax depends on the figures, which the exam will give you. See **Income tax** and **Corporation tax**.\n- **Step 5: How will the business raise money?** Only a company can raise money by **selling shares** to investors, and only a **plc** can offer shares to the **public**. Companies and LLPs can give lenders a **floating charge**.\n- **Step 6: How do the owners want to run it and take profits?** Partnerships and LLPs are **flexible**: the members decide management and profit shares by agreement and can withdraw profits freely. A company has a fixed structure (directors manage, shareholders vote, CA 2006 formalities) and can pay dividends only out of **distributable profits** (see **Distributions, dividends and accounting**).\n- **Step 7: Does the business need to outlast its owners?** A company or LLP continues regardless of changes in owners; a sole trader's business ends with them, and a partnership dissolves by default.\n- Common answers the exam is looking for:\n  - Wants **limited liability** plus **partnership-style flexibility and tax transparency** (often professionals): **LLP**.\n  - Wants to **offer shares to the public**: **plc**.\n  - Wants limited liability, plans to **reinvest profits**, or to bring in **outside investors** privately: **private limited company**.\n  - Wants **simplicity, privacy and low cost**, and the risk is low: **sole trader** (alone) or **partnership** (with others), ideally with a written partnership agreement.\n- **Example:** Kemi and Leon, two architects, want to work together, protect their homes if a big negligence claim exceeds their insurance, keep profit-sharing flexible and be taxed on profits as individuals. **The best structure is an LLP**: limited liability for members, flexible members' agreement, tax transparent. A company would also give limited liability but taxes profits at company level and is less flexible; a general partnership gives no limited liability.\n\n> Exam tip: tax distractors are common. A **company** pays **corporation tax**, never income tax, on its trading profits; an **LLP** and a **partnership** pay **no tax themselves** because the members or partners are taxed on their shares.\n\n## Sources\n- legislation.gov.uk: Partnership Act 1890 ss.1-4 (https://www.legislation.gov.uk/ukpga/Vict/53-54/39)\n- legislation.gov.uk: Limited Liability Partnerships Act 2000 s.1 (https://www.legislation.gov.uk/ukpga/2000/12/section/1)\n- legislation.gov.uk: Companies Act 2006 s.761 trading certificate (https://www.legislation.gov.uk/ukpga/2006/46/section/761)\n- legislation.gov.uk: Insolvency Act 1986 s.214 wrongful trading (https://www.legislation.gov.uk/ukpga/1986/45/section/214)\n- BAILII: Salomon v A Salomon & Co Ltd [1896] UKHL 1 (https://www.bailii.org/uk/cases/UKHL/1896/1.html)\n- BAILII: Prest v Petrodel Resources Ltd [2013] UKSC 34 (https://www.bailii.org/uk/cases/UKSC/2013/34.html)",
    "framework": {
     "intro": "Use this for any question asking who is liable for a business's debts, who owns its assets, whether the veil will be pierced, or which structure a client should choose.",
     "steps": [
@@ -35020,7 +35228,7 @@ window.SQE_LEARN["blp/business-structures"] = {sections:[
    {t:"card", i:"🤫", title:"Sole trader: privacy and tax", body:"Nothing filed at **Companies House** (the public register of companies and LLPs), so accounts stay private. Profits are **trading income**: **income tax** + **Class 4 NICs** (National Insurance contributions) in the year made, taken out or not."},
    {t:"card", i:"🪧", title:"Sole trader: business name", body:"Trading under a name that isn't their own surname? Their **name and an address** must appear on business documents and at the premises (CA 2006 Part 41)."},
    {t:"reveal", i:"🤔", title:"Does a sole trader file anything at Companies House?", body:"**No.** Nothing public. They only register with HMRC for self-assessment."},
-   {t:"card", i:"🤝", title:"Partnership: the definition", body:"**Partnership Act 1890 (PA 1890) s.1**: the relationship between **persons carrying on a business in common with a view of profit**."},
+   {t:"card", i:"🤝", title:"Partnership: the definition", body:"**Partnership Act 1890 (PA 1890) s.1**: the relationship between **persons carrying on a business in common with a view of profit**. It's the **aim** of profit that counts: a business that makes a **loss** can still be a partnership."},
    {t:"card", i:"⚡", title:"Partnership: it just happens", body:"It arises **automatically from the facts**. No written agreement, no registration, not even an **intention** to be partners is needed."},
    {t:"case", i:"🕯️", title:"Example: Priya and Tom's candles", facts:"They make and sell candles together, pay costs out of the takings and split the profit equally. They sign and register nothing.", rule:"They're a **general partnership** (business in common with a view of profit), so both have **unlimited liability** for the stall's debts."},
    {t:"card", i:"🔍", title:"Partnership clues (s.2)", body:"Getting a **share of the profits** is evidence of partnership, but not conclusive. Just **co-owning property** (s.2(1)) or **sharing gross returns** (takings before expenses, s.2(2)) is not enough on its own."},
@@ -78409,7 +78617,7 @@ window.SQE_JOURNEY = function (A) {
     function hen() {
         return "<ellipse cx=\"6\" cy=\"2\" rx=\"40\" ry=\"6\" fill=\"#111\" opacity=\".18\" stroke=\"none\"/>\n  <path d=\"M32,-34 L42,-68 L50,-48 L60,-64 L64,-30 Z\" fill=\"#fff\"/>\n  <path d=\"M-28,-38 C-42,-10 -12,2 18,0 C46,-2 54,-26 42,-42 C30,-54 0,-50 -28,-38 Z\" fill=\"#fff\"/>\n  <path d=\"M-6,-26 C4,-10 24,-12 32,-26\" fill=\"none\"/>\n  <path d=\"M4,-20 l6,-6 M14,-17 l5,-7\" fill=\"none\" stroke-width=\"2.5\"/>\n  <path d=\"M-38,-63 Q-41,-78 -32,-72 Q-30,-83 -22,-72 Q-15,-79 -15,-63 Z\" fill=\"#E63946\"/>\n  <circle cx=\"-27\" cy=\"-52\" r=\"16\" fill=\"#fff\"/>\n  <polygon points=\"-41,-56 -54,-50 -41,-45\" fill=\"#FFB703\"/>\n  <ellipse cx=\"-38\" cy=\"-40\" rx=\"4.5\" ry=\"6.5\" fill=\"#E63946\" stroke-width=\"2.5\"/>\n  <circle cx=\"-29\" cy=\"-56\" r=\"2.8\" fill=\"#111\" stroke=\"none\"/>\n  <circle cx=\"-22\" cy=\"-47\" r=\"3.5\" fill=\"#FF9EBB\" stroke=\"none\"/>\n  <path d=\"M-8,1 l-5,5 M-8,1 v6 M10,1 l-5,5 M10,1 v6\" fill=\"none\" stroke=\"#F77F00\" stroke-width=\"3\"/>";
     }
-    var DRAW = [sweetshop, fairground, library, airport, zoo, museum, pier, aquarium, botanic, farm, balloons, rainforest, icerink, lighthouse];
+    var DRAW = [sweetshop, fairground, library, airport, zoo, museum, pier, aquarium, farm, botanic, balloons, rainforest, icerink, lighthouse];
     /* ---------- decoration ---------- */
     var cloud = function (x, y, s) {
         if (s === void 0) { s = 1; }
@@ -78436,6 +78644,16 @@ window.SQE_JOURNEY = function (A) {
         return "<g transform=\"translate(".concat(x, ",").concat(y, ") scale(").concat(s, ")\" ").concat(INK, "><rect x=\"-5\" y=\"-26\" width=\"10\" height=\"26\" fill=\"#8B5A2B\"/><circle cx=\"0\" cy=\"-42\" r=\"20\" fill=\"").concat(c, "\"/></g>");
     };
     var topiary = function (x, y) { return "<g transform=\"translate(".concat(x, ",").concat(y, ")\" ").concat(INK, "><rect x=\"-12\" y=\"-16\" width=\"24\" height=\"16\" fill=\"#E07A5F\"/><path d=\"M0,-16 V-30\" fill=\"none\"/><circle cx=\"0\" cy=\"-44\" r=\"17\" fill=\"#52B788\"/></g>"); };
+    /* region signs (Monnie: show stops 1-7 / 8-14 more imaginatively): a wooden arrow sign on a little post, big region name + small stop range */
+    var sign = function (x, y, t1, t2, fs) {
+        var w = Math.max(t1.length * fs * .56, t2.length * fs * .36) + 60, h = fs * 2.3, l = x - w / 2, r = x + w / 2 - 18, tp = y - h / 2, bt = y + h / 2;
+        return "<g ".concat(INK, "><rect x=\"").concat(x - 6, "\" y=\"").concat(bt - 4, "\" width=\"12\" height=\"").concat(fs * 1.6, "\" fill=\"#7A4A21\"/>")
+            + "<path d=\"M".concat(l, ",").concat(tp, " H").concat(r, " L").concat(r + 26, ",").concat(y, " L").concat(r, ",").concat(bt, " H").concat(l, " Z\" fill=\"#B87333\"/>")
+            + "<path d=\"M".concat(l + 10, ",").concat(tp + h * .36, " H").concat(r - 6, " M").concat(l + 18, ",").concat(tp + h * .7, " H").concat(r - 30, "\" stroke=\"#8A5226\" stroke-width=\"2\" fill=\"none\"/>")
+            + "<circle cx=\"".concat(l + 12, "\" cy=\"").concat(tp + 10, "\" r=\"3.5\" fill=\"#3B2A1A\" stroke=\"none\"/><circle cx=\"").concat(l + 12, "\" cy=\"").concat(bt - 10, "\" r=\"3.5\" fill=\"#3B2A1A\" stroke=\"none\"/></g>")
+            + "<text class=\"jpl\" x=\"".concat(x, "\" y=\"").concat(y - fs * .12, "\" font-size=\"").concat(fs, "\" style=\"fill:#FFF6E0;paint-order:stroke;stroke:#3B2A1A;stroke-width:4px\">").concat(esc(t1), "</text>")
+            + "<text class=\"jpl\" x=\"".concat(x, "\" y=\"").concat(y + fs * .85, "\" font-size=\"").concat(fs * .62, "\" style=\"fill:#FFF6E0;paint-order:stroke;stroke:#3B2A1A;stroke-width:3px\">").concat(esc(t2), "</text>");
+    };
     var tag = function (x, y, t, fs, c) { var w = t.length * fs * .5 + 30, h = fs + 16; return "<rect x=\"".concat(x - w / 2, "\" y=\"").concat(y - h / 2, "\" width=\"").concat(w, "\" height=\"").concat(h, "\" rx=\"").concat(h / 2, "\" fill=\"").concat(c, "\" ").concat(INK, "/><text class=\"jpl\" x=\"").concat(x, "\" y=\"").concat(y + fs * .34, "\" font-size=\"").concat(fs, "\">").concat(esc(t), "</text>"); };
     function roundPoly(p, r) {
         var q = [p[0]];
@@ -78469,7 +78687,7 @@ window.SQE_JOURNEY = function (A) {
         out.push(cur); return out; }
     var tick = function (x, y, r) { return "<g transform=\"translate(".concat(x, ",").concat(y, ")\"><circle r=\"").concat(r, "\" fill=\"#2E9E5B\" stroke=\"#111\" stroke-width=\"3\"/><path d=\"M").concat(-r * .45, ",0 L").concat(-r * .12, ",").concat(r * .36, " L").concat(r * .45, ",").concat(-r * .36, "\" fill=\"none\" stroke=\"#fff\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g>"); };
     /* ---------- the journey: stops in timetable order (from buildPlan) ---------- */
-    var LANDS = ['Sweet shop', 'Fairground', 'Library', 'Airport', 'Zoo', 'Museum', 'Pier', 'Aquarium', 'Botanic garden', 'Farm', 'Balloon field', 'Amazon forest', 'Ice rink', 'Lighthouse'];
+    var LANDS = ['Sweet shop', 'Fairground', 'Library', 'Airport', 'Zoo', 'Museum', 'Pier', 'Aquarium', 'Farm', 'Botanic garden', 'Balloon field', 'Amazon forest', 'Ice rink', 'Lighthouse'];
     var MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     var dm = function (ds) { var d = parseYmd(ds); return d.getDate() + ' ' + MON[d.getMonth()]; };
     var range = function (a, b) { if (!a)
@@ -78519,7 +78737,7 @@ window.SQE_JOURNEY = function (A) {
        through the FLK1 meadow and the FLK2 autumn fields to revision camp and Cluckington Palace (with both exam flags) in the palace grounds at the bottom.
        reg = the top edge of each ground band, top to bottom: spring meadow (stops 1-7), autumn fields (8-14), palace grounds. */
     function layoutDesktop() {
-        var W = 1100, H = 2235, rows = [350, 695, 1150, 1520], cols = [200, 445, 690, 935];
+        var rows = [390, 830, 1370, 1800], cols = [200, 445, 690, 935], PB = rows[3] + 625, D = PB - 2145, W = 1100, H = 2235 + D; /* landmarks 1.6x bigger, cards smaller (Monnie 21:29): rows spaced out */
         var st = [{ x: 200, y: rows[0] }];
         [1, 2, 3].forEach(function (s, k) { return st[s] = { x: cols[k + 1], y: rows[0] }; });
         [4, 5, 6, 7].forEach(function (s, k) { return st[s] = { x: cols[3 - k], y: rows[1] }; });
@@ -78527,22 +78745,23 @@ window.SQE_JOURNEY = function (A) {
         [12, 13, 14, 15].forEach(function (s, k) { return st[s] = { x: cols[3 - k], y: rows[3] }; });
         var left = function (i) { return (i >= 4 && i <= 7) || i >= 12; }; /* rows 2 and 4 run right to left */
         return { mode: 'desk', W: W, H: H, stops: st,
-            route: "M150,350 H960 A110,172.5 0 0 1 960,695 H140 A110,227.5 0 0 0 140,1150 H960 A110,185 0 0 1 960,1520 H140 C20,1520 20,2145 170,2145 H570 Q600,2145 600,2121",
+            route: "M150,".concat(rows[0], " H960 A110,").concat((rows[1] - rows[0]) / 2, " 0 0 1 960,").concat(rows[1], " H140 A110,").concat((rows[2] - rows[1]) / 2, " 0 0 0 140,").concat(rows[2], " H960 A110,").concat((rows[3] - rows[2]) / 2, " 0 0 1 960,").concat(rows[3], " H140 C20,").concat(rows[3], " 20,").concat(PB, " 170,").concat(PB, " H570 Q600,").concat(PB, " 600,").concat(PB - 24),
+            art: { x: -125, y: -262, w: 250, h: 268, gx: -115, gy: -200, gw: 220, gh: 206 },
             lm: function (i) { return ({ x: st[i].x, y: st[i].y - 34, s: 1 }); },
             label: function (i) { return ({ cx: st[i].x, top: st[i].y + 44 }); },
-            F: { w: 224, fs: 20, lh: 22, sfs: 15, max: 20, bar: 10 },
+            F: { w: 188, fs: 17, lh: 19, sfs: 13, max: 19, bar: 8 },
             hen: function (i) { return left(i) ? { x: st[i].x + 100, y: st[i].y + 22, s: .85, m: false } : { x: st[i].x - 104, y: st[i].y + 22, s: .85, m: true }; },
-            palace: { x: 600, y: 2115, s: 1 },
-            flags: [{ x: 176, y: 2117, s: 1, h: 110 }, { x: 812, y: 2117, s: 1, h: 110 }],
-            reg: { spring: 160, autumn: 905, grounds: 1750 },
-            deco: function () { return sun(95, 82) + cloud(330, 78, .8) + cloud(1010, 92, 1) + tag(650, 80, 'FLK1 subjects + Ethics · stops 1–7', 18, '#E4F8D2')
-                + tag(560, 940, 'FLK2 subjects · stops 8–14', 18, '#FFE8C2')
-                + topiary(1000, 2147) + topiary(1060, 2133) + topiary(228, 1855) + flower(330, 1840, '#fff') + flower(925, 1840, '#FF9EC4')
-                + [60, 330, 575, 820].map(function (x, k) { return flower(x, 2219, ['#FF9EC4', '#fff', '#FFB3D9', '#fff'][k]); }).join('') + flower(345, 2215, '#FFD6A5'); },
+            palace: { x: 600, y: 2115 + D, s: 1 },
+            flags: [{ x: 176, y: 2117 + D, s: 1, h: 110 }, { x: 812, y: 2117 + D, s: 1, h: 110 }],
+            reg: { spring: 160, autumn: 1020, grounds: 1750 + D },
+            deco: function () { return sun(95, 82) + cloud(330, 78, .8) + cloud(1010, 92, 1) + sign(650, 84, 'FLK1 Meadow', 'subjects + Ethics · stops 1–7', 20)
+                + sign(560, 1050, 'FLK2 Harvest Fields', 'subjects · stops 8–14', 20)
+                + topiary(1000, 2147 + D) + topiary(1060, 2133 + D) + topiary(228, 1855 + D) + flower(330, 1840 + D, '#fff') + flower(925, 1840 + D, '#FF9EC4')
+                + [60, 330, 575, 820].map(function (x, k) { return flower(x, 2219 + D, ['#FF9EC4', '#fff', '#FFB3D9', '#fff'][k]); }).join('') + flower(345, 2215 + D, '#FFD6A5'); },
         };
     }
     function layoutPhone() {
-        var W = 600, R = 225, G = 170, y0 = 300;
+        var W = 600, R = 280, G = 150, y0 = 320;
         var st = [];
         for (var i = 0; i <= 15; i++)
             st[i] = { x: i % 2 ? 530 : 70, y: y0 + i * R + (i >= 8 ? G : 0) };
@@ -78554,15 +78773,16 @@ window.SQE_JOURNEY = function (A) {
         var sl = st[15], Pb = sl.y + 485, yc = Pb + 94, H = yc + 76; /* palace base, the path along the front of the palace, page height */
         pts.push([sl.x, sl.y], [sl.x, yc], [280, yc], [280, Pb + 6]);
         return { mode: 'phone', W: W, H: H, stops: st, route: roundPoly(pts, 50),
-            lm: function (i) { return ({ x: i % 2 ? 110 : 490, y: st[i].y + 70, s: .95 }); },
-            label: function (i) { return ({ cx: i % 2 ? 355 : 245, cy: st[i].y }); },
-            F: { w: 260, fs: 25, lh: 27, sfs: 19, max: 19, bar: 12 },
+            lm: function (i) { return ({ x: i % 2 ? 135 : 465, y: st[i].y + 118, s: 1 }); },
+            label: function (i) { return ({ cx: i % 2 ? 390 : 210, cy: st[i].y }); },
+            F: { w: 200, fs: 20, lh: 22, sfs: 15, max: 17, bar: 9 },
+            art: { x: -130, y: -250, w: 260, h: 256, gx: -120, gy: -200, gw: 230, gh: 206 },
             hen: function (i) { return ({ x: st[i].x, y: st[i].y - 32, s: 1, m: !(i % 2) }); }, /* after each stop the path heads across: right from the left side, left from the right side */
             palace: { x: 280, y: Pb, s: 1 },
             flags: [{ x: 40, y: yc - 30, s: 1, h: 56 }, { x: 330, y: yc - 30, s: 1, h: 56 }],
-            reg: { spring: 212, autumn: st[7].y + 245, grounds: sl.y + 150 },
-            deco: function () { return "<g transform=\"translate(14,14) scale(.62)\">".concat(sun(60, 60), "</g>") + cloud(522, 168, .7) + tag(330, 80, 'FLK1 subjects + Ethics · stops 1–7', 22, '#E4F8D2')
-                + tag(322, st[7].y + 282, 'FLK2 subjects · stops 8–14', 22, '#FFE8C2')
+            reg: { spring: 212, autumn: st[7].y + 222, grounds: sl.y + 150 },
+            deco: function () { return "<g transform=\"translate(14,14) scale(.62)\">".concat(sun(60, 60), "</g>") + cloud(522, 168, .7) + sign(330, 86, 'FLK1 Meadow', 'subjects + Ethics · stops 1–7', 22)
+                + sign(250, st[7].y + 290, 'FLK2 Harvest Fields', 'subjects · stops 8–14', 18)
                 + flower(28, H - 14, '#FF9EC4') + flower(580, H - 14, '#fff') + flower(40, sl.y + 250, '#fff') + flower(565, sl.y + 250, '#FF9EC4'); },
         };
     }
@@ -78625,6 +78845,9 @@ window.SQE_JOURNEY = function (A) {
         return s;
     }
     var fmtShort = function (a) { return a.length ? range(a[0], a[a.length - 1]) : ''; };
+    /* detailed drawn landmarks (Monnie: same style and vibrancy as the sweet shop picture) */
+    var MAP_ART = true, ART_SLUG = ['sweetshop', 'fairground', 'library', 'airport', 'zoo', 'museum', 'pier', 'aquarium', 'farm', 'botanic', 'balloons', 'forest', 'icerink', 'lighthouse'];
+    var artImg = function (slug, x, y, w, h) { return "<image href=\"img/map-new/".concat(slug, ".webp\" x=\"").concat(x, "\" y=\"").concat(y, "\" width=\"").concat(w, "\" height=\"").concat(h, "\" preserveAspectRatio=\"xMidYMax meet\"/>"); };
     /* ---------- the map ---------- */
     function mapSVG(J, L) {
         var W = L.W, H = L.H, reg = L.reg;
@@ -78634,19 +78857,19 @@ window.SQE_JOURNEY = function (A) {
         s += band(reg.spring, 8, '#C9EFA4') + band(reg.autumn, 7, '#F7D9A8') + band(reg.grounds, 12, '#FFD6EA'); /* sky at the top, then the meadow, the autumn fields and the palace grounds */
         s += L.deco();
         s += "<path d=\"".concat(L.route, "\" fill=\"none\" stroke=\"#111\" stroke-width=\"60\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>");
-        s += "<path class=\"jroute\" d=\"".concat(L.route, "\" fill=\"none\" stroke=\"#EFE7DA\" stroke-width=\"52\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>");
+        s += "<path class=\"jroute\" d=\"".concat(L.route, "\" fill=\"none\" stroke=\"#CFC7BB\" stroke-width=\"52\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>");
         s += "<path class=\"jdone\" d=\"".concat(L.route, "\" fill=\"none\" stroke=\"#FFE3C4\" stroke-width=\"52\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-dasharray=\"0 99999\"/>");
         s += "<g class=\"jstones\" stroke=\"#111\" stroke-width=\"2.5\"></g>";
         var g0 = L.lm(0);
-        s += "<g transform=\"translate(".concat(g0.x, ",").concat(g0.y, ") scale(").concat(g0.s, ")\" ").concat(INK, ">").concat(gate(), "</g>");
+        s += "<g transform=\"translate(".concat(g0.x, ",").concat(g0.y, ") scale(").concat(g0.s, ")\" ").concat(INK, ">").concat(MAP_ART ? artImg('gate', L.art.gx, L.art.gy, L.art.gw, L.art.gh) : gate(), "</g>");
         J.stops.forEach(function (o) {
             var i = o.i, p = L.lm(i), st = jStatus(J, i);
-            s += "<a href=\"".concat(stopHref(o.s.id), "\" aria-label=\"Stop ").concat(i, ", ").concat(esc(o.land), ": ").concat(esc(o.s.title), "\"><g class=\"jhit\" transform=\"translate(").concat(p.x, ",").concat(p.y, ") scale(").concat(p.s, ")\" ").concat(INK, ">").concat(DRAW[i - 1](), "</g></a>");
+            s += "<a href=\"".concat(stopHref(o.s.id), "\" aria-label=\"Stop ").concat(i, ", ").concat(esc(o.land), ": ").concat(esc(o.s.title), "\"><g class=\"jhit\" transform=\"translate(").concat(p.x, ",").concat(p.y, ") scale(").concat(p.s, ")\" ").concat(INK, ">").concat(MAP_ART ? artImg(ART_SLUG[i - 1], L.art.x, L.art.y, L.art.w, L.art.h) : DRAW[i - 1](), "</g></a>");
         });
         var pc = L.lm(15);
-        s += "<g transform=\"translate(".concat(pc.x, ",").concat(pc.y, ") scale(").concat(pc.s, ")\" ").concat(INK, ">").concat(camp(), "</g>");
+        s += "<g transform=\"translate(".concat(pc.x, ",").concat(pc.y, ") scale(").concat(pc.s, ")\" ").concat(INK, ">").concat(MAP_ART ? artImg('camp', L.art.gx, L.art.gy, L.art.gw, L.art.gh) : camp(), "</g>");
         var P = L.palace;
-        s += "<g transform=\"translate(".concat(P.x, ",").concat(P.y, ") scale(").concat(P.s, ")\"><g ").concat(INK, ">").concat(palace(), "</g><text class=\"jpl\" x=\"0\" y=\"-119\" font-size=\"25\">Cluckington Palace</text></g>");
+        s += "<g transform=\"translate(".concat(P.x, ",").concat(P.y, ") scale(").concat(P.s, ")\"><g ").concat(INK, ">").concat(MAP_ART ? artImg('palace', -230, -360, 460, 368) : palace(), "</g>").concat(MAP_ART ? '<rect x="-118" y="-148" width="236" height="42" rx="12" fill="#FFFDF5" stroke="#111" stroke-width="3.5"/>' : '', "<text class=\"jpl\" x=\"0\" y=\"-119\" font-size=\"25\">Cluckington Palace</text></g>");
         s += flagArt(L.flags[0], 'FLK1 exam', esc(dm(J.ex1))) + flagArt(L.flags[1], 'FLK2 exam', esc(dm(J.ex2)));
         L.stops.forEach(function (p, i) {
             var m = marker(i, p, i === 0 ? '' : i === 15 ? 'rev' : jStatus(J, i)), o = i > 0 && i < 15 ? J.stops[i - 1] : null; /* the stop numbers are tappable too */
@@ -78689,21 +78912,15 @@ window.SQE_JOURNEY = function (A) {
             box.querySelector('.jdone').setAttribute('stroke-dasharray', "".concat(best, " ").concat(Lt + 100));
             var seed = 11;
             var rnd = function () { return (seed = (seed * 16807) % 2147483647) / 2147483647; };
-            var warm = ['#FF8A65', '#FF9EC4', '#FFB74D'], grey = ['#D4D4D4', '#C2C2C2', '#E2E2E2'];
+            /* calm path (Monnie: stones too busy): one row of big soft stepping stones, warm where Britney has walked */
             var out = '', k = 0;
-            var _loop_1 = function (t) {
+            var PAST = ['#FFB3BA', '#FFD1A6', '#FFF3A3', '#BDF2C4', '#B5E2FF', '#C9C1FF', '#F2C4F2'], BOLD = ['#FF7A85', '#FFA85C', '#FFE14D', '#6EDB82', '#5CC2FF', '#9A8CFF', '#E58AE5']; /* pastel rainbow (Monnie); stronger where Britney has walked */
+            /* paving slabs (Monnie: should look like real paving stones): square flat slabs across the path, grey grout between, a light top edge and a soft shadow edge */
+            for (var t = 24; t < Lt - 14; t += 44, k++) {
                 var p = path.getPointAtLength(t), p2 = path.getPointAtLength(Math.min(Lt, t + 1));
-                var a = Math.atan2(p2.y - p.y, p2.x - p.x), nx = -Math.sin(a), ny = Math.cos(a), deg = a * 180 / Math.PI;
-                var set = k % 2 ? [[-11, 18], [11, 18]] : [[-15, 12], [0, 12], [15, 12]];
-                var pal = t <= best ? warm : grey;
-                set.forEach(function (_a, j) {
-                    var o = _a[0], wd = _a[1];
-                    var len = 15 + rnd() * 3, ww = wd - 1 + rnd() * 2, x = p.x + nx * o, y = p.y + ny * o;
-                    out += "<rect x=\"".concat((x - len / 2).toFixed(1), "\" y=\"").concat((y - ww / 2).toFixed(1), "\" width=\"").concat(len.toFixed(1), "\" height=\"").concat(ww.toFixed(1), "\" rx=\"5.5\" fill=\"").concat(pal[(k + j) % 3], "\" transform=\"rotate(").concat(deg.toFixed(1), " ").concat(x.toFixed(1), " ").concat(y.toFixed(1), ")\"/>");
-                });
-            };
-            for (var t = 12; t < Lt - 8; t += 23, k++) {
-                _loop_1(t);
+                var deg = (Math.atan2(p2.y - p.y, p2.x - p.x) * 180 / Math.PI).toFixed(1), x = p.x.toFixed(1), y = p.y.toFixed(1), c_1 = (t <= best ? BOLD : PAST)[k % 7];
+                out += "<g transform=\"translate(".concat(x, " ").concat(y, ") rotate(").concat(deg, ")\"><rect x=\"-19\" y=\"-21\" width=\"38\" height=\"42\" rx=\"3\" fill=\"").concat(c_1, "\" stroke=\"").concat(t <= best ? '#555' : '#A89C8C', "\" stroke-width=\"1.6\"/>")
+                    + "<path d=\"M-17,-19 H17\" stroke=\"#fff\" stroke-opacity=\".75\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M-17,19 H17 M17,-19 V19\" stroke=\"#000\" stroke-opacity=\".12\" stroke-width=\"3\" fill=\"none\"/></g>";
             }
             box.querySelector('.jstones').innerHTML = out;
         });
@@ -78785,8 +79002,8 @@ window.SQE_JOURNEY = function (A) {
         { a: '#5A3E8E', ad: '#C3A8F0', p: '#F4F0FB', pd: '#201A2E', l: '#C6B5E6', ld: '#4F3F72', c: ['#9B5DE5', '#FFC300', '#8D99AE', '#C8423C'], m: ['🏛️', '🦕'] },
         { a: '#0B5E7A', ad: '#7FD3EE', p: '#E8F8FC', pd: '#10262E', l: '#8ED4E8', ld: '#2B5C6B', c: ['#4CC9F0', '#E63946', '#FFFFFF', '#FFC300'], m: ['🎢', '🍦'] },
         { a: '#075E6B', ad: '#6FE0E6', p: '#E6FAFA', pd: '#0E2729', l: '#86DCE0', ld: '#23666A', c: ['#4CC9F0', '#2EC4B6', '#FF9F1C', '#4361EE'], m: ['🐠', '🐙'] },
-        { a: '#2B6E3F', ad: '#8FDBA5', p: '#EEF8F0', pd: '#142619', l: '#9FD8AE', ld: '#2E6B40', c: ['#52B788', '#FF6FB5', '#FFC300', '#9B5DE5'], m: ['🌷', '🌿'] },
         { a: '#7A4A12', ad: '#F2BE7A', p: '#FDF5E6', pd: '#2A1F10', l: '#E6C38C', ld: '#6E5228', c: ['#C8423C', '#FFC300', '#52B788', '#8D5A3B'], m: ['🐄', '🌾'] },
+        { a: '#2B6E3F', ad: '#8FDBA5', p: '#EEF8F0', pd: '#142619', l: '#9FD8AE', ld: '#2E6B40', c: ['#52B788', '#FF6FB5', '#FFC300', '#9B5DE5'], m: ['🌷', '🌿'] },
         { a: '#9C2C7A', ad: '#F3A0DA', p: '#FDF0FA', pd: '#2A1626', l: '#EBB0DA', ld: '#6E3561', c: ['#E63946', '#FFC300', '#4361EE', '#2EC4B6', '#FF6FB5'], m: ['🎈', '☁️'] },
         { a: '#1F6B3A', ad: '#7FE0A0', p: '#EAF7EE', pd: '#122617', l: '#8FD3A6', ld: '#2C6A42', c: ['#2B8A5B', '#FFC300', '#E63946', '#52B788'], m: ['🦜', '🌴'] },
         { a: '#1F5C8C', ad: '#A6D4F7', p: '#EEF7FD', pd: '#15212C', l: '#A9D3F0', ld: '#34587A', c: ['#4CC9F0', '#FFFFFF', '#9BB8E0', '#C77DFF'], m: ['⛸️', '❄️'] },
@@ -79104,7 +79321,28 @@ var CSS = [
 '@media (max-width:640px){.scn-sheet .lrn-tbl td{display:block;position:relative;padding-left:calc(45% + 22px)}.scn-sheet .lrn-tbl td::before{position:absolute;left:12px;top:10px;width:45%}.scn-lab{display:none}.scn-pin{display:block}.scn-hs.door .scn-lab{display:block;font-size:12px}.scn-hs{padding:0;border-width:2px;border-radius:10px}.scn-hs .scn-tick{width:22px;height:22px;font-size:13px;line-height:17px;border-width:2px;right:1px;top:1px}.scn-head h2{font-size:25px}.scn-ov{padding:0;align-items:flex-end}.scn-sheet{margin:40px 0 0;border-radius:22px 22px 0 0;border-width:3px 0 0;box-shadow:none;padding:12px 12px 20px;min-height:60vh}.scn-list{grid-template-columns:1fr}.scn-art{border-width:3px;border-radius:14px;box-shadow:3px 3px 0 #1b1b1b}.scn-hs.next{border-width:4px;border-radius:10px}.scn-nexttag .d{display:none}.scn-nexttag .m{display:inline}.scn-nexttag{font-size:11px;padding:1px 6px 2px;border-width:2px;top:auto;bottom:0;transform:translate(-50%,60%);animation-name:scnTagM}.scn-art .scn-leave{font-size:17px;padding:6px 12px;border-width:3px;box-shadow:3px 3px 0 #1b1b1b;bottom:3%}.scn-leave{font-size:22px}}',
 '@keyframes scnTagM{0%,100%{transform:translate(-50%,60%)}50%{transform:translate(-50%,30%)}}',
 '@media (prefers-reduced-motion:reduce){.scn-nexttag,.scn-leave,.scn-art .scn-leave,.scn-hs.next,.scn-hs.door .scn-lab,.scn-confetti i{animation:none}.scn-hs.door .scn-leaf{transition:none}.scn-art.zoom{animation:none}}',
-'body:has(.scn-ov){overflow:hidden}'
+'body:has(.scn-ov){overflow:hidden}',
+/* BL1 package pass (19 Nov): opened objects keep their full colour, dark outlines + sweet buttons in the pop-ups, readable "opened" rows */
+'.scn-hs.done{background:transparent}',
+'.scn-hs.done .scn-lab{opacity:1}',
+'.scn-list .done button{opacity:1;background:#E6F8EC;color:#111}',
+'.scn-list .done .t small{color:#2F4A3A}',
+'.scn-list .t small{color:var(--ink);opacity:.8}',
+'.scn-sheet .lrn-card{border:3px solid #1b1b1b;box-shadow:4px 4px 0 #1b1b1b}',
+'.scn-sheet .lrn-rev summary{border:2.5px dashed #1b1b1b;background:#FFE0EC;color:#8A1449}',
+'.scn-sheet .btn{border:2.5px solid #1b1b1b;border-radius:999px;box-shadow:0 3px 0 #1b1b1b;background:#FFFDF6;color:#1b1b1b;font-weight:700}',
+'.scn-sheet .btn.primary{background:#C2185B;color:#fff}',
+'.scn-sheet .btn[disabled]{box-shadow:none}',
+'.scn-sheet .btn:active{transform:translateY(2px);box-shadow:0 1px 0 #1b1b1b}',
+'.scn-sheet .scn-nav .scn-eat{background:#2E9E5B;color:#fff}',
+'.scn-sheet .opt{border:2.5px solid #1b1b1b;border-radius:14px}',
+'.scn-st .k,.scn-mn,.scn-xq .qmeta{color:var(--ink)}',
+'.scn-revisit .t small{color:var(--ink);opacity:.8}',
+'.scn-nextup{margin:12px 0 4px}',
+'.scn-xres{margin-top:12px}',
+'.scn-sheet .nck{--nk:#A3215B;--nk-bg:#FFF0F6;--nk-o:#FFFFFF;--nk-line:#1b1b1b;--nk-ink:#1b1b1b;border-color:#1b1b1b;box-shadow:3px 3px 0 #1b1b1b}',
+'.scn-sheet .nck.ok{border-color:#2E7D32;box-shadow:3px 3px 0 #2E7D32}',
+'.scn-sheet .lrn-sub{color:var(--ink)}'
 ].join('\n');
 
 window.SQE_SCENE = function(A){
@@ -79183,7 +79421,7 @@ window.SQE_SCENE = function(A){
       else card = A.learnCard(p.c);
       var last = i === n - 1, dn2 = !!state(k).open[h.id];
       inner = '<div class="scn-st"><span class="ico" aria-hidden="true">' + esc(h.icon || '🍬') + '</span><div><div class="k">' + esc(h.label.split(':')[0]) + ' · ' + esc(p.sec) + '</div><h2 id="scn-mt">' + inl(titleOf(k, h)) + '</h2></div><button type="button" class="scn-x" data-scn="close" aria-label="Close">✕</button></div>' +
-        '<div class="scn-mbar" role="progressbar" aria-valuemin="1" aria-valuemax="' + n + '" aria-valuenow="' + (i + 1) + '"><i style="width:' + Math.round((i + 1) / n * 100) + '%"></i></div><div class="scn-mn">' + (p.k === 'check' ? 'Last one: quick check' : 'Card ' + (i + 1) + ' of ' + n) + '</div>' + card +
+        '<div class="scn-mbar" role="progressbar" aria-valuemin="1" aria-valuemax="' + n + '" aria-valuenow="' + (i + 1) + '"><i style="width:' + Math.round((i + 1) / n * 100) + '%"></i></div><div class="scn-mn">' + (p.k === 'check' ? 'Last one: quick check' : 'Card ' + (i + 1) + ' of ' + st.filter(function(q){ return q.k !== 'check'; }).length) + '</div>' + card +
         '<div class="scn-nav"><button type="button" class="btn" data-scn="prev"' + (i ? '' : ' disabled') + '>‹ Back</button>' +
         (last ? '<button type="button" class="btn scn-eat" data-scn="eat">' + (dn2 ? '✓ Done' : '🍬 Done! Eat it') + '</button>' : '<button type="button" class="btn primary" data-scn="next">Next ›</button>') + '</div>';
     }
@@ -79241,7 +79479,8 @@ window.SQE_SCENE = function(A){
       }
       if (pass) return head + '<div class="scn-xres"><div class="big" aria-hidden="true">🏆🚪🎉</div><h2>You passed! Out you go</h2><p class="score">' + right + ' / ' + n + ' (' + Math.round(right / n * 100) + '%)</p><p>The pass mark is ' + need + ' out of ' + n + ' (60%). <b>✓ The Sweet Shop exit quiz is passed.</b></p>' +
         (S().todo && S().todo[k + '|qa'] ? '<p class="small">✓ Model Q&amp;A and quick-fire for this topic are ticked off on Today.</p>' : '') +
-        '<div class="btns"><a class="btn primary" href="#/map/' + x.s.id + '">Back to the map 🗺️</a><a class="btn" href="#/topic/' + x.s.id + '/' + x.t.id + '/framework">🗺️ Go over the framework</a><button type="button" class="btn" data-scn="close">Stay in the shop</button></div></div>';
+        '<p class="scn-nextup"><b>What next?</b> Lock it in: flip this topic\'s revision cards, then go over the framework.</p>' +
+        '<div class="btns"><a class="btn primary" href="#/cards/' + x.s.id + '/topic/' + x.t.id + '">🃏 Next: revision cards</a><a class="btn" href="#/topic/' + x.s.id + '/' + x.t.id + '/framework">🗺️ Go over the framework</a><a class="btn" href="#/map/' + x.s.id + '">Back to the map 🗺️</a><button type="button" class="btn" data-scn="close">Stay in the shop</button></div></div>';
       var seen = {}, rev = [];
       ex.items.forEach(function(it, i){ if (ex.ans[i] && ex.ans[i].ok) return; var h = objFor(k, it); if (!h) return; if (!seen[h.id]){ seen[h.id] = {h: h, n: 0}; rev.push(seen[h.id]); } seen[h.id].n++; });
       rev.sort(function(p, q){ return order(k).indexOf(p.h) - order(k).indexOf(q.h); });
@@ -79271,7 +79510,7 @@ window.SQE_SCENE = function(A){
     if (!sc || !x || !deck(k)) return '<div class="card"><h2>This scene isn\'t ready yet</h2><a class="btn" href="#/palace">Back to the map</a></div>';
     var o = state(k), mode = r[3] === 'outside' || r[3] === 'inside' ? r[3] : (o.door ? 'inside' : 'outside'), base = '#/scene/' + k;
     var N = order(k).length, n = nOpen(k), h = '<div class="scn">';
-    h += '<div class="scn-head"><h2>🍭 ' + esc(sc.name) + '</h2><div class="scn-links"><a href="#/topic/' + x.s.id + '/' + x.t.id + '">📇 Plain cards</a>' + (mode === 'inside' ? '<a href="' + base + '/outside">🚪 Step outside</a>' : (o.door ? '<a href="' + base + '/inside">Go straight in ›</a>' : '')) + '<a href="#/map/' + x.s.id + '">🗺️ Map</a></div>' +
+    h += '<div class="scn-head"><h2>🍭 ' + esc(sc.name) + '</h2><div class="scn-links"><a href="#/topic/' + x.s.id + '/' + x.t.id + '">📖 Full notes</a>' + (mode === 'inside' ? '<a href="' + base + '/outside">🚪 Step outside</a>' : (o.door ? '<a href="' + base + '/inside">Go straight in ›</a>' : '')) + '<a href="#/map/' + x.s.id + '">🗺️ Map</a></div>' +
       '<p class="scn-sub">' + esc(A.tnum(x)) + ': <b>' + esc(x.t.title) + '</b>. ' + (mode === 'outside' ? 'You\'re outside the sweet shop on Cluckington High Street. Tap the door to go in.' : 'Every sweet hides part of the notes. Tap one to open it.') + '</p></div>';
     if (mode === 'outside'){
       h += artHTML(sc.outside, null, k, 'outside');
@@ -79283,7 +79522,7 @@ window.SQE_SCENE = function(A){
       var nx = nextId(k);
       h += '<p class="scn-hint">' + (n === N ? '🏆 You\'ve opened everything! Open any sweet again to go over it. <button type="button" class="lrn-link" data-scn="restock">↺ Restock the shop (start again)</button>' : 'The glowing one is a good next pick, but you can open them in any order.') + '</p>';
       h += n === N ? leaveBtn(k) : '<p class="scn-lock">🔒 Open all ' + N + ' to unlock the exit quiz: 🚪 Leave the shop (10 questions, 6 to pass).</p>';
-      h += '<ol class="scn-list">' + order(k).map(function(hh, i){ var dn = o.open[hh.id]; return '<li class="' + (dn ? 'done' : '') + (hh.id === nx ? ' next' : '') + '"><button type="button" data-scn="obj" data-id="' + esc(hh.id) + '"><span class="n">' + (dn ? '✓' : i + 1) + '</span><span class="t">' + esc(hh.label) + '<small>' + cardsOf(k, hh).length + ' cards' + (dn ? ' · opened' : hh.id === nx ? ' · next' : '') + '</small></span><span aria-hidden="true">' + esc(hh.icon || '🍬') + '</span></button></li>'; }).join('') + '</ol>';
+      h += '<ol class="scn-list">' + order(k).map(function(hh, i){ var dn = o.open[hh.id]; return '<li class="' + (dn ? 'done' : '') + (hh.id === nx ? ' next' : '') + '"><button type="button" data-scn="obj" data-id="' + esc(hh.id) + '"><span class="n">' + (dn ? '✓' : i + 1) + '</span><span class="t">' + esc(hh.label) + '<small>' + (function(st){ var c = st.filter(function(q){ return q.k !== 'check'; }).length; return c + ' cards' + (c < st.length ? ' + quick check' : ''); })(steps(k, hh)) + (dn ? ' · opened' : hh.id === nx ? ' · next' : '') + '</small></span><span aria-hidden="true">' + esc(hh.icon || '🍬') + '</span></button></li>'; }).join('') + '</ol>';
     }
     h += modalHTML(k);
     return h + '</div>';
@@ -79310,7 +79549,7 @@ window.SQE_SCENE = function(A){
     SC.open = null;
     if (nOpen(k) === N && was < N){ var s = S(); s.todo = s.todo || {}; if (!s.todo[k + '|notes']) s.todo[k + '|notes'] = Date.now(); SC.yay = true; try { A.save(); } catch(e){} A.render(); confetti(); return; }
     try { A.save(); } catch(e){} A.render(); showNext();
-    if (was < nOpen(k)) toast('Yum! ' + h.label.split(':')[0] + ' eaten. ' + nOpen(k) + ' of ' + N + ' treats opened.');
+    if (was < nOpen(k)) toast('Yum! ' + h.label + ' eaten. ' + nOpen(k) + ' of ' + N + ' treats opened.');
   }
   function enter(k){
     var o = state(k); o.door = Date.now(); try { A.save(); } catch(e){}
@@ -79348,7 +79587,7 @@ window.SQE_SCENE = function(A){
       if (e.key === 'Enter' && ex.ans[ex.i] != null){ e.preventDefault(); ex.i++; paint(); return; } }
     if (SC.open && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')){ e.preventDefault(); go(k, e.key === 'ArrowRight' ? 1 : -1); }
   });
-  addEventListener('hashchange', function(){ if (!cur()){ SC.open = null; SC.gate = false; SC.yay = false; SC.exit = null; } });
+  addEventListener('hashchange', function(){ /* any route change closes an open pop-up (e.g. the locked-door question no longer follows you inside) */ SC.open = null; SC.gate = false; SC.yay = false; SC.exit = null; paint(); });
   window.__sceneExitFor = function(k){ return exitPool(k).map(function(it){ var h = objFor(k, it); return {kind: it.kind, q: it.q.slice(0, 60), obj: h && h.id}; }); };
   return {coverage: coverage};
 };
@@ -80592,7 +80831,7 @@ function cbaScene(small){
 /* ---------- landing: farm + level map ---------- */
 function cbaTopicHead(x){
   var s = x.s, t = x.t, r = topicRes(s, t);
-  return '<div class="card cbahead"><div class="small muted"><a href="#/syllabus">Syllabus</a> › <a href="#/subject/' + s.id + '">' + esc(s.title) + '</a></div><div class="topichead"><h2>' + esc(t.title) + '</h2><div class="viewtabs">' +
+  return '<div class="card cbahead' + skinOf(s.id) + '"><div class="small muted"><a href="#/syllabus">Syllabus</a> › <a href="#/subject/' + s.id + '">' + esc(s.title) + '</a></div><div class="topichead"><h2>' + esc(t.title) + '</h2><div class="viewtabs">' +
     '<a href="#/topic/' + s.id + '/' + t.id + '">📝 Notes</a>' +
     (r.ct ? '<a href="#/topic/' + s.id + '/' + t.id + '/cartoon">🖼️ Cartoon</a>' : '<span class="vt-off">🖼️ Cartoon</span>') +
     (r.fw ? '<a href="#/topic/' + s.id + '/' + t.id + '/framework">🗺️ Framework</a>' : '<span class="vt-off">🗺️ Framework</span>') +
@@ -80675,7 +80914,7 @@ function cbaLevel(){
   var henCls = "ok";
   if (CB.ans !== null) henCls = CB.ans === 0 ? (CB.quick ? "ok" : "happy jump") : "sad";
   else if (!CB.queue.length) henCls = "happy jump";
-  var head = '<div class="cbag"><div class="cbatop"><a class="cbaback" href="#/topic/' + x.s.id + '/' + x.t.id + '">‹ Notes</a><span class="cbattl">' + esc(tnum(x)) + ': ' + esc(x.t.title) + '</span><span class="spill coin">' + cbaCoin() + ' <b>' + c.coins + '</b>' + (pop ? '<span class="cpop">+' + pop + ' ' + cbaCoin() + '</span>' : '') + '</span></div>' +
+  var head = '<div class="cbag' + skinOf(x.s.id) + '"><div class="cbatop"><a class="cbaback" href="#/topic/' + x.s.id + '/' + x.t.id + '">‹ Notes</a><span class="cbattl">' + esc(tnum(x)) + ': ' + esc(x.t.title) + '</span><span class="spill coin">' + cbaCoin() + ' <b>' + c.coins + '</b>' + (pop ? '<span class="cpop">+' + pop + ' ' + cbaCoin() + '</span>' : '') + '</span></div>' +
     '<div class="cbaprog"><div class="ctrack"><i style="width:' + (rdone / rsz * 100).toFixed(1) + '%"></i></div><div class="cpips" title="Rounds">' + pips + '</div></div>' +
     '<div class="small cbameta">Round ' + (CB.rd + 1) + ' of ' + nR + ' · ' + rdone + ' of ' + rsz + ' right' + (CB.combo > 1 ? ' · 🔥 ' + CB.combo + ' in a row' : '') + '</div>';
   var mini = '<div class="cbamini">' + cbaHen(henCls, cbaWear()) + '</div>';
@@ -80833,7 +81072,7 @@ function topicQs(s, tid){ return (s.qs || []).map(function(q, i){ var k = s.id +
 function notesHref(x){ return (window.SQE_SCENES || {})[x.key] ? "#/scene/" + x.key : "#/topic/" + x.s.id + "/" + x.t.id; }
 function topicSteps(x){
   var s = x.s, t = x.t, base = "#/topic/" + s.id + "/" + t.id, nq = (s.qq || []).filter(function(q){ return q.t === t.id; }).length, nc = topicCards(s, t.id).length, nm = topicQs(s, t.id).length;
-  var st = [{k:"notes", l:"📝 Read the notes and cartoons", h:notesHref(x), alt:''}, {k:"fw", l:"🗺️ Go over the framework", h:base + "/framework"}];
+  var st = [{k:"notes", l:"📝 Read the notes and cartoons", h:notesHref(x), alt:(window.SQE_SCENES || {})[x.key] && DFPH[x.key] && DFPH[x.key].length ? ' <a class="tdalt" href="' + base + '/cartoon">🖼️ Cartoon (' + DFPH[x.key].length + ' pages)</a>' : ''}, {k:"fw", l:"🗺️ Go over the framework", h:base + "/framework"}];
   if (nq) st.push({k:"quick", l:"⚡ Test yourself: quick-fire (" + nq + ")", h:"#/quick/" + s.id + "/" + t.id});
   if (nm) st.push({k:"qa", l:"✍️ Test yourself: exam-style questions (" + nm + ")", h:"#/questions/" + s.id + "/" + t.id});
   st.push({k:"rate", l:"🚦 Rate it red, amber or green", h:base + "/rate", auto:true});
@@ -80944,7 +81183,7 @@ function sideCards(r){
   SUBJ.forEach(function(s){
     if (!(s.cards || []).length) return; var n = coreN(s);
     var kn = s.cards.filter(function(c, i){ return isCore(s, i) && S.cards[s.id + "~" + i] === 1; }).length;
-    h += '<details' + (s.id === cur ? " open" : "") + '><summary class="subj"><span>' + esc(s.title) + '</span><span>' + kn + '/' + n + '</span></summary><a class="tp" href="#/cards/' + s.id + '"><span class="ck"></span><span style="flex:1"><b>All ' + n + ' core cards</b></span></a>';
+    h += '<details' + (s.id === cur ? " open" : "") + (skinOf(s.id) ? ' class="swside"' : '') + '><summary class="subj"><span>' + esc(s.title) + '</span><span>' + kn + '/' + n + '</span></summary><a class="tp" href="#/cards/' + s.id + '"><span class="ck"></span><span style="flex:1"><b>All ' + n + ' core cards</b></span></a>';
     s.topics.forEach(function(t, ti){
       var ids = topicCards(s, t.id); if (!ids.length) return;
       var k2 = ids.filter(function(i){ return S.cards[s.id + "~" + i] === 1; }).length;
@@ -81087,11 +81326,11 @@ VIEW.topic = function(r){
   var body;
   var c2 = COMIC2[k];
   if (mode === "cartoon") body = DFPH[k] && DFPH[k].length ? dfphHTML(DFPH[k]) : c2 ? comic2HTML(c2) : cartoon(ct);
-  else if (mode === "framework") body = '<div class="fwtest"><button class="btn sm" data-act="fwtest">' + (FWTEST ? '👀 Show everything' : '🙈 Test yourself: hide the details') + '</button>' + (FWTEST ? '<span class="small muted">Say each point out loud, then tap its hidden line to reveal just that one. Tap a coloured box to reveal (or hide) its whole branch.</span>' : '') + '</div><div class="fwwrap' + (FWTEST ? ' mmtest' : '') + skinOf(s.id) + '">' + (mm ? mindmap(mm, skinOf(s.id)) : '') + (steps ? (mm ? '<details class="fwsteps"><summary>🪜 Step-by-step: how to answer a question on this topic</summary>' + framework(steps) + '</details>' : framework(steps)) : '') + '</div>';
+  else if (mode === "framework") body = '<div class="fwtest' + skinOf(s.id) + '"><button class="btn sm' + (skinOf(s.id) && !FWTEST ? ' primary' : '') + '" data-act="fwtest">' + (FWTEST ? '👀 Show everything' : '🙈 Test yourself: hide the details') + '</button>' + (FWTEST && mm ? '<span class="fwcount" aria-live="polite">🍬 0 of ' + (mm.branches || []).reduce(function(a, b){ return a + (b.pts || []).length; }, 0) + ' revealed</span>' : '') + (skinOf(s.id) && (window.SQE_SCENES || {})[k] ? '<a class="btn sm fwshop" href="#/scene/' + k + '">🍭 Back to the Sweet Shop</a>' : '') + (FWTEST ? '<span class="small muted fwhint">Say each point out loud, then tap its hidden line to reveal just that one. Tap a coloured box to reveal (or hide) its whole branch.</span>' : '') + '</div><div class="fwwrap' + (FWTEST ? ' mmtest' : '') + skinOf(s.id) + '">' + (mm ? mindmap(mm, skinOf(s.id)) : '') + (steps ? (mm ? '<details class="fwsteps"><summary>🪜 Step-by-step: how to answer a question on this topic</summary>' + framework(steps) + '</details>' : framework(steps)) : '') + '</div>';
   else if (rateOnly) body = '<p style="margin:14px 0 4px">Think back over <b>' + esc(t.title) + '</b>, then pick a colour below. <a href="#/topic/' + s.id + '/' + t.id + '">Read the notes again ›</a></p>';
   else if (hl < 0 && learnDeck(k) && LEARNFULL[k]) body = (NCK = k, learnHTML(x));
-  else body = (hl < 0 && learnDeck(k) ? '<div class="lrn-tog"><button type="button" class="lrn-link" data-learn="full">🃏 Step-by-step cards instead</button></div>' : '') + (hl >= 0 ? '<div class="banner warn hlnote">📍 The part of the notes that question was about is highlighted in yellow below.</div>' : '') + '<div class="notes">' + (NCK = k, COMIC2[k] ? notesWithComic2(t.notes, COMIC2[k]) : notesWithCartoons(t.notes, ct)) + '</div>';
-  var h = '<div class="card"><div class="small muted"><a href="#/syllabus">Syllabus</a> › <a href="#/subject/' + s.id + '">' + esc(s.title) + '</a></div>' +
+  else body = (hl < 0 && skinOf(s.id) && (window.SQE_SCENES || {})[k] ? '<div class="swn-shop"><span class="swn-shopic" aria-hidden="true">🍭</span><span class="swn-shopt"><b>This topic is a shop on your Journey</b><span>The Sweet Shop has the same notes as tap-and-learn sweets, jars and quick checks.</span></span><a class="btn primary swn-shopb" href="#/scene/' + k + '">🍬 Go to the Sweet Shop</a></div>' : '') + (hl < 0 && learnDeck(k) ? '<div class="lrn-tog"><button type="button" class="lrn-link" data-learn="full">🃏 Step-by-step cards instead</button></div>' : '') + (hl >= 0 ? '<div class="banner warn hlnote">📍 The part of the notes that question was about is highlighted in yellow below.</div>' : '') + '<div class="notes">' + (NCK = k, COMIC2[k] ? notesWithComic2(t.notes, COMIC2[k]) : notesWithCartoons(t.notes, ct)) + '</div>';
+  var h = '<div class="card' + (mode === "notes" && skinOf(s.id) ? skinOf(s.id) + ' swnotes' : '') + (mode === "cartoon" && skinOf(s.id) ? skinOf(s.id) + ' swcart' : '') + '"><div class="small muted"><a href="#/syllabus">Syllabus</a> › <a href="#/subject/' + s.id + '">' + esc(s.title) + '</a></div>' +
     '<div class="topichead"><h2>' + esc(t.title) + '</h2><div class="viewtabs">' +
     '<a href="#/topic/' + s.id + '/' + t.id + '" class="' + (mode === "notes" ? "on" : "") + '">📝 Notes</a>' +
     (ct ? '<a href="#/topic/' + s.id + '/' + t.id + '/cartoon" class="' + (mode === "cartoon" ? "on" : "") + '">🖼️ Cartoon</a>' : '<span class="vt-off" title="Coming soon">🖼️ Cartoon</span>') +
@@ -81179,6 +81418,43 @@ document.addEventListener("click", function(e){
   var el = document.getElementById("dfph-" + b.getAttribute("data-dfjump")); if (!el) return;
   try { el.scrollIntoView({block:"start", behavior:"smooth"}); } catch(x){ el.scrollIntoView(); }
 });
+/* cartoon-today (19 Nov): tap a strip = big in-page viewer (readable on phone + laptop), with ‹ › to flip pages; Esc / arrow keys work too. The link still opens the picture if JS is off. */
+var DFVIEW = null;
+function dfviewShow(i){
+  var figs = $all(".dfgrid .dfstrip"); if (!figs.length) return;
+  i = Math.max(0, Math.min(figs.length - 1, i));
+  var img = figs[i].querySelector("img"); if (!img) return;
+  if (!DFVIEW){ DFVIEW = document.createElement("div"); DFVIEW.className = "dfview"; DFVIEW.setAttribute("role", "dialog"); DFVIEW.setAttribute("aria-modal", "true"); document.body.appendChild(DFVIEW); }
+  DFVIEW.setAttribute("aria-label", "Cartoon page " + (i + 1) + " of " + figs.length);
+  DFVIEW.setAttribute("data-i", i);
+  DFVIEW.innerHTML = '<div class="dfvbar"><button class="dfvb" data-dfv="-1" aria-label="Previous page"' + (i ? '' : ' disabled') + '>‹</button><span class="dfvn">' + (i + 1) + ' <span>of ' + figs.length + '</span></span><button class="dfvb" data-dfv="1" aria-label="Next page"' + (i < figs.length - 1 ? '' : ' disabled') + '>›</button><button class="dfvb dfvx" data-dfv="x" aria-label="Close">✕</button></div>' +
+    '<div class="dfvpic"><img src="' + esc(img.getAttribute("src")) + '" alt="' + esc(img.getAttribute("alt") || "") + '"></div>' +
+    (i < figs.length - 1 ? '<button class="btn primary dfvnext" data-dfv="1">Next page ›</button>' : '<button class="btn primary dfvnext" data-dfv="x">Done: back to the strips</button>');
+  document.documentElement.classList.add("dfv-on");
+  DFVIEW.scrollTop = 0;
+  var cl = DFVIEW.querySelector(".dfvx"); if (cl) try { cl.focus({preventScroll:true}); } catch(x){}
+}
+function dfviewClose(){
+  if (!DFVIEW) return;
+  var i = +DFVIEW.getAttribute("data-i") || 0;
+  DFVIEW.parentNode.removeChild(DFVIEW); DFVIEW = null; document.documentElement.classList.remove("dfv-on");
+  var el = document.getElementById("dfph-" + i); if (el) try { el.scrollIntoView({block:"nearest"}); } catch(x){}
+}
+document.addEventListener("click", function(e){
+  var a = e.target.closest && e.target.closest(".dfstrip a");
+  if (a){ var i = $all(".dfgrid .dfstrip").indexOf(a.closest(".dfstrip")); if (i < 0) return; e.preventDefault(); dfviewShow(i); return; }
+  if (!DFVIEW) return;
+  var b = e.target.closest && e.target.closest("[data-dfv]");
+  if (b){ var v = b.getAttribute("data-dfv"); if (v === "x") dfviewClose(); else dfviewShow((+DFVIEW.getAttribute("data-i") || 0) + (+v)); return; }
+  if (e.target === DFVIEW || (e.target.classList && e.target.classList.contains("dfvpic"))) dfviewClose();
+});
+document.addEventListener("keydown", function(e){
+  if (!DFVIEW) return;
+  if (e.key === "Escape") dfviewClose();
+  else if (e.key === "ArrowRight") dfviewShow((+DFVIEW.getAttribute("data-i") || 0) + 1);
+  else if (e.key === "ArrowLeft") dfviewShow((+DFVIEW.getAttribute("data-i") || 0) - 1);
+});
+window.addEventListener("hashchange", function(){ if (DFVIEW) dfviewClose(); });
 function notesWithComic2(src, c){
   /* each cartoon page goes after the notes section whose heading shares most words with the page title (in order) */
   var lines = String(src).split("\n"), chunks = [[]], heads = [""];
@@ -81408,7 +81684,7 @@ function mindmap(m, skin){
   var W = 640, body = "", LH = 22;
   var tL0 = mmWrap(m.title || "", 515, 18, true), sL0 = m.sub ? mmWrap(m.sub, 520, 12.5) : [], y = 24 + (sL0.length ? 54 + tL0.length * 22 + (sL0.length - 1) * 17 : 34 + tL0.length * 22) + 34;
   (m.branches || []).forEach(function(b, bi){
-    var c = MMCOL[bi % MMCOL.length], pts = [], top = y + 10;
+    var c = (skin ? SWCOL : MMCOL)[bi % MMCOL.length], pts = [], top = y + 10;
     var cy = top;
     (b.pts || []).forEach(function(pt){ mmTspans.bold = false; var L = mmWrap(pt, 306, 15); pts.push({L: L, y: cy}); cy += L.length * LH + 12; });
     var bottom = Math.max(cy, top + 70), mid = (top + bottom) / 2 - 6;
@@ -81419,20 +81695,20 @@ function mindmap(m, skin){
     pts.forEach(function(p, pi){
       var ty = p.y + 8;
       body += '<g class="mmpt" data-b="' + bi + '" data-p="' + pi + '"><rect class="mmhit" x="280" y="' + (ty - 12) + '" width="330" height="' + (p.L.length * LH + 6) + '" fill="transparent"/>';
-      body += '<path d="M250,' + mid + ' C268,' + mid + ' 262,' + ty + ' 280,' + ty + '" fill="none" stroke="' + c[1] + '" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#mma' + (bi % MMCOL.length) + ')"/>';
+      body += '<path d="M250,' + mid + ' C268,' + mid + ' 262,' + ty + ' 280,' + ty + '" fill="none" stroke="' + (skin ? c[2] : c[1]) + '" stroke-width="' + (skin ? 2.4 : 2) + '" stroke-dasharray="4 4" marker-end="url(#mma' + (bi % MMCOL.length) + ')"/>';
       mmTspans.bold = false;
       body += '<text class="mmtx" xml:space="preserve" x="296" y="' + (ty + 5) + '" font-size="15" fill="#2C3A4A">' + p.L.map(function(l, i){ return mmTspans(l, 296, i ? LH : 0, c[2]); }).join("") + '</text>';
-      body += '<g class="mmc">' + p.L.map(function(l, i){ var w = Math.max(i ? 60 : 150, Math.min(306, String(l).replace(/\*\*/g, "").length * 7.3)); var ry = ty - 7 + i * LH, cy = ry + 8; return skin ? '<path d="M294,' + cy + ' l-7,-6 v12 z M' + (294 + w).toFixed(0) + ',' + cy + ' l7,-6 v12 z" fill="' + c[1] + '" stroke="#2A1B2E" stroke-width="1.4" stroke-linejoin="round"/><rect x="294" y="' + ry + '" width="' + w.toFixed(0) + '" height="16" rx="5" fill="url(#mmw' + (bi % MMCOL.length) + ')" stroke="#2A1B2E" stroke-width="1.6"/>' : '<rect x="294" y="' + ry + '" width="' + w.toFixed(0) + '" height="16" rx="8" fill="' + c[0] + '" stroke="' + c[1] + '" stroke-width="1.5"/>'; }).join("") + '<text x="304" y="' + (ty + 5) + '" font-size="12" font-weight="700" fill="' + (skin ? '#2A1B2E' : '#4A5468') + '">👆 tap to reveal</text></g></g>';
+      body += '<g class="mmc">' + (skin ? swWrapper(p.L, ty, LH, bi) + '</g></g>' : p.L.map(function(l, i){ var w = Math.max(i ? 60 : 150, Math.min(306, String(l).replace(/\*\*/g, "").length * 7.3)); var ry = ty - 7 + i * LH, cy = ry + 8; return skin ? '<path d="M294,' + cy + ' l-7,-6 v12 z M' + (294 + w).toFixed(0) + ',' + cy + ' l7,-6 v12 z" fill="' + c[1] + '" stroke="#2A1B2E" stroke-width="1.4" stroke-linejoin="round"/><rect x="294" y="' + ry + '" width="' + w.toFixed(0) + '" height="16" rx="5" fill="url(#mmw' + (bi % MMCOL.length) + ')" stroke="#2A1B2E" stroke-width="1.6"/>' : '<rect x="294" y="' + ry + '" width="' + w.toFixed(0) + '" height="16" rx="8" fill="' + c[0] + '" stroke="' + c[1] + '" stroke-width="1.5"/>'; }).join("") + '<text x="304" y="' + (ty + 5) + '" font-size="12" font-weight="700" fill="' + (skin ? '#2A1B2E' : '#4A5468') + '">👆 tap to reveal</text></g></g>');
     });
     body += '</g><g class="mmq" data-b="' + bi + '"><rect x="280" y="' + (top + 2) + '" width="330" height="' + Math.max(40, bottom - top - 16) + '" rx="12" fill="#F1F4F9" stroke="' + c[1] + '" stroke-width="2" stroke-dasharray="6 5"/><text x="445" y="' + (top + Math.max(40, bottom - top - 16) / 2 + 7) + '" text-anchor="middle" font-size="15" font-weight="700" fill="#4A5468">Tap the box to reveal</text></g>';
     y = bottom + 34;
   });
-  var H = y + 10, defs = MMCOL.map(function(c, i){ return '<marker id="mma' + i + '" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="' + c[1] + '"/></marker>' + (skin ? '<pattern id="mmw' + i + '" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#FFFFFF"/><rect width="5" height="10" fill="' + c[1] + '" opacity=".45"/></pattern>' : ''); }).join("");
+  var H = y + 10, defs = (skin ? SWCOL : MMCOL).map(function(c, i){ return '<marker id="mma' + i + '" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="' + c[1] + '"' + (skin ? ' stroke="#2A1B2E" stroke-width="1.3"' : '') + '/></marker>' + (skin ? '<pattern id="mmw' + i + '" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#FFFFFF"/><rect width="5" height="10" fill="' + c[1] + '" opacity=".45"/></pattern>' : ''); }).join("");
   var tL = mmWrap(m.title || "", 515, 18, true), sL = m.sub ? mmWrap(m.sub, 520, 12.5) : [];
   var head = (skin ? sweetBunt(30, 610, 4) : '') + '<rect x="30" y="24" width="580" height="' + (sL.length ? 54 + tL.length * 22 + (sL.length - 1) * 17 : 34 + tL.length * 22) + '" rx="16" fill="' + (skin ? '#FFE3EF' : '#E8EFF8') + '" stroke="' + (skin ? '#2A1B2E' : '#A9BCD8') + '" stroke-width="' + (skin ? 2.6 : 2) + '"/>' +
     '<text x="320" y="56" text-anchor="middle" font-size="18" font-weight="700" fill="#24364A">' + tL.map(function(l, i){ return '<tspan x="320" dy="' + (i ? 22 : 0) + '">' + esc(l) + '</tspan>'; }).join("") + '</text>' +
     (sL.length ? '<text x="320" y="' + (62 + tL.length * 22) + '" text-anchor="middle" font-size="12.5" fill="' + (skin ? '#5A3550' : '#5B6E86') + '">' + sL.map(function(l, i){ return '<tspan x="320" dy="' + (i ? 17 : 0) + '">' + esc(l) + '</tspan>'; }).join("") + '</text>' : '');
-  var list = '<div class="mmlist"><div class="mmlt">' + esc(m.title || "") + '</div>' + (m.branches || []).map(function(br, bi){ var c = MMCOL[bi % MMCOL.length]; return '<div class="mmli" style="--mc:' + c[1] + ';--mb:' + c[0] + ';--mh:' + c[2] + '"><div class="mmb" data-b="' + bi + '">' + (skin ? sweetIcon(br.h, false) : '') + esc(br.h) + '</div><ul class="mmp" data-b="' + bi + '">' + (br.pts || []).map(function(pt, pi){ return '<li class="mmpt" data-b="' + bi + '" data-p="' + pi + '"><span class="mmtx">' + esc(pt).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>') + '</span><span class="mmc" aria-hidden="true">👆 tap to reveal</span></li>'; }).join("") + '</ul><div class="mmq" data-b="' + bi + '">Tap to reveal</div></div>'; }).join("") + '</div>';
+  var list = '<div class="mmlist"><div class="mmlt">' + esc(m.title || "") + '</div>' + (m.branches || []).map(function(br, bi){ var c = (skin ? SWCOL : MMCOL)[bi % MMCOL.length]; return '<div class="mmli" style="--mc:' + c[1] + ';--mb:' + c[0] + ';--mh:' + c[2] + '"><div class="mmb" data-b="' + bi + '">' + (skin ? jarIcon(br.h) : '') + esc(br.h) + '</div><ul class="mmp" data-b="' + bi + '">' + (br.pts || []).map(function(pt, pi){ return '<li class="mmpt" data-b="' + bi + '" data-p="' + pi + '"><span class="mmtx">' + esc(pt).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>') + '</span><span class="mmc" aria-hidden="true">👆 tap to reveal</span></li>'; }).join("") + '</ul><div class="mmq" data-b="' + bi + '">Tap to reveal</div></div>'; }).join("") + '</div>';
   return list + '<div class="mmwrap"><svg class="mindmap" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Framework mind map: ' + esc(m.title || "") + '"><defs>' + defs + '</defs><rect width="' + W + '" height="' + H + '" fill="' + (skin ? '#FFFDF6' : '#FBFCFE') + '" rx="12"/>' + head + body + '</svg></div>';
 }
 function framework(f){
@@ -81473,8 +81749,12 @@ VIEW.questions = function(r){
   if (r[1] && BYID[r[1]] && !r[2]) return qaSubject(BYID[r[1]]);
   if (r[1] && BYID[r[1]] && r[2]){
     var s0 = BYID[r[1]], tq = topicQs(s0, r[2]), tt = TBYKEY[s0.id + "/" + r[2]];
-    setTimeout(function(){ startQuiz((tt ? tnum(tt) + " " + tt.t.title : s0.title), tq.length ? tq : (s0.qs || []).map(function(q, i){ return s0.id + "#" + i; }), "#/home"); if (tt && QZ) QZ.tkey = tt.key; render(); }, 0);
-    return '<div class="card">Loading…</div>';
+    /* examqs (19 Nov): a topic's set (Today's exam-style step, the day-10 review, quick-fire's Next) plays right here, so the link stays #/questions/<subj>/<topic> instead of jumping to #/play; arriving fresh starts a new set */
+    if (!QZ || QZ.src !== location.hash || lastRoute !== r.join("/")){
+      QZ = {title:(tt ? tnum(tt) + " " + tt.t.title : s0.title), items:shuffle(tq.length ? tq : (s0.qs || []).map(function(q, i){ return s0.id + "#" + i; })).map(function(id){ return {id:id, order:shuffle([0,1,2,3,4])}; }), i:0, ans:[], back:"#/home", src:location.hash};
+      if (tt) QZ.tkey = tt.key;
+    }
+    return VIEW.play();
   }
   if (r[1] && BYID[r[1]]){
     var s = BYID[r[1]];
@@ -81519,13 +81799,20 @@ VIEW.play = function(){
   if (QZ.i >= QZ.items.length){
     var c = QZ.ans.filter(function(a){ return a && a.ok; }).length, n = QZ.ans.filter(Boolean).length;
     if (QZ.tkey && n >= QZ.items.length){ S.todo = S.todo || {}; if (!S.todo[QZ.tkey + "|qa"]){ S.todo[QZ.tkey + "|qa"] = Date.now(); save(); } }
+    /* examqs (19 Nov): a topic set on a themed subject (Business Law 1 = Sweet Shop) gets the sweet skin, ticks today's day-10 review for that topic, and points to the next step */
+    var qtx = QZ.tkey && TBYKEY[QZ.tkey], qsk = qtx ? skinOf(qtx.s.id) : "", qrv = false;
+    if (qtx && n >= QZ.items.length){ try { (buildPlan().revs || {})[QZ.tkey].forEach(function(rv){ if (rv.gap === 10 && rv.d === ymd()){ qrv = true; if (!S.todo[rv.k]){ S.todo[rv.k] = Date.now(); save(); } } }); } catch(eR){} }
+    if (qsk) return '<div class="card exq-end' + qsk + '" style="text-align:center"><div class="swend" aria-hidden="true">' + SWJAR + '</div><h2>' + esc(QZ.title) + ': finished</h2><p class="exq-score"><b>' + c + ' / ' + n + '</b> correct (' + (n ? Math.round(c / n * 100) : 0) + '%)</p>' +
+      (n >= QZ.items.length ? '<p class="small exq-tick">✓ Exam-style questions ticked off' + (qrv ? ', and today\'s review for this topic too' : '') + '.</p>' : '') +
+      '<div class="btns" style="justify-content:center"><a class="btn primary" href="#/topic/' + qtx.s.id + '/' + qtx.t.id + '/rate">🚦 Next: rate this topic ›</a><button class="btn" data-act="qagain">Try this set again</button>' + (wrongIds().length ? '<a class="btn bad" href="#/questions/wrong">Redo wrong answers</a>' : '') + '<a class="btn" href="#/home">Back to Today</a></div></div>';
     return '<div class="card"><h2>' + esc(QZ.title) + ': finished</h2><p style="font-size:22px;margin:6px 0"><b>' + c + ' / ' + n + '</b> correct (' + (n ? Math.round(c / n * 100) : 0) + '%)</p>' +
       '<div class="btns"><button class="btn primary" data-act="qagain">Try this set again</button>' + (wrongIds().length ? '<a class="btn bad" href="#/questions/wrong">Redo wrong answers</a>' : '') + '<a class="btn" href="' + QZ.back + '">Back</a></div></div>';
   }
   var it = QZ.items[QZ.i], x = qById(it.id), a = QZ.ans[QZ.i];
   if (QZ.atI !== QZ.i || QZ.atId !== it.id){ QZ.atI = QZ.i; QZ.atId = it.id; QZ.at = Date.now(); }
   var strip = '<div class="qsq strip">' + QZ.items.map(function(q, n){ var aa = QZ.ans[n]; return '<button class="sq' + (aa ? (aa.ok ? " ok" : " bad") : "") + (n === QZ.i ? " cur" : "") + '" data-act="qgo" data-n="' + n + '" title="Question ' + (n + 1) + '">' + (n + 1) + '</button>'; }).join("") + '</div>';
-  var h = '<div class="card"><div class="qmeta"><span>' + esc(QZ.title) + ' · ' + esc(x.s.title) + '</span><span>Question ' + (QZ.i + 1) + ' of ' + QZ.items.length + '</span></div>' + strip +
+  var qtk = QZ.tkey && TBYKEY[QZ.tkey], qsk2 = qtk ? skinOf(qtk.s.id) : ""; /* examqs: sweet skin for a Business Law 1 topic set */
+  var h = (qsk2 ? '<div class="exq-top"><a class="cbaback" href="' + notesHref(qtk) + '">‹ Notes</a><span class="exq-lab">✍️ Exam-style questions</span></div>' : '') + '<div class="card' + (qsk2 ? ' exq' + qsk2 : '') + '"><div class="qmeta"><span>' + esc(QZ.title) + ' · ' + esc(x.s.title) + '</span><span>Question ' + (QZ.i + 1) + ' of ' + QZ.items.length + '</span></div>' + strip +
     '<div class="qtext">' + esc(x.q.q) + '</div><div class="opts">';
   it.order.forEach(function(oi, pos){
     var cls = "opt";
@@ -81628,15 +81915,18 @@ VIEW.quick = function(r){
       var secs = Math.round((Date.now() - QF.t0) / 1000), n = QF.items.length;
       if (TBYKEY[QF.key]){ S.todo = S.todo || {}; if (!S.todo[QF.key + "|quick"]){ S.todo[QF.key + "|quick"] = Date.now(); save(); } }
       var after = key === "review" ? qfDue().length : 0;
-      return '<div class="card" style="text-align:center"><h2>Round over</h2><p style="font-size:26px;margin:6px"><b>' + QF.score + ' / ' + n + '</b></p><p class="muted">in ' + secs + ' seconds. Anything you got wrong will come back sooner.</p>' +
+      /* quickfire (19 Nov): sweet-shop skin on the round-over card + a button on to the topic's next step (exam-style questions, else rate it) */
+      var qfX = TBYKEY[QF.key], qfSk = qfX ? skinOf(qfX.s.id) : (QF.items.length && QF.items.every(function(q){ return q.x.s.id === QF.items[0].x.s.id; }) ? skinOf(QF.items[0].x.s.id) : ""), qfNx = null;
+      if (qfX && qfSk){ var qfSt = topicSteps(qfX), qfI = qfSt.map(function(z){ return z.k; }).indexOf("quick"); qfNx = qfI >= 0 ? qfSt[qfI + 1] : null; }
+      return '<div class="card qfend' + qfSk + '" style="text-align:center">' + (qfSk ? '<div class="swend" aria-hidden="true">' + SWJAR + '</div>' : '') + '<h2>Round over</h2><p style="font-size:26px;margin:6px"><b>' + QF.score + ' / ' + n + '</b></p><p class="muted">in ' + secs + ' seconds. Anything you got wrong will come back sooner.</p>' +
         '<div class="btns" style="justify-content:center">' +
-        (key === "review" ? (after ? '<button class="btn primary" data-act="qfagain">Next ' + Math.min(10, after) + ' (' + after + ' still due)</button>' : '<span class="pill g">All caught up for now ✓</span>') : '<button class="btn primary" data-act="qfagain">Another round</button>') +
-        '<a class="btn" href="#/quick">Back to quick-fire</a></div></div>';
+        (key === "review" ? (after ? '<button class="btn primary" data-act="qfagain">Next ' + Math.min(10, after) + ' (' + after + ' still due)</button>' : '<span class="pill g">All caught up for now ✓</span>') : (qfNx ? '<a class="btn primary" href="' + qfNx.h + '">Next: ' + esc(qfNx.l.replace(/^\S+\s+/, "")) + ' ›</a><button class="btn" data-act="qfagain">Another round</button>' : '<button class="btn primary" data-act="qfagain">Another round</button>')) +
+        (qfNx ? '<a class="btn" href="' + notesHref(qfX) + '">Back to the ' + (STOPSHORT[qfX.s.id] && (window.SQE_SCENES || {})[qfX.key] ? 'Sweet Shop' : 'notes') + '</a>' : '<a class="btn" href="#/quick">Back to quick-fire</a>') + '</div></div>';
     }
     var it = QF.items[QF.i], x = it.x;
     if (QF.atI !== QF.i || QF.atK !== QF.key){ QF.atI = QF.i; QF.atK = QF.key; QF.at = Date.now(); }
     var qstrip = '<div class="qsq strip">' + QF.items.map(function(q, n){ var aa = QF.ansA[n]; return '<button class="sq' + (aa != null ? (aa === 0 ? " ok" : " bad") : "") + (n === QF.i ? " cur" : "") + '" data-act="qfgo" data-n="' + n + '">' + (n + 1) + '</button>'; }).join("") + '</div>';
-    var h = '<div class="card"><div class="qmeta"><span>⚡ ' + esc(qfTitle(key)) + '</span><span>' + (QF.i + 1) + ' of ' + QF.items.length + ' · score ' + QF.score + '</span></div>' + qstrip +
+    var h = '<div class="card qfcard' + skinOf(x.s.id) + '"><div class="qmeta"><span>⚡ ' + esc(qfTitle(key)) + '</span><span>' + (QF.i + 1) + ' of ' + QF.items.length + ' · score ' + QF.score + '</span></div>' + qstrip +
       (key.indexOf("/") < 0 ? '<div class="small muted">' + esc(x.s.title) + ' · ' + esc((TBYKEY[x.s.id + "/" + x.t] || {t:{title:""}}).t.title) + '</div>' : '') +
       '<div class="qf">' + inl(x.q) + '</div><div class="opts">';
     it.ord.forEach(function(oi, pos){
@@ -81699,17 +81989,39 @@ function sweetKey(t, dflt){
 function sweetIcon(t, dflt){ var k = sweetKey(t, dflt); return k ? '<svg class="swsvg" viewBox="0 0 40 40" aria-hidden="true">' + SWICO[k] + '</svg>' : ''; }
 /* framework desktop map: a branch box drawn as a sweet jar (lid in the branch colour) with a memory-hook sticker */
 function sweetJar(y, h, c, label){
-  var k = sweetKey(label, false);
+  var k = jarKey(label);
   return '<rect x="74" y="' + (y - 12) + '" width="142" height="15" rx="4" fill="' + c[1] + '" stroke="#2A1B2E" stroke-width="2.2"/>' +
     '<rect x="40" y="' + y + '" width="210" height="' + h + '" rx="20" fill="' + c[0] + '" stroke="#2A1B2E" stroke-width="2.6"/>' +
     '<path d="M51,' + (y + 17) + ' v' + Math.max(8, h - 36) + '" stroke="#fff" stroke-width="4" stroke-linecap="round"/>' +
-    (k ? '<g transform="translate(222,' + (y - 22) + ')"><circle cx="20" cy="20" r="19" fill="#FFFDF6" stroke="#2A1B2E" stroke-width="2.2"/><g transform="translate(4,4) scale(.8)">' + SWICO[k] + '</g></g>' : '');
+    (k ? '<g transform="translate(222,' + (y - 22) + ')"><circle cx="20" cy="20" r="19" fill="#FFFDF6" stroke="#2A1B2E" stroke-width="2.2"/><g transform="translate(4,4) scale(.8)">' + jarSvg(k) + '</g></g>' : '');
 }
 /* a row of bunting across the top of the framework board */
 function sweetBunt(x0, x1, y){
   var cols = ["#FF6FB5", "#FFD43B", "#7ED9B0", "#7FC8F8", "#C59BFF"], s = '<path d="M' + x0 + ',' + y + ' Q' + ((x0 + x1) / 2) + ',' + (y + 8) + ' ' + x1 + ',' + y + '" fill="none" stroke="#2A1B2E" stroke-width="1.6"/>';
   for (var x = x0 + 6, i = 0; x + 18 <= x1; x += 26, i++){ var u = (x + 9 - x0) / (x1 - x0), yy = y + 8 * 4 * u * (1 - u) * 0.5; s += '<path d="M' + x + ',' + yy.toFixed(1) + ' l18,0 l-9,13 z" fill="' + cols[i % cols.length] + '" stroke="#2A1B2E" stroke-width="1.3" stroke-linejoin="round"/>'; }
   return s;
+}
+/* framework (sweet skin, 19 Nov): brighter candy jars [jar, lid/wrapper, dark text] so no two neighbouring branches look alike; every jar gets a sticker */
+var SWCOL = [["#FFC2DA","#FF5FA2","#B0105A"],["#C4E6FF","#3D9BF0","#124E8C"],["#FFEB8A","#F5C400","#6E5200"],["#E2D1FF","#9A6BF0","#5A2DB0"],["#BDF0D6","#2FBF7F","#0E6B3F"],["#FFD3A8","#FF8A2B","#A04000"],["#FFC9C2","#F2493A","#A3180D"],["#BFF3F0","#1FB5AE","#0B5F5A"]];
+var SWICO2 = {
+  /* separate legal personality: a gobstopper (the shop's Gobstoppers) */
+  gob: '<circle cx="20" cy="20" r="15" fill="#7FC8F8" ' + SWK + '/><circle cx="20" cy="20" r="10" fill="#FFD43B" ' + SWK + '/><circle cx="20" cy="20" r="5" fill="#FF6FB5" ' + SWK + '/><ellipse cx="13" cy="12" rx="3.2" ry="1.9" fill="#fff"/>',
+  /* choosing a structure: the shop's till */
+  till: '<rect x="9" y="6" width="22" height="9" rx="2" fill="#FFD43B" ' + SWK + '/><path d="M14 10.5h12" stroke="#2A1B2E" stroke-width="1.8" stroke-linecap="round"/><path d="M6 17h28l-2 15H8z" fill="#FF8FB8" ' + SWK + '/><path d="M11 21.5h3M17.5 21.5h3M24 21.5h3M11 26h3M17.5 26h3M24 26h3" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><rect x="4" y="32" width="32" height="5" rx="1.5" fill="#B5743F" ' + SWK + '/>',
+  /* LLP: two wrapped sweets in one wrapper */
+  llp: '<path d="M8 20L2 14v12zM32 20l6-6v12z" fill="#7ED9B0" ' + SWK + '/><rect x="7" y="11" width="26" height="18" rx="9" fill="#7ED9B0" ' + SWK + '/><circle cx="14.5" cy="20" r="4.5" fill="#FF8FB8" ' + SWK + '/><circle cx="25.5" cy="20" r="4.5" fill="#FFD43B" ' + SWK + '/>'
+};
+function jarKey(t){ t = String(t || ""); return /separate legal/i.test(t) ? "gob" : /choos/i.test(t) ? "till" : /\bLLPs?\b|limited liability partnership/i.test(t) ? "llp" : sweetKey(t, true); }
+function jarSvg(k){ return SWICO2[k] || SWICO[k] || ""; }
+function jarIcon(t){ return '<svg class="swsvg" viewBox="0 0 40 40" aria-hidden="true">' + jarSvg(jarKey(t)) + '</svg>'; }
+/* framework self-test cover (desktop): one sweet wrapper over the whole point, however many lines it has */
+function swWrapper(L, ty, LH, bi){
+  var n = L.length, w = 0; L.forEach(function(l){ w = Math.max(w, mmMeasure(String(l).replace(/\*\*/g, ""), 15, false)); });
+  w = Math.round(Math.max(180, Math.min(306, w + 10))); var ry = ty - 10, hh = (n - 1) * LH + 22, cy = ry + hh / 2, tw = 112;
+  return '<path d="M294,' + cy + ' l-10,-8 v16 z M' + (294 + w) + ',' + cy + ' l10,-8 v16 z" fill="url(#mmw' + (bi % 8) + ')" stroke="#2A1B2E" stroke-width="1.6" stroke-linejoin="round"/>' +
+    '<rect x="294" y="' + ry + '" width="' + w + '" height="' + hh + '" rx="8" fill="url(#mmw' + (bi % 8) + ')" stroke="#2A1B2E" stroke-width="1.8"/>' +
+    '<rect x="' + (294 + (w - tw) / 2) + '" y="' + (cy - 10) + '" width="' + tw + '" height="20" rx="10" fill="#FFFDF6" stroke="#2A1B2E" stroke-width="1.5"/>' +
+    '<text x="' + (294 + w / 2) + '" y="' + (cy + 4.5) + '" text-anchor="middle" font-size="12.5" font-weight="800" fill="#2A1B2E">👆 tap to reveal</text>';
 }
 var SWJAR = '<svg viewBox="0 0 120 120" width="110" height="110"><rect x="34" y="10" width="52" height="14" rx="4" fill="#FF8FB8" ' + SWK + '/><rect x="22" y="22" width="76" height="90" rx="22" fill="#E9F7FF" ' + SWK + '/>' +
   '<circle cx="42" cy="92" r="9" fill="#FFD43B" ' + SWK + '/><circle cx="62" cy="96" r="9" fill="#7ED9B0" ' + SWK + '/><circle cx="80" cy="90" r="8" fill="#C59BFF" ' + SWK + '/><circle cx="52" cy="76" r="8.5" fill="#FF6FB5" ' + SWK + '/><circle cx="71" cy="74" r="8" fill="#7FC8F8" ' + SWK + '/><circle cx="60" cy="58" r="8" fill="#FFD43B" ' + SWK + '/>' +
@@ -81728,11 +82040,11 @@ VIEW.cards = function(r){
     if (!FC.deck.length) return '<div class="card"><h2>All cards known</h2><p>You\'ve marked every card in this deck as known.</p><div class="btns"><a class="btn" href="#/cards/' + r[1] + '">See the whole deck</a><a class="btn" href="#/cards">All decks</a></div></div>';
     if (FC.i >= FC.deck.length){
       var kn = FC.deck.filter(function(d){ return S.cards[d.id] === 1; }).length, so = FC.deck.filter(function(d){ return S.cards[d.id] === 0.5; }).length;
-      return '<div class="card' + (s ? skinOf(s.id) : '') + '" style="text-align:center">' + (s && skinOf(s.id) ? '<div class="swend" aria-hidden="true">' + SWJAR + '</div>' : '') + '<h2>End of the deck</h2><p style="font-size:20px">🟢 ' + kn + ' &nbsp; 🟠 ' + so + ' &nbsp; 🔴 ' + (FC.deck.length - kn - so) + '</p><div class="btns" style="justify-content:center"><button class="btn primary" data-act="fcrestart">Go again</button>' + (!extraOnly && s ? '<a class="btn" href="#/cards/' + r[1] + (onlyT ? '/topic/' + onlyT + '/extra' : '/extra') + '">⭐ Optional extra cards</a>' : '') + '<a class="btn" href="#/cards/' + r[1] + '/learning">Only the 🔴 and 🟠 ones</a><a class="btn" href="#/cards">All decks</a></div></div>';
+      return '<div class="card' + (s ? skinOf(s.id) : '') + '" style="text-align:center">' + (s && skinOf(s.id) ? '<div class="swend" aria-hidden="true">' + SWJAR + '</div>' : '') + '<h2>End of the deck</h2><p style="font-size:20px">🟢 ' + kn + ' &nbsp; 🟠 ' + so + ' &nbsp; 🔴 ' + (FC.deck.length - kn - so) + '</p><div class="btns" style="justify-content:center"><button class="btn primary" data-act="fcrestart">Go again</button>' + (!extraOnly && s ? '<a class="btn" href="#/cards/' + r[1] + (onlyT ? '/topic/' + onlyT + '/extra' : '/extra') + '">⭐ Optional extra cards</a>' : '') + '<a class="btn" href="#/cards/' + r[1] + '/learning">Only the 🔴 and 🟠 ones</a><a class="btn" href="#/cards">All decks</a></div>' + (s && onlyT && skinOf(s.id) ? '<div class="swnext"><b>Next step</b><div class="btns" style="justify-content:center"><a class="btn primary" href="#/quick/' + s.id + '/' + onlyT + '">⚡ This topic\'s quick-fire ›</a>' + (s.id + "/" + onlyT === "blp/business-structures" ? '<a class="btn" href="#/scene/blp/business-structures">🍭 Back to the Sweet Shop</a>' : '') + '</div></div>' : '') + '</div>';
     }
     var d = FC.deck[FC.i];
     if (FC.atI !== FC.i || FC.atD !== d.id){ FC.atI = FC.i; FC.atD = d.id; FC.at = Date.now(); }
-    return '<div class="card' + skinOf(d.s.id) + '"><div class="qmeta"><span>' + esc(s ? s.title : "All subjects") + (learnOnly ? " · not yet 🟢" : "") + (extraOnly ? " · ⭐ extra cards" : "") + '</span><span>Card ' + (FC.i + 1) + ' of ' + FC.deck.length + '</span></div>' +
+    return '<div class="card' + skinOf(d.s.id) + '"><div class="qmeta"><span>' + esc(s ? s.title : "All subjects") + (onlyT && s && TBYKEY[s.id + "/" + onlyT] ? " · " + (TBYKEY[s.id + "/" + onlyT].i + 1) + ". " + esc(TBYKEY[s.id + "/" + onlyT].t.title) : "") + (learnOnly ? " · not yet 🟢" : "") + (extraOnly ? " · ⭐ extra cards" : "") + '</span><span>Card ' + (FC.i + 1) + ' of ' + FC.deck.length + '</span></div>' +
       '<div class="flash' + (FC.flip ? " flipped" : "") + '" data-act="fcflip" role="button" tabindex="0" aria-label="Flip card"><div class="inner">' +
       '<div class="face"><small>' + esc(d.s.title) + '</small>' + (skinOf(d.s.id) ? '<span class="swico" aria-hidden="true">' + sweetIcon(d.c[0], true) + '</span>' : '') + inl(d.c[0]) + '<div class="kbd" style="margin-top:14px">Tap to flip</div></div>' +
       '<div class="face back"><small>Answer</small><div class="cardq">' + inl(d.c[0]) + '</div><div class="notes">' + md(oneSentencePerLine(d.c[1])) + '</div></div></div></div>' +
@@ -81743,7 +82055,7 @@ VIEW.cards = function(r){
   SESSIONS.forEach(function(se){
     var subs = SUBJ.filter(function(s){ return s.session === se.id && s.cards && s.cards.length; }); if (!subs.length) return;
     h += '<h3 style="margin-top:10px">' + esc(se.title) + '</h3>';
-    subs.forEach(function(s){ var nk = coreN(s), kn = s.cards.filter(function(c, i){ return isCore(s, i) && S.cards[s.id + "~" + i] === 1; }).length; h += '<div class="subjrow cardrow"><a href="#/cards/' + s.id + '">' + esc(s.title) + '</a><span class="cr-ring">' + mring(kn, nk, "var(--good)", kn + " of " + nk + " core cards known") + '</span><span class="cr-x">' + (s.cards.length > nk ? '<a class="small" href="#/cards/' + s.id + '/extra">⭐ ' + (s.cards.length - nk) + ' optional extra</a>' : '') + '</span></div>'; });
+    subs.forEach(function(s){ var nk = coreN(s), kn = s.cards.filter(function(c, i){ return isCore(s, i) && S.cards[s.id + "~" + i] === 1; }).length; h += '<div class="subjrow cardrow' + (skinOf(s.id) ? ' swrow' : '') + '"><span class="cr-t"><a href="#/cards/' + s.id + '">' + esc(s.title) + '</a>' + (s.id === "blp" && skinOf(s.id) && topicCards(s, "business-structures").length ? '<a class="swdeck" href="#/cards/blp/topic/business-structures">🍭 Sweet Shop cards: ' + topicCards(s, "business-structures").length + '</a>' : '') + '</span><span class="cr-ring">' + mring(kn, nk, "var(--good)", kn + " of " + nk + " core cards known") + '</span><span class="cr-x">' + (s.cards.length > nk ? '<a class="small" href="#/cards/' + s.id + '/extra">⭐ ' + (s.cards.length - nk) + ' optional extra</a>' : '') + '</span></div>'; });
   });
   return h + '</div>';
 };
@@ -83145,7 +83457,7 @@ document.addEventListener("click", function(e){
     case "qnext": case "qskip": QZ.i++; render(); break;
     case "qgo": if (QZ){ QZ.i = +el.getAttribute("data-n"); render(); } break;
     case "qprev": if (QZ && QZ.i > 0){ QZ.i--; render(); } break;
-    case "qagain": QZ = {title:QZ.title, items:shuffle(QZ.items.map(function(i){ return i.id; })).map(function(id){ return {id:id, order:shuffle([0,1,2,3,4])}; }), i:0, ans:[], back:QZ.back}; render(); break;
+    case "qagain": QZ = {title:QZ.title, items:shuffle(QZ.items.map(function(i){ return i.id; })).map(function(id){ return {id:id, order:shuffle([0,1,2,3,4])}; }), i:0, ans:[], back:QZ.back, tkey:QZ.tkey, src:QZ.src}; render(); break;
     case "qfpick": { if (!QF || QF.ans !== null) break; QF.ans = QF.ansA[QF.i] = +el.getAttribute("data-o"); var qx = QF.items[QF.i].x; if (QF.ans === 0) QF.score++; qfRecord(qx, QF.ans === 0); if (qx.s) layEgg(qx.s.id + "/" + qx.t);
       if (QF.ans === 0){ if (Date.now() - (QF.at || 0) >= READ_MS.quick) earn(COIN.quick, "qf|" + qx.id); else if (!earnedToday("qf|" + qx.id)) tooQuick(); }
       save(); render(); break; }
@@ -83256,7 +83568,7 @@ document.addEventListener("keydown", function(e){
   if (e.ctrlKey || e.metaKey || e.altKey) return;
   if (sandOpen && e.key === "Escape"){ sandOpen = false; render(); return; }
   var r = route()[0], k = e.key;
-  if (r === "play" && QZ && QZ.i < QZ.items.length){
+  if ((r === "play" || (r === "questions" && QZ && QZ.src === location.hash)) && QZ && QZ.i < QZ.items.length){
     var it = QZ.items[QZ.i];
     var p = "abcde".indexOf(k.toLowerCase());
     if (p >= 0 && !QZ.ans[QZ.i] && k.length === 1){ var b = $all(".opt")[p]; if (b) b.click(); }
@@ -83300,8 +83612,9 @@ try { if (/[?&#]monnie=1/.test(location.href)) localStorage.setItem("sqe_monnie"
 var THEMED_SUBJECTS = ["blp"], STOPSHORT = {blp:"Business Law"}, JTHEME = null;
 function stopTheme(r){
   if (!JTHEME) return null;
-  var key = /^(topic|cba|quick|boss|scene)$/.test(r[0]) && r[1] && r[2] ? r[1] + "/" + r[2] : null;
+  var key = /^(topic|cba|quick|boss|scene|questions)$/.test(r[0]) && r[1] && r[2] ? r[1] + "/" + r[2] : null;
   if (r[0] === "boss" && (r[1] === "fight" || r[1] === "result") && BOSS) key = BOSS.key;
+  if (r[0] === "play" && QZ && QZ.tkey) key = QZ.tkey; /* examqs: a topic's Model Q&A set takes its stop's look too */
   var x = key && TBYKEY[key]; if (!x || THEMED_SUBJECTS.indexOf(x.s.id) < 0) return null;
   return JTHEME(x.s.id, (STOPSHORT[x.s.id] || x.s.title) + " " + (x.s.topics.indexOf(x.t) + 1));
 }
@@ -83326,6 +83639,18 @@ document.addEventListener("click", function(e){
   if (g){ var b = g.getAttribute("data-b"), svg = g.ownerSVGElement || g.closest("svg") || g.closest(".mmlist"), pts = svg.querySelectorAll('.mmpt[data-b="' + b + '"]'), all = pts.length && [].every.call(pts, function(n){ return n.classList.contains("show"); });
     [].forEach.call(svg.querySelectorAll('[data-b="' + b + '"]'), function(n){ n.classList.toggle("show", !all); }); return; }
   var h = t.closest(".fwh") || t.closest(".fwstep"); if (h){ var st = h.classList.contains("fwstep") ? h : h.parentNode; if (st) st.classList.toggle("show"); }
+});
+
+/* framework self-test counter (19 Nov): "3 of 38 revealed" next to the button, counting the version on screen (desktop map or phone list) */
+document.addEventListener("click", function(e){
+  var t = e.target; if (!t || !t.closest || !t.closest(".mmtest")) return;
+  setTimeout(function(){
+    var c = document.querySelector(".fwcount"), w = document.querySelector(".fwwrap.mmtest"); if (!c || !w) return;
+    var mw = w.querySelector(".mmwrap"), root = mw && mw.offsetParent !== null ? mw : w.querySelector(".mmlist"); if (!root) return;
+    var all = root.querySelectorAll(".mmpt").length, sh = root.querySelectorAll(".mmpt.show").length;
+    c.textContent = sh >= all ? "🎉 All " + all + " revealed! Well done" : "🍬 " + sh + " of " + all + " revealed";
+    c.classList.toggle("done", sh >= all);
+  }, 0);
 });
 
 /* comic: shrink bubble text until it fits inside the drawn bubble */
