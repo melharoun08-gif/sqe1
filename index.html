@@ -1883,6 +1883,8 @@ body.podcar-on .startnext{bottom:110px}
 .stth .lrn-end::after{content:none}
 .stth .lrn-end .lrn-ico::before{content:var(--stm1);font-size:.6em;margin-right:.3em;vertical-align:.25em}
 .stth .lrn-end .lrn-ico::after{content:var(--stm2);font-size:.6em;margin-left:.3em;vertical-align:.25em}
+/* wide screens (19 Nov): centre the page column and let it grow, instead of a 1000px column stuck to the left with empty space on the right */
+@media (min-width:1300px){.main>.wrap{margin-left:auto!important;margin-right:auto!important;max-width:min(1240px,100%)!important}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
