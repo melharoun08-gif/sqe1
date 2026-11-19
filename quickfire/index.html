@@ -34,6 +34,10 @@ button{font:inherit;cursor:pointer;border:0;border-radius:14px}
 <script>
 var KEY='qf_layla_v1', S={};
 try{S=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){}
+// One-time wipe: clears test answers made before 4:40pm UK, 19 Nov 2026
+var WIPE_AT=Date.UTC(2026,10,19,16,40,0);
+if(S.epoch!==1&&Date.now()>=WIPE_AT){S={epoch:1,log:[]};try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+if(!S.log)S.log=[];
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
 var app=document.getElementById('app'), cur=null;
 function md(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')}
@@ -59,7 +63,7 @@ function start(i,k){
   var sb=QF[i],list,id,name;
   if(k<0){list=shuffle([].concat.apply([],sb.topics.map(function(t){return t.qs}))).slice(0,20);id='mix/'+sb.id;name=sb.name+' (mix)'}
   else{list=sb.topics[k].qs;id=sb.topics[k].id;name=sb.topics[k].name}
-  cur={id:id,si:i,ti:k,name:name,qs:shuffle(list).map(function(q){return{q:q.q,e:q.e,ans:q.o[0],o:shuffle(q.o)}}),n:0,score:0,streak:0};
+  cur={id:id,si:i,ti:k,name:name,qs:shuffle(list).map(function(q){return{id:q.id,q:q.q,e:q.e,ans:q.o[0],o:shuffle(q.o)}}),n:0,score:0,streak:0};
   show();
 }
 function show(){
@@ -76,6 +80,7 @@ function pick(k){
   var right=q.o[k]===q.ans;
   q.o.forEach(function(o,j){var b=document.getElementById('o'+j);b.disabled=true;if(o===q.ans)b.classList.add('ok');else if(j===k)b.classList.add('bad')});
   if(right){c.score++;c.streak++}else c.streak=0;
+  S.log.push({id:q.id,ok:right,picked:q.o[k],at:new Date().toISOString()});save();
   var last=c.n===c.qs.length-1;
   document.getElementById('fb').innerHTML='<div class="why '+(right?'ok':'bad')+'"><b>'+(right?'✅ Yes! ':'❌ Not quite. ')+'</b>'+md(q.e)+'</div><button class="go" onclick="next()">'+(last?'See my score':'Next question ›')+'</button>';
 }
