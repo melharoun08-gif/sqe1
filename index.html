@@ -1439,6 +1439,23 @@ details.hiw[open] .hiwtog::after{content:"Hide ▴"}
 .voucher .vbig{font-family:'Chewy',cursive;font-size:24px;margin:8px 0}
 .voucher .vdate{font-weight:700}
 .voucher .vsend{background:#fff;border:2px solid #10294A;border-radius:10px;padding:8px}
+/* cartoon panels with the caption right under each picture */
+.pgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:10px 0}
+.pgrid .pgh{grid-column:1/-1;margin:8px 0 0;font-size:16px}
+.pan1{margin:0;min-width:0;background:var(--surface,#fff);border:2px solid #1D2433;border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
+.pan1 img{display:block;width:100%;height:auto}
+.pan1 figcaption{padding:8px 10px;font-size:14.5px;line-height:1.45;border-top:2px solid #1D2433;background:#FFF8DC;color:#1D2433;flex:1}
+.pan1 .cn{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#1D2433;color:#fff;font-size:12px;margin-right:6px;vertical-align:1px}
+@media (max-width:900px){.pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.pgrid{grid-template-columns:1fr}}
+/* notes: each section in its own colour (heading and bold key terms) */
+.notes .nsec h3,.nsec>h3{color:var(--sc,inherit)}
+.nsec strong,.nsec b:not(.cn){color:var(--sc,inherit)}
+.nsec[data-sec="1"]{--sc:#C62828}.nsec[data-sec="2"]{--sc:#1F5FBF}.nsec[data-sec="3"]{--sc:#2E7D32}.nsec[data-sec="4"]{--sc:#7B3FB5}.nsec[data-sec="5"]{--sc:#B45309}.nsec[data-sec="6"]{--sc:#00796B}.nsec[data-sec="7"]{--sc:#C62828}.nsec[data-sec="8"]{--sc:#1F5FBF}.nsec[data-sec="9"]{--sc:#2E7D32}.nsec[data-sec="10"]{--sc:#7B3FB5}.nsec[data-sec="11"]{--sc:#B45309}.nsec[data-sec="12"]{--sc:#00796B}.nsec[data-sec="13"]{--sc:#C62828}.nsec[data-sec="14"]{--sc:#1F5FBF}.nsec[data-sec="15"]{--sc:#2E7D32}.nsec[data-sec="16"]{--sc:#7B3FB5}.nsec[data-sec="17"]{--sc:#B45309}.nsec[data-sec="18"]{--sc:#00796B}.nsec[data-sec="19"]{--sc:#C62828}.nsec[data-sec="20"]{--sc:#1F5FBF}.nsec[data-sec="21"]{--sc:#2E7D32}.nsec[data-sec="22"]{--sc:#7B3FB5}.nsec[data-sec="23"]{--sc:#B45309}.nsec[data-sec="24"]{--sc:#00796B}.nsec[data-sec="25"]{--sc:#C62828}.nsec[data-sec="26"]{--sc:#1F5FBF}.nsec[data-sec="27"]{--sc:#2E7D32}.nsec[data-sec="28"]{--sc:#7B3FB5}.nsec[data-sec="29"]{--sc:#B45309}.nsec[data-sec="30"]{--sc:#00796B}.nsec[data-sec="31"]{--sc:#C62828}.nsec[data-sec="32"]{--sc:#1F5FBF}.nsec[data-sec="33"]{--sc:#2E7D32}.nsec[data-sec="34"]{--sc:#7B3FB5}.nsec[data-sec="35"]{--sc:#B45309}.nsec[data-sec="36"]{--sc:#00796B}.nsec[data-sec="37"]{--sc:#C62828}.nsec[data-sec="38"]{--sc:#1F5FBF}.nsec[data-sec="39"]{--sc:#2E7D32}.nsec[data-sec="40"]{--sc:#7B3FB5}.nsec[data-sec="41"]{--sc:#B45309}.nsec[data-sec="42"]{--sc:#00796B}.nsec[data-sec="43"]{--sc:#C62828}.nsec[data-sec="44"]{--sc:#1F5FBF}.nsec[data-sec="45"]{--sc:#2E7D32}.nsec[data-sec="46"]{--sc:#7B3FB5}.nsec[data-sec="47"]{--sc:#B45309}.nsec[data-sec="48"]{--sc:#00796B}.nsec[data-sec="49"]{--sc:#C62828}.nsec[data-sec="50"]{--sc:#1F5FBF}.nsec[data-sec="51"]{--sc:#2E7D32}.nsec[data-sec="52"]{--sc:#7B3FB5}.nsec[data-sec="53"]{--sc:#B45309}.nsec[data-sec="54"]{--sc:#00796B}.nsec[data-sec="55"]{--sc:#C62828}.nsec[data-sec="56"]{--sc:#1F5FBF}.nsec[data-sec="57"]{--sc:#2E7D32}.nsec[data-sec="58"]{--sc:#7B3FB5}.nsec[data-sec="59"]{--sc:#B45309}.nsec[data-sec="60"]{--sc:#00796B}
+.nsec.nsrc{--sc:inherit!important}
+.pan1 img{border:0;border-radius:0}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .nsec[data-sec="1"]{--sc:#FF8A80}:root:not([data-theme="light"]) .nsec[data-sec="2"]{--sc:#8AB4FF}:root:not([data-theme="light"]) .nsec[data-sec="3"]{--sc:#7FD68A}:root:not([data-theme="light"]) .nsec[data-sec="4"]{--sc:#C9A2F5}:root:not([data-theme="light"]) .nsec[data-sec="5"]{--sc:#FFB866}:root:not([data-theme="light"]) .nsec[data-sec="6"]{--sc:#5FD3C3}:root:not([data-theme="light"]) .nsec[data-sec="7"]{--sc:#FF8A80}:root:not([data-theme="light"]) .nsec[data-sec="8"]{--sc:#8AB4FF}:root:not([data-theme="light"]) .nsec[data-sec="9"]{--sc:#7FD68A}:root:not([data-theme="light"]) .nsec[data-sec="10"]{--sc:#C9A2F5}:root:not([data-theme="light"]) .nsec[data-sec="11"]{--sc:#FFB866}:root:not([data-theme="light"]) .nsec[data-sec="12"]{--sc:#5FD3C3}:root:not([data-theme="light"]) .nsec[data-sec="13"]{--sc:#FF8A80}:root:not([data-theme="light"]) .nsec[data-sec="14"]{--sc:#8AB4FF}:root:not([data-theme="light"]) .nsec[data-sec="15"]{--sc:#7FD68A}:root:not([data-theme="light"]) .nsec[data-sec="16"]{--sc:#C9A2F5}:root:not([data-theme="light"]) .nsec[data-sec="17"]{--sc:#FFB866}:root:not([data-theme="light"]) .nsec[data-sec="18"]{--sc:#5FD3C3}:root:not([data-theme="light"]) .nsec[data-sec="19"]{--sc:#FF8A80}:root:not([data-theme="light"]) .nsec[data-sec="20"]{--sc:#8AB4FF}:root:not([data-theme="light"]) .nsec[data-sec="21"]{--sc:#7FD68A}:root:not([data-theme="light"]) .nsec[data-sec="22"]{--sc:#C9A2F5}:root:not([data-theme="light"]) .nsec[data-sec="23"]{--sc:#FFB866}:root:not([data-theme="light"]) .nsec[data-sec="24"]{--sc:#5FD3C3}:root:not([data-theme="light"]) .nsec[data-sec="25"]{--sc:#FF8A80}:root:not([data-theme="light"]) .nsec[data-sec="26"]{--sc:#8AB4FF}:root:not([data-theme="light"]) .nsec[data-sec="27"]{--sc:#7FD68A}:root:not([data-theme="light"]) .nsec[data-sec="28"]{--sc:#C9A2F5}:root:not([data-theme="light"]) .nsec[data-sec="29"]{--sc:#FFB866}:root:not([data-theme="light"]) .nsec[data-sec="30"]{--sc:#5FD3C3}:root:not([data-theme="light"]) .nsec[data-sec="31"]{--sc:#FF8A80}:root:not([data-theme="light"]) .nsec[data-sec="32"]{--sc:#8AB4FF}:root:not([data-theme="light"]) .nsec[data-sec="33"]{--sc:#7FD68A}:root:not([data-theme="light"]) .nsec[data-sec="34"]{--sc:#C9A2F5}:root:not([data-theme="light"]) .nsec[data-sec="35"]{--sc:#FFB866}:root:not([data-theme="light"]) .nsec[data-sec="36"]{--sc:#5FD3C3}:root:not([data-theme="light"]) .nsec[data-sec="37"]{--sc:#FF8A80}:root:not([data-theme="light"]) .nsec[data-sec="38"]{--sc:#8AB4FF}:root:not([data-theme="light"]) .nsec[data-sec="39"]{--sc:#7FD68A}:root:not([data-theme="light"]) .nsec[data-sec="40"]{--sc:#C9A2F5}:root:not([data-theme="light"]) .nsec[data-sec="41"]{--sc:#FFB866}:root:not([data-theme="light"]) .nsec[data-sec="42"]{--sc:#5FD3C3}:root:not([data-theme="light"]) .nsec[data-sec="43"]{--sc:#FF8A80}:root:not([data-theme="light"]) .nsec[data-sec="44"]{--sc:#8AB4FF}:root:not([data-theme="light"]) .nsec[data-sec="45"]{--sc:#7FD68A}:root:not([data-theme="light"]) .nsec[data-sec="46"]{--sc:#C9A2F5}:root:not([data-theme="light"]) .nsec[data-sec="47"]{--sc:#FFB866}:root:not([data-theme="light"]) .nsec[data-sec="48"]{--sc:#5FD3C3}:root:not([data-theme="light"]) .nsec[data-sec="49"]{--sc:#FF8A80}:root:not([data-theme="light"]) .nsec[data-sec="50"]{--sc:#8AB4FF}:root:not([data-theme="light"]) .nsec[data-sec="51"]{--sc:#7FD68A}:root:not([data-theme="light"]) .nsec[data-sec="52"]{--sc:#C9A2F5}:root:not([data-theme="light"]) .nsec[data-sec="53"]{--sc:#FFB866}:root:not([data-theme="light"]) .nsec[data-sec="54"]{--sc:#5FD3C3}:root:not([data-theme="light"]) .nsec[data-sec="55"]{--sc:#FF8A80}:root:not([data-theme="light"]) .nsec[data-sec="56"]{--sc:#8AB4FF}:root:not([data-theme="light"]) .nsec[data-sec="57"]{--sc:#7FD68A}:root:not([data-theme="light"]) .nsec[data-sec="58"]{--sc:#C9A2F5}:root:not([data-theme="light"]) .nsec[data-sec="59"]{--sc:#FFB866}:root:not([data-theme="light"]) .nsec[data-sec="60"]{--sc:#5FD3C3}}:root[data-theme="dark"] .nsec[data-sec="1"]{--sc:#FF8A80}:root[data-theme="dark"] .nsec[data-sec="2"]{--sc:#8AB4FF}:root[data-theme="dark"] .nsec[data-sec="3"]{--sc:#7FD68A}:root[data-theme="dark"] .nsec[data-sec="4"]{--sc:#C9A2F5}:root[data-theme="dark"] .nsec[data-sec="5"]{--sc:#FFB866}:root[data-theme="dark"] .nsec[data-sec="6"]{--sc:#5FD3C3}:root[data-theme="dark"] .nsec[data-sec="7"]{--sc:#FF8A80}:root[data-theme="dark"] .nsec[data-sec="8"]{--sc:#8AB4FF}:root[data-theme="dark"] .nsec[data-sec="9"]{--sc:#7FD68A}:root[data-theme="dark"] .nsec[data-sec="10"]{--sc:#C9A2F5}:root[data-theme="dark"] .nsec[data-sec="11"]{--sc:#FFB866}:root[data-theme="dark"] .nsec[data-sec="12"]{--sc:#5FD3C3}:root[data-theme="dark"] .nsec[data-sec="13"]{--sc:#FF8A80}:root[data-theme="dark"] .nsec[data-sec="14"]{--sc:#8AB4FF}:root[data-theme="dark"] .nsec[data-sec="15"]{--sc:#7FD68A}:root[data-theme="dark"] .nsec[data-sec="16"]{--sc:#C9A2F5}:root[data-theme="dark"] .nsec[data-sec="17"]{--sc:#FFB866}:root[data-theme="dark"] .nsec[data-sec="18"]{--sc:#5FD3C3}:root[data-theme="dark"] .nsec[data-sec="19"]{--sc:#FF8A80}:root[data-theme="dark"] .nsec[data-sec="20"]{--sc:#8AB4FF}:root[data-theme="dark"] .nsec[data-sec="21"]{--sc:#7FD68A}:root[data-theme="dark"] .nsec[data-sec="22"]{--sc:#C9A2F5}:root[data-theme="dark"] .nsec[data-sec="23"]{--sc:#FFB866}:root[data-theme="dark"] .nsec[data-sec="24"]{--sc:#5FD3C3}:root[data-theme="dark"] .nsec[data-sec="25"]{--sc:#FF8A80}:root[data-theme="dark"] .nsec[data-sec="26"]{--sc:#8AB4FF}:root[data-theme="dark"] .nsec[data-sec="27"]{--sc:#7FD68A}:root[data-theme="dark"] .nsec[data-sec="28"]{--sc:#C9A2F5}:root[data-theme="dark"] .nsec[data-sec="29"]{--sc:#FFB866}:root[data-theme="dark"] .nsec[data-sec="30"]{--sc:#5FD3C3}:root[data-theme="dark"] .nsec[data-sec="31"]{--sc:#FF8A80}:root[data-theme="dark"] .nsec[data-sec="32"]{--sc:#8AB4FF}:root[data-theme="dark"] .nsec[data-sec="33"]{--sc:#7FD68A}:root[data-theme="dark"] .nsec[data-sec="34"]{--sc:#C9A2F5}:root[data-theme="dark"] .nsec[data-sec="35"]{--sc:#FFB866}:root[data-theme="dark"] .nsec[data-sec="36"]{--sc:#5FD3C3}:root[data-theme="dark"] .nsec[data-sec="37"]{--sc:#FF8A80}:root[data-theme="dark"] .nsec[data-sec="38"]{--sc:#8AB4FF}:root[data-theme="dark"] .nsec[data-sec="39"]{--sc:#7FD68A}:root[data-theme="dark"] .nsec[data-sec="40"]{--sc:#C9A2F5}:root[data-theme="dark"] .nsec[data-sec="41"]{--sc:#FFB866}:root[data-theme="dark"] .nsec[data-sec="42"]{--sc:#5FD3C3}:root[data-theme="dark"] .nsec[data-sec="43"]{--sc:#FF8A80}:root[data-theme="dark"] .nsec[data-sec="44"]{--sc:#8AB4FF}:root[data-theme="dark"] .nsec[data-sec="45"]{--sc:#7FD68A}:root[data-theme="dark"] .nsec[data-sec="46"]{--sc:#C9A2F5}:root[data-theme="dark"] .nsec[data-sec="47"]{--sc:#FFB866}:root[data-theme="dark"] .nsec[data-sec="48"]{--sc:#5FD3C3}:root[data-theme="dark"] .nsec[data-sec="49"]{--sc:#FF8A80}:root[data-theme="dark"] .nsec[data-sec="50"]{--sc:#8AB4FF}:root[data-theme="dark"] .nsec[data-sec="51"]{--sc:#7FD68A}:root[data-theme="dark"] .nsec[data-sec="52"]{--sc:#C9A2F5}:root[data-theme="dark"] .nsec[data-sec="53"]{--sc:#FFB866}:root[data-theme="dark"] .nsec[data-sec="54"]{--sc:#5FD3C3}:root[data-theme="dark"] .nsec[data-sec="55"]{--sc:#FF8A80}:root[data-theme="dark"] .nsec[data-sec="56"]{--sc:#8AB4FF}:root[data-theme="dark"] .nsec[data-sec="57"]{--sc:#7FD68A}:root[data-theme="dark"] .nsec[data-sec="58"]{--sc:#C9A2F5}:root[data-theme="dark"] .nsec[data-sec="59"]{--sc:#FFB866}:root[data-theme="dark"] .nsec[data-sec="60"]{--sc:#5FD3C3}
+.pan1 figcaption{color:#1D2433}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -75725,9 +75742,11 @@ function presentStreak(){
   var p = presS(), from = p.from || "", n = 0, d = new Date(); d.setHours(0,0,0,0);
   for (var i = 0; i < 90 && n < PRESENT_STEPS; i++, d.setDate(d.getDate() - 1)){
     var k = ymd(d); if (from && k <= from) break;
-    var g = goalMins(d), m = minsOn(k) + (i === 0 ? runningMins() : 0);
+    var g = goalMins(d), m = minsOn(k) + (i === 0 ? runningMins() : 0), dc = {n:0, d:0};
     if (!g){ continue; }
-    if (m >= g) n++;
+    try { dc = dayCount(k); } catch(e){}
+    /* a day counts if she hit her study time OR ticked off that day's whole to-do list (CBA levels tick their topic's steps) */
+    if (m >= g || (dc.n && dc.d >= dc.n)) n++;
     else if (i === 0) continue;
     else break;
   }
@@ -76575,7 +76594,7 @@ function cbaAdvance(){
       cbaPay(CB.firstDone ? 20 : 10);
       var rr = trec(k) || {n:0, conf:null, at:0}; if (!rr.at || ymd(new Date(rr.at)) !== ymd()) rr.n++; if (rr.conf === null || rr.conf === undefined) rr.conf = 0.5; rr.at = Date.now(); S.done[k] = rr;
       if (!c.eggs[k]) c.eggs[k] = Date.now();
-      S.todo = S.todo || {}; S.todo[k + "|notes"] = S.todo[k + "|notes"] || Date.now();
+      S.todo = S.todo || {}; S.todo[k + "|notes"] = S.todo[k + "|notes"] || Date.now(); S.todo[k + "|quick"] = S.todo[k + "|quick"] || Date.now();
     }
   }
   save();
@@ -76589,7 +76608,7 @@ function planSeq(){
   var f1 = TOPICS.filter(function(x){ return x.s.session.indexOf("f1") === 0; }), et = TOPICS.filter(function(x){ return x.s.session === "all"; }), f2 = TOPICS.filter(function(x){ return x.s.session.indexOf("f2") === 0; });
   return f1.concat(et, f2);
 }
-var READ_WPM = 133; // planning target; keeping each topic's testing steps together on one day adds a little, so the real pace comes out at about 140 words a minute
+var READ_WPM = 110; // planning target; keeping each topic's testing steps together on one day adds a little, so the real pace comes out at about 140 words a minute
 function nWords(t){ return String(t.notes || "").split(/\s+/).length; }
 function buildPlan(){
   var st = S.settings, key = JSON.stringify([st.weekday, st.weekend, st.daysOff, st.exam1, st.exam2]);
@@ -76965,14 +76984,24 @@ function capsHTML(pg){
   pg.caps.forEach(function(c){ if (c.h && c.h !== last){ h += '<h4>' + esc(c.h) + '</h4>'; last = c.h; } h += '<p><b class="cn">' + c.n + '</b>' + inl(c.c) + '</p>'; });
   return h + '</div>';
 }
-function cpageHTML(pg, i){ return '<figure class="cpage inl"><img src="' + esc(pg.img) + '" alt="' + esc(pg.alt || ("Cartoon page " + (i + 1))) + '" loading="lazy">' + capsHTML(pg) + '</figure>'; }
+/* a 9-panel page with separate captions: show each picture with its own caption right underneath */
+function hasPanels(pg){ return pg.caps && pg.caps.length === 9 && /\/blp-business-structures-w\d\.webp$/.test(pg.img); }
+function panelsHTML(pg){
+  var base = pg.img.replace(/^img\//, "img/panels/").replace(/\.webp$/, ""), h = '<div class="pgrid">', last = null;
+  pg.caps.forEach(function(c){
+    if (c.h && c.h !== last){ h += '<h4 class="pgh">' + esc(c.h) + '</h4>'; last = c.h; }
+    h += '<figure class="pan1"><img src="' + base + '-' + c.n + '.webp" alt="" loading="lazy"><figcaption><b class="cn">' + c.n + '</b>' + inl(c.c) + '</figcaption></figure>';
+  });
+  return h + '</div>';
+}
+function cpageHTML(pg, i){ if (hasPanels(pg)) return '<div class="cpage inl">' + panelsHTML(pg) + '</div>'; return '<figure class="cpage inl"><img src="' + esc(pg.img) + '" alt="' + esc(pg.alt || ("Cartoon page " + (i + 1))) + '" loading="lazy">' + capsHTML(pg) + '</figure>'; }
 function notesWithCartoons(src, ct){
   var pages = (ct && ct.pages || []).filter(function(pg){ return pg.after; });
   var lines = String(src).split("\n"), chunks = [[]], heads = [""];
   lines.forEach(function(l){ var m = l.match(/^##\s+(.*)$/); if (m){ chunks.push([l]); heads.push(m[1].trim().toLowerCase()); } else chunks[chunks.length - 1].push(l); });
   var used = {}, out = "";
   chunks.forEach(function(c, i){
-    out += '<section class="nsec" data-sec="' + i + '">' + md(c.join("\n")) + '</section>';
+    out += '<section class="nsec' + (heads[i] === "sources" ? ' nsrc' : '') + '" data-sec="' + i + '">' + md(c.join("\n")) + '</section>';
     pages.forEach(function(pg, j){ if (used[j]) return; var a = String(pg.after).toLowerCase(); if (heads[i] && heads[i].indexOf(a) === 0){ var last = true; for (var k = i + 1; k < heads.length; k++) if (heads[k].indexOf(a) === 0) last = false; if (last){ out += cpageHTML(pg, j); used[j] = 1; } } });
   });
   pages.forEach(function(pg, j){ if (!used[j]) out += cpageHTML(pg, j); });
@@ -76981,7 +77010,7 @@ function notesWithCartoons(src, ct){
 function cartoon(c){
   if (c.pages){
     var hp = (c.intro ? '<p class="muted small">' + esc(c.intro) + '</p>' : '') + '<div class="comicpages">';
-    c.pages.forEach(function(pg, i){ hp += '<figure class="cpage"><img src="' + esc(pg.img) + '" alt="' + esc(pg.alt || ("Cartoon page " + (i + 1))) + '" loading="lazy">' + capsHTML(pg) + (pg.note ? '<figcaption>' + inl(pg.note) + '</figcaption>' : '') + '</figure>'; });
+    c.pages.forEach(function(pg, i){ if (hasPanels(pg)){ hp += '<div class="cpage">' + panelsHTML(pg) + (pg.note ? '<p class="small">' + inl(pg.note) + '</p>' : '') + '</div>'; return; } hp += '<figure class="cpage"><img src="' + esc(pg.img) + '" alt="' + esc(pg.alt || ("Cartoon page " + (i + 1))) + '" loading="lazy">' + capsHTML(pg) + (pg.note ? '<figcaption>' + inl(pg.note) + '</figcaption>' : '') + '</figure>'; });
     return hp + '</div>';
   }
   var h = '<p class="muted small">' + esc(c.intro || "") + '</p><div class="comic">';
