@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261119184911";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261119185832";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -1887,7 +1887,13 @@ body.podcar-on .startnext{bottom:110px}
 /* wide screens (19 Nov): centre the page column and let it grow, instead of a 1000px column stuck to the left with empty space on the right */
 @media (min-width:1300px){.main>.wrap{margin-left:auto!important;margin-right:auto!important;max-width:min(1240px,100%)!important}}
 /* compact banner (all pages except Home): keep cloud-Layla clear of the progress ring above her (interim until the new full-body drawing) */
-.head.compact .stlayla{transform-box:fill-box;transform-origin:50% 90%;transform:scale(.54)}
+/* compact banner, laptop/desktop (20 Nov): Remember card moves up into the sky beside the title, so the present clouds get the room below the coin bag and Layla is drawn full size (no scale-down) */
+@media (min-width:721px){
+.head.compact .kw{position:absolute;top:10px;left:330px;width:360px;max-width:360px;margin:0;z-index:2}
+.head.compact .streak{margin-top:74px}
+.head.compact .streak .stsvg{width:270px}
+}
+@media (min-width:721px) and (max-width:1340px){.head.compact .streak .stline{max-width:190px!important}}
 @media (max-width:720px){.head:not(.compact) .stlayla{transform-box:fill-box;transform-origin:50% 90%;transform:scale(.86)}}
 @media (max-width:640px){.lrn-tbl td{display:block!important;position:relative;padding-left:calc(45% + 22px)!important}.lrn-tbl td::before{position:absolute;left:12px;top:10px;width:45%}}
 </style></head><body>
@@ -77480,7 +77486,8 @@ window.SQE_PODCASTS = {
  "blp/partnerships": {file: "podcasts/blp-06-partnerships.m4a", mins: 24},
  "blp/equity-finance": {file: "podcasts/blp-07-equity-finance.m4a", mins: 21},
  "blp/insolvency-clawback-priority": {file: "podcasts/blp-11-insolvency-clawback-priority.m4a", mins: 26},
- "blp/personal-insolvency": {file: "podcasts/blp-12-personal-insolvency.m4a", mins: 26}
+ "blp/personal-insolvency": {file: "podcasts/blp-12-personal-insolvency.m4a", mins: 26},
+ "blp/debt-security": {file: "podcasts/blp-08-debt-security.m4a", mins: 30}
 };
 
 ;
