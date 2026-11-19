@@ -1885,6 +1885,8 @@ body.podcar-on .startnext{bottom:110px}
 .stth .lrn-end .lrn-ico::after{content:var(--stm2);font-size:.6em;margin-left:.3em;vertical-align:.25em}
 /* wide screens (19 Nov): centre the page column and let it grow, instead of a 1000px column stuck to the left with empty space on the right */
 @media (min-width:1300px){.main>.wrap{margin-left:auto!important;margin-right:auto!important;max-width:min(1240px,100%)!important}}
+/* compact banner (all pages except Home): keep cloud-Layla clear of the progress ring above her (interim until the new full-body drawing) */
+.head.compact .stlayla{transform-box:fill-box;transform-origin:50% 100%;transform:scale(.82)}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -19269,7 +19271,7 @@ window.SQE_CARDS["blp"] = [["Which business structures have separate legal perso
 ["What is the effect of a Part A1 moratorium?","No enforcement of security, repossession, forfeiture by re-entry, proceedings or winding-up petition without **court permission**. A **payment holiday** for most pre-moratorium debts, but debts falling due **during** it must be paid.","corporate-insolvency"],
 ["What is a CVA?","A **binding agreement between the company and its creditors** to pay debts in part, over time, or both, so it can keep trading. Proposed by the **directors** (or administrator/liquidator).","corporate-insolvency"],
 ["What is the procedure for a CVA?","An IP **nominee** reports on the proposal. **Creditors** decide by a decision procedure; **members** at a meeting. The nominee becomes **supervisor**.","corporate-insolvency"],
-["What are the CVA approval thresholds?","Creditors: at least **75% in value** of those voting, but fails if more than **50% in value of unconnected creditors** voting oppose it. Members: more than **50% in value**. If they disagree, the **creditors' decision prevails**.","corporate-insolvency"],
+["What are the CVA approval thresholds?","Creditors: at least **75% in value** of those voting, but fails if more than **50% of unconnected creditors** voting oppose it. Members: more than **50% in value**. If they disagree, the **creditors' decision prevails**.","corporate-insolvency"],
 ["Whom does an approved CVA bind?","**Every unsecured creditor entitled to vote**, whether or not they voted or received notice (**s.5**).","corporate-insolvency"],
 ["What can a CVA not do without the creditor's consent?","Affect a **secured creditor's** right to enforce, or alter the priority of **preferential debts** (**s.4(3)-(4)**).","corporate-insolvency"],
 ["Does a CVA give an automatic moratorium?","**No**, unless combined with a **Part A1 moratorium** or administration.","corporate-insolvency"],
@@ -20777,7 +20779,7 @@ window.SQE_CARDS["dr"] = [["What are the three main routes for resolving a civil
 ["Can a claim be brought against a company in compulsory liquidation?","Only with the **court's permission**.","dr-parties-law"],
 ["What happens to a bankrupt's claims?","They pass to the **trustee in bankruptcy**, except purely personal ones. Suing a bankrupt over a provable debt needs **court permission**.","dr-parties-law"],
 ["What is joint and several liability?","Each defendant is liable for the **whole** loss. The claimant can sue **any or all** and recover in full from one, who seeks **contribution** from the others.","dr-parties-law"],
-["Do the Brussels rules on jurisdiction apply to English proceedings started on or after 1 January 2021?","**No**, not to proceedings started on or after **1 January 2021**.","dr-parties-law"],
+["Do the Brussels rules apply to English proceedings now?","**No**, not to proceedings started on or after **1 January 2021**.","dr-parties-law"],
 ["When does the English court have jurisdiction at common law?","The defendant is **served while present** in England and Wales. Or **submits** to the jurisdiction. Or is **served out** of the jurisdiction with or without permission under **CPR 6**.","dr-parties-law"],
 ["What is forum non conveniens?","The court may **decline** jurisdiction if another country's courts are **clearly more appropriate**.","dr-parties-law"],
 ["What does the 2005 Hague Choice of Court Convention require?","Contracting states, including **EU states**, must respect an **exclusive** choice of court clause and enforce the resulting judgment.","dr-parties-law"],
@@ -22143,7 +22145,7 @@ window.SQE_CARDS["ls"] = [["What does the Legal Services Act 2007 do?","It sets 
 ["What is the defence to the s.23 offence?","Taking **all reasonable precautions** and exercising **all due diligence**.","financial-services"],
 ["Which bodies authorise financial firms?","The **FCA** (conduct; most firms). The **PRA** (banks, insurers, major investment firms).","financial-services"],
 ["What are the four questions for whether an activity is regulated?","Is there a **specified investment**? A **specified activity**? Is it **by way of business**? Does an **exclusion** apply, and if not, can **Part 20** be used?","financial-services"],
-["Which kinds of investment are specified investments under the Regulated Activities Order?","**Shares**; **debentures, bonds, gilts**; units in **collective investment schemes**. Options, futures, CFDs; **contracts of insurance** (incl. **ATE**). **Deposits**; regulated **mortgage** contracts; funeral plans; credit agreements.","financial-services"],
+["Name specified investments.","**Shares**; **debentures, bonds, gilts**; units in **collective investment schemes**. Options, futures, CFDs; **contracts of insurance** (incl. **ATE**). **Deposits**; regulated **mortgage** contracts; funeral plans; credit agreements.","financial-services"],
 ["What is not a specified investment?","**Land and buildings**. **Cash**. Physical goods (gold, art). Ordinary contracts for goods and services.","financial-services"],
 ["Is selling a client's house regulated under FSMA?","**No**: land is not a specified investment. Arranging the client's **mortgage** could be.","financial-services"],
 ["Name the specified activities.","**Dealing** as principal or agent; **arranging** deals; **managing** investments (with discretion). **Safeguarding and administering**; **advising** on investments. Insurance distribution, consumer credit and mortgage activities.","financial-services"],
@@ -22195,7 +22197,7 @@ window.SQE_CARDS["ls"] = [["What does the Legal Services Act 2007 do?","It sets 
 ["Which family cases are in scope for legal aid?","Cases with evidence of **domestic abuse** or **child abuse** (for the victim). **Care proceedings**.","funding-legal-aid-tpf-lei"],
 ["Name other areas in scope for legal aid.","**Housing** (possession, homelessness, serious disrepair). **Debt** where the **home is at risk**. **Discrimination**. **Asylum**. **Judicial review**, mental health, community care.","funding-legal-aid-tpf-lei"],
 ["When is clinical negligence in scope for legal aid?","Only for infants with **birth-related brain injury** (in the womb or within **8 weeks** of birth).","funding-legal-aid-tpf-lei"],
-["Which areas of civil work are generally out of scope for legal aid?","Private family disputes **without abuse** evidence. Most **personal injury**. Most **contract** and **employment** claims. Most non-asylum immigration; welfare benefits advice.","funding-legal-aid-tpf-lei"],
+["Name areas out of scope for legal aid.","Private family disputes **without abuse** evidence. Most **personal injury**. Most **contract** and **employment** claims. Most non-asylum immigration; welfare benefits advice.","funding-legal-aid-tpf-lei"],
 ["What is exceptional case funding?","Funding for an out-of-scope case (LASPO **s.10**). Where refusal would **breach ECHR rights** (e.g. Article 6) or risk a breach.","funding-legal-aid-tpf-lei"],
 ["What does the legal aid means test look at?","**Gross income**. **Disposable income**. **Disposable capital**.","funding-legal-aid-tpf-lei"],
 ["What is passporting?","Clients on certain means-tested benefits (e.g. **Universal Credit**) **automatically pass the income test**. Their **capital** is still assessed.","funding-legal-aid-tpf-lei"],
@@ -23135,7 +23137,7 @@ window.SQE_CARDS["contract"] = [["What five ingredients does a contract need?","
 ["What reasonable steps must the bank take?","Contact the wife **directly** and explain it needs a solicitor's confirmation. She **nominates a solicitor**. Give the solicitor the **financial information**. Obtain **written confirmation** she was advised.","mistake-duress-ui-illegality"],
 ["What must the wife's solicitor do?","Meet her **face to face**, **without the husband**. Explain the documents and risks (she could **lose her home**). Explain she has a **choice** and check she wishes to proceed.","mistake-duress-ui-illegality"],
 ["What if the bank took the reasonable steps but the advice was poor?","The bank can **enforce** the charge. The wife's remedy is against her **solicitor**.","mistake-duress-ui-illegality"],
-["What is the consequence if a bank put on inquiry fails to take the reasonable steps?","It has **constructive notice** of any proven undue influence or misrepresentation. The charge can be **set aside**.","mistake-duress-ui-illegality"],
+["What if the bank failed to take the steps?","It has **constructive notice** of any proven undue influence or misrepresentation. The charge can be **set aside**.","mistake-duress-ui-illegality"],
 ["Do the bank inquiry principles apply beyond spouses?","**Yes**, to other **non-commercial** relationships, e.g. a junior employee guaranteeing her employer's debts.","mistake-duress-ui-illegality"],
 ["What is the test for illegality?","Would enforcing the claim be **contrary to the public interest** by harming the **integrity of the legal system** (Patel v Mirza)?","mistake-duress-ui-illegality"],
 ["What is the trio of considerations for illegality?","The **purpose** of the prohibition broken. Any **other public policy**. Whether denying the claim is **proportionate**.","mistake-duress-ui-illegality"],
@@ -25732,7 +25734,7 @@ window.SQE_CARDS["legalsys"] = [
   "crown-executive-prerogative"
  ],
  [
-  "What are the main prerogative powers?",
+  "Give examples of prerogative powers.",
   "**Treaties** and foreign affairs. **Armed forces**. **Passports**. **Mercy**. Most **honours**. Appointing **ministers**. **Proroguing** Parliament. **Keeping the peace**.",
   "crown-executive-prerogative"
  ],
@@ -32018,7 +32020,7 @@ window.SQE_CARDS["crimlaw"] = [
  ["Is recklessness as to a circumstance enough for an attempt?","**Yes**, where it suffices for the full offence, provided D **intends** the conduct and result. For example, recklessness as to endangering life in attempted aggravated arson.","attempts"],
  ["Is conditional intention enough for an attempt?","**Yes**, if charged as attempting to steal **some or all of the contents**, not specific items.","attempts"],
  ["Is impossibility a defence to an attempt?","**No.** D is judged on the facts **as D believed them to be** (s.1(2)-(3)). Physical and factual impossibility are no defence.","attempts"],
- ["When, if ever, is impossibility a defence to an attempt?","Only where D's intended act would **not be a crime even if D's beliefs were true** (an **imaginary crime**).","attempts"],
+ ["When is impossibility a defence?","Only where D's intended act would **not be a crime even if D's beliefs were true** (an **imaginary crime**).","attempts"],
  ["Can D who abandons the plan after crossing the line escape liability for the attempt?","**No.** There is **no defence of withdrawal**. It is relevant only to **sentence**.","attempts"]
 ];
 
@@ -33072,7 +33074,7 @@ window.SQE_CARDS["ethics"] = [
   "trust-fairness-undertakings"
  ],
  [
-  "When writing to an unrepresented opponent, what may a solicitor do and what must they not do?",
+  "Writing to an unrepresented opponent: what is allowed?",
   "You may firmly assert the client's **genuine legal position**. You must **not** exaggerate the law, threaten unavailable consequences, or exploit their ignorance. You need not advise them, but nothing may mislead.",
   "trust-fairness-undertakings"
  ],
@@ -33272,7 +33274,7 @@ window.SQE_CARDS["ethics"] = [
   "duty-to-court"
  ],
  [
-  "What may a solicitor do when preparing a witness, and what would be improper coaching?",
+  "Preparing a witness v coaching: what is the line?",
   "You **may** explain procedure, cross-examination and the court layout. You must **not** tell them what to say, **rehearse** their evidence, or discuss **other witnesses'** evidence (para 2.2).",
   "duty-to-court"
  ],
@@ -34182,7 +34184,7 @@ window.SQE_CARDS["ethics"] = [
   "firms-compliance-protections"
  ],
  [
-  "Which client protection applies to each type of loss: negligence, dishonesty or theft, poor service, and negligence claims after run-off?",
+  "Which protection fits which loss?",
   "**Negligence**: **PII**. **Theft or dishonesty** with no other recovery: **Compensation Fund**. **Poor service**: **Legal Ombudsman**. Negligence claim after six-year run-off: **SIF**.",
   "firms-compliance-protections"
  ],
