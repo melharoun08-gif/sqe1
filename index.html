@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261119195943";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261119201113";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -1947,7 +1947,7 @@ body.podcar-on .startnext{bottom:110px}
 @media (min-width:721px){
  .head:not(.bl-on) .row1{height:112px;max-width:320px!important;flex-wrap:wrap;align-content:flex-start}
  .head:not(.bl-on) .homebtn{position:absolute;right:18px;top:10px;margin:0;z-index:3}
- .head:not(.bl-on) .streak{position:absolute!important;left:16px;top:128px;z-index:2}
+ .head:not(.bl-on) .streak{position:absolute!important;left:24px;top:128px;z-index:2}
  .head:not(.bl-on) .kw{position:absolute!important;top:14px;left:352px;width:360px;max-width:360px;margin:0!important;z-index:2}
  .head:not(.bl-on) .row2{margin:14px 0 12px 336px!important;max-width:380px!important;min-height:174px;flex-wrap:wrap;align-items:center;align-content:flex-start;gap:14px 14px}
  .head:not(.bl-on) .row2 .mbag{margin-left:8px}
@@ -2040,6 +2040,23 @@ body.podcar-on .startnext{bottom:110px}
  .skin-sweet.mmtest .mmlist .mmpt:not(.show) .mmc::before,.skin-sweet.mmtest .mmlist .mmpt:not(.show) .mmc::after{content:"";position:absolute;top:50%;width:11px;height:16px;margin-top:-8px;background:var(--mc);clip-path:polygon(100% 22%,0 0,0 100%,100% 78%)}
  .skin-sweet.mmtest .mmlist .mmpt:not(.show) .mmc::before{left:-12px}
  .skin-sweet.mmtest .mmlist .mmpt:not(.show) .mmc::after{right:-12px;transform:scaleX(-1)}
+}
+
+/* ============ BANNER v4 (19 Nov): very wide screens (1900px+): spread the banner across the sky instead of bunching it on the left.
+   Left: title, numbers, Remember card. Middle: big Layla on her cloud with the goal ribbon and the day clouds + rainbow. Then the ring and coin pill.
+   Positions are px from the banner's left edge and depend only on the window width, so every page matches. ============ */
+@media (min-width:1900px){
+ .head:not(.bl-on){--stw:clamp(400px,22vw,560px)}
+ .head:not(.bl-on) .streak{left:440px;top:30px;width:var(--stw)}
+ .head:not(.bl-on) .kw{left:16px;top:140px;width:380px;max-width:380px}
+ .head:not(.bl-on) .row2{margin-left:calc(var(--stw) + 464px)!important;margin-top:0!important;min-height:calc(var(--stw) * 212 / 372 - 84px)}
+ .head:not(.bl-on) .row2 .mbag{margin-left:8px}
+ .head .streak .stgoal b{font-size:clamp(14px,calc(var(--stw) * .034),19px)}
+ .head .streak .stgoal span{font-size:clamp(13px,calc(var(--stw) * .031),17px)}
+ .head .streak .stgoal small{font-size:clamp(12px,calc(var(--stw) * .028),15.5px)}
+ .head .streak .stgoal{padding:6px 22px 7px 30px}
+ .head .streak .stflame{width:38px;height:38px;margin-top:-19px;left:-19px}
+ .head .streak .stflame svg{width:26px;height:26px}
 }
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
