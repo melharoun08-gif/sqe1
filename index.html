@@ -1057,7 +1057,7 @@ a.bpalcard{display:flex;align-items:center;gap:12px;text-decoration:none;color:v
 .head .hscene{grid-column:2;grid-row:1/3;height:280px;width:auto;max-width:42vw;object-fit:contain;border-radius:16px;border:4px solid #fff;box-shadow:0 3px 10px rgba(0,0,0,.18);margin:2px 0 10px;display:block}
 .head.compact .hscene{height:170px}
 .head .tabs{grid-column:1/-1;margin-right:0!important}
-.head .ring circle:first-child{stroke:rgba(16,41,74,.15)}
+.head .ring circle:first-child{stroke:rgba(16,41,74,.38)}
 .head .tabs{gap:4px;background:rgba(255,255,255,.6);border-radius:12px 12px 0 0}
 .head .tabs a,.head .tabs a.two{font-family:inherit;letter-spacing:0;flex:0 0 88px;width:88px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;white-space:nowrap;font-size:13px;line-height:1.12;padding:6px 2px 4px;min-height:46px;box-sizing:border-box}
 .head .tabs a.on{background:#fff}
@@ -1116,13 +1116,13 @@ a.bpalcard{display:flex;align-items:center;gap:12px;text-decoration:none;color:v
 .mbag .mbn::after{content:" in your bag"}
 /* v5: one picture BEHIND the header: plain sky and grass where the writing is, the scene on the right (Monnie 04:00) */
 .head .hscene,.head.compact .hscene{display:none!important}
-.head{background:#8fd2f8 url(img/banner-bg.webp) right bottom/auto 100% no-repeat!important}
+.head{background:#c2e3f8 url(img/banner-bg.webp) right bottom/auto 100% no-repeat!important}
 .head .row1,.head .row2{max-width:calc(100% - 520px)}
 .head.compact .row1,.head.compact .row2{max-width:calc(100% - 360px)}
 .head .kw,.head .cheer{background:rgba(255,255,255,.55);border-radius:12px}
 .head .kw{border:0}
 .head .tabs{background:rgba(255,255,255,.85)}
-@media (max-width:720px){.head{background:#8fd2f8 url(img/banner-bg.webp) right bottom/auto 210px no-repeat!important;padding-bottom:210px!important}.head .row1,.head .row2,.head.compact .row1,.head.compact .row2{max-width:none}.head.compact{padding-bottom:12px!important;background-size:0 0!important}.head .tabs{position:relative;top:0}}
+@media (max-width:720px){.head{background:#c2e3f8 url(img/banner-bg.webp) right bottom/auto 210px no-repeat!important;padding-bottom:210px!important}.head .row1,.head .row2,.head.compact .row1,.head.compact .row2{max-width:none}.head.compact{padding-bottom:12px!important;background-size:0 0!important}.head .tabs{position:relative;top:0}}
 @media (min-width:721px){.head .row1,.head .row2{max-width:calc(100% - 650px)}.head.compact .row1,.head.compact .row2{max-width:calc(100% - 420px)}.head .cheer{display:none}.head .row1{flex-wrap:wrap}}
 /* side panel: light blue to match the header, no beige/green (Monnie 04:01) */
 .side{background:#EAF6FE!important;border-left:3px solid #8FD2F8!important}
@@ -1301,6 +1301,38 @@ details.hiw[open] .hiwtog::after{content:"Hide ▴"}
 @media (min-width:721px){.head .row1>div:first-child{flex:0 0 100%}.head .row1{gap:10px 30px;align-items:center}}
 @container (max-width:1010px){.head .row1,.head.compact .row1{gap:8px 20px;max-width:none!important}}
 @media (max-width:720px){.head:not(.compact) .row1>div:first-child{flex:0 0 100%}.head:not(.compact) .row1{gap:6px 14px}}
+/* Banner layout: Monnie's drag-to-arrange mode (Settings > Arrange the banner) and saved/baked layouts. With no layout, .hstats/.hring are invisible wrappers and nothing changes */
+.hstats,.hring{display:contents}
+.head.bl-on .row1{position:static!important;display:block!important;max-width:none!important;margin:0!important;padding:0!important;flex:none!important}
+.head.bl-on .row2{display:contents!important}
+.head.bl-on{min-height:0!important}
+.head.bl-on .tabs{margin-top:0!important}
+.head.bl-on [data-bl]{position:absolute!important;z-index:2;margin:0!important;box-sizing:border-box}
+.head.bl-on .hstats{display:flex;flex-wrap:nowrap;gap:10px 26px;align-items:center}
+.head.bl-on .hring{display:flex;gap:14px;align-items:center}
+.head.bl-on [data-bl=title],.head.bl-on .hstats,.head.bl-on .hring,.head.bl-on [data-bl=cheer]{background:rgba(255,255,255,.8);border-radius:12px;padding:4px 10px}
+.head.bl-on [data-bl=title]{width:max-content;max-width:calc(100% - 4px)}
+.head.bl-on .kw{width:300px;max-width:calc(100% - 4px);flex:none}
+.head.bl-on [data-bl=cheer]{max-width:calc(100% - 4px)}
+.head.bl-edit [data-bl]{outline:2px dashed #1F5C99;outline-offset:2px;cursor:grab;touch-action:none;-webkit-user-select:none;user-select:none}
+.head.bl-edit [data-bl] *{pointer-events:none}
+.head.bl-edit [data-bl].bl-drag{cursor:grabbing;z-index:5;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.head.bl-edit [data-bl].bl-bad{outline:3px solid #D0202A}
+.head.bl-edit .bl-grip{position:absolute;left:-9px;top:-9px;width:20px;height:20px;display:grid;place-items:center;font-size:13px;line-height:1;font-weight:800;background:#1F5C99;color:#fff;border-radius:50%;letter-spacing:0;text-transform:none;z-index:3}
+.head.bl-edit .bl-bad>.bl-grip{background:#D0202A}
+.head.bl-edit .bl-zone{position:absolute;z-index:1;pointer-events:none;border:2px dotted rgba(208,32,42,.7);background:rgba(208,32,42,.07);border-radius:12px}
+.head.bl-edit .bl-zone span{position:absolute;left:6px;top:4px;font-size:11px;font-weight:800;color:#a3141c;background:rgba(255,255,255,.85);border-radius:6px;padding:1px 6px}
+#bltool{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:9999;width:min(560px,calc(100% - 24px));background:#fff;color:#10243d;border:3px solid #1F5C99;border-radius:16px;box-shadow:0 8px 28px rgba(0,0,0,.3);padding:12px 14px;display:flex;flex-direction:column;gap:6px;font-size:15px}
+#bltool #blmsg{font-size:14px;line-height:1.35}
+#bltool #blmsg.bad{color:#B0141E;font-weight:700}
+#bltool .blbtns{display:flex;gap:8px;flex-wrap:wrap}
+#bltoast{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:9999;width:min(520px,calc(100% - 24px));background:#EAF7EE;color:#10243d;border:3px solid #2E9B5A;border-radius:16px;box-shadow:0 8px 28px rgba(0,0,0,.3);padding:12px 14px;display:flex;gap:12px;align-items:center;font-size:15px}
+#bltoast p{margin:0;flex:1}
+
+/* banner contrast on the lighter sky */
+.head .ring svg{filter:drop-shadow(0 0 0.5px #10294A)}
+.head .ring .in,.head .ringtxt,.head .stat .lab,.head .sub{color:#10294A}
+.head .stat span,.head .stat small{color:#10294A!important}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -75568,7 +75600,7 @@ var CHEERS = [
 ];
 
 var kwI = Math.floor(Math.random() * 1000), cheerI = Math.floor(Math.random() * 1000);
-function rotateBanner(){ kwI++; cheerI++; var ke = document.getElementById("kw"); if (ke) ke.outerHTML = kwHTML(); var ce = document.getElementById("cheertxt"); if (ce) ce.textContent = CHEERS[cheerI % CHEERS.length]; }
+function rotateBanner(){ kwI++; cheerI++; var ke = document.getElementById("kw"); if (ke){ ke.outerHTML = kwHTML(); blApply(); } var ce = document.getElementById("cheertxt"); if (ce) ce.textContent = CHEERS[cheerI % CHEERS.length]; }
 function kwPool(){
   var rated = TOPICS.filter(function(x){ var r = trec(x.key); return r && r.at; }).sort(function(a, b){ return trec(b.key).at - trec(a.key).at; }).slice(0, 8);
   var src = rated.length ? rated : TOPICS;
@@ -75579,7 +75611,7 @@ function kwPool(){
 function kwHTML(){
   var pool = kwPool(); if (!pool.length) return "";
   var k = pool[kwI % pool.length];
-  return '<div class="kw" id="kw" title="From: ' + esc(k.from) + '"><span class="kwlab">🔑 Remember</span><b>' + esc(k.w) + '</b><span class="kwd">' + esc(k.d) + '</span><button data-act="kwnext" aria-label="Next keyword">↻</button></div>';
+  return '<div class="kw" id="kw" data-bl="kw" title="From: ' + esc(k.from) + '"><span class="kwlab">🔑 Remember</span><b>' + esc(k.w) + '</b><span class="kwd">' + esc(k.d) + '</span><button data-act="kwnext" aria-label="Next keyword">↻</button></div>';
 }
 function header(route){
   var tgt = Math.max(1, buildPlan().all), done = totalMins();
@@ -75597,18 +75629,18 @@ function header(route){
   else countdown = '<div class="stat"><b>Done</b><span>exams sat. Well done!</span></div>';
   return '' +
   '<div class="head' + (route[0] === "home" ? '' : ' compact') + '"><img class="hscene" src="img/banner-wide.webp" alt="Layla and Yasmin in the field with the hens and the rabbit"><div class="row1">' +
-    '<div><h1>' + name + 'SQE1 Revision</h1><div class="sub">FLK1 ' + esc(fmtDate(S.settings.exam1)) + ' · FLK2 ' + esc(fmtDate(S.settings.exam2)) + '</div></div>' +
-    countdown +
+    '<div data-bl="title"><h1>' + name + 'SQE1 Revision</h1><div class="sub">FLK1 ' + esc(fmtDate(S.settings.exam1)) + ' · FLK2 ' + esc(fmtDate(S.settings.exam2)) + '</div></div>' +
+    '<div class="hstats" data-bl="stats">' + countdown +
     '<div class="stat"><b>' + fmtH(todayDone) + (todayGoal ? ' <small style="font-size:14px;font-weight:600;color:var(--bar-muted)">of ' + fmtH(todayGoal) + '</small>' : '') + '</b><span>' + (todayGoal && todayDone >= todayGoal ? "today ✓ goal met" : "studied today") + '</span></div>' +
-    '<div class="stat"><b>' + fmtH(totalMins()) + '</b><span>total studied</span></div>' +
-    '<button class="homebtn" data-go="#/home">Home</button>' +
+    '<div class="stat"><b>' + fmtH(totalMins()) + '</b><span>total studied</span></div></div>' +
+    '<button class="homebtn" data-bl="home" data-go="#/home">Home</button>' +
   '</div>' +
   '<div class="row2">' +
-    '<div class="ring" aria-label="' + Math.round(pct) + '% of the whole revision plan"><svg width="74" height="74"><circle cx="37" cy="37" r="31" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="8"/>' +
+    '<div class="hring" data-bl="ring"><div class="ring" aria-label="' + Math.round(pct) + '% of the whole revision plan"><svg width="74" height="74"><circle cx="37" cy="37" r="31" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="8"/>' +
       '<circle cx="37" cy="37" r="31" fill="none" stroke="#7CCB9C" stroke-width="8" stroke-linecap="round" stroke-dasharray="' + C.toFixed(1) + '" stroke-dashoffset="' + (C * (1 - pct / 100)).toFixed(1) + '"/></svg>' +
       '<div class="in">' + Math.round(pct) + '%</div></div>' +
-    '<div class="ringtxt"><b>' + fmtH(done) + ' of ' + fmtH(tgt) + '</b><br>' + (done >= tgt ? "Whole plan done! 🎉" : "of the whole revision plan") + '</div>' + bagHTML() +
-    kwHTML() + '<div class="cheer"><span id="cheertxt">' + esc(CHEERS[cheerI % CHEERS.length]) + '</span> <button data-act="cheer" aria-label="Another message">↻</button></div>' +
+    '<div class="ringtxt"><b>' + fmtH(done) + ' of ' + fmtH(tgt) + '</b><br>' + (done >= tgt ? "Whole plan done! 🎉" : "of the whole revision plan") + '</div></div>' + bagHTML().replace('<a class="mbag', '<a data-bl="bag" class="mbag') +
+    kwHTML() + '<div class="cheer" data-bl="cheer"><span id="cheertxt">' + esc(CHEERS[cheerI % CHEERS.length]) + '</span> <button data-act="cheer" aria-label="Another message">↻</button></div>' +
   '</div>' +
   '<nav class="tabs">' + tabs.map(function(t){ return '<a href="#/' + t[0] + '" data-tab="' + t[0] + '" draggable="false" style="--tc:var(' + t[2] + ')" class="' + (cur === t[0] ? "on" : "") + " two" + '">' + (t[1].indexOf("<span") >= 0 ? t[1] : t[1].split("|").map(function(x){ return "<span>" + x + "</span>"; }).join("")) + '</a>'; }).join("") + '</nav>' +
   '</div>';
@@ -75682,6 +75714,171 @@ function timerStrip(){
 }
 function tabH(){ try { var h = document.querySelector(".head"), t = h && h.querySelector(".tabs"); if (!t) return; var v = Math.round(h.getBoundingClientRect().bottom - t.getBoundingClientRect().top) + "px"; if (h.style.getPropertyValue("--tabh") !== v) h.style.setProperty("--tabh", v); var mh = (window.innerWidth > 720 && !h.classList.contains("compact")) ? Math.round(h.clientWidth / 4.03 + parseInt(v, 10)) + "px" : ""; if (h.style.minHeight !== mh) h.style.minHeight = mh; } catch(e){} }
 window.addEventListener("resize", tabH);
+/* ============ BANNER LAYOUT: drag the banner blocks where you like (Settings > "Arrange the banner (for Monnie)", or #/home?arrange=1) ============ */
+/* BANNER_LAYOUT = positions baked in for everyone, as % of the banner box: {wide:{title:{x:2,y:4}, ...}, phone:{...}}. null = the normal look.
+   A layout saved in a browser (localStorage "sqe_banner_layout") wins on that device only. Bake one in with bake.js. */
+var BANNER_LAYOUT = null;
+var BL_KEY = "sqe_banner_layout", BL = null;
+var BL_NAMES = {title:"Title and dates", stats:"Numbers", home:"Home button", ring:"Progress ring", bag:"Coin bag", kw:"Remember card", cheer:"Cheer line"};
+/* the drawn girls (with the rabbit) and the hens, as fractions of img/banner-bg.webp (2400 x 770): [left, top, right, bottom] */
+var BL_ZONES = [[0.865, 0.32, 1, 1], [0.6, 0.62, 0.875, 1]], BL_IMG = 2400 / 770;
+function blMode(){ return window.innerWidth >= 900 ? "wide" : "phone"; }
+function blOk(l){ return !!(l && typeof l === "object" && Object.keys(l).length); }
+function blLocal(){ try { var v = JSON.parse(window.localStorage.getItem(BL_KEY) || "null"); return v && typeof v === "object" ? v : null; } catch(e){ return null; } }
+function blBase(m){ return BANNER_LAYOUT && blOk(BANNER_LAYOUT[m]) ? BANNER_LAYOUT[m] : null; }
+function blCur(m){
+  if (BL && BL.draft.hasOwnProperty(m)) return BL.draft[m] === null ? blBase(m) : BL.draft[m];
+  var l = blLocal(); return l && blOk(l[m]) ? l[m] : blBase(m);
+}
+/* banner box height (the strip above the tabs that the blocks sit in) */
+function blStageH(m, W){
+  if (m === "wide") return Math.round(Math.max(W / 4.03, Math.min(W / BL_IMG, 290)));
+  return window.innerWidth > 720 ? Math.round(Math.max(W / 4.03, 400)) : 430;
+}
+function blRect(el){
+  var r = el.getBoundingClientRect(); if (r.width || r.height) return r;
+  var l = 1e9, t = 1e9, rr = -1e9, b = -1e9, any = false;
+  Array.prototype.forEach.call(el.children, function(c){ var q = c.getBoundingClientRect(); if (!q.width && !q.height) return; any = true; l = Math.min(l, q.left); t = Math.min(t, q.top); rr = Math.max(rr, q.right); b = Math.max(b, q.bottom); });
+  return any ? {left:l, top:t, right:rr, bottom:b, width:rr - l, height:b - t} : r;
+}
+function blEls(h){ return Array.prototype.filter.call(h.querySelectorAll("[data-bl]"), function(el){ if (getComputedStyle(el).display === "none") return false; var r = blRect(el); return r.width > 0 && r.height > 0; }); }
+function blOff(h){
+  h.classList.remove("bl-on");
+  var r1 = h.querySelector(".row1"); if (r1) r1.style.height = "";
+  Array.prototype.forEach.call(h.querySelectorAll("[data-bl]"), function(el){ el.style.left = el.style.top = ""; el.classList.remove("bl-bad", "bl-drag"); });
+  Array.prototype.forEach.call(h.querySelectorAll(".bl-grip,.bl-zone"), function(g){ g.parentNode.removeChild(g); });
+}
+function blPlace(el, x, y, W, SH){
+  x = Math.max(0, Math.min(x, W - el.offsetWidth)); y = Math.max(0, Math.min(y, SH - el.offsetHeight));
+  el.style.left = Math.round(x) + "px"; el.style.top = Math.round(y) + "px";
+}
+function blApply(){
+  if (/[?&]arrange=1/.test(location.hash + location.search)){
+    try { history.replaceState(null, "", location.pathname + "#/home"); } catch(e){ location.hash = "#/home"; }
+    if (!BL){ blOpen(); return; }
+  }
+  var h = document.querySelector(".head"); if (!h) return;
+  var home = !h.classList.contains("compact"), m = blMode(), edit = !!BL && home, lay = home ? blCur(m) : null;
+  blOff(h); h.classList.toggle("bl-edit", edit);
+  if (!lay && !edit) return;
+  var H = h.getBoundingClientRect(), W = h.clientWidth, SH = blStageH(m, W), def = {};
+  /* where everything sits in the normal look: used for any block the layout doesn't mention */
+  blEls(h).forEach(function(el){ var r = blRect(el); def[el.getAttribute("data-bl")] = {x:(r.left - H.left) / W * 100, y:(r.top - H.top) / SH * 100}; });
+  h.classList.add("bl-on");
+  var r1 = h.querySelector(".row1"), tb = h.querySelector(".tabs");
+  if (r1){ var d0 = r1.getBoundingClientRect().top - h.getBoundingClientRect().top; r1.style.height = Math.max(0, SH - d0) + "px"; if (tb){ var d = tb.getBoundingClientRect().top - h.getBoundingClientRect().top - SH; if (Math.abs(d) >= 1) r1.style.height = Math.max(0, SH - d0 - d) + "px"; } }
+  blEls(h).forEach(function(el){
+    var id = el.getAttribute("data-bl"), p = (lay && lay[id]) || def[id]; if (!p) return;
+    blPlace(el, +p.x * W / 100, +p.y * SH / 100, W, SH);
+    if (edit){ var g = document.createElement("span"); g.className = "bl-grip"; g.setAttribute("aria-hidden", "true"); g.textContent = "⠿"; el.setAttribute("data-bltip", BL_NAMES[id] || id); el.appendChild(g); }
+  });
+  if (edit){
+    blZones(h).forEach(function(z){ var e = document.createElement("div"); e.className = "bl-zone"; e.style.cssText = "left:" + z.l + "px;top:" + z.t + "px;width:" + (z.r - z.l) + "px;height:" + (z.b - z.t) + "px"; e.innerHTML = "<span>keep clear</span>"; h.appendChild(e); });
+    blCheck(h);
+  }
+  blTool();
+}
+/* the drawn characters, in px inside the banner box */
+function blZones(h){
+  var W = h.clientWidth, Hh = h.clientHeight, tb = h.querySelector(".tabs"), H = h.getBoundingClientRect();
+  var iw, ih, il, ib;
+  if (window.innerWidth > 720){ iw = W; ih = W / BL_IMG; il = 0; ib = tb ? tb.getBoundingClientRect().top - H.top : Hh; }
+  else { ih = 210; iw = 210 * BL_IMG; il = W - iw; ib = Hh; }
+  return BL_ZONES.map(function(z){ return {l:Math.max(0, il + z[0] * iw), t:Math.max(0, ib - ih + z[1] * ih), r:Math.min(W, il + z[2] * iw), b:ib - ih + z[3] * ih}; });
+}
+function blHit(a, b){ return Math.min(a.r, b.r) - Math.max(a.l, b.l) > 2 && Math.min(a.b, b.b) - Math.max(a.t, b.t) > 2; }
+/* red outline on any block that covers the girls/hens or another block; returns how many */
+function blCheck(h){
+  var H = h.getBoundingClientRect(), els = blEls(h), zs = blZones(h), bad = 0;
+  var rs = els.map(function(el){ var r = el.getBoundingClientRect(); return {l:r.left - H.left, t:r.top - H.top, r:r.right - H.left, b:r.bottom - H.top}; });
+  els.forEach(function(el, i){
+    var hit = zs.some(function(z){ return blHit(rs[i], z); }) || rs.some(function(o, j){ return j !== i && blHit(rs[i], o); });
+    el.classList.toggle("bl-bad", hit); if (hit) bad++;
+  });
+  return bad;
+}
+/* the current spots, as % of the banner box */
+function blGrab(h){
+  var W = h.clientWidth, SH = blStageH(blMode(), W), out = {};
+  blEls(h).forEach(function(el){ out[el.getAttribute("data-bl")] = {x:Math.round(parseFloat(el.style.left) / W * 10000) / 100, y:Math.round(parseFloat(el.style.top) / SH * 10000) / 100}; });
+  return out;
+}
+function blOpen(){
+  BL = {draft:{}, drag:null, msg:""};
+  window.scrollTo(0, 0);
+  if (route()[0] !== "home") location.hash = "#/home"; else blApply();
+}
+function blClose(){ BL = null; var t = document.getElementById("bltool"); if (t) t.parentNode.removeChild(t); blApply(); }
+function blTool(){
+  var t = document.getElementById("bltool");
+  if (!BL){ if (t) t.parentNode.removeChild(t); return; }
+  if (!t){
+    t = document.createElement("div"); t.id = "bltool"; t.setAttribute("role", "region"); t.setAttribute("aria-label", "Arrange the banner");
+    t.innerHTML = '<b id="blwhich"></b><span id="blmsg"></span><div class="blbtns"><button type="button" class="btn primary" data-blact="save">Save layout</button><button type="button" class="btn" data-blact="reset">Reset to default</button><button type="button" class="btn" data-blact="cancel">Cancel</button></div>';
+    document.body.appendChild(t);
+  }
+  var h = document.querySelector(".head"), home = h && !h.classList.contains("compact");
+  document.getElementById("blwhich").textContent = blMode() === "wide" ? "Arranging the computer layout" : "Arranging the phone layout";
+  var ms = document.getElementById("blmsg");
+  ms.textContent = !home ? "Open the Today page to arrange the banner." : (BL.msg || "Drag the boxes where you like. Red means it is covering the girls, the hens or another box.");
+  ms.className = BL.msgBad ? "bad" : "";
+}
+function blSave(){
+  var h = document.querySelector(".head"); if (!h || h.classList.contains("compact")) return;
+  var m = blMode();
+  if (BL.draft[m] !== null && blCheck(h)){ BL.msg = "Not saved yet: a red box is covering the girls, the hens or another box. Move it a little, then press Save again."; BL.msgBad = true; blTool(); return; }
+  var l = blLocal() || {};
+  if (BL.draft[m] !== null) BL.draft[m] = blGrab(h);
+  Object.keys(BL.draft).forEach(function(k){ if (BL.draft[k] === null) delete l[k]; else l[k] = BL.draft[k]; });
+  try {
+    if (blOk(l.wide) || blOk(l.phone)){ l.savedAt = new Date().toISOString(); window.localStorage.setItem(BL_KEY, JSON.stringify(l)); }
+    else window.localStorage.removeItem(BL_KEY);
+  } catch(e){ BL.msg = "This browser would not save. Try again in Chrome or Safari (not a private window)."; BL.msgBad = true; blTool(); return; }
+  blClose();
+  var o = document.createElement("div"); o.id = "bltoast"; o.setAttribute("role", "status");
+  o.innerHTML = '<p><b>Saved.</b> Tell Claude ‘banner saved’ and it will be fixed for everyone.</p><button type="button" class="btn primary" data-blact="ok">OK</button>';
+  var old = document.getElementById("bltoast"); if (old) old.parentNode.removeChild(old);
+  document.body.appendChild(o);
+}
+document.addEventListener("click", function(e){
+  var b = e.target.closest && e.target.closest("[data-blact]");
+  if (b){
+    var a = b.getAttribute("data-blact");
+    if (a === "ok"){ var o = document.getElementById("bltoast"); if (o) o.parentNode.removeChild(o); }
+    else if (BL && a === "cancel") blClose();
+    else if (BL && a === "save") blSave();
+    else if (BL && a === "reset"){ BL.draft[blMode()] = null; BL.msg = "Back to the normal look. Press Save layout to keep it, or drag the boxes again."; BL.msgBad = false; blApply(); }
+    return;
+  }
+  /* while arranging, tapping a block must not open the Palace or go Home */
+  if (BL && e.target.closest && e.target.closest(".head.bl-edit [data-bl]")){ e.preventDefault(); e.stopPropagation(); }
+}, true);
+document.addEventListener("pointerdown", function(e){
+  if (!BL || (e.button && e.button !== 0)) return;
+  var el = e.target.closest && e.target.closest(".head.bl-edit [data-bl]"); if (!el) return;
+  e.preventDefault();
+  var r = el.getBoundingClientRect();
+  BL.drag = {id:el.getAttribute("data-bl"), dx:e.clientX - r.left, dy:e.clientY - r.top, pid:e.pointerId};
+  el.classList.add("bl-drag");
+});
+window.addEventListener("pointermove", function(e){
+  if (!BL || !BL.drag || e.pointerId !== BL.drag.pid) return;
+  e.preventDefault();
+  var h = document.querySelector(".head.bl-edit"), el = h && h.querySelector('[data-bl="' + BL.drag.id + '"]'); if (!el) return;
+  var H = h.getBoundingClientRect(), W = h.clientWidth, SH = blStageH(blMode(), W);
+  var x = Math.round((e.clientX - H.left - BL.drag.dx) / 8) * 8, y = Math.round((e.clientY - H.top - BL.drag.dy) / 8) * 8;
+  blPlace(el, x, y, W, SH); el.classList.add("bl-drag");
+  BL.draft[blMode()] = blGrab(h);
+  if (BL.msgBad || BL.msg){ BL.msg = ""; BL.msgBad = false; blTool(); }
+  blCheck(h);
+}, {passive:false});
+function blEnd(e){
+  if (!BL || !BL.drag || (e && e.pointerId !== BL.drag.pid)) return;
+  var h = document.querySelector(".head.bl-edit"); BL.drag = null;
+  if (h){ Array.prototype.forEach.call(h.querySelectorAll(".bl-drag"), function(x){ x.classList.remove("bl-drag"); }); blCheck(h); }
+}
+window.addEventListener("pointerup", blEnd); window.addEventListener("pointercancel", blEnd);
+window.addEventListener("resize", function(){ if (!BL || !BL.drag) blApply(); });
 function startTick(){
   clearInterval(tick);
   tick = setInterval(function(){
@@ -77157,6 +77354,7 @@ VIEW.settings = function(){
   h += '<div class="card"><h3>Start again</h3><p class="small muted" style="margin:0">Clears all hours, ticks and scores on this device.</p><div class="btns">' +
     (resetAsk ? '<span class="confirm"><b>Are you sure? This can\'t be undone.</b><button class="btn bad" data-act="reset2">Yes, clear everything</button><button class="btn" data-act="reset0">No, keep it</button></span>' : '<button class="btn bad" data-act="reset1">Clear my progress</button>') + '</div></div>';
   h += '<div class="card"><h3>About these notes</h3><p class="small muted" style="margin:0">Built around the SRA\'s SQE1 Assessment Specification and the January 2027 format: 170 questions per paper, 85 per session, with the new subject split between sessions. Law is stated as at the SRA cut-off for this sitting (11 September 2026).</p></div>';
+  h += '<div class="btns" style="justify-content:center;margin:4px 0 16px"><button class="btn sm" data-act="blopen">Arrange the banner (for Monnie)</button></div>';
   return h;
 };
 
@@ -78084,7 +78282,7 @@ function render(){
   }
   // scroll current topic into view in sidebar
   var cur = $(".side a.tp.cur"); if (cur && cur.scrollIntoView && window.innerWidth > 900){ try { cur.scrollIntoView({block:"nearest"}); } catch(e){} }
-  applyTheme();
+  applyTheme(); blApply();
 }
 function applyTheme(){ var t = S.settings.theme; if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); else document.documentElement.removeAttribute("data-theme"); }
 
@@ -78095,7 +78293,8 @@ document.addEventListener("click", function(e){
   var act = el.getAttribute("data-act");
   if (act === "sandclose" && el.classList.contains("sandov") && e.target.closest("[data-stop]")) return;
   switch(act){
-    case "kwnext": kwI++; var kwel = document.getElementById("kw"); if (kwel) kwel.outerHTML = kwHTML(); break;
+    case "kwnext": kwI++; var kwel = document.getElementById("kw"); if (kwel){ kwel.outerHTML = kwHTML(); blApply(); } break;
+    case "blopen": blOpen(); break;
     case "cheer": cheerI++; var cte = document.getElementById("cheertxt"); if (cte) cte.textContent = CHEERS[cheerI % CHEERS.length]; break;
     case "tstart": S.timer.subj = ($("#tsubj") || {}).value || ""; S.timer.start = Date.now(); save(); render(); break;
     case "tpause": S.timer.acc += Date.now() - S.timer.start; S.timer.start = 0; save(); render(); break;
