@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261119234216";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261119234707";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -78915,14 +78915,14 @@ window.SQE_JOURNEY = function (A) {
     };
     var topiary = function (x, y) { return "<g transform=\"translate(".concat(x, ",").concat(y, ")\" ").concat(INK, "><rect x=\"-12\" y=\"-16\" width=\"24\" height=\"16\" fill=\"#E07A5F\"/><path d=\"M0,-16 V-30\" fill=\"none\"/><circle cx=\"0\" cy=\"-44\" r=\"17\" fill=\"#52B788\"/></g>"); };
     /* region signs (Monnie: show stops 1-7 / 8-14 more imaginatively): a wooden arrow sign on a little post, big region name + small stop range */
-    var sign = function (x, y, t1, t2, fs) {
-        var w = Math.max(t1.length * fs * .56, t2.length * fs * .36) + 60, h = fs * 2.3, l = x - w / 2, r = x + w / 2 - 18, tp = y - h / 2, bt = y + h / 2;
-        return "<g ".concat(INK, "><rect x=\"").concat(x - 6, "\" y=\"").concat(bt - 4, "\" width=\"12\" height=\"").concat(fs * 1.6, "\" fill=\"#7A4A21\"/>")
+    var sign = function (x, y, t1, t2, fs, post) {
+        var w = Math.max(t1.length * fs * .56, t2.length * fs * .42) + 60, h = fs * 2.3, l = x - w / 2, r = x + w / 2 - 18, tp = y - h / 2, bt = y + h / 2;
+        return "<g ".concat(INK, "><rect x=\"").concat(x - 6, "\" y=\"").concat(bt - 4, "\" width=\"12\" height=\"").concat(post || fs * 1.6, "\" fill=\"#7A4A21\"/>")
             + "<path d=\"M".concat(l, ",").concat(tp, " H").concat(r, " L").concat(r + 26, ",").concat(y, " L").concat(r, ",").concat(bt, " H").concat(l, " Z\" fill=\"#B87333\"/>")
             + "<path d=\"M".concat(l + 10, ",").concat(tp + h * .36, " H").concat(r - 6, " M").concat(l + 18, ",").concat(tp + h * .7, " H").concat(r - 30, "\" stroke=\"#8A5226\" stroke-width=\"2\" fill=\"none\"/>")
             + "<circle cx=\"".concat(l + 12, "\" cy=\"").concat(tp + 10, "\" r=\"3.5\" fill=\"#3B2A1A\" stroke=\"none\"/><circle cx=\"").concat(l + 12, "\" cy=\"").concat(bt - 10, "\" r=\"3.5\" fill=\"#3B2A1A\" stroke=\"none\"/></g>")
-            + "<text class=\"jpl\" x=\"".concat(x, "\" y=\"").concat(y - fs * .12, "\" font-size=\"").concat(fs, "\" style=\"fill:#FFF6E0;paint-order:stroke;stroke:#3B2A1A;stroke-width:4px\">").concat(esc(t1), "</text>")
-            + "<text class=\"jpl\" x=\"".concat(x, "\" y=\"").concat(y + fs * .85, "\" font-size=\"").concat(fs * .62, "\" style=\"fill:#FFF6E0;paint-order:stroke;stroke:#3B2A1A;stroke-width:3px\">").concat(esc(t2), "</text>");
+            + "<text class=\"jpl\" x=\"".concat(x, "\" y=\"").concat(y - fs * .1, "\" font-size=\"").concat(fs, "\" style=\"fill:#FFF6E0;paint-order:stroke;stroke:#3B2A1A;stroke-width:4px\">").concat(esc(t1), "</text>")
+            + "<text class=\"jpl\" x=\"".concat(x, "\" y=\"").concat(y + fs * .9, "\" font-size=\"").concat(fs * .72, "\" style=\"fill:#FFF6E0;paint-order:stroke;stroke:#3B2A1A;stroke-width:4px\">").concat(esc(t2), "</text>");
     };
     var tag = function (x, y, t, fs, c) { var w = t.length * fs * .5 + 30, h = fs + 16; return "<rect x=\"".concat(x - w / 2, "\" y=\"").concat(y - h / 2, "\" width=\"").concat(w, "\" height=\"").concat(h, "\" rx=\"").concat(h / 2, "\" fill=\"").concat(c, "\" ").concat(INK, "/><text class=\"jpl\" x=\"").concat(x, "\" y=\"").concat(y + fs * .34, "\" font-size=\"").concat(fs, "\">").concat(esc(t), "</text>"); };
     function roundPoly(p, r) {
@@ -78999,6 +78999,9 @@ window.SQE_JOURNEY = function (A) {
                     break;
                 }
         }
+        var ov = /[?&]henstop=(\d+)/.exec((location.search || '') + '&' + (location.hash || ''));
+        if (ov)
+            at = Math.max(0, Math.min(15, +ov[1])); /* preview: ?henstop=N (0 = gate) */
         return { stops: stops, at: at, r1: r1, r2: r2, ex1: ex1, ex2: ex2, pd: pd, today: today };
     }
     function jStatus(J, i) { var st = J.stops[i - 1]; return st.full ? 'done' : st.today.length ? 'today' : 'up'; }
@@ -79020,12 +79023,12 @@ window.SQE_JOURNEY = function (A) {
             lm: function (i) { return ({ x: st[i].x, y: st[i].y - 34, s: 1 }); },
             label: function (i) { return ({ cx: st[i].x, top: st[i].y + 44 }); },
             F: { w: 188, fs: 17, lh: 19, sfs: 13, max: 19, bar: 8 },
-            hen: function (i) { return left(i) ? { x: st[i].x + 100, y: st[i].y + 22, s: .85, m: false } : { x: st[i].x - 104, y: st[i].y + 22, s: .85, m: true }; },
+            hen: function (i) { return i === 0 ? { x: st[0].x - 104, y: st[0].y + 22, s: .85, m: true } : left(i) ? { x: st[i].x + 74, y: st[i].y + 24, s: .85, m: false } : { x: st[i].x - 74, y: st[i].y + 24, s: .85, m: true }; },
             palace: { x: 600, y: 2115 + D, s: 1 },
             flags: [{ x: 176, y: 2117 + D, s: 1, h: 110 }, { x: 812, y: 2117 + D, s: 1, h: 110 }],
             reg: { spring: 160, autumn: 1020, grounds: 1750 + D },
-            deco: function () { return sun(95, 82) + cloud(330, 78, .8) + cloud(1010, 92, 1) + sign(650, 84, 'FLK1 Meadow', 'subjects + Ethics · stops 1–7', 20)
-                + sign(560, 1050, 'FLK2 Harvest Fields', 'subjects · stops 8–14', 20)
+            deco: function () { return sun(95, 82) + cloud(330, 78, .8) + cloud(1010, 92, 1) + sign(650, 92, 'FLK1 Meadow', 'Stops 1–7', 36)
+                + sign(570, 1044, 'FLK2 Harvest Fields', 'Stops 8–14', 27, 18)
                 + topiary(1000, 2147 + D) + topiary(1060, 2133 + D) + topiary(228, 1855 + D) + flower(330, 1840 + D, '#fff') + flower(925, 1840 + D, '#FF9EC4')
                 + [60, 330, 575, 820].map(function (x, k) { return flower(x, 2219 + D, ['#FF9EC4', '#fff', '#FFB3D9', '#fff'][k]); }).join('') + flower(345, 2215 + D, '#FFD6A5'); },
         };
@@ -79051,8 +79054,8 @@ window.SQE_JOURNEY = function (A) {
             palace: { x: 280, y: Pb, s: 1 },
             flags: [{ x: 100, y: yc + 116, s: 1, h: 80 }, { x: 320, y: yc + 116, s: 1, h: 80 }], /* tidy: planted in front of the palace, below the path, so they no longer cover the palace steps */
             reg: { spring: 212, autumn: st[7].y + 222, grounds: sl.y + 150 },
-            deco: function () { return "<g transform=\"translate(14,14) scale(.62)\">".concat(sun(60, 60), "</g>") + cloud(522, 168, .7) + sign(330, 86, 'FLK1 Meadow', 'subjects + Ethics · stops 1–7', 22)
-                + sign(250, st[7].y + 290, 'FLK2 Harvest Fields', 'subjects · stops 8–14', 18)
+            deco: function () { return "<g transform=\"translate(14,14) scale(.62)\">".concat(sun(60, 60), "</g>") + cloud(522, 168, .7) + sign(330, 96, 'FLK1 Meadow', 'Stops 1–7', 38)
+                + sign(295, st[7].y + 290, 'FLK2 Harvest Fields', 'Stops 8–14', 30, 20)
                 + flower(28, H - 14, '#FF9EC4') + flower(580, H - 14, '#fff') + flower(40, sl.y + 250, '#fff') + flower(565, sl.y + 250, '#FF9EC4'); },
         };
     }
@@ -79126,10 +79129,11 @@ window.SQE_JOURNEY = function (A) {
         var band = function (y, amp, c) { return "<path d=\"M-10,".concat(y, " L0,").concat(y).concat(wavy(y, W, amp, 8), " L").concat(W + 10, ",").concat(y, " V").concat(H + 10, " H-10 Z\" fill=\"").concat(c, "\" ").concat(INK, "/>"); };
         s += band(reg.spring, 8, '#C9EFA4') + band(reg.autumn, 7, '#F7D9A8') + band(reg.grounds, 12, '#FFD6EA'); /* sky at the top, then the meadow, the autumn fields and the palace grounds */
         s += L.deco();
-        s += "<path d=\"".concat(L.route, "\" fill=\"none\" stroke=\"#111\" stroke-width=\"60\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>");
-        s += "<path class=\"jroute\" d=\"".concat(L.route, "\" fill=\"none\" stroke=\"#CFC7BB\" stroke-width=\"52\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>");
-        s += "<path class=\"jdone\" d=\"".concat(L.route, "\" fill=\"none\" stroke=\"#FFE3C4\" stroke-width=\"52\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-dasharray=\"0 99999\"/>");
-        s += "<g class=\"jstones\" stroke=\"#111\" stroke-width=\"2.5\"></g>";
+        s += "<path d=\"".concat(L.route, "\" fill=\"none\" stroke=\"#3E3A36\" stroke-width=\"62\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"); /* path edge (kerb) */
+        s += "<path d=\"".concat(L.route, "\" fill=\"none\" stroke=\"#A39D95\" stroke-width=\"56\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"); /* kerb stones */
+        s += "<path class=\"jroute\" d=\"".concat(L.route, "\" fill=\"none\" stroke=\"#8F8A84\" stroke-width=\"47\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"); /* grout between slabs */
+        s += "<path class=\"jdone\" d=\"".concat(L.route, "\" fill=\"none\" stroke=\"#9A8F86\" stroke-width=\"47\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-dasharray=\"0 99999\"/>");
+        s += "<g class=\"jstones\" stroke=\"#7E7973\" stroke-width=\".8\"></g>";
         var g0 = L.lm(0);
         s += "<g transform=\"translate(".concat(g0.x, ",").concat(g0.y, ") scale(").concat(g0.s, ")\" ").concat(INK, ">").concat(MAP_ART ? artImg('gate', L.art.gx, L.art.gy, L.art.gw, L.art.gh) : gate(), "</g>");
         J.stops.forEach(function (o) {
@@ -79139,21 +79143,30 @@ window.SQE_JOURNEY = function (A) {
         var pc = L.lm(15);
         s += "<g transform=\"translate(".concat(pc.x, ",").concat(pc.y, ") scale(").concat(pc.s, ")\" ").concat(INK, ">").concat(MAP_ART ? artImg('camp', L.art.gx, L.art.gy, L.art.gw, L.art.gh) : camp(), "</g>");
         var P = L.palace;
-        s += "<g transform=\"translate(".concat(P.x, ",").concat(P.y, ") scale(").concat(P.s, ")\"><g ").concat(INK, ">").concat(MAP_ART ? artImg('palace', -230, -360, 460, 368) : palace(), "</g>").concat(MAP_ART ? '<rect x="-118" y="-148" width="236" height="42" rx="12" fill="#FFFDF5" stroke="#111" stroke-width="3.5"/>' : '', "<text class=\"jpl\" x=\"0\" y=\"-119\" font-size=\"25\">Cluckington Palace</text></g>");
+        s += "<g transform=\"translate(".concat(P.x, ",").concat(P.y, ") scale(").concat(P.s, ")\"><g ").concat(INK, ">").concat(MAP_ART ? artImg('palace-hen', -230, -420, 460, 428) : palace(), "</g>").concat(MAP_ART ? '<rect x="-118" y="-148" width="236" height="42" rx="12" fill="#FFFDF5" stroke="#111" stroke-width="3.5"/>' : '', "<text class=\"jpl\" x=\"0\" y=\"-119\" font-size=\"25\">Cluckington Palace</text></g>");
         s += flagArt(L.flags[0], 'FLK1 exam', esc(dm(J.ex1))) + flagArt(L.flags[1], 'FLK2 exam', esc(dm(J.ex2)));
         L.stops.forEach(function (p, i) {
             var m = marker(i, p, i === 0 ? '' : i === 15 ? 'rev' : jStatus(J, i)), o = i > 0 && i < 15 ? J.stops[i - 1] : null; /* the stop numbers are tappable too */
             s += o ? "<a class=\"jnum\" href=\"".concat(stopHref(o.s.id), "\" aria-label=\"Stop ").concat(i, ": ").concat(esc(o.s.title), "\">").concat(m, "</a>") : m;
         });
-        s += plate(L, 0, 'START: Farm gate', '', J.at === 0 ? 'Britney is here' : "Britney's starting point", 'gate', null);
+        s += plate(L, 0, 'START: Farm gate', '', J.at === 0 ? 'Layla + Britney are here' : 'Where Layla + Britney start', 'gate', null);
         J.stops.forEach(function (o) {
             var st = jStatus(J, o.i);
             s += "<a href=\"".concat(stopHref(o.s.id), "\" aria-label=\"Stop ").concat(o.i, ": ").concat(esc(o.s.title), ", ").concat(o.d, " of ").concat(o.n, " topics done").concat(o.today.length ? ', on today\'s timetable' : '', "\">").concat(plate(L, o.i, o.s.title, range(o.first, o.last), "".concat(o.d, " of ").concat(o.n, " topics done"), st, o.n ? o.d / o.n : 0), "</a>");
         });
         s += plate(L, 15, 'Revision + mock days', '', "FLK1 ".concat(fmtShort(J.r1), " \u00B7 FLK2 ").concat(fmtShort(J.r2)), 'rev', null);
         var Hn = L.hen(J.at);
-        s += "<g class=\"jhen\" transform=\"translate(".concat(Hn.x, ",").concat(Hn.y, ") scale(").concat(Hn.m === false ? Hn.s : -Hn.s, ",").concat(Hn.s, ")\" ").concat(INK, ">").concat(hen(), "</g>"); /* mirrored (facing right) or not (facing left) so Britney faces the way the path goes next (Monnie) */
+        s += pair(Hn, L.mode); /* Layla with Britney by her side: at the gate, then at the stop she has reached (Monnie) */
         return s + '</svg>';
+    }
+    /* Layla (full-body cutout) and Britney standing on the ground beside her; Britney walks ahead on the side the path goes next */
+    function pair(Hn, mode) {
+        var lh = mode === 'phone' ? 118 : 100, lw = lh * 284 / 600, bh = lh * .62, f = Hn.m === false ? -1 : 1; /* f=1: path heads right */
+        var lx = -lw / 2 - bh * .28 * f, bx = lx + (f > 0 ? lw - 6 : -bh + 6);
+        return "<g class=\"jhen jpair\" transform=\"translate(".concat(Hn.x, ",").concat(Hn.y, ")\" aria-hidden=\"true\">")
+            + "<ellipse cx=\"0\" cy=\"2\" rx=\"".concat(lw * .5 + bh * .55, "\" ry=\"6\" fill=\"#111\" opacity=\".2\"/>")
+            + "<image href=\"img/layla-cloud-love.webp\" x=\"".concat(lx, "\" y=\"").concat(-lh, "\" width=\"").concat(lw, "\" height=\"").concat(lh, "\" preserveAspectRatio=\"xMidYMax meet\"/>")
+            + "<g transform=\"translate(".concat(bx + bh / 2, ",0) scale(").concat(f, ",1)\"><image href=\"img/britney/plain.webp\" x=\"").concat(-bh / 2, "\" y=\"").concat(-bh * .93, "\" width=\"").concat(bh, "\" height=\"").concat(bh, "\"/></g></g>");
     }
     function stones() {
         [].forEach.call(document.querySelectorAll('.jmap .jsv'), function (box) {
@@ -79182,15 +79195,16 @@ window.SQE_JOURNEY = function (A) {
             box.querySelector('.jdone').setAttribute('stroke-dasharray', "".concat(best, " ").concat(Lt + 100));
             var seed = 11;
             var rnd = function () { return (seed = (seed * 16807) % 2147483647) / 2147483647; };
-            /* calm path (Monnie: stones too busy): one row of big soft stepping stones, warm where Britney has walked */
+            /* footpath seen from above (Monnie: should read as a path, colours greyer): rows of flat paving slabs laid across the path band,
+               two slabs per row in a staggered bond, soft pastel-grey tints (pink/blue/green/lilac/sand greys), a touch warmer where Britney has walked */
             var out = '', k = 0;
-            var PAST = ['#FFB3BA', '#FFD1A6', '#FFF3A3', '#BDF2C4', '#B5E2FF', '#C9C1FF', '#F2C4F2'], BOLD = ['#FF7A85', '#FFA85C', '#FFE14D', '#6EDB82', '#5CC2FF', '#9A8CFF', '#E58AE5']; /* pastel rainbow (Monnie); stronger where Britney has walked */
-            /* paving slabs (Monnie: should look like real paving stones): square flat slabs across the path, grey grout between, a light top edge and a soft shadow edge */
-            for (var t = 24; t < Lt - 14; t += 44, k++) {
-                var p = path.getPointAtLength(t), p2 = path.getPointAtLength(Math.min(Lt, t + 1));
-                var deg = (Math.atan2(p2.y - p.y, p2.x - p.x) * 180 / Math.PI).toFixed(1), x = p.x.toFixed(1), y = p.y.toFixed(1), c_1 = (t <= best ? BOLD : PAST)[k % 7];
-                out += "<g transform=\"translate(".concat(x, " ").concat(y, ") rotate(").concat(deg, ")\"><rect x=\"-19\" y=\"-21\" width=\"38\" height=\"42\" rx=\"3\" fill=\"").concat(c_1, "\" stroke=\"").concat(t <= best ? '#555' : '#A89C8C', "\" stroke-width=\"1.6\"/>")
-                    + "<path d=\"M-17,-19 H17\" stroke=\"#fff\" stroke-opacity=\".75\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M-17,19 H17 M17,-19 V19\" stroke=\"#000\" stroke-opacity=\".12\" stroke-width=\"3\" fill=\"none\"/></g>";
+            var PAST = ['#CFC7C9', '#C4CAD1', '#C7CFC6', '#CAC5D1', '#D3CDC0', '#C2C2C0', '#D2CBC6'], DONE = ['#DDC9CC', '#C5D1DE', '#C9D9C7', '#D3CAE0', '#E2D5B9', '#D0CEC8', '#E0D0C4'];
+            for (var t = 14; t < Lt - 8; t += 24, k++) {
+                var p = path.getPointAtLength(t), p2 = path.getPointAtLength(Math.min(Lt, t + 1)), w = t <= best;
+                var deg = (Math.atan2(p2.y - p.y, p2.x - p.x) * 180 / Math.PI).toFixed(1), x = p.x.toFixed(1), y = p.y.toFixed(1), C = w ? DONE : PAST;
+                var sp = (k % 2 ? 7 : -7) + (rnd() - .5) * 4, c1 = C[(k * 3) % 7], c2 = C[(k * 3 + 2 + Math.floor(rnd() * 3)) % 7];
+                out += "<g transform=\"translate(".concat(x, " ").concat(y, ") rotate(").concat(deg, ")\"><rect x=\"-10\" y=\"-22.5\" width=\"20\" height=\"").concat((22.5 + sp - 1.5).toFixed(1), "\" rx=\"2\" fill=\"").concat(c1, "\"/>")
+                    + "<rect x=\"-10\" y=\"".concat((sp + 1.5).toFixed(1), "\" width=\"20\" height=\"").concat((22.5 - sp - 1.5).toFixed(1), "\" rx=\"2\" fill=\"").concat(c2, "\"/></g>");
             }
             box.querySelector('.jstones').innerHTML = out;
         });
@@ -79200,7 +79214,7 @@ window.SQE_JOURNEY = function (A) {
         return '<div class="jlegend">' + [
             [sv('-42 -42 84 84', "<circle r=\"29\" fill=\"#B8F2C9\" stroke=\"#111\" stroke-width=\"4\"/><text class=\"jpl\" y=\"10\" font-size=\"29\">1</text>".concat(tick(23, -23, 12))), '<b>Done</b>: every topic in the subject rated'],
             [sv('-48 -48 96 96', "<circle r=\"38\" fill=\"none\" stroke=\"#FF7F11\" stroke-width=\"5\" stroke-dasharray=\"7 7\"/><circle r=\"29\" fill=\"#FFD23F\" stroke=\"#111\" stroke-width=\"4\"/><text class=\"jpl\" y=\"10\" font-size=\"29\">2</text>"), "<b>Today</b>: on today's timetable. Tap it for today's topics"],
-            [sv('-60 -80 125 92', "<g ".concat(INK, ">").concat(hen(), "</g>")), '<b>Britney</b>: how far you have got'],
+            [sv('-52 -106 104 112', pair({ x: 0, y: 0, m: true }, 'desk')), '<b>Layla and Britney</b>: how far you have got'],
             [sv('-10 -136 170 142', flagArt({ x: 0, y: 0, s: 1 }, '', '')), '<b>Exams</b>: both at the palace, at the end'],
         ].map(function (_a) {
             var i = _a[0], t = _a[1];
@@ -79619,10 +79633,10 @@ var CSS = [
 '@media (max-width:1200px){.scn-hs .scn-tick{width:28px;height:28px;font-size:16px;line-height:22px;border-width:2.5px}}',
 /* bullets-sample (preview only, ?bullets=1): Partnership jar sentences as pink bullet points */
 '.scn-sheet ul.scn-bul{list-style:none;margin:4px 0 0;padding:0}',
-'.scn-sheet ul.scn-bul li{position:relative;padding-left:26px;margin:0 0 10px;line-height:1.55;color:#1b1b1b}',
+'.scn-sheet ul.scn-bul li{position:relative;padding-left:32px;margin:0 0 10px;line-height:1.55;color:#1b1b1b}',
 '.scn-sheet ul.scn-bul li:last-child{margin-bottom:0}',
-'.scn-sheet ul.scn-bul li::before{content:"";position:absolute;left:4px;top:.5em;width:11px;height:11px;border-radius:50%;background:#E0457B;box-shadow:0 0 0 2px #FFE0EC}',
-'@media (max-width:640px){.scn-sheet ul.scn-bul li{padding-left:22px;margin-bottom:9px}.scn-sheet ul.scn-bul li::before{left:2px;width:10px;height:10px}}',
+'.scn-sheet ul.scn-bul li::before{content:"";position:absolute;left:0;top:.38em;width:24px;height:13px;background:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 22%27%3E%3Cpath d=%27M9 11 1 4v14z%27 fill=%27%23FFD93B%27 stroke=%27%231b1b1b%27 stroke-width=%272%27 stroke-linejoin=%27round%27/%3E%3Cpath d=%27M31 11l8-7v14z%27 fill=%27%23FFD93B%27 stroke=%27%231b1b1b%27 stroke-width=%272%27 stroke-linejoin=%27round%27/%3E%3Cellipse cx=%2720%27 cy=%2711%27 rx=%2711%27 ry=%279%27 fill=%27%23E0457B%27 stroke=%27%231b1b1b%27 stroke-width=%272%27/%3E%3Cpath d=%27M15 6c2 3 2 7 0 10M21 4c2 4 2 10 0 14%27 stroke=%27%23fff%27 stroke-width=%272%27 fill=%27none%27/%3E%3C/svg%3E") center/contain no-repeat}',
+'@media (max-width:640px){.scn-sheet ul.scn-bul li{padding-left:30px;margin-bottom:9px}}',
 /* bullets-sample: sweet-shop "What happened / What it decided" boxes (candy pink + mint) */
 '.scn-sheet.bul-on .lrn-cs{border:2.5px solid #1b1b1b;border-left-width:8px;border-radius:14px;box-shadow:3px 3px 0 #1b1b1b;color:#1b1b1b}',
 '.scn-sheet.bul-on .lrn-fact{background:#FFE0EC;border-left-color:#E0457B}',
@@ -79658,7 +79672,7 @@ var CSS = [
 ].join('\n');
 
 /* bullets-sample: preview flag + splitter (no wording changes: only cuts the existing text at sentence ends) */
-function bulletsOn(){ try { return /(^|[?&#\/])bullets=1(?![0-9])/.test(String(location.search) + String(location.hash)); } catch(e){ return false; } }
+function bulletsOn(){ return true; } /* 23:46 Monnie approved: sweet bullets live in every jar */
 function bulSplit(html){
   var out = [], start = 0, re = /([.?!])((?:<\/(?:b|strong|em|i)>)*)(\s+)(?=[A-Z'‘"“(<])/g, m;
   while ((m = re.exec(html))){
@@ -79718,7 +79732,7 @@ window.SQE_SCENE = function(A){
   var BX = {ans: {}, fresh: ''};
   var BXQ = {
     guess: {right: 1, o: ['They’re **not partners**: they sign and register nothing.', 'They’re a **general partnership** (business in common with a view of profit).']},
-    spot: {q: 'Two people start working together with no paperwork. What are they?', right: 1, o: ['🧍 Sole trader', '🤝 Partnership', '🏛️ LLP', '🏢 Ltd', '📈 plc'], why: 'A **general partnership**, automatically.'},
+    spot: {q: 'Two people start a business together, aiming to make a profit, with no paperwork. What are they?', right: 1, o: ['🧍 Sole trader', '🤝 Partnership', '🏛️ LLP', '🏢 Ltd', '📈 plc'], why: 'A **general partnership**, automatically.'},
     tf: [{s: 'It arises **automatically from the facts**.', v: true}, {s: 'A partnership has **separate legal personality** in England and Wales.', v: false, fix: '**No separate legal personality** in England and Wales.'}, {s: 'A creditor can recover the **whole debt from any one partner**.', v: true}]
   };
   function bxRight(){ var n = 0; if (BX.ans.guess === BXQ.guess.right) n++; if (BX.ans.spot === BXQ.spot.right) n++; BXQ.tf.forEach(function(t, i){ var a = BX.ans['tf' + i]; if (a != null && (a === 1) === t.v) n++; }); return n; }
@@ -79786,9 +79800,9 @@ window.SQE_SCENE = function(A){
       else if (p.k === 'check') card = '<div class="lrn-card lrn-chk"><div class="lrn-ico" aria-hidden="true">⚡</div><h3 class="lrn-t">Quick check</h3><p class="lrn-sub">Has that gone in? Tap an answer.</p>' + p.html + '</div>';
       else if (p.k === 'bx') card = ''; /* bullets-sample extras: drawn below */
       else card = A.learnCard(p.c);
-      if (h.label === 'Jar: Partnership' && bulletsOn()){ /* bullets-sample */
+      if (bulletsOn()){ /* bullets live in every jar; guess-first case + games only in the Partnership jar */
         if (p.k === 'bx') card = bxCard(p.w);
-        else if (p.c && p.c.t === 'case') card = bxCase(p.c);
+        else if (p.c && p.c.t === 'case' && h.label === 'Jar: Partnership') card = bxCase(p.c);
         else card = bulletize(card);
       }
       var last = i === n - 1, dn2 = !!state(k).open[h.id];
@@ -81925,7 +81939,7 @@ function learnPos(k, n){ if (!S.learnPos || typeof S.learnPos !== "object") S.le
 function learnBigLines(t){ var out = [], on = false; String(t.notes || "").split("\n").forEach(function(l){ if (/^##\s/.test(l)) on = /^##\s+the big idea/i.test(l); else if (on) out.push(l); }); return out; }
 function learnCell(v){ var s = String(v == null ? "" : v), c = /^\s*✓/.test(s) ? " y" : /^\s*✗/.test(s) ? " n" : ""; return {c:c, h:inl(s)}; }
 /* newcards: PREVIEW ONLY (?newcards=1 or #...newcards=1) - drawn pictures instead of emoji, one sentence per line, tap-to-reveal case examples, grey section refs. Live site unchanged until approved. */
-var NEWCARDS = /newcards=1/.test(location.search + location.hash);
+var NEWCARDS = true; /* 23:46 Monnie approved */
 var NCPIC = {"Sole trader: what it is":["st-alone","st-staff"], "Sole trader: business = person":["st-equals"], "Sole trader: unlimited liability":["st-bailiff"], "Sole trader: no formalities":["st-open"], "Sole trader: privacy and tax":["st-padlock"], "Sole trader: business name":["st-plaque"], "Example: Priya and Tom's candles":["candles"]};
 function ncLines(s){ return String(s || "").replace(/([.?!](?:\*\*)?)\s+(?=(?:\*\*)?[A-Z'(])/g, "$1\n"); }
 function ncRefs(h){ return String(h).replace(/\(CA 2006 Part \d+\)|\b(?:PA 1890 )?ss?\.\s?\d+[A-Z]?(?:\(\d+\))*(?:(?:,\s*|\s+and\s+|-)\d+[A-Z]?(?:\(\d+\))*)*/g, function(m){ return '<span class="nc-ref">' + m + '</span>'; }); }
