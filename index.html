@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261119225209";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261119225509";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -80265,8 +80265,15 @@ function timerStrip(){
 
     '<span class="saved" id="savedIndicator"></span></div>';
 }
-function tabH(){ try { var h = document.querySelector(".head"), t = h && h.querySelector(".tabs"); if (!t) return; var v = Math.round(h.getBoundingClientRect().bottom - t.getBoundingClientRect().top) + "px"; if (h.style.getPropertyValue("--tabh") !== v) h.style.setProperty("--tabh", v); var mh = (window.innerWidth > 720 && !h.classList.contains("compact")) ? Math.round(Math.min(h.clientWidth / 4.03, 400) + 26 + parseInt(v, 10)) + "px" : ""; if (h.style.minHeight !== mh) h.style.minHeight = mh; } catch(e){} }
-window.addEventListener("resize", tabH);
+function tabH(){ try { var h = document.querySelector(".head"), t = h && h.querySelector(".tabs"); if (!t) return; var v = Math.round(h.getBoundingClientRect().bottom - t.getBoundingClientRect().top) + "px"; if (h.style.getPropertyValue("--tabh") !== v) h.style.setProperty("--tabh", v); var mh = (window.innerWidth > 720 && !h.classList.contains("compact")) ? Math.round(Math.min(h.clientWidth / 4.03, 400) + 26 + parseInt(v, 10)) + "px" : ""; if (h.style.minHeight !== mh) h.style.minHeight = mh; layGuard(); } catch(e){} }
+/* 22:55 guard: whatever the fonts, browser or saved layout, push the present clouds (with cloud-Layla) down until Layla's head is clear of the numbers row, and grow the banner to fit */
+function layGuard(){ try { var h = document.querySelector(".head"), st = h && h.querySelector(".streak"), ly = st && st.querySelector(".stlayla"), hs = h && h.querySelector(".hstats"); if (!st) return;
+  st.style.transform = ""; if (!ly || !hs || h.classList.contains("bl-edit")) return;
+  var a = ly.getBoundingClientRect(), b = {left:1e9,right:-1e9,bottom:-1e9,height:0}; [].forEach.call(hs.querySelectorAll("*"), function(e){ var r = e.getBoundingClientRect(); if (!r.height || !r.width) return; b.left = Math.min(b.left, r.left); b.right = Math.max(b.right, r.right); b.bottom = Math.max(b.bottom, r.bottom); b.height = 1; }); if (!a.height || !b.height) return;
+  var sideBySide = a.right <= b.left + 4 || a.left >= b.right - 4; if (sideBySide) b.bottom = -1e9;
+  var need = Math.ceil(b.bottom + 10 - a.top); if (need > 0) st.style.transform = "translateY(" + need + "px)";
+  var t = h.querySelector(".tabs"), sb = st.getBoundingClientRect(); if (t){ var gap = Math.ceil(sb.bottom + 8 - t.getBoundingClientRect().top); if (gap > 0) h.style.minHeight = (h.getBoundingClientRect().height + gap) + "px"; } } catch(e){} }
+window.addEventListener("resize", tabH); window.addEventListener("load", tabH); try { document.fonts && document.fonts.ready.then(function(){ tabH(); }); } catch(e){}
 /* ============ BANNER LAYOUT: drag the banner blocks where you like (Settings > "Arrange the banner (for Monnie)", or #/home?arrange=1) ============ */
 /* BANNER_LAYOUT = positions baked in for everyone, as % of the banner box: {wide:{title:{x:2,y:4}, ...}, phone:{...}}. null = the normal look.
    A layout saved in a browser (localStorage "sqe_banner_layout") wins on that device only. Bake one in with bake.js. */
