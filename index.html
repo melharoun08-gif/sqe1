@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261119233203";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261119233241";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -79663,7 +79663,7 @@ window.SQE_SCENE = function(A){
       else card = A.learnCard(p.c);
       var last = i === n - 1, dn2 = !!state(k).open[h.id];
       inner = '<div class="scn-st"><span class="ico" aria-hidden="true">' + esc(h.icon || '🍬') + '</span><div><div class="k">' + esc(h.label.split(':')[0]) + ' · ' + esc(p.sec) + '</div><h2 id="scn-mt">' + inl(titleOf(k, h)) + '</h2></div><button type="button" class="scn-x" data-scn="close" aria-label="Close">✕</button></div>' +
-        '<div class="scn-mbar" role="progressbar" aria-valuemin="1" aria-valuemax="' + n + '" aria-valuenow="' + (i + 1) + '"><i style="width:' + Math.round((i + 1) / n * 100) + '%"></i></div><div class="scn-mn">' + (p.k === 'check' ? 'Last one: quick check' : 'Step ' + (i + 1) + ' of ' + st.filter(function(q){ return q.k !== 'check'; }).length) + '</div>' + card +
+        '<div class="scn-mbar" role="progressbar" aria-valuemin="1" aria-valuemax="' + n + '" aria-valuenow="' + (i + 1) + '"><i style="width:' + Math.round((i + 1) / n * 100) + '%"></i></div><div class="scn-mn">' + (p.k === 'check' ? 'Last one: quick check' : (i + 1) + ' of ' + st.filter(function(q){ return q.k !== 'check'; }).length) + '</div>' + card +
         '<div class="scn-nav"><button type="button" class="btn" data-scn="prev"' + (i ? '' : ' disabled') + '>‹ Back</button>' +
         (last ? '<button type="button" class="btn scn-eat" data-scn="eat">' + (dn2 ? '✓ Done' : '🍬 Done! Eat it') + '</button>' : '<button type="button" class="btn primary" data-scn="next">Next ›</button>') + '</div>';
     }
@@ -81815,7 +81815,7 @@ function learnHTML(x){
     (fw ? '<a class="btn lrn-big-b" href="#/topic/' + s.id + '/' + t.id + '/framework">🗺️ Now go over the framework</a>' : '') +
     '<button type="button" class="lrn-link" data-learn="restart">↺ Start the cards again</button></div></div>';
   else card = learnCard(p.c);
-  return '<div class="lrn" data-k="' + esc(k) + '"><div class="lrn-top"><button type="button" class="lrn-link" data-learn="full">📖 Full notes</button><span class="lrn-count">Step ' + (i + 1) + ' of ' + n + '</span></div>' +
+  return '<div class="lrn" data-k="' + esc(k) + '"><div class="lrn-top"><button type="button" class="lrn-link" data-learn="full">📖 Full notes</button><span class="lrn-count">' + (i + 1) + ' of ' + n + '</span></div>' +
     '<div class="lrn-bar" role="progressbar" aria-valuemin="1" aria-valuemax="' + n + '" aria-valuenow="' + (i + 1) + '"><i style="width:' + Math.round((i + 1) / n * 100) + '%"></i></div>' +
     '<div class="lrn-sec">📍 ' + inl(p.sec || "") + '</div>' + card +
     '<div class="lrn-nav"><button type="button" class="btn lrn-b" data-learn="prev"' + (i ? '' : ' disabled') + '>‹ Back</button>' + (i < n - 1 ? '<button type="button" class="btn primary lrn-b" data-learn="next">Next ›</button>' : '') + '</div>' +
