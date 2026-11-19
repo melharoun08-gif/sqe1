@@ -100,9 +100,20 @@
    <description>Business Law 8: Debt finance and security. SQE1 revision episode.</description>
   </item>
   <item>
+   <title>Business Law 10: Corporate insolvency procedures</title>
+   <guid isPermaLink="false">sqe1-blp/corporate-insolvency</guid>
+   <pubDate>Sun, 01 Nov 2026 14:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/blp-10-corporate-insolvency.m4a" length="19516639" type="audio/x-m4a"/>
+   <itunes:duration>00:26:41</itunes:duration>
+   <itunes:season>1</itunes:season>
+   <itunes:episode>10</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Business Law 10: Corporate insolvency procedures. SQE1 revision episode.</description>
+  </item>
+  <item>
    <title>Business Law 11: Clawback, directors' liability and order of priority</title>
    <guid isPermaLink="false">sqe1-blp/insolvency-clawback-priority</guid>
-   <pubDate>Sun, 01 Nov 2026 14:00:00 GMT</pubDate>
+   <pubDate>Sun, 01 Nov 2026 15:00:00 GMT</pubDate>
    <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/blp-11-insolvency-clawback-priority.m4a" length="18721892" type="audio/x-m4a"/>
    <itunes:duration>00:25:36</itunes:duration>
    <itunes:season>1</itunes:season>
@@ -113,13 +124,35 @@
   <item>
    <title>Business Law 12: Personal insolvency: bankruptcy and IVAs</title>
    <guid isPermaLink="false">sqe1-blp/personal-insolvency</guid>
-   <pubDate>Sun, 01 Nov 2026 15:00:00 GMT</pubDate>
+   <pubDate>Sun, 01 Nov 2026 16:00:00 GMT</pubDate>
    <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/blp-12-personal-insolvency.m4a" length="18868569" type="audio/x-m4a"/>
    <itunes:duration>00:25:48</itunes:duration>
    <itunes:season>1</itunes:season>
    <itunes:episode>12</itunes:episode>
    <itunes:episodeType>full</itunes:episodeType>
    <description>Business Law 12: Personal insolvency: bankruptcy and IVAs. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Business Law 13: Income tax: employees, sole traders, partners, shareholders and lenders</title>
+   <guid isPermaLink="false">sqe1-blp/income-tax</guid>
+   <pubDate>Sun, 01 Nov 2026 17:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/blp-13-income-tax.m4a" length="18706791" type="audio/x-m4a"/>
+   <itunes:duration>00:25:34</itunes:duration>
+   <itunes:season>1</itunes:season>
+   <itunes:episode>13</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Business Law 13: Income tax: employees, sole traders, partners, shareholders and lenders. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Business Law 14: Capital gains tax and business reliefs</title>
+   <guid isPermaLink="false">sqe1-blp/cgt</guid>
+   <pubDate>Sun, 01 Nov 2026 18:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/blp-14-cgt.m4a" length="18505133" type="audio/x-m4a"/>
+   <itunes:duration>00:25:18</itunes:duration>
+   <itunes:season>1</itunes:season>
+   <itunes:episode>14</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Business Law 14: Capital gains tax and business reliefs. SQE1 revision episode.</description>
   </item>
  </channel>
 </rss>
