@@ -1482,6 +1482,7 @@ details.hiw[open] .hiwtog::after{content:"Hide ▴"}
 .rdots .rd.on{background:#2E9E5B;border-color:#2E9E5B}
 .rdots .rd.miss{border-color:#C62828}
 .tlegend b{font-weight:800}
+.mxrow{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -76701,7 +76702,7 @@ function buildPlan(){
     days.push({d:ds, m:ph === "exam" ? 0 : goalMins(d), ph:ph, items:[]});
     d = new Date(d); d.setDate(d.getDate() + 1);
   }
-  days.forEach(function(x){ var we = parseYmd(x.d).getDay() % 6 === 0; x.res = x.ph === "learn" && x.m > 0 && x.d > PLAN_START ? Math.min(x.m, we ? 30 : 10) : 0; x.lm = x.m - x.res; x.reviews = []; });
+  days.forEach(function(x){ var we = parseYmd(x.d).getDay() % 6 === 0; x.res = x.ph === "learn" && x.m > 0 && x.d > PLAN_START ? Math.min(x.m, parseYmd(x.d).getDay() === 0 ? 50 : we ? 30 : 10) : 0; x.lm = x.m - x.res; x.reviews = []; });
   var seq = planSeq(), dIdx = {}; days.forEach(function(x, k){ dIdx[x.d] = k; });
   var learnDays = days.filter(function(x){ return x.ph === "learn" && x.m > 0; });
   // revision cards are done in the spaced review (half the next study day, half 3 days later), so each day keeps room for the cards due on it
@@ -76748,9 +76749,9 @@ function buildPlan(){
       var okDay = function(y){ return y.m > 0 && y.d < ex && (y.ph === "learn" || ((y.ph === "rev1" || y.ph === "rev2") && y.d !== dayBefore(st.exam1) && y.d !== dayBefore(st.exam2))); };
       [1, 3, 6, 10].forEach(function(gap){ var k = dIdx[x.d] + gap; while (k < days.length && (!okDay(days[k]) || (days[k].ph !== "learn" && days[k].reviews.length >= 10))) k++; if (k < days.length && okDay(days[k])) days[k].reviews.push({x:it.x, gap:gap}); });
     }); });
-    learnDays.forEach(function(x){ var c = 0; x.reviews.forEach(function(rv){ var nc = topicCards(rv.x.s, rv.x.t.id).length, h1 = Math.ceil(nc / 2); rv.cards = rv.gap === 1 ? [0, h1] : rv.gap === 3 ? [h1, nc] : null; if (rv.cards && rv.cards[1] <= rv.cards[0]) rv.cards = null; rv.cm = rv.cards ? (rv.cards[1] - rv.cards[0]) * PACE.card : 0; c += rv.cm; }); x.cload = c; });
+    learnDays.forEach(function(x){ var c = 0; x.reviews.forEach(function(rv){ var nc = topicCards(rv.x.s, rv.x.t.id).length, h1 = Math.ceil(nc / 2); rv.cards = rv.gap === 1 ? [0, nc] : null; if (rv.cards && rv.cards[1] <= rv.cards[0]) rv.cards = null; rv.cm = rv.cards ? (rv.cards[1] - rv.cards[0]) * PACE.card : 0; c += rv.cm; }); x.cload = c; });
   }
-  days.forEach(function(x){ var we = parseYmd(x.d).getDay() % 6 === 0; x.mixed = x.ph === "learn" && x.m > 0 && we && x.d > PLAN_START ? 20 : 0; var rm = (x.base || 0) - x.mixed; if (x.reviews && x.reviews.length){ rm = x.m - x.mixed; x.items.forEach(function(it){ rm -= it.m; }); x.reviews.forEach(function(rv){ rm -= rv.cm || 0; }); } (x.reviews || []).forEach(function(rv){ rv.m = x.ph === "learn" ? Math.max(0, rm) / x.reviews.length : Math.min(8, x.m * 0.6 / x.reviews.length); }); });
+  days.forEach(function(x){ var we = parseYmd(x.d).getDay() % 6 === 0; x.mixed = x.ph === "learn" && x.m > 0 && parseYmd(x.d).getDay() === 0 && x.d > PLAN_START ? 40 : 0; var rm = (x.base || 0) - x.mixed; if (x.reviews && x.reviews.length){ rm = x.m - x.mixed; x.items.forEach(function(it){ rm -= it.m; }); x.reviews.forEach(function(rv){ rm -= rv.cm || 0; }); } (x.reviews || []).forEach(function(rv){ rv.m = x.ph === "learn" ? Math.max(0, rm) / x.reviews.length : Math.min(8, x.m * 0.6 / x.reviews.length); }); });
   days.forEach(function(x){
     if (x.ph === "rev1" || x.ph === "rev2"){
       var p = x.ph === "rev1" ? "FLK1" : "FLK2";
@@ -76808,11 +76809,11 @@ function reviewHTML(pd){
   var box = function(k, href, lab, m){ var dn = !!(S.todo && S.todo[k]); return '<li><button class="tdbox' + (dn ? " on" : "") + '" data-act="todo" data-k="' + k + '" aria-label="Tick off">' + (dn ? "✓" : "") + '</button><a href="' + href + '">' + lab + '</a><span class="tdmin">' + fmtM(m) + '</span></li>'; };
   return '<li class="tdtopic"><b>🔁 Spaced review</b> <span class="muted small">going back over earlier topics so they stick (the site schedules these for you)</span><ul class="tdsteps">' +
     pd.reviews.map(function(rv){ var nc = rv.cards ? topicCards(rv.x.s, rv.x.t.id).length : 0, nm = esc(tnum(rv.x)) + " " + esc(rv.x.t.title);
-      return rv.cards ? box("revc|" + pd.d + "|" + rv.x.key, "#/cards/" + rv.x.s.id + "/topic/" + rv.x.t.id, "🃏 " + nm + ": revision cards " + (rv.cards[0] + 1) + " to " + rv.cards[1] + " of " + nc + ", then its quick-fire", rv.cm + rv.m)
+      return rv.cards ? box("revc|" + pd.d + "|" + rv.x.key, "#/cards/" + rv.x.s.id + "/topic/" + rv.x.t.id, "🃏 " + nm + ": all " + nc + " revision cards", rv.cm + rv.m)
         : rv.gap === 6 && topicRes(rv.x.s, rv.x.t).fw ? box("rev|" + pd.d + "|" + rv.x.key, "#/topic/" + rv.x.s.id + "/" + rv.x.t.id + "/fwtest", "🗺️ " + nm + ": framework self-test (hide the details, say them, then reveal)", rv.m)
         : rv.gap === 10 && topicQs(rv.x.s, rv.x.t.id).length ? box("rev|" + pd.d + "|" + rv.x.key, "#/questions/" + rv.x.s.id + "/" + rv.x.t.id, "✍️ " + nm + ": redo its exam-style questions", rv.m)
         : box("rev|" + pd.d + "|" + rv.x.key, "#/quick/" + rv.x.s.id + "/" + rv.x.t.id, "⚡ " + nm + ": quick-fire", rv.m); }).join("") +
-    (pd.mixed ? box("mix|" + pd.d, "#/quick/review", "🔀 Mixed quiz: everything you've covered so far", pd.mixed) : "") + '</ul></li>';
+    (pd.mixed ? box("mix|" + pd.d, "#/mistakes", "🧩 Weekly mistakes mix: every card and question you've got wrong, all topics together", pd.mixed) : "") + '</ul></li>';
 }
 function planItemHTML(it){
   var done = !!S.done[it.x.key];
@@ -76822,7 +76823,7 @@ function viewPlan(){
   var p = buildPlan(), tdy = ymd(), hrs = Math.round(p.cap / 60), wpm = Math.round(p.rate);
   var h = '<div class="card"><h2>📅 Revision timetable</h2><p class="muted" style="margin:0">Starts ' + fmtDate(PLAN_START) + ' and works through the syllabus from the beginning: FLK1 subjects first, then Ethics, then FLK2. Every topic is learned by ' + fmtDate(ymd(new Date(parseYmd(S.settings.exam1).getTime() - 6 * 86400000))) + '. The days before each paper are for revision and a mock.</p>' +
     '<div class="plansum"><span><b>' + S.settings.weekday + 'h</b> on weekdays</span><span><b>' + S.settings.weekend + 'h</b> at weekends</span><span><b>' + Math.round(p.all / 60) + 'h</b> in total</span><span>6h mock day before each paper</span><span>Days off: 25 Dec, 1 Jan</span></div>' +
-    '<p class="small muted">How the time per topic is worked out: each topic gets time for its framework and test questions (30 seconds per quick-fire question, 2½ minutes per exam-style question, 8 minutes for the framework). Its revision cards come in the spaced review: half the next study day and half three days later, at about 20 seconds a card, and later reviews are a short quick-fire refresh. The rest goes on reading, in proportion to how long each topic\'s notes are (about ' + wpm + ' words a minute). On long topics, the cartoons and framework help you cover the notes faster. If you fall behind, Today shows the topics to catch up first. You can change the hours in Settings and the timetable adjusts.</p></div>';
+    '<p class="small muted">How the time per topic is worked out: each topic gets time for its framework and test questions (30 seconds per quick-fire question, 2½ minutes per exam-style question, 8 minutes for the framework). Each topic then gets 4 spaced reviews: all its revision cards on the next study day (about 20 seconds a card), quick-fire 3 study days later, a framework self-test after 6 and its exam-style questions after 10. Every Sunday there is a mistakes mix of everything you\'ve got wrong. The rest goes on reading, in proportion to how long each topic\'s notes are (about ' + wpm + ' words a minute). On long topics, the cartoons and framework help you cover the notes faster. If you fall behind, Today shows the topics to catch up first. You can change the hours in Settings and the timetable adjusts.</p></div>';
   var weeks = [], cur = null;
   p.days.forEach(function(x){ var w = (parseYmd(x.d).getDay() + 6) % 7; if (!cur || w === 0){ cur = []; weeks.push(cur); while (cur.length < w) cur.push(null); } cur.push(x); });
   h += '<div class="card"><h3 style="margin-top:0">At a glance</h3><div class="cal"><div class="calh">Mon</div><div class="calh">Tue</div><div class="calh">Wed</div><div class="calh">Thu</div><div class="calh">Fri</div><div class="calh">Sat</div><div class="calh">Sun</div>';
@@ -76997,7 +76998,7 @@ VIEW.frameworks = function(){ return syllabusLike("framework"); };
 /* spaced review progress for a topic: one dot per review (1, 3, 6 and 10 study days after learning), filled when ticked off, plus the next date */
 function revDots(k){
   var rs = (buildPlan().revs || {})[k]; if (!rs || !rs.length) return '';
-  var t = ymd(), nx = null, n = 0, lab = {1:"cards + quick-fire", 3:"cards + quick-fire", 6:"framework self-test", 10:"exam-style questions"};
+  var t = ymd(), nx = null, n = 0, lab = {1:"revision cards", 3:"quick-fire", 6:"framework self-test", 10:"exam-style questions"};
   var dots = rs.map(function(r){ var dn = !!(S.todo && S.todo[r.k]); if (dn) n++; if (!dn && !nx && r.d >= t) nx = r; return '<i class="rd' + (dn ? ' on' : (r.d < t ? ' miss' : '')) + '" title="Review ' + (rs.indexOf(r) + 1) + ' (' + lab[r.gap] + '), ' + esc(fmtDate(r.d)) + (dn ? ': done' : '') + '"></i>'; }).join("");
   return '<span class="revd"><span class="rdots" aria-hidden="true">' + dots + '</span><span class="small"><b>Reviews: ' + n + ' of ' + rs.length + ' done</b>' + (nx ? ' · next ' + esc(fmtDate(nx.d).replace(/ \d{4}$/, "")) : n < rs.length ? ' · catch up' : ' ✓') + '</span></span>';
 }
@@ -77297,6 +77298,17 @@ function nextDueText(){
   if (!best) return ""; var d = Math.round((parseYmd(ymd(new Date(best))) - parseYmd(ymd())) / 86400000);
   return d <= 0 ? "later today" : d === 1 ? "tomorrow" : "in " + d + " days";
 }
+function qfMistakes(){ return allQQ().filter(function(x){ var r = S.qf[x.id]; return r && r.n > r.c && r.b < 2; }); }
+function cardMistakes(){ var n = 0; SUBJ.forEach(function(x){ (x.cards || []).forEach(function(c, i){ var v = S.cards[x.id + "~" + i]; if (v === 0 || v === 0.5) n++; }); }); return n; }
+VIEW.mistakes = function(){
+  var q = qfMistakes().length, w = wrongIds().length, c = cardMistakes();
+  var row = function(n, href, t, d){ return '<div class="mxrow"><div><b>' + t + '</b><div class="small muted">' + d + '</div></div>' + (n ? '<a class="btn primary" href="' + href + '">Start (' + n + ')</a>' : '<span class="pill g">None ✓</span>') + '</div>'; };
+  return '<div class="card"><h2>🧩 Weekly mistakes mix</h2><p class="muted">Everything you\'ve got wrong so far, from every topic, in one place. A question drops out once you get it right twice in a row; a card drops out once you mark it 🟢.</p>' +
+    row(q, "#/quick/mistakes", "⚡ Quick-fire questions you got wrong", "From all the topics you've covered.") +
+    row(c, "#/cards/all/mistakes", "🃏 Revision cards still 🔴 or 🟠", "Cards you marked as not known yet or getting there.") +
+    row(w, "#/questions/wrong", "✍️ Exam-style questions you got wrong", "Have another go, then read the explanation.") +
+    (q + w + c ? '' : '<p class="small" style="margin-top:12px"><b>Nothing to fix yet. Brilliant!</b> Tick this off on Today.</p>') + '</div>';
+};
 function qfPool(key){
   var parts = key.split("/");
   if (key === "review"){
@@ -77307,13 +77319,14 @@ function qfPool(key){
   }
   if (key === "extra") return coveredQQ().sort(function(a, b){ return ((S.qf[a.id] || {}).at || 0) - ((S.qf[b.id] || {}).at || 0); }).slice(0, 10);
   if (key === "mix") return shuffle(allQQ()).slice(0, 10);
+  if (key === "mistakes") return shuffle(qfMistakes());
   var s = BYID[parts[0]]; if (!s) return [];
   if (parts[1]) return shuffle((s.qq || []).filter(function(x){ return x.t === parts[1]; }));
   return shuffle(s.qq || []).slice(0, 10);
 }
 function qfTitle(key){
   var parts = key.split("/");
-  if (key === "review") return "Refresh what you've covered"; if (key === "extra") return "Extra refresh"; if (key === "mix") return "Mixed";
+  if (key === "review") return "Refresh what you've covered"; if (key === "extra") return "Extra refresh"; if (key === "mix") return "Mixed"; if (key === "mistakes") return "Mistakes mix";
   var s = BYID[parts[0]]; if (!s) return "";
   if (parts[1]){ var t = TBYKEY[s.id + "/" + parts[1]]; return t ? t.t.title : s.title; }
   return s.title;
@@ -77404,9 +77417,9 @@ VIEW.cards = function(r){
   if (r[1]){
     var s = r[1] === "all" ? null : BYID[r[1]];
     if (r[1] !== "all" && !s) return VIEW.cards([]);
-    var learnOnly = r[2] === "learning", onlyT = r[2] === "topic" ? r[3] : null;
+    var learnOnly = r[2] === "learning", onlyT = r[2] === "topic" ? r[3] : null, mist = r[2] === "mistakes";
     var deck = [];
-    SUBJ.forEach(function(x){ if (s && x !== s) return; (x.cards || []).forEach(function(c, i){ var id = x.id + "~" + i; if (learnOnly && S.cards[id] === 1) return; if (onlyT && cardTopic(x, i) !== onlyT) return; deck.push({s:x, c:c, id:id}); }); });
+    SUBJ.forEach(function(x){ if (s && x !== s) return; (x.cards || []).forEach(function(c, i){ var id = x.id + "~" + i; if (learnOnly && S.cards[id] === 1) return; if (mist && !(S.cards[id] === 0 || S.cards[id] === 0.5)) return; if (onlyT && cardTopic(x, i) !== onlyT) return; deck.push({s:x, c:c, id:id}); }); });
     var key = r.join("/");
     if (!FC || FC.key !== key) FC = {key:key, deck:shuffle(deck), i:0, flip:false};
     if (!FC.deck.length) return '<div class="card"><h2>All cards known</h2><p>You\'ve marked every card in this deck as known.</p><div class="btns"><a class="btn" href="#/cards/' + r[1] + '">See the whole deck</a><a class="btn" href="#/cards">All decks</a></div></div>';
