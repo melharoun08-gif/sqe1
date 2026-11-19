@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261119234707";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261119235204";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -79865,6 +79865,7 @@ window.SQE_SCENE = function(A){
       }
       if (pass) return head + '<div class="scn-xres"><div class="big" aria-hidden="true">🏆🚪🎉</div><h2>You passed! Out you go</h2><p class="score">' + right + ' / ' + n + ' (' + Math.round(right / n * 100) + '%)</p><p>The pass mark is ' + need + ' out of ' + n + ' (60%). <b>✓ The Sweet Shop exit quiz is passed.</b></p>' +
         (S().todo && S().todo[k + '|qa'] ? '<p class="small">✓ Model Q&amp;A and quick-fire for this topic are ticked off on Today.</p>' : '') +
+        (window.SQE_RATE ? '<div class="scn-rateq"><p><b>You\'re out of the shop!</b> Before you set off on your next journey, rate this topic:</p>' + window.SQE_RATE(k) + '</div>' : '') +
         (function(){ var nx = (window.SQE_NEXT ? window.SQE_NEXT() : {h: '#/home', l: 'Back to Today'}); return '<p class="scn-nextup"><b>What next?</b> ' + (nx.h === '#/home' ? 'Back to Today\'s list.' : 'The next thing on today\'s list.') + '</p>' +
         '<div class="btns"><a class="btn primary" href="' + nx.h + '">Next: ' + esc(nx.l) + ' ›</a>'; })() + '<a class="btn" href="#/map/' + x.s.id + '">Back to the map 🗺️</a><button type="button" class="btn" data-scn="close">Stay in the shop</button></div></div>';
       var seen = {}, rev = [];
@@ -79919,7 +79920,7 @@ window.SQE_SCENE = function(A){
     var k = cur(); if (!k) return;
     var old = document.querySelector('.scn-ov'), html = modalHTML(k), tmp = document.createElement('div'); tmp.innerHTML = html;
     var nw = tmp.firstChild;
-    if (old && nw) old.parentNode.replaceChild(nw, old);
+    if (old && nw){ old.parentNode.replaceChild(nw, old); try { if (window.SQE_RAGFACES) window.SQE_RAGFACES(nw); } catch(e){} }
     else if (old) old.parentNode.removeChild(old);
     else if (nw){ var host = document.querySelector('.scn'); if (host) host.appendChild(nw); }
     if (nw){ var sh = nw.querySelector('.scn-sheet'); nw.scrollTop = 0; var f = nw.querySelector('[data-scn=next],[data-scn=eat],[data-scn=enter],[data-scn=xnext],[data-scn=xpick],.nck-o:not([disabled]),.scn-x'); if (f) try { f.focus({preventScroll: true}); } catch(e){} }
@@ -82800,7 +82801,9 @@ function dayTaskList(ds){
 }
 /* 23:45 Monnie: "Next" after a step follows TODAY's to-do list (next unticked task), else back to Today */
 function nextTaskLink(){ try { var L = dayTaskList(ymd()); for (var i = 0; i < L.length; i++){ var z = L[i]; if (taskDone(z)) continue; if (z.x && z.st){ var st = topicSteps(z.x).filter(function(y){ return y.k === z.st; })[0]; if (st && st.h) return {h: st.h, l: String(st.l || "").replace(/<[^>]*>/g, "").trim()}; } return {h: "#/home", l: "Next task on Today"}; } } catch(e){} return {h: "#/home", l: "Back to Today"}; }
-window.SQE_NEXT = nextTaskLink;
+window.SQE_NEXT = nextTaskLink; window.SQE_RAGFACES = function(r){ try { ragFaces(r); } catch(e){} };
+/* 23:50 Monnie: rate the topic right on the "out of the shop" screen (same buttons as the topic page; ticks the rating task) */
+window.SQE_RATE = function(k){ try { return '<div class="btns scn-rate" style="justify-content:center">' + CONF.slice().reverse().map(function(c){ var cur = trec(k) && trec(k).conf === c.v; return '<button class="rate' + (cur ? " on" : "") + '" data-act="trate" data-k="' + k + '" data-v="' + c.v + '">' + c.e + '<span>' + esc(c.l) + '</span></button>'; }).join("") + '</div>'; } catch(e){ return ''; } };
 function mockDoneOn(ds){ return S.mocks.some(function(r){ return r && r.d === ds && r.mock; }); }
 function taskDone(z){
   if (z.st) return stepDone(z.x, z.st);
@@ -83223,7 +83226,7 @@ function howItWorks(){
 function viewPalace(r){
   var c = cbaS(), L = henLife(), m = henMood(L), f = cbaFlock(), nm = henName(L);
   if (r[1] === "shop") setTimeout(function(){ var s = document.getElementById("shop"); if (s && s.scrollIntoView) try { s.scrollIntoView({block:"start"}); } catch(e){} }, 40);
-  var h = (JMAP ? (function(){ try { return JMAP(r[0] === "map" ? r[1] : null); } catch(ej){ if (window.console) console.error(ej); return ""; } })() : '') + '<div class="cbag palace"><div class="paltop"><h2 class="paltitle">🏰 Cluckington Palace</h2><span class="spill coin">' + cbaCoin() + ' <b>' + c.coins + '</b></span></div>';
+  var h = (JMAP ? (function(){ try { return JMAP(null); /* 23:52 Monnie: Map always just shows the palace map, no stop panel */ } catch(ej){ if (window.console) console.error(ej); return ""; } })() : '') + '<div class="cbag palace"><div class="paltop"><h2 class="paltitle">🏰 Cluckington Palace</h2><span class="spill coin">' + cbaCoin() + ' <b>' + c.coins + '</b></span></div>';
   h += cbaScene();
   CBNEW = "";
   if (FEDNOW){ FEDNOW = 0; setTimeout(function(){ var hn = document.querySelector(".scene .stracy .hen, .scene .stracy .chick"); if (hn) hn.classList.add("jump"); }, 30); }
