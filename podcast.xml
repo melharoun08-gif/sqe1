@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+ <channel>
+  <title>Layla's SQE1 Revision</title>
+  <link>https://melharoun08-gif.github.io/sqe1/</link>
+  <language>en-gb</language>
+  <description>SQE1 revision episodes, one per topic, in timetable order.</description>
+  <itunes:author>SQE1 Revision</itunes:author>
+  <itunes:image href="https://melharoun08-gif.github.io/sqe1/img/podcast-cover.jpg"/>
+  <itunes:type>serial</itunes:type>
+  <itunes:block>yes</itunes:block>
+  <itunes:explicit>false</itunes:explicit>
+  <itunes:category text="Education"/>
+  <item>
+   <title>Business Law 1: Business structures and legal personality</title>
+   <guid isPermaLink="false">sqe1-blp/business-structures</guid>
+   <pubDate>Sun, 01 Nov 2026 06:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/blp-01-business-structures.m4a" length="59385745" type="audio/x-m4a"/>
+   <itunes:duration>01:21:14</itunes:duration>
+   <itunes:season>1</itunes:season>
+   <itunes:episode>1</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Business Law 1: Business structures and legal personality. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Business Law 2: Forming a company, partnership or LLP (incl. ECCTA 2023)</title>
+   <guid isPermaLink="false">sqe1-blp/formation</guid>
+   <pubDate>Sun, 01 Nov 2026 07:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/blp-02-formation.m4a" length="17735272" type="audio/x-m4a"/>
+   <itunes:duration>00:24:15</itunes:duration>
+   <itunes:season>1</itunes:season>
+   <itunes:episode>2</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Business Law 2: Forming a company, partnership or LLP (incl. ECCTA 2023). SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Business Law 3: Directors: appointment, removal and duties</title>
+   <guid isPermaLink="false">sqe1-blp/directors</guid>
+   <pubDate>Sun, 01 Nov 2026 08:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/blp-03-directors.m4a" length="52142207" type="audio/x-m4a"/>
+   <itunes:duration>01:11:19</itunes:duration>
+   <itunes:season>1</itunes:season>
+   <itunes:episode>3</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Business Law 3: Directors: appointment, removal and duties. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Business Law 4: Decision-making: board, general meetings and resolutions</title>
+   <guid isPermaLink="false">sqe1-blp/decision-making</guid>
+   <pubDate>Sun, 01 Nov 2026 09:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/blp-04-decision-making.m4a" length="18385568" type="audio/x-m4a"/>
+   <itunes:duration>00:25:08</itunes:duration>
+   <itunes:season>1</itunes:season>
+   <itunes:episode>4</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Business Law 4: Decision-making: board, general meetings and resolutions. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Business Law 5: Shareholders' rights and minority protection</title>
+   <guid isPermaLink="false">sqe1-blp/shareholders-minority</guid>
+   <pubDate>Sun, 01 Nov 2026 10:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/blp-05-shareholders-minority.m4a" length="19239714" type="audio/x-m4a"/>
+   <itunes:duration>00:26:18</itunes:duration>
+   <itunes:season>1</itunes:season>
+   <itunes:episode>5</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Business Law 5: Shareholders' rights and minority protection. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Business Law 6: Partnerships and LLPs: authority, agreements and liability</title>
+   <guid isPermaLink="false">sqe1-blp/partnerships</guid>
+   <pubDate>Sun, 01 Nov 2026 11:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/blp-06-partnerships.m4a" length="17649952" type="audio/x-m4a"/>
+   <itunes:duration>00:24:08</itunes:duration>
+   <itunes:season>1</itunes:season>
+   <itunes:episode>6</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Business Law 6: Partnerships and LLPs: authority, agreements and liability. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Business Law 7: Equity finance: shares, allotment, buyback and redemption</title>
+   <guid isPermaLink="false">sqe1-blp/equity-finance</guid>
+   <pubDate>Sun, 01 Nov 2026 12:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/blp-07-equity-finance.m4a" length="15502895" type="audio/x-m4a"/>
+   <itunes:duration>00:21:11</itunes:duration>
+   <itunes:season>1</itunes:season>
+   <itunes:episode>7</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Business Law 7: Equity finance: shares, allotment, buyback and redemption. SQE1 revision episode.</description>
+  </item>
+ </channel>
+</rss>
