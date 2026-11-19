@@ -1700,6 +1700,10 @@ body.podcar-on .startnext{bottom:110px}
 @media (max-width:600px){.shen3{width:9.5%}.sbianca{right:1%;bottom:36%}.sbeefy{left:0;bottom:1%}.sbrucey{left:8.5%;bottom:1%}}
 /* streak: full-body Layla stands on her cloud; let her head poke above the svg box */
 .streak .stsvg{overflow:visible}
+/* 19 Nov: whole banner scene always visible (never cropped): fit to banner height, plain sky/grass continues to the left */
+@media (min-width:721px){
+.head,.head.compact{background-image:url(img/banner-bg.webp),url(img/banner-ext.webp)!important;background-repeat:no-repeat,repeat-x!important;background-size:auto calc(100% - var(--tabh,50px)),auto calc(100% - var(--tabh,50px))!important;background-position:right bottom var(--tabh,50px),right bottom var(--tabh,50px)!important;background-color:#c2e3f8!important}
+}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -77573,7 +77577,7 @@ function timerStrip(){
 
     '<span class="saved" id="savedIndicator"></span></div>';
 }
-function tabH(){ try { var h = document.querySelector(".head"), t = h && h.querySelector(".tabs"); if (!t) return; var v = Math.round(h.getBoundingClientRect().bottom - t.getBoundingClientRect().top) + "px"; if (h.style.getPropertyValue("--tabh") !== v) h.style.setProperty("--tabh", v); var mh = (window.innerWidth > 720 && !h.classList.contains("compact")) ? Math.round(h.clientWidth / 4.03 + parseInt(v, 10)) + "px" : ""; if (h.style.minHeight !== mh) h.style.minHeight = mh; } catch(e){} }
+function tabH(){ try { var h = document.querySelector(".head"), t = h && h.querySelector(".tabs"); if (!t) return; var v = Math.round(h.getBoundingClientRect().bottom - t.getBoundingClientRect().top) + "px"; if (h.style.getPropertyValue("--tabh") !== v) h.style.setProperty("--tabh", v); var mh = (window.innerWidth > 720 && !h.classList.contains("compact")) ? Math.round(Math.min(h.clientWidth / 4.03, 400) + parseInt(v, 10)) + "px" : ""; if (h.style.minHeight !== mh) h.style.minHeight = mh; } catch(e){} }
 window.addEventListener("resize", tabH);
 /* ============ BANNER LAYOUT: drag the banner blocks where you like (Settings > "Arrange the banner (for Monnie)", or #/home?arrange=1) ============ */
 /* BANNER_LAYOUT = positions baked in for everyone, as % of the banner box: {wide:{title:{x:2,y:4}, ...}, phone:{...}}. null = the normal look.
@@ -77597,7 +77601,7 @@ function blCur(m){
 }
 /* banner box height (the strip above the tabs that the blocks sit in) */
 function blStageH(m, W){
-  if (m === "wide") return Math.round(Math.max(W / 4.03, Math.min(W / BL_IMG, 290)));
+  if (m === "wide") return Math.round(Math.min(400, Math.max(W / 4.03, Math.min(W / BL_IMG, 290))));
   return window.innerWidth > 720 ? Math.round(Math.max(W / 4.03, 400)) : 430;
 }
 function blRect(el){
