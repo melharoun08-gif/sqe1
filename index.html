@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261119230800";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261119231703";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -2267,6 +2267,212 @@ html.dfv-on{overflow:hidden}
 .tdsteps li:has(.tdalt)::after{content:"";order:2;flex-basis:100%;height:0}
 .tdsteps li .tdalt{order:3;margin-left:36px}
 
+
+/* tidy-plan: Timetable, Hours log, Progress (layout only) */
+.v-plan .calc span{word-break:normal;overflow-wrap:anywhere}
+@media (max-width:600px){
+  .v-plan .cal{grid-template-columns:1fr;gap:5px}
+  .v-plan .cal .calh,.v-plan .cal .calc.empty{display:none}
+  .v-plan .cal .calc{flex-direction:row;align-items:baseline;gap:10px;min-height:0;padding:9px 12px;font-size:13.5px;line-height:1.35}
+  .v-plan .cal .calc::before{flex:none;width:32px;font-size:12px;font-weight:700;color:inherit;opacity:.75}
+  .v-plan .cal .calc:nth-child(7n+1)::before{content:"Mon"}
+  .v-plan .cal .calc:nth-child(7n+2)::before{content:"Tue"}
+  .v-plan .cal .calc:nth-child(7n+3)::before{content:"Wed"}
+  .v-plan .cal .calc:nth-child(7n+4)::before{content:"Thu"}
+  .v-plan .cal .calc:nth-child(7n+5)::before{content:"Fri"}
+  .v-plan .cal .calc:nth-child(7n+6)::before{content:"Sat"}
+  .v-plan .cal .calc:nth-child(7n)::before{content:"Sun"}
+  .v-plan .cal .calc:nth-child(7n+1):not(:nth-child(8)){margin-top:8px}
+  .v-plan .cal .calc b{flex:none;width:52px;font-size:13.5px}
+  .v-plan .cal .calc span{flex:1;min-width:0}
+  .v-plan .cal .calc i{position:static;flex:none;font-size:12px;align-self:center}
+  .v-plan .callegend{gap:6px 12px}
+}
+/* Hours log: tidy the add-time form */
+.v-hours div:has(> label > #hd){gap:12px !important;align-items:flex-end !important}
+.v-hours div:has(> label > #hd) > label.f{margin:0}
+.v-hours div:has(> label > #hd) input,.v-hours div:has(> label > #hd) select{height:42px;box-sizing:border-box}
+.v-hours div:has(> label > #hd) > .btn{margin-bottom:0 !important;height:42px;padding-left:22px;padding-right:22px}
+.v-hours div:has(> label > #hd) > .btn{display:inline-flex;align-items:center;justify-content:center}
+@media (max-width:600px){
+  .v-hours div:has(> label > #hd){display:grid !important;grid-template-columns:1.6fr 1fr 1fr}
+  .v-hours div:has(> label > #hd) > label.f{min-width:0 !important}
+  .v-hours div:has(> label > #hd) input{width:100% !important;min-width:0}
+  .v-hours div:has(> label > #hd) > label:has(#hs),.v-hours div:has(> label > #hd) > label:has(#hn),.v-hours div:has(> label > #hd) > .btn{grid-column:1 / -1}
+  .v-hours div:has(> label > #hd) select{width:100%}
+  .v-hours .chart{gap:4px}
+}
+/* Progress: line the subject table up, stack it on phones */
+.v-progress table.t td{vertical-align:middle}
+@media (max-width:600px){
+  .v-progress div[style*="overflow-x"] > table.t,.v-progress div[style*="overflow-x"] > table.t > tbody{display:block}
+  .v-progress div[style*="overflow-x"] > table.t tr:first-child{display:none}
+  .v-progress div[style*="overflow-x"] > table.t tr{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;padding:12px 0;border-bottom:1px solid var(--line)}
+  .v-progress div[style*="overflow-x"] > table.t td{border:0;padding:0}
+  .v-progress div[style*="overflow-x"] > table.t td:first-child{grid-column:1 / -1}
+  .v-progress div[style*="overflow-x"] > table.t td:not(:first-child)::before{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:3px}
+  .v-progress div[style*="overflow-x"] > table.t td:nth-child(2)::before{content:"Topics reviewed"}
+  .v-progress div[style*="overflow-x"] > table.t td:nth-child(3)::before{content:"Questions"}
+  .v-progress div[style*="overflow-x"] > table.t td:nth-child(4)::before{content:"Right"}
+  .v-progress div[style*="overflow-x"] > table.t td:nth-child(5)::before{content:"Cards known"}
+  .v-progress div[style*="overflow-x"] > table.t td:nth-child(6)::before{content:"Hours"}
+  .v-progress div[style*="overflow-x"] > table.t tr{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px 10px}
+  .v-progress div[style*="overflow-x"] > table.t td:first-child{order:0}
+  .v-progress div[style*="overflow-x"] > table.t td:nth-child(2),.v-progress div[style*="overflow-x"] > table.t td:nth-child(3),.v-progress div[style*="overflow-x"] > table.t td:nth-child(5){order:1}
+  .v-progress div[style*="overflow-x"] > table.t td:nth-child(4),.v-progress div[style*="overflow-x"] > table.t td:nth-child(6){order:2;display:flex;align-items:center;gap:6px}
+  .v-progress div[style*="overflow-x"] > table.t td:nth-child(4)::before,.v-progress div[style*="overflow-x"] > table.t td:nth-child(6)::before{margin:0}
+  .v-progress div[style*="overflow-x"] > table.t td:not(:first-child)::before{font-size:10.5px;letter-spacing:.03em}
+}
+/* end tidy-plan */
+/* tidy-today: Today page (#/home) body only */
+.card.today .tdsteps li>a:not(.tdalt){text-underline-offset:3px;text-decoration-thickness:1px;line-height:1.35;min-width:0}
+.card.today .tdsteps li{min-height:28px}
+.card.today .daycnt{margin:6px 0 4px}
+@media (max-width:600px){
+ .card.today .daynav{gap:6px}
+ .card.today .btn.dnav{width:40px;height:40px;font-size:22px}
+ .card.today .dtitle .muted{font-size:14px}
+ .feedp.onhome{display:grid;grid-template-columns:52px 1fr;column-gap:10px;row-gap:4px;align-items:center;padding:10px 12px}
+ .feedp.onhome .fpic{grid-column:1;grid-row:1}
+ .feedp.onhome .fbody{display:contents}
+ .feedp.onhome .fstat{grid-column:2;grid-row:1;line-height:1.25}
+ .feedp.onhome .fline,.feedp.onhome .fbar,.feedp.onhome .fwarn,.feedp.onhome .fbtn{grid-column:1/-1}
+ .feedp.onhome .eggsteps{padding-left:20px}
+ .feedp.onhome .fbtn{width:auto;margin-top:4px}
+ .card.today .tdtopic{padding:10px}
+ .card.today .tdmin{font-size:12px;padding-left:4px}
+}
+
+/* tidy-misc: Settings, Podcasts (+ car player), Cartoons grid, How it works */
+/* Settings: paired fields line up as two even columns, inputs bottom-aligned */
+.v-settings .card > div[style*="flex"]{display:grid!important;grid-template-columns:repeat(2,minmax(0,220px));gap:4px 16px!important;align-items:end}
+.v-settings .card > div[style*="flex"] label.f input{width:100%!important;box-sizing:border-box}
+.v-settings .card > p.small{margin:2px 0 6px!important}
+@media (max-width:600px){.v-settings .card > div[style*="flex"]{grid-template-columns:1fr 1fr}.v-settings #sname{width:100%;box-sizing:border-box}}
+/* Podcasts list: checkbox lines up with the first line of the title; player uses the row's width */
+.v-podcasts .podt{align-items:flex-start}
+.v-podcasts .podt > .tdbox{flex:none;margin-top:0}
+.v-podcasts .podt > span:not(.podlen):not(.podearn){line-height:1.4;padding-top:2px}
+.v-podcasts .podlen{padding-top:2px;line-height:1.4}
+.v-podcasts .podearn{margin-top:-1px}
+.v-podcasts .podp audio{flex:1 1 320px;width:auto;max-width:560px}
+.v-podcasts .podrow.off{opacity:1;color:#4B5663}
+.v-podcasts .podrow.off .podt b{color:#2E3A45}
+.v-podcasts .podsubj.off h3{color:var(--ink)}
+.v-podcasts .podsoon{color:#4B5663;border-color:#AEB8C2}
+:root[data-theme="dark"] .v-podcasts .podrow.off,:root[data-theme="dark"] .v-podcasts .podsoon{color:#B7C2CC}
+:root[data-theme="dark"] .v-podcasts .podrow.off .podt b{color:var(--ink)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .v-podcasts .podrow.off,:root:not([data-theme="light"]) .v-podcasts .podsoon{color:#B7C2CC}:root:not([data-theme="light"]) .v-podcasts .podrow.off .podt b{color:var(--ink)}}
+@media (max-width:600px){
+  .v-podcasts .podt > span:not(.podlen):not(.podearn) > b:first-child{display:block}
+  .v-podcasts .podp{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 10px;margin-left:36px}
+  .v-podcasts .podp .podpic{margin-right:0}
+  .v-podcasts .podp audio,.v-podcasts .podp .podpic+audio{width:100%;max-width:none}
+  .v-podcasts .podp .poddl,.v-podcasts .podp .podparts{grid-column:1 / -1;justify-self:end}
+}
+@media (max-width:380px){.v-podcasts .podp{margin-left:0}}
+/* Car player: on laptops keep it over the main column, not on top of the topic list */
+@media (min-width:901px){
+  body:has(.layout:not(.sideoff)) #podcar{right:300px}
+  body:has(.layout.sideoff) #podcar{right:46px}
+  #podcar .pcin{max-width:none}
+}
+/* Cartoons grid: "coming soon" numbers readable (dashed border still shows they're not ready) */
+.v-cartoons .tbox.none{opacity:1;color:#5A6874;border-color:#B9C2CB}
+:root[data-theme="dark"] .v-cartoons .tbox.none{color:#A9B6C1;border-color:#4A5866}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .v-cartoons .tbox.none{color:#A9B6C1;border-color:#4A5866}}
+@media (min-width:901px){.v-cartoons .tboxes{gap:6px}.v-cartoons .tboxes .tbox{width:34px;height:34px;font-size:13px}}
+/* How it works: wrapped lines sit under the text, not under the emoji */
+.hiw .hiwlist li{padding-left:1.55em;text-indent:-1.55em}
+/* tidy-cards: Revision cards + Quick-fire layout tidy (non-sweet-shop subjects only) */
+.v-cards .card:not(.skin-sweet) > .flash .face:not(.back){align-items:center;text-align:center}
+.v-cards .card:not(.skin-sweet) > .flash .face:not(.back) .kbd{margin-top:16px !important;color:var(--muted)}
+.v-cards .card:not(.skin-sweet) > .btns{gap:8px}
+.v-quick .card:not(.skin-sweet) .qfres{text-align:left;padding:12px 16px;line-height:1.5}
+.v-quick .card:not(.skin-sweet) .qfres > b:first-child{display:block;margin-bottom:4px}
+.v-quick .card:not(.skin-sweet) .qfres > b:first-child + br{display:none}
+.v-quick .grid2{margin-bottom:14px}
+.v-quick .grid2 > .card{margin-bottom:0;display:flex;flex-direction:column}
+.v-quick .grid2 > .card > .btn{align-self:flex-start}
+.v-quick .qfsub summary > .small{white-space:nowrap;flex:none}
+.v-quick .qfsub summary > span:first-child{min-width:0}
+.v-quick .qall details > summary{cursor:pointer;font-weight:600;color:var(--accent);padding:4px 0}
+@media (max-width:640px){
+  .v-cards .subjrow.cardrow:not(.swrow){grid-template-columns:auto minmax(0,1fr);row-gap:6px;align-items:center}
+  .v-cards .subjrow.cardrow:not(.swrow) .cr-t{grid-column:1/-1}
+  .v-cards .subjrow.cardrow:not(.swrow) .cr-x{grid-column:auto;text-align:right}
+}
+/* tidy-exam: Frameworks, Model Q&A, Mock exam, SRA samples, Examiner tips (layout only) */
+.v-frameworks .subjrow > .small{white-space:nowrap;flex-shrink:0;margin-left:10px}
+.v-mock .mk-timer{margin-top:14px}
+.v-mock .card > .btns + .mk-timer,.v-mock .card > a.btn + .mk-timer{margin-top:14px}
+.v-mock .mk-exam > .qmeta:first-child{align-items:center}
+.v-mock .mk-score{margin:10px 0 18px}
+.v-mock .mk-score + h3{margin-top:4px}
+.v-mock table.mk-subj td,.v-mock table.mk-subj th{vertical-align:middle}
+.v-mock table.mk-subj td:nth-child(2){white-space:nowrap}
+.v-mock .mk-barcell .pbar{margin:0;display:block}
+.v-mock .mk-nav{flex-wrap:wrap;gap:8px}
+@media (max-width:600px){
+  .v-mock .mk-barcell{width:25%;min-width:50px}
+  .v-mock table.mk-subj td,.v-mock table.mk-subj th{padding-left:6px;padding-right:6px}
+  .v-tips .xtips table th,.v-tips .xtips table td{padding:6px 8px;vertical-align:top}
+}
+
+/* tidy-syllabus: Syllabus tab, subject pages, topic pages (body only) */
+.v-syllabus .subjbox .subjrow > a{min-width:0}
+.v-syllabus .subjbox .subjrow > .small{white-space:nowrap;flex:none}
+.v-topic .scards{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+.v-topic .card > .btns:last-child{justify-content:space-between}
+.v-topic .card > .btns:last-child > a:last-child{margin-left:auto;text-align:right}
+@media (min-width:700px){
+ .v-subject .tlright{width:300px;align-items:flex-start;text-align:left}
+ .v-subject .tlright .revd{justify-content:flex-start}
+}
+@media (max-width:900px){
+ .layout.v-syllabus .main>.wrap,.layout.v-subject .main>.wrap,.layout.v-topic .main>.wrap,.layout.v-cba .main>.wrap{padding-bottom:16px}
+}
+@media (max-width:600px){
+ .v-topic .topichead .viewtabs,.v-cba .topichead .viewtabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
+ .v-topic .topichead .viewtabs > *,.v-cba .topichead .viewtabs > *{text-align:center;display:flex;align-items:center;justify-content:center;gap:4px;white-space:nowrap}
+ .v-topic .scards .scard:last-child:nth-child(odd){grid-column:1/-1}
+ .v-topic .card > .btns:last-child > a{flex:1 1 100%}
+ .v-topic .card > .btns:last-child > a:last-child:not(:first-child){justify-content:flex-end}
+}
+/* end tidy-syllabus */
+/* tidy-palace */
+.cbag.palace{max-width:none}
+@media (min-width:900px){.cbag.palace>.scene{height:330px}}
+.palace>.swho{margin:2px 4px 0}
+.palace>.swx{margin:-6px 4px 0}
+.palace>.cbasay::before{display:none}
+.jmap{container-type:inline-size}
+.jlegend{grid-template-columns:repeat(2,minmax(0,1fr))}
+@container (min-width:900px){.jlegend{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@container (max-width:560px){.jlegend{grid-template-columns:1fr}}
+@media (max-width:720px){.palace>.scene{background-position:100% 28%!important}}
+@media (max-width:600px){
+ .palace .sitm .btn{font-size:15px;padding:6px 12px;white-space:nowrap;max-width:100%}
+ .palace .owned{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+ .palace .own1{min-width:0}
+}
+@media (max-width:600px){
+ .jtl li{flex-wrap:wrap;row-gap:6px}
+ .jtl li>a:not(.jscene-s){flex:1 1 calc(100% - 110px)}
+ .jtl li>a.jscene-s{flex:0 0 auto;margin-left:38px}
+}
+/* end tidy-palace */
+.v-quick .grid2 > .card > p{margin:0 0 10px}
+.v-quick .qfsub summary{align-items:baseline}
+.v-quick .qftopics{flex-direction:row;flex-wrap:wrap;align-items:flex-start;gap:6px 8px}
+.v-quick .qftopics .btn{margin-bottom:4px}
+.v-quick .qftopics .qft{flex:0 0 100%;padding:7px 8px;border-top:1px solid var(--line);border-radius:0}
+.v-quick .qftopics .qft:hover{border-radius:6px}
+/* 23:25 Monnie's own arrangement (bl-on): ribbon sits to the RIGHT of the rainbow, level with the clouds, like her 19:28 layout; never over the coin bag */
+@media (min-width:721px){
+ .head.bl-on .streak .stline.stgoal,.head.bl-on .streak .stline.stready{left:calc(100% + 26px)!important;right:auto!important;top:auto!important;bottom:6%!important;width:225px!important;height:64px}
+}
+@media (min-width:721px) and (max-width:1300px){ .head.bl-on .streak{width:clamp(250px,24vw,372px)!important} }
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -78771,7 +78977,7 @@ window.SQE_JOURNEY = function (A) {
             var a = st[i], b = st[i + 1], yc_1 = (a.y + b.y) / 2;
             pts.push([a.x, a.y], [a.x, yc_1], [b.x, yc_1]);
         }
-        var sl = st[15], Pb = sl.y + 485, yc = Pb + 94, H = yc + 76; /* palace base, the path along the front of the palace, page height */
+        var sl = st[15], Pb = sl.y + 485, yc = Pb + 94, H = yc + 150; /* palace base, the path along the front of the palace, page height (tidy: room for the exam flags under the path) */
         pts.push([sl.x, sl.y], [sl.x, yc], [280, yc], [280, Pb + 6]);
         return { mode: 'phone', W: W, H: H, stops: st, route: roundPoly(pts, 50),
             lm: function (i) { return ({ x: i % 2 ? 135 : 465, y: st[i].y + 118, s: 1 }); },
@@ -78780,7 +78986,7 @@ window.SQE_JOURNEY = function (A) {
             art: { x: -130, y: -250, w: 260, h: 256, gx: -120, gy: -200, gw: 230, gh: 206 },
             hen: function (i) { return ({ x: st[i].x, y: st[i].y - 32, s: 1, m: !(i % 2) }); }, /* after each stop the path heads across: right from the left side, left from the right side */
             palace: { x: 280, y: Pb, s: 1 },
-            flags: [{ x: 40, y: yc - 30, s: 1, h: 56 }, { x: 330, y: yc - 30, s: 1, h: 56 }],
+            flags: [{ x: 100, y: yc + 116, s: 1, h: 80 }, { x: 320, y: yc + 116, s: 1, h: 80 }], /* tidy: planted in front of the palace, below the path, so they no longer cover the palace steps */
             reg: { spring: 212, autumn: st[7].y + 222, grounds: sl.y + 150 },
             deco: function () { return "<g transform=\"translate(14,14) scale(.62)\">".concat(sun(60, 60), "</g>") + cloud(522, 168, .7) + sign(330, 86, 'FLK1 Meadow', 'subjects + Ethics · stops 1–7', 22)
                 + sign(250, st[7].y + 290, 'FLK2 Harvest Fields', 'subjects · stops 8–14', 18)
@@ -79319,7 +79525,7 @@ var CSS = [
 '.jpanel .btn.jscene span{font-size:14px;font-weight:600}',
 '.jtl li a.jscene-s{flex:none;font-size:13px;font-weight:700;padding:2px 8px;border:2px solid #1b1b1b;border-radius:99px;background:#FFE0EC;color:#111;text-decoration:none}',
 '.jsv a.jnum{cursor:pointer}',
-'@media (max-width:640px){.scn-sheet .lrn-tbl td{display:block;position:relative;padding-left:calc(45% + 22px)}.scn-sheet .lrn-tbl td::before{position:absolute;left:12px;top:10px;width:45%}.scn-lab{display:none}.scn-pin{display:block}.scn-hs.door .scn-lab{display:block;font-size:12px}.scn-hs{padding:0;border-width:2px;border-radius:10px}.scn-hs .scn-tick{width:22px;height:22px;font-size:13px;line-height:17px;border-width:2px;right:1px;top:1px}.scn-head h2{font-size:25px}.scn-ov{padding:0;align-items:flex-end}.scn-sheet{margin:40px 0 0;border-radius:22px 22px 0 0;border-width:3px 0 0;box-shadow:none;padding:12px 12px 20px;min-height:60vh}.scn-list{grid-template-columns:1fr}.scn-art{border-width:3px;border-radius:14px;box-shadow:3px 3px 0 #1b1b1b}.scn-hs.next{border-width:4px;border-radius:10px}.scn-nexttag .d{display:none}.scn-nexttag .m{display:inline}.scn-nexttag{font-size:11px;padding:1px 6px 2px;border-width:2px;top:auto;bottom:0;transform:translate(-50%,60%);animation-name:scnTagM}.scn-art .scn-leave{font-size:17px;padding:6px 12px;border-width:3px;box-shadow:3px 3px 0 #1b1b1b;bottom:3%}.scn-leave{font-size:22px}}',
+'@media (max-width:640px){.scn-sheet .lrn-tbl td{display:block;position:relative;padding-left:calc(45% + 22px)}.scn-sheet .lrn-tbl td::before{position:absolute;left:12px;top:10px;width:45%}.scn-lab{display:none}.scn-pin{display:block}.scn-hs.door .scn-lab{display:block;font-size:11px;line-height:1.15;padding:3px 7px;max-width:none;width:max-content;bottom:auto;top:-30%;white-space:nowrap}.scn-hs{padding:0;border-width:2px;border-radius:10px}.scn-hs .scn-tick{width:22px;height:22px;font-size:13px;line-height:17px;border-width:2px;right:1px;top:1px}.scn-head h2{font-size:25px}.scn-ov{padding:40px 0 0;align-items:flex-start}.scn-sheet{margin:auto 0 0;border-radius:22px 22px 0 0;border-width:3px 0 0;box-shadow:none;padding:12px 12px 20px;min-height:60vh}.scn-list{grid-template-columns:1fr}.scn-art{border-width:3px;border-radius:14px;box-shadow:3px 3px 0 #1b1b1b}.scn-hs.next{border-width:4px;border-radius:10px}.scn-nexttag .d{display:none}.scn-nexttag .m{display:inline}.scn-nexttag{font-size:11px;padding:1px 6px 2px;border-width:2px;top:auto;bottom:0;transform:translate(-50%,60%);animation-name:scnTagM}.scn-art .scn-leave{display:none}.scn-leave{font-size:22px}}',
 '@keyframes scnTagM{0%,100%{transform:translate(-50%,60%)}50%{transform:translate(-50%,30%)}}',
 '@media (prefers-reduced-motion:reduce){.scn-nexttag,.scn-leave,.scn-art .scn-leave,.scn-hs.next,.scn-hs.door .scn-lab,.scn-confetti i{animation:none}.scn-hs.door .scn-leaf{transition:none}.scn-art.zoom{animation:none}}',
 'body:has(.scn-ov){overflow:hidden}',
@@ -79343,7 +79549,11 @@ var CSS = [
 '.scn-xres{margin-top:12px}',
 '.scn-sheet .nck{--nk:#A3215B;--nk-bg:#FFF0F6;--nk-o:#FFFFFF;--nk-line:#1b1b1b;--nk-ink:#1b1b1b;border-color:#1b1b1b;box-shadow:3px 3px 0 #1b1b1b}',
 '.scn-sheet .nck.ok{border-color:#2E7D32;box-shadow:3px 3px 0 #2E7D32}',
-'.scn-sheet .lrn-sub{color:var(--ink)}'
+'.scn-sheet .lrn-sub{color:var(--ink)}',
+/* tidy-sweetshop (19 Nov): labels sit above the green ticks so a tick never covers a label's words; smaller ticks on narrower screens */
+'.scn-hs .scn-lab{position:relative;z-index:1}',
+'@media (max-width:640px){.scn-hs .scn-tick{display:none}}',
+'@media (max-width:1200px){.scn-hs .scn-tick{width:28px;height:28px;font-size:16px;line-height:22px;border-width:2.5px}}'
 ].join('\n');
 
 window.SQE_SCENE = function(A){
@@ -80269,7 +80479,7 @@ function tabH(){ try { var h = document.querySelector(".head"), t = h && h.query
 /* 22:55 guard: whatever the fonts, browser or saved layout, push the present clouds (with cloud-Layla) down until Layla's head is clear of the numbers row, and grow the banner to fit */
 function layGuard(){ try { var h = document.querySelector(".head"), st = h && h.querySelector(".streak"), ly = st && st.querySelector(".stlayla"), hs = h && h.querySelector(".hstats"); if (!st) return;
   st.style.transform = ""; if (!ly || !hs || h.classList.contains("bl-edit")) return;
-  var a = ly.getBoundingClientRect(), b = {left:1e9,right:-1e9,bottom:-1e9,height:0}; [].forEach.call(hs.querySelectorAll("*"), function(e){ var r = e.getBoundingClientRect(); if (!r.height || !r.width) return; b.left = Math.min(b.left, r.left); b.right = Math.max(b.right, r.right); b.bottom = Math.max(b.bottom, r.bottom); b.height = 1; }); if (!a.height || !b.height) return;
+  var a = ly.getBoundingClientRect(), b = {left:1e9,right:-1e9,top:1e9,bottom:-1e9,height:0}; [].forEach.call(hs.querySelectorAll("*"), function(e){ var r = e.getBoundingClientRect(); if (!r.height || !r.width) return; b.left = Math.min(b.left, r.left); b.right = Math.max(b.right, r.right); b.top = Math.min(b.top, r.top); b.bottom = Math.max(b.bottom, r.bottom); b.height = 1; }); if (!a.height || !b.height) return;
   var sideBySide = a.right <= b.left + 4 || a.left >= b.right - 4; if (sideBySide) b.bottom = -1e9;
   var need = Math.ceil(b.bottom + 10 - a.top); if (need > 0) st.style.transform = "translateY(" + need + "px)";
   var t = h.querySelector(".tabs"), sb = st.getBoundingClientRect(); if (t){ var gap = Math.ceil(sb.bottom + 8 - t.getBoundingClientRect().top); if (gap > 0) h.style.minHeight = (h.getBoundingClientRect().height + gap) + "px"; } } catch(e){} }
@@ -80279,8 +80489,8 @@ window.addEventListener("resize", tabH); window.addEventListener("load", tabH); 
    A layout saved in a browser (localStorage "sqe_banner_layout") wins on that device only. Bake one in with bake.js. */
 /* 19 Nov: null, so Today uses the same banner layout as every other page (the old baked Today-only layout put the present clouds mid-banner on Today but bottom-left everywhere else)
    was: {"wide":{"title":{"x":1.14,"y":4.58},"stats":{"x":1.14,"y":36.68},"home":{"x":93.82,"y":0},"ring":{"x":1.14,"y":71.06},"bag":{"x":37.53,"y":18.34},"kw":{"x":30.7,"y":68.77},"cheer":{"x":30.7,"y":48},"streak":{"x":28.6,"y":40}}} */
-var BANNER_LAYOUT = null;
-var BL_KEY = "sqe_banner_layout_v2", BL = null; /* 22:45: old saved layouts ignored (one put cloud-Layla over the numbers on Monnie's laptop) */
+var BANNER_LAYOUT = {"wide":{"title":{"x":1.14,"y":4.58},"stats":{"x":1.14,"y":36.68},"home":{"x":93.82,"y":0},"ring":{"x":1.14,"y":71.06},"bag":{"x":37.53,"y":18.34},"kw":{"x":30.7,"y":68.77},"cheer":{"x":30.7,"y":48},"streak":{"x":28.6,"y":21}}}; /* 23:15 restored: Monnie's own arrangement, Layla + clouds in the MIDDLE */
+var BL_KEY = "sqe_banner_layout", BL = null; /* 22:45: old saved layouts ignored (one put cloud-Layla over the numbers on Monnie's laptop) */
 var BL_NAMES = {title:"Title and dates", stats:"Numbers", home:"Home button", ring:"Progress ring", bag:"Coin bag", kw:"Remember card", cheer:"Cheer line", streak:"Present clouds"};
 /* the drawn girls (with the rabbit) and the hens, as fractions of img/banner-bg.webp (2400 x 770): [left, top, right, bottom] */
 var BL_ZONES = [[0.865, 0.32, 1, 1], [0.6, 0.62, 0.875, 1]], BL_IMG = 2400 / 770;
@@ -81258,7 +81468,7 @@ VIEW.home = function(r){
   var lab = isToday ? "Today" : (tdy === sh(0) && tdy === ymd(new Date(Date.now() + 864e5)) ? "Tomorrow" : (tdy === ymd(new Date(Date.now() - 864e5)) ? "Yesterday" : dt.toLocaleDateString("en-GB", {weekday:"long"})));
   var h = '<div class="card today"><div class="daynav">' +
     (canPrev ? '<a class="btn dnav" href="#/home/' + prev + '" aria-label="Previous day">‹</a>' : '<span class="btn dnav off">‹</span>') +
-    '<div class="dtitle"><h2>' + lab + '</h2><div class="muted">' + dt.toLocaleDateString("en-GB", {weekday:"long", day:"numeric", month:"long"}) + (goal ? ' · ' + fmtH(goal) + ' of study' : '') + '</div>' + (isToday ? '' : '<a class="small" href="#/home">Back to today</a>') + '</div>' +
+    '<div class="dtitle"><h2>' + lab + '</h2><div class="muted">' + dt.toLocaleDateString("en-GB", {weekday:"long", day:"numeric", month:"long"}) + (goal && (planDay(tdy) || {}).m ? ' · ' + fmtH(goal) + ' of study' : '') + '</div>' + (isToday ? '' : '<a class="small" href="#/home">Back to today</a>') + '</div>' +
     (canNext ? '<a class="btn dnav" href="#/home/' + next + '" aria-label="Next day">›</a>' : '<span class="btn dnav off">›</span>') + '</div>';
   var pd = planDay(tdy), behind = isToday ? planItemsBefore(tdy) : [];
   if (isToday) h += feedPanel("home");
