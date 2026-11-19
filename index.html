@@ -1422,6 +1422,23 @@ details.hiw[open] .hiwtog::after{content:"Hide ▴"}
 }
 /* motivational quote removed from the banner (Monnie, 19 Nov 11:49) */
 .head .cheer,.head:not(.compact) .cheer{display:none!important}
+/* present clouds (streak path) */
+.streak{display:flex;align-items:flex-end;gap:6px;background:none;border:0;padding:0;width:fit-content;max-width:100%;color:#10294A}
+.streak .stsvg{width:clamp(220px,20vw,300px);height:auto;display:block;flex:none}
+.streak .stline{font-size:13.5px;line-height:1.25;font-weight:600;max-width:100px;background:#fff;border:2px solid #10294A;border-radius:12px;padding:4px 9px;margin-bottom:6px}.streak .stline:has(.stbtn){background:none;border:0;padding:0}
+.streak .stline b{font-weight:800}
+.stbtn{font:inherit;font-weight:800;font-size:13px;background:#E0457B;color:#fff;border:2px solid #10294A;border-radius:999px;padding:4px 10px;cursor:pointer}
+.stgift.wob{animation:stwob 1.2s ease-in-out infinite;transform-origin:300px 50px}
+@keyframes stwob{0%,100%{transform:rotate(0)}25%{transform:rotate(-7deg)}75%{transform:rotate(7deg)}}
+@media (prefers-reduced-motion:reduce){.stgift.wob{animation:none}}
+.head.compact .streak{display:none}
+@media (max-width:720px){.streak .stsvg{width:180px}}
+.voucher-bg{position:fixed;inset:0;background:rgba(16,41,74,.55);display:grid;place-items:center;z-index:9999;padding:16px}
+.voucher{background:#FFF8DC;border:3px dashed #E0457B;outline:3px solid #10294A;border-radius:18px;max-width:380px;width:100%;padding:22px 20px;text-align:center;color:#10294A;box-shadow:5px 5px 0 #10294A}
+.voucher .vtop{font-family:'Chewy',cursive;font-size:30px;color:#E0457B}
+.voucher .vbig{font-family:'Chewy',cursive;font-size:24px;margin:8px 0}
+.voucher .vdate{font-weight:700}
+.voucher .vsend{background:#fff;border:2px solid #10294A;border-radius:10px;padding:8px}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -75697,6 +75714,68 @@ function kwPool(){
   if (pool.length < 6 && src !== TOPICS){ TOPICS.forEach(function(x){ (x.s.terms || []).forEach(function(w){ if (w.t === x.t.id) pool.push({w:w.w, d:w.d, from:x.t.title, k:x.key}); }); }); }
   return pool;
 }
+
+/* ---------- real-life present streak (cloud path in the banner) ---------- */
+var PRESENT_STEPS = 5, PRESENT_TOTAL = 7, STREAK_LIVE = false;
+function presS(){ var p = S.presents = S.presents && typeof S.presents === "object" ? S.presents : {}; if (!Array.isArray(p.claimed)) p.claimed = []; return p; }
+function streakDemo(){ var m = /[?&]streakdemo=(\d)/.exec(location.search + location.hash); return m ? +m[1] : null; }
+/* days in a row (up to 5) where she hit her full study target; days off don't break it; today only counts once it's met */
+function presentStreak(){
+  var demo = streakDemo(); if (demo !== null) return Math.min(PRESENT_STEPS, demo);
+  var p = presS(), from = p.from || "", n = 0, d = new Date(); d.setHours(0,0,0,0);
+  for (var i = 0; i < 90 && n < PRESENT_STEPS; i++, d.setDate(d.getDate() - 1)){
+    var k = ymd(d); if (from && k <= from) break;
+    var g = goalMins(d), m = minsOn(k) + (i === 0 ? runningMins() : 0);
+    if (!g){ continue; }
+    if (m >= g) n++;
+    else if (i === 0) continue;
+    else break;
+  }
+  return n;
+}
+function cloudPath(x, y, s, fill, dash){ /* a puffy felt-tip cloud centred on x,y */
+  return '<path d="M' + (x - 14*s) + ' ' + (y + 6*s) + 'c-7 0-9-9-2-11c-1-7 8-10 12-5c3-7 14-7 15 1c7-2 11 6 6 10c4 4 0 9-5 8z" transform="translate(' + 0 + ' 0)" fill="' + fill + '" stroke="#10294A" stroke-width="2.4" stroke-linejoin="round"' + (dash ? ' stroke-dasharray="4 3"' : '') + ' vector-effect="non-scaling-stroke"/>';
+}
+function stCloud(cx, cy, w, fill, dashed){
+  /* puffy cloud: outline drawn as fat dark circles, then the fill on top, so only the outside edge shows */
+  var k = w / 40, c = [[-12,3,9],[-3,-3,11],[9,-1,9],[15,4,6],[-17,6,5],[0,6,10]], o = '', f = '';
+  c.forEach(function(q){ var x = (cx + q[0] * k).toFixed(1), y = (cy + q[1] * k).toFixed(1), r = q[2] * k; o += '<circle cx="' + x + '" cy="' + y + '" r="' + (r + 1.3).toFixed(1) + '"/>'; f += '<circle cx="' + x + '" cy="' + y + '" r="' + (r - 0.9).toFixed(1) + '"/>'; });
+  return '<g fill="#10294A">' + o + '</g><g fill="' + fill + '">' + f + '</g>';
+}
+function streakHTML(){
+  if (!STREAK_LIVE && streakDemo() === null) return "";
+  var p = presS(), got = p.claimed.length, n = presentStreak(), ready = n >= PRESENT_STEPS && got < PRESENT_TOTAL, done = got >= PRESENT_TOTAL;
+  var svg = '<svg viewBox="0 0 350 96" class="stsvg" aria-hidden="true">';
+  /* Layla on her cloud */
+  svg += stCloud(36, 74, 66, '#fff');
+  svg += '<clipPath id="stc"><circle cx="36" cy="40" r="22"/></clipPath><image href="img/layla-mini.webp" x="12" y="16" width="48" height="48" clip-path="url(#stc)"/><circle cx="36" cy="40" r="22" fill="none" stroke="#10294A" stroke-width="2.6"/>';
+  /* stepping-stone clouds: gold with a star once that day is done */
+  for (var i = 0; i < PRESENT_STEPS; i++){
+    var cx = 98 + i * 39, cy = 76 - (i % 2 ? 10 : 0), on = i < n;
+    svg += stCloud(cx, cy, 40, on ? '#FFD93B' : '#fff', !on);
+    svg += '<text x="' + cx + '" y="' + (cy + 5) + '" text-anchor="middle" font-size="' + (on ? 17 : 14) + '" font-weight="800" fill="' + (on ? '#10294A' : '#4A5F84') + '">' + (on ? '★' : (i + 1)) + '</text>';
+  }
+  /* rainbow between two clouds, present on top */
+  var rx = 308, ry = 70;
+  ["#E0457B","#F59F2A","#F7D038","#4CB963","#3B8FE0","#8A5CD6"].forEach(function(c, j){ var r = 34 - j * 4; svg += '<path d="M' + (rx - r) + ' ' + ry + 'a' + r + ' ' + r + ' 0 0 1 ' + (2 * r) + ' 0" fill="none" stroke="' + c + '" stroke-width="4.2"/>'; });
+  svg += '<path d="M' + (rx - 36.5) + ' ' + ry + 'a36.5 36.5 0 0 1 73 0" fill="none" stroke="#10294A" stroke-width="1.8"/><path d="M' + (rx - 12) + ' ' + ry + 'a12 12 0 0 1 24 0" fill="none" stroke="#10294A" stroke-width="1.5"/>';
+  svg += stCloud(rx - 29, ry + 10, 36, '#fff') + stCloud(rx + 29, ry + 10, 36, '#fff');
+  svg += '<g class="' + (ready ? 'stgift wob' : 'stgift') + '"><rect x="' + (rx - 11) + '" y="' + (ry - 13) + '" width="22" height="17" rx="2" fill="#E0457B" stroke="#10294A" stroke-width="2.4"/><rect x="' + (rx - 13) + '" y="' + (ry - 19) + '" width="26" height="7" rx="2" fill="#F25C94" stroke="#10294A" stroke-width="2.4"/><path d="M' + rx + ' ' + (ry - 18) + 'v21" stroke="#FFD93B" stroke-width="4"/><path d="M' + rx + ' ' + (ry - 19) + 'c-9-9-14 1-4 1M' + rx + ' ' + (ry - 19) + 'c9-9 14 1 4 1" fill="none" stroke="#10294A" stroke-width="2.2" stroke-linecap="round"/></g>';
+  svg += '</svg>';
+  var line = done ? '<b>All ' + PRESENT_TOTAL + ' presents won!</b>'
+    : ready ? '<button class="stbtn" data-act="present">🎁 Open present ' + (got + 1) + ' of ' + PRESENT_TOTAL + '</button>'
+    : '<b>' + (PRESENT_STEPS - n) + ' day' + (PRESENT_STEPS - n === 1 ? '' : 's') + '</b> to present ' + (got + 1) + ' of ' + PRESENT_TOTAL;
+  return '<div class="streak" data-bl="streak" title="Hit your full study time ' + PRESENT_STEPS + ' days in a row to win a real present">' + svg + '<div class="stline">' + line + '</div></div>';
+}
+function presentVoucher(){
+  var p = presS(), n = p.claimed.length;
+  if (streakDemo() === null){ if (presentStreak() < PRESENT_STEPS || n >= PRESENT_TOTAL) return; p.claimed.push({d:ymd()}); p.from = ymd(); save(); n = p.claimed.length; }
+  else n = n + 1;
+  var nm = S.settings.name || "Layla";
+  var o = document.createElement("div"); o.className = "voucher-bg"; o.innerHTML = '<div class="voucher" role="dialog" aria-label="Present voucher"><div class="vtop">🎁 Present voucher</div><div class="vbig">' + esc(nm) + ' has won present ' + n + ' of ' + PRESENT_TOTAL + '!</div><p>For hitting the full study time ' + PRESENT_STEPS + ' days in a row.</p><p class="vdate">' + esc(fmtDate(ymd())) + '</p><p class="vsend"><b>Screenshot this and send it to Monnie</b> to claim your present.</p><button class="btn primary" data-act="voucherclose">Done</button></div>';
+  document.body.appendChild(o);
+  render();
+}
 function kwHTML(){
   var pool = kwPool(); if (!pool.length) return "";
   var k = pool[kwI % pool.length];
@@ -75729,7 +75808,7 @@ function header(route){
       '<circle cx="37" cy="37" r="31" fill="none" stroke="#7CCB9C" stroke-width="8" stroke-linecap="round" stroke-dasharray="' + C.toFixed(1) + '" stroke-dashoffset="' + (C * (1 - pct / 100)).toFixed(1) + '"/></svg>' +
       '<div class="in">' + Math.round(pct) + '%</div></div>' +
     '<div class="ringtxt"><b>' + fmtH(done) + ' of ' + fmtH(tgt) + '</b><br>' + (done >= tgt ? "Whole plan done! 🎉" : "of the whole revision plan") + '</div></div>' + bagHTML().replace('<a class="mbag', '<a data-bl="bag" class="mbag') +
-    kwHTML() + ''/* motivational quote removed 19 Nov */ +
+    kwHTML() + streakHTML() +
   '</div>' +
   '<nav class="tabs">' + tabs.map(function(t){ return '<a href="#/' + t[0] + '" data-tab="' + t[0] + '" draggable="false" style="--tc:var(' + t[2] + ')" class="' + (cur === t[0] ? "on" : "") + " two" + '">' + (t[1].indexOf("<span") >= 0 ? t[1] : t[1].split("|").map(function(x){ return "<span>" + x + "</span>"; }).join("")) + '</a>'; }).join("") + '</nav>' +
   '</div>';
@@ -75814,9 +75893,9 @@ window.addEventListener("resize", tabH);
 /* ============ BANNER LAYOUT: drag the banner blocks where you like (Settings > "Arrange the banner (for Monnie)", or #/home?arrange=1) ============ */
 /* BANNER_LAYOUT = positions baked in for everyone, as % of the banner box: {wide:{title:{x:2,y:4}, ...}, phone:{...}}. null = the normal look.
    A layout saved in a browser (localStorage "sqe_banner_layout") wins on that device only. Bake one in with bake.js. */
-var BANNER_LAYOUT = {"wide":{"title":{"x":1.14,"y":4.58},"stats":{"x":1.14,"y":36.68},"home":{"x":93.82,"y":0},"ring":{"x":1.14,"y":71.06},"bag":{"x":37.53,"y":18.34},"kw":{"x":30.7,"y":68.77},"cheer":{"x":30.7,"y":48}}};
+var BANNER_LAYOUT = {"wide":{"title":{"x":1.14,"y":4.58},"stats":{"x":1.14,"y":36.68},"home":{"x":93.82,"y":0},"ring":{"x":1.14,"y":71.06},"bag":{"x":37.53,"y":18.34},"kw":{"x":30.7,"y":68.77},"cheer":{"x":30.7,"y":48},"streak":{"x":30.2,"y":40}}};
 var BL_KEY = "sqe_banner_layout", BL = null;
-var BL_NAMES = {title:"Title and dates", stats:"Numbers", home:"Home button", ring:"Progress ring", bag:"Coin bag", kw:"Remember card", cheer:"Cheer line"};
+var BL_NAMES = {title:"Title and dates", stats:"Numbers", home:"Home button", ring:"Progress ring", bag:"Coin bag", kw:"Remember card", cheer:"Cheer line", streak:"Present clouds"};
 /* the drawn girls (with the rabbit) and the hens, as fractions of img/banner-bg.webp (2400 x 770): [left, top, right, bottom] */
 var BL_ZONES = [[0.865, 0.32, 1, 1], [0.6, 0.62, 0.875, 1]], BL_IMG = 2400 / 770;
 function blMode(){ return window.innerWidth >= 900 ? "wide" : "phone"; }
@@ -78410,6 +78489,8 @@ document.addEventListener("click", function(e){
   switch(act){
     case "kwnext": kwI++; var kwel = document.getElementById("kw"); if (kwel){ kwel.outerHTML = kwHTML(); blApply(); } break;
     case "blopen": blOpen(); break;
+    case "present": presentVoucher(); break;
+    case "voucherclose": var vb = document.querySelector(".voucher-bg"); if (vb) vb.remove(); break;
     case "sidetog": S.ui = S.ui && typeof S.ui === "object" ? S.ui : {}; S.ui.sideOff = !S.ui.sideOff; save(); render(); break;
     case "cheer": cheerI++; var cte = document.getElementById("cheertxt"); if (cte) cte.textContent = CHEERS[cheerI % CHEERS.length]; break;
     case "tstart": S.brkOver = 0; S.timer.subj = ($("#tsubj") || {}).value || S.timer.subj || ""; S.timer.start = Date.now(); save(); render(); break;
