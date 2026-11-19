@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261119174302";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261119181732";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -78362,7 +78362,7 @@ window.SQE_JOURNEY = function (A) {
         s += "<g transform=\"translate(".concat(g0.x, ",").concat(g0.y, ") scale(").concat(g0.s, ")\" ").concat(INK, ">").concat(gate(), "</g>");
         J.stops.forEach(function (o) {
             var i = o.i, p = L.lm(i), st = jStatus(J, i);
-            s += "<a href=\"#/map/".concat(o.s.id, "\" aria-label=\"Stop ").concat(i, ", ").concat(esc(o.land), ": ").concat(esc(o.s.title), "\"><g class=\"jhit\" transform=\"translate(").concat(p.x, ",").concat(p.y, ") scale(").concat(p.s, ")\" ").concat(INK).concat(st === 'up' ? ' opacity=".6"' : '', ">").concat(DRAW[i - 1](), "</g></a>");
+            s += "<a href=\"".concat(stopHref(o.s.id), "\" aria-label=\"Stop ").concat(i, ", ").concat(esc(o.land), ": ").concat(esc(o.s.title), "\"><g class=\"jhit\" transform=\"translate(").concat(p.x, ",").concat(p.y, ") scale(").concat(p.s, ")\" ").concat(INK).concat(st === 'up' ? ' opacity=".6"' : '', ">").concat(DRAW[i - 1](), "</g></a>");
         });
         var pc = L.lm(15);
         s += "<g transform=\"translate(".concat(pc.x, ",").concat(pc.y, ") scale(").concat(pc.s, ")\" ").concat(INK, ">").concat(camp(), "</g>");
@@ -78371,12 +78371,12 @@ window.SQE_JOURNEY = function (A) {
         s += flagArt(L.flags[0], 'FLK1 exam', esc(dm(J.ex1))) + flagArt(L.flags[1], 'FLK2 exam', esc(dm(J.ex2)));
         L.stops.forEach(function (p, i) {
             var m = marker(i, p, i === 0 ? '' : i === 15 ? 'rev' : jStatus(J, i)), o = i > 0 && i < 15 ? J.stops[i - 1] : null; /* the stop numbers are tappable too */
-            s += o ? "<a class=\"jnum\" href=\"#/map/".concat(o.s.id, "\" aria-label=\"Stop ").concat(i, ": ").concat(esc(o.s.title), "\">").concat(m, "</a>") : m;
+            s += o ? "<a class=\"jnum\" href=\"".concat(stopHref(o.s.id), "\" aria-label=\"Stop ").concat(i, ": ").concat(esc(o.s.title), "\">").concat(m, "</a>") : m;
         });
         s += plate(L, 0, 'START: Farm gate', '', J.at === 0 ? 'Britney is here' : "Britney's starting point", 'gate', null);
         J.stops.forEach(function (o) {
             var st = jStatus(J, o.i);
-            s += "<a href=\"#/map/".concat(o.s.id, "\" aria-label=\"Stop ").concat(o.i, ": ").concat(esc(o.s.title), ", ").concat(o.d, " of ").concat(o.n, " topics done").concat(o.today.length ? ', on today\'s timetable' : '', "\">").concat(plate(L, o.i, o.s.title, range(o.first, o.last), "".concat(o.d, " of ").concat(o.n, " topics done"), st, o.n ? o.d / o.n : 0), "</a>");
+            s += "<a href=\"".concat(stopHref(o.s.id), "\" aria-label=\"Stop ").concat(o.i, ": ").concat(esc(o.s.title), ", ").concat(o.d, " of ").concat(o.n, " topics done").concat(o.today.length ? ', on today\'s timetable' : '', "\">").concat(plate(L, o.i, o.s.title, range(o.first, o.last), "".concat(o.d, " of ").concat(o.n, " topics done"), st, o.n ? o.d / o.n : 0), "</a>");
         });
         s += plate(L, 15, 'Revision + mock days', '', "FLK1 ".concat(fmtShort(J.r1), " \u00B7 FLK2 ").concat(fmtShort(J.r2)), 'rev', null);
         var Hn = L.hen(J.at);
@@ -78460,6 +78460,9 @@ window.SQE_JOURNEY = function (A) {
         }).join('') + '</ul>';
         return h + '</div></div>';
     }
+    /* tapping a stop (picture, number, plate or today button) goes straight to that stop's own page: its scene if it has one, else the subject page (19 Nov, Monnie: no pop-up) */
+    var STOP_PAGES = { blp: "#/scene/blp/business-structures" };
+    function stopHref(id) { return STOP_PAGES[id] || ("#/subject/" + id); }
     /* the journey map sits at the top of the Cluckington Palace tab; sid = the stop whose panel is open (#/map/<sid>) */
     function mapBlock(sid) {
         var r = ['map', sid];
@@ -78468,7 +78471,7 @@ window.SQE_JOURNEY = function (A) {
         var where = J.at === 0 ? 'Britney is at the farm gate, ready to set off.' : J.at === 15 ? 'Britney has reached revision camp, right by the palace.' : "Britney is at stop ".concat(J.at, ", the ").concat(esc(J.stops[J.at - 1].land.toLowerCase()), ": ").concat(esc(J.stops[J.at - 1].s.title), ".");
         var h = "<div class=\"jmap\"><div class=\"jhead\"><h2 class=\"jtitle\">Journey to Cluckington Palace</h2><p class=\"jsub\">".concat(name, " syllabus as a journey, in the same order as the timetable. ").concat(where, "</p>");
         if (todays.length)
-            h += '<div class="jtoday">' + todays.map(function (o) { return "<a class=\"jtbtn\" href=\"#/map/".concat(o.s.id, "\"><b>Today: stop ").concat(o.i, ", ").concat(esc(o.land.toLowerCase()), "</b><span>").concat(esc(o.s.title), " \u00B7 ").concat(o.today.length, " topic").concat(o.today.length === 1 ? '' : 's', "</span></a>"); }).join('') + '</div>';
+            h += '<div class="jtoday">' + todays.map(function (o) { return "<a class=\"jtbtn\" href=\"".concat(stopHref(o.s.id), "\"><b>Today: stop ").concat(o.i, ", ").concat(esc(o.land.toLowerCase()), "</b><span>").concat(esc(o.s.title), " \u00B7 ").concat(o.today.length, " topic").concat(o.today.length === 1 ? '' : 's', "</span></a>"); }).join('') + '</div>';
         else if (J.pd && J.pd.rev)
             h += "<div class=\"jtoday\"><a class=\"jtbtn\" href=\"#/home\"><b>Today: ".concat(esc(J.pd.rev.t), "</b><span>Open Today for the steps</span></a></div>");
         h += '</div>';
@@ -80013,7 +80016,7 @@ function cbaAdvance(){
   save();
 }
 /* ============ REVISION TIMETABLE ============ */
-var PLAN_START = "2026-11-19", PLAN = null;
+var PLAN_START = "2026-11-20", PLAN = null;
 var SUBJCOL = {blp:["#E3ECFB","#8FB0E8"], dr:["#FDE6D8","#F0A77C"], ls:["#E7F5E9","#8CCB98"], contract:["#F3E5FA","#C79BE0"], tort:["#FFF2CC","#E8C55A"], legalsys:["#DFF3F6","#7FC9D6"], ethics:["#FBE3EC","#E89AB6"], wills:["#EAE6F8","#A99CE0"], accounts:["#E2F0E0","#93C38A"], trusts:["#FCEBD9","#EAB27A"], land:["#E5EEF2","#93B4C4"], property:["#F6E7E1","#D9A08C"], crimlaw:["#FDE2E2","#EA9696"], crimprac:["#E8EDF9","#9DAEE0"]};
 var SUBJABBR = {"Business Law and Practice":"BLP", "Dispute Resolution":"DR", "Legal Services":"LS", "Contract":"Contract", "Tort":"Tort", "Legal System of England and Wales":"Legal Sys", "Constitutional and Administrative Law and EU Law":"Const", "Wills and the Administration of Estates":"Wills", "Solicitors Accounts":"Accounts", "Trusts":"Trusts", "Land Law":"Land", "Property Practice":"Property", "Criminal Law and Practice":"Crime", "Ethics and Professional Conduct":"Ethics"};
 function tnum(x){ return x.s.title + " " + (x.s.topics.indexOf(x.t) + 1); }
