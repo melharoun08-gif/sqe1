@@ -315,6 +315,7 @@ a.tbox:hover{border-color:var(--ink)}
 .tbox.g0{background:#C9CFD6;color:#3b4650}
 .tbox.g1{background:#F0A040;color:#3d2400}
 .tbox.g2{background:#3FAE6A;color:#fff}
+.tbox.g3{background:#D9534F;color:#fff}
 .tlegend{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:13px;color:var(--muted)}
 .tlegend span{display:inline-flex;align-items:center;gap:6px}
 .tlegend .tbox{width:16px;height:16px;border-radius:4px}
@@ -541,7 +542,7 @@ body.tabdragging{cursor:grabbing}
 .cbabtn small{font-size:13px;font-weight:400;opacity:.92;line-height:1.3}
 .cbabtn:active{transform:translateY(3px);box-shadow:none}
 .cbaflock{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
-.cbaflock span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:14px}
+.cbaflock>span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:14px}
 .cbahow{margin:0;text-align:center;font-size:13.5px;color:var(--muted)}
 .cbahatch{display:flex;flex-direction:column;gap:6px}
 .cbahatch a{display:flex;align-items:center;gap:10px;background:#FFF8E1;border:1.5px dashed #F1C76B;border-radius:14px;padding:8px 12px;text-decoration:none;color:var(--ink)}
@@ -1260,6 +1261,19 @@ details.hiw[open] .hiwtog::after{content:"Hide ▴"}
 .nestimg.wobn img{animation:wobn 2.4s ease-in-out infinite;transform-origin:50% 80%}
 @keyframes wobn{0%,80%,100%{transform:rotate(0)}85%{transform:rotate(-3deg)}90%{transform:rotate(3deg)}95%{transform:rotate(-2deg)}}
 .kitimg{display:block;width:100%;height:auto}
+/* hand-drawn icons sized like the old drawings */
+.chickimg.ico{display:inline-block;width:1.4em;vertical-align:-.34em;line-height:0}
+.chickimg.ico img,.chickimg.mini img{animation:none}
+.mst .chickimg.ico,.mst .henimg.ico{width:1.25em}
+.nin .chickimg{width:34px;display:inline-block}
+.cbaflock .chickimg.ico,.cbaflock .henimg.ico{margin-right:2px}
+.nestimg{position:relative}
+.nestimg .nin2{position:absolute;left:50%;bottom:38%;transform:translateX(-50%);width:58%;display:flex;justify-content:center;align-items:flex-end;line-height:0}
+.nestimg .nin2>*{width:100%}
+.nestimg .nin2 .egg{width:55%}
+.nestimg .nin2 .nnum{width:auto;line-height:1.2}
+.mnode .nestimg{width:76px;margin:0 auto}
+.cbapal .cpic .nestimg{width:58px}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -75917,7 +75931,7 @@ function cbaChick(cls){ return '<span class="chick chickimg ' + (cls || "") + '"
 function cbaEgg(cls){ return '<svg class="egg ' + (cls || "") + '" viewBox="0 0 30 36" aria-hidden="true"><path d="M15 1.6C9.4 1.6 3.6 11.6 3.6 21.2 3.6 28.9 8.6 34.3 15 34.3s11.4-5.4 11.4-13.1C26.4 11.6 20.6 1.6 15 1.6z" fill="#FFFAF0" stroke="#D9C4A0" stroke-width="1.5"/><path d="M25.2 18.4c.5 1 .8 1.9.8 2.9 0 6.9-4.6 11.6-10.4 11.6-2.6 0-4.9-.9-6.6-2.5 7.9.6 14.6-4.2 16.2-12z" fill="#EFE1C6"/><ellipse cx="10.6" cy="12.6" rx="2.3" ry="4.4" transform="rotate(22 10.6 12.6)" fill="#fff"/></svg>'; }
 function cbaNest(inner){
   if (inner && (inner === cbaEgg("wob big") || inner === cbaEgg("wob"))) return '<span class="nestimg wobn"><img src="img/nest-egg.webp" alt="" width="400" height="400"></span>';
-  if (!inner && NEST_EMPTY) return '<span class="nestimg"><img src="img/nest-empty.webp" alt="" width="400" height="400"></span>';
+  if (NEST_EMPTY) return '<span class="nestimg' + (inner ? ' hasin' : '') + '"><img src="img/nest-empty.webp" alt="" width="400" height="400">' + (inner ? '<span class="nin2">' + inner + '</span>' : '') + '</span>';
  return '<span class="nestpic"><span class="nin">' + (inner || '') + '</span><svg viewBox="0 0 60 26" aria-hidden="true"><path d="M3 6c4 13 14 18 27 18S53 19 57 6z" fill="#C9904F"/><path d="M5 8c8 4 16 6 25 6s17-2 25-6M8 14c7 3 14 5 22 5s15-2 22-5M14 6l8 10M26 6l4 12M38 6l-4 11M48 6l-8 10" fill="none" stroke="#A86E33" stroke-width="1.6" stroke-linecap="round"/></svg></span>'; }
 /* a tiny hen head for pens, stickers and cake toppers (x, y = centre, r = size, col = face colour) */
 function cbaHead(x, y, r, col){
@@ -76048,7 +76062,7 @@ function viewCBA(r){
       if (st === 3){ inner = cbaHen("mini"); lab = cbaHen("ico") + " Grown"; }
       else if (st === 2){ inner = cbaChick(); lab = cbaChick("ico") + " Hatched"; }
       else if (st === 1){ inner = cbaEgg("wob"); lab = cbaEgg("ico") + " Egg"; }
-      else { inner = '<span class="nnum">' + (rn ? rn + "/" + cbaRounds(k) : "▶") + '</span>'; lab = rn ? "Round " + (rn + 1) + " of " + cbaRounds(k) : cbaRounds(k) + " rounds"; }
+      else { inner = rn ? '<span class="nnum">' + rn + "/" + cbaRounds(k) + '</span>' : ''; lab = rn ? "Round " + (rn + 1) + " of " + cbaRounds(k) : cbaRounds(k) + " rounds"; }
       h += '<a class="mnode st' + st + (pick && pick.key === k ? ' next' : '') + '" href="#/cba/' + s.id + '/' + t.id + '">' + cbaNest(inner) + '<span class="mlab">' + (i + 1) + '. ' + esc(t.title) + '</span><span class="mst">' + lab + '</span></a>';
     });
     h += '</div></div>';
@@ -76244,7 +76258,7 @@ function topicSteps(x){
   var st = [{k:"notes", l:"📝 Read the notes and cartoons", h:base}, {k:"fw", l:"🗺️ Go over the framework", h:base + "/framework"}];
   if (nq) st.push({k:"quick", l:"⚡ Test yourself: quick-fire (" + nq + ")", h:"#/quick/" + s.id + "/" + t.id});
   if (nm) st.push({k:"qa", l:"✍️ Test yourself: exam-style questions (" + nm + ")", h:"#/questions/" + s.id + "/" + t.id});
-  st.push({k:"rate", l:"🟢 Rate how confident you feel", h:base + "/rate", auto:true});
+  st.push({k:"rate", l:"🚦 Rate it red, amber or green", h:base + "/rate", auto:true});
   return st;
 }
 // practice time per topic: 30 seconds a quick-fire question, 2.5 minutes a model Q&A, 8 minutes for the framework; revision cards (about 20 seconds each) are done in the spaced review
@@ -76394,13 +76408,13 @@ var VIEW = {};
 var cleanup = null;
 
 function topicRes(s, t){ var smp = SAMPLES[s.id + "/" + t.id] || {}; return {fw: MINDMAPS[s.id + "/" + t.id] || t.framework || smp.framework, ct: CARTOONS[s.id + "/" + t.id] || t.cartoon || smp.cartoon}; }
-function boxState(k){ var r = trec(k); if (!r) return "g0"; return r.conf === 1 ? "g2" : "g1"; }
+function boxState(k){ var r = trec(k); if (!r) return "g0"; return r.conf === 1 ? "g2" : r.conf === 0 ? "g3" : "g1"; }
 function topicBoxes(s, mode){
   return '<div class="tboxes">' + s.topics.map(function(t, i){ var k = s.id + "/" + t.id, st = boxState(k), res = topicRes(s, t);
     if (mode && !(mode === "cartoon" ? res.ct : res.fw)) return '<span class="tbox none" title="' + esc(t.title) + ' (coming soon)"><span>' + (i + 1) + '</span></span>';
-    return '<a class="tbox ' + st + '" href="#/topic/' + s.id + '/' + t.id + (mode ? "/" + mode : "") + '" title="' + esc(t.title) + ' (' + (st === "g0" ? "not covered yet" : st === "g1" ? "covered" : "confident") + ')"><span>' + (i + 1) + '</span></a>'; }).join("") + '</div>';
+    return '<a class="tbox ' + st + '" href="#/topic/' + s.id + '/' + t.id + (mode ? "/" + mode : "") + '" title="' + esc(t.title) + ' (' + (st === "g0" ? "not covered yet" : st === "g1" ? "amber" : st === "g3" ? "red" : "green") + ')"><span>' + (i + 1) + '</span></a>'; }).join("") + '</div>';
 }
-function boxLegend(mode){ return '<div class="tlegend"><span><i class="tbox g0"></i>Not covered yet</span><span><i class="tbox g1"></i>Covered</span><span><i class="tbox g2"></i>Green 🟢</span>' + (mode ? '<span><i class="tbox none"></i>Coming soon</span>' : '') + '</div>'; }
+function boxLegend(mode){ return '<div class="tlegend"><span><i class="tbox g0"></i>Not covered yet</span><span><i class="tbox g3"></i>Red 🔴</span><span><i class="tbox g1"></i>Amber 🟠</span><span><i class="tbox g2"></i>Green 🟢</span>' + (mode ? '<span><i class="tbox none"></i>Coming soon</span>' : '') + '</div>'; }
 VIEW.plan = viewPlan;
 VIEW.cba = viewCBA;
 VIEW.palace = viewPalace;
