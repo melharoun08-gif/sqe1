@@ -1408,7 +1408,18 @@ details.hiw[open] .hiwtog::after{content:"Hide ▴"}
 .cbag .cbalock[disabled]{opacity:1;background:#FBD3E1;border-color:#E0457B;color:#7A1F45}
 .cbag .cbalock[disabled] .fill{background:rgba(224,69,123,.28)}
 /* motivational line back on computers (home banner only), readable white pill */
-@media (min-width:721px){.head:not(.compact) .cheer{display:inline-flex!important;align-items:center;gap:8px;background:rgba(255,255,255,.92);color:#10294A;border:2px solid #10294A;border-radius:999px;padding:5px 8px 5px 14px;font-weight:700;font-size:14px;margin:8px 0 4px;flex:0 0 auto;width:fit-content;max-width:560px;white-space:normal}}
+@media (min-width:721px){.head:not(.compact) .cheer{display:inline-flex!important;align-items:center;gap:8px;background:rgba(255,255,255,.92);color:#10294A;border:2px solid #10294A;border-radius:999px;padding:5px 8px 5px 14px;font-weight:700;font-size:14px;margin:8px 0 4px;flex:0 0 auto;width:fit-content;max-width:380px;white-space:normal;line-height:1.3}}
+/* collapsible topic list (desktop) */
+.sidetog{display:none}
+@media (min-width:901px){
+.sidetog{display:inline-flex;align-items:center;gap:6px;font:inherit;font-size:13px;font-weight:700;color:#10294A;background:var(--surface,#fff);border:2px solid #10294A;border-radius:999px;padding:3px 12px 3px 9px;cursor:pointer;margin:0 0 10px auto;float:right}
+.sidetog span{font-size:18px;line-height:1}
+.layout.sideoff{grid-template-columns:minmax(0,1fr) 46px}
+.layout.sideoff>.side{padding:12px 4px;overflow:hidden}
+.layout.sideoff .sidein{display:none}
+.layout.sideoff .sidetog{float:none;flex-direction:column;gap:2px;padding:10px 4px;margin:0 auto;border-radius:12px;width:36px}
+.layout.sideoff .sidetog b{writing-mode:vertical-rl;letter-spacing:.04em}
+}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -75801,7 +75812,7 @@ window.addEventListener("resize", tabH);
 /* ============ BANNER LAYOUT: drag the banner blocks where you like (Settings > "Arrange the banner (for Monnie)", or #/home?arrange=1) ============ */
 /* BANNER_LAYOUT = positions baked in for everyone, as % of the banner box: {wide:{title:{x:2,y:4}, ...}, phone:{...}}. null = the normal look.
    A layout saved in a browser (localStorage "sqe_banner_layout") wins on that device only. Bake one in with bake.js. */
-var BANNER_LAYOUT = null;
+var BANNER_LAYOUT = {"wide":{"title":{"x":1.14,"y":4.58},"stats":{"x":1.14,"y":36.68},"home":{"x":93.82,"y":0},"ring":{"x":1.14,"y":71.06},"bag":{"x":37.53,"y":18.34},"kw":{"x":30.7,"y":68.77},"cheer":{"x":30.7,"y":48}}};
 var BL_KEY = "sqe_banner_layout", BL = null;
 var BL_NAMES = {title:"Title and dates", stats:"Numbers", home:"Home button", ring:"Progress ring", bag:"Coin bag", kw:"Remember card", cheer:"Cheer line"};
 /* the drawn girls (with the rabbit) and the hens, as fractions of img/banner-bg.webp (2400 x 770): [left, top, right, bottom] */
@@ -75812,7 +75823,11 @@ function blLocal(){ try { var v = JSON.parse(window.localStorage.getItem(BL_KEY)
 function blBase(m){ return BANNER_LAYOUT && blOk(BANNER_LAYOUT[m]) ? BANNER_LAYOUT[m] : null; }
 function blCur(m){
   if (BL && BL.draft.hasOwnProperty(m)) return BL.draft[m] === null ? blBase(m) : BL.draft[m];
-  var l = blLocal(); return l && blOk(l[m]) ? l[m] : blBase(m);
+  var l = blLocal(), base = blBase(m);
+  if (!(l && blOk(l[m]))) return base;
+  /* a saved layout that pre-dates a block (e.g. the cheer line) takes that block's baked position */
+  if (base){ var out = {}, k; for (k in base) out[k] = base[k]; for (k in l[m]) out[k] = l[m][k]; return out; }
+  return l[m];
 }
 /* banner box height (the strip above the tabs that the blocks sit in) */
 function blStageH(m, W){
@@ -76691,6 +76706,7 @@ function sideCards(r){
   });
   return h;
 }
+function sideOff(){ return !!(S.ui && S.ui.sideOff); }
 function sidebar(curKey, r){
   if (r && r[0] === "cards") return sideCards(r);
   r = r || [];
@@ -77817,7 +77833,7 @@ function feedPanel(where){
   if (L.stage === "none" || L.stage === "egg"){
     status = L.stage === "none" ? '🥚 Britney isn\'t here yet. How to get her:' : L.incub ? '🥚 Britney is warming up in the incubator' : '🥚 Britney is still an egg. Next step:';
     half = false;
-    line = L.incub ? incubBar(L) : eggSteps();
+    line = L.incub ? incubBar(L) : L.stage === "egg" ? 'Buy the incubator and heat lamp for <b>' + INCUB.p + ' coins</b> in the Palace shop. Then she hatches after ' + INCUB_DAYS + ' good study days.' : eggSteps();
     btn = '<a class="btn primary" href="#/palace">Go to the Palace</a>';
   } else if (L.away){
     var bc = bossS().cap, brs = bossRescueState();
@@ -77926,8 +77942,12 @@ function earnList(){
     '<li><b>2 ' + C + '</b> for each right CBA answer, <b>3</b> extra for 3 in a row, <b>5</b> a round, <b>20</b> for finishing a level (<b>10</b> for a replay)</li></ul>' +
     '<p class="small muted">Coins only come when you\'ve had time to read the question or card properly, and each card or question pays once a day. Ticks on the to-do list pay once. Revising a topic (Today steps, cards, quick-fire, Model Q&amp;A, podcasts, CBA) also lays that topic\'s egg on the farm.</p>';
 }
+var HIW_OPEN = null;
 function howItWorks(){
-  var c = dayCount(ymd()), open = !(S.ui && S.ui.hiwShut);
+  var c = dayCount(ymd()); S.ui = S.ui && typeof S.ui === "object" ? S.ui : {};
+  /* open the first time only; after that it's a small "How it works" heading she can tap */
+  var open = HIW_OPEN !== null ? HIW_OPEN : !S.ui.hiwSeen;
+  if (!S.ui.hiwSeen){ S.ui.hiwSeen = 1; HIW_OPEN = true; try { save(); } catch(e){} }
   var li = function(x){ return '<li>' + x + '</li>'; };
   return '<details class="palcard hiw" id="how"' + (open ? ' open' : '') + '><summary><h3>How it works</h3><span class="hiwtog" aria-hidden="true"></span></summary><ul class="hiwlist">' +
     li('🪙 <b>Coins:</b> everything you revise earns coins. Spend them in the shop.') +
@@ -78360,9 +78380,9 @@ function render(){
   var nt = nextTopic();
   var showNext = nt && ["syllabus","subject"].indexOf(r[0]) >= 0;
   var app = document.getElementById("app");
-  app.innerHTML = '<div class="layout v-' + esc(r[0]) + '"><div class="main">' + timerStrip() + header(r) +
+  app.innerHTML = '<div class="layout v-' + esc(r[0]) + (sideOff() ? ' sideoff' : '') + '"><div class="main">' + timerStrip() + header(r) +
     (storageOK ? "" : '<div class="wrap" style="padding-bottom:0"><div class="banner bad">⚠ This browser isn\'t letting the site save. Your progress will be lost when you close it. Open the file in Chrome, Edge or Safari, and not in a private window.</div></div>') +
-    '<div class="wrap">' + (PENDING.length ? '<div class="banner warn"><b>Preview version.</b> Still being written: ' + esc(PENDING.join(", ")) + '.</div>' : '') + body + '</div></div><aside class="side">' + sidebar(curKey, r) + '</aside></div>' +
+    '<div class="wrap">' + (PENDING.length ? '<div class="banner warn"><b>Preview version.</b> Still being written: ' + esc(PENDING.join(", ")) + '.</div>' : '') + body + '</div></div><aside class="side"><button class="sidetog" data-act="sidetog" aria-expanded="' + (sideOff() ? 'false' : 'true') + '" aria-label="' + (sideOff() ? 'Show the topic list' : 'Hide the topic list') + '"><span aria-hidden="true">' + (sideOff() ? '‹' : '›') + '</span><b>' + (sideOff() ? 'Topics' : 'Hide') + '</b></button><div class="sidein">' + sidebar(curKey, r) + '</div></aside></div>' +
     (false ? '<button class="startnext" data-go="#/topic/' + nt.s.id + '/' + nt.t.id + '"><b>▶ Start next: ' + esc(nt.t.title) + '</b><span>' + esc(nt.s.title) + ' · ' + TOPICS.filter(function(x){ return S.done[x.key]; }).length + ' of ' + TOPICS.length + ' done</span></button>' : '');
   app.insertAdjacentHTML("beforeend", sandPanel());
   paintSaved();
@@ -78388,6 +78408,7 @@ document.addEventListener("click", function(e){
   switch(act){
     case "kwnext": kwI++; var kwel = document.getElementById("kw"); if (kwel){ kwel.outerHTML = kwHTML(); blApply(); } break;
     case "blopen": blOpen(); break;
+    case "sidetog": S.ui = S.ui && typeof S.ui === "object" ? S.ui : {}; S.ui.sideOff = !S.ui.sideOff; save(); render(); break;
     case "cheer": cheerI++; var cte = document.getElementById("cheertxt"); if (cte) cte.textContent = CHEERS[cheerI % CHEERS.length]; break;
     case "tstart": S.brkOver = 0; S.timer.subj = ($("#tsubj") || {}).value || S.timer.subj || ""; S.timer.start = Date.now(); save(); render(); break;
     case "tbreak": stripBreak(+el.getAttribute("data-n") || 5); break;
@@ -78518,8 +78539,7 @@ document.addEventListener("change", function(e){
 });
 document.addEventListener("toggle", function(e){
   var d = e.target; if (!d || d.id !== "how") return;
-  S.ui = S.ui && typeof S.ui === "object" ? S.ui : {};
-  if (!!S.ui.hiwShut !== !d.open){ S.ui.hiwShut = !d.open; save(); }
+  HIW_OPEN = !!d.open;
 }, true);
 document.addEventListener("keydown", function(e){
   if (e.target && e.key === "Enter" && /^chickname-/.test(e.target.id || "")){ broodName(e.target.id.slice(10)); render(); return; }
