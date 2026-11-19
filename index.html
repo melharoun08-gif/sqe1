@@ -80128,7 +80128,7 @@ function streakHTML(){
   }
   var lp = pos[Math.min(n, PRESENT_STEPS)], lx = lp[0];
   /* full-body Layla (felt-tip, 284x600) with her feet on top of the cloud: big on the start cloud, smaller on the little day clouds so she stays under the ribbon */
-  svg += (function(h){ var w = h * 284 / 600; return '<image class="stlayla" href="img/layla-cloud.webp" x="' + (lx - w / 2).toFixed(1) + '" y="' + (lp[1] - h * 0.9).toFixed(1) + '" width="' + w.toFixed(1) + '" height="' + h + '"/>'; })(n ? 125 : 205);
+  svg += (function(h){ var w = h * 284 / 600; return '<image class="stlayla" href="img/layla-cloud-love.webp" x="' + (lx - w / 2).toFixed(1) + '" y="' + (lp[1] - h * 0.9).toFixed(1) + '" width="' + w.toFixed(1) + '" height="' + h + '"/>'; })(n ? 125 : 205);
   /* big rainbow between two clouds, present sitting in its arch */
   var rx = 316, ry = 72;
   ["#E0457B","#F59F2A","#F7D038","#4CB963","#3B8FE0","#8A5CD6"].forEach(function(c, j){ var r = 42 - j * 4.6; svg += '<path d="M' + (rx - r) + ' ' + ry + 'a' + r + ' ' + r + ' 0 0 1 ' + (2 * r) + ' 0" fill="none" stroke="' + c + '" stroke-width="5"/>'; });
