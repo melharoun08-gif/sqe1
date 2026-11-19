@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261119233801";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261119234216";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -79630,10 +79630,10 @@ var CSS = [
 '.scn-sheet.bul-on .lrn-fact .lrn-cl,.scn-sheet.bul-on .lrn-rule .lrn-cl{color:#1b1b1b}',
 /* bullets-sample extras: buttons, jar, sweet drop */
 '.bx-card{position:relative}',
-'.bx-jar{position:absolute;right:14px;top:12px;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:13px;color:#1b1b1b}',
+'.bx-jar{position:absolute;right:18px;top:48px;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:13px;color:#1b1b1b}',
 '.bx-glass{position:relative;width:52px;height:56px;border:2.5px solid #1b1b1b;border-top:none;border-radius:6px 6px 16px 16px;background:rgba(255,224,236,.55);overflow:visible}',
 '.bx-lid{position:absolute;left:-5px;right:-5px;top:-8px;height:8px;border:2.5px solid #1b1b1b;border-radius:5px;background:#E0457B}',
-'.bx-sw{position:absolute;width:13px;height:13px;border-radius:50%;border:2px solid #1b1b1b}',
+'.bx-sw{position:absolute;width:12px;height:12px;box-sizing:border-box;border-radius:50%;border:2px solid #1b1b1b}',
 '.bx-sw.new{animation:bxDrop .7s cubic-bezier(.3,1.4,.6,1) both}',
 '@keyframes bxDrop{0%{transform:translateY(-70px) rotate(-90deg);opacity:0}60%{opacity:1}100%{transform:none}}',
 '@media (prefers-reduced-motion:reduce){.bx-sw.new{animation:none}}',
@@ -79654,7 +79654,7 @@ var CSS = [
 '.bx-tf .bx-s{display:block;font-size:17px}',
 '.bx-tf .bx-o{flex:0 1 110px;text-align:center;font-weight:700}',
 '.bx-tf .bx-fb{display:block;font-weight:600}',
-'@media (max-width:640px){.bx-jar{right:8px;top:8px}.bx-glass{width:44px;height:48px}.bx-card .lrn-t{padding-right:58px}.bx-o{font-size:15px}}'
+'@media (max-width:640px){.bx-jar{right:12px;top:40px}.bx-glass{width:50px;height:48px}.bx-card .lrn-t{padding-right:58px}.bx-o{font-size:15px}}'
 ].join('\n');
 
 /* bullets-sample: preview flag + splitter (no wording changes: only cuts the existing text at sentence ends) */
@@ -79719,11 +79719,11 @@ window.SQE_SCENE = function(A){
   var BXQ = {
     guess: {right: 1, o: ['They’re **not partners**: they sign and register nothing.', 'They’re a **general partnership** (business in common with a view of profit).']},
     spot: {q: 'Two people start working together with no paperwork. What are they?', right: 1, o: ['🧍 Sole trader', '🤝 Partnership', '🏛️ LLP', '🏢 Ltd', '📈 plc'], why: 'A **general partnership**, automatically.'},
-    tf: [{s: 'It arises **automatically from the facts**.', v: true}, {s: '**Separate legal personality** in England and Wales.', v: false, fix: '**No separate legal personality** in England and Wales.'}, {s: 'A creditor can recover the **whole debt from any one partner**.', v: true}]
+    tf: [{s: 'It arises **automatically from the facts**.', v: true}, {s: 'A partnership has **separate legal personality** in England and Wales.', v: false, fix: '**No separate legal personality** in England and Wales.'}, {s: 'A creditor can recover the **whole debt from any one partner**.', v: true}]
   };
   function bxRight(){ var n = 0; if (BX.ans.guess === BXQ.guess.right) n++; if (BX.ans.spot === BXQ.spot.right) n++; BXQ.tf.forEach(function(t, i){ var a = BX.ans['tf' + i]; if (a != null && (a === 1) === t.v) n++; }); return n; }
   function bxJar(){ var n = bxRight(), sw = ['#FF5DA2', '#FFC300', '#4CC9F0', '#7BD389', '#B388EB'], s = '';
-    for (var i = 0; i < n; i++) s += '<i class="bx-sw' + (i === n - 1 && BX.fresh ? ' new' : '') + '" style="background:' + sw[i % 5] + ';left:' + (8 + (i % 3) * 15) + 'px;bottom:' + (5 + Math.floor(i / 3) * 14) + 'px"></i>';
+    for (var i = 0; i < n; i++) s += '<i class="bx-sw' + (i === n - 1 && BX.fresh ? ' new' : '') + '" style="background:' + sw[i % 5] + ';left:' + (5 + (i % 3) * 13) + 'px;bottom:' + (4 + Math.floor(i / 3) * 12) + 'px"></i>';
     return '<div class="bx-jar" aria-label="' + n + ' sweets in your jar"><div class="bx-glass"><span class="bx-lid"></span>' + s + '</div><b>' + n + ' of 5 🍬</b></div>'; }
   function bxOpt(q, i, html, picked, right){ var cls = picked == null ? '' : i === right ? ' right' : i === picked ? ' wrong' : ' dim';
     return '<button type="button" class="bx-o' + cls + '" data-scn="bx" data-q="' + q + '" data-v="' + i + '"' + (picked == null ? '' : ' disabled') + '>' + html + '</button>'; }
@@ -79851,8 +79851,8 @@ window.SQE_SCENE = function(A){
       }
       if (pass) return head + '<div class="scn-xres"><div class="big" aria-hidden="true">🏆🚪🎉</div><h2>You passed! Out you go</h2><p class="score">' + right + ' / ' + n + ' (' + Math.round(right / n * 100) + '%)</p><p>The pass mark is ' + need + ' out of ' + n + ' (60%). <b>✓ The Sweet Shop exit quiz is passed.</b></p>' +
         (S().todo && S().todo[k + '|qa'] ? '<p class="small">✓ Model Q&amp;A and quick-fire for this topic are ticked off on Today.</p>' : '') +
-        '<p class="scn-nextup"><b>What next?</b> Lock it in: flip this topic\'s revision cards, then go over the framework.</p>' +
-        '<div class="btns"><a class="btn primary" href="#/cards/' + x.s.id + '/topic/' + x.t.id + '">🃏 Next: revision cards</a><a class="btn" href="#/topic/' + x.s.id + '/' + x.t.id + '/framework">🗺️ Go over the framework</a><a class="btn" href="#/map/' + x.s.id + '">Back to the map 🗺️</a><button type="button" class="btn" data-scn="close">Stay in the shop</button></div></div>';
+        (function(){ var nx = (window.SQE_NEXT ? window.SQE_NEXT() : {h: '#/home', l: 'Back to Today'}); return '<p class="scn-nextup"><b>What next?</b> ' + (nx.h === '#/home' ? 'Back to Today\'s list.' : 'The next thing on today\'s list.') + '</p>' +
+        '<div class="btns"><a class="btn primary" href="' + nx.h + '">Next: ' + esc(nx.l) + ' ›</a>'; })() + '<a class="btn" href="#/map/' + x.s.id + '">Back to the map 🗺️</a><button type="button" class="btn" data-scn="close">Stay in the shop</button></div></div>';
       var seen = {}, rev = [];
       ex.items.forEach(function(it, i){ if (ex.ans[i] && ex.ans[i].ok) return; var h = objFor(k, it); if (!h) return; if (!seen[h.id]){ seen[h.id] = {h: h, n: 0}; rev.push(seen[h.id]); } seen[h.id].n++; });
       rev.sort(function(p, q){ return order(k).indexOf(p.h) - order(k).indexOf(q.h); });
@@ -82784,6 +82784,9 @@ function dayTaskList(ds){
   } else if (pd.rev && pd.m){ revSteps(pd).forEach(function(z){ add(z.k, z.kind); }); (pd.reviews || []).forEach(function(rv){ add("rev|" + pd.d + "|" + rv.x.key, "rev"); }); }
   return out;
 }
+/* 23:45 Monnie: "Next" after a step follows TODAY's to-do list (next unticked task), else back to Today */
+function nextTaskLink(){ try { var L = dayTaskList(ymd()); for (var i = 0; i < L.length; i++){ var z = L[i]; if (taskDone(z)) continue; if (z.x && z.st){ var st = topicSteps(z.x).filter(function(y){ return y.k === z.st; })[0]; if (st && st.h) return {h: st.h, l: String(st.l || "").replace(/<[^>]*>/g, "").trim()}; } return {h: "#/home", l: "Next task on Today"}; } } catch(e){} return {h: "#/home", l: "Back to Today"}; }
+window.SQE_NEXT = nextTaskLink;
 function mockDoneOn(ds){ return S.mocks.some(function(r){ return r && r.d === ds && r.mock; }); }
 function taskDone(z){
   if (z.st) return stepDone(z.x, z.st);
