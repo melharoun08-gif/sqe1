@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quick-fire Questions</title>
+<meta name="robots" content="noindex">
+<style>
+:root{--bg:#e8f6ff;--card:#fff;--ink:#1d2340;--blue:#2f8cff;--ok:#1fa65a;--bad:#e2453c;--amb:#ffb020}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:620px;margin:0 auto;padding:16px}
+h1{font-size:26px;margin:8px 0 4px;text-align:center}
+.sub{text-align:center;margin:0 0 18px;color:#4a5378}
+.card{background:var(--card);border-radius:18px;padding:18px;box-shadow:0 3px 0 #bcd9f2;margin-bottom:14px}
+button{font:inherit;cursor:pointer;border:0;border-radius:14px}
+.topic{display:block;width:100%;text-align:left;background:var(--card);padding:16px;margin-bottom:12px;box-shadow:0 3px 0 #bcd9f2;font-weight:700;color:var(--ink)}
+.topic small{display:block;font-weight:400;color:#4a5378;margin-top:4px}
+.bar{height:10px;background:#d6e9f8;border-radius:6px;overflow:hidden;margin:6px 0 14px}
+.bar i{display:block;height:100%;background:var(--blue);transition:width .3s}
+.top{display:flex;justify-content:space-between;align-items:center;font-weight:700}
+.q{font-size:19px;font-weight:700;margin:4px 0 14px}
+.opt{display:block;width:100%;text-align:left;background:#f1f7fd;border:2px solid #cfe3f5;padding:13px 14px;margin-bottom:10px;color:var(--ink)}
+.opt.ok{background:#e3f8eb;border-color:var(--ok)}
+.opt.bad{background:#fde7e5;border-color:var(--bad)}
+.opt:disabled{cursor:default}
+.why{border-radius:14px;padding:12px 14px;margin-top:6px}
+.why.ok{background:#e3f8eb}.why.bad{background:#fde7e5}
+.go{display:block;width:100%;background:var(--blue);color:#fff;font-weight:700;padding:14px;margin-top:14px;box-shadow:0 3px 0 #1d63bd}
+.ghost{background:none;color:var(--blue);font-weight:700;padding:8px}
+.big{font-size:54px;text-align:center;margin:6px 0}
+.center{text-align:center}
+.streak{color:#c46a00}
+</style></head><body><div class="wrap" id="app"></div>
+<script src="qs.js"></script>
+<script>
+var KEY='qf_layla_v1', S={};
+try{S=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+var app=document.getElementById('app'), cur=null;
+function md(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function home(){
+  cur=null;
+  var h='<h1>⚡ Quick-fire!</h1><p class="sub">Pick a subject, then a topic. One question at a time.</p>';
+  QF.forEach(function(sb,i){var n=0,tried=0;sb.topics.forEach(function(t){n+=t.qs.length;if(S[t.id])tried++});
+    h+='<button class="topic" onclick="subj('+i+')">'+md(sb.name)+'<small>'+sb.topics.length+' topics · '+n+' questions · '+tried+' tried</small></button>'});
+  app.innerHTML=h;window.scrollTo(0,0);
+}
+var curS=0;
+function subj(i){
+  cur=null;curS=i;var sb=QF[i];
+  var h='<div class="top"><button class="ghost" onclick="home()">‹ Subjects</button></div><h1>'+md(sb.name)+'</h1><p class="sub">Pick a topic</p>';
+  sb.topics.forEach(function(t,k){var b=S[t.id];
+    h+='<button class="topic" onclick="start('+i+','+k+')">'+md(t.name)+'<small>'+t.qs.length+' questions'+(b?' · best score '+b.best+'/'+t.qs.length+' · played '+b.plays+'×':' · not tried yet')+'</small></button>'});
+  var all=sb.topics.reduce(function(n,t){return n+t.qs.length},0);
+  h+='<button class="topic" onclick="start('+i+',-1)">🔀 Mix of the whole subject<small>20 random questions from all '+all+(S['mix/'+sb.id]?' · best '+S['mix/'+sb.id].best+'/20':'')+'</small></button>';
+  app.innerHTML=h;window.scrollTo(0,0);
+}
+function start(i,k){
+  var sb=QF[i],list,id,name;
+  if(k<0){list=shuffle([].concat.apply([],sb.topics.map(function(t){return t.qs}))).slice(0,20);id='mix/'+sb.id;name=sb.name+' (mix)'}
+  else{list=sb.topics[k].qs;id=sb.topics[k].id;name=sb.topics[k].name}
+  cur={id:id,si:i,ti:k,name:name,qs:shuffle(list).map(function(q){return{q:q.q,e:q.e,ans:q.o[0],o:shuffle(q.o)}}),n:0,score:0,streak:0};
+  show();
+}
+function show(){
+  var c=cur,q=c.qs[c.n];
+  var h='<div class="top"><button class="ghost" onclick="subj(curS)">‹ Topics</button><span>⭐ '+c.score+'</span></div>';
+  h+='<div class="bar"><i style="width:'+(c.n/c.qs.length*100)+'%"></i></div>';
+  h+='<div class="card"><div style="color:#4a5378;font-size:14px">Question '+(c.n+1)+' of '+c.qs.length+(c.streak>=3?' · <span class="streak">🔥 '+c.streak+' in a row!</span>':'')+'</div><div class="q">'+md(q.q)+'</div>';
+  q.o.forEach(function(o,k){h+='<button class="opt" id="o'+k+'" onclick="pick('+k+')">'+md(o)+'</button>'});
+  h+='<div id="fb"></div></div>';
+  app.innerHTML=h; window.scrollTo(0,0);
+}
+function pick(k){
+  var c=cur,q=c.qs[c.n]; if(c.answered)return; c.answered=true;
+  var right=q.o[k]===q.ans;
+  q.o.forEach(function(o,j){var b=document.getElementById('o'+j);b.disabled=true;if(o===q.ans)b.classList.add('ok');else if(j===k)b.classList.add('bad')});
+  if(right){c.score++;c.streak++}else c.streak=0;
+  var last=c.n===c.qs.length-1;
+  document.getElementById('fb').innerHTML='<div class="why '+(right?'ok':'bad')+'"><b>'+(right?'✅ Yes! ':'❌ Not quite. ')+'</b>'+md(q.e)+'</div><button class="go" onclick="next()">'+(last?'See my score':'Next question ›')+'</button>';
+}
+function next(){
+  var c=cur;c.answered=false;
+  if(c.n<c.qs.length-1){c.n++;show();return}
+  var b=S[c.id]||{best:0,plays:0};b.plays++;var nb=c.score>b.best;if(nb)b.best=c.score;S[c.id]=b;save();
+  var p=c.score/c.qs.length, face=p>=.8?'🏆':p>=.5?'🌟':'💪';
+  var msg=p>=.8?'Brilliant! You smashed it.':p>=.5?'Good going! A bit more and you\'ve got it.':'Nice try! Have another go and watch it climb.';
+  app.innerHTML='<div class="card center"><div class="big">'+face+'</div><h1>'+c.score+' / '+c.qs.length+'</h1><p>'+msg+(nb?'<br><b>New best score! 🎉</b>':'')+'</p><p class="sub">'+md(c.name)+'</p><button class="go" onclick="start('+c.si+','+c.ti+')">Try again</button><button class="go" style="background:#7a5cff;box-shadow:0 3px 0 #5038c0" onclick="subj('+c.si+')">Pick another topic</button></div>';
+}
+home();
+</script></body></html>
