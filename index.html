@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120140037";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120140504";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -4075,6 +4075,7 @@ details.podsubj[open] .podchev{transform:rotate(-135deg);margin-top:6px}
 @media (max-width:640px){.flash .face.back .cardq,.land-real:not(.land-tkt) .flash .face.back .cardq,.land-real:not(.land-tkt) .flash .face.back.blen-s .cardq{font-size:16.5px!important}}
 @media (prefers-reduced-motion:reduce){.flash.revealed .face.back .notes{animation:none}}
 .land-real.land-zoo .flash .face > .ftop{top:24%!important}.land-real.land-zoo .flash .face{--pt:39%}
+.jcempty{grid-column:1/-1;justify-self:center;white-space:nowrap}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -148173,7 +148174,7 @@ window.SQE_STOPDECO = function(sid, cols){ var S = STOPSKIN[sid]; if (!S) return
       keys.push(k); STOP_IDX[k] = i; STOP_OF[k] = sid;
     });
     if (!keys.length) return;
-    STOP_KEYS[sid] = keys; STOP_HUB[sid] = D.hub.key; window.SQE_STOP_HUB = STOP_HUB; window.SQE_STOP_OF = STOP_OF; window.SQE_STOP_IDX = STOP_IDX; /* journey.js map + app.js Today link straight into the stop */
+    STOP_KEYS[sid] = keys; STOP_HUB[sid] = D.hub.key; window.SQE_STOP_HUB = STOP_HUB; window.SQE_STOP_OF = STOP_OF; window.SQE_STOP_IDX = STOP_IDX; window.SQE_STOP_HREF = function(id){ return STOP_HUB[id] && id !== 'blp' ? '#/scene/' + id : ''; }; /* journey.js map + app.js Today link straight into the stop */
     HUBS[D.hub.key] = { stop: sid, title: D.hub.title, place: D.hub.place, img: D.hub.img, ratio: D.hub.ratio, bg: D.hub.bg, alt: D.hub.alt, rooms: keys.slice(), doors: D.hub.doors, exitDoor: null, outside: null, signs: D.hub.signs || null,
       thumb: function(x){ var m = ROOMS[x.split('/')[1]]; return m && m.pic ? m.pic : ''; } };
   });
@@ -149633,13 +149634,13 @@ window.SQE_TOWN = function(A){
     /* Monnie 13:27: walk-in Hen Bargains. The drawn inside of the shop (img/hb/interior.webp), real items stocked on the shelves, Layla (and Britney) walk down the aisle to whatever she taps */
     '.hbin{position:relative;overflow-x:auto;overflow-y:hidden;border:3px solid #1d1d1b;border-radius:16px;background:#f3f0e8;margin:0 0 14px;-webkit-overflow-scrolling:touch;scrollbar-width:thin}' +
     '.hbin-w{position:relative;container-type:inline-size;width:max(100%,1150px);max-width:1750px;margin:0 auto;aspect-ratio:1456/819}.hbin-bg{position:absolute;inset:0;width:100%;height:100%;display:block}' +
-    '.hbin-ctr{position:absolute;z-index:25;pointer-events:none}.hbin-sign{position:absolute;transform:skewY(25deg);transform-origin:0 0;padding:0 2%;box-sizing:border-box;display:flex;align-items:center;gap:4%;overflow:hidden}.hbin-sign .hb-logo{height:86%;width:auto;flex:none;border-radius:4px}.hbin-sign span{font-family:Calibri,Carlito,Arial,sans-serif;font-weight:700;color:#E2231A;font-size:1.3cqw;line-height:1;white-space:nowrap}' +
+    '.hbin-ctr{position:absolute;z-index:25;pointer-events:none}.hbin-sign{position:absolute;transform:skewY(25deg);transform-origin:0 0;padding:0 2%;box-sizing:border-box;display:flex;align-items:center;gap:4%;overflow:hidden}.hbin-sign .hb-logo{height:86%;width:auto;flex:none;border-radius:4px}.hbin-sign span{font-family:Calibri,Carlito,Arial,sans-serif;font-weight:700;color:#E2231A;font-size:1.05cqw;line-height:1;white-space:nowrap}' +
     '.hbi{position:absolute;transform:translateX(-50%);display:flex;align-items:flex-end;justify-content:center;background:none;border:0;padding:0;margin:0;cursor:pointer;z-index:10}' +
     '.hbi img{height:100%;width:auto;display:block;filter:drop-shadow(0 2px 0 rgba(0,0,0,.18));transition:transform .15s}.hbi img+img{margin-left:-14%}.hbi:hover img,.hbi:focus-visible img,.hbi.on img{transform:translateY(-6%) scale(1.06)}' +
     '.hbi:focus-visible{outline:3px solid #E0457B;outline-offset:3px;border-radius:8px}.hbi.on{z-index:40}.hbi.locked img,.hbi.ate img{filter:grayscale(.75) opacity(.6)}' +
-    '.hbi .hbtag{position:absolute;left:50%;bottom:-1px;transform:translate(-50%,100%);background:#fff;border:2px solid #1d1d1b;border-radius:6px;padding:0 6px;font:700 13px/1.35 Calibri,Carlito,Arial,sans-serif;color:#1d1d1b;white-space:nowrap}.hbi .hbtag.own{background:#7FD08B}' +
+    '.hbi .hbtag{position:absolute;left:50%;bottom:0;transform:translate(-50%,72%);background:#fff;border:2px solid #1d1d1b;border-radius:6px;padding:0 5px;font:700 11px/1.3 Calibri,Carlito,Arial,sans-serif;color:#1d1d1b;white-space:nowrap}.hbi .hbtag.own{background:#7FD08B}' +
     '.hbi .hbname{position:absolute;left:50%;top:100%;transform:translate(-50%,26px);background:#1d1d1b;color:#fff;border-radius:8px;padding:3px 9px;font:400 15px/1.2 Calibri,Carlito,Arial,sans-serif;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s;z-index:60}.hbi:hover .hbname,.hbi:focus-visible .hbname{opacity:1}' +
-    '.hbi.ppl .hbtag,.hbi.hen .hbtag{bottom:auto;top:-4px;transform:translate(-50%,-100%)}.hbi.ppl .hbname,.hbi.hen .hbname{top:auto;bottom:100%;transform:translate(-50%,-30px)}' +
+    '.hbi.till .hbtag{display:none}.hbi.ppl .hbtag,.hbi.hen .hbtag{bottom:auto;top:-4px;transform:translate(-50%,-100%)}.hbi.ppl .hbname,.hbi.hen .hbname{top:auto;bottom:100%;transform:translate(-50%,-30px)}' +
     '.hbin-layla{position:absolute;bottom:.6%;height:46%;width:0;left:var(--b);animation:hbwalk var(--d) linear both;z-index:30;pointer-events:none}@keyframes hbwalk{from{left:var(--a)}to{left:var(--b)}}' +
     '.hbin-layla img{position:absolute;bottom:0;height:100%;width:auto;left:0;transform:translateX(-50%)}.hbin-layla .lb{opacity:0}.hbin-layla .lbr{height:30%;bottom:1%;left:var(--bx);transform:translateX(-50%)}' +
     '.hbin-layla.mv .la{animation:hbsa .46s steps(1,end) var(--n)}.hbin-layla.mv .lb{animation:hbsb .46s steps(1,end) var(--n)}.hbin-layla.mv .lbr{animation:hbhop .23s ease-in-out calc(var(--n) * 2)}' +
@@ -149753,6 +149754,8 @@ window.SQE_TOWN = function(A){
     return h;
   }
   function jobScene(off, L, line){
+    /* rule 20 Nov 13:58: the new inside-the-Job-Centre scene stays Monnie-only (?monnie=1) until QA passes it; Layla keeps the desk card */
+    if (!document.documentElement.classList.contains('monnie')) return '<div class="bcard town-desk jcdesk"><div class="jcp2" aria-hidden="true"><span class="box"><b>jobcentre</b><span>pluck</span></span><span class="end">Part of the Department for Hens</span></div><div><h2>Job Centre</h2><div class="bspeech">"' + esc(line) + '"</div></div></div>' + jobNav(off);
     var n = 0, notes = L.slice(0, 6).map(function(j){ n++; return '<a class="jcnote' + (j.done ? ' done' : '') + '" href="' + j.h + '" title="' + esc(A.tnum(j.x) + ': ' + j.x.t.title) + '"><b>Job ' + n + '</b><i>' + (j.done ? 'Done' : j.pay + ' coins') + '</i></a>'; }).join('');
     if (!L.length) notes = '<span class="jcempty">No jobs pinned up</span>';
     return '<div class="jcscene" role="group" aria-label="Inside the Job Centre"><img class="jcbg" src="img/jobcentre-in.webp" alt="" width="1800" height="1004"><img class="jclay" src="img/layla-step0.webp" alt="Layla">' +
@@ -149953,16 +149956,16 @@ window.SQE_TOWN = function(A){
   /* where everything sits in the drawing, in % of the picture: rows of shelves (items spread evenly along each), then the family by the till and the hens wandering in the aisle */
   var HB_ROWS = [   /* the drawing's four shelf lines; big garden things on the top shelf */
     {b: 62.8, h: 10.5, x0: 29, x1: 84, ids: ['coop', 'palace', 'player', 'rec_ss', 'rec_mj', 'nestbox', 'swing']},
-    {b: 51.2, h: 8.8, x0: 29, x1: 84, ids: ['pandan', 'latte', 'cookies', 'cup', 'goldcorn', 'corn', 'sweets']},
-    {b: 40.8, h: 8.6, x0: 29, x1: 84, ids: ['crocs', 'charms', 'socks', 'clawsocks', 'tote', 'skincare', 'soap']},
-    {b: 30.4, h: 8.6, x0: 29, x1: 84, ids: ['pens', 'stickers', 'colouring', 'calendar', 'toppers', 'plaque', 'lamp']}
+    {b: 51.2, h: 8.2, x0: 29, x1: 84, ids: ['pandan', 'latte', 'cookies', 'cup', 'goldcorn', 'corn', 'sweets']},
+    {b: 40.8, h: 8.2, x0: 29, x1: 84, ids: ['crocs', 'charms', 'socks', 'clawsocks', 'tote', 'skincare', 'soap']},
+    {b: 30.4, h: 8.2, x0: 29, x1: 84, ids: ['pens', 'stickers', 'colouring', 'calendar', 'toppers', 'plaque', 'lamp']}
   ];
   var HB_SPOT = {   /* id: [x%, bottom%, height%, kind]: Mama and Baba behind the till, the others shopping at the end of the aisle, the hens and Jiminey wandering about */
-    parents: [26.2, 21.9, 33, 'ppl till'], monnie: [87, 5, 34, 'ppl'], yasmin: [92.6, 4, 34, 'ppl'], mo: [97.6, 5.5, 34, 'ppl'],
+    parents: [26.2, 21.9, 33, 'ppl till'], monnie: [87, 5, 36.5, 'ppl'], yasmin: [92.6, 4, 34, 'ppl'], mo: [97.6, 5.5, 34, 'ppl'],
     friend: [44, 3, 9.5, 'hen'], bianca: [55, 6, 9, 'hen'], beefy: [64, 2.5, 9.5, 'hen'], brucey: [73, 5.5, 9.5, 'hen'], bonnie: [80, 2, 8.5, 'hen']
   };
   var HB_SIGN = [4.4, 6.4, 13.4, 9.6]; /* [left%, top%, width%, height%] of the blank sign over the door (drawn at an angle) */
-  var HB_ASP = {pandan:1.26, latte:.64, crocs:1.35, charms:.94, socks:.84, clawsocks:.98, pens:.95, stickers:.96, colouring:.94, calendar:.96, toppers:1.35, plaque:1.12, soap:.86, lamp:.79, sweets:.82, tote:.76, skincare:.74, cup:.48, player:1.05, rec_ss:1, rec_mj:1, corn:.57, coop:.75, bonnie:1.18, swing:.87, cookies:1.35, nestbox:.81, goldcorn:.85, palace:1.02, parents:.87, monnie:.39, friend:.8, bianca:.63, beefy:.62, brucey:.63, yasmin:.38, mo:.36};
+  var HB_ASP = {beefy:0.62, bianca:0.63, bonnie:1.18, brucey:0.63, calendar:0.96, charms:0.94, clawsocks:0.98, colouring:0.94, cookies:1.35, coop:0.75, corn:0.57, crocs:1.35, cup:0.48, friend:0.8, goldcorn:0.85, lamp:0.79, latte:0.64, mo:0.36, monnie:0.39, nestbox:0.81, palace:1.02, pandan:1.26, parents:0.87, pens:0.95, plaque:1.12, player:1.05, rec_mj:1.13, rec_ss:1.98, skincare:0.74, soap:0.86, socks:0.84, stickers:0.96, sweets:0.82, swing:0.87, toppers:1.35, tote:0.76, yasmin:0.38};
   var HB_LX = 8, HB_FROM = 8, HB_ENTER = 1, HB_VIEW = null, HB_HASH = '';
   function hbStage(){
     var items = {}; A.CBA_SHOP().forEach(function(it){ items[it.id] = it; });
@@ -150170,7 +150173,7 @@ var GARDEN_ITEMS = {
   rec_ss:  [31.5, 2.5, 4.6],
   rec_mj:  [26.8, 2.5, 4.8]
 };
-var SWING = {x: 80.4, top: 68.2, seat: 50.2, w: 6};   /* the swing hangs on two ropes from the left branch of the tree by the coop (Monnie 09:44); Beefy rides it */
+var SWING = {x: 80.4, top: 68.2, seat: 51.8, w: 6};   /* the swing hangs on two ropes from the left branch of the tree by the coop (Monnie 09:44); Beefy rides it */
 var SWING_HEN_H = 8.5;
 var BRUCEY_COOP = [96.6, 57.6];   /* with a coop there, Brucey perches on the bank behind it */   /* Beefy sits on the swing when Layla has both */
 function coopTop(o){ return o.palace ? [91.1, 36 + 20] : o.coop ? [91.1, 36 + 19] : null; }
