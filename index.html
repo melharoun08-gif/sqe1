@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120100813";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120101201";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -3824,7 +3824,7 @@ a.pkback:hover .pksign{transform:rotate(-3deg) scale(1.05)}
 .land-real.land-lighthouse .flash .face{--pt:24%;--pb:6%}.land-real.land-lighthouse .flash .face > .ftop{top:6%!important}
 
 /* Bert's Butchers in Calibri (Monnie 20 Nov 09:47); only speech bubbles and the drawn sign keep hand lettering */
-:is(.cbag.town:not(.hb),.cbag.bossg,#_#_#_) *:not(text):not(.jcp2):not(.jcp2 *):not(.bblogo):not(.bblogo *):not(.bspeech):not(.bspeech *):not(.bthink):not(.bthink *):not(.b3 .sh):not(.bhb-say){font-family:Calibri,Carlito,'Segoe UI',Arial,sans-serif!important;letter-spacing:0}
+:is(.cbag.town:not(.hb),.cbag.bossg,#_#_#_) *:not(text):not(.jcp2):not(.jcp2 *):not(.bblogo):not(.bblogo *):not(.bspeech):not(.bspeech *):not(.bshout):not(.bthink):not(.bthink *):not(.b3 .sh):not(.bhb-say){font-family:Calibri,Carlito,'Segoe UI',Arial,sans-serif!important;letter-spacing:0}
 :is(.cbag.town:not(.hb),.cbag.bossg,#_#_#_) :is(.bspeech,.bspeech *){font-family:var(--hand),'Patrick Hand',cursive!important}
 /* every Bert speech is a real speech bubble: rounded, narrow and tall, tail pointing left to the speaker (Monnie 20 Nov 09:48) */
 .bspeech{border-radius:22px;margin-left:16px;border-width:2.5px;padding:12px 16px}
@@ -3908,6 +3908,34 @@ a.pkback:hover .pksign{transform:rotate(-3deg) scale(1.05)}
 .bthink .bt-d2{left:41%;top:46.5%;width:2.2cqw;height:2.2cqw;min-width:7px;min-height:7px}
 .bthink .bt-d3{left:44.6%;top:51%;width:1.5cqw;height:1.5cqw;min-width:5px;min-height:5px}
 @media (max-width:560px){.bthink .bt-main{left:0;width:35%;font-size:clamp(10px,3.5cqw,15px);padding:6% 2%}}
+
+/* Rescue ending v2 (Monnie 20 Nov 09:58): kick (same approved Layla face, head from layla-walk-1), foot back down, a little dance,
+   Britney flies up onto her head, and they walk off together. One 10s timeline; frames switch with step-end */
+.bhandback{--lx:12%;--hx:15px;--hy:205px;--hw:90px}
+.bhandback .bhb-lay{left:var(--lx);transform-origin:50% 100%;animation:bhbLay 10s linear forwards}
+.bhandback .bhb-lay img.w{opacity:1;animation:bhbFw 10s step-end forwards}
+.bhandback .bhb-lay img.k{opacity:0;animation:bhbFk 10s step-end forwards}
+.bhandback .bhb-lay img.s0{opacity:0;animation:bhbFs0 10s step-end forwards}
+.bhandback .bhb-lay img.s3{opacity:0;animation:bhbFs3 10s step-end forwards}
+.bhandback .bhb-lay img.wa{opacity:0;animation:bhbWa .5s 6.1s step-end infinite}
+.bhandback .bhb-lay img.wb{opacity:0;animation:bhbWb .5s 6.1s step-end infinite}
+.bhandback .bhb-lay img.hd{inset:auto;left:var(--hx);bottom:var(--hy);width:var(--hw);height:var(--hw);opacity:0;animation:bshow 0s 6.1s forwards,bhbRide .25s 6.1s ease-in-out infinite alternate}
+@keyframes bhbFw{0%{opacity:1}30%{opacity:0}100%{opacity:0}}
+@keyframes bhbFk{0%{opacity:0}30%{opacity:1}39%{opacity:0}100%{opacity:0}}
+@keyframes bhbFs0{0%{opacity:0}39%{opacity:1}42.5%{opacity:0}46%{opacity:1}49.5%{opacity:0}53%{opacity:1}61%{opacity:0}100%{opacity:0}}
+@keyframes bhbFs3{0%{opacity:0}42.5%{opacity:1}46%{opacity:0}49.5%{opacity:1}53%{opacity:0}100%{opacity:0}}
+@keyframes bhbWa{0%{opacity:1}50%{opacity:0}}
+@keyframes bhbWb{0%{opacity:0}50%{opacity:1}}
+@keyframes bhbRide{from{translate:0 0}to{translate:0 -3px}}
+@keyframes bhbLay{0%{left:var(--lx);translate:0 0;rotate:0deg;scale:1}28.5%{scale:1;translate:0 0}29.5%{scale:1.03 .96;translate:-4px 0}30.5%{scale:1;translate:0 0}39%{scale:1;translate:0 0}40%{scale:1.05 .94}41.5%{scale:1;translate:0 0;rotate:0deg}44%{translate:0 -14px;rotate:-5deg}46%{translate:0 0;rotate:0deg}47.5%{translate:0 -14px;rotate:5deg}49.5%{translate:0 0;rotate:0deg}51%{translate:0 -14px;rotate:-5deg}53%{translate:0 0;rotate:0deg}61%{left:var(--lx);translate:0 0}64%{translate:0 -4px}67%{translate:0 0}70%{translate:0 -4px}73%{translate:0 0}76%{translate:0 -4px}79%{translate:0 0}82%{translate:0 -4px}85%{translate:0 0}88%{translate:0 -4px}91%{translate:0 0}100%{left:calc(100% + 40px);translate:0 0}}
+.bhandback .bhb-say{animation:bshow .2s 3.05s forwards,bgone 0s 5.6s forwards}
+/* Britney: lands beside Layla, hops for joy during the dance, then flies up onto her head */
+.bhandback .bhb-brit{animation:bhbFly 1.6s .6s ease-in-out forwards,bhbHop .3s 4.1s ease-in-out 4 alternate,bhbHead .7s 5.4s cubic-bezier(.4,0,.3,1) forwards,bgone 0s 6.1s forwards}
+@keyframes bhbHead{0%{left:max(4px,calc(12% - 100px));bottom:10px;rotate:0deg}50%{left:calc(var(--lx) - 20px);bottom:calc(var(--hy) + 70px);rotate:-12deg}100%{left:calc(var(--lx) + var(--hx));bottom:var(--hy);rotate:0deg}}
+@media (max-width:560px){.bhandback{--lx:16%;--hx:12px;--hy:144px;--hw:60px}.bhandback .bhb-say{animation:bshow .2s 3.05s forwards,bgone 0s 5.6s forwards}@keyframes bhbHead{0%{left:max(2px,calc(16% - 60px));bottom:10px;rotate:0deg}50%{left:calc(var(--lx) - 14px);bottom:calc(var(--hy) + 50px);rotate:-12deg}100%{left:calc(var(--lx) + var(--hx));bottom:var(--hy);rotate:0deg}}}
+@media (prefers-reduced-motion:reduce){.bhandback .bhb-lay,.bhandback .bhb-lay img{animation:none!important}.bhandback .bhb-lay img:not(.s0):not(.hd){opacity:0!important}.bhandback .bhb-lay img.s0,.bhandback .bhb-lay img.hd{opacity:1!important}.bhandback .bhb-brit{display:none}}
+/* The Mount: everything under the fancy title is Calibri (Monnie 10:01); the title keeps its house-sign lettering, the town tabs keep theirs */
+:is(.mount,.mg-shedbox,#_#_#_) *:not(.mount-sign):not(.town-nav):not(.town-nav *):not(svg):not(svg *){font-family:Calibri,Carlito,"Segoe UI",Candara,Arial,sans-serif!important}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -108465,8 +108493,10 @@ window.SQE_JOURNEY = function (A) {
             sessionStorage.removeItem('sqe_prevroute');
         }
         catch (e) { }
-        if (!h || /^#\/palace/.test(h) || !/^#\/palace/.test(location.hash))
+        if (!/^#\/palace\/?$/.test(location.hash))
             return;
+        if (/^#\/palace/.test(h))
+            h = ''; /* 10:09 Monnie: opening Peckham from anywhere else lands on Layla, never the top of the page */
         var sid = (/^#\/(?:subject|topic|map|scene)\/([^/?]+)/.exec(h) || [])[1] || '';
         var find = function () {
             var sv = Array.prototype.slice.call(document.querySelectorAll('.jsv')).find(function (e) { return e.offsetParent; });
@@ -108491,10 +108521,11 @@ window.SQE_JOURNEY = function (A) {
         var quit = false;
         var evs = ['wheel', 'touchstart', 'keydown', 'mousedown'], stop = function () { quit = true; };
         evs.forEach(function (ev) { return addEventListener(ev, stop, { passive: true }); });
+        var lay = function () { var sv = Array.prototype.slice.call(document.querySelectorAll('.jsv')).find(function (e) { return e.offsetParent; }); return sv ? sv.querySelector('.jpair .jhop') || sv.querySelector('.jpair') : null; };
         var go = function () {
             if (quit || !/^#\/palace/.test(location.hash))
                 return;
-            var el = find();
+            var el = (h && find()) || lay();
             if (!el)
                 return;
             var q = el.getBoundingClientRect();
@@ -108503,6 +108534,14 @@ window.SQE_JOURNEY = function (A) {
                 return; var r = e.getBoundingClientRect(); if (r.top <= 1 && r.bottom > cover && r.height < innerHeight * .5)
                 cover = r.bottom; });
             var to = Math.max(0, Math.round(scrollY + q.top + q.height / 2 - cover - (innerHeight - cover) / 2));
+            if (!(h && find())) {
+                var t = document.querySelector('.jtitle');
+                if (t && t.offsetParent) {
+                    var tt = Math.round(scrollY + t.getBoundingClientRect().top - cover - 6); /* Peckham heading at the top of the window when Layla still fits below it */
+                    if (scrollY + q.bottom - tt <= innerHeight - 12 && scrollY + q.top - tt >= cover)
+                        to = Math.max(0, tt);
+                }
+            }
             if (Math.abs(to - scrollY) > 8)
                 window.scrollTo(0, to);
         };
@@ -128001,11 +128040,12 @@ var MOUNT_PARENT_LINES = [  /* Monnie 20 Nov 05:21: [who, line]; the bubble poin
   ["baba", "Make me a cup of tea."],
   ["mama", "Don't make a cake!!!!!"]
 ];
-var PARENT_MS = 6000;
+var PARENT_MS = 6000, PUSH_MS = 5200;   /* two lines facing Layla, then a Chuckle Brothers push facing each other (Monnie 09:59) */
 var TOWN_ON = !/[?&]town=0/.test(location.search);
 var GOLD = '#8A6400';
 /* Monnie-only preview (08:20): add ?try=all to the address to see The Mount as if everything were bought. Nothing is saved, and nothing on the site links to it. */
 var TRY = /[?&]try=all\b/.test(location.search), TRY_CARRY = null;
+var TEST = (function(){ try { return !!localStorage.getItem('sqe_monnie'); } catch(e){ return false; } })();   /* Monnie's devices only (?monnie=1): a free test feed that saves nothing */
 var TRY_SHED = ['crocs', 'charms', 'socks', 'clawsocks', 'pens', 'stickers', 'colouring', 'calendar', 'toppers', 'soap', 'lamp', 'sweets', 'tote', 'skincare', 'cup'];
 
 /* ===== layout (all % of the garden picture) ===== */
@@ -128191,6 +128231,11 @@ window.SQE_MOUNT = function(A){
     '.mg-walker img.sp{visibility:hidden}.mg-walker img.up,.mg-walker img.lg1,.mg-walker img.lg2{position:absolute;left:0;top:0;height:100%;width:100%;transform-origin:50% 100%}' +
     '.ml-rig{position:absolute;inset:0;display:none}.ml-rig.on{display:block}.ml-rig img,.ml-legs{position:absolute;left:0;top:0;width:100%;height:100%;transform-origin:0 0}.ml-legs{transform-origin:50% 50%}.ml-rig .far{filter:brightness(.72)}.ml-rig img.tl,.ml-rig img.tr,.ml-rig img.ttl,.ml-rig img.ttr{display:none}.ml-rig img.tl.on,.ml-rig img.tr.on,.ml-rig img.ttl.on,.ml-rig img.ttr.on{display:block}' +
     '.mg-brit{height:auto;cursor:pointer;pointer-events:auto}' +
+    '.mg-feedbag{position:absolute;left:5%;bottom:6%;width:9%;background:none;border:0;padding:0;cursor:pointer;z-index:3}.mg-feedbag img{width:100%;height:auto;display:block;filter:drop-shadow(0 3px 0 rgba(0,0,0,.25))}.mg-feedbag.off{cursor:default;opacity:.75}' +
+    '.mg-feedbag .n{position:absolute;right:-12%;top:-6%;background:#E0115F;color:#fff;border-radius:999px;padding:1px 7px;font-weight:700;font-size:14px}' +
+    '.mg-feedbag b{position:absolute;left:50%;top:100%;transform:translateX(-50%);margin-top:4px;background:#fff;border:2px solid #1d1d1b;border-radius:8px;padding:2px 8px;font-size:13px;white-space:nowrap}' +
+    '.mg-feedbag:not(.off){animation:mbagpulse 1.6s ease-in-out infinite}@keyframes mbagpulse{0%,100%{transform:none}50%{transform:scale(1.06)}}' +
+    '.ml-rig .ml-bag{display:none;position:absolute;left:82%;top:40%;width:22%;height:auto;transform-origin:50% 0}.mg-layla.bag .ml-rig .ml-bag{display:block}.mg-layla.bag.fl .ml-rig .ml-bag{left:-4%}' +
     '.mg-carry{position:absolute;left:30%;top:38%;width:40%;z-index:2;pointer-events:none;transform:rotate(-8deg)}.mg-carry img,.mg-carry svg{display:block!important;width:100%;height:auto;filter:drop-shadow(0 1px 0 rgba(0,0,0,.25))}' +
     '.mg-shedtip{position:absolute;left:50%;bottom:3%;transform:translateX(-50%);z-index:2;background:#fff;border:2px solid #1d1d1b;border-radius:999px;padding:1px 12px;font-size:13px;white-space:nowrap}' +
     '.mg-shelf .it{background:none;border:0;padding:0;cursor:pointer;color:inherit;font:inherit}.mg-shelf .it.carried{outline:3px dashed #E0115F;outline-offset:3px;border-radius:8px}' +
@@ -128212,7 +128257,8 @@ window.SQE_MOUNT = function(A){
     '@keyframes mhidle{0%,100%{transform:none}25%{transform:scale(1.012,.988)}50%{transform:none}70%{transform:translateY(5%) rotate(9deg)}74%{transform:none}78%{transform:translateY(5%) rotate(9deg)}82%{transform:none}}' +
     '.mh-bonnie img{transform-origin:50% 100%;animation:mrhop 6.5s ease-in-out infinite}' +
     '@keyframes mrhop{0%,80%,100%{transform:none}84%{transform:translateY(-16%) scale(.97,1.04)}88%{transform:scale(1.04,.96)}91%{transform:translateY(-9%)}95%{transform:none}}' +
-    '.mg-person:not(.mg-walker) img{transform-origin:50% 100%;animation:mpidle 5.5s ease-in-out infinite}.mg-yasmin img{animation-delay:-1.8s}.mg-mo img{animation-delay:-3.6s}' +
+    '.mg-bert{transform:translateX(-50%)}.mg-bert img{height:100%;width:auto;display:block;transform-origin:50% 100%}' +
+    '.mg-mama img,.mg-baba img{transform-origin:50% 100%;animation:none!important}.mg-person:not(.mg-walker) img{transform-origin:50% 100%;animation:mpidle 5.5s ease-in-out infinite}.mg-yasmin img{animation-delay:-1.8s}.mg-mo img{animation-delay:-3.6s}' +
     '@keyframes mpidle{0%,100%{transform:none}50%{transform:rotate(.8deg) scaleY(1.008)}}' +
     '@media (prefers-reduced-motion:reduce){.mg-hen img,.mg-person img,.mg-swing{animation:none!important}}' +
     '.mg-hen.peck img{transform-origin:55% 90%;animation:mgpeck .62s ease-in-out infinite}' +
@@ -128275,8 +128321,50 @@ window.SQE_MOUNT = function(A){
   function carrying(){ var id = TRY ? TRY_CARRY : mst().carry; if (!id) return null; if (!TRY && !A.cbaS().own[id]) return null; return A.cbaItem(id) ? id : null; }
   function setCarry(id){ if (TRY){ TRY_CARRY = id; return; } mst().carry = id || null; A.save(); }
   function given(id){ return mst().given[id] === A.ymd() && A.cbaAte(id); }
-  function parentPair(){ var n = MOUNT_PARENT_LINES.length; return n ? MOUNT_PARENT_LINES[Math.floor(now() / PARENT_MS) % n] : ['baba', '']; }
-  function owned(id){ if (TRY) return true; var o = A.cbaS().own; return id === 'mama' || id === 'baba' ? !!(o.parents || o.mum || o.dad) : !!o[id]; }
+  function parentPair(){
+    var n = MOUNT_PARENT_LINES.length; if (!n) return ['baba', ''];
+    var t = now(), cyc = 2 * PARENT_MS + PUSH_MS, k = Math.floor(t / cyc), u = t % cyc;
+    if (KID){ var ku = t - KID.t0; return ku > 2300 && ku < 4500 ? ['baba', 'Oi! Put me down!'] : ku >= 4500 && ku < 6600 ? ['mama', 'Layla, help!!!'] : ['', '']; }
+    if (u >= 2 * PARENT_MS) return ['', ''];   /* pushing: no bubbles */
+    return MOUNT_PARENT_LINES[(2 * k + Math.floor(u / PARENT_MS)) % n];
+  }
+  /* each parent's pose: turned towards Layla while talking; between rounds they turn to each other and shove, Baba first, then Mama */
+  /* Layla returned Mama and Baba (Monnie 10:03): Bert runs in and drags them off, all in fun. The shop sets sessionStorage sqe_parentsReturned. */
+  var KID_MS = 7400, BERT_H = 44;
+  function kidState(n){
+    var u = n - KID.t0;
+    if (u > KID_MS){ KID = null; setTimeout(function(){ if (A.route()[0] === 'mount') A.render(); }, 0); return null; }
+    var bx, brz = 0, bob = 0, pull = 0, jolt = 0;
+    if (u < 0) bx = -16;
+    else if (u < 2200){ var k = u / 2200; bx = lerp(-16, 9, k); bob = Math.abs(Math.sin(u / 130)) * 3; }
+    else if (u < 3000){ bx = 9; jolt = bump(u, 2200, 500); brz = -3 * jolt; }
+    else { var k2 = clamp((u - 3000) / 3800, 0, 1); pull = k2 * k2 * 46; bx = 9 - pull; brz = -9; bob = Math.abs(Math.sin(u / 160)) * 2.5; }
+    var be = document.querySelector('.mg-bert');
+    if (be){ be.style.left = bx.toFixed(2) + '%'; be.style.bottom = '12%'; be.style.height = BERT_H + '%'; be.style.zIndex = '1960'; be.querySelector('img').style.transform = 'translateY(' + (-bob).toFixed(2) + '%) rotate(' + brz + 'deg)'; }
+    function one(lag, isB){
+      var p2 = u < 3000 + lag ? 0 : clamp((u - 3000 - lag) / 3800, 0, 1), d = -(p2 * p2 * 46), hop = p2 > 0 && p2 < 1 ? Math.abs(Math.sin((u + lag) / 150)) * 4 : 0;
+      var rz = -12 * (p2 > 0 ? 1 : 0) - 8 * jolt + (isB ? 0 : 3 * Math.sin(u / 120) * (p2 > 0 && p2 < 1 ? 1 : 0));
+      return {dx: d, tf: 'translateY(' + (-hop).toFixed(2) + '%) rotate(' + rz.toFixed(1) + 'deg)'};
+    }
+    return {baba: one(0, true), mama: one(260, false)};
+  }
+  function bump(u, t0, d){ if (u < t0 || u > t0 + d) return 0; return Math.sin(Math.PI * (u - t0) / d); }
+  function knock(u, t0, d){ if (u < t0 || u > t0 + d) return 0; var k = (u - t0) / d; return Math.sin(Math.PI * Math.min(1, k * 1.6)) * (1 - k) + Math.sin(k * Math.PI * 5) * 0.12 * (1 - k); }
+  function parentPose(who, t){
+    var cyc = 2 * PARENT_MS + PUSH_MS, u = t % cyc - 2 * PARENT_MS, isB = who === 'baba';
+    var breathe = 1 + Math.sin(t / 900 + (isB ? 0 : 2)) * 0.006, ry = 16, dx = 0, rz = 0;   /* facing Layla, who is on their right */
+    if (u >= 0){
+      var turn = clamp(u / 400, 0, 1) * (1 - clamp((u - (PUSH_MS - 500)) / 400, 0, 1));   /* 0 = facing Layla, 1 = facing each other */
+      var toEach = isB ? 26 : -26; ry = lerp(16, toEach, ease(turn));
+      var dir = isB ? 1 : -1;   /* towards the other one */
+      var shove = isB ? bump(u, 500, 700) + bump(u, 2700, 500) : bump(u, 1600, 700) + bump(u, 3500, 500);
+      var hit = isB ? knock(u, 1850, 900) + knock(u, 3650, 700) : knock(u, 800, 900) + knock(u, 2950, 700);
+      dx = dir * shove * 12 - dir * hit * 20;      /* % of their own width */
+      rz = dir * shove * 5 - dir * hit * 9;
+    }
+    return 'perspective(900px) translateX(' + dx.toFixed(2) + '%) rotateY(' + ry.toFixed(1) + 'deg) rotate(' + rz.toFixed(2) + 'deg) scaleY(' + breathe.toFixed(4) + ')';
+  }
+  function owned(id){ if (TRY) return true; if (KID && (id === 'mama' || id === 'baba')) return true; var o = A.cbaS().own; return id === 'mama' || id === 'baba' ? !!(o.parents || o.mum || o.dad) : !!o[id]; }
 
   function joyHTML(){
     var left = JOY.until - Date.now(); if (left <= 0) return '';
@@ -128309,7 +128397,14 @@ window.SQE_MOUNT = function(A){
   function shedHTML(){
     var ids = shedItems(), per = 7, h = '<div class="mg-shedbox" role="dialog" aria-modal="true" aria-label="Layla\'s shed" data-mount="shedbg"><div class="mg-shedin">' +
       '<img class="bg" src="img/mount/shed-inside.webp" alt="" onerror="this.style.display=\'none\'"><span class="mg-shedttl">Layla\'s shed</span><span class="mg-shedtip">Tap something and Britney carries it around</span><button type="button" class="mg-shedx" data-mount="shedx" aria-label="Close the shed">×</button>';
-    if (!ids.length) h += '<div class="mg-empty">Nothing here yet. Everything Layla buys in <a href="#/town/shop">Hen Bargains</a> goes on these shelves.</div>';
+    var bags = has('feedLeft') ? A.feedLeft() : 0, inTrip = !!(TRIP && !TRIP.out);
+    if (bags || TEST){
+      var canFeed = inTrip && (bags ? feedable().length > 0 : TEST), testBag = !bags;
+      h += '<button type="button" class="mg-feedbag' + (canFeed ? '' : ' off') + '"' + (canFeed ? ' data-mount="feedbag"' + (testBag ? ' data-test="1"' : '') : ' disabled') + ' title="Chicken feed">' +
+        '<img src="img/mount/item-feed.webp" alt="Chicken feed"><span class="n">' + (testBag ? 'test' : '×' + bags) + '</span>' +
+        '<b>' + (canFeed ? 'Tap to feed ' + esc(A.henName(A.henLife())) : !inTrip ? 'Chicken feed' : 'Everyone has eaten today') + '</b></button>';
+    }
+    if (!ids.length && !bags) h += '<div class="mg-empty">Nothing here yet. Everything Layla buys in <a href="#/town/shop">Hen Bargains</a> goes on these shelves.</div>';
     for (var r = 0; r < SHELVES.length; r++){
       var row = ids.slice(r * per, r * per + per), sh = SHELVES[r]; if (!row.length) break;
       h += '<div class="mg-shelf" style="top:' + sh[0] + '%;left:' + sh[1] + '%;width:' + (sh[2] - sh[1]) + '%">' + row.map(function(id){ var it = A.cbaItem(id); var on = carrying() === id; return '<button type="button" class="it' + (on ? ' carried' : '') + '" data-mount="carry" data-i="' + id + '" title="' + esc(on ? 'Britney has this. Tap to put it back' : 'Give this to Britney to carry') + '">' + A.prizePic(id) + '<b>' + esc(on ? 'Britney has it!' : it.n) + '</b></button>'; }).join('') + '</div>';
@@ -128326,6 +128421,7 @@ window.SQE_MOUNT = function(A){
   VIEW.mount = function(r){
     if (r[1] === 'feed') setTimeout(startFeed, 60);
     if (r[1]) setTimeout(function(){ if (A.route()[0] === 'mount') location.replace('#/mount'); }, 0);
+    try { if (sessionStorage.getItem('sqe_parentsReturned')){ sessionStorage.removeItem('sqe_parentsReturned'); KID = {t0: now() + 600}; } } catch(eK){}
     var c = A.cbaS(), o = c.own, L = A.henLife(), m = A.henMood(L), nm = A.henName(L);
     var shop = '#/town/shop';
     var h = '<div class="mount"><div class="mount-top"><a class="mount-back pkback" href="#/palace" title="Back to Peckham"><img class="pksign" src="img/peckham-sign.webp" alt="Back to Peckham" width="300" height="152"></a><h2 class="mount-title"><span class="mount-sign">The Mount</span></h2>' +
@@ -128347,10 +128443,10 @@ window.SQE_MOUNT = function(A){
     PEOPLE.forEach(function(p){
       if (!owned(p[0])) return;
       if (p[0] !== 'mama' && p[0] !== 'baba') who.push(p[5]);
-      var walker = p[0] === 'mama' || p[0] === 'baba', im = '<img src="' + p[4] + '" alt="' + esc(p[5]) + '" onerror="this.parentNode.style.display=\'none\'"' + (walker ? ' class="sp"' : '') + '>';
-      if (walker) im += ['up', 'lg1', 'lg2'].map(function(c){ return '<img class="' + c + '" src="' + p[4] + '" alt="">'; }).join('');
+      var walker = false, im = '<img src="' + p[4] + '" alt="' + esc(p[5]) + '" onerror="this.parentNode.style.display=\'none\'">';
       h += '<div class="mg-act mg-person mg-' + p[0] + (walker ? ' mg-walker' : '') + '" data-who="' + p[0] + '" data-g="' + p[1] + ',' + p[2] + ',' + (LAYLA_H * DEPTH(p[2]) * p[3]).toFixed(2) + '" title="' + esc(p[5]) + '">' + im + '</div>';
     });
+    if (KID) h += '<div class="mg-act mg-bert" aria-hidden="true"><img src="img/boss/bert-run.webp" alt=""></div>';
     if (owned('baba') || owned('mama')){ var pp = parentPair(); h += '<span class="mg-say" data-say="' + pp[0] + '" aria-live="polite">' + esc(pp[1]) + '<i></i></span>'; }
     var swingHen = '';
     HENS.forEach(function(p){
@@ -128372,7 +128468,7 @@ window.SQE_MOUNT = function(A){
     /* Layla: a jointed cut-out of the approved drawing (torso + thigh + shin, both legs) for walking; whole poses for waving and cartwheels */
     h += '<div class="mg-act mg-layla" aria-label="Layla" role="img"><img class="sp" src="img/mount/lw-a-r.webp" alt="">' +
       '<span class="ml-rig on"><span class="ml-legs"><img class="far th" src="img/mount/lw-thigh.webp" alt=""><img class="far sh" src="img/mount/lw-shin.webp" alt=""><img class="near th" src="img/mount/lw-thigh.webp" alt=""><img class="near sh" src="img/mount/lw-shin.webp" alt=""></span>' +
-      '<img class="tr on" src="img/mount/lw-torso-r.webp" alt=""><img class="tl" src="img/mount/lw-torso-l.webp" alt=""><img class="ttr" src="img/mount/lw-torso-t-r.webp" alt=""><img class="ttl" src="img/mount/lw-torso-t-l.webp" alt=""></span>' +
+      '<img class="ml-bag" src="img/mount/item-feed.webp" alt=""><img class="tr on" src="img/mount/lw-torso-r.webp" alt=""><img class="tl" src="img/mount/lw-torso-l.webp" alt=""><img class="ttr" src="img/mount/lw-torso-t-r.webp" alt=""><img class="ttl" src="img/mount/lw-torso-t-l.webp" alt=""></span>' +
       ['ar', 'al', 'tr', 'tl'].map(function(f){ return '<img class="pose" data-f="' + f + '" src="img/mount/lw-' + f.charAt(0) + '-' + f.charAt(1) + '.webp" alt="">'; }).join('') + '</div>';
     if (L.away) h += '<a class="mg-away" href="#/boss/rescue" style="left:' + SHED.x + '%;bottom:' + (SHED.b + SHED.h * 0.3) + '%;z-index:' + Math.round(2000 - SHED.b * 10 + 1) + '"><b>Britney is at Bert\'s!<br><u>Rescue her</u></b></a>';   /* sign hung on the shed while Bert has her (bossS().cap): clear of everyone's path */
     if (!L.away){
@@ -128392,8 +128488,9 @@ window.SQE_MOUNT = function(A){
     if (has('feedLeft') && hungryN){
       var bags = A.feedLeft();
       h += '<div class="palcard"><b>🌾 ' + (hungryN === 1 ? 'One hungry hen' : hungryN + ' hungry hens') + ' today.</b> ' + (bags ? 'You have ' + bags + (bags === 1 ? ' bag' : ' bags') + ' of feed (one bag feeds one hen for a day).' : 'No feed left.') +
-        '<div style="margin-top:8px">' + (bags ? '<button type="button" class="btn primary" data-mount="feed">🌾 Scatter the feed</button>' : '<a class="btn primary" href="#/town/shop">🛒 Buy feed at Hen Bargains</a>') + '</div></div>';
+        '<div style="margin-top:8px">' + (bags ? '<button type="button" class="btn primary" data-mount="feed">🌾 Get the feed from the shed</button>' : '<a class="btn primary" href="#/town/shop">🛒 Buy feed at Hen Bargains</a>') + '</div></div>';
     }
+    if (TEST && !L.away) h += '<div class="palcard mount-test"><b>🧪 Monnie\'s test</b> <span class="small muted">Only on your devices. Nothing is saved, no feed is used.</span><div style="margin-top:8px"><button type="button" class="btn" data-mount="feed" data-test="1">Test: feed Britney for free</button></div></div>';
     h += treatsCard(L) + A.broodCard();
     h += '<a class="palcard" href="#/palace/old" style="display:block;text-decoration:none"><b>📖 ' + esc(nm) + '\'s records</b><span class="small" style="display:block">Prizes, topic flock, feeds this week, how it works</span></a>';
     return h + '</div></div>';
@@ -128537,20 +128634,20 @@ window.SQE_MOUNT = function(A){
     var n = now();
     if (FEED){ FEED.sc = scene(n); if (FEED.sc.done){ BPAUSED += n - FEED.t0; FEED = null; if (TRIP){ PAUSED += n - TRIP.t0; TRIP = null; } } }
     var t = loopT(), sc = FEED && FEED.sc, trip = !FEED && TRIP ? tripState(n) : null;
-    var pw = parentWalk(n);
+    var kid = KID ? kidState(n) : null;
     statics.forEach(function(s){
       if (s.el.style.display === 'none') return;
-      var walker = s.el.classList.contains('mg-walker');
-      place(s.el, s.x + (walker ? pw.dx : 0), s.b, s.h, s.img);
+      var walker = false, who = s.el.getAttribute('data-who'), par = who === 'mama' || who === 'baba';
+      place(s.el, s.x + (kid && par ? kid[who].dx : 0), s.b, s.h, s.img);
+      if (par && s.img) s.img.style.transform = kid ? kid[who].tf : parentPose(who, n);
       if (s.el.classList.contains('front') || s.el.classList.contains('onswing')) s.el.style.zIndex = String(Math.round(2000 - s.b * 10) + 60);   /* the sign on the coop, Beefy on the swing seat */
-      if (walker) stepParent(s.el, s.img, pw, s.el.getAttribute('data-who') === 'baba' ? 0.5 : 0);
     });
     /* Layla */
     var le = g.querySelector('.mg-layla');
     if (le){
       var L = sc ? sc.L : trip || laylaAt(t);
       rigLayla(le, L);
-      var al = L.alpha == null ? 1 : L.alpha; le.style.opacity = al < 1 ? al.toFixed(2) : ''; le.classList.toggle('bag', !!L.bag);
+      var al = L.alpha == null ? 1 : L.alpha; le.style.opacity = al < 1 ? al.toFixed(2) : ''; le.classList.toggle('bag', !!L.bag); le.classList.toggle('fl', L.face === 'l');
       le.style.height = (LAYLA_H * DEPTH(L.b)).toFixed(3) + '%'; le.style.left = L.x.toFixed(3) + '%'; le.style.bottom = L.b.toFixed(3) + '%'; le.style.zIndex = String(Math.round(2000 - L.b * 10));
     }
     /* Britney */
@@ -128588,6 +128685,8 @@ window.SQE_MOUNT = function(A){
       var pp = parentPair();
       if (!(owned('mama') || owned('baba'))){ say.parentNode.removeChild(say); return; }
       if (say.getAttribute('data-say') === 'britney'){ say.setAttribute('data-say', pp[0]); say.innerHTML = esc(pp[1]) + TAIL; }
+      if (!pp[1]){ say.style.display = 'none'; lastLine = ''; return; }
+      if (!lastLine && say.textContent !== pp[1]){ say.setAttribute('data-say', pp[0]); say.innerHTML = esc(pp[1]) + TAIL; say.classList.remove('fade'); }
       if (lastLine && lastLine !== pp[1] && !say.classList.contains('fade')){ say.classList.add('fade'); setTimeout(function(){ say.setAttribute('data-say', pp[0]); say.innerHTML = esc(pp[1]) + TAIL; say.classList.remove('fade'); }, 250); }
       lastLine = pp[1];
       var who = g.querySelector('.mg-person[data-who="' + say.getAttribute('data-say') + '"]') || g.querySelector('.mg-person');
@@ -128667,7 +128766,7 @@ window.SQE_MOUNT = function(A){
     var tail = say.querySelector('i'); if (tail){ tail.style.left = clamp(headX - (cx - bw / 2), 16, bw - 16).toFixed(1) + 'px'; tail.style.height = clamp(headY - top + 1, 12, 90).toFixed(0) + 'px'; }   /* the tail stretches down to the speaker's head */
   }
   requestAnimationFrame(tick);
-  window.SQE_MOUNT_DEBUG = {c0: CLOCK0, TRIM: TRIM, laylaAt: laylaAt, britAt: britAt, LT: LT, get BT(){ return BT; }, startFeed: startFeed, feeding: function(){ return !!FEED; }, FEED: function(){ return FEED; }};
+  window.SQE_MOUNT_DEBUG = {c0: CLOCK0, TRIM: TRIM, laylaAt: laylaAt, britAt: britAt, LT: LT, get BT(){ return BT; }, startFeed: startFeed, startTrip: startTrip, tripOut: tripOut, trip: function(){ return TRIP; }, feeding: function(){ return !!FEED; }, FEED: function(){ return FEED; }};
 
   var joyT = 0;
   document.addEventListener('click', function(e){
@@ -132846,10 +132945,10 @@ var BOSS_KICK_LINE = "Smell me, Krell me!";
 function bossHomeView(){
   return '<div class="cbag bossg"><div class="cbatop"><a class="cbaback" href="#/town/butcher">‹ Bert\'s Butchers</a><span class="cbattl">Britney is coming home</span><span class="spill coin">' + cbaCoin() + ' <b>' + cbaS().coins + '</b></span></div>' +
     '<div class="arena bhandback" role="img" aria-label="Bert hands Britney back, she flies to Layla, and Layla kicks Bert away"><span class="bdoor" aria-hidden="true"></span>' +
-    '<span class="bhb-lay"><img class="w" src="img/layla-walk-1.webp" alt=""><img class="k" src="img/layla-kick.webp" alt=""><b class="bhb-say">' + esc(BOSS_KICK_LINE) + '</b></span>' +
+    '<span class="bhb-lay"><img class="w" src="img/layla-walk-1.webp" alt=""><img class="k" src="img/layla-kick.webp" alt=""><img class="s0" src="img/layla-step0.webp" alt=""><img class="s3" src="img/layla-step3.webp" alt=""><img class="wa" src="img/layla-walk-1.webp" alt=""><img class="wb" src="img/layla-walk-2.webp" alt=""><img class="hd" src="img/britney/set/happy.webp" alt=""><b class="bhb-say">' + esc(BOSS_KICK_LINE) + '</b></span>' +
     '<span class="bhb-bert"><span class="bb"><img src="' + BERT_RUN + '" alt=""></span><b class="bshout">Fine! Take your hen!</b></span>' +
     '<span class="bhb-brit"><img class="f" src="img/britney/fly1.webp" alt=""><img class="s" src="img/britney/set/happy.webp" alt=""></span></div>' +
-    '<div class="bsay"><p>Bert has to hand Britney back. She flaps straight to Layla, and when Bert comes any closer, Layla kicks him out of the way. Britney is safe!</p></div>' +
+    '<div class="bsay"><p>Bert has to hand Britney back. When he tries to come closer, Layla kicks him out of the way, does a little happy dance, and Britney hops up onto her head for the walk home. Britney is safe!</p></div>' +
     '<div class="btns cbac"><a class="btn primary big" href="#/mount">Take her home to The Mount</a><button type="button" class="btn big" data-act="bhreplay">Watch again</button><a class="btn big" href="#/town/butcher">Bert\'s Butchers</a></div></div>';
 }
 /* ---------- the duel: a chase. Britney in her nest on the left, Bert creeping in from the right ---------- */
