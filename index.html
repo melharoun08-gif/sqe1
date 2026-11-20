@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120024937";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120025228";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -2606,7 +2606,7 @@ html.dfv-on{overflow:hidden}
    Layout: [cloud staircase + Layla | title, dates, numbers, Remember | ring, coin bag], kept left of the drawn coop/hens/girls. */
 .head.nb,.head.nb.compact{background-image:url(img/banner-bg4.webp),url(img/banner-ext.webp)!important}
 /* fun (left): staircase box is a fixed design (600x616 viewBox) whose size follows --nbh; bubble and bag scale with it so nothing collides */
-.head.nb{--nbh:clamp(220px,24.5vw,350px);--nbw:calc(var(--nbh) * 600 / 616)}
+.head.nb{--nbh:clamp(220px,24.5vw,350px);--nbw:calc(var(--nbh) * 800 / 616)}
 .head.nb .nbstage{order:1;position:relative;z-index:2;display:grid;grid-template-columns:var(--nbw) minmax(0,440px);justify-content:space-between;column-gap:18px;align-items:start;width:min(calc(100% - 500px),1120px);box-sizing:border-box;padding:0 0 14px;color:#10294A}
 .head.nb .nbl{position:relative;min-width:0;width:var(--nbw)}
 .head.nb .nbsteps{position:relative;width:100%}
@@ -2785,7 +2785,7 @@ html.dfv-on{overflow:hidden}
 }
 /* banner-r3: when the Topics list narrows the banner on a big screen, size the left column from the banner width (not the window) and keep the stats on one row so the Remember card stays above the hens */
 @media (min-width:1061px){@container (max-width:1320px){
- .head.nb .nbstage{--nbh:clamp(220px,24.5cqw,350px);--nbw:calc(var(--nbh) * 600 / 616);width:calc(100% - 420px);column-gap:12px}
+ .head.nb .nbstage{--nbh:clamp(220px,24.5cqw,350px);--nbw:calc(var(--nbh) * 800 / 616);width:calc(100% - 420px);column-gap:12px}
  .head.nb .nbstats{flex-wrap:nowrap;gap:5px}
  .head.nb .nbstats .stat{min-width:0;padding:3px 5px 4px}
  .head.nb .nbstats .stat b{font-size:19px}
@@ -82962,7 +82962,7 @@ window.SQE_JOURNEY = function (A) {
        through the FLK1 meadow and the FLK2 autumn fields to revision camp and Cluckington Palace (with both exam flags) in the palace grounds at the bottom.
        reg = the top edge of each ground band, top to bottom: spring meadow (stops 1-7), autumn fields (8-14), palace grounds. */
     function layoutDesktop() {
-        var rows = TOWN ? [660, 1100, 2480, 2910] : [660, 1100, 1800, 2230], /* +130 at the top for the Welcome to Peckham sign (Monnie 20 Nov) */ cols = [200, 445, 690, 935], PB = rows[3] + 625, /* 20 Nov: +140 at the top for the FLK1 signpost, +160 between the meadow and the fields for the FLK2 signpost */ D = PB - 2145, W = 1100, H = 2235 + D; /* landmarks 1.6x bigger, cards smaller (Monnie 21:29): rows spaced out */
+        var rows = TOWN ? [660, 1100, 2560, 2990] : [660, 1100, 1800, 2230], /* +130 at the top for the Welcome to Peckham sign (Monnie 20 Nov) */ cols = [200, 445, 690, 935], PB = rows[3] + 625, /* 20 Nov: +140 at the top for the FLK1 signpost, +160 between the meadow and the fields for the FLK2 signpost */ D = PB - 2145, W = 1100, H = 2235 + D; /* landmarks 1.6x bigger, cards smaller (Monnie 21:29): rows spaced out */
         var ty = function (x) { return -(x - 570) * .09; }; /* each row of the path tilts gently upward to the right (Monnie 20 Nov: a path in perspective, not flat) */
         var st = [{ x: 200, y: rows[0] + ty(200) }];
         [1, 2, 3].forEach(function (s, k) { return st[s] = { x: cols[k + 1], y: rows[0] + ty(cols[k + 1]) }; });
@@ -82974,7 +82974,7 @@ window.SQE_JOURNEY = function (A) {
         return { mode: 'desk', W: W, H: H, stops: st,
             route: "M150,".concat(rows[0] + ty(150), " L960,").concat(rows[0] + R, " A110,").concat((rows[1] - rows[0]) / 2, " 0 0 1 960,").concat(rows[1] + R, " L140,").concat(rows[1] + Lf, " A110,").concat((rows[2] - rows[1]) / 2, " 0 0 0 140,").concat(rows[2] + Lf, " L960,").concat(rows[2] + R, " A110,").concat((rows[3] - rows[2]) / 2, " 0 0 1 960,").concat(rows[3] + R, " L140,").concat(rows[3] + Lf, " C20,").concat(rows[3] + Lf, " 20,").concat(PB, " 170,").concat(PB, " H570 Q600,").concat(PB, " 600,").concat(PB - 24),
             art: { x: -125, y: -262, w: 250, h: 268, gx: -115, gy: -200, gw: 220, gh: 206 },
-            lm: function (i) { return ({ x: st[i].x, y: st[i].y - 34 - (TOWN && i === 9 ? 40 : TOWN && i === 11 ? 100 : 0), s: 1 }); }, /* Monnie 20 Nov: stagger 8-11 (farm a bit up, balloons float higher) */
+            lm: function (i) { return ({ x: st[i].x, y: st[i].y - 34 - (TOWN && i === 9 ? 135 : TOWN && i === 11 ? 95 : i === 2 ? 45 : 0), s: .9 }); }, /* 02:50 Monnie: less crammed: drawings 10% smaller, fairground set back */ /* Monnie 20 Nov: stagger 8-11 (farm a bit up, balloons float higher) */
             label: function (i) { return ({ cx: st[i].x, top: st[i].y + 44 }); },
             F: { w: 188, fs: 17, lh: 19, sfs: 13, max: 19, bar: 8 },
             hen: function (i) { return i === 0 ? { x: st[0].x + 66, y: st[0].y + 22, s: .85, m: true } : left(i) ? { x: st[i].x + 88, y: st[i].y + 24, s: .85, m: false } : { x: st[i].x - 88, y: st[i].y + 24, s: .85, m: true }; }, /* just before the stop, clear of its number */
@@ -83086,7 +83086,12 @@ window.SQE_JOURNEY = function (A) {
     var TOWN = !/[?&]town=0/.test((location.search || '') + '&' + (location.hash || '')); /* town square preview (Monnie 20 Nov): job centre, gift shop, Bert's Butchers off the path */
     var qs = function () { return (location.search || '') + '&' + (location.hash || ''); };
     function skyHour() { var ov = /[?&]hour=(\d+(?:\.\d+)?)/.exec(qs()); if (ov)
-        return (+ov[1]) % 24; var d = new Date(); return d.getHours() + d.getMinutes() / 60; }
+        return (+ov[1]) % 24; var fo = ''; try {
+        fo = localStorage.getItem('sqe_sky') || '';
+    }
+    catch (e) { } if (fo === 'night')
+        return 22; if (fo === 'day')
+        return 13; /* Monnie's N test button on the banner forces day/night */ /* Monnie's N test button on the banner forces day/night */ var d = new Date(); return d.getHours() + d.getMinutes() / 60; }
     function skyPhase(h) { return h >= 21 || h < 6 ? 'night' : h >= 18 ? 'dusk' : h < 8 ? 'dawn' : 'day'; }
     var NAT = { fairground: [520, 457], lighthouse: [507, 520], pier: [520, 502], aquarium: [520, 509], farm: [520, 502], airport: [520, 472], balloons: [518, 520], zoo: [520, 509] };
     /* a point on a landmark picture (fx, fy = fractions of the picture) in map coordinates, plus the picture's scale */
@@ -83423,7 +83428,7 @@ window.SQE_JOURNEY = function (A) {
        fairground-car-1..7.webp (each car, [x,y,w,h] in picture px below) and fairground-still2.webp (the picture with the wheel and cars lifted; legs, helter-skelter and flag kept).
        Layers: wheel behind the picture (the legs stay in front of it), then hub and cars in front. Each car's group turns with the wheel and its inner group turns back, so it hangs level, and rocks a little on its hook.
        The invisible circles make each turning group's fill-box centred on the hub / the car centre (CSS block map-motion-wheel in styles.css). WHEEL_ON=false puts the still picture back. */
-    var WHEEL_ON = true, WHEEL_HUB = [172, 188], WHEEL_CARS = [[136, 44, 74, 71], [226, 76, 75, 71], [263, 168, 74, 70], [231, 259, 74, 72], [38, 259, 78, 72], [4, 166, 77, 72], [46, 73, 78, 72]];
+    var WHEEL_ON = true, WHEEL_HUB = [172, 188], WHEEL_CARS = [[136, 44, 74, 71], [226, 76, 75, 71], [263, 168, 74, 70], [231, 259, 74, 72], [38, 259, 78, 72], [4, 166, 77, 72], [46, 73, 78, 72], [135, 302, 74, 70]]; /* 8th seat at the bottom (Monnie: one seat was missing) */
     var WHEEL_SPOKES = [23, 55.5, 90, 125, 157.5, 196.5, 233, 270.5, 305, 344]; /* degrees: the spoke ends where the bulbs sit (fraction .2808 of the picture's width from the hub) */
     function life_wheel(L, hr, x, y, w, h) {
         var sc = Math.min(w / 520, h / 457), hx = x + (w - 520 * sc) / 2 + WHEEL_HUB[0] * sc, hy = y + h - 457 * sc + WHEEL_HUB[1] * sc, q = function (n) { return f1(n * sc); };
@@ -92094,10 +92099,10 @@ function nbStreakHTML(){
   var mp = nbPrev(); if (mp !== null){ n = mp; ready = false; done = false; } /* TEMP M button */
   /* step 0 = Layla on the grass; clouds 1..5 climb steeply so none touches the grass; her feet land exactly on the grass/cloud top */
   /* viewBox: top-left kept free for the streak bubble, bottom-right for the coin bag; the banner's drawn grass starts ~71% down, every cloud sits above it */
-  var svg = '<svg viewBox="0 0 600 616" class="nbsvg" aria-hidden="true">', pos = [[85, 588]];
+  var svg = '<svg viewBox="0 0 800 616" class="nbsvg" aria-hidden="true">', pos = [[85, 588]]; /* 20 Nov r4: wider sky so clouds spread out (Monnie) */
   /* 20 Nov: no mound, she stands on the plain grass (Monnie) */
   for (var i = 0; i < PRESENT_STEPS; i++){
-    var cx = 150 + i * 92, cy = 490 - i * 31, on = i < n; /* r3: bigger clouds, further apart, so both her feet sit on each one; top step kept low enough to miss the rainbow */
+    var cx = 175 + i * 118, cy = 500 - i * 30, on = i < n; /* r3: bigger clouds, further apart, so both her feet sit on each one; top step kept low enough to miss the rainbow */
     pos.push([cx + 1, cy - 16]);
     svg += '<g class="' + (i + 1 === Math.min(n, PRESENT_STEPS) ? 'nbclon' : 'nbcl') + '" style="animation-delay:-' + (i * 1.3).toFixed(1) + 's">' + stCloud(cx, cy, 92, on ? '#FFD93B' : '#fff');
     svg += '<text x="' + cx + '" y="' + (cy + 8) + '" text-anchor="middle" font-size="' + (on ? 22 : 20) + '" font-weight="800" fill="#10294A">' + (on ? '✓' : (i + 1)) + '</text></g>'; /* banner-anim: clouds drift, except the one she stands on */
@@ -92109,12 +92114,12 @@ function nbStreakHTML(){
   var brit = ''; if (NB_FLY){ var BH = LH * 0.33, rt = st <= 2, bx = rt ? lp[0] + LW / 2 + 14 : lp[0] - LW / 2 - 14 - BH, by = Math.max(14, lp[1] - pz[2] - LH * (rt ? 0.76 : 0.62) - BH / 2); brit += '<g class="nbbrit"><image href="img/britney/fly' + ([1, 1, 2, 3, 4, 5][st]) + '.webp" onerror="if(this.dataset.fb){this.parentNode.style.display=\'none\'}else{this.dataset.fb=1;this.setAttribute(\'href\',\'img/britney/fly.webp\')}" x="' + bx.toFixed(1) + '" y="' + by.toFixed(1) + '" width="' + BH.toFixed(1) + '" height="' + BH.toFixed(1) + '"/></g>'; }
   svg += '<image class="nblayla" href="' + lsrc + '" onerror="NB_STEPMISS[' + st + ']=1;this.setAttribute(\'href\',STEP_IMG[' + st + '])" x="' + (lp[0] - LW / 2).toFixed(1) + '" y="' + (lp[1] - LH - pz[2]).toFixed(1) + '" width="' + LW.toFixed(1) + '" height="' + LH + '" preserveAspectRatio="xMidYMax meet"/>';
   svg += brit;
-  var rx = 551, ry = 60;
+  var rx = 735, ry = 56; svg += '<g transform="translate(' + rx + ' ' + ry + ') scale(1.45) translate(' + (-rx) + ' ' + (-ry) + ')">';
   ["#E0457B","#F59F2A","#F7D038","#4CB963","#3B8FE0","#8A5CD6"].forEach(function(c, j){ var r = 46 - j * 5; svg += '<path d="M' + (rx - r) + ' ' + ry + 'a' + r + ' ' + r + ' 0 0 1 ' + (2 * r) + ' 0" fill="none" stroke="' + c + '" stroke-width="5.8"/>'; });
   svg += '<path d="M' + (rx - 49) + ' ' + ry + 'a49 49 0 0 1 98 0" fill="none" stroke="#10294A" stroke-width="2.4"/><path d="M' + (rx - 18.5) + ' ' + ry + 'a18.5 18.5 0 0 1 37 0" fill="none" stroke="#10294A" stroke-width="2"/>';
   svg += stCloud(rx - 37, ry + 10, 44, '#fff') + stCloud(rx + 37, ry + 10, 44, '#fff');
   svg += '<g class="' + (ready ? 'stgift wob' : 'stgift') + '"><rect x="' + (rx - 15) + '" y="' + (ry - 19) + '" width="30" height="23" rx="2.5" fill="#E0457B" stroke="#10294A" stroke-width="2.6"/><rect x="' + (rx - 18) + '" y="' + (ry - 27) + '" width="36" height="9" rx="2.5" fill="#F25C94" stroke="#10294A" stroke-width="2.6"/><path d="M' + rx + ' ' + (ry - 26) + 'v29" stroke="#FFD93B" stroke-width="5.5"/><path d="M' + rx + ' ' + (ry - 27) + 'c-12-12-19 1-5 1.5M' + rx + ' ' + (ry - 27) + 'c12-12 19 1 5 1.5" fill="none" stroke="#10294A" stroke-width="2.6" stroke-linecap="round"/></g>';
-  svg += '</svg>';
+  svg += '</g></svg>'; /* closes rainbow scale group */
   var flame = '<span class="nbflame" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.5c1 3.6 5.8 6 5.8 11.2A5.8 5.8 0 0 1 6.2 13.7c0-2.6 1.5-4.4 2.8-5.6.2 1.8 1 3 2.2 3.6-.6-3.4.2-6.4.8-9.2z" fill="#F25A1F" stroke="#10294A" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 12.2c.9 1.4 2.6 2.4 2.6 4.4a2.6 2.6 0 0 1-5.2 0c0-1.5.9-2.6 2.6-4.4z" fill="#FFD93B" stroke="#10294A" stroke-width="1.2" stroke-linejoin="round"/></svg></span>';
   var big = '<b class="nbbn">' + flame + n + '-day streak</b>';
   var line = done ? '<div class="nbbub">' + big + '<span>All ' + PRESENT_TOTAL + ' presents won!</span></div>'
