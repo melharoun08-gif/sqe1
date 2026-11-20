@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120042455";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120042651";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -2881,12 +2881,12 @@ html.dfv-on{overflow:hidden}
 @media (max-width:720px){.head.nb:not(.nbz) .nbfxb{bottom:0;height:210px}}
 .head.nb.nbmid:not(.nbz) .nbfxb{left:0;width:100%;height:auto}
 .head.nb .nbfx img{position:absolute;display:block;height:auto;max-width:none;margin:0;border:0;border-radius:0;box-shadow:none}
-.head.nb .nbfx .fx-sun{left:76.1250%;top:0.3896%;width:11.2917%;transform-origin:49.8% 50.2%}
-.head.nb .nbfx .fx-brown{left:52.4583%;top:73.3766%;width:6.6667%;transform-origin:61.3% 96.5%}
-.head.nb .nbfx .fx-grey{left:64.0000%;top:72.3377%;width:7.4583%;transform-origin:46.9% 98.3%}
-.head.nb .nbfx .fx-white{left:76.4583%;top:75.7143%;width:7.3750%;transform-origin:62.7% 98.9%}
-.head.nb .nbfx .fx-c1{left:46.1667%;top:88.8312%;width:2.3750%;transform-origin:49.1% 88.5%}
-.head.nb .nbfx .fx-c2{left:72.1667%;top:90.9091%;width:2.6250%;transform-origin:47.6% 88.5%}
+.head.nb .nbfx .fx-sun{left:76.0417%;top:0.1299%;width:11.4583%;transform-origin:49.8% 50.2%}
+.head.nb .nbfx .fx-brown{left:52.3750%;top:73.1169%;width:6.8333%;transform-origin:61.0% 95.5%}
+.head.nb .nbfx .fx-grey{left:63.9167%;top:72.0779%;width:7.6250%;transform-origin:47.0% 97.3%}
+.head.nb .nbfx .fx-white{left:76.3750%;top:75.4545%;width:7.4167%;transform-origin:63.5% 97.8%}
+.head.nb .nbfx .fx-c1{left:46.0833%;top:88.5714%;width:2.5417%;transform-origin:49.2% 85.7%}
+.head.nb .nbfx .fx-c2{left:72.0833%;top:90.6494%;width:2.7917%;transform-origin:47.8% 85.7%}
 .head.nb .nbfx .fx-sun{animation:nbfx-sun 7s ease-in-out infinite}
 .head.nb .nbfx .fx-brown{animation:nbfx-peckl 5.5s ease-in-out .8s infinite}
 .head.nb .nbfx .fx-grey{animation:nbfx-peckr4 6.5s ease-in-out 2.6s infinite}
@@ -2902,6 +2902,20 @@ html.dfv-on{overflow:hidden}
 @keyframes nbfx-bob{0%,100%{transform:none}50%{transform:translateY(-2.5px)}}
 /* the gap pictures (grass/sky painted in) sit under each cut-out and never move, so a moving hen shows grass, not a second hen */
 .head.nb .nbfx .fxgap{animation:none!important;transform:none!important}
+/* banner-anim v2 (20 Nov, Monnie): the sun blinks and grins (SVG face over the sun cut-out), the rainbow and present float, Layla breathes (and bounces on the top step) */
+.head.nb .nbfx .fxsun{position:absolute;aspect-ratio:275/261}
+.head.nb .nbfx .fxsun img,.head.nb .nbfx .fxsun svg{position:absolute;left:0;top:0;width:100%;height:100%}
+.head.nb .nbfx .nbblink{opacity:0;animation:nbfx-blink 5s linear infinite}
+@keyframes nbfx-blink{0%,93.9%{opacity:0}94%,96.9%{opacity:1}97%,100%{opacity:0}}
+/* the white gap between Yasmin's trouser legs shows grass (a still patch; nothing of her is touched) */
+.head.nb .nbfx .fxleg{left:86.5833%;top:77.9221%;width:0.5833%}
+.head.nb .nbrain{transform-box:fill-box;transform-origin:50% 100%;animation:nbrain 4s ease-in-out infinite}
+@keyframes nbrain{0%,100%{transform:rotate(-3deg) translateY(0)}50%{transform:rotate(3deg) translateY(-3px)}}
+.head.nb .nblayla{animation:nbhop .75s ease-out .2s both,nbbreath 3.4s ease-in-out 1s infinite}
+.head.nb .nblayla.nbst5{animation:nbhop .75s ease-out .2s both,nbbounce 2.6s ease-in-out 1s infinite}
+@keyframes nbbreath{0%,100%{transform:none}50%{transform:translateY(-1.5px) scaleY(1.012)}}
+@keyframes nbbounce{0%,55%,100%{transform:none}66%{transform:translateY(-9px) scale(.99,1.02)}76%{transform:translateY(0) scale(1.03,.97)}84%{transform:translateY(-3px)}92%{transform:none}}
+@media (prefers-reduced-motion:reduce){.head.nb .nbfx .nbblink,.head.nb .nbrain,.head.nb .nblayla{animation:none!important}.head.nb .nbfx .nbgrin{display:none}}
 @media (prefers-reduced-motion:reduce){.head.nb .nbfx img{animation:none!important}}
 /* banner-night (20 Nov, Monnie): from 17:00 until 6am (or the N button / ?sky=night) the banner is a night scene: dark sky picture, moon instead of the sun, a few twinkling stars. app.js nbNight() decides; the hens and chicks swap to their -n pictures. */
 .head.nb.nb.nb.nbnight{background-image:url(img/banner-bg4-night.webp),url(img/banner-ext-night.webp)!important;background-color:#101a40!important}
@@ -27780,7 +27794,7 @@ window.SQE_BERT["legalsys"] = [
  {"t":"precedent","q":"In 2022, Fenwick Ltd entered into a commercial arrangement relying on a long-standing Court of Appeal decision on the law of restitution. In 2026 the Supreme Court, in a different case, overrules that decision. Fenwick Ltd argues that the new rule should apply only to arrangements made after 2026.\n\nWhich of the following best describes the effect of the Supreme Court's decision on Fenwick Ltd's arrangement?","o":["The new rule applies only to arrangements made after the Supreme Court's decision, because the courts may not act retrospectively.","The new rule applies to the 2022 arrangement only if Parliament passes an Act confirming it.","The old rule continues to govern all arrangements made before the overruling, by statute.","The 2022 arrangement is void, because it was based on an overruled decision.","The new rule is treated as always having been the law, so it applies to the 2022 arrangement."],"a":4,"e":"Under the declaratory theory, judges declare what the law always was, so an overruling decision operates retrospectively and applies to past transactions. The Supreme Court has said it could, in an exceptional case, overrule only for the future (prospective overruling), but it has never done so. No Act is needed for the overruling to take effect, and the arrangement is not automatically void; the new rule simply governs it."},
  {"t":"precedent","q":"Jasmine won her breach of contract claim against Arden Ltd in the High Court. Arden Ltd appealed, and the Court of Appeal allowed the appeal and entered judgment for Arden Ltd in the same proceedings.\n\nWhich of the following best describes what the Court of Appeal has done to the High Court's decision?","o":["It has overruled the decision.","It has distinguished the decision.","It has reversed the decision.","It has disapproved the decision.","It has departed from the decision under the Practice Statement."],"a":2,"e":"Reversing is when a higher court, on appeal in the same case, changes the lower court's decision. Overruling is when a higher court decides that the rule laid down in an earlier, different case was wrong. Distinguishing involves different material facts in a later case, and disapproving is a usually obiter comment that an earlier decision was wrong without overruling it."},
  {"t":"precedent","q":"Kieran appeals to the Court of Appeal (Criminal Division) against his conviction. The trial judge directed the jury according to an earlier decision of the Criminal Division. Kieran shows that the earlier court misunderstood the law, and that following it would mean his conviction stands when it would otherwise be quashed.\n\nWhich of the following best describes the Court of Appeal's position?","o":["It is bound by its earlier decision in exactly the same way as the Civil Division, so the conviction must stand, however unjust the result.","It may depart from its earlier decision, because the law was misunderstood and following it would cause injustice to the defendant.","It may depart from its earlier decision only if the Supreme Court has since overruled it.","It must certify a point of law and refer the case to the Criminal Cases Review Commission.","It may depart from its earlier decision only if that decision was a majority rather than a unanimous one."],"a":1,"e":"The Criminal Division is generally bound by its own decisions and applies the Young exceptions, but it has extra flexibility: it may depart where the law was misapplied or misunderstood in an earlier case and following it would cause injustice to the defendant, because liberty is at stake. This is wider than the Civil Division's position. Whether the earlier decision was unanimous makes no difference."},
- {"t":"precedent","q":"In 2026, the High Court is hearing an employment claim that turns on the meaning of regulations implementing an EU directive, which remain in force as assimilated law. A 2017 decision of the Court of Justice of the European Union (CJEU) interpreting the directive is directly in point. The High Court judge thinks the CJEU decision is wrong and that the point is of general public importance.\n\nWhat is the best course open to the High Court?","o":["Depart from the CJEU decision, because CJEU decisions no longer bind any UK court.","Refer the question of interpretation to the CJEU for a preliminary ruling.","Depart from the CJEU decision, having regard to any changes of circumstances since 2017.","Follow the CJEU decision, though it may refer the point to the Court of Appeal as one of general public importance.","Treat the CJEU decision as persuasive only, because it is the decision of a foreign court and the UK has left the EU."],"a":3,"e":"CJEU decisions made before the end of 2020 are assimilated EU case law. Lower courts, including the High Court, remain bound by them; only the Court of Appeal and Supreme Court (and equivalents) may depart (s.6 EUWA 2018, as amended). A lower court may refer a point of law to the relevant appeal court if it is of general public importance (s.6A EUWA). UK courts can no longer refer questions to the CJEU, and it is only post-2020 CJEU decisions that are not binding."},
+ {"t":"precedent","q":"In 2026, the High Court is hearing an employment claim that turns on the meaning of regulations implementing an EU directive, which remain in force as assimilated law. A 2017 decision of the Court of Justice of the European Union (CJEU) interpreting the directive is directly in point. The High Court judge thinks the CJEU decision is wrong and that the point is of general public importance.\n\nWhat is the best course open to the High Court?","o":["Depart from the CJEU decision, because CJEU decisions no longer bind any UK court.","Refer the question of interpretation to the CJEU for a preliminary ruling.","Depart from the CJEU decision, having regard to any changes of circumstances since 2017.","Follow the CJEU decision, because only the Court of Appeal and Supreme Court (and equivalents) may depart from it.","Treat the CJEU decision as persuasive only, because it is the decision of a foreign court and the UK has left the EU."],"a":3,"e":"CJEU decisions made before the end of 2020 are assimilated EU case law. Lower courts, including the High Court, remain bound by them; only the Court of Appeal and Supreme Court (and equivalents) may depart, applying the Practice Statement test (s.6(4)-(5) EUWA 2018 and the Relevant Court Regulations 2020). There is no procedure for a lower court to refer the point to an appeal court, however important it is; the point can go higher only on an ordinary appeal. The statutory factors such as changes of circumstances, and the reference procedure, were in s.6 of the REUL Act 2023, which never came into force. UK courts can no longer refer questions to the CJEU, and it is only post-2020 CJEU decisions that are not binding."},
  {"t":"legislation-structure","q":"The (fictional) Coastal Paths (Wales) Act 2026, an Act of Senedd Cymru, contains no provision about commencement. The King signed the Letters Patent giving Royal Assent on Monday 6 July 2026, and they were notified to the Clerk of the Senedd on Wednesday 8 July 2026. Owain did something on Wednesday 8 July that the Act prohibits.\n\nWhen did the Act come into force?","o":["At the beginning of Monday 6 July 2026.","At the beginning of Tuesday 7 July 2026.","At the beginning of Wednesday 8 July 2026.","On a day to be appointed by the Welsh Ministers by order.","At the beginning of Thursday 9 July 2026."],"a":4,"e":"An Act of the Senedd receives Royal Assent when the Letters Patent are notified to the Clerk of the Senedd (s.115 GoWA 2006), so Royal Assent was on 8 July, not when the King signed. If an Act of the Senedd says nothing about commencement, it comes into force at the beginning of the day after Royal Assent (s.30 Legislation (Wales) Act 2019), which is 9 July. The Westminster rule (the start of the day of Royal Assent) does not apply to Senedd Acts, so Owain's conduct on 8 July was not caught."},
  {"t":"legislation-structure","q":"Section 4 of the (fictional) Tenant Deposits Act 2025 requires landlords to protect 'any deposit paid in money'. The Explanatory Notes published with the Act say that section 4 'is intended to cover deposits paid in money or in goods'. Hamid, a landlord, took a valuable painting as a deposit and did not protect it.\n\nWhich of the following best describes the status of the Explanatory Notes?","o":["They are not part of the Act and have no legal force, though a court may use them to understand the context.","They are part of the Act and override the wording of section 4 where the two differ.","They are part of the Act and carry the same weight as a Schedule.","They may be used only if the minister read them out in Parliament during the Bill's passage through both Houses.","They must be ignored entirely, because courts may never look at material outside the Act."],"a":0,"e":"Explanatory Notes are written by the government department and published with the Act, but they are not enacted and have no legal force. Courts may use them as an external aid to show context and purpose, but they cannot displace a meaning that is clear from the words of the Act read in context. Schedules, by contrast, are part of the Act."},
  {"t":"legislation-structure","q":"The (fictional) School Meals (Wales) Act 2026 is an Act of Senedd Cymru. Its extent section states that it extends to England and Wales. Section 1 requires every maintained school to provide free breakfasts. Bethan, who lives in Bristol, says that because the Act extends to England, her child's maintained school in Bristol must provide free breakfasts.\n\nIs Bethan correct?","o":["Yes, because the Act extends to England and Wales and section 1 applies to every maintained school without exception.","No, because although the Act extends to England and Wales, an Act of the Senedd applies only in relation to Wales.","Yes, unless the UK Parliament passes an Act disapplying it in England.","No, because an Act of the Senedd extends to Wales only and forms no part of the law of England.","No, because the Act cannot come into force in England until the Secretary of State consents."],"a":1,"e":"Extent (which legal system a law belongs to) differs from application (what it actually governs). Because England and Wales are a single jurisdiction, an Act of the Senedd extends to England and Wales, but it is within competence only if it applies in relation to Wales (s.108A(2) GoWA 2006). So the Act forms part of the law of England and Wales but does not govern a school in Bristol."},
@@ -41918,7 +41932,7 @@ window.SQE_MINDMAPS["dr/dr-responding"] = {
    "h": "Discontinuance",
    "pts": [
     "**Notice of discontinuance** filed and served, at any time (Part 38)",
-    "**Permission** needed after an **interim injunction** or **interim payment** (unless written consent)",
+    "**Permission** needed after an **interim injunction**; after an **interim payment**, permission or written consent",
     "Claimant pays the **defendant's costs** to that date (CPR 38.6)",
     "Defendant may apply to set aside within **28 days**; new claim after a defence needs **permission**"
    ]
@@ -42123,8 +42137,8 @@ window.SQE_MINDMAPS["dr/dr-case-management"] = {
     "Fast: **£10,000 to £25,000**, trial **1 day**; experts 1 per party per field, **2 fields**",
     "Fast track trial within about **30 weeks**; **fixed recoverable costs**",
     "Intermediate: **£25,000 to £100,000**, trial **3 days**, **2 experts** per party giving oral evidence",
-    "Intermediate: no more than 2 parties a side; fixed costs by **complexity band 1 to 4**",
-    "Intermediate: **no costs budgeting**"
+    "Intermediate: one claimant against **one or two defendants**, or two claimants against one",
+    "Intermediate: fixed costs by **band 1 to 4**; **no costs budgeting**"
    ]
   },
   {
@@ -52912,7 +52926,7 @@ window.SQE_FRAMEWORKS["dr/dr-responding"] = {
   {
    "h": "Discontinuance",
    "ask": "Does the claimant want to abandon all or part of the claim?",
-   "body": "- File and serve a **notice of discontinuance**, at any time (Part 38)\n- **Permission** needed if an **interim injunction** was granted or an **interim payment** received (unless the defendant consents in writing)\n- Claimant pays the **defendant's costs** up to that date unless the court orders otherwise (CPR 38.6)\n- Defendant may apply to set the notice aside within **28 days**\n- New claim on the same facts after a defence was filed: **permission** needed (CPR 38.7)",
+   "body": "- File and serve a **notice of discontinuance**, at any time (Part 38)\n- **Permission** needed if an **interim injunction** was granted (or an undertaking given); if an **interim payment** was received, permission or the defendant's **written consent** (CPR 38.2)\n- Claimant pays the **defendant's costs** up to that date unless the court orders otherwise (CPR 38.6)\n- Defendant may apply to set the notice aside within **28 days**\n- New claim on the same facts after a defence was filed: **permission** needed (CPR 38.7)",
    "yes": "apply Part 38",
    "no": "go to step 7"
   },
@@ -53026,7 +53040,7 @@ window.SQE_FRAMEWORKS["dr/dr-case-management"] = {
   {
    "h": "Allocation",
    "ask": "Which track does the claim belong on?",
-   "body": "- **Small claims**: up to **£10,000**; injury: pain and suffering up to **£1,500** (road traffic whiplash **£5,000**); housing disrepair: repairs up to **£1,000**\n- **Fast**: **£10,000 to £25,000**, trial **no more than 1 day**, oral experts 1 per party per field in **no more than 2 fields**\n- **Intermediate**: **£25,000 to £100,000**, trial **no more than 3 days**, **no more than 2 experts** per party, no more than 2 parties a side; fixed costs bands 1 to 4\n- **Multi-track**: over £100,000, complex claims, and always mesothelioma, most clinical negligence, abuse and police claims\n- Value ignores interest, costs and contributory negligence; directions questionnaire **N180** (small claims) or **N181**\n> Failing any limit moves the claim up a track",
+   "body": "- **Small claims**: up to **£10,000**; injury: pain and suffering up to **£1,500** (road traffic whiplash **£5,000**); housing disrepair: repairs up to **£1,000**\n- **Fast**: **£10,000 to £25,000**, trial **no more than 1 day**, oral experts 1 per party per field in **no more than 2 fields**\n- **Intermediate**: **£25,000 to £100,000**, trial **no more than 3 days**, **no more than 2 experts** per party, one claimant against one or two defendants, or two claimants against one; fixed costs bands 1 to 4\n- **Multi-track**: over £100,000, complex claims, and always mesothelioma, most clinical negligence, abuse and police claims\n- Value ignores interest, costs and contributory negligence; directions questionnaire **N180** (small claims) or **N181**\n> Failing any limit moves the claim up a track",
    "yes": "go to step 3"
   },
   {
@@ -75713,30 +75727,30 @@ window.SQE_CBA["legalsys/precedent"] = [
    o:["No, the High Court remains bound","Yes, any court may now depart","Yes, if the government agrees","Yes, all EU case law is now persuasive only"],
    e:"The **High Court and below** remain **bound** by assimilated EU case law."},
 
-  {l:"**Higher courts may depart**: the **Supreme Court, Court of Appeal** and equivalents in Scotland and NI are **not bound** by assimilated EU case law (**s.6 EUWA**, as amended).",
+  {l:"**Higher courts may depart**: the **Supreme Court, Court of Appeal** and equivalents in Scotland and NI are **not bound** by assimilated EU case law (**s.6(4) EUWA** and the **Relevant Court Regulations 2020**).",
    q:"Which court may depart from a 2015 CJEU ruling?",
    o:["The Court of Appeal","The High Court","The County Court","The First-tier Tribunal"],
    e:"Only the **Court of Appeal and Supreme Court** (and equivalents) may depart."},
 
-  {l:"In deciding whether to depart, the court **must have regard** to: **foreign court** decisions are not generally binding; any **changes of circumstances**; and how far the case law **restricts the proper development** of domestic law.",
-   q:"Which factor must the Court of Appeal consider when deciding whether to depart from assimilated EU case law?",
-   o:["How far it restricts domestic law's development","Whether the CJEU would agree with departing","The age of the judge who wrote the judgment","Whether the EU has since repealed the rule"],
-   e:"s.6 factors: **foreign court**, **changed circumstances**, **restricting domestic development**."},
+  {l:"In deciding whether to depart, these courts apply **the same test the Supreme Court uses to depart from its own decisions** (**s.6(5) EUWA**): the **Practice Statement** test, departing only **'when it appears right to do so'**. They depart **rarely and cautiously** (**Tunein v Warner Music**, 2021).",
+   q:"What test does the Court of Appeal apply when deciding whether to depart from assimilated EU case law?",
+   o:["The Supreme Court's Practice Statement test","The Young v Bristol Aeroplane exceptions","Whether the CJEU would agree with departing","Whether the government consents to departure"],
+   e:"s.6(5): the **Practice Statement** test ('**right to do so**'), used **cautiously**."},
 
-  {l:"The Court of Appeal can also depart from **assimilated domestic case law** (its own or a higher court's decisions on assimilated law) in the same circumstances, where it would otherwise be bound.",
+  {l:"The Court of Appeal's freedom covers only **pre-2021 CJEU decisions**. It remains **bound by Supreme Court** (and House of Lords) decisions on assimilated law in the usual way.",
    q:"Can the Court of Appeal depart from a pre-2021 Supreme Court decision interpreting assimilated law?",
-   o:["Yes, as for assimilated EU case law","No; it is always bound by the Supreme Court","Only with the Supreme Court's permission","Only if the decision was per incuriam"],
-   e:"The CA may depart from **assimilated domestic case law** on the same s.6 basis."},
+   o:["No; it is bound by the Supreme Court as usual","Yes, as for assimilated EU case law","Only with the Supreme Court's permission","Only if the decision was per incuriam"],
+   e:"The CA's freedom covers **CJEU** case law only; Supreme Court decisions still **bind** it."},
 
-  {l:"**References** (**s.6A-6C EUWA**): a **lower court** bound by assimilated case law may **refer** a point to the relevant appeal court if it is of **general public importance**.",
+  {l:"**No reference procedure**: a **lower court** bound by assimilated EU case law **can't refer** the point upwards. It must **apply** it; the point reaches the Court of Appeal or Supreme Court only through an **ordinary appeal**.",
    q:"A High Court judge bound by assimilated EU case law thinks it should be revisited. What can she do?",
-   o:["Refer it up if of general public importance","Depart from it herself in her judgment","Refer the point to the CJEU for a ruling","Nothing at all; she must just apply it"],
-   e:"Lower courts can **refer upwards** points of **general public importance** (s.6A)."},
+   o:["Apply it; the point can be raised on appeal","Depart from it herself in her judgment","Refer the point to the CJEU for a ruling","Refer it to the Court of Appeal for a ruling"],
+   e:"No reference procedure: she must **follow** it; the route up is an **ordinary appeal**."},
 
-  {l:"**Law officers** (e.g. the **Attorney General**, **Counsel General for Wales**) can **refer** a point of assimilated case law to an appeal court **within 6 months after a case ends** (the answer **doesn't change** that case's outcome), or **intervene** where a higher court is asked to depart.",
-   q:"The Attorney General refers a point of assimilated case law after a case has finished. What effect does the answer have on that case?",
-   o:["None; that outcome stands","It reverses that outcome","It orders a retrial of it","It doubles the damages"],
-   e:"Law officer references (s.6B) are within **6 months** and **don't affect the outcome**."},
+  {l:"**Reforms not in force**: **s.6 REUL Act 2023** would have added statutory departure factors (e.g. '**changes of circumstances**'), **lower-court references** and **law officer** references or interventions. Its commencement was **cancelled** in 2024, and at the **September 2026** cut-off it was **still not in force**.",
+   q:"In 2026, a party asks the Attorney General to refer a point of pre-2021 CJEU case law to the Court of Appeal. What is the position?",
+   o:["No such power; only an appeal can take it up","He may refer within 6 months of the case ending","He may refer, but only with the court's permission","He may refer it to the CJEU instead"],
+   e:"Law officer references were in **s.6 REUL Act**, **never commenced**; use an ordinary **appeal**."},
 
   {l:"**CJEU decisions after 31 December 2020** **don't bind** any UK court; a court **may have regard** to them (**s.6(2) EUWA**). And UK courts **can't refer** questions to the CJEU any more (**s.6(1)**).",
    q:"A County Court is shown a 2023 CJEU judgment. What is its status?",
@@ -99532,7 +99546,7 @@ window.SQE_JOURNEY = function (A) {
             reg: { spring: 160, autumn: TOWN ? 2095 : 1320, grounds: 1750 + D },
             town: TOWN ? { y: 1550, b: [['mount', 370, 'The Mount', '#/mount', 2075, 285], ['jobcentre2', 805, 'Job Centre', '#/town/jobs', 1762, 245], ['giftshop2', 825, 'Hen Bargains', '#/town/shop', 2060, 245], ['butchers3', 340, "Bert's Butchers", '#/town/butcher', 1777, 255]], w: 235, h: 175, /* Monnie 20 Nov: bigger, staggered over the grass; Mount low and big, Bert's up near Contract Law */ name: [560, 1365] } : null,
             sun: { x0: 80, x1: 1020, y: 150, rise: 82, s: 1 },
-            deco: function () { return cloud(330, 78, .8) + cloud(1010, 92, 1) + cloud(720, 48, .55) + (TOWN ? sign(970, 300, 'FLK1 Meadow', 'Stops 1–7', 30, 40) + welcome(190, 330, .7) : sign(185, 300, 'FLK1 Meadow', 'Stops 1–7', 30, 110) + welcome(950, 228, .64))
+            deco: function () { return cloud(TOWN ? 560 : 330, 78, .8) + cloud(1010, 92, 1) + cloud(TOWN ? 800 : 720, 48, .55) + (TOWN ? sign(970, 300, 'FLK1 Meadow', 'Stops 1–7', 30, 40) + welcome(190, 330, .7) : sign(185, 300, 'FLK1 Meadow', 'Stops 1–7', 30, 110) + welcome(950, 228, .64))
                 + sign(TOWN ? 600 : 560, TOWN ? 2130 : 1395, 'FLK2 Harvest Fields', 'Stops 8–14', 30, TOWN ? 40 : 72)
                 + topiary(1000, 2147 + D) + topiary(1060, 2133 + D) + topiary(228, 1855 + D) + flower(330, 1840 + D, '#fff') + flower(925, 1840 + D, '#FF9EC4')
                 + [60, 330, 575, 820].map(function (x, k) { return flower(x, 2250 + D, ['#FF9EC4', '#fff', '#FFB3D9', '#fff'][k]); }).join(''); },
@@ -99679,7 +99693,7 @@ window.SQE_JOURNEY = function (A) {
     /* where the sun is at each hour, per layout ([hour, x, y]): it peeps over the meadow on the left, climbs steeply past the FLK1 sign, crosses high over the
        landmarks at midday and sinks on the far right (clear of the library on desktop, behind the little cloud on phones). The moon takes a high arc at night. */
     var SKY_PATH = {
-        desk: { s: .85, sun: [[5.6, 40, 215], [6, 40, 196], [7, 52, 116], [8, 92, 82], [9, 170, 62], [10, 260, 54], [12, 470, 46], [14, 680, 46], [16, 880, 54], [17, 958, 64], [18, 1022, 80], [19, 1064, 116], [20, 1076, 228], [20.4, 1076, 240]],
+        desk: { s: .85, sun: [[5.6, 60, 215], [6, 60, 196], [7, 64, 116], [8, 77, 82], [9, 102, 62], [10, 130, 54], [12, 198, 46], [14, 265, 46], [16, 329, 54], [17, 354, 64], [18, 374, 80], [19, 388, 116], [20, 392, 228], [20.4, 392, 240]], /* 04:25 Monnie: the sun stays over on the left, clear of the Ferris wheel */
             moon: { x0: 400, x1: 790, y: 98, a: 6, s: 1 } },
         phone: { s: .62, sun: [[5.6, 40, 260], [6, 40, 240], [7, 46, 122], [8, 66, 95], [9, 100, 78], [10, 140, 66], [12, 240, 54], [14, 360, 54], [16, 450, 64], [17, 490, 78], [18, 515, 98], [19, 530, 132], [20, 540, 262], [20.4, 540, 280]],
             moon: { x0: 225, x1: 540, y: 96, a: 40, s: .8 } }
@@ -99715,7 +99729,7 @@ window.SQE_JOURNEY = function (A) {
         return "<g class=\"jsunp\" transform=\"".concat(skyTr(p || { x: -200, y: -200 }, SKY_PATH[m].s), "\"").concat(p ? '' : ' style="display:none"', ">").concat(sun(0, 0), "<circle class=\"jsunw\" r=\"33\" fill=\"#FF7A3D\" opacity=\"").concat(p ? p.w : 0, "\"/></g>");
     }
     /* sky spots stars and the moon keep clear of (they are drawn above the tint): the FLK1 sign, the clouds, Layla at the gate (phone) and every landmark picture */
-    var SKY_KEEP = { desk: [[86, 126, 326, 202], [262, 44, 392, 94], [946, 52, 1078, 108], [684, 24, 764, 60]], phone: [[176, 136, 490, 236], [478, 116, 566, 164], [116, 36, 192, 72], [0, 150, 175, 320]] };
+    var SKY_KEEP = { desk: [[86, 126, 326, 202], [492, 44, 622, 94], [946, 52, 1078, 108], [684, 24, 764, 60]], phone: [[176, 136, 490, 236], [478, 116, 566, 164], [116, 36, 192, 72], [0, 150, 175, 320]] };
     function skyNight(L, h) {
         var m = L.mode, W = L.W, top = L.reg.spring - 22;
         var s = '', seed = 7;
@@ -108797,14 +108811,14 @@ function nbStreakHTML(){
   /* Britney flies beside Layla's shoulder on clouds 1-5 (right side on 1-3, left on 4-5 to miss the rainbow); hidden if her picture is missing */
   /* r3: Britney on the open side with a clear gap (right on grass/1/2, left on 3/4/5), drawn after Layla so she is never covered; fly1 on the grass, flyN on step N */
   var brit = ''; if (NB_FLY){ var BH = STEP_POSE[0][0] * 0.33, /* QA 20 Nov: Britney stays the same size on every step */ rt = st <= 2, bx = rt ? lp[0] + LW / 2 + 14 : lp[0] - LW / 2 - 14 - BH, by = Math.max(14, lp[1] - pz[2] - LH * (rt ? 0.76 : 0.62) - BH / 2); brit += '<g class="nbbrit"><image href="img/britney/fly' + ([1, 1, 2, 3, 4, 5][st]) + '.webp" onerror="if(this.dataset.fb){this.parentNode.style.display=\'none\'}else{this.dataset.fb=1;this.setAttribute(\'href\',\'img/britney/fly.webp\')}" x="' + bx.toFixed(1) + '" y="' + by.toFixed(1) + '" width="' + BH.toFixed(1) + '" height="' + BH.toFixed(1) + '"/></g>'; }
-  svg += '<image class="nblayla" href="' + lsrc + '" onerror="NB_STEPMISS[' + st + ']=1;this.setAttribute(\'href\',STEP_IMG[' + st + '])" x="' + (lp[0] - LW / 2).toFixed(1) + '" y="' + (lp[1] - LH - pz[2]).toFixed(1) + '" width="' + LW.toFixed(1) + '" height="' + LH + '" preserveAspectRatio="xMidYMax meet"/>';
+  svg += '<image class="nblayla nbst' + st + '" href="' + lsrc + '" onerror="NB_STEPMISS[' + st + ']=1;this.setAttribute(\'href\',STEP_IMG[' + st + '])" x="' + (lp[0] - LW / 2).toFixed(1) + '" y="' + (lp[1] - LH - pz[2]).toFixed(1) + '" width="' + LW.toFixed(1) + '" height="' + LH + '" preserveAspectRatio="xMidYMax meet"/>';
   svg += brit;
-  var rx = 735, ry = 56; svg += '<g transform="translate(' + rx + ' ' + ry + ') scale(1.45) translate(' + (-rx) + ' ' + (-ry) + ')">';
+  var rx = 735, ry = 56; svg += '<g transform="translate(' + rx + ' ' + ry + ') scale(1.45) translate(' + (-rx) + ' ' + (-ry) + ')"><g class="nbrain">'; /* nbrain: the rainbow, clouds and present float together */
   ["#E0457B","#F59F2A","#F7D038","#4CB963","#3B8FE0","#8A5CD6"].forEach(function(c, j){ var r = 46 - j * 5; svg += '<path d="M' + (rx - r) + ' ' + ry + 'a' + r + ' ' + r + ' 0 0 1 ' + (2 * r) + ' 0" fill="none" stroke="' + c + '" stroke-width="5.8"/>'; });
   svg += '<path d="M' + (rx - 49) + ' ' + ry + 'a49 49 0 0 1 98 0" fill="none" stroke="#10294A" stroke-width="2.4"/><path d="M' + (rx - 18.5) + ' ' + ry + 'a18.5 18.5 0 0 1 37 0" fill="none" stroke="#10294A" stroke-width="2"/>';
   svg += stCloud(rx - 37, ry + 10, 44, '#fff') + stCloud(rx + 37, ry + 10, 44, '#fff');
   svg += '<g class="' + (ready ? 'stgift wob' : 'stgift') + '"><rect x="' + (rx - 15) + '" y="' + (ry - 19) + '" width="30" height="23" rx="2.5" fill="#E0457B" stroke="#10294A" stroke-width="2.6"/><rect x="' + (rx - 18) + '" y="' + (ry - 27) + '" width="36" height="9" rx="2.5" fill="#F25C94" stroke="#10294A" stroke-width="2.6"/><path d="M' + rx + ' ' + (ry - 26) + 'v29" stroke="#FFD93B" stroke-width="5.5"/><path d="M' + rx + ' ' + (ry - 27) + 'c-12-12-19 1-5 1.5M' + rx + ' ' + (ry - 27) + 'c12-12 19 1 5 1.5" fill="none" stroke="#10294A" stroke-width="2.6" stroke-linecap="round"/></g>';
-  svg += '</g></svg>'; /* closes rainbow scale group */
+  svg += '</g></g></svg>'; /* closes nbrain + rainbow scale group */
   var flame = '<span class="nbflame" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.5c1 3.6 5.8 6 5.8 11.2A5.8 5.8 0 0 1 6.2 13.7c0-2.6 1.5-4.4 2.8-5.6.2 1.8 1 3 2.2 3.6-.6-3.4.2-6.4.8-9.2z" fill="#F25A1F" stroke="#10294A" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 12.2c.9 1.4 2.6 2.4 2.6 4.4a2.6 2.6 0 0 1-5.2 0c0-1.5.9-2.6 2.6-4.4z" fill="#FFD93B" stroke="#10294A" stroke-width="1.2" stroke-linejoin="round"/></svg></span>';
   var big = '<b class="nbbn">' + flame + n + '-day streak</b>';
   var line = done ? '<div class="nbbub">' + big + '<span>All ' + PRESENT_TOTAL + ' presents won!</span></div>'
@@ -108870,7 +108884,13 @@ function nbFxHTML(night){
     NB_STARS.map(function(s, i){ var k = s[2] / 10; return '<g transform="translate(' + s[0] + ' ' + s[1] + ') scale(' + k + ')"><path' + (i % 3 ? '' : ' class="nbstar"') + ' d="M0,-10Q1.6,-1.6 10,0Q1.6,1.6 0,10Q-1.6,1.6 -10,0Q-1.6,-1.6 0,-10Z" fill="#FFF3B0" stroke="#23202E" stroke-width="1.6" stroke-linejoin="round"/></g>'; }).join("") +
     '<g transform="translate(1882 52) scale(1.6)"><circle cx="50" cy="50" r="52" fill="#FFF6C8" opacity=".10"/><g class="nbmoon"><path d="M51.9,10.0A40,40 0 1,0 84.9,69.5A34,34 0 1,1 51.9,10.0Z" fill="#FFF0A0" stroke="#23202E" stroke-width="3.2" stroke-linejoin="round"/>' +
     '<path d="M15,38q5,4 10,0M18,57q6,6 13,0" fill="none" stroke="#23202E" stroke-width="2.6" stroke-linecap="round"/><circle cx="19" cy="47.5" r="3.2" fill="#F4A7A0" opacity=".7"/></g></g></svg>' : '';
-  return '<div class="nbfx" aria-hidden="true"><div class="nbfxb">' + sky + kids.map(function(n){ return img(n, true); }).join("") + kids.map(function(n){ return img(n, false); }).join("") + '</div></div>';
+  /* sun face: quick blink every 5s and a smile that opens into a big grin now and then (drawn over the sun's own eyes and mouth, in picture units) */
+  var C = 'M1921,129Q1964,193 1992,150Q1964,193 1921,129Z', O = 'M1921,129Q1964,193 1992,150Q1957,149 1921,129Z', KT = ' keyTimes="0;.35;.5;.75;.9;1" calcMode="spline" keySplines=".4 0 .6 1;.4 0 .6 1;.4 0 .6 1;.4 0 .6 1;.4 0 .6 1" dur="9s" repeatCount="indefinite"';
+  var lid = function(x, y){ return '<ellipse cx="' + x + '" cy="' + y + '" rx="6.5" ry="9" fill="#FBE590"/><path d="M' + (x - 6.5) + ',' + (y - 1) + 'q6.5,5.5 13,0" fill="none" stroke="#23202E" stroke-width="2.6" stroke-linecap="round"/>'; };
+  var face = '<svg class="fxsunf" viewBox="1825 1 275 261"><g class="nbblink">' + lid(1935.5, 100) + lid(1994.5, 118) + '</g>' +
+    '<path class="nbgrin" d="' + C + '" fill="#7A2E24" stroke="#23202E" stroke-width="2.6" stroke-linejoin="round" fill-opacity="0" stroke-opacity="0"><animate attributeName="d" values="' + [C, C, O, O, C, C].join(";") + '"' + KT + '/><animate attributeName="fill-opacity" values="0;0;1;1;0;0"' + KT + '/><animate attributeName="stroke-opacity" values="0;0;1;1;0;0"' + KT + '/></path></svg>';
+  var parts = kids.map(function(n){ return img(n, true); }).join("") + kids.map(function(n){ return n === "sun" ? '<div class="fx-sun fxsun"><img src="img/banner-anim/sun.webp" alt="" draggable="false">' + face + '</div>' : img(n, false); }).join("");
+  return '<div class="nbfx" aria-hidden="true"><div class="nbfxb">' + sky + (night ? '' : '<img class="fxleg" src="img/banner-anim/legpatch.webp" alt="" draggable="false">') + parts + '</div></div>';
 }
 /* N button: switch day/night instantly, no page reload (Monnie 20 Nov) */
 function nbSkyToggle(){ try { var h = document.querySelector(".head.nb"), n = !(h && h.classList.contains("nbnight")); try { localStorage.setItem("sqe_sky", n ? "night" : "day"); } catch(e){} if (!h) return; h.classList.toggle("nbnight", n); var f = h.querySelector(".nbfx"); if (f) f.outerHTML = nbFxHTML(n); if (document.querySelector(".jmap")) render(); } catch(e){} }
