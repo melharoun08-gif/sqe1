@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120023039";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120023533";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -1822,7 +1822,7 @@ body.podcar-on .startnext{bottom:110px}
 :root{--t16:#2E9E5B}
 .jmap{--jink:#111;--jnavy:#10294A}
 .jhead{margin:4px 0 14px}
-.jtitle{font-family:"Chewy",var(--hand);font-weight:400;color:var(--ink);font-size:clamp(30px,5.6vw,48px);line-height:1.05;margin:0 0 6px;letter-spacing:.4px}
+.jtitle{font-family:"Grandstander","Chewy",var(--hand);font-weight:800;color:var(--ink);font-size:clamp(30px,5.6vw,48px);line-height:1.05;margin:0 0 6px;letter-spacing:.4px}
 .jsub{margin:0;font-size:16px;font-weight:600}
 .jtoday{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
 .jtbtn{display:flex;flex-direction:column;gap:2px;text-decoration:none;color:#111;background:#FFD23F;border:3px solid #111;border-radius:16px;padding:8px 14px;box-shadow:4px 4px 0 #111;font-family:var(--hand);max-width:100%}
@@ -2754,25 +2754,33 @@ html.dfv-on{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.jsv .jbf,.jsv .jbm1,.jsv .jbm2,.jsv .jbm3{animation:none!important}.jsv .jbf1{opacity:1}}
 
 /* map-layla3 + town night (20 Nov): Layla takes turns between 3 poses (ahead / glancing at Britney / waving), 7s each; Bert's shop shuts at night */
-.jsv .jlw1{animation:jm-l3 10.5s ease-in-out infinite}
-.jsv .jlw2{animation:jm-l3 10.5s ease-in-out infinite;animation-delay:-7s}
-.jsv .jlw3{opacity:0;animation:jm-l3 10.5s ease-in-out infinite;animation-delay:-3.5s}
-@keyframes jm-l3{0%{opacity:1}30%{opacity:1}34%{opacity:0}96%{opacity:0}100%{opacity:1}}
+/* Layla: 4 walking poses in turn (ahead, glance at Britney, wave, skip) and, once every 6 poses, the rare jokey front pose (peace sign, hand on hip: Monnie asked for this one) */
+.jsv .jlw1{opacity:0;animation:jl-jlw1 19.6s linear infinite}
+@keyframes jl-jlw1{0%{opacity:1}0.8%{opacity:1}13.49%{opacity:1}14.29%{opacity:0}57.14%{opacity:0}57.94%{opacity:1}70.63%{opacity:1}71.43%{opacity:0}100%{opacity:0}}
+.jsv .jlw2{opacity:0;animation:jl-jlw2 19.6s linear infinite}
+@keyframes jl-jlw2{0%{opacity:0}14.29%{opacity:0}15.09%{opacity:1}27.77%{opacity:1}28.57%{opacity:0}71.43%{opacity:0}72.23%{opacity:1}84.91%{opacity:1}85.71%{opacity:0}100%{opacity:0}}
+.jsv .jlw3{opacity:0;animation:jl-jlw3 19.6s linear infinite}
+@keyframes jl-jlw3{0%{opacity:0}28.57%{opacity:0}29.37%{opacity:1}42.06%{opacity:1}42.86%{opacity:0}100%{opacity:0}}
+.jsv .jlw4{opacity:0;animation:jl-jlw4 19.6s linear infinite}
+@keyframes jl-jlw4{0%{opacity:0}42.86%{opacity:0}43.66%{opacity:1}56.34%{opacity:1}57.14%{opacity:0}100%{opacity:0}}
+.jsv .jlwj{opacity:0;animation:jl-jlwj 19.6s linear infinite}
+@keyframes jl-jlwj{0%{opacity:0}85.71%{opacity:0}86.51%{opacity:1}99.2%{opacity:1}100%{opacity:0}}
 .jsv .jtnight{opacity:0}
-@media (prefers-reduced-motion:reduce){.jsv .jlw1{animation:none!important;opacity:1}.jsv .jlw2,.jsv .jlw3{animation:none!important;opacity:0}}
+@media (prefers-reduced-motion:reduce){.jsv .jlw1{animation:none!important;opacity:1}.jsv .jlw2,.jsv .jlw3,.jsv .jlw4,.jsv .jlwj{animation:none!important;opacity:0}}
 /* banner-r3 (20 Nov, Monnie): full banner on every page, bag top-left and small, TEMP M button. Scoped to .head.nb */
 .head.nb.compact .nbstats{display:flex!important}
 .head.nb.compact .nbtitle .sub{display:flex!important}
 .head.nb.compact .nbring .ring{display:block!important}
 .head.nb.compact .nbring .ringtxt{display:block!important}
-.head.nb.nb.nb .nbl .mbag{left:0;top:0;right:auto;bottom:auto;font-size:13px;gap:5px;padding:2px 11px 2px 2px!important;border-width:2px!important;box-shadow:0 2px 0 #10294A!important}
+.head.nb.nb.nb .nbl .mbag{left:-10px;top:-10px;right:auto;bottom:auto;font-size:13px;gap:5px;padding:2px 11px 2px 2px!important;border-width:2px!important;box-shadow:0 2px 0 #10294A!important}
 .head.nb.nb .nbl .mbag .mbsvg{width:34px!important;height:34px!important;margin:-3px 0 -3px -3px;padding:2px 3px 3px;border-width:2px;box-shadow:none}
 .head.nb.nb .nbl .mbag .mbn b{font-size:17px;font-weight:800;color:#10294A}
 .head.nb .nbbub{top:48px}
 /* TEMP M button: display-only streak step preview, directly under Home */
-.head.nb .nbmbtn{position:absolute;right:38px;top:58px;z-index:3;width:36px;height:36px;padding:0;border-radius:50%;background:#fff;border:2.5px solid #10294A;box-shadow:0 2px 0 #10294A;color:#10294A;font-family:inherit;font-size:17px;font-weight:800;line-height:1;cursor:pointer;display:grid;place-items:center}
+.head.nb .nbmbtn{position:absolute;right:43px;top:55px;z-index:3;width:26px;height:26px;padding:0;border-radius:50%;background:#fff;border:2px solid #10294A;box-shadow:0 1.5px 0 #10294A;color:#10294A;font-family:inherit;font-size:13px;font-weight:800;line-height:1;cursor:pointer;display:grid;place-items:center}
 @media (max-width:720px){
- .head.nb .nbmbtn{top:calc(min(100cqw - 28px,400px) * 1.0267 - 30px);right:14px}
+ .head.nb .nbmbtn{top:calc(min(100cqw - 28px,400px) * 1.0267 - 20px);right:14px}
+ .head.nb.nb.nb .nbl .mbag{left:-8px;top:-6px}
 }
 /* banner-r3: when the Topics list narrows the banner on a big screen, size the left column from the banner width (not the window) and keep the stats on one row so the Remember card stays above the hens */
 @media (min-width:1061px){@container (max-width:1320px){
@@ -83526,7 +83534,11 @@ window.SQE_JOURNEY = function (A) {
         var BAG = shopToday() || /[?&]bag=1/.test(qs()), lh = mode === 'phone' ? 240 : 200, lw = lh * (BAG ? 385 / 600 : LAYLA_AR), bh = lh * .42;
         var lx = -lw / 2 - bh * .3 * f, bx = f > 0 ? lx + lw - 8 : lx - bh + 8, x0 = Math.min(lx, bx + bh * (f > 0 ? .07 : .24)), x1 = Math.max(lx + lw, bx + bh * (f > 0 ? .76 : .93));
         return "<ellipse cx=\"".concat(f1((x0 + x1) / 2), "\" cy=\"2\" rx=\"").concat(f1((x1 - x0) / 2 + 4), "\" ry=\"6\" fill=\"#111\" opacity=\".2\"/><g class=\"jhop\">")
-            + (BAG ? "<image href=\"img/souvenir/layla-front-bag.webp\" x=\"".concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/>") : "<image class=\"jlw1\" href=\"".concat(LAYLA_IMG, "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/><image class=\"jmo jlw2\" href=\"").concat(LAYLA_IMG2, "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/><image class=\"jmo jlw3\" href=\"").concat(LAYLA_IMG3, "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/>"))
+            + (BAG ? "<image href=\"img/souvenir/layla-front-bag.webp\" x=\"".concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/>") : "<image class=\"jlw1\" href=\"".concat(LAYLA_IMG, "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/><image class=\"jmo jlw2\" href=\"").concat(LAYLA_IMG2, "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/><image class=\"jmo jlw3\" href=\"").concat(LAYLA_IMG3, "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/>") + [['img/layla-walk-4w.webp', 179, 'jlw4'], ['img/layla-joke.webp', 124, 'jlwj']].map(function (_a) {
+                var u = _a[0], wd = _a[1], c = _a[2];
+                var wi = lh * wd / 300;
+                return "<image class=\"jmo ".concat(c, "\" href=\"").concat(u, "\" x=\"").concat(f1(lx + (lw - wi) / 2), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(wi), "\" height=\"").concat(lh, "\"/>");
+            }).join(''))
             + "<g transform=\"translate(".concat(f1(bx + bh / 2), ",0) scale(").concat(f, ",1)\">").concat(BRIT_FR.map(function (u, k) { var h2 = bh * .86, w2 = h2 * 1.348; return "<g class=\"jbf jbf".concat(k + 1, "\"><g class=\"jbm").concat(k + 1, "\"><image href=\"").concat(u, "\" x=\"").concat(f1(-w2 * .42), "\" y=\"").concat(f1(-h2 * .97), "\" width=\"").concat(f1(w2), "\" height=\"").concat(f1(h2), "\"/></g></g>"); }).join(''), "</g></g>");
     }
     function pair(Hn, mode) {
@@ -84124,6 +84136,91 @@ var ROOMS = {
   "vat-iht-bpr":                  {name: "The Gift Wrapping Room",    icon: "🎁", slug: "room-giftwrap", art: 1,    bg: "#E8EAFF"}
 };
 /* art: 1 = the room's picture img/scene/<slug>.webp exists (no art = plain coloured background, and nothing is requested, so no 404s). Set it when a picture lands. */
+/* Chalkboard hooks (checked and final; from proposals/rooms/board-hooks.json): one board line per entry, shown on the room picture's
+   blank chalkboard when the room's inside.board = {x, y, w, h} (percent of the picture) is set. Rooms flag only. */
+var BOARD_HOOKS = {
+ "business-structures": [
+  "Company & LLP: own legal person, limited liability.",
+  "Sole trader & partners: unlimited.",
+  "Veil pierced only for EVASION."
+ ],
+ "formation": [
+  "plc: £50,000 shares, each 1/4 paid up,",
+  "plus trading certificate before trading.",
+  "Pre-incorporation contract: signer personally liable."
+ ],
+ "directors": [
+  "Property deal: >£100k, or >10% net assets & >£5k.",
+  "Loans >£10k. Contracts >2 years.",
+  "All need an ordinary res."
+ ],
+ "decision-making": [
+  "Ordinary res >50%. Special res 75%+.",
+  "Written res: % of ALL eligible votes.",
+  "Short notice: majority in number + 90%."
+ ],
+ "shareholders-minority": [
+  ">25% blocks a special res (25% doesn't).",
+  "5% requisitions a GM. 10% demands a poll.",
+  ">50% removes a director."
+ ],
+ "partnerships": [
+  "No agreement? Profits split EQUALLY.",
+  "No salary. No interest on capital.",
+  "Advances earn 5%. No expulsion unless agreed."
+ ],
+ "equity-finance": [
+  "Pre-emption offer: open 14 days. Disapply: special res or articles.",
+  "Buyback from capital: directors' statement,",
+  "auditor's report, special res."
+ ],
+ "debt-security": [
+  "Register charge: 21 days, from day after creation.",
+  "Late = void vs liquidator, administrator, creditors.",
+  "Later fixed beats earlier floating."
+ ],
+ "distributions-accounts": [
+  "Dividends only from accumulated REALISED profits",
+  "less accumulated realised losses.",
+  "plc: net assets test too."
+ ],
+ "corporate-insolvency": [
+  "Statutory demand: over £750, unpaid 3 weeks.",
+  "CVA: 75% by value of creditors voting.",
+  "Administrator's proposals: within 8 weeks."
+ ],
+ "insolvency-clawback-priority": [
+  "Undervalue: 2 years.",
+  "Preference: 6 months (2 years if connected).",
+  "Floating charge: 12 months (2 years if connected)."
+ ],
+ "personal-insolvency": [
+  "Creditor's petition: debt £5,000+.",
+  "Discharge: 1 year. IPO: up to 3 years.",
+  "Home re-vests if unsold in 3 years."
+ ],
+ "income-tax": [
+  "PA £12,570: lose £1 per £2 over £100k.",
+  "Dividends: 10.75%, 35.75%, 39.35%.",
+  "Dividend allowance £500."
+ ],
+ "cgt": [
+  "AEA £3,000. Gains taxed 18% or 24%.",
+  "BADR: 18%, £1m lifetime.",
+  "Needs 5% + officer or employee, 2 years."
+ ],
+ "corporation-tax": [
+  "19% to £50k. 25% over £250k.",
+  "Marginal relief in between.",
+  "Losses: current year first, then back 12 months."
+ ],
+ "vat-iht-bpr": [
+  "VAT: register when last 12 months > £90,000.",
+  "BPR: own 2 years.",
+  "100% on first £2.5m, then 50%."
+ ]
+};
+if (ROOMS_ON) try { if (!document.getElementById('scn-chalk-font')){ var lf = document.createElement('link'); lf.id = 'scn-chalk-font'; lf.rel = 'stylesheet'; lf.href = 'https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Gochi+Hand&display=swap'; document.head.appendChild(lf); } } catch(e){}
 var ROOMDATA = {};
 var B = {name: "Britney", emoji: "🐔"};
 
@@ -89993,7 +90090,7 @@ var ROOM_KEYS = [], ROOM_IDX = {};
     var cols = spots.length > 9 ? 4 : 3, rows = Math.ceil(spots.length / cols) || 1;
     spots.forEach(function(h, j){ if (h.x == null){ h.x = 2 + (j % cols) * (96 / cols); h.y = 4 + Math.floor(j / cols) * (92 / rows); h.w = 96 / cols - 3; h.h = 92 / rows - 5; h.ph = true; } });
     SCENES[k] = { room: i + 1, name: m.name, icon: m.icon, bg: m.bg, treat: 'treat', treats: 'treats', enter: m.icon + ' Enter ' + m.name.replace(/^The /, 'the '),
-      inside: { img: ins.img || (m.art ? 'img/scene/' + m.slug + '.webp' : ''), ratio: ins.ratio || 16 / 9, alt: ins.alt || m.name, hotspots: hs },
+      inside: { img: ins.img || (m.art ? 'img/scene/' + m.slug + '.webp' : ''), ratio: ins.ratio || 16 / 9, alt: ins.alt || m.name, hotspots: hs, board: ins.board || null },
       scenario: d.scenario || null, game: d.game || null };
   });
 })();
@@ -90015,6 +90112,17 @@ var CSS = [
 '.scn-prog .scn-bar{flex:1;height:14px;border:2.5px solid #1b1b1b;border-radius:99px;background:#fff;overflow:hidden}',
 '.scn-prog .scn-bar i{display:block;height:100%;background:repeating-linear-gradient(135deg,#FF5DA2 0 12px,#FF8FC7 12px 24px);transition:width .4s}',
 '.scn-art{position:relative;width:100%;border:4px solid #1b1b1b;border-radius:20px;overflow:hidden;box-shadow:5px 5px 0 #1b1b1b;background:#FFF1C9}',
+'.scn-art:has(.scn-board){container-type:inline-size}',
+'.scn-board{position:absolute;z-index:1;display:flex;align-items:center;justify-content:center;padding:5%;box-sizing:border-box;background:none;border:0;border-radius:6px;cursor:zoom-in;color:#fff;font:400 1em/1.05 "Caveat Brush","Gochi Hand","Patrick Hand",cursive;letter-spacing:.01em;text-align:center;text-shadow:0 0 1px rgba(255,255,255,.9),0 0 3px rgba(255,255,255,.45),0 0 8px rgba(255,255,255,.18);overflow:hidden}',
+'.scn-board.tight{padding:2%;overflow:visible}.scn-board.tight .scn-bt{line-height:1}.scn-board.tight .ln+.ln{margin-top:.05em}',
+'.scn-board:hover,.scn-board:focus-visible{outline:3px dashed rgba(255,255,255,.7);outline-offset:-3px}',
+'.scn-bt{display:block;max-width:100%;font-size:2cqw;overflow-wrap:break-word}.scn-bt .ln{display:block}.scn-bt .ln+.ln{margin-top:.14em}',
+'.scn-boardov{position:fixed;inset:0;z-index:1000;background:rgba(20,16,30,.62);display:grid;place-items:center;padding:16px}',
+'.scn-boardbig{position:relative;width:min(900px,100%);aspect-ratio:16/9;max-height:calc(100vh - 32px);background:#2F4A3A radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.08),transparent 60%);border:14px solid #9B6A3C;border-radius:16px;box-shadow:0 0 0 4px #1b1b1b,8px 8px 0 4px #1b1b1b;box-sizing:border-box}',
+'.scn-boardin{position:absolute;inset:6% 7%;display:flex;align-items:center;justify-content:center;color:#fff;font:400 1em/1.1 "Caveat Brush","Gochi Hand","Patrick Hand",cursive;text-align:center;text-shadow:0 0 1px rgba(255,255,255,.9),0 0 4px rgba(255,255,255,.45),0 0 12px rgba(255,255,255,.18)}',
+'.scn-boardin .scn-bt{font-size:40px}',
+'.scn-boardx{position:absolute;top:-22px;right:-22px;width:44px;height:44px;border-radius:50%;border:3px solid #1b1b1b;background:#fff;font-size:20px;cursor:pointer;z-index:1}',
+'@media (max-width:640px){.scn-boardbig{border-width:9px;aspect-ratio:4/3}.scn-boardx{top:-18px;right:-12px}}',
 '.scn-art>svg,.scn-art>img{display:block;width:100%;height:auto}',
 '.scn-hs{position:absolute;display:flex;align-items:flex-end;justify-content:center;padding:0 2px 4px;margin:0;border:3px dashed transparent;border-radius:16px;background:transparent;cursor:pointer;color:#111;font:inherit;-webkit-tap-highlight-color:transparent}',
 '.scn-hs:hover,.scn-hs:focus-visible{border-color:#1b1b1b;background:rgba(255,255,255,.22)}',
@@ -90628,6 +90736,33 @@ window.SQE_SCENE = function(A){
   function nOpen(k){ var o = state(k).open; return order(k).filter(function(h){ return o[h.id]; }).length; }
   function keyOf(r){ return r[1] && r[2] ? r[1] + '/' + r[2] : ''; }
 
+  /* the room's chalkboard: real text on the drawn board, auto-fitted (fitBoards) and tappable to read it big */
+  function boardLines(k){ return (k && BOARD_HOOKS[k.split('/')[1]]) || null; }
+  function boardHTML(view, k){ var b = view && view.board, L = boardLines(k); if (!ROOMS_ON || !b || !L || !view.img) return '';
+    return '<button type="button" class="scn-board" data-scn-board="' + esc(k) + '" style="left:' + b.x + '%;top:' + b.y + '%;width:' + b.w + '%;height:' + b.h + '%" aria-label="Chalkboard: ' + esc(L.join(' ')) + '. Tap to read it big."><span class="scn-bt">' + L.map(function(l){ return '<span class="ln">' + esc(l) + '</span>'; }).join('') + '</span></button>'; }
+  function fitBoards(){ var els = document.querySelectorAll('.scn-board .scn-bt:not([data-fit]), .scn-boardov .scn-bt:not([data-fit])');
+    for (var i = 0; i < els.length; i++){ var t = els[i], box = t.parentNode, lo = 0.5, hi = box.classList.contains('scn-board') ? 12 : 80, unit = box.classList.contains('scn-board') ? 'cqw' : 'px';
+      if (box.clientWidth < 8 || box.clientHeight < 8) continue; /* picture not loaded yet: the image load listener refits */
+      var cw = box.clientWidth - parseFloat(getComputedStyle(box).paddingLeft) * 2, ch = box.clientHeight - parseFloat(getComputedStyle(box).paddingTop) * 2;
+      for (var n = 0; n < 14; n++){ var mid = (lo + hi) / 2; t.style.fontSize = mid + unit; if (t.scrollHeight <= ch && t.scrollWidth <= cw) lo = mid; else hi = mid; }
+      /* never smaller than readable on a phone (12px); the board is tappable to read it big anyway */
+      var floor = unit === 'cqw' ? 12 / (box.parentNode.clientWidth / 100) : 18; if (lo < floor){ lo = floor; box.classList.add('tight'); } else box.classList.remove('tight');
+      t.style.fontSize = lo + unit; t.setAttribute('data-fit', '1'); } }
+  if (ROOMS_ON && window.MutationObserver) try { var fitQ = 0; new MutationObserver(function(){ if (fitQ) return; fitQ = 1; requestAnimationFrame(function(){ fitQ = 0; fitBoards(); }); }).observe(document.documentElement, {childList: true, subtree: true});
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ var f = document.querySelectorAll('.scn-bt[data-fit]'); for (var i = 0; i < f.length; i++) f[i].removeAttribute('data-fit'); fitBoards(); }); } catch(e){}
+  function boardOpen(k){ var L = boardLines(k); if (!L) return; boardClose(); var d = document.createElement('div'); d.className = 'scn-boardov'; d.setAttribute('role', 'dialog'); d.setAttribute('aria-modal', 'true'); d.setAttribute('aria-label', 'Chalkboard');
+    d.innerHTML = '<div class="scn-boardbig"><button type="button" class="scn-boardx" aria-label="Close">✕</button><div class="scn-boardin"><span class="scn-bt">' + L.map(function(l){ return '<span class="ln">' + esc(l) + '</span>'; }).join('') + '</span></div></div>';
+    document.body.appendChild(d); var x = d.querySelector('.scn-boardx'); if (x) x.focus(); }
+  function boardClose(){ var o = document.querySelector('.scn-boardov'); if (o) o.parentNode.removeChild(o); }
+  if (ROOMS_ON){
+    document.addEventListener('click', function(e){ var t = e.target.closest && e.target.closest('[data-scn-board], .scn-boardov'); if (!t) return;
+      if (t.classList.contains('scn-boardov')){ if (e.target === t || e.target.closest('.scn-boardx')) boardClose(); return; }
+      e.preventDefault(); boardOpen(t.getAttribute('data-scn-board')); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && document.querySelector('.scn-boardov')){ e.preventDefault(); boardClose(); } });
+    addEventListener('hashchange', boardClose);
+    document.addEventListener('load', function(e){ var t = e.target; if (!t || t.tagName !== 'IMG' || !t.parentNode || !t.parentNode.querySelector) return; var f = t.parentNode.querySelectorAll('.scn-bt[data-fit]'); for (var i = 0; i < f.length; i++) f[i].removeAttribute('data-fit'); fitBoards(); }, true);
+    addEventListener('resize', function(){ var f = document.querySelectorAll('.scn-bt[data-fit]'); for (var i = 0; i < f.length; i++) f[i].removeAttribute('data-fit'); fitBoards(); });
+  }
   function artHTML(view, done, k, mode){
     var lt = mode === 'inside' && later(k);
     var pic = lt && !view.img ? '' : view.img ? '<img src="' + esc(view.img) + '" alt="' + esc(view.alt || '') + '"' + (lt ? ' onerror="this.parentNode.classList.add(\'noimg\');this.parentNode.removeChild(this)"' : '') + '>' : '<svg viewBox="0 0 1000 ' + Math.round(1000 / view.ratio) + '" role="img" aria-label="' + esc(view.alt || '') + '" xmlns="http://www.w3.org/2000/svg">' + view.svg(done) + '</svg>';
@@ -90640,7 +90775,7 @@ window.SQE_SCENE = function(A){
     if (lt){ var n0 = view.hotspots.length; hs += extras(k).map(function(e, j){ var h = e.h, dn = exDone(k, e), pos = 'left:' + h.x + '%;top:' + h.y + '%;width:' + h.w + '%;height:' + h.h + '%';
       return '<button type="button" class="scn-hs sp' + (dn ? ' done' : '') + (e.id === nx ? ' next' : '') + '" style="' + pos + '" data-scn="' + e.act + '" aria-label="' + (n0 + j + 1) + '. ' + esc(h.label || e.id) + (dn ? ' (done)' : '') + '"><span class="scn-pin" aria-hidden="true">' + (n0 + j + 1) + '</span><span class="scn-ico" aria-hidden="true">' + esc(h.icon || '🎬') + '</span><span class="scn-lab">' + esc(h.label || e.id) + '</span>' + (dn ? '<span class="scn-tick" aria-hidden="true">✓</span>' : '') + (e.id === nx ? '<span class="scn-nexttag" aria-hidden="true"><span class="d">Next ↓</span><span class="m">↑ Next</span></span>' : '') + '</button>'; }).join(''); }
     var lv = mode === 'inside' && !lt && nOpen(k) === order(k).length ? leaveBtn(k) : '';
-    return '<div class="scn-art' + (SC.entering ? ' zoom' : '') + (lt && !view.img ? ' noimg' : '') + '"' + (lt ? ' style="--rbg:' + esc(SCENES[k].bg || '#FFF1C9') + '"' : '') + '>' + pic + hs + lv + '</div>';
+    return '<div class="scn-art' + (SC.entering ? ' zoom' : '') + (lt && !view.img ? ' noimg' : '') + '"' + (lt ? ' style="--rbg:' + esc(SCENES[k].bg || '#FFF1C9') + '"' : '') + '>' + pic + boardHTML(view, k) + hs + lv + '</div>';
   }
   function modalHTML(k){
     if (HUBS[k]){ if (!SC.exit) return ''; k = SC.exit.k; }
@@ -91945,16 +92080,18 @@ function nbStreakHTML(){
   var svg = '<svg viewBox="0 0 600 616" class="nbsvg" aria-hidden="true">', pos = [[85, 588]];
   /* 20 Nov: no mound, she stands on the plain grass (Monnie) */
   for (var i = 0; i < PRESENT_STEPS; i++){
-    var cx = 182 + i * 79, cy = 446 - i * 29, on = i < n; /* r3: lower, flatter, wider climb so the bigger Layla fits under the banner top */
-    pos.push([cx + 1, cy - 9]);
-    svg += stCloud(cx, cy, 60, on ? '#FFD93B' : '#fff');
+    var cx = 150 + i * 92, cy = 482 - i * 40, on = i < n; /* r3: bigger clouds, further apart, so both her feet sit on each one */
+    pos.push([cx + 1, cy - 16]);
+    svg += stCloud(cx, cy, 92, on ? '#FFD93B' : '#fff');
     svg += '<text x="' + cx + '" y="' + (cy + 8) + '" text-anchor="middle" font-size="' + (on ? 22 : 20) + '" font-weight="800" fill="#10294A">' + (on ? '✓' : (i + 1)) + '</text>';
   }
   var st = Math.min(n, PRESENT_STEPS), lp = pos[st], pz = STEP_POSE[st], LH = pz[0], LW = LH * pz[1] / 600;
   var lsrc = NB_STEPMISS[st] ? STEP_IMG[st] : 'img/layla-step' + st + '.webp';
   /* Britney flies beside Layla's shoulder on clouds 1-5 (right side on 1-3, left on 4-5 to miss the rainbow); hidden if her picture is missing */
-  if (NB_FLY){ var BH = LH * 0.33, rt = st <= 3, bx = rt ? lp[0] + LW / 2 + 6 - BH / 2 + (st ? 4 : 10) : lp[0] - LW / 2 - 16 - BH / 2, by = Math.max(14, lp[1] - pz[2] - LH * (rt ? 0.76 : 0.62) - BH / 2); svg += '<g class="nbbrit"><image href="img/britney/fly' + (st || 1) + '.webp" onerror="if(this.dataset.fb){this.parentNode.style.display=\'none\'}else{this.dataset.fb=1;this.setAttribute(\'href\',\'img/britney/fly.webp\')}" x="' + bx.toFixed(1) + '" y="' + by.toFixed(1) + '" width="' + BH.toFixed(1) + '" height="' + BH.toFixed(1) + '"/></g>'; }
+  /* r3: Britney on the open side with a clear gap (right on grass/1/2, left on 3/4/5), drawn after Layla so she is never covered; fly2/fly3 stand in on steps 4/5 */
+  var brit = ''; if (NB_FLY){ var BH = LH * 0.33, rt = st <= 2, bx = rt ? lp[0] + LW / 2 + 14 : lp[0] - LW / 2 - 14 - BH, by = Math.max(14, lp[1] - pz[2] - LH * (rt ? 0.76 : 0.62) - BH / 2); brit += '<g class="nbbrit"><image href="img/britney/fly' + ([1, 1, 2, 3, 2, 3][st]) + '.webp" onerror="if(this.dataset.fb){this.parentNode.style.display=\'none\'}else{this.dataset.fb=1;this.setAttribute(\'href\',\'img/britney/fly.webp\')}" x="' + bx.toFixed(1) + '" y="' + by.toFixed(1) + '" width="' + BH.toFixed(1) + '" height="' + BH.toFixed(1) + '"/></g>'; }
   svg += '<image class="nblayla" href="' + lsrc + '" onerror="NB_STEPMISS[' + st + ']=1;this.setAttribute(\'href\',STEP_IMG[' + st + '])" x="' + (lp[0] - LW / 2).toFixed(1) + '" y="' + (lp[1] - LH - pz[2]).toFixed(1) + '" width="' + LW.toFixed(1) + '" height="' + LH + '" preserveAspectRatio="xMidYMax meet"/>';
+  svg += brit;
   var rx = 551, ry = 60;
   ["#E0457B","#F59F2A","#F7D038","#4CB963","#3B8FE0","#8A5CD6"].forEach(function(c, j){ var r = 46 - j * 5; svg += '<path d="M' + (rx - r) + ' ' + ry + 'a' + r + ' ' + r + ' 0 0 1 ' + (2 * r) + ' 0" fill="none" stroke="' + c + '" stroke-width="5.8"/>'; });
   svg += '<path d="M' + (rx - 49) + ' ' + ry + 'a49 49 0 0 1 98 0" fill="none" stroke="#10294A" stroke-width="2.4"/><path d="M' + (rx - 18.5) + ' ' + ry + 'a18.5 18.5 0 0 1 37 0" fill="none" stroke="#10294A" stroke-width="2"/>';
