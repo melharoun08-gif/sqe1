@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120173516";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120174820";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -4336,6 +4336,9 @@ details.cardsubj > ul.cardtopics{margin-top:6px!important}
 .cbag.town .opt.wrong .L,.bossg .opt.wrong .L{background:#E2231A;color:#fff}
 .cbag.town .opt.right .L,.bossg .opt.right .L{background:#2E9B3E;color:#fff}
 .bhandback .bdoor{z-index:5}
+/* notes compact enough that two rows stay on the cork */
+@media (min-width:561px){.jcboard{gap:2%}.jcnote{min-height:0;padding:.55cqw .3cqw .4cqw}.jcnote b{font-size:clamp(10px,1.3cqw,16px)}.jcnote .jctop{font-size:clamp(8px,1.02cqw,13px);margin-top:.1cqw}.jcoin{margin-top:.15cqw}.jcoin svg,.jcoin img{width:clamp(12px,1.5cqw,19px)}.jcoin em{font-size:clamp(9px,1.15cqw,14px)}}
+@media (max-width:560px){.jcscene{padding-bottom:14px}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -112452,6 +112455,59 @@ window.SQE_JOURNEY = function (A) {
             return null;
         }
     }
+    function pairHalf(g, box) { try {
+        var r = g.getBoundingClientRect();
+        return r.width * box.querySelector('svg').getScreenCTM().inverse().a * .22;
+    }
+    catch (e) {
+        return 14;
+    } }
+    /* 17:43 Monnie: back on Peckham from a stop (or any page inside it) she stands right outside that stop. sessionStorage sqe_instop = the stop's id while she is inside it; progress spot untouched */
+    try {
+        window.addEventListener('hashchange', function () { try {
+            var h = location.hash;
+            if (/^#\/palace/.test(h))
+                return;
+            var m = /^#\/(?:subject|topic|map|scene)\/([^/?]+)/.exec(h);
+            if (m)
+                sessionStorage.setItem('sqe_instop', m[1]);
+            else
+                sessionStorage.removeItem('sqe_instop');
+        }
+        catch (_) { } });
+    }
+    catch (e) { }
+    function placeOutside() {
+        var sid = '';
+        try {
+            sid = sessionStorage.getItem('sqe_instop') || '';
+        }
+        catch (e) { }
+        if (!sid && /[?&]outside=(\w+)/.test(qs()))
+            sid = /[?&]outside=(\w+)/.exec(qs())[1];
+        if (!sid)
+            return;
+        [].forEach.call(document.querySelectorAll('.jmap .jsv'), function (box) {
+            try {
+                var g = box.querySelector('.jpair'), G = walkGeo(box);
+                if (!g || !G)
+                    return;
+                var re_1 = new RegExp('/' + sid + '(?:[/?]|$)'), a = Array.prototype.slice.call(box.querySelectorAll('a[aria-label^="Stop "]')).find(function (x) { return re_1.test(x.getAttribute('href') || ''); });
+                if (!a)
+                    return;
+                var n = +(/^Stop (\d+)/.exec(a.getAttribute('aria-label')) || [])[1];
+                if (!n)
+                    return;
+                var d = stopDoor(box, n);
+                if (!d)
+                    return;
+                var mode = box.classList.contains('jphone') ? 'phone' : 'desk', s1 = walkS(G, n), sp = walkAtS(G, s1), half = pairHalf(g, box), R = doorRoute(sp, d, half), q = R.length > 1 ? R[R.length - 2] : null, E = q && Math.abs(q[0] - d.x) < .5 && q[1] > d.y ? q : [d.x, d.y];
+                placePair(g, mode, { x: E[0], y: E[1], s: s1, m: sp.m || 1 }, 0);
+                g.__out = { n: n, x: E[0], y: E[1] };
+            }
+            catch (e) { }
+        });
+    }
     /* shortest walk from the path spot to the door that keeps her feet off every other building */
     function doorRoute(sp, d, half) {
         var P = [sp.x, sp.y], D = [d.x, d.y], bl = (d.blocks || []).map(function (b) { return [b[0] - half, b[1] - 6, b[2] + half, b[3] + 4]; });
@@ -112487,7 +112543,7 @@ window.SQE_JOURNEY = function (A) {
                 var m = /^Stop (\d+)\b/.exec(a.getAttribute('aria-label') || '');
                 if (!m)
                     return;
-                var box_1 = a.closest('.jsv'), g_2 = box_1 && box_1.querySelector('.jpair'), G_1 = box_1 && walkGeo(box_1), href_1 = a.getAttribute('href');
+                var box = a.closest('.jsv'), g_2 = box && box.querySelector('.jpair'), G_1 = box && walkGeo(box), href_1 = a.getAttribute('href');
                 if (!g_2 || !G_1 || !href_1)
                     return;
                 var reduce = false;
@@ -112497,7 +112553,7 @@ window.SQE_JOURNEY = function (A) {
                 catch (e) { }
                 if (reduce)
                     return;
-                var mode_1 = box_1.classList.contains('jphone') ? 'phone' : 'desk', s0_1 = g_2.__s != null ? g_2.__s : walkAtS(G_1, walkS(G_1, +box_1.getAttribute('data-pos') || 0)).s, s1_1 = walkS(G_1, +m[1]);
+                var mode_1 = box.classList.contains('jphone') ? 'phone' : 'desk', s0_1 = g_2.__s != null ? g_2.__s : walkAtS(G_1, walkS(G_1, +box.getAttribute('data-pos') || 0)).s, s1_1 = walkS(G_1, +m[1]);
                 ev.preventDefault();
                 if (JGO && !JGO.stop && JGO.href === href_1) {
                     JGO.stop = 1;
@@ -112510,22 +112566,34 @@ window.SQE_JOURNEY = function (A) {
                 var me_1 = { stop: 0, href: href_1 };
                 JGO = me_1;
                 g_2.classList.add('jmoving');
-                var dir_1 = s1_1 > s0_1 ? 1 : -1, d1_1 = Math.abs(s1_1 - s0_1), hopLen_1 = mode_1 === 'phone' ? 46 : 36, hopH_1 = mode_1 === 'phone' ? 9 : 7;
-                var spot_1 = walkAtS(G_1, s1_1), door_1 = stopDoor(box_1, m[1]) || { x: spot_1.x, y: spot_1.y }, half = (function () { try {
-                    var r = g_2.getBoundingClientRect();
-                    return r.width * box_1.querySelector('svg').getScreenCTM().inverse().a * .22;
-                }
-                catch (e) {
-                    return 14;
-                } })(), RT = doorRoute(spot_1, door_1, half), SEG_1 = [];
+                var dir_1 = s1_1 > s0_1 ? 1 : -1, d1 = Math.abs(s1_1 - s0_1), hopLen_1 = mode_1 === 'phone' ? 46 : 36, hopH_1 = mode_1 === 'phone' ? 9 : 7;
+                var spot_1 = walkAtS(G_1, s1_1), door_1 = stopDoor(box, m[1]) || { x: spot_1.x, y: spot_1.y }, half = pairHalf(g_2, box), OUT_1 = g_2.__out, same = OUT_1 && OUT_1.n === +m[1];
+                var RT = same ? [[OUT_1.x, OUT_1.y], [door_1.x, door_1.y]] : doorRoute(spot_1, door_1, half), SEG_1 = [];
                 var d2_1 = 0;
                 for (var i = 1; i < RT.length; i++) {
                     var L = Math.hypot(RT[i][0] - RT[i - 1][0], RT[i][1] - RT[i - 1][1]);
                     SEG_1.push([RT[i - 1], RT[i], d2_1, L]);
                     d2_1 += L;
                 }
+                /* 17:43 Monnie: standing outside a stop she visited, she first walks back down to the path */
+                var PRE_1 = [];
+                var d0_1 = 0;
+                if (OUT_1 && !same) {
+                    var sp0 = walkAtS(G_1, s0_1), od = stopDoor(box, OUT_1.n) || { x: OUT_1.x, y: OUT_1.y };
+                    var R0 = doorRoute(sp0, od, half).slice(0, -1).reverse();
+                    R0.unshift([OUT_1.x, OUT_1.y]);
+                    for (var i = 1; i < R0.length; i++) {
+                        var L = Math.hypot(R0[i][0] - R0[i - 1][0], R0[i][1] - R0[i - 1][1]);
+                        if (L > .5) {
+                            PRE_1.push([R0[i - 1], R0[i], d0_1, L]);
+                            d0_1 += L;
+                        }
+                    }
+                }
+                g_2.__out = null;
+                var D1_1 = same ? 0 : d1;
                 /* one brisk walk: along the path, then up the grass to the entrance (14:58 Monnie: all the way, quickly; seen from the back going up) */
-                var total_1 = d1_1 + d2_1, dur_1 = Math.min(2600, Math.max(1000, total_1 / (mode_1 === "phone" ? 1.1 : 1.5)));
+                var total_1 = d0_1 + D1_1 + d2_1, dur_1 = Math.min(2600, Math.max(1000, total_1 / (mode_1 === "phone" ? 1.1 : 1.5)));
                 var t0_2 = 0, lx_1 = null, ly_1 = null;
                 var face_1 = function (vx, vy) { var up = vy < -Math.abs(vx) * .7; g_2.classList.toggle('jback', up); };
                 var done_1 = function () { /* 16:12 Monnie: she must keep facing the door as she goes in, so the walking pose (from the back when going up) stays until the page opens */ setTimeout(function () { if (!me_1.stop && /^#\/palace/.test(location.hash)) {
@@ -112535,15 +112603,27 @@ window.SQE_JOURNEY = function (A) {
                 }
                 else
                     g_2.classList.remove('jmoving', 'jback'); }, 180); };
+                var onSeg_1 = function (L, k, dflt) { var sg = L[L.length - 1]; for (var _i = 0, L_1 = L; _i < L_1.length; _i++) {
+                    var z = L_1[_i];
+                    if (k <= z[2] + z[3]) {
+                        sg = z;
+                        break;
+                    }
+                } if (!sg)
+                    return { x: dflt.x, y: dflt.y, s: dflt.s, m: dflt.m || 1 }; var f = sg[3] > 0 ? Math.min(1, (k - sg[2]) / sg[3]) : 1, ddx = sg[1][0] - sg[0][0]; return { x: sg[0][0] + ddx * f, y: sg[0][1] + (sg[1][1] - sg[0][1]) * f, s: dflt.s, m: Math.abs(ddx) > 4 ? (ddx > 0 ? 1 : -1) : (g_2.__m || dflt.m || 1) }; };
                 var step_1 = function (ts) {
                     if (me_1.stop || !g_2.isConnected)
                         return;
                     if (!t0_2)
                         t0_2 = ts;
-                    var u = Math.min(1, (ts - t0_2) / dur_1), e = u < .5 ? 2 * u * u : 1 - 2 * (1 - u) * (1 - u), dist = e * total_1;
-                    var P;
-                    if (dist <= d1_1 && d1_1 > 0) {
-                        var s = s0_1 + (s1_1 - s0_1) * (dist / d1_1);
+                    var u = Math.min(1, (ts - t0_2) / dur_1), e = u < .5 ? 2 * u * u : 1 - 2 * (1 - u) * (1 - u);
+                    var dist = e * total_1, P;
+                    if (dist < d0_1) {
+                        P = onSeg_1(PRE_1, dist, { x: OUT_1.x, y: OUT_1.y, s: s0_1, m: 1 });
+                        g_2.__m = P.m;
+                    }
+                    else if ((dist -= d0_1) <= D1_1 && D1_1 > 0) {
+                        var s = s0_1 + (s1_1 - s0_1) * (dist / D1_1);
                         P = walkAtS(G_1, s);
                         var q = G_1.pt(s), w = Math.min(1, Math.min(Math.abs(s - s0_1), Math.abs(s1_1 - s)) / 60), k = 1 - w;
                         P.x = q[0] + (P.x - q[0]) * k;
@@ -112553,22 +112633,7 @@ window.SQE_JOURNEY = function (A) {
                             P.m = (dx > 0 ? 1 : -1) * dir_1;
                     }
                     else {
-                        var k = Math.min(d2_1, Math.max(0, dist - d1_1));
-                        var sg = SEG_1[SEG_1.length - 1];
-                        for (var _i = 0, SEG_2 = SEG_1; _i < SEG_2.length; _i++) {
-                            var z = SEG_2[_i];
-                            if (k <= z[2] + z[3]) {
-                                sg = z;
-                                break;
-                            }
-                        }
-                        if (!sg) {
-                            P = { x: door_1.x, y: door_1.y, s: s1_1, m: spot_1.m || 1 };
-                        }
-                        else {
-                            var f = sg[3] > 0 ? Math.min(1, (k - sg[2]) / sg[3]) : 1, ddx = sg[1][0] - sg[0][0];
-                            P = { x: sg[0][0] + ddx * f, y: sg[0][1] + (sg[1][1] - sg[0][1]) * f, s: s1_1, m: Math.abs(ddx) > 4 ? (ddx > 0 ? 1 : -1) : (lx_1 != null && g_2.__m ? g_2.__m : (spot_1.m || 1)) };
-                        }
+                        P = onSeg_1(SEG_1, Math.min(d2_1, Math.max(0, dist - D1_1)), { x: door_1.x, y: door_1.y, s: s1_1, m: spot_1.m || 1 });
                         g_2.__m = P.m;
                     }
                     if (lx_1 != null) {
@@ -112662,6 +112727,8 @@ window.SQE_JOURNEY = function (A) {
         });
         if (!pending && document.querySelector('.jmap .jsv'))
             save(to);
+        if (!pending)
+            placeOutside();
     }
     function stones() {
         [].forEach.call(document.querySelectorAll('.jmap .jsv'), function (box) {
@@ -174518,6 +174585,9 @@ var CSS = [
 '.scn-board.tight{padding:calc(var(--bpy,1cqw) * .3) calc(var(--bpx,1cqw) * .3);overflow:visible}.scn-board.tight .scn-bt{line-height:1}.scn-board.tight .ln+.ln{margin-top:.05em}',
 '.scn-board.more .scn-bt::after{content:"tap to read ›";display:block;font-size:.6em;opacity:.95;text-decoration:underline;text-underline-offset:2px}',
 '.scn-board:hover,.scn-board:focus-visible{outline:3px dashed rgba(255,255,255,.7);outline-offset:-3px}',
+'.scn-board.paged .scn-bt .ln{display:none}.scn-board.paged .scn-bt .ln.on{display:block;animation:scnChalk 1s steps(22,end) both}.scn-board.paged .scn-bt .ln.on+.ln.on{animation-delay:.85s}.scn-board.paged .scn-bt .ln.on+.ln.on+.ln.on{animation-delay:1.7s}.scn-board.paged .scn-bt{line-height:1.08}.scn-board.paged .scn-bt::after{content:none!important}',
+'@keyframes scnChalk{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}.scn-boardin .scn-bt .ln{animation:scnChalk .9s steps(24,end) both;animation-delay:calc(var(--i,0) * .75s + .15s)}@media (prefers-reduced-motion:reduce){.scn-board.paged .scn-bt .ln.on,.scn-boardin .scn-bt .ln{animation:none}}',
+
 '.scn-bt{display:block;max-width:100%;font-size:2cqw;overflow-wrap:break-word}.scn-bt .ln{display:block}.scn-bt .ln+.ln{margin-top:.14em}',
 '.scn-boardov{position:fixed;inset:0;z-index:1000;background:rgba(20,16,30,.62);display:grid;place-items:center;padding:16px}',
 '.scn-boardbig{position:relative;width:min(900px,100%);aspect-ratio:16/9;max-height:calc(100vh - 32px);background:#2F4A3A radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.08),transparent 60%);border:14px solid #9B6A3C;border-radius:16px;box-shadow:0 0 0 4px #1b1b1b,8px 8px 0 4px #1b1b1b;box-sizing:border-box}',
@@ -174887,12 +174957,21 @@ var CSS = [
 /* bullets-sample: preview flag + splitter (no wording changes: only cuts the existing text at sentence ends) */
 function bulletsOn(){ return true; } /* 23:46 Monnie approved: sweet bullets live in every jar */
 function bulSplit(html){
+  /* numbered lists ("1. ... 2. ..."): one bullet per number, the number stays inline with its text */
+  var nre = /(?:^|<br\s*\/?>|\n|\s)(\d{1,2})\.\s+(?=\S)/g, nm, cuts = [];
+  while ((nm = nre.exec(html))){ var want = cuts.length + 1; if (+nm[1] === want) cuts.push(nm.index + nm[0].indexOf(nm[1])); }
+  if (cuts.length >= 2){
+    var lead = html.slice(0, cuts[0]).replace(/(<br\s*\/?>|\s)+$/,'').trim(), items = lead ? [lead] : [];
+    cuts.forEach(function(c, i){ items.push(html.slice(c, i + 1 < cuts.length ? cuts[i + 1] : html.length).replace(/(<br\s*\/?>|\s)+$/,'').trim()); });
+    return items.filter(function(s){ return s; });
+  }
+  if (/^\s*\d{1,2}\.\s+\S/.test(html)) return [html.trim()]; /* one numbered line (own paragraph): keep it whole */
   var out = [], start = 0, re = /([.?!])((?:<\/(?:b|strong|em|i)>)*)(\s+)(?=[A-Z'‘"“(<])/g, m;
   while ((m = re.exec(html))){
     var end = m.index + 1 + m[2].length, head = html.slice(0, end);
     var depth = (head.match(/<(b|strong|em|i)(\s[^>]*)?>/g) || []).length - (head.match(/<\/(b|strong|em|i)>/g) || []).length;
     var w = (html.slice(0, m.index).match(/([A-Za-z.]+)$/) || ['', ''])[1];
-    if (depth || /^(s|ss|e\.g|i\.e|cf|v|vs|para|art|reg|Mr|Mrs|Ms|Dr|St)$/i.test(w)) continue;
+    if (depth || /^(s|ss|e\.g|i\.e|cf|v|vs|para|art|reg|Mr|Mrs|Ms|Dr|St)$/i.test(w) || /(^|[>\n])\s*\d{1,3}$/.test(html.slice(0, m.index))) continue;
     out.push(html.slice(start, end).trim()); start = end + m[3].length;
   }
   out.push(html.slice(start).trim());
@@ -175585,8 +175664,27 @@ window.SQE_SCENE = function(A){
   var BOARD_PLAIN = {'shareholders-minority':1, 'partnerships':1, 'corporate-insolvency':1, 'insolvency-clawback-priority':1, 'personal-insolvency':1, 'income-tax':1, 'cgt':1, 'corporation-tax':1, 'vat-iht-bpr':1};
   function boardHTML(view, k){ var b = view && view.board, L = boardLines(k); if (!ROOMS_ON || !b || !L || !view.img) return '';
     return '<button type="button" class="scn-board' + (BOARD_PLAIN[String(k).split('/')[1]] ? ' plain' : '') + '" data-scn-board="' + esc(k) + '" style="left:' + b.x + '%;top:' + b.y + '%;width:' + b.w + '%;height:' + b.h + '%;--bpx:' + (b.w * 0.03).toFixed(2) + 'cqw;--bpy:' + (b.h * 0.035 / (view.ratio || 16 / 9)).toFixed(2) + 'cqw" aria-label="Chalkboard: ' + esc(L.join(' ')) + '. Tap to read it big."><span class="scn-bt">' + L.map(function(l){ return '<span class="ln">' + esc(l) + '</span>'; }).join('') + '</span></button>'; }
+  /* 20 Nov 17:45 Monnie: board writing must be big, clear and fill the board. The picture board now shows its lines a few at a time (pages),
+     as big as the board allows, chalked on letter by letter, and moves to the next lines every few seconds. Tap still opens the whole board. */
+  function fitPaged(t, box){ var lns = [].slice.call(t.querySelectorAll('.ln')), j, aw = box.parentNode.clientWidth / 100;
+    var cw = box.clientWidth - parseFloat(getComputedStyle(box).paddingLeft) * 2, ch = box.clientHeight - parseFloat(getComputedStyle(box).paddingTop) * 2;
+    box.classList.remove('tight', 'more'); box.classList.add('paged');
+    function fitPage(pg){ lns.forEach(function(l, i){ l.style.display = pg.indexOf(i) >= 0 ? 'block' : 'none'; }); var lo = 0.3, hi = 9;
+      for (var n = 0; n < 13; n++){ var mid = (lo + hi) / 2; t.style.fontSize = mid + 'cqw'; if (t.scrollHeight <= ch + 1 && t.scrollWidth <= cw + 1) lo = mid; else hi = mid; } return lo; }
+    var best = null;
+    for (var k = Math.min(3, lns.length); k >= 1; k--){ var pages = [], f = 99; for (j = 0; j < lns.length; j += k){ var pg = []; for (var q = j; q < j + k && q < lns.length; q++) pg.push(q); pages.push(pg); }
+      pages.forEach(function(pg){ f = Math.min(f, fitPage(pg)); });
+      best = {k: k, f: f, pages: pages}; if (f * aw >= 19 || k === 1) break; }
+    lns.forEach(function(l, i){ l.style.display = ''; l.setAttribute('data-pg', Math.floor(i / best.k)); });
+    t.style.fontSize = Math.min(best.f, 6) + 'cqw'; t.setAttribute('data-pages', best.pages.length); t.setAttribute('data-fit', '1');
+    boardShow(t, +(t.getAttribute('data-cur') || 0)); }
+  function boardShow(t, pg){ var n = +t.getAttribute('data-pages') || 1; pg = pg % n; t.setAttribute('data-cur', pg);
+    [].forEach.call(t.querySelectorAll('.ln'), function(l, i){ var on = +l.getAttribute('data-pg') === pg; l.classList.toggle('on', on); if (on){ l.style.animation = 'none'; void l.offsetWidth; l.style.animation = ''; } }); }
+  if (ROOMS_ON) setInterval(function(){ if (document.hidden) return; [].forEach.call(document.querySelectorAll('.scn-board.paged .scn-bt[data-pages]'), function(t){ if (+t.getAttribute('data-pages') > 1 && !t.parentNode.matches(':hover')) boardShow(t, +t.getAttribute('data-cur') + 1); }); }, 5200);
   function fitBoards(){ var els = document.querySelectorAll('.scn-board .scn-bt:not([data-fit]), .scn-boardov .scn-bt:not([data-fit])');
-    for (var i = 0; i < els.length; i++){ var t = els[i], box = t.parentNode, lo = 0.5, hi = box.classList.contains('scn-board') ? 12 : 80, unit = box.classList.contains('scn-board') ? 'cqw' : 'px';
+    for (var i = 0; i < els.length; i++){ var t = els[i], box = t.parentNode;
+      if (box.classList.contains('scn-board') && box.clientWidth >= 8 && box.clientHeight >= 8){ fitPaged(t, box); continue; }
+      var lo = 0.5, hi = box.classList.contains('scn-board') ? 12 : 80, unit = box.classList.contains('scn-board') ? 'cqw' : 'px';
       if (box.clientWidth < 8 || box.clientHeight < 8) continue; /* picture not loaded yet: the image load listener refits */
       var lns = t.querySelectorAll('.ln'), j; for (j = 0; j < lns.length; j++) lns[j].style.display = ''; box.classList.remove('tight', 'more');
       var cw = box.clientWidth - parseFloat(getComputedStyle(box).paddingLeft) * 2, ch = box.clientHeight - parseFloat(getComputedStyle(box).paddingTop) * 2;
@@ -175686,7 +175784,7 @@ window.SQE_SCENE = function(A){
     addEventListener('load', function(){ layAll(true); });
   }
   function boardOpen(k){ var L = boardLines(k); if (!L) return; boardClose(); var d = document.createElement('div'); d.className = 'scn-boardov'; d.setAttribute('role', 'dialog'); d.setAttribute('aria-modal', 'true'); d.setAttribute('aria-label', 'Chalkboard');
-    d.innerHTML = '<div class="scn-boardbig"><button type="button" class="scn-boardx" aria-label="Close">✕</button><div class="scn-boardin"><span class="scn-bt">' + L.map(function(l){ return '<span class="ln">' + esc(l) + '</span>'; }).join('') + '</span></div></div>';
+    d.innerHTML = '<div class="scn-boardbig"><button type="button" class="scn-boardx" aria-label="Close">✕</button><div class="scn-boardin"><span class="scn-bt">' + L.map(function(l, i){ return '<span class="ln" style="--i:' + i + '">' + esc(l) + '</span>'; }).join('') + '</span></div></div>';
     document.body.appendChild(d); var x = d.querySelector('.scn-boardx'); if (x) x.focus(); }
   function boardClose(){ var o = document.querySelector('.scn-boardov'); if (o) o.parentNode.removeChild(o); }
   if (ROOMS_ON){
@@ -175999,6 +176097,39 @@ window.SQE_SCENE = function(A){
   window.__sceneExitFor = function(k){ return exitPool(k).map(function(it){ var h = objFor(k, it); return {kind: it.kind, q: it.q.slice(0, 60), obj: h && h.id}; }); };
   return {coverage: coverage};
 };
+})();
+/* 20 Nov 17:50 Monnie: "whenever I press on something nothing is ever animated". Every tap on a picture spot now makes that object
+   jump out of the picture (a cut-out of the drawing scales up, wiggles and throws sparkles) before its cards open; and the room is never
+   still: every few seconds one unopened object gives a little wiggle. Works for every stop (it copies the room's own picture). */
+(function(){
+  if (!window.document || !document.addEventListener) return;
+  var RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches, last = 0;
+  var st = document.createElement('style'); st.id = 'scn-tapfx-css';
+  st.textContent = '.scn-fx{position:absolute;z-index:6;pointer-events:none;border-radius:14px;background-repeat:no-repeat;transform-origin:50% 60%;filter:drop-shadow(0 6px 0 rgba(27,27,27,.55))}' +
+    '.scn-fx.pop{animation:scnFxPop .62s cubic-bezier(.3,1.6,.5,1) both}.scn-fx.wig{animation:scnFxWig .9s ease-in-out both;filter:none}' +
+    '@keyframes scnFxPop{0%{transform:scale(1);outline:0 solid #FFF200}35%{transform:scale(1.32) rotate(-4deg);outline:4px solid #FFF200}60%{transform:scale(1.22) rotate(3deg)}100%{transform:scale(1.28) rotate(0);outline:4px solid #FFF200;opacity:.0}}' +
+    '@keyframes scnFxWig{0%,100%{transform:none}20%{transform:scale(1.08) rotate(-3deg)}40%{transform:scale(1.08) rotate(3deg)}60%{transform:scale(1.05) rotate(-2deg)}80%{transform:scale(1.02) rotate(1deg)}}' +
+    '.scn-spark{position:absolute;z-index:7;pointer-events:none;width:12px;height:12px;margin:-6px 0 0 -6px;border:2px solid #1b1b1b;border-radius:50%;animation:scnSpark .7s ease-out forwards}' +
+    '.scn-spark:nth-child(3n){border-radius:2px;transform:rotate(45deg)}' +
+    '@keyframes scnSpark{0%{opacity:1;transform:translate(0,0) scale(.5)}100%{opacity:0;transform:translate(var(--x),var(--y)) scale(1.1) rotate(160deg)}}';
+  document.head.appendChild(st);
+  var COLS = ['#FFC300', '#E63946', '#4CC9F0', '#52B788', '#FF8C42', '#9B5DE5'];
+  function cut(hs, cls){ var art = hs.closest('.scn-art'), img = art && art.querySelector(':scope > img'); if (!img || !img.complete || !img.naturalWidth) return null;
+    var A = art.getBoundingClientRect(), I = img.getBoundingClientRect(), H = hs.getBoundingClientRect(), d = document.createElement('div');
+    d.className = 'scn-fx ' + cls; d.style.left = (H.left - A.left) + 'px'; d.style.top = (H.top - A.top) + 'px'; d.style.width = H.width + 'px'; d.style.height = H.height + 'px';
+    d.style.backgroundImage = 'url("' + img.currentSrc.replace(/"/g, '%22') + '")'; d.style.backgroundSize = I.width + 'px ' + I.height + 'px';
+    d.style.backgroundPosition = (I.left - H.left) + 'px ' + (I.top - H.top) + 'px'; art.appendChild(d); return d; }
+  function sparks(hs){ var art = hs.closest('.scn-art'); if (!art) return; var A = art.getBoundingClientRect(), H = hs.getBoundingClientRect(), cx = H.left - A.left + H.width / 2, cy = H.top - A.top + H.height / 2;
+    for (var i = 0; i < 12; i++){ var s = document.createElement('i'), a = i / 12 * Math.PI * 2, r = 40 + Math.random() * 50; s.className = 'scn-spark';
+      s.style.left = cx + 'px'; s.style.top = cy + 'px'; s.style.background = COLS[i % COLS.length]; s.style.setProperty('--x', Math.cos(a) * r + 'px'); s.style.setProperty('--y', Math.sin(a) * r + 'px');
+      art.appendChild(s); setTimeout(function(n){ return function(){ if (n.parentNode) n.parentNode.removeChild(n); }; }(s), 800); } }
+  window.addEventListener('click', function(e){ var hs = e.target.closest && e.target.closest('.scn-art .scn-hs:not(.door)'); if (!hs || RM) return;
+    if (Date.now() - last < 900) return; /* the replayed click (or a redirect to the nearest spot) goes straight through */
+    var d = cut(hs, 'pop'); if (!d) return; last = Date.now(); e.preventDefault(); e.stopPropagation(); sparks(hs);
+    setTimeout(function(){ if (d.parentNode) d.parentNode.removeChild(d); if (document.contains(hs)) hs.click(); }, 480); }, true);
+  if (!RM) setInterval(function(){ if (document.hidden || document.querySelector('.scn-ov, .scn-boardov, .scn-fx')) return;
+    var hs = [].slice.call(document.querySelectorAll('.scn-art .scn-hs:not(.door):not(.done)')); if (!hs.length) return;
+    var h = hs[Math.floor(Math.random() * hs.length)], d = cut(h, 'wig'); if (d) setTimeout(function(){ if (d.parentNode) d.parentNode.removeChild(d); }, 950); }, 2600);
 })();
 
 ;
@@ -176741,7 +176872,7 @@ function pxd(a, b){ var dx = (b[0] - a[0]) * 27.52, dy = (b[1] - a[1]) * 15.36; 
 function ease(t){ return 0.5 - Math.cos(Math.PI * clamp(t, 0, 1)) / 2; }
 var CLOCK0 = Date.now(), PAUSED = 0, BPAUSED = 0, FEED = null, TRIP = null, KID = null, CSAY = null;
 /* the same day/night rule as the banner (night from 5 PM to 6 AM; ?hour= and ?sky= work too) */
-function mountNight(){ var q = (location.search || '') + '&' + (location.hash || ''), m = /[?&]sky=(night|day)/.exec(q), h; if (m) return m[1] === 'night'; m = /[?&]hour=(\d+(?:\.\d+)?)/.exec(q); if (m) h = (+m[1]) % 24; else { var fo = ''; try { fo = localStorage.getItem('sqe_sky') || ''; } catch(e){} if (fo === 'night') return true; if (fo === 'day') return false; var d = new Date(); h = d.getHours() + d.getMinutes() / 60; } return h >= 17 || h < 6; }
+function mountNight(){ var q = (location.search || '') + '&' + (location.hash || ''), m = /[?&]sky=(night|day)/.exec(q), h; if (m) return m[1] === 'night'; m = /[?&]hour=(\d+(?:\.\d+)?)/.exec(q); if (m) h = (+m[1]) % 24; else { var fo = ''; try { fo = localStorage.getItem('sqe_sky') || ''; } catch(e){} if (fo === 'night') return true; if (fo === 'day') return false; var d = new Date(); h = d.getHours() + d.getMinutes() / 60; } return h >= 18 || h < 6; }
 function now(){ return typeof window.__mountClock === 'number' ? window.__mountClock : Date.now(); }
 function loopT(){ var n = now(); return n - CLOCK0 - PAUSED - (TRIP ? n - TRIP.t0 : 0); }
 function britT(){ var n = now(); return n - CLOCK0 - BPAUSED - (FEED ? n - FEED.t0 : 0); }
@@ -178426,13 +178557,13 @@ function nbStreakHTML(){
     /* 20 Nov 13:25 (Monnie): the present flies from the rainbow into her arms and she hugs it (pose layla-step5-hold.webp, same feet line and head size as the jump pose) */
     var play = false; try { play = nbPrev() !== null || !sessionStorage.getItem("nbCaught"); sessionStorage.setItem("nbCaught", "1"); } catch(e){ play = true; }
     var HH = LH * 1.057, HW = HH * 525 / 859, hx = lp[0] - HW / 2, hy = lp[1] - pz[2] - HH;
-    var GS = 1.3, cxg = hx + HW * 240 / 525, cyg = hy + HH * 405 / 859 - 4 * GS, sx = 735, sy = 56 - 11.5 * 1.45, dx = (sx - cxg).toFixed(1), dy = (sy - cyg).toFixed(1), T = "1.8s";
+    var GS = 1.3, cxg = hx + HW * 240 / 525, cyg = hy + HH * 405 / 859 - 4 * GS, sx = 735, sy = 56 - 11.5 * 1.45, dx = (sx - cxg).toFixed(1), dy = (sy - cyg).toFixed(1), T = "4.2s"; /* Monnie 17:36: slower, so you can see it fly (was 1.8s) */
     var jg = '<g class="nblayg nbst' + st + '">';
     svg = svg.replace(jg, play ? jg + '<set attributeName="opacity" to="0" begin="' + T + '" fill="freeze"/>' : '<g class="nblayg nbst' + st + '" opacity="0">');
     svg += '<g class="nbhold"' + (play ? ' opacity="0"><set attributeName="opacity" to="1" begin="' + T + '" fill="freeze"/>' : '>') + '<image href="img/layla-step5-hold.webp" x="' + hx.toFixed(1) + '" y="' + hy.toFixed(1) + '" width="' + HW.toFixed(1) + '" height="' + HH.toFixed(1) + '"/></g>';
     if (play) svg += '<g class="nbcatch" transform="translate(' + cxg.toFixed(1) + ' ' + cyg.toFixed(1) + ')"><set attributeName="opacity" to="0" begin="' + T + '" fill="freeze"/><g>' +
-      '<animateMotion path="M' + dx + ' ' + dy + ' Q' + (dx * 0.45).toFixed(1) + ' ' + (dy - 70).toFixed(1) + ' 0 0" keyPoints="0;0;1" keyTimes="0;.25;1" calcMode="spline" keySplines="0 0 1 1;.35 0 .45 1" dur="' + T + '" fill="freeze"/>' +
-      '<g transform="scale(' + GS + ')"><animateTransform attributeName="transform" type="scale" values="1.45;1.45;' + GS + '" keyTimes="0;.25;1" dur="' + T + '" fill="freeze"/>' + giftIn(0, 11.5) + '</g></g></g>';
+      '<animateMotion path="M' + dx + ' ' + dy + ' Q' + (dx * 0.45).toFixed(1) + ' ' + (dy - 70).toFixed(1) + ' 0 0" keyPoints="0;0;1" keyTimes="0;.15;1" calcMode="spline" keySplines="0 0 1 1;.35 0 .45 1" dur="' + T + '" fill="freeze"/>' +
+      '<g transform="scale(' + GS + ')"><animateTransform attributeName="transform" type="scale" values="1.45;1.45;' + GS + '" keyTimes="0;.15;1" dur="' + T + '" fill="freeze"/>' + giftIn(0, 11.5) + '</g></g></g>';
   }
   svg += '</svg>';
   var flame = '<span class="nbflame" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.5c1 3.6 5.8 6 5.8 11.2A5.8 5.8 0 0 1 6.2 13.7c0-2.6 1.5-4.4 2.8-5.6.2 1.8 1 3 2.2 3.6-.6-3.4.2-6.4.8-9.2z" fill="#F25A1F" stroke="#10294A" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 12.2c.9 1.4 2.6 2.4 2.6 4.4a2.6 2.6 0 0 1-5.2 0c0-1.5.9-2.6 2.6-4.4z" fill="#FFD93B" stroke="#10294A" stroke-width="1.2" stroke-linejoin="round"/></svg></span>';
@@ -178491,7 +178622,7 @@ function header(route){
 }
 /* banner-fx + banner-night (20 Nov, Monnie): moving sun/hens/chicks over the banner picture, and the night scene from 17:00 until 6am.
    Night follows ?sky=night|day, then ?hour=, then the N button (localStorage sqe_sky), then the clock. Styles: "banner-fx" / "banner-night" in styles.css. */
-function nbNight(){ var q = (location.search || "") + "&" + (location.hash || ""), m = /[?&]sky=(night|day)/.exec(q), h; if (m) return m[1] === "night"; m = /[?&]hour=(\d+(?:\.\d+)?)/.exec(q); if (m) h = (+m[1]) % 24; else { var fo = ""; try { fo = localStorage.getItem("sqe_sky") || ""; } catch(e){} if (fo === "night") return true; if (fo === "day") return false; var d = new Date(); h = d.getHours() + d.getMinutes() / 60; } return h >= 17 || h < 6; }
+function nbNight(){ var q = (location.search || "") + "&" + (location.hash || ""), m = /[?&]sky=(night|day)/.exec(q), h; if (m) return m[1] === "night"; m = /[?&]hour=(\d+(?:\.\d+)?)/.exec(q); if (m) h = (+m[1]) % 24; else { var fo = ""; try { fo = localStorage.getItem("sqe_sky") || ""; } catch(e){} if (fo === "night") return true; if (fo === "day") return false; var d = new Date(); h = d.getHours() + d.getMinutes() / 60; } return h >= 18 || h < 6; } /* Monnie 17:36: night from 6 PM */
 var NB_STARS = [[1529,61,9],[1402,198,5],[1613,38,7],[1640,224,9],[1645,111,6],[1434,93,9],[1463,149,9],[1708,146,8],[1577,94,8],[1805,104,6],[2211,181,6],[2076,89,7],[2115,245,5],[2157,58,6],[2067,174,8],[2330,236,6],[2298,179,7],[2365,171,7],[1432,316,7],[1392,366,7],[1375,297,7],[1955,379,6],[1955,457,8],[2262,311,6],[2336,307,6],[2315,370,9],[438,229,9],[370,37,9],[415,109,7],[266,129,7],[143,39,6],[283,49,8],[444,157,6],[1845,40,7]]; /* picture units (2400x770), kept clear of the title, stats, Remember card, moon and buttons */
 function nbFxHTML(night){
   var all = ["sun","brown","grey","white","c1","c2"], kids = night ? all.slice(1) : all, sfx = night ? "-n" : "";
@@ -180049,7 +180180,8 @@ var NEWCARDS = true; /* 23:46 Monnie approved */
 var NCPIC = {"Sole trader: what it is":["st-alone","st-staff"], "Sole trader: business = person":["st-equals"], "Sole trader: unlimited liability":["st-bailiff"], "Sole trader: no formalities":["st-open"], "Sole trader: privacy and tax":["st-padlock"], "Sole trader: business name":["st-plaque"], "Example: Priya and Tom's candles":["candles"]};
 var NCPIC_NEW = {"Every business needs a vehicle": ["bl1-0"], "Five structures on the syllabus": ["bl1-1"], "Question 1: is it its own 'person'?": ["bl1-2"], "Which two structures are NOT separate legal persons?": ["bl1-3"], "Question 2: is the owners' liability limited?": ["bl1-4"], "Unlimited vs limited liability": ["bl1-5"], "What this topic covers (and what's elsewhere)": ["bl1-6"], "Exam tip: label the structure first": ["bl1-7"], "If a sole trader's business fails, can creditors take their house?": ["bl1-8"], "Does a sole trader file anything at Companies House?": ["bl1-9"], "Partnership: the definition": ["bl1-10"], "Partnership: it just happens": ["bl1-11"], "Partnership clues (s.2)": ["bl1-13"], "Partnership: 'the firm' is just a label": ["bl1-14"], "Two friends share takings from a stall with no paperwork. Partners?": ["bl1-15"], "Partnership: unlimited liability": ["bl1-16"], "One partner can be made to pay it all": ["bl1-17"], "Partnership: when it ends (default)": ["bl1-18"], "Partnership: tax": ["bl1-19"], "Partnership: business name": ["bl1-20"], "A partner dies and there's no agreement. What happens?": ["bl1-21"], "LLP: created by registration": ["bl1-22"], "LLP: a separate legal person": ["bl1-23"], "LLP: limited liability": ["bl1-24"], "LLP: minimum people": ["bl1-25"], "LLP: fewer than 2 designated?": ["bl1-26"], "Is an LLP member an agent of the other members?": ["bl1-27"], "LLP: flexible inside, public outside": ["bl1-28"], "LLP: tax transparent": ["bl1-29"], "Ltd: the everyday company": ["bl1-30"], "Ltd: owners vs managers": ["bl1-31"], "Ltd: limited liability": ["bl1-32"], "Can one person run a Ltd company alone?": ["bl1-33"], "Ltd: minimum people": ["bl1-34"], "Ltd: no minimum share capital": ["bl1-35"], "Ltd: no public share offers": ["bl1-36"], "Ltd: publicity": ["bl1-37"], "Ltd: tax": ["bl1-38"], "Who pays tax on a Ltd company's trading profits?": ["bl1-39"], "plc: may offer its shares to the public": ["bl1-40"], "plc: extra requirements": ["bl1-41"], "plc: paying up shares": ["bl1-42"], "plc: trading certificate": ["bl1-43"], "plc: unlisted only": ["bl1-44"], "What's the minimum allotted share capital for a plc?": ["bl1-45"], "How formed": ["bl1-46"], "Minimum people": ["bl1-47"], "Personality and liability": ["bl1-48"], "An LLP member's liability is limited to...?": ["bl1-49"], "Who manages": ["bl1-50"], "Filing and publicity": ["bl1-51"], "Tax": ["bl1-52"], "Which structures pay no tax themselves?": ["bl1-53"], "Who owns the profits": ["bl1-54"], "Raising money": ["bl1-55"], "If an owner dies or leaves": ["bl1-56"], "What's a floating charge?": ["bl1-57"], "Accounts deadlines": ["bl1-58"], "How long does a plc have to file its accounts?": ["bl1-59"], "Watch out: LLP vs limited partnership (LP)": ["bl1-60"], "LP trap": ["bl1-61"], "Salomon v A Salomon & Co Ltd (1897)": ["bl1-62"], "The Salomon rule": ["bl1-63"], "Unsecured creditors said the company was 'really just Mr Salomon'. Did that work?": ["bl1-64"], "Consequence 1: it owns its own property": ["bl1-65"], "Macaura v Northern Assurance (1925)": ["bl1-66"], "Consequence 2: it can contract with its own people": ["bl1-67"], "Lee v Lee's Air Farming (1961)": ["bl1-68"], "Why couldn't Macaura claim on the insurance?": ["bl1-69"], "Consequence 3: contracts, suing, liability": ["bl1-70"], "Consequence 4: perpetual succession": ["bl1-71"], "Consequence 5: groups": ["bl1-72"], "Example: Ben's Bikes Ltd": ["bl1-73"], "Is a parent company automatically liable for its subsidiary's debts?": ["bl1-74"], "It belongs to the members, not the company": ["bl1-75"], "Company limited by shares": ["bl1-76"], "Other company types": ["bl1-77"], "Does a company have limited liability?": ["bl1-78"], "Two different ideas": ["bl1-79"], "Example: Asha and Fern Ltd": ["bl1-80"], "Exam tip: spot the swap": ["bl1-81"], "Shares fully paid, company owes millions. What does the shareholder owe?": ["bl1-82"], "Limited liability is only a shareholder shield": ["bl1-83"], "This is NOT veil piercing": ["bl1-84"], "1. Personal guarantees (contract)": ["bl1-85"], "2. Contracting in their own name": ["bl1-86"], "A director signed a personal guarantee. Why must they pay?": ["bl1-87"], "3. Torts the individual commits": ["bl1-88"], "Williams v Natural Life Health Foods (1998)": ["bl1-89"], "4. Statute: the main examples": ["bl1-90"], "Fraudulent trading (IA 1986 s.213)": ["bl1-91"], "Wrongful trading (IA 1986 s.214)": ["bl1-92"], "Fraudulent vs wrongful trading: key difference?": ["bl1-93"], "Phoenix companies (IA 1986 ss.216-217)": ["bl1-94"], "Disqualified directors (CDDA 1986 s.15)": ["bl1-95"], "plc with no trading certificate (CA 2006 s.767)": ["bl1-96"], "One-member LLP (LLPA 2000 s.4A)": ["bl1-97"], "LLP withdrawals (IA 1986 s.214A)": ["bl1-98"], "Phoenix rule: how long is the ban, and who does it catch?": ["bl1-99"], "What 'piercing the veil' means": ["bl1-100"], "Prest v Petrodel Resources Ltd (2013)": ["bl1-101"], "Evasion principle (true piercing)": ["bl1-102"], "Concealment principle (not true piercing)": ["bl1-103"], "How did Mrs Prest get the properties if the veil wasn't pierced?": ["bl1-104"], "Gilford Motor Co v Horne (1933)": ["bl1-105"], "Jones v Lipman (1962)": ["bl1-106"], "Courts will NOT pierce just because...": ["bl1-107"], "Adams v Cape Industries (1990)": ["bl1-108"], "What's the one situation where true piercing is allowed?": ["bl1-109"], "Vedanta v Lungowe (2019), following Chandler v Cape (2012)": ["bl1-110"], "Example: Dev's café": ["bl1-111"], "Exam tip: try the ordinary route first": ["bl1-112"], "Watch out: insolvency claims aren't piercing": ["bl1-113"], "Director kept trading while insolvent. Veil piercing?": ["bl1-114"], "No single right answer": ["bl1-115"], "Step 1: Who is involved?": ["bl1-116"], "Step 2: How much risk is there?": ["bl1-117"], "Step 3: How important are privacy and low cost?": ["bl1-118"], "Two people start working together with no paperwork. What are they?": ["bl1-119"], "Step 4: How will the owners be taxed?": ["bl1-120"], "Does a company save tax?": ["bl1-121"], "Step 5: How will the business raise money?": ["bl1-122"], "Client wants to offer shares to the public. Structure?": ["bl1-123"], "Step 6: How do the owners want to run it and take profits?": ["bl1-124"], "Step 7: Does the business need to outlast its owners?": ["bl1-125"], "Common exam answers": ["bl1-126"], "Example: Kemi and Leon, architects": ["bl1-127"], "Exam tip: tax distractors": ["bl1-128"], "Does an LLP pay corporation tax?": ["bl1-129"], "Your 6-step route": ["bl1-130"]}; /* 20 Nov BL1 card pictures, preview ?pics=1 until Monnie OKs */
 if (/[?&]pics=1/.test(location.search)) for (var _k in NCPIC_NEW) NCPIC[_k] = NCPIC_NEW[_k];
-function ncLines(s){ return String(s || "").replace(/([.?!](?:\*\*)?)\s+(?=(?:\*\*)?[A-Z'(])/g, "$1\n"); }
+function ncLines(s){ /* one sentence per line; a numbered line ("1. **Which rules?** ...") stays whole so the number sits with its text */
+  return String(s || "").split("\n").map(function(l){ return /^\s*\d{1,2}\.\s/.test(l) ? l : l.replace(/([.?!](?:\*\*)?)\s+(?=(?:\*\*)?[A-Z'(])/g, function(m, a, off, str){ return /^\s*\d{1,3}$/.test(str.slice(0, off)) ? m : a + "\n"; }); }).join("\n"); }
 function ncRefs(h){ return String(h).replace(/\(CA 2006 Part \d+\)|\b(?:PA 1890 )?ss?\.\s?\d+[A-Z]?(?:\(\d+\))*(?:(?:,\s*|\s+and\s+|-)\d+[A-Z]?(?:\(\d+\))*)*/g, function(m){ return '<span class="nc-ref">' + m + '</span>'; }); }
 function ncImg(p){ return '<img class="nc-pic" src="img/learn/' + p + '.webp" alt="" loading="lazy" width="400" height="400">'; }
 function ncCard(c){
@@ -181747,7 +181879,7 @@ var BERT_RUN = "img/boss/bert-knife.webp";
 function bertImg(cls, face){ return '<img class="bert brun ' + (cls || "") + (face ? ' bf-' + face : '') + '" src="' + BERT_RUN + '" alt="Bert the butcher, waving his meat cleaver" width="612" height="800">'; }
 /* the shop exactly as on the Peckham map, with the same door animation (Bert pops out); night version after 5 PM */
 function bertShopHTML(cls, inner){
-  var hr = new Date().getHours(), night = hr >= 17 || hr < 6;
+  var hr = new Date().getHours(), night = hr >= 18 || hr < 6;
   return '<div class="bmshop ' + (cls || "") + (night ? " night" : "") + '" role="img" aria-label="Bert\'s Butchers, Bert at his shop door"><span class="bs-day"><img src="img/map-new/butchers3.webp" alt=""><img class="bs-f1" src="img/map-new/anim/bert-fist.webp" alt=""><img class="bs-f2" src="img/map-new/anim/bert-fist2.webp" alt=""><img class="bs-c" src="img/map-new/anim/bert-closed.webp" alt=""><img class="bs-b" src="img/map-new/anim/bert-blink.webp" alt=""></span><img class="bs-n" src="img/map-new/butchers3-night.webp" alt="">' + (inner || "") + '</div>';
 }
 window.SQE_BERT_SHOP = bertShopHTML;
