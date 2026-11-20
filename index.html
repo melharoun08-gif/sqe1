@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120074620";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120081359";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -120968,12 +120968,16 @@ window.SQE_TOWN = function(A){
   }
   function prices(it){ return {lo: it.p - Math.floor(it.p * GAMBLE_OFF), hi: it.p * GAMBLE_UP}; }
   function canBuy(it){ var c = A.cbaS(); if (it.feed) return c.coins < it.p ? 'poor' : 'ok'; if (!it.eat && c.own[it.id]) return 'own'; if (it.eat && A.cbaAte(it.id)) return 'ate'; if (it.need && !c.own[it.need]) return 'need'; if (it.boost){ var bb = A.broodS(); if (bb.gold > 0 || !A.broodReady()) return 'later'; } return c.coins < it.p ? 'poor' : 'ok'; }
+  /* Monnie 20 Nov: anything owned can be returned: it leaves The Mount, goes back on the shelf, and the coins paid come back */
+  function paidFor(it){ var c = A.cbaS(); c.paid = c.paid || {}; return c.paid[it.id] != null ? c.paid[it.id] : it.p; }
+  function canReturn(it){ var c = A.cbaS(); if (it.eat || it.feed || it.boost || !c.own[it.id]) return false; return !A.CBA_SHOP().some(function(x){ return x.need === it.id && c.own[x.id]; }); }
+  function returnItem(id){ var c = A.cbaS(), it = A.cbaItem(id); if (!it || !canReturn(it)) return; var back = paidFor(it); delete c.own[id]; if (c.paid) delete c.paid[id]; c.coins += back; A.save(); }
   /* buy at a different price without touching cbaBuy: lend or take the difference, call cbaBuy, and undo the difference if it didn't buy */
   function buyAt(id, price){
     var c = A.cbaS(), it = A.cbaItem(id); if (!it || c.coins < price) return false;
     var diff = it.p - price, before = c.coins; c.coins += diff; A.cbaBuy(id);
     if (c.coins === before + diff){ c.coins = before; return false; }
-    A.save(); return true;
+    c.paid = c.paid || {}; if (c.own[id]) c.paid[id] = price; A.save(); return true;
   }
   function gam(){ var g = tst().gamble; return g && g.id && g.qs && A.cbaItem(g.id) ? g : null; } /* kept in S, so leaving the page doesn't cancel a gamble once started */
   function gamItem(g){
@@ -121007,7 +121011,7 @@ window.SQE_TOWN = function(A){
     h += '<div class="cbashop">';
     A.CBA_SHOP().forEach(function(it){
       var st = canBuy(it), pr = prices(it), btn;
-      if (st === 'own') btn = '<span class="sown">✓ Owned</span>';
+      if (st === 'own') btn = '<span class="sown">✓ Owned</span>' + (canReturn(it) ? '<div class="btns"><button type="button" class="btn" data-town="return" data-i="' + it.id + '">Return ' + (/^(parents|yasmin|mo|monnie)$/.test(it.id) ? 'them' : 'it') + (paidFor(it) > 0 ? ' (+' + paidFor(it) + ' coins back)' : '') + '</button></div>' : '');
       else if (st === 'ate') btn = '<span class="sown">Yum! More tomorrow</span>';
       else if (st === 'need') btn = '<span class="sneed">Buy the ' + esc(A.cbaItem(it.need).n) + ' first</span>';
       else if (st === 'later') btn = '<span class="sneed">Not right now</span>';
@@ -121071,7 +121075,8 @@ window.SQE_TOWN = function(A){
     else if (a === 'btnext' && BT && BT.pick != null){ BT.i++; if (BT.grabbed) BT.i = BT.items.length; if (BT.i >= BT.items.length) btFinish(); else btOrd(); A.render(); scrollTop('#town-q'); }
     else if (a === 'pick' && !g){ SEL = b.getAttribute('data-i'); A.render(); }
     else if (a === 'unpick'){ SEL = null; A.render(); }
-    else if (a === 'buy' && !g){ SEL = null; var bid = b.getAttribute('data-i'), cb = A.cbaS().coins; A.cbaBuy(bid); if (A.cbaS().coins !== cb && !/^(parents|corn)$/.test(bid)) LASTBUY = bid; A.render(); if (LASTBUY) scrollTop('.town'); }
+    else if (a === 'return' && !g){ SEL = null; var rid = b.getAttribute('data-i'); returnItem(rid); if (LASTBUY === rid) LASTBUY = null; A.render(); }
+    else if (a === 'buy' && !g){ SEL = null; var bid = b.getAttribute('data-i'), cb = A.cbaS().coins; A.cbaBuy(bid); (function(c){ if (c.own[bid] && c.coins !== cb){ c.paid = c.paid || {}; c.paid[bid] = cb - c.coins; A.save(); } })(A.cbaS()); if (A.cbaS().coins !== cb && !/^(parents|corn)$/.test(bid)) LASTBUY = bid; A.render(); if (LASTBUY) scrollTop('.town'); }
     else if (a === 'walkhome'){ LASTBUY = null; try { sessionStorage.setItem('sqe_shopwalk', '1'); } catch(er){} location.hash = '#/palace'; }
     else if (a === 'gamble' && !g){
       var id = b.getAttribute('data-i'), item = A.cbaItem(id); if (!item || canBuy(item) !== 'ok') return;
