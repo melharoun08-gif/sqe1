@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120152316";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120152933";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -110676,18 +110676,40 @@ window.SQE_JOURNEY = function (A) {
     /* the stop's own entrance: bottom-middle of its picture, in map units (where she walks to after the path, up the grass) */
     function stopDoor(box, n) {
         try {
-            var svg = box.querySelector('svg'), art = Array.prototype.slice.call(box.querySelectorAll('a[aria-label^="Stop ' + n + ',"] .jhit')).find(function (e) { return e.getBoundingClientRect().width > 0; });
-            if (!svg || !art)
+            var svg = box.querySelector('svg'), vis_1 = function (e) { return e.getBoundingClientRect().width > 0; }, art_1 = Array.prototype.slice.call(box.querySelectorAll('a[aria-label^="Stop ' + n + ',"] .jhit')).find(vis_1);
+            if (!svg || !art_1)
                 return null;
-            var r = art.getBoundingClientRect(), M = svg.getScreenCTM().inverse(), pt = svg.createSVGPoint();
-            pt.x = r.left + r.width / 2;
-            pt.y = r.top + r.height * .93;
-            var q = pt.matrixTransform(M);
-            return { x: q.x, y: q.y };
+            var M_1 = svg.getScreenCTM().inverse(), pt_1 = svg.createSVGPoint(), U_1 = function (x, y) { pt_1.x = x; pt_1.y = y; var q = pt_1.matrixTransform(M_1); return { x: q.x, y: q.y }; };
+            var r = art_1.getBoundingClientRect(), d = U_1(r.left + r.width / 2, r.top + r.height * .93);
+            /* the other buildings, so the walk up the grass goes round them and never over a roof */
+            d.blocks = Array.prototype.slice.call(box.querySelectorAll('a[href] .jhit')).filter(function (e) { return e !== art_1 && vis_1(e); }).map(function (e) { var q = e.getBoundingClientRect(), A = U_1(q.left, q.top), B = U_1(q.right, q.bottom); return [A.x, A.y, B.x, B.y]; });
+            return d;
         }
         catch (e) {
             return null;
         }
+    }
+    /* shortest walk from the path spot to the door that keeps her feet off every other building */
+    function doorRoute(sp, d, half) {
+        var P = [sp.x, sp.y], D = [d.x, d.y], bl = (d.blocks || []).map(function (b) { return [b[0] - half, b[1] - 6, b[2] + half, b[3] + 4]; });
+        var hit = function (p, q) { return bl.some(function (b) { for (var i = 0; i <= 24; i++) {
+            var x = p[0] + (q[0] - p[0]) * i / 24, y = p[1] + (q[1] - p[1]) * i / 24;
+            if (x > b[0] && x < b[2] && y > b[1] && y < b[3])
+                return true;
+        } return false; }); };
+        var ok = function (pts) { for (var i = 1; i < pts.length; i++)
+            if (hit(pts[i - 1], pts[i]))
+                return false; return true; }, len = function (pts) { var L = 0; for (var i = 1; i < pts.length; i++)
+            L += Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]); return L; };
+        var c = [[P, D], [P, [D[0], P[1]], D], [P, [P[0], D[1]], D]];
+        bl.forEach(function (b) { var lo = b[3] + 2; [b[0] - 2, b[2] + 2].forEach(function (x) { c.push([P, [x, P[1]], [x, D[1]], D]); c.push([P, [x, lo], [x, D[1]], D]); c.push([P, [x, lo], D]); }); });
+        var best = null;
+        c.forEach(function (r) { if (ok(r)) {
+            var L = len(r);
+            if (!best || L < best.L)
+                best = { r: r, L: L };
+        } });
+        return best ? best.r : [P, D];
     }
     try {
         document.addEventListener('click', function (ev) {
@@ -110700,7 +110722,7 @@ window.SQE_JOURNEY = function (A) {
                 var m = /^Stop (\d+)\b/.exec(a.getAttribute('aria-label') || '');
                 if (!m)
                     return;
-                var box = a.closest('.jsv'), g_2 = box && box.querySelector('.jpair'), G_1 = box && walkGeo(box), href_1 = a.getAttribute('href');
+                var box_1 = a.closest('.jsv'), g_2 = box_1 && box_1.querySelector('.jpair'), G_1 = box_1 && walkGeo(box_1), href_1 = a.getAttribute('href');
                 if (!g_2 || !G_1 || !href_1)
                     return;
                 var reduce = false;
@@ -110710,7 +110732,7 @@ window.SQE_JOURNEY = function (A) {
                 catch (e) { }
                 if (reduce)
                     return;
-                var mode_1 = box.classList.contains('jphone') ? 'phone' : 'desk', s0_1 = g_2.__s != null ? g_2.__s : walkAtS(G_1, walkS(G_1, +box.getAttribute('data-pos') || 0)).s, s1_1 = walkS(G_1, +m[1]);
+                var mode_1 = box_1.classList.contains('jphone') ? 'phone' : 'desk', s0_1 = g_2.__s != null ? g_2.__s : walkAtS(G_1, walkS(G_1, +box_1.getAttribute('data-pos') || 0)).s, s1_1 = walkS(G_1, +m[1]);
                 ev.preventDefault();
                 if (JGO && !JGO.stop && JGO.href === href_1) {
                     JGO.stop = 1;
@@ -110724,7 +110746,19 @@ window.SQE_JOURNEY = function (A) {
                 JGO = me_1;
                 g_2.classList.add('jmoving');
                 var dir_1 = s1_1 > s0_1 ? 1 : -1, d1_1 = Math.abs(s1_1 - s0_1), hopLen_1 = mode_1 === 'phone' ? 46 : 36, hopH_1 = mode_1 === 'phone' ? 9 : 7;
-                var spot_1 = walkAtS(G_1, s1_1), door_1 = stopDoor(box, m[1]) || { x: spot_1.x, y: spot_1.y }, d2_1 = Math.hypot(door_1.x - spot_1.x, door_1.y - spot_1.y);
+                var spot_1 = walkAtS(G_1, s1_1), door_1 = stopDoor(box_1, m[1]) || { x: spot_1.x, y: spot_1.y }, half = (function () { try {
+                    var r = g_2.getBoundingClientRect();
+                    return r.width * box_1.querySelector('svg').getScreenCTM().inverse().a * .22;
+                }
+                catch (e) {
+                    return 14;
+                } })(), RT = doorRoute(spot_1, door_1, half), SEG_1 = [];
+                var d2_1 = 0;
+                for (var i = 1; i < RT.length; i++) {
+                    var L = Math.hypot(RT[i][0] - RT[i - 1][0], RT[i][1] - RT[i - 1][1]);
+                    SEG_1.push([RT[i - 1], RT[i], d2_1, L]);
+                    d2_1 += L;
+                }
                 /* one brisk walk: along the path, then up the grass to the entrance (14:58 Monnie: all the way, quickly; seen from the back going up) */
                 var total_1 = d1_1 + d2_1, dur_1 = Math.min(2600, Math.max(1000, total_1 / (mode_1 === "phone" ? 1.1 : 1.5)));
                 var t0_2 = 0, lx_1 = null, ly_1 = null;
@@ -110752,8 +110786,23 @@ window.SQE_JOURNEY = function (A) {
                             P.m = (dx > 0 ? 1 : -1) * dir_1;
                     }
                     else {
-                        var f = d2_1 > 0 ? (dist - d1_1) / d2_1 : 1;
-                        P = { x: spot_1.x + (door_1.x - spot_1.x) * f, y: spot_1.y + (door_1.y - spot_1.y) * f, s: s1_1, m: Math.abs(door_1.x - spot_1.x) > 4 ? (door_1.x > spot_1.x ? 1 : -1) : (spot_1.m || 1) };
+                        var k = Math.min(d2_1, Math.max(0, dist - d1_1));
+                        var sg = SEG_1[SEG_1.length - 1];
+                        for (var _i = 0, SEG_2 = SEG_1; _i < SEG_2.length; _i++) {
+                            var z = SEG_2[_i];
+                            if (k <= z[2] + z[3]) {
+                                sg = z;
+                                break;
+                            }
+                        }
+                        if (!sg) {
+                            P = { x: door_1.x, y: door_1.y, s: s1_1, m: spot_1.m || 1 };
+                        }
+                        else {
+                            var f = sg[3] > 0 ? Math.min(1, (k - sg[2]) / sg[3]) : 1, ddx = sg[1][0] - sg[0][0];
+                            P = { x: sg[0][0] + ddx * f, y: sg[0][1] + (sg[1][1] - sg[0][1]) * f, s: s1_1, m: Math.abs(ddx) > 4 ? (ddx > 0 ? 1 : -1) : (lx_1 != null && g_2.__m ? g_2.__m : (spot_1.m || 1)) };
+                        }
+                        g_2.__m = P.m;
                     }
                     if (lx_1 != null) {
                         var vx = P.x - lx_1, vy = P.y - ly_1;
@@ -148929,7 +148978,7 @@ window.SQE_SCENE = function(A){
   function ribbon(k){
     var i = ROOM_IDX[k], sc = SCENES[k], m = ROOMS[k.split('/')[1]] || {};
     if (STOP_OF[k]) return W(k, '<div class="scn-ribbon"><span class="rb"><b>Room ' + (STOP_IDX[k] + 1) + ' of ' + STOP_KEYS[STOP_OF[k]].length + '</b>' + esc(m.icon || '') + ' ' + esc(m.name || sc.name) + '</span><span class="scn-navb"><a class="scn-nb" href="#/scene/' + hubOf(k) + '">Back to the hall</a></span></div>');
-    return '<div class="scn-ribbon"><span class="rb"><b>Room ' + (i + 1) + ' of ' + ROOM_KEYS.length + '</b>' + esc(m.icon || '') + ' ' + esc(m.name || sc.name) + '</span><span class="scn-navb"><a class="scn-nb" href="#/scene/' + hubOf(k) + '">Back to the hall</a><a class="scn-nb" href="#/scene/' + ROOM_KEYS[0] + '/outside">Outside the shop</a></span></div>';
+    return '<div class="scn-ribbon"><span class="rb"><b>Room ' + (i + 1) + ' of ' + ROOM_KEYS.length + '</b>' + esc(m.icon || '') + ' ' + esc(m.name || sc.name) + '</span><span class="scn-navb"><a class="scn-nb" href="#/scene/' + hubOf(k) + '">Back to the hall</a></span></div>';
   }
   function endHTML(k){ return W(k, endHTML0(k)); }
   function endHTML0(k){
@@ -149249,7 +149298,8 @@ window.SQE_SCENE = function(A){
       '.stsk .scn-confetti i svg,.scn-confetti.sk i svg{width:30px;height:30px}' +
       '.stsk .scn-hook.speech{height:auto!important;white-space:nowrap;line-height:1.15;transform:translateY(-100%) rotate(var(--rot,0deg));background:#fff;color:#1b1b1b;border:.2cqw solid #1b1b1b;border-radius:1.4cqw;box-shadow:.2cqw .25cqw 0 #1b1b1b;text-shadow:none;padding:.25cqw .8cqw;font-family:"Gochi Hand","Sour Gummy",cursive;font-weight:400;font-size:max(1.25cqw,13px)!important;width:auto!important;min-width:0;z-index:3}.stsk .scn-hook.speech::after{background:#fff;border-right:.2cqw solid #1b1b1b;border-bottom:.2cqw solid #1b1b1b;box-shadow:none}' +
       '.stsk .scn-board{padding:calc(var(--bpy,1cqw) * 1.5) calc(var(--bpx,1cqw) * 2);color:#1D3557;text-shadow:none;font-family:"Gochi Hand","Delius",cursive}.stsk .scn-board[data-scn-board$="dr-case-management"],.stsk .scn-board[data-scn-board$="dr-costs"]{color:#fff;text-shadow:0 1px 2px #1b1b1b}' +
-      '.stsk .scn-hook.tag{z-index:5;transform:translate(-50%,-100%) rotate(var(--rot,0deg));height:auto!important;width:auto!important;padding:.08cqw .3cqw;line-height:1.05;background:rgba(255,253,242,.86);border-width:.12cqw;box-shadow:.12cqw .12cqw 0 #1b1b1b}' +
+      '.scn-hook.tag{z-index:5}',
+'.stsk .scn-hook.tag{z-index:5;transform:translate(-50%,-100%) rotate(var(--rot,0deg));height:auto!important;width:auto!important;padding:.08cqw .3cqw;line-height:1.05;background:rgba(255,253,242,.86);border-width:.12cqw;box-shadow:.12cqw .12cqw 0 #1b1b1b}' +
       '.stsk .bk-on .bu-wr{display:block}.stsk .bk-on .bu-body{border-radius:14px}.stsk .bk-on .bu-body::before{display:none}' +
       '.stsk .bk-popcorn .bu-body{border-radius:44% 56% 40% 60%/58% 42% 58% 42%;background:radial-gradient(circle at 12% 30%,#FFE27A 0 7px,transparent 8px),radial-gradient(circle at 88% 72%,#FFD24A 0 6px,transparent 7px),radial-gradient(circle at 70% 14%,#FFE9A0 0 6px,transparent 7px),#FFFBEF}' +
       '.stsk .bk-popcorn .gm-pc{border-radius:50%;width:20%!important;height:17%;margin-left:12%;background:radial-gradient(circle at 60% 40%,#FFD34D 0 22%,transparent 26%),#FFFBEF!important}.stsk .bk-coin .gm-pc{border-radius:50%;width:22%!important;margin-left:10%;background:#FFC300!important}.stsk .bk-coconut .gm-pc{border-radius:50%;width:22%!important;margin-left:10%;background:#8D5A3B!important}' +
@@ -149403,7 +149453,7 @@ window.SQE_SCENE = function(A){
   function hooksHTML(view){ var H = view && view.hooks; if (!ROOMS_ON || !H || !H.length || !view.img) return ''; var r = view.ratio || 16 / 9;
     return H.map(function(o){ var t = String(o.text || ''), n = t.split('\n').length, fs = Math.min(o.h * 0.62 / n / r, o.w * 1.6 / Math.max(4, Math.max.apply(null, t.split('\n').map(function(l){ return l.length; }))));
       var sty = o.style || 'tag'; if (SKIN && sty === 'speech' && !SKSPEECH[SKROOM]) sty = 'tag'; var skt = SKIN && sty === 'tag'; if (skt) fs = Math.min(fs, 1.2);
-      return '<span class="scn-hook ' + esc(sty) + '" aria-hidden="true" style="left:' + (skt ? +o.x + o.w / 2 : o.x) + '%;top:' + (skt ? (/^BRITNEY/.test(t) ? +o.y - 1 : +o.y + +o.h) : o.y) + '%;width:' + o.w + '%;height:' + o.h + '%;font-size:' + (skt ? 'max(' + fs.toFixed(2) + 'cqw,12px)' : fs.toFixed(2) + 'cqw') + ';--rot:' + (+o.rot || 0) + 'deg">' + esc(t).replace(/\n/g, '<br>') + '</span>'; }).join(''); }
+      return '<span class="scn-hook ' + esc(sty) + '" aria-hidden="true" style="left:' + (skt ? +o.x + o.w / 2 : o.x) + '%;top:' + (skt ? (/^BRITNEY/.test(t) ? +o.y - 1 : +o.y + +o.h) : o.y) + '%;width:' + o.w + '%;height:' + o.h + '%;font-size:' + (skt ? 'max(' + fs.toFixed(2) + 'cqw,12px)' : sty === 'tag' ? 'max(' + fs.toFixed(2) + 'cqw,11px)' : fs.toFixed(2) + 'cqw') + ';--rot:' + (+o.rot || 0) + 'deg">' + esc(t).replace(/\n/g, '<br>') + '</span>'; }).join(''); }
   function boardLines(k){ return (k && BOARD_HOOKS[k.split('/')[1]]) || null; }
   /* 20 Nov: rooms whose new picture has no drawn chalkboard get a painted board behind the words so they stay readable */
   var BOARD_PLAIN = {'shareholders-minority':1, 'partnerships':1, 'corporate-insolvency':1, 'insolvency-clawback-priority':1, 'personal-insolvency':1, 'income-tax':1, 'cgt':1, 'corporation-tax':1, 'vat-iht-bpr':1};
@@ -150263,8 +150313,8 @@ window.SQE_TOWN = function(A){
     if (g) h += gamHTML();
     if (TRY && isMonnie()) h += tryOnHTML(TRY);
     if (LASTBUY && !g && A.cbaItem(LASTBUY)) h += '<div class="bcard town-walk"><b>You bought the ' + esc(A.cbaItem(LASTBUY).n) + '!</b> <button type="button" class="btn primary" data-town="walkhome">Walk it home to The Mount ›</button></div>';
-    /* walk-in shop: Monnie-only until QA passes it (coordinator rule 13:58); Layla keeps the shelf of cards meanwhile */
-    if (isMonnie()){ h += hbStage(); hbScroll(); HB_FROM = HB_LX; return h + '</div>'; }
+    /* walk-in shop: QA passed 15:24, live for everyone (the old card shelf below is kept as a fallback, unused) */
+    if (true){ h += hbStage(); hbScroll(); HB_FROM = HB_LX; return h + '</div>'; }
     h += '<div class="cbashop">'; A.CBA_SHOP().forEach(function(it){ h += cardHTML(it); });
     return h + '</div></div>';
   }
@@ -150428,7 +150478,7 @@ var GARDEN_ITEMS = {
 };
 var SWING = {x: 80.4, top: 68.2, seat: 52.2, w: 6};   /* the swing hangs on two ropes from the left branch of the tree by the coop (Monnie 09:44); Beefy rides it */
 var SWING_HEN_H = 8.5;
-var BRUCEY_COOP = [31, 49.5], BEEFY_COOP = [93.5, 37];   /* with a coop there, Brucey perches on the bank behind it */   /* Beefy sits on the swing when Layla has both */
+var BRUCEY_COOP = [31, 49.5], BEEFY_COOP = [95.3, 37];   /* with a coop there, Brucey perches on the bank behind it */   /* Beefy sits on the swing when Layla has both */
 function coopTop(o){ return o.palace ? [91.1, 36 + 20] : o.coop ? [91.1, 36 + 19] : null; }
 /* Layla's walk: [x, b, pause ms, pose while paused ('a' stand, 't' wave)]; stays inside x 37..54 so she never meets the people */
 var LAYLA_LAP = [[41, 11, 1200, 'a'], [48, 11, 0, 'a'], [53, 12, 900, 'a'], [49, 18, 0, 'a'], [40.5, 22, 1400, 't'], [47, 27, 900, 'a'], [53.5, 24, 900, 'a'], [51, 17, 0, 'a'], [43, 14, 600, 'a']];   /* Monnie 13:22: one big loop over the whole open lawn, on the grass, mostly side to side (never zig-zagging up towards the trees) */   /* Monnie 10:00: no moonwalking, every leg goes more sideways than up/down */
