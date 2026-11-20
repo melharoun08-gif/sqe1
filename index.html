@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120060015";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120060221";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -101991,12 +101991,12 @@ window.SQE_JOURNEY = function (A) {
             var S = JSON.parse(localStorage.getItem('sqe1-revision-v2') || '{}'), c = S.cba || {}, d = new Date();
             d.setHours(0, 0, 0, 0);
             var t0_1 = +d;
-            return [c.own || {}, c.ate || {}].some(function (o) { return Object.keys(o).some(function (k) { return +o[k] >= t0_1; }); });
+            return [c.own || {}, c.ate || {}].some(function (o) { return Object.keys(o).some(function (k) { return k !== 'parents' && k !== 'corn' && +o[k] >= t0_1; }); });
         }
         catch (e) {
             return false;
         }
-    }
+    } /* 06:00 Monnie: only a real purchase gives Layla the carrier bag (not free Mama and Baba, not the daily corn feed) */
     function pairInner(mode, f) {
         var BAG = shopToday() || /[?&]bag=1/.test(qs()), lh = mode === 'phone' ? 240 : 200, lw = lh * (BAG ? 385 / 600 : LAYLA_AR), bh = lh * .42;
         var lx = -lw / 2 - bh * .3 * f, bx = f > 0 ? lx + lw - 8 : lx - bh + 8, x0 = Math.min(lx, bx + bh * (f > 0 ? .07 : .24)), x1 = Math.max(lx + lw, bx + bh * (f > 0 ? .76 : .93));
@@ -112875,6 +112875,8 @@ var CBA_SHOP = [
   {id:"nestbox", n:"Cosy nesting box", d:"A snug straw bed. Britney is more likely to lay a chick egg.", p:400},
   {id:"bonnie", n:"Jiminey the rabbit", d:"A fluffy ginger bunny with floppy ears. A new friend for the chickens.", p:500},
   {id:"palace", n:"Luxury coop makeover", d:"A full pamper for The Mount coop: fresh paint, fairy lights, velvet perches and a tiny chandelier. The hens are obsessed.", p:1500},
+  {id:"yasmin", n:"Yasmin", d:"Your sister, with Jiminey in her arms. She comes to hang out in The Mount garden.", p:1000},
+  {id:"mo", n:"Mo", d:"Your brother. He comes round to The Mount garden.", p:1000},
   {id:"parents", n:"Mama and Baba", d:"Take them for free! They'll give their (unwanted) opinions on your revision and your life.", p:0}
 ];
 function cbaItem(id){ return CBA_SHOP.filter(function(x){ return x.id === id; })[0]; }
@@ -112939,7 +112941,7 @@ var HEN_DRAWN = true, NEST_EMPTY = true;
 var BRITNEY_PICS = [["all",["socks","crocs","pens","cup"]],["crocs-cup",["crocs","cup"]],["crocs-socks",["socks","crocs"]],["crocs",["crocs"]],["plain",[]]];
 function britneyLook(){
   var o = cbaS().own, mm = cbaMood().m;
-  if (/^(sad|sad2|door|ill)$/.test(mm)) return {k:"sad", has:[]};
+  if (/^(sad|sad2|hungry|door|ill)$/.test(mm)) return {k:"sad", has:[]};
   for (var i = 0; i < BRITNEY_PICS.length; i++){ var v = BRITNEY_PICS[i]; if (v[1].every(function(k){ return o[k]; })) return {k:v[0], has:v[1]}; }
   return {k:"plain", has:[]};
 }
@@ -113022,6 +113024,7 @@ var KIT_DRAWN = {stickers:1, cup:1, pens:1, latte:1, pandan:1, player:1, tote:1,
 function cbaItemPic(id){
   /* Monnie 20 Nov: real gifts show the EXACT product photos she extracted (img/shop/, shop-images.json), never redraws */
   if (KIT_DRAWN[id] && (window.SQE_SHOPIMG || {})[id]) return '<img class="kitimg prizeimg" src="' + window.SQE_SHOPIMG[id] + '" alt="" width="600" height="600">';
+  if (id === "yasmin" || id === "mo") return '<img class="kitimg" src="img/souvenir/' + id + '.webp" alt="" width="300" height="600" style="object-fit:contain">';
   if (id === "parents") return '<img class="kitimg" src="img/shop/parents.webp" alt="Mama and Baba" width="600" height="600">';
   if (KIT_DRAWN[id]) return '<img class="kitimg" src="img/kit/' + id + '.webp" alt="" width="300" height="300">';
   if (id === "corn") return '<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 14h24l-3 22H11z" fill="#D9A55B"/><path d="M8 14c4-4 20-4 24 0" fill="#C38B43"/><g fill="#FFD43B"><ellipse cx="15" cy="11" rx="2.4" ry="3"/><ellipse cx="21" cy="9" rx="2.4" ry="3"/><ellipse cx="26" cy="11" rx="2.4" ry="3"/></g><text x="20" y="29" text-anchor="middle" font-size="8" font-weight="700" fill="#7A4E1C">CORN</text></svg>';
@@ -113065,7 +113068,7 @@ function cbaScene(small){
   var bl = britneyLook().has; var acc = (o.cup && bl.indexOf("cup") < 0 ? pic("cup", "scup") : '') + (o.pens && bl.indexOf("pens") < 0 ? pic("pens", "spens") : '') + (cbaAte("latte") ? pic("latte", "streat") : cbaAte("pandan") ? pic("pandan", "streat") : '');
   if (L.away) h += '<a class="sitem stracy saway" href="#/boss" aria-label="Britney is at Bert\'s Butchers">' + cbaNest('') + '</a>';
   else {
-    if (m.m === "sad2" || m.m === "door" || m.m === "ill") h += '<span class="srain" aria-hidden="true"><i></i><i></i><i></i></span>';
+    if (m.m === "sad2" || m.m === "hungry" || m.m === "door" || m.m === "ill") h += '<span class="srain" aria-hidden="true"><i></i><i></i><i></i></span>';
     h += '<button class="sitem stracy' + (m.m === "ill" ? " sill" : "") + '" data-act="cbapet" aria-label="Pat Britney">' + (m.m === "ill" ? '<span class="sblanket"></span>' : '') + britneyImg(m.cls + (CBNEW && m.m !== "ill" ? " jump" : "")) + acc + '</button>';
   }
   if (o.friend) h += '<div class="sitem slouise' + nw("friend") + '">' + cbaItemPic("friend") + '</div>';
@@ -114718,8 +114721,8 @@ function dayFedOK(ds){ var g = gameS(); return !!(g.fed[ds] || (ds < FEED_FROM &
 
 /* ---------- Britney's life: worked out from the dates every time ---------- */
 /* Britney is always here as the grown hen (Monnie 20 Nov: never an egg, never "not here yet"). Hunger counts from the game start:
-   0 days missed = fine, 1 = sad, 2 = really sad, 3 = on death's door, 4+ = very ill until she buys medicine (Britney never dies).
-   A day counts as fed if she was fed, if feed was unlocked that day (Britney helps herself), or if it had no tasks. */
+   0 days missed = fine, 1 = sad, 2 = on death's door (last chance), 3+ = very ill until she buys medicine (Britney never dies). (Monnie 20 Nov: was ill at 4)
+   A day counts as fed if she was fed or if it had no tasks (before FEED_FROM, also if feed was unlocked that day). */
 var MED = {id:"medicine", n:"Medicine", d:"Chicken medicine to make Britney well again."};
 /* medicine: a fixed price (20 Nov: was "one full day of revision", which changed daily). See proposals/shop-prices.md */
 var MED_PRICE = 150;
@@ -114727,13 +114730,13 @@ function medPrice(){ return {p:MED_PRICE, d:""}; }
 function henLife(){
   var g = gameS(), t = ymd(), free = dayCount(t).n === 0;
   var away = bossCaptive();
-  if (g.ill) return {stage:"hen", ill:true, missed:4, fed:!!g.fed[t], free:free, away:away};
+  if (g.ill) return {stage:"hen", ill:true, missed:3, fed:!!g.fed[t], free:free, away:away};
   var missed = 0, ds = g.born || g.start, guard = 0;
   while (ds < t && guard++ < 3000){
     if (ds === g.born || g.fed[ds]) missed = 0;
     else if (bossAway(ds)){ /* at Bert's: neither fed nor missed */ }
     else if (dayFedOK(ds)) missed = 0; else missed++;
-    if (missed >= 4){ g.ill = addDays(ds, 1); GDIRTY = 1; return henLife(); }
+    if (missed >= 3){ g.ill = addDays(ds, 1); GDIRTY = 1; return henLife(); }
     ds = addDays(ds, 1);
   }
   return {stage:"hen", missed:missed, fed:!!g.fed[t], free:free, away:away};
@@ -114862,8 +114865,7 @@ function henMood(L){
     return {m:"happy", cls:"happy", e:"😊", l:"Happy and full", t:tr + "Thank you for my breakfast! I'm full and very happy. Shall we learn something?"};
   }
   if (henHungry("britney")) return {m:"hungry", cls:"sad", e:"😭", l:"Hungry", t:"Layla, I'm hungry!"};
-  if (L.missed >= 3) return {m:"door", cls:"door", e:"😵", l:"On death's door", t:"I'm so weak I can hardly stand... Please feed me today, or I'll get very ill. " + (L.free ? "Tap Feed " + nm + "." : tasks)};
-  if (L.missed === 2) return {m:"sad2", cls:"sad2", e:"😢", l:"Really sad", t:"Two days without my feed... my tummy really hurts. " + (L.free ? "Tap Feed " + nm + "." : tasks)};
+  if (L.missed >= 2) return {m:"door", cls:"door", e:"😵", l:"On death's door", t:"I'm so weak I can hardly stand... Please feed me today, or I'll get very ill. " + (L.free ? "Tap Feed " + nm + "." : tasks)};
   if (L.missed === 1) return {m:"sad", cls:"sad", e:"🥺", l:"Sad", t:"I didn't get fed yesterday and I'm feeling sad. " + (L.free ? "Tap Feed " + nm + "." : tasks)};
   if (L.free) return {m:"ok", cls:"ok", e:"🙂", l:"Day off", t:"No tasks today, so I've had my breakfast already. Enjoy your day off!"};
   return {m:"ok", cls:"ok", e:"🙂", l:"Peckish", t:"I'm a bit peckish. " + tasks};
@@ -114991,7 +114993,7 @@ function feedPanel(where){
   else btn = '<a class="btn primary" href="#/town/shop">🛒 Buy feed at Hen Bargains</a>';
   if (where === "palace") btn = btn.replace(/<a class="btn[^"]*" href="#\/palace">[^<]*<\/a>/, "");
   return '<div class="feedp mood-' + m.cls + (where === "home" ? ' onhome' : '') + '"><a class="fpic" href="#/mount" aria-label="Visit ' + esc(nm) + ' at The Mount">' + henPic(L, m) + '</a><div class="fbody"><div class="fstat">' + status + '</div><div class="fline">' + line + '</div>' +
-    (where === "home" && !L.ill && L.missed >= 3 && !L.fed ? '<div class="fwarn">Last chance: feed ' + esc(nm) + ' today or she\'ll get very ill.</div>' : '') + '</div><div class="fbtn">' + btn + '</div></div>';
+    (where === "home" && !L.ill && L.missed >= 2 && !L.fed ? '<div class="fwarn">Last chance: feed ' + esc(nm) + ' today or she\'ll get very ill.</div>' : '') + '</div><div class="fbtn">' + btn + '</div></div>';
 }
 function hungerStrip(){
   var g = gameS(), t = ymd(), out = [], from = g.hatched && g.hatched > g.start ? g.hatched : g.start;
@@ -115094,7 +115096,7 @@ function howItWorks(){
   return '<details class="palcard hiw" id="how"' + (open ? ' open' : '') + '><summary><h3>How it works</h3><span class="hiwtog" aria-hidden="true"></span></summary><ul class="hiwlist">' +
     li('🪙 <b>Coins:</b> everything you revise earns coins. Spend them in the shop.') +
     li('🌾 <b>Feeding:</b> do half of today\'s tasks' + (c.n ? ' (' + c.need + ' of ' + c.n + ')' : '') + ', then tap Feed Britney.') +
-    li('🤒 <b>Hunger:</b> 4 days without feed and she gets very ill. Medicine (' + medPrice().p + ' coins) makes her well. She never dies.') +
+    li('🤒 <b>Hunger:</b> 3 days without feed and she gets very ill. Medicine (' + medPrice().p + ' coins) makes her well. She never dies.') +
     li('🐣 <b>Chicks:</b> Britney may lay a special egg on fed days (more likely with the nesting box or golden corn). It hatches into a new baby chick for her flock (Britney herself is always here). Up to ' + BROOD_MAX + ' chicks.') +
     li('🥊 <b>Bert:</b> get ' + BOSS_WIN + ' of ' + BOSS_N + ' right to win ' + BOSS_CHEST + ' coins. Lose on a new topic and he takes Britney until you rescue her (or pay ' + BOSS_RANSOM + ').') +
     li('🥚 <b>Topic eggs:</b> revise a topic for an egg, pass its quick-fire to hatch it, rate it green 🟢 to grow it.') +
