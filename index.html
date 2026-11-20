@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120065459";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120065518";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -112407,6 +112407,7 @@ window.SQE_MOUNT = function(A){
     '.mg-act{position:absolute;left:50%;bottom:0;height:10%;transform:translateX(-50%);margin:0;padding:0;border:0;background:none;pointer-events:none}' +
     '.mg-act img{display:block;height:100%;width:auto;max-width:none;-webkit-user-drag:none;user-select:none}' +
     '.mg-layla>img{display:none}.mg-layla>img.on{display:block}.mg-layla>img.sp{display:block;visibility:hidden}.mg-layla>img.pose{position:absolute;left:0;top:0;width:100%;height:100%;transform-origin:50% 55%}' +
+    '.mg-walker img.sp{visibility:hidden}.mg-walker img.up,.mg-walker img.lg1,.mg-walker img.lg2{position:absolute;left:0;top:0;height:100%;width:100%;transform-origin:50% 100%}' +
     '.ml-rig{position:absolute;inset:0;display:none}.ml-rig.on{display:block}.ml-rig img,.ml-legs{position:absolute;left:0;top:0;width:100%;height:100%;transform-origin:0 0}.ml-legs{transform-origin:50% 50%}.ml-rig .far{filter:brightness(.72)}.ml-rig img.tl,.ml-rig img.tr{display:none}.ml-rig img.tl.on,.ml-rig img.tr.on{display:block}' +
     '.mg-brit{height:auto;cursor:pointer;pointer-events:auto}' +
     '.mg-brit .mg-flip{display:block;position:relative;transform-origin:50% 92%}' +
@@ -112533,7 +112534,9 @@ window.SQE_MOUNT = function(A){
     PEOPLE.forEach(function(p){
       if (!owned(p[0])) return;
       if (p[0] !== 'mama' && p[0] !== 'baba') who.push(p[5]);
-      h += '<div class="mg-act mg-person mg-' + p[0] + '" data-who="' + p[0] + '" data-g="' + p[1] + ',' + p[2] + ',' + (LAYLA_H * DEPTH(p[2]) * p[3]).toFixed(2) + '" title="' + esc(p[5]) + '"><img src="' + p[4] + '" alt="' + esc(p[5]) + '" onerror="this.parentNode.style.display=\'none\'"></div>';
+      var walker = p[0] === 'mama' || p[0] === 'baba', im = '<img src="' + p[4] + '" alt="' + esc(p[5]) + '" onerror="this.parentNode.style.display=\'none\'"' + (walker ? ' class="sp"' : '') + '>';
+      if (walker) im += ['up', 'lg1', 'lg2'].map(function(c){ return '<img class="' + c + '" src="' + p[4] + '" alt="">'; }).join('');
+      h += '<div class="mg-act mg-person mg-' + p[0] + (walker ? ' mg-walker' : '') + '" data-who="' + p[0] + '" data-g="' + p[1] + ',' + p[2] + ',' + (LAYLA_H * DEPTH(p[2]) * p[3]).toFixed(2) + '" title="' + esc(p[5]) + '">' + im + '</div>';
     });
     if (owned('baba') || owned('mama')){ var pp = parentPair(); h += '<span class="mg-say" data-say="' + pp[0] + '" aria-live="polite">' + esc(pp[1]) + '<i></i></span>'; }
     HENS.forEach(function(p){
@@ -112669,7 +112672,13 @@ window.SQE_MOUNT = function(A){
     var n = now();
     if (FEED){ FEED.sc = scene(n); if (FEED.sc.done){ PAUSED += n - FEED.t0; FEED = null; } }
     var t = loopT(), sc = FEED && FEED.sc;
-    statics.forEach(function(s){ if (s.el.style.display !== 'none') place(s.el, s.x, s.b, s.h, s.img); });
+    var pw = parentWalk(n);
+    statics.forEach(function(s){
+      if (s.el.style.display === 'none') return;
+      var walker = s.el.classList.contains('mg-walker');
+      place(s.el, s.x + (walker ? pw.dx : 0), s.b, s.h, s.img);
+      if (walker) stepParent(s.el, s.img, pw, s.el.getAttribute('data-who') === 'baba' ? 0.5 : 0);
+    });
     /* Layla */
     var le = g.querySelector('.mg-layla');
     if (le){
@@ -112717,6 +112726,25 @@ window.SQE_MOUNT = function(A){
       var who = g.querySelector('.mg-person[data-who="' + say.getAttribute('data-say') + '"]') || g.querySelector('.mg-person');
       if (who && who.style.display !== 'none') aim(g, say, who); else say.style.display = 'none';
     }
+  }
+  /* ----- Mama and Baba pace together (same direction, so the gap between them never closes), stepping one foot then the other ----- */
+  var PW_T = 26000, PW_D = 4.5, PW_MS = 4200, PW_STEP = 0.9;   /* cycle, distance (% of width), walk time, % walked per step */
+  function parentWalk(n){
+    var c = n % PW_T, a = 6000, b = a + PW_MS, c2 = b + 7000, d = c2 + PW_MS;
+    if (c < a) return {dx: 0}; if (c < b){ var k = (c - a) / PW_MS; return {dx: PW_D * k, walk: PW_D * k}; }
+    if (c < c2) return {dx: PW_D}; if (c < d){ var k2 = (c - c2) / PW_MS; return {dx: PW_D * (1 - k2), walk: PW_D * k2}; }
+    return {dx: 0};
+  }
+  function stepParent(el, img, pw, off){
+    var t = TRIM[img.getAttribute('src')]; if (!t) return;
+    var hip = t[0] + (1 - t[0] - t[1]) * 0.6, cx = (t[2] + 1 - t[3]) / 2, up = el.querySelector('img.up'), l1 = el.querySelector('img.lg1'), l2 = el.querySelector('img.lg2');
+    if (!up) return;
+    var hp = (hip * 100).toFixed(2), cp = (cx * 100).toFixed(2), hp2 = ((1 - hip) * 100 - 0.6).toFixed(2);
+    up.style.clipPath = 'inset(0 0 ' + hp2 + '% 0)'; l1.style.clipPath = 'inset(' + hp + '% ' + (100 - cx * 100).toFixed(2) + '% 0 0)'; l2.style.clipPath = 'inset(' + hp + '% 0 0 ' + cp + '%)';
+    var lift1 = 0, lift2 = 0, bob = 0, sway = 0;
+    if (pw.walk != null){ var ph = (pw.walk / PW_STEP + off) % 2, s1 = ph < 1 ? Math.sin(Math.PI * ph) : 0, s2 = ph >= 1 ? Math.sin(Math.PI * (ph - 1)) : 0; lift1 = s1 * 3.2; lift2 = s2 * 3.2; bob = (s1 + s2) * 0.9; sway = (s1 - s2) * 1.6; }
+    l1.style.transform = 'translateY(' + (-lift1).toFixed(2) + '%) scaleY(' + (1 - lift1 / 100).toFixed(3) + ')'; l2.style.transform = 'translateY(' + (-lift2).toFixed(2) + '%) scaleY(' + (1 - lift2 / 100).toFixed(3) + ')';
+    up.style.transform = 'translateY(' + (-bob).toFixed(2) + '%) rotate(' + sway.toFixed(2) + 'deg)';
   }
   /* ----- Layla's walk: hips swing the legs alternately, the knee bends as each leg swings forward, the body rises as the legs pass,
      and the planted foot stays put because the cycle is driven by the distance she has walked (STRIDE_PX). ----- */
