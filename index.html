@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120140504";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120141235";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -4076,6 +4076,15 @@ details.podsubj[open] .podchev{transform:rotate(-135deg);margin-top:6px}
 @media (prefers-reduced-motion:reduce){.flash.revealed .face.back .notes{animation:none}}
 .land-real.land-zoo .flash .face > .ftop{top:24%!important}.land-real.land-zoo .flash .face{--pt:39%}
 .jcempty{grid-column:1/-1;justify-self:center;white-space:nowrap}
+/* 20 Nov 14:25 long answers: the card grows a little when the answer is shown */
+.flash.revealed.blen-l .inner{min-height:370px}.flash.revealed.blen-xl .inner{min-height:450px}
+.land-real:not(.land-tkt) .flash.revealed.blen-l .inner{min-height:500px}.land-real:not(.land-tkt) .flash.revealed.blen-xl .inner{min-height:570px}
+.land-real.land-amazon-forest .flash.revealed.blen-l .inner{min-height:530px}.land-real.land-amazon-forest .flash.revealed.blen-xl .inner{min-height:600px}
+.land-real.land-aquarium .flash.revealed.blen-l .inner{min-height:540px}.land-real.land-aquarium .flash.revealed.blen-xl .inner{min-height:610px}
+.land-real.land-farm .flash.revealed.blen-l .inner{min-height:560px}.land-real.land-farm .flash.revealed.blen-xl .inner{min-height:640px}
+@media (max-width:640px){.flash.revealed.blen-l .inner{min-height:440px}.flash.revealed.blen-xl .inner{min-height:540px}.land-real:not(.land-tkt) .flash.revealed.blen-l .inner{min-height:640px}.land-real:not(.land-tkt) .flash.revealed.blen-xl .inner{min-height:740px}.land-real.land-amazon-forest .flash.revealed.blen-l .inner,.land-real.land-aquarium .flash.revealed.blen-l .inner,.land-real.land-farm .flash.revealed.blen-l .inner{min-height:760px}.land-real.land-amazon-forest .flash.revealed.blen-xl .inner,.land-real.land-aquarium .flash.revealed.blen-xl .inner,.land-real.land-farm .flash.revealed.blen-xl .inner{min-height:860px}}
+.land-real:not(.land-tkt) .flash .face.back.blen-s .notes{font-size:1.22em}
+.land-real.land-amazon-forest .flash .face.back{--pb:27%;padding-left:21%!important;padding-right:15%!important}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -149032,6 +149041,8 @@ window.SQE_SCENE = function(A){
       '.stsk .bu-how b{color:var(--sk2)}.stsk .scn-sheet.bul-on .lrn-fact{background:var(--skp);border-left-color:var(--sk1)}' +
       '.stsk .scn-confetti i svg,.scn-confetti.sk i svg{width:30px;height:30px}' +
       '.stsk .scn-hook.speech{background:#fff;color:#1b1b1b;border:.2cqw solid #1b1b1b;border-radius:1.4cqw;box-shadow:.2cqw .25cqw 0 #1b1b1b;text-shadow:none;padding:.25cqw .8cqw;font-family:"Gochi Hand","Sour Gummy",cursive;font-weight:400;font-size:max(1.25cqw,13px)!important;width:auto!important;min-width:0;z-index:3}.stsk .scn-hook.speech::after{background:#fff;border-right:.2cqw solid #1b1b1b;border-bottom:.2cqw solid #1b1b1b;box-shadow:none}' +
+      '.stsk .scn-board{color:#1D3557;text-shadow:none;font-family:"Gochi Hand","Delius",cursive}.stsk .scn-board[data-scn-board$="dr-case-management"],.stsk .scn-board[data-scn-board$="dr-costs"]{color:#fff;text-shadow:0 1px 2px #1b1b1b}' +
+      '.stsk .scn-hook.tag{transform:translate(-50%,-100%) rotate(var(--rot,0deg));height:auto!important;width:auto!important;padding:.08cqw .3cqw;line-height:1.05;background:rgba(255,253,242,.86);border-width:.12cqw;box-shadow:.12cqw .12cqw 0 #1b1b1b}' +
       '.stsk .bk-on .bu-wr{display:block}.stsk .bk-on .bu-body{border-radius:14px}.stsk .bk-on .bu-body::before{display:none}' +
       '.stsk .bk-popcorn .bu-body{border-radius:44% 56% 40% 60%/58% 42% 58% 42%;background:radial-gradient(circle at 12% 30%,#FFE27A 0 7px,transparent 8px),radial-gradient(circle at 88% 72%,#FFD24A 0 6px,transparent 7px),radial-gradient(circle at 70% 14%,#FFE9A0 0 6px,transparent 7px),#FFFBEF}' +
       '.stsk .bk-popcorn .gm-pc{border-radius:50%;width:20%!important;height:17%;margin-left:12%;background:radial-gradient(circle at 60% 40%,#FFD34D 0 22%,transparent 26%),#FFFBEF!important}.stsk .bk-coin .gm-pc{border-radius:50%;width:22%!important;margin-left:10%;background:#FFC300!important}.stsk .bk-coconut .gm-pc{border-radius:50%;width:22%!important;margin-left:10%;background:#8D5A3B!important}' +
@@ -149165,7 +149176,8 @@ window.SQE_SCENE = function(A){
   /* memory hooks: hand-lettered words drawn onto objects in the picture (rooms v3), e.g. "Alfie" on the door. Text lives in code, never in the drawing. */
   function hooksHTML(view){ var H = view && view.hooks; if (!ROOMS_ON || !H || !H.length || !view.img) return ''; var r = view.ratio || 16 / 9;
     return H.map(function(o){ var t = String(o.text || ''), n = t.split('\n').length, fs = Math.min(o.h * 0.62 / n / r, o.w * 1.6 / Math.max(4, Math.max.apply(null, t.split('\n').map(function(l){ return l.length; }))));
-      return '<span class="scn-hook ' + esc(o.style || 'tag') + '" aria-hidden="true" style="left:' + o.x + '%;top:' + o.y + '%;width:' + o.w + '%;height:' + o.h + '%;font-size:' + fs.toFixed(2) + 'cqw;--rot:' + (+o.rot || 0) + 'deg">' + esc(t).replace(/\n/g, '<br>') + '</span>'; }).join(''); }
+      var skt = SKIN && (o.style || 'tag') === 'tag'; if (skt) fs = Math.min(fs, 0.8);
+      return '<span class="scn-hook ' + esc(o.style || 'tag') + '" aria-hidden="true" style="left:' + (skt ? +o.x + o.w / 2 : o.x) + '%;top:' + (skt ? +o.y + +o.h : o.y) + '%;width:' + o.w + '%;height:' + o.h + '%;font-size:' + fs.toFixed(2) + 'cqw;--rot:' + (+o.rot || 0) + 'deg">' + esc(t).replace(/\n/g, '<br>') + '</span>'; }).join(''); }
   function boardLines(k){ return (k && BOARD_HOOKS[k.split('/')[1]]) || null; }
   /* 20 Nov: rooms whose new picture has no drawn chalkboard get a painted board behind the words so they stay readable */
   var BOARD_PLAIN = {'shareholders-minority':1, 'partnerships':1, 'corporate-insolvency':1, 'insolvency-clawback-priority':1, 'personal-insolvency':1, 'income-tax':1, 'cgt':1, 'corporation-tax':1, 'vat-iht-bpr':1};
@@ -149955,13 +149967,13 @@ window.SQE_TOWN = function(A){
   /* ---------- walk-in shop (Monnie 13:27) ---------- */
   /* where everything sits in the drawing, in % of the picture: rows of shelves (items spread evenly along each), then the family by the till and the hens wandering in the aisle */
   var HB_ROWS = [   /* the drawing's four shelf lines; big garden things on the top shelf */
-    {b: 62.8, h: 10.5, x0: 29, x1: 84, ids: ['coop', 'palace', 'player', 'rec_ss', 'rec_mj', 'nestbox', 'swing']},
-    {b: 51.2, h: 8.2, x0: 29, x1: 84, ids: ['pandan', 'latte', 'cookies', 'cup', 'goldcorn', 'corn', 'sweets']},
-    {b: 40.8, h: 8.2, x0: 29, x1: 84, ids: ['crocs', 'charms', 'socks', 'clawsocks', 'tote', 'skincare', 'soap']},
-    {b: 30.4, h: 8.2, x0: 29, x1: 84, ids: ['pens', 'stickers', 'colouring', 'calendar', 'toppers', 'plaque', 'lamp']}
+    {b: 62.8, h: 10.5, x0: 36, x1: 85, ids: ['coop', 'palace', 'player', 'rec_ss', 'rec_mj', 'nestbox', 'swing']},
+    {b: 51.2, h: 8.2, x0: 36, x1: 85, ids: ['pandan', 'latte', 'cookies', 'cup', 'goldcorn', 'corn', 'sweets']},
+    {b: 40.8, h: 8.2, x0: 36, x1: 85, ids: ['crocs', 'charms', 'socks', 'clawsocks', 'tote', 'skincare', 'soap']},
+    {b: 30.4, h: 8.2, x0: 36, x1: 85, ids: ['pens', 'stickers', 'colouring', 'calendar', 'toppers', 'plaque', 'lamp']}
   ];
   var HB_SPOT = {   /* id: [x%, bottom%, height%, kind]: Mama and Baba behind the till, the others shopping at the end of the aisle, the hens and Jiminey wandering about */
-    parents: [26.2, 21.9, 33, 'ppl till'], monnie: [87, 5, 36.5, 'ppl'], yasmin: [92.6, 4, 34, 'ppl'], mo: [97.6, 5.5, 34, 'ppl'],
+    parents: [25, 23, 29, 'ppl till'], monnie: [87, 5, 36.5, 'ppl'], yasmin: [92.6, 4, 34, 'ppl'], mo: [97.6, 5.5, 34, 'ppl'],
     friend: [44, 3, 9.5, 'hen'], bianca: [55, 6, 9, 'hen'], beefy: [64, 2.5, 9.5, 'hen'], brucey: [73, 5.5, 9.5, 'hen'], bonnie: [80, 2, 8.5, 'hen']
   };
   var HB_SIGN = [4.4, 6.4, 13.4, 9.6]; /* [left%, top%, width%, height%] of the blank sign over the door (drawn at an angle) */
@@ -150744,7 +150756,7 @@ window.SQE_MOUNT = function(A){
     requestAnimationFrame(tick);
     try { frame(); } catch(e){ if (!tick.err){ tick.err = 1; try { console.error('Mount garden:', e); } catch(e2){} } }
   }
-  /* Jiminey hops about his corner of the lawn: a few hops, a sniff, a few more (Monnie 13:27) */
+  /* (his picture faces left) Jiminey hops about his corner of the lawn: a few hops, a sniff, a few more (Monnie 13:27) */
   var RAB = [[90, 26, 2600], [93, 22, 1800], [96.2, 24, 3200], [93, 26.5, 2200]], HOP_MS = 520, HOP_D = 1.4, RSEG = [], RT = 0;
   (function(){ for (var i = 0; i < RAB.length; i++){ var a = RAB[i], b = RAB[(i + 1) % RAB.length], hops = Math.max(1, Math.round(Math.sqrt(Math.pow(b[0] - a[0], 2) + Math.pow((b[1] - a[1]) * 0.56, 2)) / HOP_D)); RSEG.push({a: a, b: b, t: RT, hops: hops}); RT += hops * HOP_MS + b[2]; } })();
   function rabbitAt(n){
@@ -150768,7 +150780,7 @@ window.SQE_MOUNT = function(A){
     var kid = KID ? kidState(n) : null;
     statics.forEach(function(s){
       if (s.el.style.display === 'none') return;
-      if (s.el.getAttribute('data-hen') === 'bonnie' && s.img){ var rb = rabbitAt(n); place(s.el, rb.x, rb.b, s.h, s.img); s.img.style.transform = (rb.face === 'l' ? 'scaleX(-1) ' : '') + 'translateY(' + (-rb.lift).toFixed(2) + '%) scale(' + rb.sq[0].toFixed(3) + ',' + rb.sq[1].toFixed(3) + ')'; return; }
+      if (s.el.getAttribute('data-hen') === 'bonnie' && s.img){ var rb = rabbitAt(n); place(s.el, rb.x, rb.b, s.h, s.img); s.img.style.transform = (rb.face === 'r' ? 'scaleX(-1) ' : '') + 'translateY(' + (-rb.lift).toFixed(2) + '%) scale(' + rb.sq[0].toFixed(3) + ',' + rb.sq[1].toFixed(3) + ')'; return; }
       var walker = false, who = s.el.getAttribute('data-who'), par = who === 'mama' || who === 'baba';
       place(s.el, s.x + (kid && par ? kid[who].dx : 0), s.b, s.h, s.img);
       if (par && s.img) s.img.style.transform = kid ? kid[who].tf : parentPose(who, n);
@@ -154011,9 +154023,9 @@ VIEW.cards = function(r){
     var d = FC.deck[FC.i];
     if (FC.atI !== FC.i || FC.atD !== d.id){ FC.atI = FC.i; FC.atD = d.id; FC.at = Date.now(); }
     return '<div class="card skin-sweet skin-stop land-' + cardLand(d.s.id) + (CARDX[cardLand(d.s.id)] ? ' land-real' + (CARDX[cardLand(d.s.id)].st ? ' land-tkt' : '') + (CARDX[cardLand(d.s.id)].sr ? ' land-stubr' : '') : '') + '"' + cardStyle(d.s.id) + '>' + cardHead(d.s.id, onlyT && s && TBYKEY[s.id + "/" + onlyT] ? (TBYKEY[s.id + "/" + onlyT].i + 1) + ". " + esc(TBYKEY[s.id + "/" + onlyT].t.title) : "") + '<div class="qmeta"><span>' + esc(s ? s.title : "All subjects") + (onlyT && s && TBYKEY[s.id + "/" + onlyT] ? " · " + (TBYKEY[s.id + "/" + onlyT].i + 1) + ". " + esc(TBYKEY[s.id + "/" + onlyT].t.title) : "") + (learnOnly ? " · not yet 🟢" : "") + (extraOnly ? " · ⭐ extra cards" : "") + '</span><span>Card ' + (FC.i + 1) + ' of ' + FC.deck.length + '</span></div>' +
-      '<div class="flash' + (FC.flip ? " revealed" : "") + '" data-act="fcflip" role="button" tabindex="0" aria-label="' + (FC.flip ? 'Hide answer' : 'Show answer') + '">' + cardDeco(d.s.id, FC.i + 1) + '<div class="inner">' +
+      '<div class="flash' + (FC.flip ? " revealed" + (d.c[1].length >= 360 ? " blen-xl" : d.c[1].length >= 230 ? " blen-l" : "") : "") + '" data-act="fcflip" role="button" tabindex="0" aria-label="' + (FC.flip ? 'Hide answer' : 'Show answer') + '">' + cardDeco(d.s.id, FC.i + 1) + '<div class="inner">' +
       '<div class="face">' + cardTop(d.s.id, FC.i + 1) + '<small>' + esc(d.s.title) + '</small>' + '<span class="swico" aria-hidden="true">' + sweetIcon(d.s.id === "blp" ? d.c[0] : "", true) + '</span>' + inl(d.c[0]) + '<div class="kbd" style="margin-top:14px">Tap to see the answer</div></div>' +
-      '<div class="face back' + (d.c[1].length < 170 ? ' blen-s' : d.c[1].length < 290 ? ' blen-m' : '') + '">' + cardTop(d.s.id, FC.i + 1).replace(/<div class="lbc"[\s\S]*$/, "") + '<small>Answer</small><div class="cardq">' + inl(d.c[0]) + '</div><div class="notes">' + md(oneSentencePerLine(d.c[1])) + '</div></div></div></div>' +
+      '<div class="face back' + (d.c[1].length < 150 ? ' blen-s' : d.c[1].length < 230 ? ' blen-m' : '') + '">' + cardTop(d.s.id, FC.i + 1).replace(/<div class="lbc"[\s\S]*$/, "") + '<small>Answer</small><div class="cardq">' + inl(d.c[0]) + '</div><div class="notes">' + md(oneSentencePerLine(d.c[1])) + '</div></div></div></div>' +
       '<div class="btns" style="justify-content:center">' + (FC.flip ? '<span class="rate-lab">How well did you know it?</span><button class="rate" data-act="fcmark" data-v="0" aria-label="Didn\'t know it">🔴<span>Didn\'t know</span></button><button class="rate" data-act="fcmark" data-v="0.5" aria-label="Partly knew it">🟠<span>Sort of</span></button><button class="rate" data-act="fcmark" data-v="1" aria-label="Knew it">🟢<span>Knew it</span></button>' : '<button class="btn primary" data-act="fcflip">Show answer</button>') + '</div>' +
       '<div class="btns" style="justify-content:center"><button class="btn sm" data-act="fcprev"' + (FC.i ? '' : ' disabled') + '>‹ Previous card</button><button class="btn sm" data-act="fcskip">Next card ›</button></div>' + '<div class="kbd keyhint" style="text-align:center;margin-top:6px">Keys: Space = flip, then 1 🔴, 2 🟠, 3 🟢</div></div>';
   }
