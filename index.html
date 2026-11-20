@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120103629";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120104351";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -3952,6 +3952,9 @@ a.pkback:hover .pksign{transform:rotate(-3deg) scale(1.05)}
 .bcapshop .bthink .bt-d2{left:6.5%;top:45.5%;width:3.6cqw;height:3.6cqw;min-width:0;min-height:0;border-width:max(1.5px,.5cqw)}
 .bcapshop .bthink .bt-d3{left:13%;top:49%;width:2.4cqw;height:2.4cqw;min-width:0;min-height:0;border-width:max(1.2px,.4cqw)}
 .bcapwrap .bclosed b{font-size:4.6cqw}
+.bcapshop .bthink .bt-main{left:-52%;width:47%;padding:11% 3%;top:4%}
+.bcapwrap .bclosed b{font-size:5.4cqw}
+.bcapwrap .bclosed b{font-size:5.6cqw!important}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -126812,7 +126815,7 @@ window.SQE_SCENE = function(A){
   function qtCard(p, key){ var x = p.q, v = SC.qt && SC.qt[key], ok = v != null && (v === 1) === !!x['true'];
     return '<div class="lrn-card lrn-chk qt-card"><div class="lrn-ico" aria-hidden="true">⚡</div><h3 class="lrn-t">True or false?</h3><p class="qt-s">' + esc(x.t) + '</p>' +
       (v == null ? '<div class="qt-btns"><button type="button" class="btn qt-b qt-t" data-scn="qtf" data-v="1">True</button><button type="button" class="btn qt-b qt-f" data-scn="qtf" data-v="0">False</button></div>'
-        : '<p class="qt-r ' + (ok ? 'ok' : 'no') + '"><b>' + (ok ? 'Yes! ' : 'Not quite. ') + 'It\'s ' + (x['true'] ? 'true' : 'false') + '.</b>' + (x.fix ? ' ' + esc(x.fix) : '') + '</p>') + '</div>'; }
+        : '<p class="qt-r ' + (ok ? 'ok' : 'no') + '"><b>' + (ok ? 'Yes! ' : 'Not quite. ') + 'It\'s ' + (x['true'] ? 'true' : 'false') + '.</b>' + (x.fix ? ' ' + esc(x.fix).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>') : '') + '</p>') + '</div>'; }
   function actDone(k, h){ var o = state(k); return !!(o.open[h.id] || o.acts[h.id]); }
   var SA_NAME = {burst: 'Sweets explosion', 'catch': 'Catch the true facts', sort: 'Sort onto the trays'};
   var SA_HOW = {burst: 'The jar bursts and sweets fly out. Tap only the true ones before their fuse runs out.', 'catch': 'Facts whizz past one at a time. Tap the true ones into the container. Let the false ones go.', sort: 'Drag each card onto the right tray, or tap a tray.'};
