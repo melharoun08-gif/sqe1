@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120103111";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120103629";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -3942,6 +3942,16 @@ a.pkback:hover .pksign{transform:rotate(-3deg) scale(1.05)}
 :is(.mount,.mg-shedbox,#_#_#_) *:not(.mount-sign):not(.town-nav):not(.town-nav *):not(svg):not(svg *){font-family:Calibri,Carlito,"Segoe UI",Candara,Arial,sans-serif!important}
 .bossg .bspeech,.tb-red .bspeech{border-color:var(--bsp-line)!important;background:var(--bsp-bg)!important}
 .bthink .bt-main{font-size:clamp(10px,4.6cqw,26px);width:34%;padding:7% 3%}
+
+/* thought bubble v3: measured in shop widths (container = the shop), circles step down to the window corner (window at 17.6%/50.3%) */
+.bcapwrap .bcapshop{container-type:inline-size;overflow:visible}
+.bcapshop .bthink{position:absolute;inset:0;z-index:5;pointer-events:none}
+.bcapshop .bthink .bt-main{left:-60%;top:6%;width:55%;padding:9% 3%;font-size:6.4cqw;line-height:1.12;border-width:max(2px,.8cqw)}
+:is(.cbag.town,.cbag.bossg,#_#_#_) .bthink .bt-main{font-family:var(--hand),'Patrick Hand',cursive!important}
+.bcapshop .bthink .bt-d1{left:-2%;top:41%;width:5cqw;height:5cqw;min-width:0;min-height:0;border-width:max(1.5px,.6cqw)}
+.bcapshop .bthink .bt-d2{left:6.5%;top:45.5%;width:3.6cqw;height:3.6cqw;min-width:0;min-height:0;border-width:max(1.5px,.5cqw)}
+.bcapshop .bthink .bt-d3{left:13%;top:49%;width:2.4cqw;height:2.4cqw;min-width:0;min-height:0;border-width:max(1.2px,.4cqw)}
+.bcapwrap .bclosed b{font-size:4.6cqw}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -126772,9 +126782,9 @@ window.SQE_SCENE = function(A){
   function steps(k, h){
     var st = [];
     if (h.big && A.NOTECHECK[k] && A.NOTECHECK[k].big) st.push({k: 'big', sec: 'The big idea'});
-    var cl = cardsOf(k, h), qts = qtPool(k, h), used = [];
+    var cl = cardsOf(k, h), qts = qtPool(k, h), used = [], off = st.length;
     cl.forEach(function(c, ci){ st.push({k: 'card', sec: c.sec, c: c.c});
-      if (qts && (ci + 1) % 3 === 0 && ci < cl.length - 1){ var near = cl.slice(Math.max(0, ci - 2), ci + 1).map(function(z){ return z.c; }), q = null;
+      if (qts && (ci + 1 + off) % 3 === 0 && ci < cl.length - 1){ var near = cl.slice(Math.max(0, ci - 2), ci + 1).map(function(z){ return z.c; }), q = null;
         for (var qi = 0; qi < qts.length && !q; qi++) if (used.indexOf(qi) < 0 && near.indexOf(qts[qi].card) >= 0) q = qi;
         for (qi = 0; qi < qts.length && q == null; qi++) if (used.indexOf(qi) < 0) q = qi;
         if (q != null){ used.push(q); st.push({k: 'qt', sec: 'Quick tap', q: qts[q].x}); } } }); /* Monnie 20 Nov: every 4th click-through is something to do, not just reading */
@@ -132934,8 +132944,9 @@ var BOSS_WINDOW_ON = true; /* Monnie 20 Nov 08:40: pictures go straight in */
 function bossShopImg(cls){
   if (!BOSS_WINDOW_ON) return bertShopHTML("bshop " + (cls || ""), '<span class="bmcage">' + bossBrit("scared") + BOSS_CAGE + '</span>');
   var win = '<span class="bclosed" aria-hidden="true"><i></i><b>CLOSED</b></span><span class="bmwin"><span class="bmwin-bg"></span><img class="bmwin-brit" src="img/britney/sad-set.webp" alt="">' + BOSS_BARS + '</span>';
-  return '<div class="bcapwrap">' + bertShopHTML("bshop bcapshop " + (cls || ""), win).replace('aria-label="Bert\'s Butchers, Bert at his shop door"', 'aria-label="Britney locked in Bert\'s shop window, sad"') +
-    '<span class="bthink" aria-label="Britney thinks: Layla, please save me!"><span class="bt-main">Layla, please save me!</span><i class="bt-d1"></i><i class="bt-d2"></i><i class="bt-d3"></i></span></div>';
+  /* the thought bubble sits inside the shop box (positions in shop units), so its little circles always lead right to the window */
+  win += '<span class="bthink" aria-label="Britney thinks: Layla, please save me!"><span class="bt-main">Layla, please save me!</span><i class="bt-d1"></i><i class="bt-d2"></i><i class="bt-d3"></i></span>';
+  return '<div class="bcapwrap">' + bertShopHTML("bshop bcapshop " + (cls || ""), win).replace('aria-label="Bert\'s Butchers, Bert at his shop door"', 'aria-label="Britney locked in Bert\'s shop window, sad"') + '</div>';
 }
 /* Britney in the Bert game: the map's Britney picture; happy when Bert is pushed back, scared when he comes closer */
 function bossBrit(mood, pic){
