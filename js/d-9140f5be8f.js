@@ -46738,7 +46738,7 @@ window.SQE_PODCASTS = {
   "tort/product-liability": {file: "podcasts/tort-10-product-liability.m4a", mins: 26},
   "tort/nuisance-rylands": {file: "podcasts/tort-11-nuisance-rylands.m4a", mins: 27},
   "ethics/duty-to-court": {file: "podcasts/ethics-03-duty-to-court.m4a", mins: 22},
-  "legalsys/sovereignty-rule-of-law": {file: "podcasts/legalsys-05-sovereignty-rule-of-law.m4a", mins: 22},
+  "legalsys/sovereignty-rule-of-law": {file: "podcasts/legalsys-05-sovereignty-rule-of-law.m4a?v=2", mins: 26},
   "contract/discharge-frustration": {file: "podcasts/contract-10-discharge-frustration.m4a", mins: 27},
   "contract/damages": {file: "podcasts/contract-11-damages.m4a", mins: 24},
   "contract/equitable-remedies-guarantees": {file: "podcasts/contract-12-equitable-remedies-guarantees.m4a", mins: 25},
@@ -46773,7 +46773,27 @@ window.SQE_PODCASTS = {
   "accounts/client-account-withdrawals": {file: "podcasts/accounts-02-client-account-withdrawals.m4a", mins: 22},
   "trusts/certainties": {file: "podcasts/trusts-01-certainties.m4a", mins: 29},
   "contract/mistake-duress-ui-illegality": {file: "podcasts/contract-09-mistake-duress-ui-illegality.m4a", mins: 29},
-  "property/title": {file: "podcasts/property-02-title.m4a", mins: 16}
+  "property/title": {file: "podcasts/property-02-title.m4a", mins: 16},
+  "property/searches": {file: "podcasts/property-03-searches.m4a", mins: 33},
+  "property/contract": {file: "podcasts/property-05-contract.m4a", mins: 21},
+  "property/exchange": {file: "podcasts/property-06-exchange.m4a", mins: 22},
+  "property/pre-completion": {file: "podcasts/property-07-pre-completion.m4a", mins: 25},
+  "property/completion": {file: "podcasts/property-08-completion.m4a", mins: 20},
+  "property/delayed-completion": {file: "podcasts/property-09-delayed-completion.m4a", mins: 21},
+  "property/lease-contents": {file: "podcasts/property-10-lease-contents.m4a", mins: 24},
+  "property/lease-dealings": {file: "podcasts/property-11-lease-dealings.m4a", mins: 25},
+  "property/lease-remedies": {file: "podcasts/property-12-lease-remedies.m4a", mins: 28},
+  "legalsys/judicial-review-grounds": {file: "podcasts/legalsys-11-judicial-review-grounds.m4a", mins: 28},
+  "legalsys/eu-law-brexit": {file: "podcasts/legalsys-13-eu-law-brexit.m4a", mins: 21},
+  "land/nature-of-land": {file: "podcasts/land-01-nature-of-land.m4a", mins: 18},
+  "land/formalities": {file: "podcasts/land-02-formalities.m4a", mins: 25},
+  "land/registered-land": {file: "podcasts/land-03-registered-land.m4a", mins: 32},
+  "land/unregistered-land": {file: "podcasts/land-04-unregistered-land.m4a", mins: 23},
+  "land/co-ownership": {file: "podcasts/land-05-co-ownership.m4a", mins: 23},
+  "land/easements": {file: "podcasts/land-06-easements.m4a", mins: 23},
+  "land/covenants": {file: "podcasts/land-07-covenants.m4a", mins: 26},
+  "land/mortgages": {file: "podcasts/land-08-mortgages.m4a", mins: 25},
+  "land/leases-nature": {file: "podcasts/land-09-leases-nature.m4a", mins: 26}
 };
 
 ;
