@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120023533";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120023723";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -90113,8 +90113,8 @@ var CSS = [
 '.scn-prog .scn-bar i{display:block;height:100%;background:repeating-linear-gradient(135deg,#FF5DA2 0 12px,#FF8FC7 12px 24px);transition:width .4s}',
 '.scn-art{position:relative;width:100%;border:4px solid #1b1b1b;border-radius:20px;overflow:hidden;box-shadow:5px 5px 0 #1b1b1b;background:#FFF1C9}',
 '.scn-art:has(.scn-board){container-type:inline-size}',
-'.scn-board{position:absolute;z-index:1;display:flex;align-items:center;justify-content:center;padding:5%;box-sizing:border-box;background:none;border:0;border-radius:6px;cursor:zoom-in;color:#fff;font:400 1em/1.05 "Caveat Brush","Gochi Hand","Patrick Hand",cursive;letter-spacing:.01em;text-align:center;text-shadow:0 0 1px rgba(255,255,255,.9),0 0 3px rgba(255,255,255,.45),0 0 8px rgba(255,255,255,.18);overflow:hidden}',
-'.scn-board.tight{padding:2%;overflow:visible}.scn-board.tight .scn-bt{line-height:1}.scn-board.tight .ln+.ln{margin-top:.05em}',
+'.scn-board{position:absolute;z-index:1;display:flex;align-items:center;justify-content:center;padding:var(--bpy,1cqw) var(--bpx,1cqw);box-sizing:border-box;background:none;border:0;border-radius:6px;cursor:zoom-in;color:#fff;font:400 1em/1.05 "Caveat Brush","Gochi Hand","Patrick Hand",cursive;letter-spacing:.01em;text-align:center;text-shadow:0 0 1px rgba(255,255,255,.9),0 0 3px rgba(255,255,255,.45),0 0 8px rgba(255,255,255,.18);overflow:hidden}',
+'.scn-board.tight{padding:calc(var(--bpy,1cqw) * .3) calc(var(--bpx,1cqw) * .3);overflow:visible}.scn-board.tight .scn-bt{line-height:1}.scn-board.tight .ln+.ln{margin-top:.05em}',
 '.scn-board:hover,.scn-board:focus-visible{outline:3px dashed rgba(255,255,255,.7);outline-offset:-3px}',
 '.scn-bt{display:block;max-width:100%;font-size:2cqw;overflow-wrap:break-word}.scn-bt .ln{display:block}.scn-bt .ln+.ln{margin-top:.14em}',
 '.scn-boardov{position:fixed;inset:0;z-index:1000;background:rgba(20,16,30,.62);display:grid;place-items:center;padding:16px}',
@@ -90739,12 +90739,12 @@ window.SQE_SCENE = function(A){
   /* the room's chalkboard: real text on the drawn board, auto-fitted (fitBoards) and tappable to read it big */
   function boardLines(k){ return (k && BOARD_HOOKS[k.split('/')[1]]) || null; }
   function boardHTML(view, k){ var b = view && view.board, L = boardLines(k); if (!ROOMS_ON || !b || !L || !view.img) return '';
-    return '<button type="button" class="scn-board" data-scn-board="' + esc(k) + '" style="left:' + b.x + '%;top:' + b.y + '%;width:' + b.w + '%;height:' + b.h + '%" aria-label="Chalkboard: ' + esc(L.join(' ')) + '. Tap to read it big."><span class="scn-bt">' + L.map(function(l){ return '<span class="ln">' + esc(l) + '</span>'; }).join('') + '</span></button>'; }
+    return '<button type="button" class="scn-board" data-scn-board="' + esc(k) + '" style="left:' + b.x + '%;top:' + b.y + '%;width:' + b.w + '%;height:' + b.h + '%;--bpx:' + (b.w * 0.05).toFixed(2) + 'cqw;--bpy:' + (b.h * 0.05 / (view.ratio || 16 / 9)).toFixed(2) + 'cqw" aria-label="Chalkboard: ' + esc(L.join(' ')) + '. Tap to read it big."><span class="scn-bt">' + L.map(function(l){ return '<span class="ln">' + esc(l) + '</span>'; }).join('') + '</span></button>'; }
   function fitBoards(){ var els = document.querySelectorAll('.scn-board .scn-bt:not([data-fit]), .scn-boardov .scn-bt:not([data-fit])');
     for (var i = 0; i < els.length; i++){ var t = els[i], box = t.parentNode, lo = 0.5, hi = box.classList.contains('scn-board') ? 12 : 80, unit = box.classList.contains('scn-board') ? 'cqw' : 'px';
       if (box.clientWidth < 8 || box.clientHeight < 8) continue; /* picture not loaded yet: the image load listener refits */
       var cw = box.clientWidth - parseFloat(getComputedStyle(box).paddingLeft) * 2, ch = box.clientHeight - parseFloat(getComputedStyle(box).paddingTop) * 2;
-      for (var n = 0; n < 14; n++){ var mid = (lo + hi) / 2; t.style.fontSize = mid + unit; if (t.scrollHeight <= ch && t.scrollWidth <= cw) lo = mid; else hi = mid; }
+      for (var n = 0; n < 14; n++){ var mid = (lo + hi) / 2; t.style.fontSize = mid + unit; if (t.scrollHeight <= ch + 1 && t.scrollWidth <= cw + 1) lo = mid; else hi = mid; }
       /* never smaller than readable on a phone (12px); the board is tappable to read it big anyway */
       var floor = unit === 'cqw' ? 12 / (box.parentNode.clientWidth / 100) : 18; if (lo < floor){ lo = floor; box.classList.add('tight'); } else box.classList.remove('tight');
       t.style.fontSize = lo + unit; t.setAttribute('data-fit', '1'); } }
