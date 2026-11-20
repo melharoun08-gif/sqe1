@@ -2,9 +2,9 @@
 <html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>SQE1 Revision</title>
 <meta name="theme-color" content="#4A3B6B">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120094639";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120095025";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -3804,6 +3804,36 @@ a.pkback:hover .pksign{transform:rotate(-3deg) scale(1.05)}
 .land-real.land-aquarium .flash .face{padding-top:116px}
 .land-real.land-aquarium .flash .back,.land-real.land-balloon-field .flash .back{font-size:14.5px}
 @media (max-width:640px){.land-real:not(.land-tkt) .flash .inner{min-height:460px}.land-real:not(.land-tkt) .flash .back{font-size:14px}.land-real:not(.land-tkt) .flash .back .cardq{font-size:13px}.land-real.land-aquarium .flash .face{padding:112px 112px 82px 58px}.land-real.land-museum .flash .face{padding:96px 40px 46px 40px}.land-real.land-pier .flash .face{padding:74px 112px 30px 22px}}
+/* text area and header placed as a share of the card height, so the drawn object can stretch on phones without the text hitting its bands */
+.land-real:not(.land-tkt) .flash .face::before,.land-real:not(.land-tkt) .flash .face::after{content:"";display:block;flex:0 0 var(--pt,20%)}
+.land-real:not(.land-tkt) .flash .face::after{flex-basis:var(--pb,10%)}
+.land-real:not(.land-tkt) .flash .face{padding-top:0!important;padding-bottom:0!important;justify-content:flex-start}
+.land-real:not(.land-tkt) .flash .face > .ftop{position:absolute}
+.land-real.land-library .flash .face{--pt:27%;--pb:16%}.land-real.land-library .flash .face > .ftop{top:3%!important}
+.land-real.land-airport .flash .face{--pt:31%;--pb:15%}.land-real.land-airport .flash .face > .ftop{top:3%!important}
+.land-real.land-museum .flash .face{--pt:26%;--pb:13%}.land-real.land-museum .flash .face > .ftop{top:13%!important}
+.land-real.land-aquarium .flash .face{--pt:34%;--pb:24%}.land-real.land-aquarium .flash .face > .ftop{top:23%!important}
+.land-real.land-zoo .flash .face{--pt:34%;--pb:9%}.land-real.land-zoo .flash .face > .ftop{top:20%!important}
+.land-real.land-farm .flash .face{--pt:35%;--pb:20%}.land-real.land-farm .flash .face > .ftop{top:19.5%!important}
+.land-real.land-botanic-garden .flash .face{--pt:22%;--pb:8%}.land-real.land-botanic-garden .flash .face > .ftop{top:3%!important}
+.land-real.land-pier .flash .face{--pt:22%;--pb:8%}.land-real.land-pier .flash .face > .ftop{top:5%!important}
+.land-real.land-balloon-field .flash .face{--pt:36%;--pb:18%}.land-real.land-balloon-field .flash .face > .ftop{top:25%!important}
+.land-real.land-amazon-forest .flash .face{--pt:32%;--pb:20%}.land-real.land-amazon-forest .flash .face > .ftop{top:20%!important}
+.land-real.land-ice-rink .flash .face{--pt:36%;--pb:10%}.land-real.land-ice-rink .flash .face > .ftop{top:24.5%!important}
+.land-real.land-lighthouse .flash .face{--pt:24%;--pb:6%}.land-real.land-lighthouse .flash .face > .ftop{top:6%!important}
+
+/* Bert's Butchers in Calibri (Monnie 20 Nov 09:47); only speech bubbles and the drawn sign keep hand lettering */
+:is(.cbag.town.tb-red,#_#_#_) *:not(text):not(.bblogo):not(.bblogo *):not(.bspeech):not(.bspeech *):not(.bthink):not(.bthink *):not(.b3 .sh):not(.bhb-say){font-family:Calibri,Carlito,'Segoe UI',Arial,sans-serif!important;letter-spacing:0}
+:is(.cbag.town.tb-red,#_#_#_) :is(.bspeech,.bspeech *){font-family:var(--hand),'Patrick Hand',cursive!important}
+/* every Bert speech is a real speech bubble: rounded, narrow and tall, tail pointing left to the speaker (Monnie 20 Nov 09:48) */
+.bspeech{border-radius:22px;margin-left:16px;border-width:2.5px;padding:12px 16px}
+.bspeech::before,.bspeech::after{content:"";position:absolute;top:22px;width:0;height:0;border-style:solid}
+.bspeech::before{left:-18px;border-width:9px 18px 9px 0;border-color:transparent var(--bsp-line,#F0C89C) transparent transparent}
+.bspeech::after{left:-13px;top:24px;border-width:7px 14px 7px 0;border-color:transparent var(--bsp-bg,#FFF8EC) transparent transparent}
+.bossg .bspeech,.tb-red .bspeech{--bsp-line:#F4B4AE;--bsp-bg:#fff}
+.bspeech{border-color:var(--bsp-line,#F0C89C);background:var(--bsp-bg,#FFF8EC)}
+.hb-desk .bspeech::before,.hb-desk .bspeech::after{display:none}
+.town-desk .bspeech{margin-left:18px!important}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -127459,7 +127489,7 @@ window.SQE_TOWN = function(A){
     /* Monnie 05:59: gamble questions and answers in a clean readable font; felt-tip only for the heading */
     '.hb #town-gamble *:not(h3):not(text){font-family:var(--font)!important;letter-spacing:0!important}.hb #town-gamble .btn{font-family:var(--sharratt)!important}.hb #town-gamble .qtext{font-size:17px;line-height:1.45}' +
     '.hb .bspeech{font-size:19px;line-height:1.35}.hb .bspeech b{font-family:var(--sharratt)!important;color:#E0457B;font-size:1.15em;font-weight:400}' +
-    '.town-try{display:flex;gap:18px;align-items:center;flex-wrap:wrap}.tryst{position:relative;width:min(440px,100%);flex:none}.tryst img{display:block;width:100%;height:auto}.tryst.wear{width:min(380px,100%)}.tryst.scene img{border-radius:14px;border:3px solid #1d1d1b}.tryst .sipf{position:absolute;inset:0;opacity:0;animation:trysipf 4.4s steps(1,end) infinite}@keyframes trysipf{0%{opacity:0}55%{opacity:1}90%{opacity:0}}.trybtn{margin-top:6px}' +
+    '.town-try{display:flex;gap:18px;align-items:center;flex-wrap:wrap}.hbtry{position:relative;width:min(440px,100%);flex:none}.hbtry img{display:block;width:100%;height:auto}.hbtry.hbwear{width:min(380px,100%)}.hbtry.hbscene img{border-radius:14px;border:3px solid #1d1d1b}.hbtry .sipf{position:absolute;inset:0;opacity:0;animation:trysipf 4.4s steps(1,end) infinite}@keyframes trysipf{0%{opacity:0}55%{opacity:1}90%{opacity:0}}.trybtn{margin-top:6px}' +
     '.hb h2,.hb .cbattl,.hb .sitm>b,.hb .sprice,.hb .btn,.hb .town-nav a{font-weight:400!important}.hb h2{font-size:32px;margin:0}.hb .sitm>b{font-size:18px;line-height:1.15}.hb .sdesc{font-size:16px}.hb .town-risk{font-size:15px}' +
     '.town-jobs{display:grid;gap:10px}' +
     '.town-job{display:grid;grid-template-columns:1fr auto;gap:6px 14px;align-items:center;border:2px solid #F3E3CC;border-radius:16px;padding:12px 14px;background:#fff}' +
@@ -127745,10 +127775,10 @@ window.SQE_TOWN = function(A){
   function tryOnHTML(id){
     var it = A.cbaItem(id); if (!it || !canTry(it)) return '';
     var d = 'img/britney/try/', pic, cls, ttl;
-    if (TRY_WEAR[id]){ cls = 'wear'; pic = '<img src="' + d + id + '.webp" alt="Britney with the ' + esc(it.n) + '">' + (TRY_SIP[id] ? '<img class="sipf" src="' + d + id + '_sip.webp" alt="">' : ''); ttl = (/^(pandan|cookies|goldcorn)$/.test(id) ? 'Britney with the ' : 'Britney trying on the ') + esc(it.n); }
-    else if (TRY_GARDEN[id]){ cls = 'scene'; pic = '<img src="' + d + 'g-' + id + '.webp" alt="The ' + esc(it.n) + ' in The Mount garden">'; ttl = 'The ' + esc(it.n) + ' at The Mount'; }
-    else { cls = 'scene'; pic = '<img src="' + d + 's-' + id + '.webp" alt="The ' + esc(it.n) + ' on the shed shelf">'; ttl = 'The ' + esc(it.n) + ' on the shed shelf'; }
-    return '<div class="bcard town-try montool"><div class="tryst ' + cls + '">' + pic + '</div>' +
+    if (TRY_WEAR[id]){ cls = 'hbwear'; pic = '<img src="' + d + id + '.webp" alt="Britney with the ' + esc(it.n) + '">' + (TRY_SIP[id] ? '<img class="sipf" src="' + d + id + '_sip.webp" alt="">' : ''); ttl = (/^(crocs|charms|socks|clawsocks)$/.test(id) ? 'Britney trying on the ' : 'Britney with the ') + esc(it.n); }
+    else if (TRY_GARDEN[id]){ cls = 'hbscene'; pic = '<img src="' + d + 'g-' + id + '.webp" alt="The ' + esc(it.n) + ' in The Mount garden">'; ttl = 'The ' + esc(it.n) + ' at The Mount'; }
+    else { cls = 'hbscene'; pic = '<img src="' + d + 's-' + id + '.webp" alt="The ' + esc(it.n) + ' on the shed shelf">'; ttl = 'The ' + esc(it.n) + ' on the shed shelf'; }
+    return '<div class="bcard town-try montool"><div class="hbtry ' + cls + '">' + pic + '</div>' +
       '<div><b>Preview: ' + ttl + '</b><p class="town-note">Only you can see this. Nothing is bought or saved.</p><button type="button" class="btn" data-town="tryoff">Close preview</button></div></div>';
   }
   var LASTBUY = null; /* after a real purchase: offer the walk home to The Mount (map thread plays it when sqe_shopwalk is set) */
@@ -127907,18 +127937,18 @@ var SHED = {x: 58, b: 50, h: 18};   /* the shed (img/mount/shed.webp); click ope
 var SHED_ROOF = [56.5, 67];
 /* Hen Bargains things with their own spot in the garden (Monnie OK'd the plan 08:50): [id, x, b, h, front-of(id) or ''] ; everything else goes on the shed shelves */
 var GARDEN_ITEMS = {
-  coop:    [90.8, 36, 19],
-  palace:  [90.8, 36, 20],          /* the luxury makeover replaces the coop in the same spot */
-  plaque:  [90.8, 46.5, 3.4],           /* on the coop (lower on the palace) */
-  nestbox: [95.6, 33.2, 6.5],        /* on the grass right up against the coop */
+  coop:    [91.1, 36, 19],
+  palace:  [91.1, 36, 20],          /* the luxury makeover replaces the coop in the same spot */
+  plaque:  [91.1, 46.5, 3.4],           /* on the coop (lower on the palace) */
+  nestbox: [95.9, 33.2, 6.5],        /* on the grass right up against the coop */
   player:  [37, 2.5, 8],
   rec_ss:  [31.5, 2.5, 4.6],
   rec_mj:  [26.8, 2.5, 4.8]
 };
-var SWING = {x: 79.6, top: 68.2, seat: 48.6, w: 4.2};   /* the swing hangs on two ropes from the left branch of the tree by the coop (Monnie 09:44); Beefy rides it */
+var SWING = {x: 79.6, top: 68.2, seat: 50.2, w: 6};   /* the swing hangs on two ropes from the left branch of the tree by the coop (Monnie 09:44); Beefy rides it */
 var SWING_HEN_H = 8.5;
-var BRUCEY_COOP = [96.5, 56.5];   /* with a coop there, Brucey perches on the bank behind it */   /* Beefy sits on the swing when Layla has both */
-function coopTop(o){ return o.palace ? [90.8, 36 + 20] : o.coop ? [90.8, 36 + 19] : null; }
+var BRUCEY_COOP = [96.6, 57.6];   /* with a coop there, Brucey perches on the bank behind it */   /* Beefy sits on the swing when Layla has both */
+function coopTop(o){ return o.palace ? [91.1, 36 + 20] : o.coop ? [91.1, 36 + 19] : null; }
 /* Layla's walk: [x, b, pause ms, pose while paused ('a' stand, 't' wave)]; stays inside x 37..54 so she never meets the people */
 var LAYLA_LAP = [[47, 37, 1400, 'a'], [44.5, 28, 700, 'a'], [43.5, 13, 1600, 't'], [51, 8, 900, 'a'], [54, 20, 900, 'a'], [51, 34, 800, 'a'], [44, 38, 1100, 'a']];
 var LAYLA_WP = (function(){   /* three laps; only the first has the cartwheel, so it comes round about once a minute (Monnie 08:19) */
@@ -129420,8 +129450,19 @@ function nbStreakHTML(){
   ["#E0457B","#F59F2A","#F7D038","#4CB963","#3B8FE0","#8A5CD6"].forEach(function(c, j){ var r = 46 - j * 5; svg += '<path d="M' + (rx - r) + ' ' + ry + 'a' + r + ' ' + r + ' 0 0 1 ' + (2 * r) + ' 0" fill="none" stroke="' + c + '" stroke-width="5.8"/>'; });
   svg += '<path d="M' + (rx - 49) + ' ' + ry + 'a49 49 0 0 1 98 0" fill="none" stroke="#10294A" stroke-width="2.4"/><path d="M' + (rx - 18.5) + ' ' + ry + 'a18.5 18.5 0 0 1 37 0" fill="none" stroke="#10294A" stroke-width="2"/>';
   svg += stCloud(rx - 37, ry + 10, 44, '#fff') + stCloud(rx + 37, ry + 10, 44, '#fff');
-  svg += '<g class="' + (ready ? 'stgift wob' : 'stgift') + '"><rect x="' + (rx - 15) + '" y="' + (ry - 19) + '" width="30" height="23" rx="2.5" fill="#E0457B" stroke="#10294A" stroke-width="2.6"/><rect x="' + (rx - 18) + '" y="' + (ry - 27) + '" width="36" height="9" rx="2.5" fill="#F25C94" stroke="#10294A" stroke-width="2.6"/><path d="M' + rx + ' ' + (ry - 26) + 'v29" stroke="#FFD93B" stroke-width="5.5"/><path d="M' + rx + ' ' + (ry - 27) + 'c-12-12-19 1-5 1.5M' + rx + ' ' + (ry - 27) + 'c12-12 19 1 5 1.5" fill="none" stroke="#10294A" stroke-width="2.6" stroke-linecap="round"/></g>';
-  svg += '</g></g></svg>'; /* closes nbrain + rainbow scale group */
+  var giftIn = function(gx, gy){ return '<rect x="' + (gx - 15) + '" y="' + (gy - 19) + '" width="30" height="23" rx="2.5" fill="#E0457B" stroke="#10294A" stroke-width="2.6"/><rect x="' + (gx - 18) + '" y="' + (gy - 27) + '" width="36" height="9" rx="2.5" fill="#F25C94" stroke="#10294A" stroke-width="2.6"/><path d="M' + gx + ' ' + (gy - 26) + 'v29" stroke="#FFD93B" stroke-width="5.5"/><path d="M' + gx + ' ' + (gy - 27) + 'c-12-12-19 1-5 1.5M' + gx + ' ' + (gy - 27) + 'c12-12 19 1 5 1.5" fill="none" stroke="#10294A" stroke-width="2.6" stroke-linecap="round"/>'; };
+  var caught = st >= PRESENT_STEPS; /* 20 Nov 09:46 (Monnie): on the fifth cloud the present flies from the rainbow into Layla's raised hands (about 1.4 s) */
+  if (!caught) svg += '<g class="' + (ready ? 'stgift wob' : 'stgift') + '">' + giftIn(rx, ry) + '</g>';
+  svg += '</g></g>'; /* closes nbrain + rainbow scale group */
+  if (caught){
+    /* catch spot: centred between her raised hands, the box resting on top of her head (layla-step5 hands at ~y 45 of 755) */
+    var GS = 3.2, cxg = lp[0] - LW / 2 + LW * 0.5, cyg = (lp[1] - LH - pz[2]) + LH * 0.19 - 15.5 * GS * 0.65, sx = 735, sy = 56 - 11.5 * 1.45, dx = (sx - cxg).toFixed(1), dy = (sy - cyg).toFixed(1);
+    var play = false; try { play = nbPrev() !== null || !sessionStorage.getItem("nbCaught"); sessionStorage.setItem("nbCaught", "1"); } catch(e){ play = true; }
+    svg += '<g class="nbcatch" transform="translate(' + cxg.toFixed(1) + ' ' + cyg.toFixed(1) + ')"><g>' +
+      (play ? '<animateMotion path="M' + dx + ' ' + dy + ' Q' + (dx * 0.45).toFixed(1) + ' ' + (dy - 70).toFixed(1) + ' 0 0" keyPoints="0;0;1" keyTimes="0;.25;1" calcMode="spline" keySplines="0 0 1 1;.35 0 .45 1" dur="1.8s" fill="freeze"/>' : '') +
+      '<g transform="scale(' + GS + ')">' + (play ? '<animateTransform attributeName="transform" type="scale" values="1.45;1.45;' + (GS * 1.08).toFixed(2) + ';' + GS + '" keyTimes="0;.25;.9;1" dur="1.8s" fill="freeze"/>' : '') + giftIn(0, 11.5) + '</g></g></g>';
+  }
+  svg += '</svg>';
   var flame = '<span class="nbflame" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.5c1 3.6 5.8 6 5.8 11.2A5.8 5.8 0 0 1 6.2 13.7c0-2.6 1.5-4.4 2.8-5.6.2 1.8 1 3 2.2 3.6-.6-3.4.2-6.4.8-9.2z" fill="#F25A1F" stroke="#10294A" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 12.2c.9 1.4 2.6 2.4 2.6 4.4a2.6 2.6 0 0 1-5.2 0c0-1.5.9-2.6 2.6-4.4z" fill="#FFD93B" stroke="#10294A" stroke-width="1.2" stroke-linejoin="round"/></svg></span>';
   var big = '<b class="nbbn">' + flame + n + '-day streak</b>';
   var line = done ? '<div class="nbbub">' + big + '<span>All ' + PRESENT_TOTAL + ' presents won!</span></div>'
