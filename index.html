@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120143558";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120144432";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -4127,6 +4127,45 @@ details.podsubj[open] .podchev{transform:rotate(-135deg);margin-top:6px}
 /* 14:46 (QA): at night the rainbow and clouds are moonlit, not full daytime colour */
 .head.nb.nbnight .nbrain{filter:brightness(.6) saturate(.55)}
 @media (max-width:640px){.land-real.land-farm .flash.revealed.blen-xl .inner{min-height:960px}}
+
+/* map-layla8 (14:36 Monnie: her legs barely moved): clear stride - legs swap every 0.5s in bursts with a little bob each step; glance, wave and joke poses in between. While actually walking (.jmoving) the legs swap every 0.18s. */
+.jsv .jpair .jlw1{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl8-jlw1 16s step-end infinite,jl8-bob 16s linear infinite!important}
+@keyframes jl8-jlw1{0.000%{opacity:1}3.125%{opacity:0}6.250%{opacity:1}9.375%{opacity:0}12.500%{opacity:1}15.625%{opacity:0}18.750%{opacity:1}21.875%{opacity:0}25.000%{opacity:0}28.125%{opacity:0}31.250%{opacity:0}34.375%{opacity:0}37.500%{opacity:1}40.625%{opacity:0}43.750%{opacity:1}46.875%{opacity:0}50.000%{opacity:1}53.125%{opacity:0}56.250%{opacity:1}59.375%{opacity:0}62.500%{opacity:0}65.625%{opacity:0}68.750%{opacity:0}71.875%{opacity:0}75.000%{opacity:1}78.125%{opacity:0}81.250%{opacity:1}84.375%{opacity:0}87.500%{opacity:0}90.625%{opacity:0}93.750%{opacity:0}96.875%{opacity:0}100%{opacity:1}}
+.jsv .jpair .jlw1F{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl8-jlw1F 16s step-end infinite,jl8-bob 16s linear infinite!important}
+@keyframes jl8-jlw1F{0.000%{opacity:0}3.125%{opacity:1}6.250%{opacity:0}9.375%{opacity:1}12.500%{opacity:0}15.625%{opacity:1}18.750%{opacity:0}21.875%{opacity:1}25.000%{opacity:0}28.125%{opacity:0}31.250%{opacity:0}34.375%{opacity:0}37.500%{opacity:0}40.625%{opacity:1}43.750%{opacity:0}46.875%{opacity:1}50.000%{opacity:0}53.125%{opacity:1}56.250%{opacity:0}59.375%{opacity:1}62.500%{opacity:0}65.625%{opacity:0}68.750%{opacity:0}71.875%{opacity:0}75.000%{opacity:0}78.125%{opacity:1}81.250%{opacity:0}84.375%{opacity:1}87.500%{opacity:0}90.625%{opacity:0}93.750%{opacity:0}96.875%{opacity:0}100%{opacity:0}}
+.jsv .jpair .jlw2{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl8-jlw2 16s step-end infinite,jl8-bob 16s linear infinite!important}
+@keyframes jl8-jlw2{0.000%{opacity:0}3.125%{opacity:0}6.250%{opacity:0}9.375%{opacity:0}12.500%{opacity:0}15.625%{opacity:0}18.750%{opacity:0}21.875%{opacity:0}25.000%{opacity:1}28.125%{opacity:1}31.250%{opacity:1}34.375%{opacity:1}37.500%{opacity:0}40.625%{opacity:0}43.750%{opacity:0}46.875%{opacity:0}50.000%{opacity:0}53.125%{opacity:0}56.250%{opacity:0}59.375%{opacity:0}62.500%{opacity:0}65.625%{opacity:0}68.750%{opacity:0}71.875%{opacity:0}75.000%{opacity:0}78.125%{opacity:0}81.250%{opacity:0}84.375%{opacity:0}87.500%{opacity:0}90.625%{opacity:0}93.750%{opacity:0}96.875%{opacity:0}100%{opacity:0}}
+.jsv .jpair .jlw3{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl8-jlw3 16s step-end infinite,jl8-bob 16s linear infinite!important}
+@keyframes jl8-jlw3{0.000%{opacity:0}3.125%{opacity:0}6.250%{opacity:0}9.375%{opacity:0}12.500%{opacity:0}15.625%{opacity:0}18.750%{opacity:0}21.875%{opacity:0}25.000%{opacity:0}28.125%{opacity:0}31.250%{opacity:0}34.375%{opacity:0}37.500%{opacity:0}40.625%{opacity:0}43.750%{opacity:0}46.875%{opacity:0}50.000%{opacity:0}53.125%{opacity:0}56.250%{opacity:0}59.375%{opacity:0}62.500%{opacity:1}65.625%{opacity:1}68.750%{opacity:1}71.875%{opacity:1}75.000%{opacity:0}78.125%{opacity:0}81.250%{opacity:0}84.375%{opacity:0}87.500%{opacity:0}90.625%{opacity:0}93.750%{opacity:0}96.875%{opacity:0}100%{opacity:0}}
+.jsv .jpair .jlwj{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl8-jlwj 16s step-end infinite,jl8-bob 16s linear infinite!important}
+@keyframes jl8-jlwj{0.000%{opacity:0}3.125%{opacity:0}6.250%{opacity:0}9.375%{opacity:0}12.500%{opacity:0}15.625%{opacity:0}18.750%{opacity:0}21.875%{opacity:0}25.000%{opacity:0}28.125%{opacity:0}31.250%{opacity:0}34.375%{opacity:0}37.500%{opacity:0}40.625%{opacity:0}43.750%{opacity:0}46.875%{opacity:0}50.000%{opacity:0}53.125%{opacity:0}56.250%{opacity:0}59.375%{opacity:0}62.500%{opacity:0}65.625%{opacity:0}68.750%{opacity:0}71.875%{opacity:0}75.000%{opacity:0}78.125%{opacity:0}81.250%{opacity:0}84.375%{opacity:0}87.500%{opacity:1}90.625%{opacity:1}93.750%{opacity:1}96.875%{opacity:1}100%{opacity:0}}
+.jsv .jpair .jlw2F{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl8-jlw2F 16s step-end infinite,jl8-bob 16s linear infinite!important}
+@keyframes jl8-jlw2F{0.000%{opacity:0}3.125%{opacity:0}6.250%{opacity:0}9.375%{opacity:0}12.500%{opacity:0}15.625%{opacity:0}18.750%{opacity:0}21.875%{opacity:0}25.000%{opacity:0}28.125%{opacity:0}31.250%{opacity:0}34.375%{opacity:0}37.500%{opacity:0}40.625%{opacity:0}43.750%{opacity:0}46.875%{opacity:0}50.000%{opacity:0}53.125%{opacity:0}56.250%{opacity:0}59.375%{opacity:0}62.500%{opacity:0}65.625%{opacity:0}68.750%{opacity:0}71.875%{opacity:0}75.000%{opacity:0}78.125%{opacity:0}81.250%{opacity:0}84.375%{opacity:0}87.500%{opacity:0}90.625%{opacity:0}93.750%{opacity:0}96.875%{opacity:0}100%{opacity:0}}
+.jsv .jpair .jlw3F{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl8-jlw3F 16s step-end infinite,jl8-bob 16s linear infinite!important}
+@keyframes jl8-jlw3F{0.000%{opacity:0}3.125%{opacity:0}6.250%{opacity:0}9.375%{opacity:0}12.500%{opacity:0}15.625%{opacity:0}18.750%{opacity:0}21.875%{opacity:0}25.000%{opacity:0}28.125%{opacity:0}31.250%{opacity:0}34.375%{opacity:0}37.500%{opacity:0}40.625%{opacity:0}43.750%{opacity:0}46.875%{opacity:0}50.000%{opacity:0}53.125%{opacity:0}56.250%{opacity:0}59.375%{opacity:0}62.500%{opacity:0}65.625%{opacity:0}68.750%{opacity:0}71.875%{opacity:0}75.000%{opacity:0}78.125%{opacity:0}81.250%{opacity:0}84.375%{opacity:0}87.500%{opacity:0}90.625%{opacity:0}93.750%{opacity:0}96.875%{opacity:0}100%{opacity:0}}
+.jsv .jpair .jlw4{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl8-jlw4 16s step-end infinite,jl8-bob 16s linear infinite!important}
+@keyframes jl8-jlw4{0.000%{opacity:0}3.125%{opacity:0}6.250%{opacity:0}9.375%{opacity:0}12.500%{opacity:0}15.625%{opacity:0}18.750%{opacity:0}21.875%{opacity:0}25.000%{opacity:0}28.125%{opacity:0}31.250%{opacity:0}34.375%{opacity:0}37.500%{opacity:0}40.625%{opacity:0}43.750%{opacity:0}46.875%{opacity:0}50.000%{opacity:0}53.125%{opacity:0}56.250%{opacity:0}59.375%{opacity:0}62.500%{opacity:0}65.625%{opacity:0}68.750%{opacity:0}71.875%{opacity:0}75.000%{opacity:0}78.125%{opacity:0}81.250%{opacity:0}84.375%{opacity:0}87.500%{opacity:0}90.625%{opacity:0}93.750%{opacity:0}96.875%{opacity:0}100%{opacity:0}}
+@keyframes jl8-bob{0.000%{transform:translateY(0)}1.562%{transform:translateY(-6px)}3.125%{transform:translateY(0)}4.688%{transform:translateY(-6px)}6.250%{transform:translateY(0)}7.812%{transform:translateY(-6px)}9.375%{transform:translateY(0)}10.938%{transform:translateY(-6px)}12.500%{transform:translateY(0)}14.062%{transform:translateY(-6px)}15.625%{transform:translateY(0)}17.188%{transform:translateY(-6px)}18.750%{transform:translateY(0)}20.312%{transform:translateY(-6px)}21.875%{transform:translateY(0)}23.438%{transform:translateY(-6px)}25.000%{transform:translateY(0)}26.562%{transform:translateY(0px)}28.125%{transform:translateY(0)}29.688%{transform:translateY(0px)}31.250%{transform:translateY(0)}32.812%{transform:translateY(0px)}34.375%{transform:translateY(0)}35.938%{transform:translateY(0px)}37.500%{transform:translateY(0)}39.062%{transform:translateY(-6px)}40.625%{transform:translateY(0)}42.188%{transform:translateY(-6px)}43.750%{transform:translateY(0)}45.312%{transform:translateY(-6px)}46.875%{transform:translateY(0)}48.438%{transform:translateY(-6px)}50.000%{transform:translateY(0)}51.562%{transform:translateY(-6px)}53.125%{transform:translateY(0)}54.688%{transform:translateY(-6px)}56.250%{transform:translateY(0)}57.812%{transform:translateY(-6px)}59.375%{transform:translateY(0)}60.938%{transform:translateY(-6px)}62.500%{transform:translateY(0)}64.062%{transform:translateY(0px)}65.625%{transform:translateY(0)}67.188%{transform:translateY(0px)}68.750%{transform:translateY(0)}70.312%{transform:translateY(0px)}71.875%{transform:translateY(0)}73.438%{transform:translateY(0px)}75.000%{transform:translateY(0)}76.562%{transform:translateY(-6px)}78.125%{transform:translateY(0)}79.688%{transform:translateY(-6px)}81.250%{transform:translateY(0)}82.812%{transform:translateY(-6px)}84.375%{transform:translateY(0)}85.938%{transform:translateY(-6px)}87.500%{transform:translateY(0)}89.062%{transform:translateY(0px)}90.625%{transform:translateY(0)}92.188%{transform:translateY(0px)}93.750%{transform:translateY(0)}95.312%{transform:translateY(0px)}96.875%{transform:translateY(0)}98.438%{transform:translateY(0px)}100%{transform:translateY(0)}}
+.jsv .jpair.jmoving .jlw1{animation:jl8-m1 .36s step-end infinite!important}.jsv .jpair.jmoving .jlw1F{animation:jl8-m2 .36s step-end infinite!important}
+.jsv .jpair.jmoving :is(.jlw2,.jlw3,.jlwj,.jlw2F,.jlw3F,.jlw4){animation:none!important;opacity:0!important}
+@keyframes jl8-m1{0%{opacity:1}50%{opacity:0}100%{opacity:1}}@keyframes jl8-m2{0%{opacity:0}50%{opacity:1}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.jsv .jpair :is(.jlw1F,.jlw2,.jlw3,.jlwj,.jlw2F,.jlw3F,.jlw4){animation:none!important;opacity:0!important}.jsv .jpair .jlw1{animation:none!important;opacity:1!important}}
+
+/* QA 14:36: Britney held out behind him in his fist, clear of his apron, so she never looks see-through */
+.grab .bcarry{left:-42%;top:38%;width:52%}
+.btstrip.grab .bts-bert .bc{left:-40%;top:40%;width:52%}
+/* QA 14:36: the ending no longer leaves an empty stage: Layla and Britney stop by the shop, happy */
+.bhandback .bhb-lay img.wa{animation:bhbWa .5s 6.1s step-end 8 forwards}
+.bhandback .bhb-lay img.wb{animation:bhbWb .5s 6.1s step-end 8 forwards}
+.bhandback .bhb-lay img.hd{animation:bshow 0s 6.1s forwards,bhbRide .25s 6.1s ease-in-out 16 alternate}
+@keyframes bhbLay{0%{left:var(--lx);translate:0 0;rotate:0deg;scale:1}28.5%{scale:1;translate:0 0}29.5%{scale:1.03 .96;translate:-4px 0}30.5%{scale:1;translate:0 0}39%{scale:1;translate:0 0}40%{scale:1.05 .94}41.5%{scale:1;translate:0 0;rotate:0deg}44%{translate:0 -14px;rotate:-5deg}46%{translate:0 0;rotate:0deg}47.5%{translate:0 -14px;rotate:5deg}49.5%{translate:0 0;rotate:0deg}51%{translate:0 -14px;rotate:-5deg}53%{translate:0 0;rotate:0deg}61%{left:var(--lx);translate:0 0}64%{translate:0 -4px}67%{translate:0 0}70%{translate:0 -4px}73%{translate:0 0}76%{translate:0 -4px}79%{translate:0 0}82%{translate:0 -4px}85%{translate:0 0}88%{translate:0 -4px}91%{translate:0 0}100%{left:calc(100% - var(--dw,70px) - var(--stopw,170px));translate:0 0}}
+@media (max-width:560px){.bhandback{--stopw:110px}}
+.bhandback .bhb-lay img.s0{animation:bhbFs0 10s step-end forwards,bshow 0s 10.1s forwards}
+
+/* 14:50 frameworks: each stop's colours on the diagram's title box; the self-test counter */
+.stth .fwwrap:not(.skin-sweet) .mindmap .mmhead{fill:var(--pale,#EEF4FB);stroke:var(--accent,#A9BCD8);stroke-width:2.6}
+.fwcount{font-weight:800;color:var(--accent,#10294A)}
+.fwcount.done{color:#2E7D32}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -110319,7 +110358,14 @@ window.SQE_JOURNEY = function (A) {
             + (britCaught() ? '' : "<g transform=\"translate(".concat(f1(bx + bh / 2), ",0) scale(").concat(f, ",1)\">").concat(BRIT_FR.map(function (u, k) { var h2 = bh * .86, w2 = h2 * 1.348; return "<g class=\"jbf jbf".concat(k + 1, "\"><g class=\"jbm").concat(k + 1, "\"><image href=\"").concat(u, "\" x=\"").concat(f1(-w2 * .42), "\" y=\"").concat(f1(-h2 * .97), "\" width=\"").concat(f1(w2), "\" height=\"").concat(f1(h2), "\"/></g></g>"); }).join(''), "</g>") + britHungry(bx, bh, f)) + "</g>";
     }
     function pair(Hn, mode) {
-        return "<g class=\"jhen jpair\" transform=\"translate(".concat(Hn.x, ",").concat(Hn.y, ")\" data-f=\"").concat(Hn.m === false ? -1 : 1, "\" aria-hidden=\"true\">").concat(pairInner(mode, Hn.m === false ? -1 : 1), "</g>");
+        var dim = '';
+        try {
+            var n = skyState(skyHour()).n;
+            if (n > .05)
+                dim = " style=\"filter:brightness(".concat((1 - .45 * n).toFixed(2), ") saturate(").concat((1 - .3 * n).toFixed(2), ")\"");
+        }
+        catch (e) { } /* QA 14:36: at night they dim with the map */
+        return "<g class=\"jhen jpair\" transform=\"translate(".concat(Hn.x, ",").concat(Hn.y, ")\" data-f=\"").concat(Hn.m === false ? -1 : 1, "\" aria-hidden=\"true\"").concat(dim, ">").concat(pairInner(mode, Hn.m === false ? -1 : 1), "</g>");
     }
     /* where the pair stands (Monnie's lead, 20 Nov): they move on as TOPICS are rated, not only whole stops.
        0 = farm gate; at stop i with d of n topics rated they stand i + d/n of the way to stop i+1; a finished stop puts them at the next stop. */
@@ -110602,11 +110648,18 @@ window.SQE_JOURNEY = function (A) {
                 if (reduce || Math.abs(s1_1 - s0_1) < 8)
                     return; /* already there: just go in */
                 ev.preventDefault();
+                if (JGO && !JGO.stop && JGO.href === href_1) {
+                    JGO.stop = 1;
+                    g_2.classList.remove('jmoving');
+                    location.hash = href_1;
+                    return;
+                } /* a second tap skips the walk */
                 if (JGO)
                     JGO.stop = 1;
-                var me_1 = { stop: 0 };
+                var me_1 = { stop: 0, href: href_1 };
                 JGO = me_1;
-                var dir_1 = s1_1 > s0_1 ? 1 : -1, dur_1 = Math.min(3000, Math.max(700, Math.abs(s1_1 - s0_1) / 1.6)), hopLen_1 = mode_1 === 'phone' ? 46 : 36;
+                g_2.classList.add('jmoving');
+                var dir_1 = s1_1 > s0_1 ? 1 : -1, dur_1 = Math.min(1500, Math.max(600, Math.abs(s1_1 - s0_1) / 2.4)), hopLen_1 = mode_1 === 'phone' ? 46 : 36;
                 var t0_2 = 0;
                 var step_1 = function (ts) {
                     if (me_1.stop || !g_2.isConnected)
@@ -110626,9 +110679,13 @@ window.SQE_JOURNEY = function (A) {
                     catch (_) { } /* the page follows her */
                     if (u < 1)
                         requestAnimationFrame(step_1);
-                    else
-                        setTimeout(function () { if (!me_1.stop && /^#\/palace/.test(location.hash))
-                            location.hash = href_1; }, 250);
+                    else {
+                        g_2.classList.remove('jmoving');
+                        setTimeout(function () { if (!me_1.stop && /^#\/palace/.test(location.hash)) {
+                            me_1.stop = 1;
+                            location.hash = href_1;
+                        } }, 200);
+                    }
                 };
                 requestAnimationFrame(step_1);
             }
@@ -110692,7 +110749,10 @@ window.SQE_JOURNEY = function (A) {
                     placePair(g, mode, P, u < 1 ? Math.abs(Math.sin(Math.PI * (P.s - s0) / hopLen)) * (mode === 'phone' ? 9 : 7) : 0);
                     if (u < 1)
                         requestAnimationFrame(step);
+                    else
+                        g.classList.remove('jmoving');
                 };
+                g.classList.add('jmoving');
                 requestAnimationFrame(step);
             }, { threshold: .6 });
             io.observe(g);
@@ -149719,16 +149779,16 @@ window.SQE_TOWN = function(A){
     '.hb #town-gamble *:not(h3):not(text){font-family:var(--font)!important;letter-spacing:0!important}.hb #town-gamble .btn{font-family:var(--sharratt)!important}.hb #town-gamble .qtext{font-size:17px;line-height:1.45}' +
     '.hb .bspeech{font-size:19px;line-height:1.35}.hb .bspeech b{font-family:var(--sharratt)!important;color:#E0457B;font-size:1.15em;font-weight:400}' +
     /* Monnie 13:27: walk-in Hen Bargains. The drawn inside of the shop (img/hb/interior.webp), real items stocked on the shelves, Layla (and Britney) walk down the aisle to whatever she taps */
-    '.hbin{position:relative;overflow-x:auto;overflow-y:hidden;border:3px solid #1d1d1b;border-radius:16px;background:#f3f0e8;margin:0 0 14px;-webkit-overflow-scrolling:touch;scrollbar-width:thin}' +
-    '.hbin-w{position:relative;container-type:inline-size;width:max(100%,1150px);max-width:1750px;margin:0 auto;aspect-ratio:1456/819}.hbin-bg{position:absolute;inset:0;width:100%;height:100%;display:block}' +
+    '.hbin{--hbw:min(calc(100vw - 96px),1750px,calc((100vh - 110px) * 1.778));width:max(100%,var(--hbw));margin-left:calc((100% - max(100%,var(--hbw))) / 2);box-sizing:border-box;position:relative;overflow-x:auto;overflow-y:hidden;border:3px solid #1d1d1b;border-radius:16px;background:#f3f0e8;margin:0 0 14px;-webkit-overflow-scrolling:touch;scrollbar-width:thin}' +
+    '.hbin-w{position:relative;container-type:inline-size;width:max(100%,1150px);margin:0 auto;aspect-ratio:1456/819}.hbin-bg{position:absolute;inset:0;width:100%;height:100%;display:block}' +
     '.hbin-ctr{position:absolute;z-index:25;pointer-events:none}.hbin-sign{position:absolute;transform:skewY(25deg);transform-origin:0 0;padding:0 2%;box-sizing:border-box;display:flex;align-items:center;gap:4%;overflow:hidden}.hbin-sign .hb-logo{height:86%;width:auto;flex:none;border-radius:4px}.hbin-sign span{font-family:Calibri,Carlito,Arial,sans-serif;font-weight:700;color:#E2231A;font-size:1.05cqw;line-height:1;white-space:nowrap}' +
     '.hbi{position:absolute;transform:translateX(-50%);display:flex;align-items:flex-end;justify-content:center;background:none;border:0;padding:0;margin:0;cursor:pointer;z-index:10}' +
     '.hbi img{height:100%;width:auto;display:block;filter:drop-shadow(0 2px 0 rgba(0,0,0,.18));transition:transform .15s}.hbi img+img{margin-left:-14%}.hbi:hover img,.hbi:focus-visible img,.hbi.on img{transform:translateY(-6%) scale(1.06)}' +
-    '.hbi:focus-visible{outline:3px solid #E0457B;outline-offset:3px;border-radius:8px}.hbi.on{z-index:40}.hbi.locked img,.hbi.ate img{filter:grayscale(.75) opacity(.6)}' +
+    '.hbi:focus-visible{outline:3px solid #E0457B;outline-offset:3px;border-radius:8px}.hbi.on{z-index:40}.hbi.locked img,.hbi.ate img{filter:grayscale(.7) drop-shadow(0 2px 0 rgba(0,0,0,.18))}' +
     '.hbi .hbtag{position:absolute;left:50%;bottom:0;transform:translate(-50%,72%);background:#fff;border:2px solid #1d1d1b;border-radius:6px;padding:0 5px;font:700 11px/1.3 Calibri,Carlito,Arial,sans-serif;color:#1d1d1b;white-space:nowrap}.hbi .hbtag.own{background:#7FD08B}' +
     '.hbi .hbname{position:absolute;left:50%;top:100%;transform:translate(-50%,26px);background:#1d1d1b;color:#fff;border-radius:8px;padding:3px 9px;font:400 15px/1.2 Calibri,Carlito,Arial,sans-serif;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s;z-index:60}.hbi:hover .hbname,.hbi:focus-visible .hbname{opacity:1}' +
     '.hbi.till .hbtag{display:none}.hbi.ppl .hbtag,.hbi.hen .hbtag{bottom:auto;top:-4px;transform:translate(-50%,-100%)}.hbi.ppl .hbname,.hbi.hen .hbname{top:auto;bottom:100%;transform:translate(-50%,-30px)}' +
-    '.hbin-layla{position:absolute;bottom:.6%;height:46%;width:0;left:var(--b);animation:hbwalk var(--d) linear both;z-index:30;pointer-events:none}@keyframes hbwalk{from{left:var(--a)}to{left:var(--b)}}' +
+    '.hbin-layla{position:absolute;bottom:.6%;height:34%;width:0;left:var(--b);animation:hbwalk var(--d) linear both;z-index:30;pointer-events:none}@keyframes hbwalk{from{left:var(--a)}to{left:var(--b)}}' +
     '.hbin-layla img{position:absolute;bottom:0;height:100%;width:auto;left:0;transform:translateX(-50%)}.hbin-layla .lb{opacity:0}.hbin-layla .lbr{height:30%;bottom:1%;left:var(--bx);transform:translateX(-50%)}' +
     '.hbin-layla.mv .la{animation:hbsa .46s steps(1,end) var(--n)}.hbin-layla.mv .lb{animation:hbsb .46s steps(1,end) var(--n)}.hbin-layla.mv .lbr{animation:hbhop .23s ease-in-out calc(var(--n) * 2)}' +
     '@keyframes hbsa{0%{opacity:1}50%{opacity:0}}@keyframes hbsb{0%{opacity:0}50%{opacity:1}}@keyframes hbhop{50%{transform:translateX(-50%) translateY(-7%)}}' +
@@ -149736,7 +149796,7 @@ window.SQE_TOWN = function(A){
     '.hbin-pop .hbx{position:absolute;top:6px;right:8px;background:none;border:0;font:700 22px/1 Calibri,Carlito,Arial,sans-serif;cursor:pointer;color:#1d1d1b}' +
     '.hbin-hint{position:absolute;left:50%;top:3%;transform:translateX(-50%);background:#fff;border:3px solid #1d1d1b;border-radius:14px;padding:6px 14px;font:400 19px/1.3 Calibri,Carlito,Arial,sans-serif;z-index:20;white-space:nowrap}' +
     '@media (prefers-reduced-motion:reduce){.hbin-layla,.hbin-layla *{animation:none!important}.hbin-layla .lb{opacity:0}}' +
-    '.town-try{display:flex;gap:18px;align-items:center;flex-wrap:wrap}.hbtry{position:relative;width:min(440px,100%);flex:none}.hbtry img{display:block;width:100%;height:auto}.hbtry.hbwear{width:min(380px,100%)}.hbtry.hbscene img{border-radius:14px;border:3px solid #1d1d1b}.hbtry .sipf{position:absolute;inset:0;opacity:0;animation:trysipf 4.4s steps(1,end) infinite}@keyframes trysipf{0%{opacity:0}55%{opacity:1}90%{opacity:0}}.hbtry:has(.sipf)>img:not(.sipf){animation:trybase 4.4s steps(1,end) infinite}@keyframes trybase{0%{opacity:1}55%{opacity:0}90%{opacity:1}}.trybtn{margin-top:6px}' +
+    '.town-try{display:flex;gap:18px;align-items:center;flex-wrap:wrap}.hbtry{position:relative;width:min(440px,100%);flex:none}.hbtry img{display:block;width:100%;height:auto}.hbtry.hbwear{width:min(380px,100%)}.hbtry.hbscene img{border-radius:14px;border:3px solid #1d1d1b}.hbtry .sipf{position:absolute;inset:0;opacity:0;animation:trysipf 4.4s steps(1,end) infinite}.hbtry .hbzoom{position:absolute;right:-6px;bottom:-6px;width:56%!important;border:3px solid #1d1d1b;border-radius:12px;background:#fff;box-shadow:0 4px 0 rgba(0,0,0,.15)}.hbtry:has(.hbzoom){padding-bottom:18%}@keyframes trysipf{0%{opacity:0}55%{opacity:1}90%{opacity:0}}.hbtry:has(.sipf)>img:not(.sipf){animation:trybase 4.4s steps(1,end) infinite}@keyframes trybase{0%{opacity:1}55%{opacity:0}90%{opacity:1}}.trybtn{margin-top:6px}' +
     '.hb h2,.hb .cbattl,.hb .sitm>b,.hb .sprice,.hb .btn,.hb .town-nav a{font-weight:400!important}.hb h2{font-size:32px;margin:0}.hb .sitm>b{font-size:18px;line-height:1.15}.hb .sdesc{font-size:16px}.hb .town-risk{font-size:15px}' +
     '.town-jobs{display:grid;gap:10px}' +
     '.town-job{display:grid;grid-template-columns:1fr auto;gap:6px 14px;align-items:center;border:2px solid #F3E3CC;border-radius:16px;padding:12px 14px;background:#fff}' +
@@ -149844,7 +149904,8 @@ window.SQE_TOWN = function(A){
     /* rule 20 Nov 13:58: the new inside-the-Job-Centre scene stays Monnie-only (?monnie=1) until QA passes it; Layla keeps the desk card */
     if (!document.documentElement.classList.contains('monnie')) return '<div class="bcard town-desk jcdesk"><div class="jcp2" aria-hidden="true"><span class="box"><b>jobcentre</b><span>pluck</span></span><span class="end">Part of the Department for Hens</span></div><div><h2>Job Centre</h2><div class="bspeech">"' + esc(line) + '"</div></div></div>' + jobNav(off);
     var n = 0, notes = L.slice(0, 6).map(function(j){ n++; return '<a class="jcnote' + (j.done ? ' done' : '') + '" href="' + j.h + '" title="' + esc(A.tnum(j.x) + ': ' + j.x.t.title) + '"><b>Job ' + n + '</b><i>' + (j.done ? 'Done' : j.pay + ' coins') + '</i></a>'; }).join('');
-    if (!L.length) notes = '<span class="jcempty">No jobs pinned up</span>';
+    /* QA 20 Nov 14:36: never an empty board. With no jobs that day, starter jobs (active recall) are pinned up so there is always something to tap */
+    if (!L.length) notes = [['#/quick/review', 'Quick fire'], ['#/cards', 'Revision cards'], ['#/weak', 'Weak spots']].map(function(r){ return '<a class="jcnote starter" href="' + r[0] + '"><b>' + r[1] + '</b><i>Warm-up</i></a>'; }).join('');
     return '<div class="jcscene" role="group" aria-label="Inside the Job Centre"><img class="jcbg" src="img/jobcentre-in.webp" alt="" width="1800" height="1004"><img class="jclay" src="img/layla-step0.webp" alt="Layla">' +
       '<div class="jcboard">' + jobNav(off) + '<div class="jcnotes">' + notes + '</div></div><div class="bspeech jcsay">"' + esc(line) + '"</div></div>';
   }
@@ -150033,7 +150094,7 @@ window.SQE_TOWN = function(A){
   function tryOnHTML(id){
     var it = A.cbaItem(id); if (!it || !canTry(it)) return '';
     var d = 'img/britney/try/', pic, cls, ttl;
-    if (TRY_WEAR[id]){ cls = 'hbwear'; pic = '<img src="' + d + id + '.webp" alt="Britney with the ' + esc(it.n) + '">' + (TRY_SIP[id] ? '<img class="sipf" src="' + d + id + '_sip.webp" alt="">' : ''); ttl = (/^(crocs|charms|socks|clawsocks)$/.test(id) ? 'Britney trying on the ' : 'Britney with the ') + esc(it.n); }
+    if (TRY_WEAR[id]){ cls = 'hbwear'; pic = '<img src="' + d + id + '.webp" alt="Britney with the ' + esc(it.n) + '">' + (/^(crocs|charms|socks|clawsocks)$/.test(id) ? '<img class="hbzoom" src="' + d + id + '_z.webp" alt="Close-up of her feet">' : '') + (TRY_SIP[id] ? '<img class="sipf" src="' + d + id + '_sip.webp" alt="">' : ''); ttl = (/^(crocs|charms|socks|clawsocks)$/.test(id) ? 'Britney trying on the ' : 'Britney with the ') + esc(it.n); }
     else if (TRY_GARDEN[id]){ cls = 'hbscene'; pic = '<img src="' + d + 'g-' + id + '.webp" alt="The ' + esc(it.n) + ' in The Mount garden">'; ttl = 'The ' + esc(it.n) + ' at The Mount'; }
     else { cls = 'hbscene'; pic = '<img src="' + d + 's-' + id + '.webp" alt="The ' + esc(it.n) + ' on the shed shelf">'; ttl = 'The ' + esc(it.n) + ' on the shed shelf'; }
     return '<div class="bcard town-try montool"><div class="hbtry ' + cls + '">' + pic + '</div>' +
@@ -150042,10 +150103,10 @@ window.SQE_TOWN = function(A){
   /* ---------- walk-in shop (Monnie 13:27) ---------- */
   /* where everything sits in the drawing, in % of the picture: rows of shelves (items spread evenly along each), then the family by the till and the hens wandering in the aisle */
   var HB_ROWS = [   /* the drawing's four shelf lines; big garden things on the top shelf */
-    {b: 62.8, h: 10.5, x0: 36, x1: 85, ids: ['coop', 'palace', 'player', 'rec_ss', 'rec_mj', 'nestbox', 'swing']},
-    {b: 51.2, h: 8.2, x0: 36, x1: 85, ids: ['pandan', 'latte', 'cookies', 'cup', 'goldcorn', 'corn', 'sweets']},
-    {b: 40.8, h: 8.2, x0: 36, x1: 85, ids: ['crocs', 'charms', 'socks', 'clawsocks', 'tote', 'skincare', 'soap']},
-    {b: 30.4, h: 8.2, x0: 36, x1: 85, ids: ['pens', 'stickers', 'colouring', 'calendar', 'toppers', 'plaque', 'lamp']}
+    {b: 62.8, h: 10.5, x0: 36, x1: 81, ids: ['coop', 'palace', 'player', 'rec_ss', 'rec_mj', 'nestbox', 'swing']},
+    {b: 51.2, h: 8.2, x0: 36, x1: 81, ids: ['pandan', 'latte', 'cookies', 'cup', 'goldcorn', 'corn', 'sweets']},
+    {b: 40.8, h: 8.2, x0: 36, x1: 81, ids: ['crocs', 'charms', 'socks', 'clawsocks', 'tote', 'skincare', 'soap']},
+    {b: 30.4, h: 8.2, x0: 36, x1: 81, ids: ['pens', 'stickers', 'colouring', 'calendar', 'toppers', 'plaque', 'lamp']}
   ];
   var HB_SPOT = {   /* id: [x%, bottom%, height%, kind]: Mama and Baba behind the till, the others shopping at the end of the aisle, the hens and Jiminey wandering about */
     parents: [25, 23, 29, 'ppl till'], monnie: [87, 5, 36.5, 'ppl'], yasmin: [92.6, 4, 34, 'ppl'], mo: [97.6, 5.5, 34, 'ppl'],
@@ -150068,9 +150129,10 @@ window.SQE_TOWN = function(A){
     Object.keys(spots).forEach(function(id){
       var it = items[id], sp = spots[id], st = canBuy(it), k = 1, src = 'img/hb/i/' + id + '.webp';
       if (sp[3] === 'shelf') k = Math.max(1, Math.min(3, Math.floor(sp[4] * 1.778 * .92 / (sp[2] * (HB_ASP[id] || 1) * .86))));
+      var hh = sp[2]; if (sp[3] === 'shelf') hh = Math.min(sp[2], sp[4] * .92 / (.5625 * (HB_ASP[id] || 1) * (1 + (k - 1) * .86)));
       var imgs = ''; for (var j = 0; j < k; j++) imgs += '<img src="' + src + '" alt="' + (j ? '' : esc(it.n)) + '" loading="lazy">';
       var tag = st === 'own' ? '<span class="hbtag own">✓ Yours</span>' : st === 'ate' ? '<span class="hbtag">Yum!</span>' : '<span class="hbtag">' + (it.p > 0 ? it.p + ' ' + COIN() : 'FREE') + '</span>';
-      h += '<button type="button" class="hbi ' + sp[3] + (st === 'need' || st === 'later' ? ' locked' : '') + (st === 'ate' ? ' ate' : '') + (HB_VIEW === id ? ' on' : '') + '" data-town="shelf" data-i="' + id + '" data-x="' + sp[0].toFixed(1) + '" style="left:' + sp[0].toFixed(2) + '%;bottom:' + sp[1] + '%;height:' + sp[2] + '%;' + (sp[3] === 'shelf' ? 'width:' + (sp[4] * .96).toFixed(2) + '%' : '') + (/till/.test(sp[3]) ? 'z-index:24' : sp[3] !== 'shelf' ? 'z-index:' + Math.round(22 - sp[1] / 5) : '') + '" aria-label="' + esc(it.n) + '">' + imgs + tag + '<span class="hbname">' + esc(it.n) + '</span></button>';
+      h += '<button type="button" class="hbi ' + sp[3] + (st === 'need' || st === 'later' ? ' locked' : '') + (st === 'ate' ? ' ate' : '') + (HB_VIEW === id ? ' on' : '') + '" data-town="shelf" data-i="' + id + '" data-x="' + sp[0].toFixed(1) + '" style="left:' + sp[0].toFixed(2) + '%;bottom:' + sp[1] + '%;height:' + hh.toFixed(2) + '%;' + (sp[3] === 'shelf' ? 'width:' + (sp[4] * .96).toFixed(2) + '%' : '') + (/till/.test(sp[3]) ? 'z-index:24' : sp[3] !== 'shelf' ? 'z-index:' + Math.round(22 - sp[1] / 5) : '') + '" aria-label="' + esc(it.n) + '">' + imgs + tag + '<span class="hbname">' + esc(it.n) + '</span></button>';
     });
     /* Layla walks from where she was to where she is going; Britney trots along beside her (not while Bert has her) */
     var a = HB_FROM, b = HB_LX, d = Math.abs(b - a), dur = d < .5 ? 0.01 : Math.max(.6, d * .055), left = b < a - .5, n = Math.max(1, Math.round(dur / .46));
@@ -150168,7 +150230,7 @@ window.SQE_TOWN = function(A){
     else if (a === 'btnext' && BT && BT.pick != null){ BT.i++; if (BT.grabbed) BT.i = BT.items.length; if (BT.i >= BT.items.length) btFinish(); else btOrd(); A.render(); scrollTop('#town-q'); }
     else if (a === 'pick' && !g){ SEL = b.getAttribute('data-i'); A.render(); }
     else if (a === 'unpick'){ SEL = null; HB_VIEW = null; A.render(); }
-    else if (a === 'shelf'){ var sid = b.getAttribute('data-i'), sit = A.cbaItem(sid); if (!sit) return; HB_VIEW = sid; SEL = (!g && canBuy(sit) === 'ok') ? sid : null; HB_FROM = HB_LX; HB_LX = Math.min(Math.max(+b.getAttribute('data-x') + (+b.getAttribute('data-x') > HB_LX ? -5 : 5), 5), 95); A.render(); }
+    else if (a === 'shelf'){ var sid = b.getAttribute('data-i'), sit = A.cbaItem(sid); if (!sit) return; HB_VIEW = sid; SEL = (!g && canBuy(sit) === 'ok') ? sid : null; HB_FROM = HB_LX; HB_LX = Math.min(Math.max(+b.getAttribute('data-x') + (+b.getAttribute('data-x') > HB_LX ? -8 : 8), 5), 95); A.render(); }
     else if (a === 'hbclose'){ HB_VIEW = null; SEL = null; A.render(); }
     else if (a === 'try'){ TRY = b.getAttribute('data-i'); A.render(); scrollTop('.town-try'); }
     else if (a === 'tryoff'){ TRY = null; A.render(); }
@@ -150246,7 +150308,7 @@ var PEOPLE = [
 ];
 /* hens and Jiminey: [id, x, b, height %, name] */
 var HENS = [
-  ['friend', 73.2, 53, 11, 'Bolu'], ['bianca', 67.3, 52, 10.5, 'Bianca'], ['beefy', 80, 50, 11, 'Beefy'], ['brucey', 96.3, 44, 11, 'Brucey'], ['bonnie', 89, 26, 9, 'Jiminey']
+  ['friend', 65.5, 46.5, 11, 'Bolu'], ['bianca', 61, 47, 10.5, 'Bianca'], ['beefy', 88.5, 44, 11, 'Beefy'], ['brucey', 32, 47.5, 11, 'Brucey'], ['bonnie', 90, 26, 9, 'Jiminey']   /* all standing on the lawn, never on a bush or in a tree (QA 14:36) */
 ];
 var SHED = {x: 58, b: 50, h: 18};   /* the shed (img/mount/shed.webp); click opens the shelves */
 var SHED_ROOF = [56.5, 67];
@@ -150255,14 +150317,14 @@ var GARDEN_ITEMS = {
   coop:    [91.1, 36, 19],
   palace:  [91.1, 36, 20],          /* the luxury makeover replaces the coop in the same spot */
   plaque:  [91.1, 46.5, 3.4],           /* on the coop (lower on the palace) */
-  nestbox: [95.9, 33.2, 6.5],        /* on the grass right up against the coop */
+  nestbox: [87.2, 36.2, 6.5],        /* on the grass at the coop's front corner */
   player:  [37, 2.5, 8],
   rec_ss:  [31.5, 2.5, 4.6],
   rec_mj:  [26.8, 2.5, 4.8]
 };
 var SWING = {x: 80.4, top: 68.2, seat: 51.8, w: 6};   /* the swing hangs on two ropes from the left branch of the tree by the coop (Monnie 09:44); Beefy rides it */
 var SWING_HEN_H = 8.5;
-var BRUCEY_COOP = [96.6, 57.6];   /* with a coop there, Brucey perches on the bank behind it */   /* Beefy sits on the swing when Layla has both */
+var BRUCEY_COOP = [32, 47.5], BEEFY_COOP = [88.5, 37];   /* with a coop there, Brucey perches on the bank behind it */   /* Beefy sits on the swing when Layla has both */
 function coopTop(o){ return o.palace ? [91.1, 36 + 20] : o.coop ? [91.1, 36 + 19] : null; }
 /* Layla's walk: [x, b, pause ms, pose while paused ('a' stand, 't' wave)]; stays inside x 37..54 so she never meets the people */
 var LAYLA_LAP = [[41, 11, 1200, 'a'], [48, 11, 0, 'a'], [53, 12, 900, 'a'], [49, 18, 0, 'a'], [39, 22, 1400, 't'], [47, 27, 900, 'a'], [53.5, 24, 900, 'a'], [51, 17, 0, 'a'], [43, 14, 600, 'a']];   /* Monnie 13:22: one big loop over the whole open lawn, on the grass, mostly side to side (never zig-zagging up towards the trees) */   /* Monnie 10:00: no moonwalking, every leg goes more sideways than up/down */
@@ -150302,7 +150364,9 @@ function clamp(v, a, b){ return v < a ? a : v > b ? b : v; }
 function lerp(a, b, t){ return a + (b - a) * t; }
 function pxd(a, b){ var dx = (b[0] - a[0]) * 27.52, dy = (b[1] - a[1]) * 15.36; return Math.sqrt(dx * dx + dy * dy); }
 function ease(t){ return 0.5 - Math.cos(Math.PI * clamp(t, 0, 1)) / 2; }
-var CLOCK0 = Date.now(), PAUSED = 0, BPAUSED = 0, FEED = null, TRIP = null, KID = null;
+var CLOCK0 = Date.now(), PAUSED = 0, BPAUSED = 0, FEED = null, TRIP = null, KID = null, CSAY = null;
+/* the same day/night rule as the banner (night from 5 PM to 6 AM; ?hour= and ?sky= work too) */
+function mountNight(){ var q = (location.search || '') + '&' + (location.hash || ''), m = /[?&]sky=(night|day)/.exec(q), h; if (m) return m[1] === 'night'; m = /[?&]hour=(\d+(?:\.\d+)?)/.exec(q); if (m) h = (+m[1]) % 24; else { var fo = ''; try { fo = localStorage.getItem('sqe_sky') || ''; } catch(e){} if (fo === 'night') return true; if (fo === 'day') return false; var d = new Date(); h = d.getHours() + d.getMinutes() / 60; } return h >= 17 || h < 6; }
 function now(){ return typeof window.__mountClock === 'number' ? window.__mountClock : Date.now(); }
 function loopT(){ var n = now(); return n - CLOCK0 - PAUSED - (TRIP ? n - TRIP.t0 : 0); }
 function britT(){ var n = now(); return n - CLOCK0 - BPAUSED - (FEED ? n - FEED.t0 : 0); }
@@ -150368,8 +150432,10 @@ function britAt(t, n){
   var z = BSEG[BSEG.length - 1]; return {x: z.b[0], b: z.b[1], face: z.face};
 }
 /* Britney hops up onto Layla's head now and then (Monnie 08:19): fly up, ride along, fly back to where her day carries on */
+/* Layla gets properly smaller as she walks back towards the shed, so she fits its door (QA 14:36) */
+function LDEPTH(b){ return b <= 28 ? DEPTH(b) : lerp(DEPTH(28), 0.42, clamp((b - 28) / 21.6, 0, 1)); }
 function laylaHead(L){
-  var H = LAYLA_H * DEPTH(L.b), W = H * 0.558 * 0.597, off = 0.07 * W;
+  var H = LAYLA_H * LDEPTH(L.b), W = H * 0.558 * 0.597, off = 0.07 * W;
   return [L.x + (L.face === 'l' ? -off : off), L.b + H * 0.93];
 }
 var RIDE = null;
@@ -150424,7 +150490,7 @@ window.SQE_MOUNT = function(A){
     '.mg-feedbag b{position:absolute;left:50%;top:100%;transform:translateX(-50%);margin-top:4px;background:#fff;border:2px solid #1d1d1b;border-radius:8px;padding:2px 8px;font-size:13px;white-space:nowrap}' +
     '.mg-feedbag:not(.off) img{animation:mbagpulse 1.6s ease-in-out infinite}@keyframes mbagpulse{0%,100%{transform:none}50%{transform:scale(1.06)}}' +
     '.ml-rig .ml-bag{display:none;position:absolute;left:82%;top:40%;width:22%;height:auto;transform-origin:50% 0}.mg-layla.bag .ml-rig .ml-bag{display:block}.mg-layla.bag.fl .ml-rig .ml-bag{left:-4%}' +
-    '.mg-carry{position:absolute;left:30%;top:38%;width:40%;z-index:2;pointer-events:none;transform:rotate(-8deg)}.mg-carry img,.mg-carry svg{display:block!important;width:100%;height:auto;filter:drop-shadow(0 1px 0 rgba(0,0,0,.25))}' +
+    '.mg-carry{position:absolute;left:22%;top:30%;width:60%;z-index:2;pointer-events:none;transform:rotate(-8deg)}.mg-carry img,.mg-carry svg{display:block!important;width:100%;height:auto;opacity:1!important;filter:drop-shadow(0 0 1.5px #fff) drop-shadow(0 0 1.5px #fff) drop-shadow(0 1px 0 rgba(0,0,0,.35))!important}' +
     '.mg-shedtip{position:absolute;left:50%;bottom:3%;transform:translateX(-50%);z-index:2;background:#fff;border:2px solid #1d1d1b;border-radius:999px;padding:1px 12px;font-size:13px;white-space:nowrap}' +
     '.mg-shelf .it{background:none;border:0;padding:0;cursor:pointer;color:inherit;font:inherit}.mg-shelf .it.carried{outline:3px dashed #E0115F;outline-offset:3px;border-radius:8px}' +
     '.mg-away{position:absolute;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;text-decoration:none;color:#1d1d1b;pointer-events:auto}.mg-away b{display:block;background:#E9B872;border:2.5px solid #5a3a12;border-radius:8px;padding:3px 7px;font-size:clamp(9px,.95vw,15px);line-height:1.2;text-align:center;box-shadow:0 2px 0 #5a3a12;white-space:nowrap;transform:rotate(-3deg)}.mg-away u{color:#B3261E}.mg-away i{display:block;width:7px;height:clamp(18px,3vw,40px);background:#8a5a22;border:2px solid #5a3a12;border-top:0}.mg-away:hover b{background:#F2C887}' +
@@ -150491,7 +150557,8 @@ window.SQE_MOUNT = function(A){
     '.mg-shedttl{position:absolute;left:50%;top:10px;transform:translateX(-50%);z-index:2;background:#FFE066;border:2.5px solid #1d1d1b;border-radius:999px;padding:3px 14px;font-family:"Grandstander",system-ui;font-weight:800;white-space:nowrap}' +
     '@media (prefers-reduced-motion:reduce){.mount-joy i{animation:none;opacity:1}}' +
     /* panels */
-    '.mount-panels{max-width:880px;margin:12px auto 0}' +
+    '.mount-panels{max-width:880px;margin:12px 0 0}' +   /* lines up with the garden's left edge (QA 14:36) */
+    '.mount-garden.night .mg-act>img,.mount-garden.night .mg-act .mg-flip>img,.mount-garden.night .mg-layla img,.mount-garden.night .mg-swing img,.mount-garden.night .mg-shed img{filter:brightness(.8) saturate(.92)}' +
     '.mount-panels>*{margin-top:12px}' +
     '.mount-panels>.cbasay{margin-top:0}' +
     '.mount-who{font-size:14px;color:var(--muted);margin:8px 2px 0}' +
@@ -150616,7 +150683,8 @@ window.SQE_MOUNT = function(A){
     var shop = '#/town/shop';
     var h = '<div class="mount"><div class="mount-top"><a class="mount-back pkback" href="#/palace" title="Back to Peckham"><img class="pksign" src="img/peckham-sign.webp" alt="Back to Peckham" width="300" height="152"></a><h2 class="mount-title"><span class="mount-sign">The Mount</span></h2>' +
       '<span class="spill coin">' + A.cbaCoin() + ' <b>' + c.coins + '</b></span><a class="spill shop mount-shop" href="' + shop + '">🛒 Hen Bargains</a></div>' + (window.SQE_TOWN_NAV ? window.SQE_TOWN_NAV('#/mount') : '');
-    h += '<div class="mount-garden mood-' + esc(m.cls) + '"><img class="mount-bg" src="img/scene/mount-garden-nocoop.webp" alt="The Mount: a garden with a lawn, a round stone patio, a path, two benches and a shed" width="2752" height="1536">';
+    var NIGHT = mountNight();
+    h += '<div class="mount-garden mood-' + esc(m.cls) + (NIGHT ? ' night' : '') + '"><img class="mount-bg" src="img/scene/' + (NIGHT ? 'mount-garden-night' : 'mount-garden-nocoop') + '.webp" alt="The Mount: a garden with a lawn, a round stone patio, a path, two benches and a shed" width="2752" height="1536">';
     /* the things Layla has bought that live in the garden (each has its own spot; gone again if she returns it) */
     var go = TRY ? {coop: 1, palace: 1, plaque: 1, nestbox: 1, swing: 1, player: 1, rec_ss: 1, rec_mj: 1} : o;
     buildBrit(coopTop(go));
@@ -150642,7 +150710,7 @@ window.SQE_MOUNT = function(A){
     HENS.forEach(function(p){
       if (!o[p[0]] && !TRY) return; who.push(p[4]);
       var onSwing = p[0] === 'beefy' && go.swing && !!o.beefy;   /* only a hen Layla really owns ever rides it (Monnie 13:27) */
-      if (p[0] === 'brucey' && (go.coop || go.palace)) p = ['brucey', BRUCEY_COOP[0], BRUCEY_COOP[1], p[3], p[4]];
+      if (p[0] === 'beefy' && (go.coop || go.palace)) p = ['beefy', BEEFY_COOP[0], BEEFY_COOP[1], p[3], p[4]];   /* in front of the coop */
       var hg = p[0] !== 'bonnie' && hungry(p[0]);
       var hen = '<div class="mg-act mg-hen mh-' + p[0] + (hg ? ' hungry' : '') + (onSwing ? ' onswing' : '') + (p[1] > 75 ? ' rt' : '') + '" data-hen="' + p[0] + '"' + (onSwing ? '' : ' data-g="' + p[1] + ',' + p[2] + ',' + p[3] + '"') + ' title="' + esc(p[4]) + '">' + A.cbaItemPic(p[0]) +
         (hg ? '<span class="mg-tears" aria-hidden="true"><i></i><i></i></span><span class="mg-think">Layla, I\'m hungry!</span>' : '') + '</div>';
@@ -150680,7 +150748,7 @@ window.SQE_MOUNT = function(A){
     if (has('feedLeft') && hungryN){
       var bags = A.feedLeft();
       h += '<div class="palcard"><b>🌾 ' + (hungryN === 1 ? 'One hungry hen' : hungryN + ' hungry hens') + ' today.</b> ' + (bags ? 'You have ' + bags + (bags === 1 ? ' bag' : ' bags') + ' of feed (one bag feeds one hen for a day).' : 'No feed left.') +
-        '<div style="margin-top:8px">' + (bags ? '<button type="button" class="btn primary" data-mount="feed">🌾 Get the feed from the shed</button>' : '<a class="btn primary" href="#/town/shop">🛒 Buy feed at Hen Bargains</a>') + '</div></div>';
+        '<div style="margin-top:8px">' + (bags ? '<button type="button" class="btn primary" data-mount="feed">🌾 Get the feed from the shed</button> ' : '') + buyFeedBtns(Math.max(0, hungryN - bags), bags) + '</div></div>';
     }
     if (TEST && !L.away) h += '<div class="palcard mount-test"><b>🧪 Monnie\'s test</b> <span class="small muted">Only on your devices. Nothing is saved, no feed is used.</span><div style="margin-top:8px"><button type="button" class="btn" data-mount="feed" data-test="1">Test: feed Britney for free</button></div></div>';
     h += treatsCard(L) + A.broodCard();
@@ -150725,6 +150793,14 @@ window.SQE_MOUNT = function(A){
     FEED.back = Math.max(walkTo(PAT_SPOT, FEED.Lback, 0, TRIP_PX).w, pxd(FEED_BRIT, FEED.B0) / 140 * 1000) + 200;
     TRIP.out = {t0: n, feed: true};
     setTimeout(function(){ if (A.route()[0] === 'mount') A.render(); }, 20);   /* tears and the hungry card go */
+  }
+  /* buy feed right here: one bag, or enough for every hungry hen in one tap (QA design note 14:36) */
+  function buyFeedBtns(need, bags){
+    var it = A.cbaItem('corn'), c = A.cbaS(); if (!it) return '';
+    var out = '', n = Math.max(1, need), p = it.p;
+    if (need > 1) out += (c.coins >= p * need ? '<button type="button" class="btn' + (bags ? '' : ' primary') + '" data-mount="buyfeed" data-n="' + need + '">🛒 Buy ' + need + ' bags · ' + (p * need) + '</button> ' : '');
+    out += c.coins >= p ? '<button type="button" class="btn' + (bags || need > 1 ? '' : ' primary') + '" data-mount="buyfeed" data-n="1">🛒 Buy 1 bag · ' + p + '</button>' : '<button type="button" class="btn" disabled>Need ' + (p - c.coins) + ' more coins for feed</button>';
+    return out;
   }
   function britLines(){
     var a = "I love you, Layla!", b = "You're doing so well with your revision!", c;
@@ -150867,7 +150943,7 @@ window.SQE_MOUNT = function(A){
       var L = sc ? sc.L : trip || laylaAt(t);
       rigLayla(le, L);
       var al = L.alpha == null ? 1 : L.alpha; le.style.opacity = al < 1 ? al.toFixed(2) : ''; le.classList.toggle('bag', !!L.bag); le.classList.toggle('fl', L.face === 'l');
-      le.style.height = (LAYLA_H * DEPTH(L.b)).toFixed(3) + '%'; le.style.left = L.x.toFixed(3) + '%'; le.style.bottom = L.b.toFixed(3) + '%'; le.style.zIndex = String(Math.round(2000 - L.b * 10));
+      le.style.height = (LAYLA_H * LDEPTH(L.b)).toFixed(3) + '%'; le.style.left = L.x.toFixed(3) + '%'; le.style.bottom = L.b.toFixed(3) + '%'; le.style.zIndex = String(Math.round(2000 - L.b * 10));
     }
     /* Britney */
     var be = g.querySelector('.mg-brit');
@@ -150882,7 +150958,7 @@ window.SQE_MOUNT = function(A){
       if (bt){
         var top = B.b + BRIT_W * DEPTH(B.b) * 1.79 * 0.97, by = 71, bx = clamp(B.x - 2, 12, 50), bb = bt.querySelector('b'), dots = bt.querySelectorAll('i');
         bb.style.left = bx + '%'; bb.style.bottom = by + '%';
-        for (var di = 0; di < dots.length; di++){ var f = (di + 1) / (dots.length + 1); dots[di].style.left = lerp(bx - 3, B.x + 1, f).toFixed(2) + '%'; dots[di].style.bottom = lerp(by - 1, top + 2, f).toFixed(2) + '%'; dots[di].style.width = (1.3 - di * 0.3).toFixed(2) + '%'; }
+        for (var di = 0; di < dots.length; di++){ var f = [0.5, 0.78, 0.94, 0.97][di] || 0.97;   /* the trail runs right down to Britney's head, so it is clearly hers (QA 14:36) */ dots[di].style.left = lerp(bx - 3, B.x + 1, f).toFixed(2) + '%'; dots[di].style.bottom = lerp(by - 1, top + 2, f).toFixed(2) + '%'; dots[di].style.width = (1.3 - di * 0.3).toFixed(2) + '%'; }
         bt.style.display = B.air ? 'none' : '';
       }
     }
@@ -150900,9 +150976,11 @@ window.SQE_MOUNT = function(A){
     [].forEach.call(g.querySelectorAll('.mg-hen'), function(h){ var on = !!(sc && sc.othersPeck && FEED.others.indexOf(h.getAttribute('data-hen')) >= 0); if (h.classList.contains('peck') !== on) h.classList.toggle('peck', on); });
     /* speech: Britney during the scene, otherwise Mama / Baba */
     var say = g.querySelector('.mg-say');
-    if (sc && sc.say && be){
+    var csay = !FEED && CSAY && n >= CSAY.t0 && n < CSAY.t0 + 2800 ? CSAY.text : null, bsay = sc && sc.say ? sc.say : csay;
+    if (CSAY && n >= CSAY.t0 + 2800) CSAY = null;
+    if (bsay && be){
       if (!say){ say = document.createElement('span'); say.className = 'mg-say'; g.appendChild(say); }
-      if (say.getAttribute('data-say') !== 'britney'){ say.setAttribute('data-say', 'britney'); say.classList.remove('fade'); say.innerHTML = esc(sc.say) + TAIL; }
+      if (say.getAttribute('data-say') !== 'britney' || say.getAttribute('data-t') !== bsay){ say.setAttribute('data-say', 'britney'); say.setAttribute('data-t', bsay); say.classList.remove('fade'); say.innerHTML = esc(bsay) + TAIL; }
       aim(g, say, be);
     } else if (say && FEED){ say.style.display = 'none'; lastLine = ''; say.setAttribute('data-say', ''); }   /* Mama and Baba keep quiet while Britney has her moment */
     else if (say){
@@ -151005,7 +151083,8 @@ window.SQE_MOUNT = function(A){
     if (A.route()[0] !== 'mount') return;
     if (a === 'shed'){ if (A.henLife().away || FEED) openShed(); else if (!TRIP) startTrip(false); return; }
     if (a === 'feedbag'){ tripOut(true, b.getAttribute('data-test') === '1'); return; }
-    if (a === 'carry'){ var ci = b.getAttribute('data-i'); setCarry(carrying() === ci ? null : ci); closeShed(); A.render(); return; }
+    if (a === 'buyfeed'){ var nb = Math.max(1, Math.min(10, +b.getAttribute('data-n') || 1)); for (var bi = 0; bi < nb; bi++) A.cbaBuy('corn'); A.render(); return; }
+    if (a === 'carry'){ var ci = b.getAttribute('data-i'), give = carrying() !== ci; setCarry(give ? ci : null); closeShed(); if (TRIP && !TRIP.out) tripOut(false); if (give){ var cit = A.cbaItem(ci); CSAY = {t0: now() + 300, text: 'Ooh, ' + (cit ? cit.n.replace(/^(a|an|the) /i, '') : 'that') + '! Thank you, Layla!'}; } A.render(); return; }
     if (a === 'feed'){ startFeed(b.getAttribute('data-test') === '1'); return; }
     var id = b.getAttribute('data-i'), it = A.cbaItem(id); if (!it || !it.eat) return;
     var L = A.henLife(); if (L.away) return;
@@ -152466,7 +152545,7 @@ var CBA_SHOP = [
   {id:"colouring", n:"Chicken colouring book", d:"Britney colours inside the lines. Mostly.", p:150},
   {id:"calendar", n:"Fairy Pig Man & Chicken calendar", d:"The 2027 calendar, so she never forgets a revision day.", p:175},
   {id:"toppers", n:"Chicken cake toppers", d:"A little cake with chickens on top. Party time!", p:200},
-  {id:"plaque", n:"Cluckington Palace sign", d:"A wooden plaque for her home: Welcome to Cluckington Palace.", p:400},
+  {id:"plaque", n:"Cluckingham Palace sign", d:"A wooden plaque for her home: Welcome to Cluckingham Palace.", p:400},
   {id:"soap", n:"Portable paper soap", d:"Pink paper soap sheets. Clean wings wherever she goes.", p:125},
   {id:"lamp", n:"Purse light", d:"A mini lamp so she can find things in her bag.", p:125},
   {id:"sweets", n:"Haribo Friends & Party (Dubai Edition)", d:"Halal travel-edition sweets with a camel on the bag. She's sharing (maybe).", p:150},
@@ -153218,7 +153297,7 @@ VIEW.topic = function(r){
   var body;
   var c2 = COMIC2[k];
   if (mode === "cartoon") body = DFPH[k] && DFPH[k].length ? dfphHTML(DFPH[k]) : c2 ? comic2HTML(c2) : cartoon(ct);
-  else if (mode === "framework") body = /* fw-steps 20 Nov (Monnie): each framework is a tap-to-open step-by-step walk-through; replaces the old hide-the-details self-test */ (skinOf(s.id) && (window.SQE_SCENES || {})[k] ? '<div class="fwtest' + skinOf(s.id) + '"><a class="btn sm fwshop" href="#/scene/' + k + '">Back to the Sweet Shop</a></div>' : '') + '<div class="fwwrap' + skinOf(s.id) + '">' + (mm ? mindmap(mm, skinOf(s.id)) : '') /* 13:30 (Monnie): the framework diagram is back as it was; the step-by-step walk-through stays below it */ + (steps ? (mm ? '<h3 class="fwk-sec">Step by step: how to answer a question on this topic</h3>' : '') + fwkSteps(steps, skinOf(s.id), k) : '') + '</div>';
+  else if (mode === "framework") body = /* fw-steps 20 Nov (Monnie): each framework is a tap-to-open step-by-step walk-through; replaces the old hide-the-details self-test */ /* 14:50 (Monnie): the hide-everything-then-tap-to-reveal self-test is back on every framework */ '<div class="fwtest' + skinOf(s.id) + '"><button class="btn sm primary" data-act="fwtest">' + (FWTEST ? 'Show everything' : 'Hide it all and test myself') + '</button>' + (FWTEST ? '<span class="fwcount" aria-live="polite">0 revealed so far</span><span class="fwhint small muted">Tap each covered line, or a heading, to reveal it.</span>' : '') + (skinOf(s.id) && (window.SQE_SCENES || {})[k] ? '<a class="btn sm fwshop" href="#/scene/' + k + '">Back to the Sweet Shop</a>' : '') + '</div>' + '<div class="fwwrap' + skinOf(s.id) + (FWTEST ? ' mmtest' : '') + '">' + (mm ? mindmap(mm, skinOf(s.id)) : '') /* 13:30 (Monnie): the framework diagram is back as it was; the step-by-step walk-through stays below it */ + (steps ? (mm ? '<h3 class="fwk-sec">Step by step: how to answer a question on this topic</h3>' : '') + fwkSteps(steps, skinOf(s.id), k) : '') + '</div>';
   else if (rateOnly) body = '<p style="margin:14px 0 4px">Think back over <b>' + esc(t.title) + '</b>, then pick a colour below. <a href="#/topic/' + s.id + '/' + t.id + '">Read the notes again ›</a></p>';
   else if (hl < 0 && learnDeck(k) && LEARNFULL[k]) body = (NCK = k, learnHTML(x));
   else body = (hl < 0 && skinOf(s.id) && (window.SQE_SCENES || {})[k] ? '<div class="swn-shop"><span class="swn-shopic" aria-hidden="true">🍭</span><span class="swn-shopt"><b>This topic is a shop on your Journey</b><span>The Sweet Shop has the same notes as tap-and-learn sweets, jars and quick checks.</span></span><a class="btn primary swn-shopb" href="#/scene/' + k + '">🍬 Go to the Sweet Shop</a></div>' : '') + (hl < 0 && learnDeck(k) ? '<div class="lrn-tog"><button type="button" class="lrn-link" data-learn="full">🃏 Step-by-step cards instead</button></div>' : '') + (hl >= 0 ? '<div class="banner warn hlnote">📍 The part of the notes that question was about is highlighted in yellow below.</div>' : '') + '<div class="notes">' + (NCK = k, COMIC2[k] ? notesWithComic2(t.notes, COMIC2[k]) : notesWithCartoons(t.notes, ct)) + '</div>';
@@ -153708,7 +153787,7 @@ function mindmap(m, skin){
   });
   var H = y + 10, defs = (skin ? SWCOL : MMCOL).map(function(c, i){ return '<marker id="mma' + i + '" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="' + c[1] + '"' + (skin ? ' stroke="#2A1B2E" stroke-width="1.3"' : '') + '/></marker>' + (skin ? '<pattern id="mmw' + i + '" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#FFFFFF"/><rect width="5" height="10" fill="' + c[1] + '" opacity=".45"/></pattern>' : ''); }).join("");
   var tL = mmWrap(m.title || "", 515, 18, true), sL = m.sub ? mmWrap(m.sub, 520, 12.5) : [];
-  var head = (skin ? sweetBunt(30, 610, 4) : '') + '<rect x="30" y="24" width="580" height="' + (sL.length ? 54 + tL.length * 22 + (sL.length - 1) * 17 : 34 + tL.length * 22) + '" rx="16" fill="' + (skin ? '#FFE3EF' : '#E8EFF8') + '" stroke="' + (skin ? '#2A1B2E' : '#A9BCD8') + '" stroke-width="' + (skin ? 2.6 : 2) + '"/>' +
+  var head = (skin ? sweetBunt(30, 610, 4) : '') + '<rect class="mmhead" x="30" y="24" width="580" height="' + (sL.length ? 54 + tL.length * 22 + (sL.length - 1) * 17 : 34 + tL.length * 22) + '" rx="16" fill="' + (skin ? '#FFE3EF' : '#E8EFF8') + '" stroke="' + (skin ? '#2A1B2E' : '#A9BCD8') + '" stroke-width="' + (skin ? 2.6 : 2) + '"/>' +
     '<text x="320" y="56" text-anchor="middle" font-size="18" font-weight="700" fill="#24364A">' + tL.map(function(l, i){ return '<tspan x="320" dy="' + (i ? 22 : 0) + '">' + esc(l) + '</tspan>'; }).join("") + '</text>' +
     (sL.length ? '<text x="320" y="' + (62 + tL.length * 22) + '" text-anchor="middle" font-size="12.5" fill="' + (skin ? '#5A3550' : '#5B6E86') + '">' + sL.map(function(l, i){ return '<tspan x="320" dy="' + (i ? 17 : 0) + '">' + esc(l) + '</tspan>'; }).join("") + '</text>' : '');
   var list = '<div class="mmlist"><div class="mmlt">' + esc(m.title || "") + '</div>' + (m.branches || []).map(function(br, bi){ var c = (skin ? SWCOL : MMCOL)[bi % MMCOL.length]; return '<div class="mmli" style="--mc:' + c[1] + ';--mb:' + c[0] + ';--mh:' + c[2] + '"><div class="mmb" data-b="' + bi + '">' + esc(br.h) + '</div><ul class="mmp" data-b="' + bi + '">' + (br.pts || []).map(function(pt, pi){ return '<li class="mmpt" data-b="' + bi + '" data-p="' + pi + '"><span class="mmtx">' + esc(pt).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>') + '</span><span class="mmc" aria-hidden="true"></span></li>'; }).join("") + '</ul><div class="mmq" data-b="' + bi + '"></div></div>'; }).join("") + '</div>';
@@ -155995,14 +156074,16 @@ try { if (/[?&#]monnie=1/.test(location.href)) localStorage.setItem("sqe_monnie"
   (document.body || document.documentElement).appendChild(b); } catch(e){} })();
 /* Stop themes: a topic's pages (notes cards, cartoon, framework, CBA, Quick fire, Bert) take the look of its subject's stop on the Journey map:
    a header strip with the stop's drawing, the stop's colours and little motifs. Built by journey.js (THEMES there); switched on subject by subject here. */
-var THEMED_SUBJECTS = ["blp"], STOPSHORT = {blp:"Business Law"}, JTHEME = null;
+var THEMED_SUBJECTS = ["blp","dr","ls","contract","tort","legalsys","ethics","wills","accounts","trusts","land","property","crimlaw","crimprac"], /* 14:50 (Monnie + QA): every subject takes its own stop's look, not just Business Law */ STOPSHORT = {blp:"Business Law"}, JTHEME = null;
 function stopTheme(r){
   if (!JTHEME) return null;
   var key = /^(topic|cba|quick|boss|scene|questions)$/.test(r[0]) && r[1] && r[2] ? r[1] + "/" + r[2] : null;
   if (r[0] === "boss" && (r[1] === "fight" || r[1] === "result") && BOSS) key = BOSS.key;
   if (r[0] === "play" && QZ && QZ.tkey) key = QZ.tkey; /* examqs: a topic's Model Q&A set takes its stop's look too */
   var x = key && TBYKEY[key]; if (!x || THEMED_SUBJECTS.indexOf(x.s.id) < 0) return null;
-  return JTHEME(x.s.id, (STOPSHORT[x.s.id] || x.s.title) + " " + (x.s.topics.indexOf(x.t) + 1));
+  var th = JTHEME(x.s.id, (STOPSHORT[x.s.id] || x.s.title) + " " + (x.s.topics.indexOf(x.t) + 1));
+  if (th && x.s.id !== "blp") th.style = String(th.style).replace(/--stbunt:[^;]*;?/, "--stbunt:none;"); /* bunting belongs to the sweet shop only (Monnie 13:30 rule) */
+  return th;
 }
 var JPIC = null, JMAP = null; /* Journey to Cluckington Palace (top of the palace tab; #/map/<subj> opens a stop's panel there): journey.js defines window.SQE_JOURNEY; it adds VIEW.map and makes the palace scene's backdrop follow Britney along the path */
 if (window.SQE_JOURNEY) try { var JX = window.SQE_JOURNEY({S:function(){ return S; }, VIEW:VIEW, buildPlan:buildPlan, parseYmd:parseYmd, ymd:ymd, fmtDate:fmtDate, SUBJ:SUBJ, route:route, todoHTML:todoHTML}); if (JX && JX.scene) cbaScene = JX.scene(cbaScene); if (JX && JX.map) JMAP = JX.map; if (JX && JX.theme) JTHEME = JX.theme; if (JX && JX.pic) JPIC = JX.pic; } catch(ej){ if (window.console) console.error(ej); }
@@ -156042,7 +156123,7 @@ document.addEventListener("click", function(e){
     var c = document.querySelector(".fwcount"), w = document.querySelector(".fwwrap.mmtest"); if (!c || !w) return;
     var mw = w.querySelector(".mmwrap"), root = mw && mw.offsetParent !== null ? mw : w.querySelector(".mmlist"); if (!root) return;
     var all = root.querySelectorAll(".mmpt").length, sh = root.querySelectorAll(".mmpt.show").length;
-    c.textContent = sh >= all ? "🎉 All " + all + " revealed! Well done" : "🍬 " + sh + " of " + all + " revealed";
+    c.textContent = sh >= all ? "All " + all + " revealed! Well done" : sh + " of " + all + " revealed";
     c.classList.toggle("done", sh >= all);
   }, 0);
 });
