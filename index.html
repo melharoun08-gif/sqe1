@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120154603";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120155318";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -4234,6 +4234,22 @@ details.cardsubj > ul.cardtopics{margin-top:6px!important}
 .logtoast.out{opacity:0}
 
 .weakdone{font-weight:800;color:#2E7D32;font-size:17px;margin:10px 0 4px}
+
+/* QA 15:45 rescue ending: the shop door is drawn (its width was unset here), and the kicked Bert tumbles back into his shop instead of flying out of the top */
+.bhandback{--dw:70px}
+@media (max-width:560px){.bhandback{--dw:42px}}
+@keyframes bhbKicked{0%{left:calc(12% + 165px);bottom:10px;rotate:0deg;opacity:1}45%{bottom:70px;rotate:200deg;opacity:1}85%{left:calc(100% - var(--dw) - 60px);bottom:10px;rotate:380deg;opacity:1}100%{left:calc(100% - var(--dw) - 20px);bottom:10px;rotate:380deg;opacity:0}}
+/* QA 15:45 "You did it!": no "please save me" bubble any more (she's about to be free), and the shop is sized so the heading and button fit on a laptop screen */
+.bintro.bdone .bthink{display:none}
+.bintro.bdone .bcapwrap{width:min(100%,600px);padding-left:0}
+.bintro.bdone .bcapwrap .bmshop{max-width:400px;margin:0 auto}
+/* QA 15:45 Bert keeps clear of Britney at step 1; the carried Britney stays inside the picture */
+@media (min-width:561px){.bossg .atrack{--near:calc(var(--nw) + 6px)}}
+.grab .bcarry{left:-28%;top:34%;width:48%}
+/* QA 15:45 Job Centre notes: bigger, centred text */
+.jcnote{text-align:center;min-height:8.5cqw}
+.jcnote b{font-size:clamp(13px,2.1cqw,24px)}
+.jcnote i{font-size:clamp(11px,1.6cqw,18px)}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -148652,6 +148668,7 @@ var CSS = [
 '@media (max-width:640px){.scn-hs .scn-tick{display:none}}',
       '@media (max-width:640px){.scn-art .scn-hs:not(.door) .scn-pin{left:50%!important;top:50%!important;bottom:auto!important;width:18px;height:18px;border-width:2px;font-size:10px;line-height:14px;transform:translate(-50%,-50%)!important}.scn-art .scn-hs.next:not(.door) .scn-pin{transform:translate(-50%,-50%) scale(1.15)!important}}',
 '@media (max-width:1200px){.scn-hs .scn-tick{width:28px;height:28px;font-size:16px;line-height:22px;border-width:2.5px}}',
+'.scn-art:not(.hub-art) .scn-hs:not(.door) .scn-tick{right:auto;top:auto;left:-9px;bottom:-9px;width:24px;height:24px;font-size:14px;line-height:18px;border-width:2px;z-index:2}', /* QA 20 Nov: ticks sit on the object's bottom corner, never on faces */
 /* bullets-sample (preview only, ?bullets=1): Partnership jar sentences as pink bullet points */
 '.scn-sheet ul.scn-bul{list-style:none;margin:4px 0 0;padding:0}',
 '.scn-sheet ul.scn-bul li{position:relative;padding-left:32px;margin:0 0 10px;line-height:1.55;color:#1b1b1b}',
@@ -148936,10 +148953,13 @@ window.SQE_SCENE = function(A){
     if (kind === 'sort'){ for (var j = 0; j < R0.sets.length; j++){ var m = R0.sets[j].items.filter(inR); if (m.length >= 4) return {id: h.id, kind: 'sort', bins: R0.sets[j].bins, items: m}; }
       var tf = top(R0.tf.filter(inR), R0.tf); return tf.length ? {id: h.id, kind: 'sort', bins: ['True', 'False'], items: tf.map(function(x){ return {t: x.t, bin: x['true'] ? 0 : 1, why: x.fix}; })} : null; }
     var it = top(R0.tf.filter(inR), R0.tf); return it.length ? {id: h.id, kind: kind, items: it} : null; }
-  function qtPool(k, h){ if (!ROOMS_ON || !h || !h.cards) return null; var R0 = SPOTACTS[k.split('/')[1]], d = deck(k); if (!R0 || !d || !R0.tf.length) return null; var h0 = h.cards[0][0];
-    var mine = [], rest = []; R0.tf.forEach(function(x){ var sec = d.sections[x.s[0]], i = saCard(d, x), card = sec && sec.cards && sec.cards[i], inn = h.cards.some(function(c){ if (c[0] !== x.s[0] || !sec) return false; var ab = range(sec.cards || [], c); return i >= ab[0] && i < ab[1]; }); (inn ? mine : rest).push({x: x, card: card}); });
-    rest.sort(function(a, b){ return Math.abs(a.x.s[0] - h0) - Math.abs(b.x.s[0] - h0) || a.x.s[0] - b.x.s[0] || a.x.s[1] - b.x.s[1]; });
-    return mine.concat(rest); }
+  function qtPool(k, h){ if (!ROOMS_ON || !h || !h.cards) return null; var R0 = SPOTACTS[k.split('/')[1]], d = deck(k), sc = SCENES[k]; if (!R0 || !d || !R0.tf.length) return null; var INC = !/^blp\//.test(k), hs = (sc && sc.inside && sc.inside.hotspots || []).filter(function(z){ return z.cards; });
+    function owns(z, x, i){ var sec = d.sections[x.s[0]]; return !!sec && z.cards.some(function(c){ if (c[0] !== x.s[0]) return false; var ab = range(sec.cards || [], c, INC); return i >= ab[0] && i < ab[1]; }); }
+    var out = []; R0.tf.forEach(function(x){ var sec = d.sections[x.s[0]], i = saCard(d, x), card = sec && sec.cards && sec.cards[i], own = null;
+      for (var j = 0; j < hs.length && !own; j++) if (owns(hs[j], x, i)) own = hs[j];
+      for (j = 0; j < hs.length && !own; j++) if (hs[j].cards.some(function(c){ return c[0] === x.s[0]; })) own = hs[j];
+      if (own === h || (!own && hs[0] === h)) out.push({x: x, card: card}); });
+    return out; } /* QA 20 Nov: each quick tap belongs to exactly one object (the one whose cards it tests), so the same fact never repeats across objects */
   function qtCard(p, key){ var x = p.q, v = SC.qt && SC.qt[key], ok = v != null && (v === 1) === !!x['true'];
     return '<div class="lrn-card lrn-chk qt-card"><div class="lrn-ico" aria-hidden="true">⚡</div><h3 class="lrn-t">True or false?</h3><p class="qt-s">' + esc(x.t) + '</p>' +
       (v == null ? '<div class="qt-btns"><button type="button" class="btn qt-b qt-t" data-scn="qtf" data-v="1">True</button><button type="button" class="btn qt-b qt-f" data-scn="qtf" data-v="0">False</button></div>'
@@ -150074,12 +150094,28 @@ window.SQE_TOWN = function(A){
     }).join('') + '</div><p class="town-note">These are the same jobs as the spaced review on your Today list. Ticking one here ticks it there too.</p>' + jobRecall() + '</div>';
     return h;
   }
+  /* QA 15:45: anything opened from the Job Centre board gets a "Back to the Job Centre" button until she leaves that task */
+  (function(){
+    function sync(){
+      var bk = null; try { bk = sessionStorage.getItem('sqe_jcback'); } catch(e){}
+      var on = bk && /^#\/(quick|cards|questions|topic|frameworks)/.test(location.hash), el = document.getElementById('jcbackbtn');
+      if (on && !document.getElementById('qbackbtn')){
+        if (!el){ el = document.createElement('button'); el.type = 'button'; el.id = 'jcbackbtn'; el.className = 'qbackbtn'; el.innerHTML = '&#8249; Back to the Job Centre'; el.addEventListener('click', function(){ var h = '#/town/jobs'; try { h = sessionStorage.getItem('sqe_jcback') || h; sessionStorage.removeItem('sqe_jcback'); } catch(e){} el.remove(); location.hash = h; }); document.body.appendChild(el); }
+      } else { if (el) el.remove(); if (bk && !on){ try { sessionStorage.removeItem('sqe_jcback'); } catch(e){} } }
+    }
+    document.addEventListener('click', function(ev){ var a = ev.target && ev.target.closest && ev.target.closest('a.jcnote'); if (!a) return; try { sessionStorage.setItem('sqe_jcback', location.hash); } catch(e){} }, true);
+    window.addEventListener('hashchange', function(){ setTimeout(sync, 30); }); setTimeout(sync, 30);
+  })();
   function jobScene(off, L, line){
     /* rule 20 Nov 13:58: the new inside-the-Job-Centre scene stays Monnie-only (?monnie=1) until QA passes it; Layla keeps the desk card */
     if (!document.documentElement.classList.contains('monnie')) return '<div class="bcard town-desk jcdesk"><div class="jcp2" aria-hidden="true"><span class="box"><b>jobcentre</b><span>pluck</span></span><span class="end">Part of the Department for Hens</span></div><div><h2>Job Centre</h2><div class="bspeech">"' + esc(line) + '"</div></div></div>' + jobNav(off);
     var n = 0, notes = L.slice(0, 6).map(function(j){ n++; return '<a class="jcnote' + (j.done ? ' done' : '') + '" href="' + j.h + '" title="' + esc(A.tnum(j.x) + ': ' + j.x.t.title) + '"><b>Job ' + n + '</b><i>' + (j.done ? 'Done' : j.pay + ' coins') + '</i></a>'; }).join('');
     /* QA 20 Nov 14:36: never an empty board. With no jobs that day, starter jobs (active recall) are pinned up so there is always something to tap */
-    if (!L.length) notes = [['#/quick/review', 'Quick fire'], ['#/cards', 'Revision cards'], ['#/weak', 'Weak spots']].map(function(r){ return '<a class="jcnote starter" href="' + r[0] + '"><b>' + r[1] + '</b><i>Warm-up</i></a>'; }).join('');
+    if (!L.length){ /* QA 15:45: real starter tasks on today's topic (fresh profiles too), each with a Back to the Job Centre button */
+      var pdS = A.planDay(A.ymd()), it0 = pdS && (pdS.items || []).filter(function(i){ return i.x; })[0], sx = it0 ? it0.x.s : (window.SQE_SUBJECTS || [])[0], tx = it0 ? it0.x.t : sx && sx.topics[0];
+      var st = sx && tx ? [['#/quick/' + sx.id + '/' + tx.id, 'Quick fire', 'Warm-up'], ['#/cards/' + sx.id + '/topic/' + tx.id, 'Revision cards', 'Warm-up']].concat(A.topicQs(sx, tx.id).length ? [['#/questions/' + sx.id + '/' + tx.id, 'Model Q&A', 'Warm-up']] : []) : [['#/frameworks', 'Frameworks', 'Warm-up']];
+      notes = st.map(function(r){ return '<a class="jcnote starter" href="' + r[0] + '" title="' + esc(tx ? tx.title : '') + '"><b>' + r[1] + '</b><i>' + r[2] + '</i></a>'; }).join('');
+    }
     return '<div class="jcscene" role="group" aria-label="Inside the Job Centre"><img class="jcbg" src="img/jobcentre-in.webp" alt="" width="1800" height="1004"><img class="jclay" src="img/layla-step0.webp" alt="Layla">' +
       '<div class="jcboard">' + jobNav(off) + '<div class="jcnotes">' + notes + '</div></div><div class="bspeech jcsay">"' + esc(line) + '"</div></div>';
   }
@@ -150638,8 +150674,9 @@ function rideState(t, n, tb){
 }
 function hungryBrit(n){
   /* a hungry Britney stays on the lawn near the patio, slowly pacing (no happy flying about) */
-  var c = (n % 16000) / 16000, x = c < 0.5 ? lerp(47, 53, ease(c * 2)) : lerp(53, 47, ease((c - 0.5) * 2));
-  return {x: x, b: 26, face: c < 0.5 ? 'r' : 'l', bob: (c % 0.5 > 0.08 && c % 0.5 < 0.42) ? Math.abs(Math.sin(n / 180)) * 2 : 0};
+  /* paces on the open grass left of Layla's loop, so she is never hidden behind Layla's legs (QA 15:47) */
+  var c = (n % 16000) / 16000, x = c < 0.5 ? lerp(33, 36.5, ease(c * 2)) : lerp(36.5, 33, ease((c - 0.5) * 2));
+  return {x: x, b: 21, face: c < 0.5 ? 'r' : 'l', bob: (c % 0.5 > 0.08 && c % 0.5 < 0.42) ? Math.abs(Math.sin(n / 180)) * 2 : 0};
 }
 
 window.SQE_MOUNT = function(A){
@@ -150743,7 +150780,7 @@ window.SQE_MOUNT = function(A){
     '@media (prefers-reduced-motion:reduce){.mount-joy i{animation:none;opacity:1}}' +
     /* panels */
     '.mount-panels{max-width:880px;margin:12px 0 0}' +   /* lines up with the garden's left edge (QA 14:36) */
-    '.mount-garden.night .mg-act>img,.mount-garden.night .mg-act .mg-flip>img,.mount-garden.night .mg-layla img,.mount-garden.night .mg-swing img,.mount-garden.night .mg-shed img{filter:brightness(.8) saturate(.92)}' +
+    '.mount-garden.night .mg-act img,.mount-garden.night .mg-person img,.mount-garden.night .mg-ppush img,.mount-garden.night .mg-layla img:not(.far),.mount-garden.night .mg-swing img,.mount-garden.night .mg-shed img,.mount-garden.night .mg-carry{filter:brightness(.8) saturate(.92)}.mount-garden.night .ml-rig img.far{filter:brightness(.58) saturate(.92)}' +
     '.mount-panels>*{margin-top:12px}' +
     '.mount-panels>.cbasay{margin-top:0}' +
     '.mount-who{font-size:14px;color:var(--muted);margin:8px 2px 0}' +
@@ -152793,7 +152830,7 @@ var CBA_SHOP = [
   {id:"bonnie", n:"Jiminey the rabbit", d:"A fluffy ginger bunny with floppy ears. A new friend for the chickens.", p:500},
   {id:"palace", n:"Luxury coop makeover", d:"A full pamper for The Mount coop: fresh paint, fairy lights, velvet perches and a tiny chandelier. The hens are obsessed.", p:1500},
   /* Monnie item hidden until she approves a drawing of herself (20 Nov 06:42: both samples rejected) */
-  {id:"monnie", n:"Monnie", d:"Your sister, straight off a hospital shift in her scrubs and stethoscope. She moves in to The Mount to cheer you on.", p:1000},
+  {id:"monnie", n:"Muntaha", d:"Your sister, straight off a hospital shift in her scrubs and stethoscope. She moves in to The Mount to cheer you on.", p:1000},
   {id:"yasmin", n:"Yasmin", d:"Your sister, with Jiminey in her arms. She comes to hang out in The Mount garden.", p:600},
   {id:"mo", n:"Mo", d:"Your brother. He comes round to The Mount garden.", p:600},
   {id:"parents", n:"Mama and Baba", d:"Take them for free! They'll give their (unwanted) opinions on your revision and your life!", p:0}
@@ -153546,6 +153583,8 @@ VIEW.topic = function(r){
     '</div>' + (function(){ try { var x = TBYKEY[k]; if (!x) return ''; /* Monnie 20 Nov 05:43: the topic's numbered steps, Bert last */
       return '<div class="tpsteps"><b>This topic\'s steps</b><ol>' + topicSteps(x).filter(function(z){ return z.k !== "rate"; }).map(function(z){ var dn = stepDone(x, z.k); return '<li class="' + (dn ? 'done' : '') + (z.k === "bert" ? ' tpbert' : '') + '"><span class="tpck">' + (dn ? '✓' : '') + '</span><a href="' + z.h + '">' + z.l.replace(/^Step \d+: /, '') + '</a></li>'; }).join("") + '</ol></div>'; } catch(e){ return ''; } })() + '<div class="review"><b>Finished reviewing? How confident do you feel about this topic?</b>' +
       '<div class="btns" style="justify-content:center">' + CONF.slice().reverse().map(function(c){ var cur = trec(k) && trec(k).conf === c.v; return '<button class="rate' + (cur ? " on" : "") + '" data-act="trate" data-k="' + k + '" data-v="' + c.v + '">' + c.e + '<span>' + esc(c.l) + '</span></button>'; }).join("") + '</div>' +
+      (trec(k) ? (function(){ /* 16:02 (QA): after rating, the main button is the next thing to do */ var nz = nextUndone(x, "rate"), ntp = TOPICS[TOPICS.indexOf(x) + 1], st1 = ntp ? topicSteps(ntp)[0] : null;
+      return '<div class="btns" style="margin:10px 0 0">' + (nz ? '<a class="btn primary" href="' + nz.h + '">Next: ' + esc(stepLabel(nz)) + ' ›</a>' : st1 ? '<a class="btn primary" href="' + st1.h + '">✓ Topic done! Next: ' + esc(stepLabel(st1)) + ' ›</a>' : '') + '</div>'; })() : '') +
       (trec(k) ? '<p class="small muted" style="margin:8px 0 0">Reviewed ' + plural(trec(k).n, "time") + ', last ' + ago(trec(k).at) + '. Rate it again each time you come back to it. <button class="linkbtn" data-act="undone" data-k="' + k + '">Clear</button></p>' : '<p class="small muted" style="margin:8px 0 0">Your rating counts this as a review and shows on the topic list and Progress charts.</p>') +
       (mode === "cartoon" ? '</div>' /* QA 20 Nov: close .review here too, or the topic list falls inside the page as an empty blue block */ : '<div class="btns" style="justify-content:center">' + ((s.qq || []).some(function(q){ return q.t === t.id; }) ? '<a class="btn sm primary" href="#/quick/' + s.id + '/' + t.id + '">⚡ Quick fire on this topic</a>' : '') + '<a class="btn sm" href="#/questions/' + s.id + '">Practise ' + esc(s.title) + ' questions</a></div></div>') + /* 20 Nov Monnie: no question links under the cartoon */
     /* 20 Nov: Bert moved off topic pages */
@@ -155617,7 +155656,7 @@ function bossHomeView(){
     '<span class="bhb-lay"><img class="w" src="img/layla-walk-1.webp" alt=""><img class="k" src="img/layla-kick.webp" alt=""><img class="s0" src="img/layla-step0.webp" alt=""><img class="s3" src="img/layla-step3.webp" alt=""><img class="wa" src="img/layla-walk-1.webp" alt=""><img class="wb" src="img/layla-walk-2.webp" alt=""><img class="hd" src="img/britney/set/happy.webp" alt=""><b class="bhb-say">' + esc(BOSS_KICK_LINE) + '</b><b class="bhb-say bhb-beak">You can\'t beat the Beaker!!!</b></span>' +
     '<span class="bhb-bert"><span class="bb"><img src="' + BERT_RUN + '" alt=""></span><b class="bshout">Fine! Take your hen!</b></span>' +
     '<span class="bhb-brit"><img class="f" src="img/britney/fly1.webp" alt=""><img class="s" src="img/britney/set/happy.webp" alt=""></span></div>' +
-    '<div class="bsay"><p>Bert has to hand Britney back. When he tries to come closer, Layla kicks him out of the way, does a little happy dance, and Britney hops up onto her head for the walk home. Britney is safe!</p></div>' +
+    '<div class="bsay"><p>Bert has to hand Britney back. When he tries to come closer, Layla kicks him back into his shop, punches the air, and Britney flies up onto her head. Britney is safe!</p></div>' +
     '<div class="btns cbac"><a class="btn primary big" href="#/mount">Take her home to The Mount</a><button type="button" class="btn big" data-act="bhreplay">Watch again</button><a class="btn big" href="#/town/butcher">Bert\'s Butchers</a></div></div>';
 }
 /* ---------- the duel: a chase. Britney in her nest on the left, Bert creeping in from the right ---------- */
