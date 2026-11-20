@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120045713";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120045855";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -3028,6 +3028,7 @@ html.dfv-on{overflow:hidden}
 @keyframes bs-c{0%{opacity:1}50%{opacity:0}82%{opacity:1}}@keyframes bs-b{0%{opacity:0}58%{opacity:1}60.5%{opacity:0}}
 @keyframes bs-f1{0%{opacity:0}64%{opacity:1}66.86%{opacity:0}69.71%{opacity:1}72.57%{opacity:0}75.43%{opacity:1}78.28%{opacity:0}80%{opacity:0}}
 @keyframes bs-f2{0%{opacity:0}64%{opacity:0}66.86%{opacity:1}69.71%{opacity:0}72.57%{opacity:1}75.43%{opacity:0}78.28%{opacity:1}80%{opacity:0}}
+.bmshop img{animation-delay:-5.6s!important} /* start just before the door opens, so Bert pops out within a second or two */
 @media (prefers-reduced-motion:reduce){.bmshop .bs-c,.bmshop .bs-b,.bmshop .bs-f1,.bmshop .bs-f2{animation:none;opacity:0}}
 .bcapt .bmshop.bshop,.bmshop.bres-shop{max-width:380px;margin:8px auto}
 .bmcage{position:absolute;left:19%;top:47%;width:33%;z-index:2}
@@ -40234,6 +40235,9 @@ var SECTIONS = [
 ];
 var CSS = [
   ".ofx-intro p{margin:6px 0 0}",
+  ".ofx-tips{display:flex;gap:12px;align-items:center;margin-top:12px;padding:10px 14px;border:2px solid #E8B930;background:#FFF8E1;border-radius:10px;text-decoration:none;color:var(--ink)}",
+  ".ofx-tips>span:first-child{font-size:26px}",
+  ".ofx-tips b{display:block;font-size:17px}",
   ".ofx-grid{columns:2 420px;column-gap:14px}",
   ".ofx-sec{margin:0 0 14px;border-top:6px solid var(--oc);break-inside:avoid;display:inline-block;width:100%;box-sizing:border-box}",
   ".ofx-sec h3{display:flex;align-items:center;gap:8px;font-size:19px}",
@@ -40262,7 +40266,7 @@ window.SQE_OFFICIAL = function(esc){
     var ext = it[0] !== "site";
     return '<li><a href="' + esc(it[2]) + '"' + (ext ? ' target="_blank" rel="noopener"' : '') + '><span class="ofx-tag ' + it[0] + '">' + lab[it[0]] + '</span><b>' + esc(it[1]) + '</b>' + (it[3] ? '<span class="ofx-when">' + esc(it[3]) + '</span>' : '') + '</a></li>';
   };
-  var h = '<div class="card ofx-intro"><h2>🏛️ Official resources</h2><p>Everything the SRA (the exam board) has published for SQE1, all in one place. Tap any line to open it: PDFs open straight away.</p></div><div class="ofx-grid">';
+  var h = '<div class="card ofx-intro"><h2>🏛️ Official resources</h2><p>The SRA\'s own documents for the January 2027 exam.</p><a class="ofx-tips" href="#/tips"><span aria-hidden="true">🎓</span><span><b>Examiner tips</b>What the SRA\'s reports say about which subjects candidates find hardest and easiest.</span></a></div><div class="ofx-grid">';
   SECTIONS.forEach(function(s){
     h += '<div class="card ofx-sec" style="--oc:' + s.c + '"><h3><span aria-hidden="true">' + s.ic + '</span>' + esc(s.t) + '</h3>' + (s.say ? '<p class="ofx-say">' + esc(s.say) + '</p>' : '') +
       (s.dates ? '<table class="ofx-dates">' + s.dates.map(function(d){ return '<tr><td>' + esc(d[0]) + '</td><td>' + esc(d[1]) + '</td></tr>'; }).join("") + '</table>' : '') +
@@ -108366,6 +108370,7 @@ if (ROOMS_ON && ROOM_KEYS.length) HUBS["blp/hall"] = { title: "The Entrance Hall
 
 var CSS = [
 '.scn{max-width:1000px;margin:0 auto 18px}',
+'html.scn-rooms .scn{max-width:1500px}',
 '.scn-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:4px 0 10px}',
 '.scn-head h2{margin:0;font-family:"Chewy",var(--font);font-weight:400;font-size:30px;line-height:1.1;color:var(--ink)}',
 '.scn-head .scn-sub{flex-basis:100%;margin:0;color:var(--ink);font-size:15px}',
@@ -108691,19 +108696,16 @@ var CSS = [
 '.gm-right{position:sticky;top:0;align-self:start;z-index:2;background:var(--surface);padding:4px 0}',
 '@media (max-width:640px){.gm-right{top:auto;bottom:0;display:flex;flex-wrap:wrap;gap:6px;margin:0 -2px;padding:8px 2px 6px;border-top:2.5px dashed #1b1b1b;box-shadow:0 -6px 8px -6px rgba(0,0,0,.25)}.gm-right .gm-chip{width:auto;flex:1 1 auto;padding:6px 10px;font-size:13.5px;text-align:center}.gm-left .gm-chip{padding:7px 10px;font-size:14px}.gm-match{gap:8px}}',
 '.scn-sheet .scn-nav .scn-eat.wait{opacity:.6;box-shadow:none}',
-/* CSS chalkboard under the picture (rooms without a board spot on their picture) */
-'.scn-chalk{display:block;width:100%;margin:16px 0 4px;padding:11px;border:3px solid #1b1b1b;border-radius:16px;background:#9B6A3C linear-gradient(135deg,#B9844F,#8A5A2E 60%,#9B6A3C);box-shadow:4px 4px 0 #1b1b1b;cursor:zoom-in;font:inherit;color:#fff;text-align:center}',
-'.scn-chalk-in{display:block;padding:14px 18px 10px;border:2px solid #1f3328;border-radius:8px;background:#2F4A3A radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.09),transparent 60%);box-shadow:inset 0 0 18px rgba(0,0,0,.35)}',
-'.scn-chalk .scn-bt{font:400 28px/1.15 "Caveat Brush","Gochi Hand","Patrick Hand",cursive;letter-spacing:.01em;color:#fff;text-shadow:0 0 1px rgba(255,255,255,.9),0 0 4px rgba(255,255,255,.4)}',
-'.scn-chalk .scn-bt .ln+.ln{margin-top:.12em}',
-'.scn-chalk-tip{display:block;margin-top:8px;font:700 13px/1.2 var(--font);color:rgba(255,255,255,.8)}',
-'.scn-chalk:hover .scn-chalk-in,.scn-chalk:focus-visible .scn-chalk-in{outline:3px dashed rgba(255,255,255,.6);outline-offset:-6px}',
-'@media (min-width:1500px){.scn-chalk .scn-bt{font-size:32px}}',
-'@media (max-width:640px){.scn-chalk{padding:8px;border-radius:12px;box-shadow:3px 3px 0 #1b1b1b}.scn-chalk-in{padding:10px 10px 8px}.scn-chalk .scn-bt{font-size:22px}}',
-'.scn-chalk .ln,.scn-boardin .ln{text-wrap:balance}',
+'.scn-bt .ln{text-wrap:balance}',
 /* hall: labels and tags never catch taps (they can sit over a neighbouring door); the number pin is part of its door's tap area */
 '.scn-art.hub-art .scn-lab,.scn-art.hub-art .scn-lab.js,.scn-art.hub-art .scn-nexttag{pointer-events:none}',
 '.hub-hs .scn-pin{pointer-events:auto}',
+/* hall hover labels: placed by layArt while hidden (inside the picture, off the pins), static, on top; while a door is hovered every other label, the Next tag and the glow pause */
+'.hub-hs.lay .scn-lab{display:block!important;visibility:hidden}',
+'.hub-art .hub-hs .scn-lab{animation:none}',
+'.hub-art .hub-hs:hover,.hub-art .hub-hs:focus-visible{z-index:9}',
+'.hub-art:has(.hub-hs:hover) .hub-hs:not(:hover) .scn-lab,.hub-art:has(.hub-hs:hover) .hub-hs:not(:hover) .scn-nexttag{display:none}',
+'.hub-art:has(.hub-hs:hover) .hub-hs.next:not(:hover){animation:none}',
 'html.scn-rooms .scn{min-height:calc(100vh - 16px)}' /* a short scene (the shop front) can still sit at the top of the screen */
 ].join('\n');
 
@@ -109036,9 +109038,6 @@ window.SQE_SCENE = function(A){
   function boardLines(k){ return (k && BOARD_HOOKS[k.split('/')[1]]) || null; }
   function boardHTML(view, k){ var b = view && view.board, L = boardLines(k); if (!ROOMS_ON || !b || !L || !view.img) return '';
     return '<button type="button" class="scn-board" data-scn-board="' + esc(k) + '" style="left:' + b.x + '%;top:' + b.y + '%;width:' + b.w + '%;height:' + b.h + '%;--bpx:' + (b.w * 0.05).toFixed(2) + 'cqw;--bpy:' + (b.h * 0.05 / (view.ratio || 16 / 9)).toFixed(2) + 'cqw" aria-label="Chalkboard: ' + esc(L.join(' ')) + '. Tap to read it big."><span class="scn-bt">' + L.map(function(l){ return '<span class="ln">' + esc(l) + '</span>'; }).join('') + '</span></button>'; }
-  /* rooms with no board spot on their picture (inside.board = null, e.g. while the pictures are being redrawn): the same hook on a CSS-drawn chalkboard just below the picture, tap to read it big */
-  function chalkHTML(view, k){ var L = boardLines(k); if (!ROOMS_ON || !L || (view && view.board && view.img)) return '';
-    return '<button type="button" class="scn-chalk" data-scn-board="' + esc(k) + '" aria-label="Chalkboard: ' + esc(L.join(' ')) + '. Tap to read it big."><span class="scn-chalk-in"><span class="scn-bt">' + L.map(function(l){ return '<span class="ln">' + esc(l) + '</span>'; }).join('') + '</span><span class="scn-chalk-tip" aria-hidden="true">🔍 tap to make it big</span></span></button>'; }
   function fitBoards(){ var els = document.querySelectorAll('.scn-board .scn-bt:not([data-fit]), .scn-boardov .scn-bt:not([data-fit])');
     for (var i = 0; i < els.length; i++){ var t = els[i], box = t.parentNode, lo = 0.5, hi = box.classList.contains('scn-board') ? 12 : 80, unit = box.classList.contains('scn-board') ? 'cqw' : 'px';
       if (box.clientWidth < 8 || box.clientHeight < 8) continue; /* picture not loaded yet: the image load listener refits */
@@ -109079,20 +109078,22 @@ window.SQE_SCENE = function(A){
   function layArt(art){
     if (!art || art.classList.contains('zoom')) return; var W = art.clientWidth, H = art.clientHeight; if (W < 50 || H < 50) return;
     var hss = [].slice.call(art.querySelectorAll('.scn-hs')), obst = [], jobs = [];
-    if (art.classList.contains('hub-art')) hss.forEach(function(hs){ var pin = hs.querySelector('.scn-pin'); hs.style.minWidth = hs.style.marginLeft = ''; if (pin) pin.style.top = '';
+    var HUB = art.classList.contains('hub-art');
+    if (HUB) hss.forEach(function(hs){ var pin = hs.querySelector('.scn-pin'); hs.style.minWidth = hs.style.marginLeft = ''; if (pin) pin.style.top = '';
       var w = hs.offsetWidth; if (w < 28){ hs.style.minWidth = '28px'; hs.style.marginLeft = -Math.round((28 - w) / 2) + 'px'; } /* thin doors (phone): a tappable width, centred on the door */
       if (pin && getComputedStyle(pin).display !== 'none' && pin.offsetTop + pin.offsetHeight > hs.clientHeight - 2) pin.style.top = Math.max(0, hs.clientHeight - pin.offsetHeight - 2) + 'px'; }); /* the number pin stays inside its door's tap area */
     hss.forEach(function(hs){ var lab = hs.querySelector('.scn-lab'), tag = hs.querySelector('.scn-nexttag');
       [lab, tag].forEach(function(e){ if (e){ e.classList.remove('js', 'up'); e.style.left = e.style.top = e.style.width = e.style.maxWidth = e.style.fontSize = ''; } });
       var pin = hs.querySelector('.scn-pin'); if (pin && getComputedStyle(pin).display !== 'none') obst.push(labRect(pin, art));
       var vis = function(e){ return e && getComputedStyle(e).display !== 'none' && !hs.classList.contains('open'); };
+      if (HUB && lab && !vis(lab) && !hs.classList.contains('locked')){ hs.classList.add('lay'); jobs.push({hs: hs, lab: lab, tag: null, solo: true}); return; } /* hall hover label: placed now, shown on hover */
       if (vis(lab) || vis(tag)) jobs[hs.classList.contains('next') ? 'unshift' : 'push']({hs: hs, lab: vis(lab) ? lab : null, tag: vis(tag) ? tag : null});
     });
     jobs.forEach(function(j){ var hs = j.hs, hr = {x: hs.offsetLeft, y: hs.offsetTop, w: hs.offsetWidth, h: hs.offsetHeight}, bx = hs.offsetLeft + hs.clientLeft, by = hs.offsetTop + hs.clientTop, lr = null;
       if (j.lab){ var pref = labRect(j.lab, art), door = hs.classList.contains('door'); j.lab.classList.add('js'); var sz = labFit(j.lab, W, door);
         pref = {x: pref.x + pref.w / 2 - sz.w / 2, y: pref.y + pref.h - sz.h, w: sz.w, h: sz.h}; /* keep the label's bottom where the page put it */
         lr = labBest(pref, sz.w, sz.h, W, H, obst, [hr.y + sz.h / 2 + 4, hr.y + hr.h / 2, hr.y + hr.h + sz.h / 2 + 3, hr.y - sz.h / 2 - 3]);
-        j.lab.style.left = Math.round(lr.x - bx) + 'px'; j.lab.style.top = Math.round(lr.y - by) + 'px'; obst.push(lr); }
+        j.lab.style.left = Math.round(lr.x - bx) + 'px'; j.lab.style.top = Math.round(lr.y - by) + 'px'; if (j.solo) hs.classList.remove('lay'); else obst.push(lr); }
       if (j.tag){ var tp = labRect(j.tag, art), tw = j.tag.offsetWidth, th = j.tag.offsetHeight, tr, up = false;
         j.tag.classList.add('js');
         if (lr){ var cx = lr.x + lr.w / 2, cands = [{x: cx - tw / 2, y: lr.y - th - 3}, {x: cx - tw / 2, y: lr.y + lr.h + 6, up: true}, {x: lr.x - tw - 4, y: lr.y + (lr.h - th) / 2}, {x: lr.x + lr.w + 4, y: lr.y + (lr.h - th) / 2}], best = null;
@@ -109283,7 +109284,7 @@ window.SQE_SCENE = function(A){
       h += '<div class="scn-prog"><span>' + n + ' of ' + N + ' ' + esc(N === 1 ? sc.treat : sc.treats) + ' opened</span><span class="scn-bar" role="progressbar" aria-valuemin="0" aria-valuemax="' + N + '" aria-valuenow="' + n + '"><i style="width:' + Math.round(n / N * 100) + '%"></i></span>' + (n === N ? '<span>🏆</span>' : '') + '</div>';
       var at = o.at && hsById(sc, o.at);
       if (at && !o.open[at.id] && (o.pos[at.id] || 0) > 0) h += '<button type="button" class="btn primary scn-carry" data-scn="obj" data-id="' + esc(at.id) + '">▶ Carry on: ' + esc(at.label) + ' (card ' + (o.pos[at.id] + 1) + ')</button>';
-      h += artHTML(sc.inside, o.open, k, 'inside') + chalkHTML(sc.inside, k);
+      h += artHTML(sc.inside, o.open, k, 'inside');
       var nx = nextId(k);
       if (!LT) h += '<p class="scn-hint">' + (n === N ? '🏆 You\'ve opened everything! Open any sweet again to go over it. <button type="button" class="lrn-link" data-scn="restock">↺ Restock the shop (start again)</button>' : 'The glowing one is a good next pick, but you can open them in any order.') + '</p>';
       if (LT){ roomFin(k); h += roomDone(k) ? endHTML(k) : '<p class="scn-lock">🔒 Open everything' + (EX.length ? ', then play the ' + EX.map(function(e){ return e.id === 'game' ? 'mini-game' : 'scenario'; }).join(' and the ') : '') + '. Then Britney asks how the topic went.</p>'; }
@@ -113663,7 +113664,7 @@ function bossIntro(x){
 }
 /* #/boss hub: Bert's shop, rescues and ransom, chests, topics ready for a fight */
 function bossHub(){
-  var b = bossS(), h = '<div class="cbag bossg"><div class="cbatop"><a class="cbaback" href="#/palace">‹ Palace</a><span class="cbattl">🥊 Bert the butcher</span><span class="spill coin">' + cbaCoin() + ' <b>' + cbaS().coins + '</b></span></div>';
+  var b = bossS(), h = '<div class="cbag bossg"><div class="cbatop"><a class="cbaback" href="#/palace">‹ Peckham</a><span class="cbattl">🥊 Bert the butcher</span><span class="spill coin">' + cbaCoin() + ' <b>' + cbaS().coins + '</b></span></div>';
   h += bossChestCard();
   if (b.cap) h += bossCaptivePanel("boss");
   else h += '<div class="bcard bintro">' + bertShopHTML("") + '<div><h2>Bert\'s Butchers</h2><div class="bspeech">"Finish a topic and I\'ll be waiting with ' + BOSS_N + ' questions. Get ' + BOSS_WIN + ' right and you win my coin chest. Get more than half wrong and that hen of yours is mine!"</div><p class="small">' + (bossHatched() ? 'Britney is safe at home.' : 'Britney hasn\'t hatched yet, so Bert can\'t take anyone. Fights still win coin chests.') + ' Bert beaten on <b>' + plural(Object.keys(b.won).length, "topic") + '</b>.</p></div></div>';
