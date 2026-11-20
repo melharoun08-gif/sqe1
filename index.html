@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120073805";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120074412";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -3596,6 +3596,13 @@ a.tlink::after{content:none}
 /* RAG dots on Today rate step (20 Nov 07:25) */
 .ragdots{display:inline-flex;gap:4px;vertical-align:middle;margin-left:4px}.ragdots .ragdot{display:block}
 .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+/* 07:40 Britney caged in Bert's window while he has her */
+.jsv .jcage{cursor:pointer}.jsv .jcage-help{animation:jcagehelp 1.6s ease-in-out infinite}
+@keyframes jcagehelp{0%,100%{opacity:1}50%{opacity:.35}}
+
+/* TEMP B button (free Britney), under N */
+.head.nb .nbbbtn{top:119px}
+@media (max-width:560px){.head.nb .nbbbtn{top:calc(min(100cqw - 28px,400px) * 1.0267 + 44px)}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -107843,9 +107850,34 @@ window.SQE_JOURNEY = function (A) {
         L._walk = shopWalkSVG(L);
         return s;
     }
+    /* 07:40 Monnie/coordinator: while Bert has Britney (save S.game.boss.cap, set by app.js bossEnd) she sits caged in his shop window on the map;
+       tapping the cage opens the rescue (#/boss). She is back beside Layla once it is cleared. Preview: ?caught=1 */
+    function britCaught() {
+        if (/[?&]caught=1/.test(qs()))
+            return true;
+        try {
+            var S = JSON.parse(localStorage.getItem('sqe1-revision-v2') || '{}'), b = (S.game && S.game.boss) || {}, o = S.boss || {};
+            return !!b.cap || b.state === 'captured' || b.state === 'ransom' || o.state === 'captured' || o.state === 'ransom';
+        }
+        catch (e) {
+            return false;
+        }
+    }
+    function bertCage(x, y, w, h) {
+        if (!britCaught())
+            return '';
+        var ar = 520 / 523, iw = h * ar, ix = x - iw / 2, iy = y - h; /* window box in butchers3 art (fractions) */
+        var wx = ix + .185 * iw, wy = iy + .475 * h, ww = .34 * iw, wh = .30 * h, cw = ww * .62, ch = wh * .92, cx = wx + ww / 2 - cw / 2, cy = wy + wh - ch, bars = [1, 2, 3, 4, 5].map(function (k) { return "<line x1=\"".concat(f1(cx + cw * k / 6), "\" y1=\"").concat(f1(cy + ch * .12), "\" x2=\"").concat(f1(cx + cw * k / 6), "\" y2=\"").concat(f1(cy + ch), "\"/>"); }).join('');
+        return "<a href=\"#/boss\" aria-label=\"Rescue Britney from Bert's window\"><g class=\"jcage\"><rect x=\"".concat(f1(wx), "\" y=\"").concat(f1(wy), "\" width=\"").concat(f1(ww), "\" height=\"").concat(f1(wh), "\" fill=\"#FFF6C9\" opacity=\".9\"/>")
+            + "<image href=\"".concat(BRITNEY_IMG, "\" x=\"").concat(f1(cx + cw * .08), "\" y=\"").concat(f1(cy + ch * .18), "\" width=\"").concat(f1(cw * .84), "\" height=\"").concat(f1(ch * .8), "\" preserveAspectRatio=\"xMidYMax meet\"/>")
+            + "<g stroke=\"#5A5F66\" stroke-width=\"".concat(f1(Math.max(1.5, cw * .035)), "\" stroke-linecap=\"round\">").concat(bars, "<line x1=\"").concat(f1(cx), "\" y1=\"").concat(f1(cy + ch), "\" x2=\"").concat(f1(cx + cw), "\" y2=\"").concat(f1(cy + ch), "\"/></g>")
+            + "<path d=\"M".concat(f1(cx), ",").concat(f1(cy + ch * .25), " Q").concat(f1(cx + cw / 2), ",").concat(f1(cy - ch * .2), " ").concat(f1(cx + cw), ",").concat(f1(cy + ch * .25), "\" fill=\"none\" stroke=\"#5A5F66\" stroke-width=\"").concat(f1(Math.max(1.5, cw * .04)), "\"/>")
+            + "<line x1=\"".concat(f1(cx), "\" y1=\"").concat(f1(cy + ch * .25), "\" x2=\"").concat(f1(cx), "\" y2=\"").concat(f1(cy + ch), "\" stroke=\"#5A5F66\" stroke-width=\"").concat(f1(Math.max(1.5, cw * .04)), "\"/><line x1=\"").concat(f1(cx + cw), "\" y1=\"").concat(f1(cy + ch * .25), "\" x2=\"").concat(f1(cx + cw), "\" y2=\"").concat(f1(cy + ch), "\" stroke=\"#5A5F66\" stroke-width=\"").concat(f1(Math.max(1.5, cw * .04)), "\"/>")
+            + "<text class=\"jpl jcage-help\" x=\"".concat(f1(wx + ww / 2), "\" y=\"").concat(f1(wy - 6), "\" font-size=\"").concat(f1(h * .075), "\" fill=\"#E2231A\" style=\"fill:#E2231A\" stroke=\"#fff\" stroke-width=\"").concat(f1(h * .02), "\" paint-order=\"stroke\">HELP!</text></g></a>");
+    }
     function townB(b, x, y, w, h) {
         var im = function (f, c) { return "<image".concat(c ? " class=\"".concat(c, "\"") : '', " href=\"img/map-new/").concat(f, ".webp\" x=\"").concat(f1(x - w / 2), "\" y=\"").concat(f1(y - h), "\" width=\"").concat(f1(w), "\" height=\"").concat(f1(h), "\" preserveAspectRatio=\"xMidYMax meet\"/>"); };
-        return "<a href=\"".concat(b[3], "\" aria-label=\"").concat(esc(b[2]), "\"><g class=\"jhit\">").concat(b[0] === 'butchers3' ? "<g class=\"jtday\">".concat(im(b[0]) + im('anim/bert-fist', 'jbert-f1') + im('anim/bert-fist2', 'jbert-f2') + im('anim/bert-closed', 'jbert-c') + im('anim/bert-blink', 'jbert-b'), "</g>") + im('butchers3-night', 'jtnight') : im(b[0]), "</g></a>");
+        return "<a href=\"".concat(b[3], "\" aria-label=\"").concat(esc(b[2]), "\"><g class=\"jhit\">").concat(b[0] === 'butchers3' ? "<g class=\"jtday\">".concat(im(b[0]) + im('anim/bert-fist', 'jbert-f1') + im('anim/bert-fist2', 'jbert-f2') + im('anim/bert-closed', 'jbert-c') + im('anim/bert-blink', 'jbert-b'), "</g>") + im('butchers3-night', 'jtnight') : im(b[0]), "</g></a>") + (b[0] === 'butchers3' ? bertCage(x, y, w, h) : '');
     } /* no name tags (Monnie 20 Nov) */
     /* Monnie 20 Nov: after shopping at Hen Bargains, Layla walks on carrying the blue carrier bag (for the rest of that day) */
     function shopToday() {
@@ -107884,7 +107916,7 @@ window.SQE_JOURNEY = function (A) {
                 var wi = lh * wd / 300;
                 return "<image class=\"jmo ".concat(c, "\" href=\"").concat(u, "\" x=\"").concat(f1(lx + (lw - wi) / 2), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(wi), "\" height=\"").concat(lh, "\"/>");
             }).join(''))
-            + "<g transform=\"translate(".concat(f1(bx + bh / 2), ",0) scale(").concat(f, ",1)\">").concat(BRIT_FR.map(function (u, k) { var h2 = bh * .86, w2 = h2 * 1.348; return "<g class=\"jbf jbf".concat(k + 1, "\"><g class=\"jbm").concat(k + 1, "\"><image href=\"").concat(u, "\" x=\"").concat(f1(-w2 * .42), "\" y=\"").concat(f1(-h2 * .97), "\" width=\"").concat(f1(w2), "\" height=\"").concat(f1(h2), "\"/></g></g>"); }).join(''), "</g>") + britHungry(bx, bh, f) + "</g>";
+            + (britCaught() ? '' : "<g transform=\"translate(".concat(f1(bx + bh / 2), ",0) scale(").concat(f, ",1)\">").concat(BRIT_FR.map(function (u, k) { var h2 = bh * .86, w2 = h2 * 1.348; return "<g class=\"jbf jbf".concat(k + 1, "\"><g class=\"jbm").concat(k + 1, "\"><image href=\"").concat(u, "\" x=\"").concat(f1(-w2 * .42), "\" y=\"").concat(f1(-h2 * .97), "\" width=\"").concat(f1(w2), "\" height=\"").concat(f1(h2), "\"/></g></g>"); }).join(''), "</g>") + britHungry(bx, bh, f)) + "</g>";
     }
     function pair(Hn, mode) {
         return "<g class=\"jhen jpair\" transform=\"translate(".concat(Hn.x, ",").concat(Hn.y, ")\" data-f=\"").concat(Hn.m === false ? -1 : 1, "\" aria-hidden=\"true\">").concat(pairInner(mode, Hn.m === false ? -1 : 1), "</g>");
@@ -121232,6 +121264,7 @@ window.SQE_MOUNT = function(A){
     '.mg-walker img.sp{visibility:hidden}.mg-walker img.up,.mg-walker img.lg1,.mg-walker img.lg2{position:absolute;left:0;top:0;height:100%;width:100%;transform-origin:50% 100%}' +
     '.ml-rig{position:absolute;inset:0;display:none}.ml-rig.on{display:block}.ml-rig img,.ml-legs{position:absolute;left:0;top:0;width:100%;height:100%;transform-origin:0 0}.ml-legs{transform-origin:50% 50%}.ml-rig .far{filter:brightness(.72)}.ml-rig img.tl,.ml-rig img.tr{display:none}.ml-rig img.tl.on,.ml-rig img.tr.on{display:block}' +
     '.mg-brit{height:auto;cursor:pointer;pointer-events:auto}' +
+    '.mg-away{position:absolute;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;text-decoration:none;color:#1d1d1b;pointer-events:auto}.mg-away b{display:block;background:#E9B872;border:2.5px solid #5a3a12;border-radius:8px;padding:3px 7px;font-size:clamp(9px,.95vw,15px);line-height:1.2;text-align:center;box-shadow:0 2px 0 #5a3a12;white-space:nowrap;transform:rotate(-3deg)}.mg-away u{color:#B3261E}.mg-away i{display:block;width:7px;height:clamp(18px,3vw,40px);background:#8a5a22;border:2px solid #5a3a12;border-top:0}.mg-away:hover b{background:#F2C887}' +
     '.mg-brit .mg-flip{display:block;position:relative;transform-origin:50% 92%}' +
     '.mg-brit img{width:100%;height:auto;display:none}.mg-brit img.on{display:block}' +
     '.mg-brit .heart{position:absolute;left:50%;top:-10%;font-size:22px;animation:heart 1.1s ease-out forwards;pointer-events:none}' +
@@ -121373,6 +121406,7 @@ window.SQE_MOUNT = function(A){
       '<span class="ml-rig on"><span class="ml-legs"><img class="far th" src="img/mount/lw-thigh.webp" alt=""><img class="far sh" src="img/mount/lw-shin.webp" alt=""><img class="near th" src="img/mount/lw-thigh.webp" alt=""><img class="near sh" src="img/mount/lw-shin.webp" alt=""></span>' +
       '<img class="tr on" src="img/mount/lw-torso-r.webp" alt=""><img class="tl" src="img/mount/lw-torso-l.webp" alt=""></span>' +
       ['ar', 'al', 'tr', 'tl'].map(function(f){ return '<img class="pose" data-f="' + f + '" src="img/mount/lw-' + f.charAt(0) + '-' + f.charAt(1) + '.webp" alt="">'; }).join('') + '</div>';
+    if (L.away) h += '<a class="mg-away" href="#/boss/rescue" style="left:' + SHED.x + '%;bottom:' + (SHED.b + SHED.h * 0.3) + '%;z-index:' + Math.round(2000 - SHED.b * 10 + 1) + '"><b>Britney is at Bert\'s!<br><u>Rescue her</u></b></a>';   /* sign hung on the shed while Bert has her (bossS().cap): clear of everyone's path */
     if (!L.away){
       var bh = hungry('britney'), joyOn = JOY.until > Date.now();
       h += '<button type="button" class="mg-act mg-brit' + (joyOn ? ' joy' : '') + (bh ? ' hungry' : '') + '"' + (joyOn ? ' style="animation-delay:-' + ((Date.now() - JOY.start) / 1000).toFixed(2) + 's"' : '') + ' data-act="cbapet" aria-label="Pat ' + esc(nm) + '"><span class="mg-flip">' +
@@ -122635,6 +122669,7 @@ function nbHeader(route, cur, tabs, countdown, pct, C, done, tgt, todayDone, tod
   '</div><button class="homebtn" data-go="#/home">Home</button>' +
   '<button class="nbmbtn" data-act="nbprev" aria-label="Preview streak step" title="Preview streak step">M</button>' + /* TEMP M button */
   '<button class="nbmbtn nbnbtn" aria-label="Switch day or night" title="Switch day or night" onclick="nbSkyToggle()">N</button>' + /* TEMP N button (map night test) */
+  '<button class="nbmbtn nbbbtn" data-act="nbfreebrit" aria-label="Free Britney from Bert" title="Free Britney from Bert">B</button>' + /* TEMP B button: frees Britney (Monnie testing 20 Nov) */
   '<nav class="tabs">' + tabs.map(function(t){ return '<a href="#/' + t[0] + '" data-tab="' + t[0] + '" draggable="false" style="--tc:var(' + t[2] + ')" class="' + (cur === t[0] ? "on" : "") + " two" + '">' + (t[1].indexOf("<span") >= 0 ? t[1] : t[1].split("|").map(function(x){ return "<span>" + x + "</span>"; }).join("")) + '</a>'; }).join("") + '</nav>' +
   '</div>';
 }
@@ -126257,6 +126292,7 @@ document.addEventListener("click", function(e){
     case "kwnext": kwI++; var kwel = document.getElementById("kw"); if (kwel){ kwel.outerHTML = kwHTML(); blApply(); } break;
     case "blopen": blOpen(); break;
     case "present": presentVoucher(); break;
+    case "nbfreebrit": /* TEMP B button */ var bfb = bossS(); bfb.cap = null; BOSS = null; RESQ = null; FEDNOW = 1; save(); render(); break;
     case "nbprev": /* TEMP M button: display-only, cycles 0..5 */ var nbp = nbPrev(); nbp = nbp === null ? (Math.min(presentStreak(), PRESENT_STEPS) + 1) % 6 : (nbp + 1) % 6; try { window.sessionStorage.setItem("nbPrevStep", String(nbp)); } catch(e2){} var nbs = document.querySelector(".head.nb .nbsteps"), nbh = nbStreakHTML(); if (!nbs){ render(); break; } (function(old, html){ /* QA: build the new step off-screen and swap only once its pictures are decoded, so Layla never blinks out */ var t = document.createElement("div"); t.innerHTML = html; var nw = t.firstElementChild; if (!nw){ old.outerHTML = html; return; } var imgs = [].slice.call(nw.querySelectorAll("image,img")).map(function(el){ var u = el.getAttribute("href") || el.getAttribute("xlink:href") || el.getAttribute("src"); if (!u) return null; var im = new Image(); im.src = u; return im.decode ? im.decode().catch(function(){}) : null; }).filter(Boolean); var done = false, go = function(){ if (done) return; done = true; if (old.parentNode) old.parentNode.replaceChild(nw, old); }; Promise.all(imgs).then(go); setTimeout(go, 1500); })(nbs, nbh); break;
     case "voucherclose": var vb = document.querySelector(".voucher-bg"); if (vb) vb.remove(); break;
     case "fwtest": FWTEST = !FWTEST; render(); break;
