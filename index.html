@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120163730";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120164337";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -4322,6 +4322,11 @@ details.cardsubj > ul.cardtopics{margin-top:6px!important}
 @keyframes jcsmile{0%,55%,100%{opacity:0}58%,85%{opacity:1}}
 @keyframes jcsmilen{0%,55%,100%{opacity:1}58%,85%{opacity:0}}
 @media (prefers-reduced-motion:reduce){.jclayw,.jclayw img,.jcbrit,.jcbrit img,.jcrblink,.jchands i{animation:none!important}.jclayw .wa,.jclayw .wb,.jclayw .bl,.jcbrit .hp{opacity:0}.jclayw .st{opacity:1}}
+
+/* positions in width units so they stay on the picture when the phone layout stacks the bubble and board underneath */
+.jcclock{top:5.89cqw}
+.jchands{top:9.78cqw}
+.jcrblink{top:19.45cqw}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -108923,7 +108928,18 @@ window.SQE_PODCASTS = {
   "trusts/fiduciary-duties": {file: "podcasts/trusts-08-fiduciary-duties.m4a", mins: 24},
   "trusts/trustees-appointment": {file: "podcasts/trusts-09-trustees-appointment.m4a", mins: 20},
   "trusts/trustee-duties-powers": {file: "podcasts/trusts-10-trustee-duties-powers.m4a", mins: 23},
-  "trusts/breach-of-trust": {file: "podcasts/trusts-11-breach-of-trust.m4a", mins: 21}
+  "trusts/breach-of-trust": {file: "podcasts/trusts-11-breach-of-trust.m4a", mins: 21},
+  "wills/outside-estate": {file: "podcasts/wills-07-outside-estate.m4a", mins: 22},
+  "wills/grants": {file: "podcasts/wills-08-grants.m4a", mins: 16},
+  "wills/iht-funding-incidence": {file: "podcasts/wills-09-iht-funding-incidence.m4a", mins: 21},
+  "wills/administration": {file: "podcasts/wills-10-administration.m4a", mins: 23},
+  "wills/family-provision": {file: "podcasts/wills-11-family-provision.m4a", mins: 23},
+  "wills/iht-lifetime": {file: "podcasts/wills-12-iht-lifetime.m4a", mins: 23},
+  "wills/iht-death-reliefs": {file: "podcasts/wills-13-iht-death-reliefs.m4a", mins: 26},
+  "wills/income-cgt-administration": {file: "podcasts/wills-14-income-cgt-administration.m4a", mins: 26},
+  "accounts/framework-client-money": {file: "podcasts/accounts-01-framework-client-money.m4a", mins: 20},
+  "accounts/client-account-withdrawals": {file: "podcasts/accounts-02-client-account-withdrawals.m4a", mins: 22},
+  "trusts/certainties": {file: "podcasts/trusts-01-certainties.m4a", mins: 29}
 };
 
 ;
@@ -150173,9 +150189,9 @@ window.SQE_TOWN = function(A){
     /* Monnie 16:19: Layla to scale with the till (it comes to her hip), a real stride (jointed legs swing from the hip, knees bend), Britney beside her, everyone breathing and blinking like the banner */
     '.hbin-layla{position:absolute;bottom:16%;height:37%;aspect-ratio:179/300;transform:translateX(-50%);z-index:30;pointer-events:none}.hbl-b{position:absolute;inset:0;transform-origin:50% 100%;animation:hbbreath 4.4s ease-in-out infinite}' +
     '.hbr,.hbr img,.hbr-legs,.hbr svg{position:absolute;left:0;top:0;width:100%;height:100%;transform-origin:0 0;max-width:none}.hbr-legs{transform-origin:50% 50%}.hbr .far{filter:brightness(.72)}.hbr .tl,.hbin-layla.fl .hbr .tr,.hbr .gl,.hbin-layla.fl .hbr .gr{display:none}.hbin-layla.fl .hbr .tl,.hbin-layla.fl .hbr .gl{display:block}' +
-    '.hbin-layla .lbr{position:absolute;bottom:0;height:20%;width:auto;left:-44%;z-index:2;transform-origin:50% 100%}.hbin-layla.fl .lbr{left:auto;right:-44%}' +
+    '.hbin-layla .lbr{position:absolute;bottom:0;height:20%;width:auto;left:-38%;z-index:2;transform-origin:50% 100%}.hbin-layla.fl .lbr{left:auto;right:-38%}' +
     '.hblid{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;overflow:visible}.hblid g{opacity:0;animation:hbblink 4.6s linear infinite}@keyframes hbblink{0%,93.9%{opacity:0}94%,96.9%{opacity:1}97%,100%{opacity:0}}@keyframes hbbreath{0%,100%{transform:none}50%{transform:scaleY(1.008)}}' +
-    '.hbi.ppl{animation:hbbreathp 4.8s ease-in-out infinite;transform-origin:50% 100%}.hbi.ppl img{transition:none}.hbi.ppl:hover img,.hbi.ppl:focus-visible img,.hbi.ppl.on img{transform:none}.hbi.ppl:hover{filter:drop-shadow(0 0 6px #fff)}@keyframes hbbreathp{0%,100%{transform:translateX(-50%)}50%{transform:translateX(-50%) scaleY(1.008)}}' +
+    '.hbi.ppl{transform:none;translate:-50% 0;animation:hbbreathp 4.8s ease-in-out infinite;transform-origin:50% 100%}.hbi.ppl img{transition:none}.hbi.ppl:hover img,.hbi.ppl:focus-visible img,.hbi.ppl.on img{transform:none}.hbi.ppl:hover{filter:drop-shadow(0 0 6px #fff)}@keyframes hbbreathp{0%,100%{scale:1 1}50%{scale:1 1.008}}' +
     '.hbin-sk{position:absolute;left:30.9%;bottom:23.4%;height:36%;aspect-ratio:577/1162;transform:translateX(-50%);z-index:12;pointer-events:none;clip-path:inset(-5% -10% 42.4% -10%)}.hbin-sk img{position:absolute;left:0;top:0;width:100%;height:100%}.hbin-sk .hbl-b{animation:hbsk 6s ease-in-out infinite}@keyframes hbsk{0%,100%{transform:none}30%{transform:rotate(-1.2deg)}50%{transform:scaleY(1.008)}70%{transform:rotate(1deg)}}' +
     '.hbin-pop{position:absolute;top:1.5%;width:min(400px,30%);transform:translateX(-50%);z-index:70}.hbin-pop .sitm{background:#fff;border:3px solid #1d1d1b;border-radius:14px;padding:10px 12px;box-shadow:0 6px 0 rgba(0,0,0,.18);display:flex;flex-direction:column;gap:4px;text-align:left}.hbin-pop .sitm .spic{display:none}' +
     '.hbin-pop .hbx{position:absolute;top:6px;right:8px;background:none;border:0;font:700 22px/1 Calibri,Carlito,Arial,sans-serif;cursor:pointer;color:#1d1d1b}' +
@@ -150321,9 +150337,10 @@ window.SQE_TOWN = function(A){
       '<div class="jcboard' + (L.length > 6 ? ' many' : '') + '">' + jobNav(off) + '<div class="jcnotes">' + notes + '</div></div><div class="bspeech jcsay">"' + esc(line) + '"</div></div>';
   }
   function jobKind(j){ return {1: 'Revision cards', 3: 'Quick fire', 6: 'Frameworks', 10: 'Model Q&A'}[j.g] || 'Quick fire'; }
-  function jobShort(t){ t = String(t || '').split(/[:(]/)[0].trim(); return t.length > 30 ? t.slice(0, 28).replace(/\s+\S*$/, '') + '…' : t; }
+  function jobFull(t){ return String(t || '').split(/[:(]/)[0].trim(); }
+  function jobShort(t){ t = jobFull(t); return t.length > 34 ? t.slice(0, 32).replace(/\s+\S*$/, '').replace(/[,;.\s]+$/, '') + '…' : t; }
   function jobWhy(j){ return j.g === 1 ? 'the day after you learn it' : j.g + ' days after you learn it'; }
-  function jobNames(L){ var n = L.map(function(j){ return jobShort(j.x.t.title); }).filter(function(v, i, a){ return a.indexOf(v) === i; }); return n.length <= 3 ? n.join(n.length === 2 ? ' and ' : ', ').replace(/, ([^,]*)$/, ' and $1') : n.slice(0, 2).join(', ') + ' and ' + (n.length - 2) + ' more'; }
+  function jobNames(L){ var n = L.map(function(j){ return jobFull(j.x.t.title); }).filter(function(v, i, a){ return a.indexOf(v) === i; }); return n.length <= 3 ? n.join(n.length === 2 ? ' and ' : ', ').replace(/, ([^,]*)$/, ' and $1') : n.slice(0, 2).join(', ') + ' and ' + (n.length - 2) + ' more'; }
   function jobNav(off){
     return '<div class="jcday" role="group" aria-label="Choose a day">' + (off > 0 ? '<a class="jcarr" href="#/town/jobs/' + (off - 1) + '" aria-label="Previous day">‹</a>' : '<span class="jcarr off" aria-hidden="true">‹</span>') +
       '<b>' + esc(jobDayName(off)) + '</b>' + (off < 60 ? '<a class="jcarr" href="#/town/jobs/' + (off + 1) + '" aria-label="Next day">›</a>' : '<span class="jcarr off" aria-hidden="true">›</span>') + '</div>';
@@ -150528,7 +150545,7 @@ window.SQE_TOWN = function(A){
   /* Monnie 16:19: everyone to scale on the same floor line as Layla (bottom 16%; 160 cm = 37% of the picture, so the till reaches her hip).
      Baba 178 and Mo 180 tallest, Monnie 168 taller than Layla, Mama 160 = Layla, Yasmin 150 shortest. Mama and Baba side by side in one cut-out. */
   var HB_SPOT = {   /* id: [x%, bottom%, height%, kind] */
-    yasmin: [67.7, 16, 34.7, 'ppl'], monnie: [74.15, 16, 38.9, 'ppl'], mo: [81.15, 16, 41.6, 'ppl'], parents: [91.9, 16, 41.2, 'ppl'],
+    yasmin: [67.6, 16, 34.7, 'ppl'], monnie: [73.9, 16, 38.9, 'ppl'], mo: [80.7, 16, 41.6, 'ppl'], parents: [90.9, 16, 41.2, 'ppl'],
     friend: [30, 2.5, 9, 'hen'], bianca: [38, 5, 8.5, 'hen'], beefy: [46, 2, 9, 'hen'], brucey: [54, 5, 9, 'hen'], bonnie: [61, 2, 8, 'hen']
   };
   /* eyelids for blinking (drawn over each cut-out's own eyes, in its picture pixels): [width, height, [[cx, cy, rx, ry, skin]...]] */
