@@ -6,7 +6,7 @@ document.write('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?f
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120081956";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120082814";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -3623,6 +3623,32 @@ a.tlink::after{content:none}
 .bthink .bt-d3{width:7px;height:7px;right:-22%;top:calc(100% + 42px)}
 @media (max-width:560px){.bthink .bt-main{border-width:2.5px;font-size:12px}.bthink .bt-d1{width:12px;height:12px}.bthink .bt-d2{width:8px;height:8px;top:calc(100% + 20px)}.bthink .bt-d3{width:6px;height:6px;top:calc(100% + 32px)}}
 @media (prefers-reduced-motion:reduce){.bmshop .bmwin img.bmwin-brit{animation:none}}
+/* The Mount keeps its own fancy house-sign lettering (Monnie 08:20), on top of the town fonts */
+:is(.mount,#_#_#_) .mount-sign{font-family:"Snell Roundhand","Apple Chancery","Brush Script MT","Segoe Script",cursive!important;font-weight:700!important;font-style:italic}
+
+/* speech-bubbles narrow+tall (Monnie 20 Nov 08:20, site-wide rule: narrower and taller = fewer overlaps) */
+.bspeech,.cbasay{max-width:300px;text-wrap:balance}
+.head.nb .nbbub{max-width:16em;text-wrap:balance}
+
+/* ---- 20 Nov 08:25 (Monnie): bigger sweet wrappers (they looked like tiny fins) ---- */
+.skin-stop .flash{max-width:min(640px,calc(100% - 132px))}
+.skin-stop .flash .wrapend{width:62px;height:122px;margin-top:-61px}
+.skin-stop .flash .wl{left:-56px}.skin-stop .flash .wr{right:-56px}
+@media (max-width:640px){.skin-stop .flash{max-width:calc(100% - 76px)}.skin-stop .flash .wrapend{width:38px;height:76px;margin-top:-38px}.skin-stop .flash .wl{left:-34px}.skin-stop .flash .wr{right:-34px}}
+/* ---- Fairground stop: each card is a fairground ticket; the ADMIT ONE stub tears off when you flip ---- */
+.land-fairground .swico{display:none}
+.land-fairground .flash{max-width:min(640px,calc(100% - 120px));transform:translateX(30px)}
+.land-fairground .flash .face{background:radial-gradient(circle at 50% 0,var(--sw-cream) 9px,transparent 10px) 0 30px/24px 12px repeat-x,repeating-linear-gradient(90deg,#E63946 0 24px,#FFFFFF 24px 48px) 0 0/100% 34px no-repeat,#FFF6E0;border-radius:6px 18px 18px 6px}
+.land-fairground .flash .back{background:radial-gradient(circle at 50% 0,#EAFBF8 9px,transparent 10px) 0 26px/24px 12px repeat-x,repeating-linear-gradient(90deg,#2EC4B6 0 24px,#FFFFFF 24px 48px) 0 0/100% 30px no-repeat,#EAFBF8}
+.land-fairground .flash .face small{background:#FFD43B}
+.land-fairground .tktstub{position:absolute;left:-66px;top:4%;height:92%;width:70px;z-index:2;pointer-events:none;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:14px 0;
+  background:repeating-linear-gradient(45deg,rgba(255,255,255,.14) 0 8px,transparent 8px 16px),#E63946;border:3px solid #2A1B2E;border-right:3px dashed #2A1B2E;border-radius:14px 0 0 14px;box-shadow:0 5px 0 #2A1B2E;
+  transition:transform .45s ease,opacity .45s ease;transform-origin:100% 0}
+.land-fairground .tkt-t{writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--sharratt,inherit);font-size:24px;letter-spacing:.12em;color:#fff;text-shadow:2px 2px 0 #2A1B2E}
+.land-fairground .tkt-n{writing-mode:vertical-rl;transform:rotate(180deg);font-weight:800;font-size:13px;color:#2A1B2E;background:#FFD43B;border:2px solid #2A1B2E;border-radius:999px;padding:8px 2px}
+.land-fairground .flash.flipped .tktstub{transform:translate(-18px,28px) rotate(-14deg);opacity:0}
+@media (max-width:640px){.land-fairground .flash{max-width:calc(100% - 62px);transform:translateX(22px)}.land-fairground .tktstub{left:-44px;width:46px;padding:10px 0}.land-fairground .tkt-t{font-size:17px}.land-fairground .tkt-n{font-size:11px}}
+@media (prefers-reduced-motion:reduce){.land-fairground .tktstub{transition:none}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -116588,6 +116614,7 @@ window.SQE_TOWN = function(A){
     /* Monnie 05:59: gamble questions and answers in a clean readable font; felt-tip only for the heading */
     '.hb #town-gamble *:not(h3):not(text){font-family:var(--font)!important;letter-spacing:0!important}.hb #town-gamble .btn{font-family:var(--sharratt)!important}.hb #town-gamble .qtext{font-size:17px;line-height:1.45}' +
     '.hb .bspeech{font-size:19px;line-height:1.35}.hb .bspeech b{font-family:var(--sharratt)!important;color:#E0457B;font-size:1.15em;font-weight:400}' +
+    '.town-try{display:flex;gap:18px;align-items:center;flex-wrap:wrap}.tryst{position:relative;width:260px;aspect-ratio:487/500;flex:none}.tryst img{position:absolute;height:auto}.trybrit{inset:0;width:100%}.tryit.held{width:42%;left:54%;top:36%;transform-origin:30% 90%}.tryit.feet{width:46%;left:24%;top:74%}.tryit.sip{animation:trysip 4s ease-in-out infinite}@keyframes trysip{0%,70%,100%{transform:rotate(0)}80%,90%{transform:rotate(-22deg) translate(-6%,-8%)}}.trybtn{margin-top:6px}' +
     '.hb h2,.hb .cbattl,.hb .sitm>b,.hb .sprice,.hb .btn,.hb .town-nav a{font-weight:400!important}.hb h2{font-size:32px;margin:0}.hb .sitm>b{font-size:18px;line-height:1.15}.hb .sdesc{font-size:16px}.hb .town-risk{font-size:15px}' +
     '.town-jobs{display:grid;gap:10px}' +
     '.town-job{display:grid;grid-template-columns:1fr auto;gap:6px 14px;align-items:center;border:2px solid #F3E3CC;border-radius:16px;padding:12px 14px;background:#fff}' +
@@ -116822,12 +116849,28 @@ window.SQE_TOWN = function(A){
       '<g fill="#fff" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="700"><text x="42" y="124" font-size="118" font-style="italic">h</text><text x="110" y="124" font-size="118">b</text>' +
       '<text x="40" y="166" font-size="27" font-style="italic" font-weight="400">hen</text><text x="94" y="166" font-size="27">bargs</text></g></svg>';
   }
+  /* Monnie-only "Try it on" (20 Nov): shows the path/Mount Britney (britney/master2-cgpt) with the item cut-out layered at a fixed spot.
+     Nothing is bought or saved. Only on Monnie's devices (html.monnie, set by ?monnie=1); Layla never sees it, because the fun is earning the item. */
+  var TRY = null;
+  var TRY_HELD = {cup:1, latte:1, pandan:1, cookies:1, goldcorn:1, sweets:1, pens:1, skincare:1, soap:1, tote:1, toppers:1, stickers:1, colouring:1, calendar:1, plaque:1, player:1, rec_ss:1, rec_mj:1, lamp:1};
+  var TRY_FEET = {crocs:1, socks:1, clawsocks:1, charms:1};
+  var TRY_SIP = {cup:1, latte:1};
+  function isMonnie(){ return document.documentElement.classList.contains('monnie'); }
+  function canTry(it){ return !!(TRY_HELD[it.id] || TRY_FEET[it.id]); }
+  function tryOnHTML(id){
+    var it = A.cbaItem(id); if (!it) return '';
+    var pic = (window.SQE_SHOPIMG || {})[id] || ('img/shop/' + id + '.webp');
+    var cls = TRY_FEET[id] ? 'feet' : 'held' + (TRY_SIP[id] ? ' sip' : '');
+    return '<div class="bcard town-try montool"><div class="tryst"><img class="trybrit" src="img/britney/master2-cgpt.webp" alt="Britney" width="487" height="500"><img class="tryit ' + cls + '" src="' + pic + '" alt="' + esc(it.n) + '" width="600" height="600"></div>' +
+      '<div><b>Preview: Britney with the ' + esc(it.n) + '</b><p class="town-note">Only you can see this. Nothing is bought or saved.</p><button type="button" class="btn" data-town="tryoff">Close preview</button></div></div>';
+  }
   var LASTBUY = null; /* after a real purchase: offer the walk home to The Mount (map thread plays it when sqe_shopwalk is set) */
   var SEL = null; /* Monnie 06:00: nothing to buy or gamble shows until she taps an item */
   function viewShop(){
     var c = A.cbaS(), h = top('shop').replace('<div class="cbag town">', '<div class="cbag town hb">'), g = gam(), nQ = sraAll().length;
     h += '<div class="bcard town-desk hb-desk">' + hbLogo() + '<div><h2 class="hb-name">Hen Bargains</h2><div class="bspeech">Feeling lucky? Tap an item, then gamble on ' + GAMBLE_N + ' SRA questions: ' + GAMBLE_PASS + '+ right = half price, fewer = you pay <b>DOUBLE!!!</b></div><p class="town-note" style="margin:6px 0 0">You can only gamble if you have enough coins to pay double.</p></div></div>';
     if (g) h += gamHTML();
+    if (TRY && isMonnie()) h += tryOnHTML(TRY);
     if (LASTBUY && !g && A.cbaItem(LASTBUY)) h += '<div class="bcard town-walk"><b>You bought the ' + esc(A.cbaItem(LASTBUY).n) + '!</b> <button type="button" class="btn primary" data-town="walkhome">Walk it home to The Mount ›</button></div>';
     h += '<div class="cbashop">';
     A.CBA_SHOP().forEach(function(it){
@@ -116841,7 +116884,7 @@ window.SQE_TOWN = function(A){
       else btn = '<span class="town-pickq">' + (it.p > 0 ? 'Buy it for ' + it.p + ' coins' + (nQ >= GAMBLE_N && c.coins >= pr.hi && !it.feed ? ', or gamble?' : '?') : 'Take them home?') + '</span>' + '<div class="btns"><button type="button" class="btn primary" data-town="buy" data-i="' + it.id + '"' + (g ? ' disabled' : '') + '>' + (it.p > 0 ? 'Buy for ' + it.p : 'Take them!') + '</button>' +
         (nQ >= GAMBLE_N && it.p > 0 && !g && c.coins >= pr.hi ? '<button type="button" class="btn" data-town="gamble" data-i="' + it.id + '">Gamble</button>' : '') + '</div>' +
         (nQ >= GAMBLE_N && it.p > 0 ? '<span class="town-risk">' + (c.coins >= pr.hi ? 'Gamble: answer ' + GAMBLE_N + ' questions. ' + GAMBLE_PASS + '+ right = pay ' + pr.lo + '. Fewer = pay DOUBLE (' + pr.hi + ').' : 'No gamble yet: you need ' + pr.hi + ' coins (double the price) and you have ' + c.coins + '.') + '</span>' : '') + '<button type="button" class="btn town-cancel" data-town="unpick">Cancel</button>';
-      h += '<div class="sitm' + (st === 'own' ? ' have' : '') + (st === 'need' ? ' locked' : '') + (st === 'ok' ? ' tappable' + (SEL === it.id ? ' picked' : '') : '') + '"' + (st === 'ok' && SEL !== it.id ? ' data-town="pick" data-i="' + it.id + '" role="button" tabindex="0"' : '') + '><span class="spic">' + A.cbaItemPic(it.id) + '</span><b>' + esc(it.n) + '</b><span class="sdesc">' + esc(it.d) + '</span>' + (st === 'own' ? '' : '<span class="sprice">' + (it.p > 0 ? it.p + ' ' + COIN() : 'FREE') + '</span>') + btn + (it.feed ? '<span class="sfeedn">You have ' + (+c.feed || 0) + ' bag' + ((+c.feed || 0) === 1 ? '' : 's') + '</span>' : '') + '</div>';
+      h += '<div class="sitm' + (st === 'own' ? ' have' : '') + (st === 'need' ? ' locked' : '') + (st === 'ok' ? ' tappable' + (SEL === it.id ? ' picked' : '') : '') + '"' + (st === 'ok' && SEL !== it.id ? ' data-town="pick" data-i="' + it.id + '" role="button" tabindex="0"' : '') + '><span class="spic">' + A.cbaItemPic(it.id) + '</span><b>' + esc(it.n) + '</b><span class="sdesc">' + esc(it.d) + '</span>' + (st === 'own' ? '' : '<span class="sprice">' + (it.p > 0 ? it.p + ' ' + COIN() : 'FREE') + '</span>') + btn + (it.feed ? '<span class="sfeedn">You have ' + (+c.feed || 0) + ' bag' + ((+c.feed || 0) === 1 ? '' : 's') + '</span>' : '') + (isMonnie() && canTry(it) ? '<button type="button" class="btn sm montool trybtn" data-town="try" data-i="' + it.id + '">Try it on</button>' : '') + '</div>';
     });
     return h + '</div></div>';
   }
@@ -116896,6 +116939,8 @@ window.SQE_TOWN = function(A){
     else if (a === 'btnext' && BT && BT.pick != null){ BT.i++; if (BT.grabbed) BT.i = BT.items.length; if (BT.i >= BT.items.length) btFinish(); else btOrd(); A.render(); scrollTop('#town-q'); }
     else if (a === 'pick' && !g){ SEL = b.getAttribute('data-i'); A.render(); }
     else if (a === 'unpick'){ SEL = null; A.render(); }
+    else if (a === 'try'){ TRY = b.getAttribute('data-i'); A.render(); scrollTop('.town-try'); }
+    else if (a === 'tryoff'){ TRY = null; A.render(); }
     else if (a === 'return' && !g){ SEL = null; var rid = b.getAttribute('data-i'); returnItem(rid); if (LASTBUY === rid) LASTBUY = null; A.render(); }
     else if (a === 'buy' && !g){ SEL = null; var bid = b.getAttribute('data-i'), cb = A.cbaS().coins; A.cbaBuy(bid); (function(c){ if (c.own[bid] && c.coins !== cb){ c.paid = c.paid || {}; c.paid[bid] = cb - c.coins; A.save(); } })(A.cbaS()); if (A.cbaS().coins !== cb && !/^(parents|corn)$/.test(bid)) LASTBUY = bid; A.render(); if (LASTBUY) scrollTop('.town'); }
     else if (a === 'walkhome'){ LASTBUY = null; try { sessionStorage.setItem('sqe_shopwalk', '1'); } catch(er){} location.hash = '#/palace'; }
@@ -116930,7 +116975,7 @@ window.SQE_TOWN = function(A){
    - Layla walks with the map's approved frames: lw-a (stride) and lw-b (back leg lifting), switching by distance walked, so her legs
      always match how far she moves (no skating, no nodding). Turning swaps to the left-facing copies (lw-*-l, sweatshirt text kept
      readable), never a squashing flip. lw-t = waving / scattering feed.
-   - Britney is ONE sprite set: master2-cgpt on the ground, fly1/fly3 in the air, all the same body size. She only lands on real
+   - Britney is ONE sprite set: the Peckham path Britney (set/neutral) on the ground, fly1/fly3 in the air, all the same body size. She only lands on real
      things (lawn, patio, coop roof, shed roof), flies in smooth curves and flaps all the way.
    - People who live here (Mama, Baba, Yasmin, Mo, Monnie: when owned) stand at fixed spots kept clear of Layla's walking area
      (LAYLA_X), sized so Mama = Layla's height, Baba 20% taller. Their pictures are trimmed at run time (transparent margins measured).
@@ -116943,11 +116988,18 @@ window.SQE_TOWN = function(A){
 
 var MOUNT_PARENT_LINES = [  /* Monnie 20 Nov 05:21: [who, line]; the bubble points at the one speaking */
   ["baba", "You can't sit on your arse!"],
-  ["mama", "Go to sleep, I've turned the heating on."]
+  ["mama", "Go to sleep, I've turned the heating on."],
+  ["baba", "Don't squander your money."],         /* Monnie 08:22 */
+  ["mama", "When can you get a mortgage and buy your own house?"],
+  ["baba", "Make me a cup of tea."],
+  ["mama", "Don't make a cake!!!!!"]
 ];
-var PARENT_MS = 5000;
+var PARENT_MS = 6000;
 var TOWN_ON = !/[?&]town=0/.test(location.search);
 var GOLD = '#8A6400';
+/* Monnie-only preview (08:20): add ?try=all to the address to see The Mount as if everything were bought. Nothing is saved, and nothing on the site links to it. */
+var TRY = /[?&]try=all\b/.test(location.search), TRY_CARRY = null;
+var TRY_SHED = ['crocs', 'charms', 'socks', 'clawsocks', 'pens', 'stickers', 'colouring', 'calendar', 'toppers', 'plaque', 'soap', 'lamp', 'sweets', 'tote', 'skincare', 'cup', 'player', 'rec_ss', 'rec_mj'];
 
 /* ===== layout (all % of the garden picture) ===== */
 var LAYLA_H = 33;                 /* Layla's height (% of garden height) at b = 20 */
@@ -116967,13 +117019,20 @@ var HENS = [
 var SHED = {x: 58, b: 50, h: 18};   /* the shed (img/mount/shed.webp); click opens the shelves */
 var SHED_ROOF = [56.5, 67];
 /* Layla's walk: [x, b, pause ms, pose while paused ('a' stand, 't' wave)]; stays inside x 37..54 so she never meets the people */
-var LAYLA_WP = [[47, 37, 1400, 'a'], [44, 28, 700, 'a'], [42, 13, 1600, 't'], [50, 8, 900, 'a', 'c'], [54, 20, 900, 'a'], [51, 34, 800, 'a'], [44, 38, 1100, 'a']];
+var LAYLA_LAP = [[47, 37, 1400, 'a'], [44, 28, 700, 'a'], [42, 13, 1600, 't'], [50, 8, 900, 'a'], [54, 20, 900, 'a'], [51, 34, 800, 'a'], [44, 38, 1100, 'a']];
+var LAYLA_WP = (function(){   /* three laps; only the first has the cartwheel, so it comes round about once a minute (Monnie 08:19) */
+  var out = [];
+  for (var lap = 0; lap < 3; lap++) LAYLA_LAP.forEach(function(w, i){ var c = w.slice(); if (lap === 0 && i === 3) c[4] = 'c'; if (lap === 1 && i === 0) c[2] = 6500; out.push(c); });
+  return out;
+})();
+var RIDE_WP = 7;   /* Britney rides on Layla's head from the start of lap 2 (waypoint 7: Layla stands still a while, then walks on) */
+var RIDE_MS = 9000, RIDE_FLY = 1600;
 var LAYLA_X = [40, 54];
 var WALK_PX = 140;   /* Layla's speed, picture pixels per second (calm) */
 var STRIDE_PX = 234; /* one full walk cycle (two steps) in picture pixels, matched to her leg swing so her feet don't slide */
-var CART_MS = 1500;  /* a cartwheel (Monnie 06:45) */
+var CART_MS = 1300;  /* one proper cartwheel: arm up, legs wide, a full turn over her hands (Monnie 08:19) */
 /* Britney's day: walk / peck / fly / sit. Positions are where her feet are. */
-var BRIT_W = 6.6;    /* her width (% of garden width) at b = 20: the same on the ground and in the air */
+var BRIT_W = 7.6;    /* her width (% of garden width) at b = 20: the same on the ground and in the air */
 var BRIT_SEQ = [
   ['peck', [50, 22], 2600], ['walk', [44, 28]], ['peck', null, 2000], ['walk', [49.5, 33]], ['sit', null, 900],
   ['fly', [86.5, 57], 3200], ['sit', null, 3600], ['fly', SHED_ROOF, 3800], ['sit', null, 3200], ['fly', [45, 24], 2600], ['walk', [50, 22]]
@@ -117015,7 +117074,7 @@ function laylaAt(t){
   for (var i = 0; i < LSEG.length; i++){
     var s = LSEG[i]; if (t >= s.t + s.w + s.p) continue;
     var u = t - s.t;
-    if (u < s.w){ var k = u / s.w; if (s.cart){ var e = ease(k); return {x: lerp(s.a[0], s.b[0], e), b: lerp(s.a[1], s.b[1], e) + Math.sin(Math.PI * k) * 5, face: s.face, fr: 'c', spin: 360 * e}; }
+    if (u < s.w){ var k = u / s.w; if (s.cart){ var e = ease(k); return {x: lerp(s.a[0], s.b[0], e), b: lerp(s.a[1], s.b[1], e) + Math.sin(Math.PI * k) * 3, face: s.face, fr: 'c', spin: 360 * e, k: k}; }
       return {x: lerp(s.a[0], s.b[0], k), b: lerp(s.a[1], s.b[1], k), face: s.face, fr: 'w', dist: s.t * 0 + k * s.d}; }
     return {x: s.b[0], b: s.b[1], face: s.face, fr: s.pose === 't' ? 't' : 'a'};
   }
@@ -117057,6 +117116,24 @@ function britAt(t, n){
   for (var i = 0; i < BSEG.length; i++){ var s = BSEG[i]; if (t < s.t + s.ms) return britSeg(s, t - s.t, n); }
   var z = BSEG[BSEG.length - 1]; return {x: z.b[0], b: z.b[1], face: z.face};
 }
+/* Britney hops up onto Layla's head now and then (Monnie 08:19): fly up, ride along, fly back to where her day carries on */
+function laylaHead(L){
+  var H = LAYLA_H * DEPTH(L.b), W = H * 0.558 * 0.597, off = 0.07 * W;
+  return [L.x + (L.face === 'l' ? -off : off), L.b + H * 0.93];
+}
+var RIDE = null;
+function rideWin(){
+  if (RIDE) return RIDE;
+  var s = LSEG[RIDE_WP - 1], t0 = s.t + s.w + 200; RIDE = {t0: t0, t1: t0 + RIDE_FLY, t2: t0 + RIDE_FLY + RIDE_MS, t3: t0 + 2 * RIDE_FLY + RIDE_MS}; return RIDE;
+}
+function rideState(t, n){
+  var W = rideWin(), tl = ((t % LT) + LT) % LT; if (tl < W.t0 || tl >= W.t3) return null;
+  var base = t - tl, L, h;
+  if (tl < W.t1){ var a = britAt(base + W.t0, n); L = laylaAt(base + W.t1); h = laylaHead(L); var p = flyPos([a.x, a.b], h, (tl - W.t0) / RIDE_FLY); return {x: p[0], b: p[1], face: h[0] > a.x ? 'r' : 'l', air: true, fr: Math.floor(n / 140) % 2, top: true}; }
+  if (tl < W.t2){ L = laylaAt(t); h = laylaHead(L); return {x: h[0], b: h[1], face: L.face, top: true, bob: L.fr === 'w' ? Math.abs(Math.sin((L.dist || 0) / STRIDE_PX * Math.PI * 2)) * 3 : 0}; }
+  L = laylaAt(base + W.t2); h = laylaHead(L); var z = britAt(base + W.t3, n), q = flyPos(h, [z.x, z.b], (tl - W.t2) / RIDE_FLY);
+  return {x: q[0], b: q[1], face: z.x > h[0] ? 'r' : 'l', air: true, fr: Math.floor(n / 140) % 2, top: true};
+}
 function hungryBrit(n){
   /* a hungry Britney stays on the lawn near the patio, slowly pacing (no happy flying about) */
   var c = (n % 16000) / 16000, x = c < 0.5 ? lerp(47, 53, ease(c * 2)) : lerp(53, 47, ease((c - 0.5) * 2));
@@ -117088,8 +117165,11 @@ window.SQE_MOUNT = function(A){
     '.mg-act img{display:block;height:100%;width:auto;max-width:none;-webkit-user-drag:none;user-select:none}' +
     '.mg-layla>img{display:none}.mg-layla>img.on{display:block}.mg-layla>img.sp{display:block;visibility:hidden}.mg-layla>img.pose{position:absolute;left:0;top:0;width:100%;height:100%;transform-origin:50% 55%}' +
     '.mg-walker img.sp{visibility:hidden}.mg-walker img.up,.mg-walker img.lg1,.mg-walker img.lg2{position:absolute;left:0;top:0;height:100%;width:100%;transform-origin:50% 100%}' +
-    '.ml-rig{position:absolute;inset:0;display:none}.ml-rig.on{display:block}.ml-rig img,.ml-legs{position:absolute;left:0;top:0;width:100%;height:100%;transform-origin:0 0}.ml-legs{transform-origin:50% 50%}.ml-rig .far{filter:brightness(.72)}.ml-rig img.tl,.ml-rig img.tr{display:none}.ml-rig img.tl.on,.ml-rig img.tr.on{display:block}' +
+    '.ml-rig{position:absolute;inset:0;display:none}.ml-rig.on{display:block}.ml-rig img,.ml-legs{position:absolute;left:0;top:0;width:100%;height:100%;transform-origin:0 0}.ml-legs{transform-origin:50% 50%}.ml-rig .far{filter:brightness(.72)}.ml-rig img.tl,.ml-rig img.tr,.ml-rig img.ttl,.ml-rig img.ttr{display:none}.ml-rig img.tl.on,.ml-rig img.tr.on,.ml-rig img.ttl.on,.ml-rig img.ttr.on{display:block}' +
     '.mg-brit{height:auto;cursor:pointer;pointer-events:auto}' +
+    '.mg-carry{position:absolute;left:30%;top:38%;width:40%;z-index:2;pointer-events:none;transform:rotate(-8deg)}.mg-carry img,.mg-carry svg{display:block!important;width:100%;height:auto;filter:drop-shadow(0 1px 0 rgba(0,0,0,.25))}' +
+    '.mg-shedtip{position:absolute;left:50%;top:calc(10px + 2.4em);transform:translateX(-50%);z-index:2;background:#fff;border:2px solid #1d1d1b;border-radius:999px;padding:1px 12px;font-size:13px;white-space:nowrap}' +
+    '.mg-shelf .it{background:none;border:0;padding:0;cursor:pointer;color:inherit;font:inherit}.mg-shelf .it.carried{outline:3px dashed #E0115F;outline-offset:3px;border-radius:8px}' +
     '.mg-away{position:absolute;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;text-decoration:none;color:#1d1d1b;pointer-events:auto}.mg-away b{display:block;background:#E9B872;border:2.5px solid #5a3a12;border-radius:8px;padding:3px 7px;font-size:clamp(9px,.95vw,15px);line-height:1.2;text-align:center;box-shadow:0 2px 0 #5a3a12;white-space:nowrap;transform:rotate(-3deg)}.mg-away u{color:#B3261E}.mg-away i{display:block;width:7px;height:clamp(18px,3vw,40px);background:#8a5a22;border:2px solid #5a3a12;border-top:0}.mg-away:hover b{background:#F2C887}' +
     '.mg-brit .mg-flip{display:block;position:relative;transform-origin:50% 92%}' +
     '.mg-brit img{width:100%;height:auto;display:none}.mg-brit img.on{display:block}' +
@@ -117114,7 +117194,7 @@ window.SQE_MOUNT = function(A){
     '.mg-bthink i{position:absolute;width:1.3%;aspect-ratio:1;background:#fff;border:2px solid #1d1d1b;border-radius:50%;transform:translate(-50%,50%)}' +
     '.mg-hen.rt .mg-think{transform:translateX(-82%)}.mg-hen.rt .mg-think:before{left:auto;right:18%}.mg-hen.rt .mg-think:after{left:auto;right:12%}' +   /* hens near the right edge think to the left */
     /* speech bubbles with a tail that points at the speaker */
-    '.mg-say{position:absolute;z-index:3000;background:#fff;border:2.5px solid #1d1d1b;border-radius:16px;padding:5px 11px;font-weight:700;font-size:clamp(10px,1.3vw,16px);line-height:1.2;color:#1d1d1b;width:max-content;max-width:26%;text-align:center;box-shadow:0 2px 0 rgba(0,0,0,.12);transition:opacity .25s;pointer-events:none;transform:translate(-50%,-100%)}' +
+    '.mg-say{position:absolute;z-index:3000;background:#fff;border:2.5px solid #1d1d1b;border-radius:16px;padding:5px 11px;font-weight:700;font-size:clamp(10px,1.3vw,16px);line-height:1.2;color:#1d1d1b;width:max-content;max-width:13%;text-align:center;box-shadow:0 2px 0 rgba(0,0,0,.12);transition:opacity .25s;pointer-events:none;transform:translate(-50%,-100%)}' +
     '.mg-say i{position:absolute;top:100%;margin-top:-3px;width:18px;height:14px;margin-left:-9px}.mg-say i svg{display:block;width:100%;height:100%;overflow:visible}' +
     '.mg-say.fade{opacity:0}' +
     '.mg-grain{position:absolute;width:1.1%;aspect-ratio:1/.8;background:#F2C230;border:1px solid #A97C0C;border-radius:50%;z-index:2400;pointer-events:none;transform:translate(-50%,50%)}' +
@@ -117132,7 +117212,7 @@ window.SQE_MOUNT = function(A){
     '.mg-shelf{position:absolute;display:flex;align-items:flex-end;justify-content:center;gap:1.4%;transform:translateY(-100%)}' +
     '.mg-shelf .it{display:block;width:11%;aspect-ratio:1;flex:none;position:relative;outline:none}' +
     '.mg-shelf .it img,.mg-shelf .it svg{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 2px 0 rgba(0,0,0,.18))}' +
-    '.mg-shelf .it b{position:absolute;left:50%;bottom:100%;transform:translateX(-50%);background:#fff;border:2px solid #1d1d1b;border-radius:8px;padding:1px 6px;font-size:12px;white-space:nowrap;opacity:0;transition:opacity .15s;pointer-events:none;z-index:2}' +
+    '.mg-shelf .it b{position:absolute;left:50%;top:100%;margin-top:3px;transform:translateX(-50%);background:#fff;border:2px solid #1d1d1b;border-radius:8px;padding:1px 6px;font-size:12px;white-space:nowrap;opacity:0;transition:opacity .15s;pointer-events:none;z-index:2}' +
     '.mg-shelf .it:hover b,.mg-shelf .it:focus b{opacity:1}' +
     '.mg-shedin .mg-empty{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);background:#fff;border:2.5px solid #1d1d1b;border-radius:14px;padding:8px 14px;font-weight:700;text-align:center;max-width:70%}' +
     '.mg-shedx{position:absolute;right:10px;top:10px;z-index:2;background:#fff;border:2.5px solid #1d1d1b;border-radius:999px;width:38px;height:38px;font-size:20px;font-weight:800;line-height:1;cursor:pointer}' +
@@ -117150,13 +117230,16 @@ window.SQE_MOUNT = function(A){
     '.mount-treats .tp{flex:none;width:42px;height:42px}.mount-treats .tp img,.mount-treats .tp svg{width:100%;height:100%;object-fit:contain;display:block}' +
     '.mount-treats .tn{flex:1;min-width:0}.mount-treats .tn b{display:block;font-size:15px}.mount-treats .tn span{font-size:13px;color:var(--muted)}' +
     '.mount-treats li>.btn,.mount-treats li>.sown{grid-column:1/-1;justify-self:stretch;text-align:center;white-space:nowrap}' +
-    '@media (max-width:600px){.mount-title{font-size:27px}.mount-garden{border-radius:14px;border-width:2px}.mg-tag{font-size:10px;padding:0 5px}.mg-say{padding:2px 6px;border-radius:10px;max-width:34%;border-width:2px}.mg-think{padding:2px 7px;border-width:2px}}';
+    '@media (max-width:600px){.mount-title{font-size:27px}.mount-garden{border-radius:14px;border-width:2px}.mg-tag{font-size:10px;padding:0 5px}.mg-say{padding:2px 6px;border-radius:10px;max-width:20%;border-width:2px}.mg-think{padding:2px 7px;border-width:2px}}';
   document.head.appendChild(css);
 
   function mst(){ var s = A.S(); if (!s.mount || typeof s.mount !== 'object') s.mount = {}; if (!s.mount.given || typeof s.mount.given !== 'object') s.mount.given = {}; return s.mount; }
+  /* the shed thing Britney carries under her wing (tap it in the shed; tap again to put it back) */
+  function carrying(){ var id = TRY ? TRY_CARRY : mst().carry; if (!id) return null; if (!TRY && !A.cbaS().own[id]) return null; return A.cbaItem(id) ? id : null; }
+  function setCarry(id){ if (TRY){ TRY_CARRY = id; return; } mst().carry = id || null; A.save(); }
   function given(id){ return mst().given[id] === A.ymd() && A.cbaAte(id); }
   function parentPair(){ var n = MOUNT_PARENT_LINES.length; return n ? MOUNT_PARENT_LINES[Math.floor(now() / PARENT_MS) % n] : ['baba', '']; }
-  function owned(id){ var o = A.cbaS().own; return id === 'mama' || id === 'baba' ? !!(o.parents || o.mum || o.dad) : !!o[id]; }
+  function owned(id){ if (TRY) return true; var o = A.cbaS().own; return id === 'mama' || id === 'baba' ? !!(o.parents || o.mum || o.dad) : !!o[id]; }
 
   function joyHTML(){
     var left = JOY.until - Date.now(); if (left <= 0) return '';
@@ -117182,16 +117265,17 @@ window.SQE_MOUNT = function(A){
 
   /* ===== the shed ===== */
   function shedItems(){
+    if (TRY) return TRY_SHED.filter(function(id){ return !!A.cbaItem(id); });
     var o = A.cbaS().own; return Object.keys(o).filter(function(id){ var it = A.cbaItem(id); return o[id] && it && !it.eat && !it.feed && !it.boost && !SHED_SKIP[id] && (id.indexOf('rec_') !== 0 || o.player); })
       .sort(function(a, b){ return o[a] - o[b]; });
   }
   function shedHTML(){
     var ids = shedItems(), per = 7, h = '<div class="mg-shedbox" role="dialog" aria-modal="true" aria-label="Layla\'s shed" data-mount="shedbg"><div class="mg-shedin">' +
-      '<img class="bg" src="img/mount/shed-inside.webp" alt="" onerror="this.style.display=\'none\'"><span class="mg-shedttl">Layla\'s shed</span><button type="button" class="mg-shedx" data-mount="shedx" aria-label="Close the shed">×</button>';
+      '<img class="bg" src="img/mount/shed-inside.webp" alt="" onerror="this.style.display=\'none\'"><span class="mg-shedttl">Layla\'s shed</span><span class="mg-shedtip">Tap something and Britney carries it around</span><button type="button" class="mg-shedx" data-mount="shedx" aria-label="Close the shed">×</button>';
     if (!ids.length) h += '<div class="mg-empty">Nothing here yet. Everything Layla buys in <a href="#/town/shop">Hen Bargains</a> goes on these shelves.</div>';
     for (var r = 0; r < SHELVES.length; r++){
       var row = ids.slice(r * per, r * per + per), sh = SHELVES[r]; if (!row.length) break;
-      h += '<div class="mg-shelf" style="top:' + sh[0] + '%;left:' + sh[1] + '%;width:' + (sh[2] - sh[1]) + '%">' + row.map(function(id){ var it = A.cbaItem(id); return '<span class="it" tabindex="0" title="' + esc(it.n) + '">' + A.prizePic(id) + '<b>' + esc(it.n) + '</b></span>'; }).join('') + '</div>';
+      h += '<div class="mg-shelf" style="top:' + sh[0] + '%;left:' + sh[1] + '%;width:' + (sh[2] - sh[1]) + '%">' + row.map(function(id){ var it = A.cbaItem(id); var on = carrying() === id; return '<button type="button" class="it' + (on ? ' carried' : '') + '" data-mount="carry" data-i="' + id + '" title="' + esc(on ? 'Britney has this. Tap to put it back' : 'Give this to Britney to carry') + '">' + A.prizePic(id) + '<b>' + esc(on ? 'Britney has it!' : it.n) + '</b></button>'; }).join('') + '</div>';
     }
     if (ids.length > per * SHELVES.length) h += '<div class="mg-empty" style="top:auto;bottom:2%;transform:translateX(-50%)">+' + (ids.length - per * SHELVES.length) + ' more</div>';
     return h + '</div></div>';
@@ -117221,7 +117305,7 @@ window.SQE_MOUNT = function(A){
     });
     if (owned('baba') || owned('mama')){ var pp = parentPair(); h += '<span class="mg-say" data-say="' + pp[0] + '" aria-live="polite">' + esc(pp[1]) + '<i></i></span>'; }
     HENS.forEach(function(p){
-      if (!o[p[0]]) return; who.push(p[4]);
+      if (!o[p[0]] && !TRY) return; who.push(p[4]);
       var hg = p[0] !== 'bonnie' && hungry(p[0]);
       h += '<div class="mg-act mg-hen mh-' + p[0] + (hg ? ' hungry' : '') + (p[1] > 75 ? ' rt' : '') + '" data-hen="' + p[0] + '" data-g="' + p[1] + ',' + p[2] + ',' + p[3] + '" title="' + esc(p[4]) + '">' + A.cbaItemPic(p[0]) +
         (hg ? '<span class="mg-tears" aria-hidden="true"><i></i><i></i></span><span class="mg-think">Layla, I\'m hungry!</span>' : '') + '</div>';   /* no name labels on the hens (they overlapped); names are in the line under the garden */
@@ -117230,13 +117314,13 @@ window.SQE_MOUNT = function(A){
     /* Layla: a jointed cut-out of the approved drawing (torso + thigh + shin, both legs) for walking; whole poses for waving and cartwheels */
     h += '<div class="mg-act mg-layla" aria-label="Layla" role="img"><img class="sp" src="img/mount/lw-a-r.webp" alt="">' +
       '<span class="ml-rig on"><span class="ml-legs"><img class="far th" src="img/mount/lw-thigh.webp" alt=""><img class="far sh" src="img/mount/lw-shin.webp" alt=""><img class="near th" src="img/mount/lw-thigh.webp" alt=""><img class="near sh" src="img/mount/lw-shin.webp" alt=""></span>' +
-      '<img class="tr on" src="img/mount/lw-torso-r.webp" alt=""><img class="tl" src="img/mount/lw-torso-l.webp" alt=""></span>' +
+      '<img class="tr on" src="img/mount/lw-torso-r.webp" alt=""><img class="tl" src="img/mount/lw-torso-l.webp" alt=""><img class="ttr" src="img/mount/lw-torso-t-r.webp" alt=""><img class="ttl" src="img/mount/lw-torso-t-l.webp" alt=""></span>' +
       ['ar', 'al', 'tr', 'tl'].map(function(f){ return '<img class="pose" data-f="' + f + '" src="img/mount/lw-' + f.charAt(0) + '-' + f.charAt(1) + '.webp" alt="">'; }).join('') + '</div>';
     if (L.away) h += '<a class="mg-away" href="#/boss/rescue" style="left:' + SHED.x + '%;bottom:' + (SHED.b + SHED.h * 0.3) + '%;z-index:' + Math.round(2000 - SHED.b * 10 + 1) + '"><b>Britney is at Bert\'s!<br><u>Rescue her</u></b></a>';   /* sign hung on the shed while Bert has her (bossS().cap): clear of everyone's path */
     if (!L.away){
       var bh = hungry('britney'), joyOn = JOY.until > Date.now();
       h += '<button type="button" class="mg-act mg-brit' + (joyOn ? ' joy' : '') + (bh ? ' hungry' : '') + '"' + (joyOn ? ' style="animation-delay:-' + ((Date.now() - JOY.start) / 1000).toFixed(2) + 's"' : '') + ' data-act="cbapet" aria-label="Pat ' + esc(nm) + '"><span class="mg-flip">' +
-        '<img data-f="g" class="on" src="img/britney/master2-cgpt.webp" alt="' + esc(nm) + '"><img data-f="f0" src="img/britney/fly1.webp" alt=""><img data-f="f1" src="img/britney/fly3.webp" alt="">' +
+        '<img data-f="g" class="on" src="img/britney/set/neutral.webp" alt="' + esc(nm) + '"><img data-f="f0" src="img/britney/fly1.webp" alt=""><img data-f="f1" src="img/britney/fly3.webp" alt="">' + (carrying() ? '<span class="mg-carry" aria-hidden="true">' + A.prizePic(carrying()) + '</span>' : '') +
         (bh ? '<span class="mg-tears" aria-hidden="true"><i></i><i></i></span>' : '') + '</span>' + '</button>' + (bh ? '<span class="mg-bthink" aria-hidden="true"><b>Layla, I\'m hungry!</b><i></i><i></i><i></i></span>' : '');
       h += joyHTML();
     }
@@ -117342,7 +117426,7 @@ window.SQE_MOUNT = function(A){
   function britState(t, n, raw){
     if (!raw && FEED && FEED.sc) return FEED.sc.B;
     if (hungry('britney')) return hungryBrit(n);
-    return britAt(t, n);
+    return rideState(t, n) || britAt(t, n);
   }
   function tick(){
     requestAnimationFrame(tick);
@@ -117375,7 +117459,7 @@ window.SQE_MOUNT = function(A){
       var fw = B.air ? 'f' + (B.fr || 0) : 'g', cb = be.querySelector('.mg-flip>img.on');
       if (!cb || cb.getAttribute('data-f') !== fw){ if (cb) cb.classList.remove('on'); var nb = be.querySelector('img[data-f="' + fw + '"]'); if (nb) nb.classList.add('on'); }
       be.style.width = wpc.toFixed(3) + '%'; be.style.height = 'auto'; be.style.left = B.x.toFixed(3) + '%'; be.style.bottom = B.b.toFixed(3) + '%';
-      be.style.zIndex = String(Math.round(2000 - (B.air ? Math.min(B.b, 5) : B.b) * 10));
+      be.style.zIndex = String(B.top ? 2900 : Math.round(2000 - (B.air ? Math.min(B.b, 5) : B.b) * 10));
       if (fl && !be.classList.contains('joy')) fl.style.transform = (B.face === 'l' ? 'scaleX(-1) ' : '') + 'translateY(' + (-(B.bob || 0)).toFixed(2) + '%) rotate(' + ((B.peck || 0) + (B.tilt || 0)).toFixed(1) + 'deg)';
       var bt = g.querySelector('.mg-bthink');
       if (bt){
@@ -117441,20 +117525,23 @@ window.SQE_MOUNT = function(A){
   }
   function ankleY(a, bend){ var r = Math.PI / 180; return HIP[1] + LT_ * Math.cos(a * r) + LS_ * Math.cos((a - bend) * r); }
   function rigLayla(le, L){
-    var rig = le.querySelector('.ml-rig'), legs = le.querySelector('.ml-legs'), poses = le.querySelectorAll('img.pose'), useRig = L.fr === 'w' || L.fr === 'a';
-    var pose = L.fr === 't' ? 't' + L.face : L.fr === 'c' ? 'a' + L.face : '';
-    for (var i = 0; i < poses.length; i++){ var on = poses[i].getAttribute('data-f') === pose; if (poses[i].classList.contains('on') !== on) poses[i].classList.toggle('on', on); poses[i].style.transform = on && L.fr === 'c' ? 'rotate(' + (L.face === 'l' ? -L.spin : L.spin).toFixed(1) + 'deg)' : ''; }
+    var rig = le.querySelector('.ml-rig'), legs = le.querySelector('.ml-legs'), poses = le.querySelectorAll('img.pose'), useRig = L.fr === 'w' || L.fr === 'a' || L.fr === 'c', cw = L.fr === 'c';
+    var pose = L.fr === 't' ? 't' + L.face : '';
+    for (var i = 0; i < poses.length; i++){ var on = poses[i].getAttribute('data-f') === pose; if (poses[i].classList.contains('on') !== on) poses[i].classList.toggle('on', on); }
     if (rig.classList.contains('on') !== useRig) rig.classList.toggle('on', useRig);
     if (!useRig) return;
-    var tr = rig.querySelector('img.tr'), tl = rig.querySelector('img.tl'); if (tr.classList.contains('on') !== (L.face !== 'l')){ tr.classList.toggle('on', L.face !== 'l'); tl.classList.toggle('on', L.face === 'l'); }
+    var tq = ['tr', 'tl', 'ttr', 'ttl'], want = (cw ? 'tt' : 't') + (L.face === 'l' ? 'l' : 'r');   /* cartwheel: the waving top half, arm up */
+    tq.forEach(function(c){ var im = rig.querySelector('img.' + c); if (im && im.classList.contains('on') !== (c === want)) im.classList.toggle('on', c === want); });
     var near, far;
     if (L.fr === 'w'){ var p = (L.dist || 0) / STRIDE_PX; near = legAngles(p); far = legAngles(p + 0.5); }
+    else if (cw){ var sp = 42 * Math.min(1, Math.sin(Math.PI * L.k) * 1.8); near = [-sp, 0]; far = [sp, 0]; }   /* legs swing wide apart over the top */
     else { near = [5, 2]; far = [-5, 2]; }   /* standing: feet together under her */
     var cn = legCss(near[0], near[1]), cf = legCss(far[0], far[1]), ims = legs.querySelectorAll('img');
     ims[0].style.transform = cf[0]; ims[1].style.transform = cf[1]; ims[2].style.transform = cn[0]; ims[3].style.transform = cn[1];
     legs.style.transform = L.face === 'l' ? 'scaleX(-1)' : '';
-    var dy = 277 - Math.max(ankleY(near[0], near[1]), ankleY(far[0], far[1]));   /* keep the lowest foot on the ground: the body rises as the legs pass */
-    rig.style.transform = 'translateY(' + (dy / BOX[1] * 100).toFixed(2) + '%)';
+    var dy = cw ? 277 - ankleY(5, 2) : 277 - Math.max(ankleY(near[0], near[1]), ankleY(far[0], far[1]));   /* keep the lowest foot on the ground: the body rises as the legs pass */
+    rig.style.transformOrigin = (HIP[0] / BOX[0] * 100).toFixed(2) + '% ' + (HIP[1] / BOX[1] * 100).toFixed(2) + '%';
+    rig.style.transform = 'translateY(' + (dy / BOX[1] * 100).toFixed(2) + '%)' + (cw ? ' rotate(' + (L.face === 'l' ? -L.spin : L.spin).toFixed(1) + 'deg)' : '');
   }
   /* bubble above the speaker's head; the tail points at the head even when the bubble is nudged to stay inside the garden */
   function aim(g, say, who){
@@ -117488,6 +117575,7 @@ window.SQE_MOUNT = function(A){
     if (a === 'shedx' || (a === 'shedbg' && e.target === b)){ closeShed(); return; }
     if (A.route()[0] !== 'mount') return;
     if (a === 'shed'){ openShed(); return; }
+    if (a === 'carry'){ var ci = b.getAttribute('data-i'); setCarry(carrying() === ci ? null : ci); closeShed(); A.render(); return; }
     if (a === 'feed'){ startFeed(); return; }
     var id = b.getAttribute('data-i'), it = A.cbaItem(id); if (!it || !it.eat) return;
     var L = A.henLife(); if (L.away) return;
@@ -120491,6 +120579,11 @@ var SWJAR = '<svg viewBox="0 0 120 120" width="110" height="110"><rect x="34" y=
    (the stop's colours, name and landmark drawing, from journey.js). Code only, no pictures. */
 var WRAPEND = '<svg viewBox="0 0 34 66" aria-hidden="true"><path d="M33,24 L3,4 Q8,33 3,62 L33,42 Z" style="fill:var(--stl,#FF8FB8)" stroke="#2A1B2E" stroke-width="2.4" stroke-linejoin="round"/><path d="M12,13 Q15,33 12,53 M22,19 Q24,33 22,47" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>';
 function cardTheme(sid){ var T = null; try { T = JTHEME ? JTHEME(sid, "") : null; } catch(e){} return T; }
+/* 20 Nov 08:25 (Monnie): each subject's cards look like its stop, not all sweets. land slug from the stop name (e.g. sweet-shop, fairground, library). */
+function cardLand(sid){ var T = cardTheme(sid); return T ? String(T.land).toLowerCase().replace(/[^a-z]+/g, "-") : ""; }
+function cardDeco(sid, n){ var L = cardLand(sid);
+  if (L === "fairground") return '<span class="tktstub" aria-hidden="true"><span class="tkt-t">ADMIT ONE</span><span class="tkt-n">No ' + ("00" + n).slice(-3) + '</span></span>';
+  return '<span class="wrapend wl">' + WRAPEND + '</span><span class="wrapend wr">' + WRAPEND + '</span>'; }
 function cardStyle(sid, extra){ var T = cardTheme(sid); return ' style="' + (T ? T.style.replace(/;--stm1:[^;]*;--stm2:.*$/, "") + ';' : '') + (extra || '') + '"'; }
 function cardHead(sid, sub){ var T = cardTheme(sid), b = BYID[sid], pic = ""; try { pic = JPIC ? JPIC(sid) : ""; } catch(e){}
   return '<div class="cstop">' + (pic ? '<span class="cstop-pic" aria-hidden="true">' + pic + '</span>' : '') + '<span class="cstop-tx"><b>' + (T ? 'Stop ' + T.i + ': ' + esc(T.land) : esc(b ? b.title : "")) + '</b><span>' + esc(b ? b.title : "") + (sub ? ' · ' + sub : '') + '</span></span></div>'; }
@@ -120513,8 +120606,8 @@ VIEW.cards = function(r){
     }
     var d = FC.deck[FC.i];
     if (FC.atI !== FC.i || FC.atD !== d.id){ FC.atI = FC.i; FC.atD = d.id; FC.at = Date.now(); }
-    return '<div class="card skin-sweet skin-stop"' + cardStyle(d.s.id) + '>' + cardHead(d.s.id, onlyT && s && TBYKEY[s.id + "/" + onlyT] ? (TBYKEY[s.id + "/" + onlyT].i + 1) + ". " + esc(TBYKEY[s.id + "/" + onlyT].t.title) : "") + '<div class="qmeta"><span>' + esc(s ? s.title : "All subjects") + (onlyT && s && TBYKEY[s.id + "/" + onlyT] ? " · " + (TBYKEY[s.id + "/" + onlyT].i + 1) + ". " + esc(TBYKEY[s.id + "/" + onlyT].t.title) : "") + (learnOnly ? " · not yet 🟢" : "") + (extraOnly ? " · ⭐ extra cards" : "") + '</span><span>Card ' + (FC.i + 1) + ' of ' + FC.deck.length + '</span></div>' +
-      '<div class="flash' + (FC.flip ? " flipped" : "") + '" data-act="fcflip" role="button" tabindex="0" aria-label="Flip card"><span class="wrapend wl">' + WRAPEND + '</span><span class="wrapend wr">' + WRAPEND + '</span><div class="inner">' +
+    return '<div class="card skin-sweet skin-stop land-' + cardLand(d.s.id) + '"' + cardStyle(d.s.id) + '>' + cardHead(d.s.id, onlyT && s && TBYKEY[s.id + "/" + onlyT] ? (TBYKEY[s.id + "/" + onlyT].i + 1) + ". " + esc(TBYKEY[s.id + "/" + onlyT].t.title) : "") + '<div class="qmeta"><span>' + esc(s ? s.title : "All subjects") + (onlyT && s && TBYKEY[s.id + "/" + onlyT] ? " · " + (TBYKEY[s.id + "/" + onlyT].i + 1) + ". " + esc(TBYKEY[s.id + "/" + onlyT].t.title) : "") + (learnOnly ? " · not yet 🟢" : "") + (extraOnly ? " · ⭐ extra cards" : "") + '</span><span>Card ' + (FC.i + 1) + ' of ' + FC.deck.length + '</span></div>' +
+      '<div class="flash' + (FC.flip ? " flipped" : "") + '" data-act="fcflip" role="button" tabindex="0" aria-label="Flip card">' + cardDeco(d.s.id, FC.i + 1) + '<div class="inner">' +
       '<div class="face"><small>' + esc(d.s.title) + '</small>' + '<span class="swico" aria-hidden="true">' + sweetIcon(d.s.id === "blp" ? d.c[0] : "", true) + '</span>' + inl(d.c[0]) + '<div class="kbd" style="margin-top:14px">Tap to flip</div></div>' +
       '<div class="face back"><small>Answer</small><div class="cardq">' + inl(d.c[0]) + '</div><div class="notes">' + md(oneSentencePerLine(d.c[1])) + '</div></div></div></div>' +
       '<div class="btns" style="justify-content:center">' + (FC.flip ? '<span class="rate-lab">How well did you know it?</span><button class="rate" data-act="fcmark" data-v="0" aria-label="Didn\'t know it">🔴<span>Didn\'t know</span></button><button class="rate" data-act="fcmark" data-v="0.5" aria-label="Partly knew it">🟠<span>Sort of</span></button><button class="rate" data-act="fcmark" data-v="1" aria-label="Knew it">🟢<span>Knew it</span></button>' : '<button class="btn primary" data-act="fcflip">Show answer</button>') + '</div>' +
@@ -121454,6 +121547,10 @@ function bossAnswer(o){
   BOSS.pdist = BOSS.dist; BOSS.mv = ok ? "back" : "closer"; BOSS.shown = 0;
   BOSS.dist = BOSS.wrong >= BOSS.maxMiss ? 0 : Math.max(1, Math.min(BOSS.maxD, BOSS.dist + (ok ? 1 : -1)));
   if (z.kind === "qa") record(z.id, ok); else if (window.SQE_WS_LOG) window.SQE_WS_LOG(z.kind, z.id, ok); /* weak-spot drill (weakspot.js) */
+  /* Monnie 20 Nov 08:10: the grab is saved the moment it happens, so leaving the page during the "Nooo!" still keeps Britney at Bert's */
+  if (!ok && BOSS.mode !== "rescue" && BOSS.wrong >= BOSS.maxMiss && BOSS.stake && bossStake(BOSS.key)){
+    var bb = bossS(); bb.cap = {key:BOSS.key, from:ymd(), tries:[], ransom:false, qs:BOSS.miss.map(function(q){ return {kind:q.kind, id:q.id, q:q.q, o:q.o, a:q.a, e:q.e}; }), ok:{}}; BOSS.capNow = 1;
+  }
   save();
 }
 function bossNext(){
@@ -121475,6 +121572,7 @@ function bossEnd(){
   } else if (win){
     if (!b.won[k]){ b.won[k] = t; b.chest = {n:BOSS_CHEST, why:"win"}; d.kind = "won"; }
     else { d.kind = "practice"; d.coins = earn(BOSS_PRACTICE, "bossprac|" + k); }
+  } else if (BOSS.capNow && b.cap){ d.kind = "captured";
   } else if (BOSS.stake && bossStake(k)){
     b.cap = {key:k, from:t, tries:[], ransom:false, qs:(BOSS.miss || []).map(function(z){ return {kind:z.kind, id:z.id, q:z.q, o:z.o, a:z.a, e:z.e}; }), ok:{}}; d.kind = "captured";
   } else d.kind = b.cap ? "lostaway" : "lostpractice";
