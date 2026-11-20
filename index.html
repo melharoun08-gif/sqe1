@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120033333";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120033615";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -2648,7 +2648,7 @@ html.dfv-on{overflow:hidden}
 .head.nb.nb .homebtn{position:absolute;right:18px;top:10px;margin:0;z-index:3}
 .head.nb.compact .nbstats,.head.nb.compact .sub{display:none}
 @media (min-width:721px) and (max-width:1060px){.head.nb:not(.nbz) .nbstage{width:calc(100% - 470px);column-gap:12px;row-gap:10px;grid-template-columns:var(--nbw) minmax(0,1fr)}.head.nb:not(.nbz) .nbc{display:contents}.head.nb:not(.nbz) .nbl{grid-row:1/span 3}.head.nb:not(.nbz) .nbtitle,.head.nb:not(.nbz) .nbstats{grid-column:2;text-align:center}.head.nb.nb.nb:not(.nbz) .kw{grid-column:1/span 2;width:calc(100% - 80px)!important}.head.nb:not(.nbz) .nbtitle .sub{font-size:13px}}
-@media (max-width:720px){
+@media (max-width:560px){
  .head.nb,.head.nb.compact{background-image:url(img/banner-bg4.webp),url(img/sky-tile.webp)!important}
  .head.nb.nb{padding-top:12px!important}
  .head.nb .nbstage{display:flex;flex-direction:column;align-items:center;width:100%;gap:14px;padding-bottom:12px}
@@ -2778,7 +2778,7 @@ html.dfv-on{overflow:hidden}
 .head.nb .nbbub{top:48px}
 /* TEMP M button: display-only streak step preview, directly under Home */
 .head.nb .nbmbtn{position:absolute;right:43px;top:55px;z-index:3;width:26px;height:26px;padding:0;border-radius:50%;background:#fff;border:2px solid #10294A;box-shadow:0 1.5px 0 #10294A;color:#10294A;font-family:inherit;font-size:13px;font-weight:800;line-height:1;cursor:pointer;display:grid;place-items:center}
-@media (max-width:720px){
+@media (max-width:560px){
  .head.nb .nbmbtn{top:calc(min(100cqw - 28px,400px) * 1.0267 - 20px);right:14px}
  .head.nb.nb.nb .nbl .mbag{left:-8px;top:-6px}
  .head.nb.nb .nbl{position:static}
@@ -2827,7 +2827,7 @@ html.dfv-on{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.head.nb .nbbrit,.head.nb .nbbrit image,.head.nb .nblayla,.head.nb .nbcl,.head.nb .stgift,.head.nb .stgift.wob{animation:none!important}}
 /* TEMP N button: under the M button */
 .head.nb .nbnbtn{top:87px}
-@media (max-width:720px){.head.nb .nbnbtn{top:calc(min(100cqw - 28px,400px) * 1.0267 + 12px)}}
+@media (max-width:560px){.head.nb .nbnbtn{top:calc(min(100cqw - 28px,400px) * 1.0267 + 12px)}}
 /* 20 Nov: stats tiles stay on one row on desktop; nbFit() in app.js scales them down to fit */
 @media (min-width:721px){.head.nb .nbstats{flex-wrap:nowrap!important}.head.nb .nbstats>*{flex:none!important}}
 
@@ -2837,7 +2837,7 @@ html.dfv-on{overflow:hidden}
 @keyframes jlh-spray{0%{transform:translateY(10px) scale(.6);opacity:0}25%{opacity:1}55%{transform:translateY(-10px) scale(1.05);opacity:1}100%{transform:translateY(6px) scale(.9);opacity:0}}
 @media (prefers-reduced-motion:reduce){.jsv .jlhdrop{animation:none!important;opacity:1}.jsv .jlhdrop2{display:none}}
 /* 20 Nov QA: on phones keep the full banner scene on every tab, not only Today */
-@media (max-width:720px){.head.nb.compact{background-size:auto 210px,800px auto!important;padding-bottom:210px!important}}
+@media (max-width:560px){.head.nb.compact{background-size:auto 210px,800px auto!important;padding-bottom:210px!important}}
 
 /* map-bert (Monnie 20 Nov): by day Bert's door opens, he steps out, blinks, glares for a few seconds, goes back in and the door shuts. 14s cycle. */
 .jsv .jbert-c{animation:jbert-c 14s step-end infinite}
@@ -2847,15 +2847,15 @@ html.dfv-on{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.jsv .jbert-c,.jsv .jbert-b{animation:none;opacity:0}}
 
 /* map-layla4 (Monnie 20 Nov 03:25): twice as fast (0.7s a pose) and more moves: each pose now comes with a little bob, sway, hop, step, tilt or bounce. 14 slots, joke pose 2 in 14 (once per 6 others). */
-.jsv .jlw1{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl4-jlw1 9.8s step-end infinite,jl4-move 9.8s ease-in-out infinite}
+.jsv .jlw1{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl4-jlw1 14.7s step-end infinite,jl4-move 14.7s ease-in-out infinite}
 @keyframes jl4-jlw1{0.000%{opacity:1}7.143%{opacity:0}28.571%{opacity:1}35.714%{opacity:0}50.000%{opacity:1}57.143%{opacity:0}78.571%{opacity:1}85.714%{opacity:0}100%{opacity:1}}
-.jsv .jlw2{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl4-jlw2 9.8s step-end infinite,jl4-move 9.8s ease-in-out infinite}
+.jsv .jlw2{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl4-jlw2 14.7s step-end infinite,jl4-move 14.7s ease-in-out infinite}
 @keyframes jl4-jlw2{0.000%{opacity:0}7.143%{opacity:1}14.286%{opacity:0}35.714%{opacity:1}42.857%{opacity:0}57.143%{opacity:1}64.286%{opacity:0}85.714%{opacity:1}92.857%{opacity:0}100%{opacity:0}}
-.jsv .jlw3{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl4-jlw3 9.8s step-end infinite,jl4-move 9.8s ease-in-out infinite}
+.jsv .jlw3{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl4-jlw3 14.7s step-end infinite,jl4-move 14.7s ease-in-out infinite}
 @keyframes jl4-jlw3{0.000%{opacity:0}14.286%{opacity:1}21.429%{opacity:0}64.286%{opacity:1}71.429%{opacity:0}100%{opacity:0}}
-.jsv .jlw4{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl4-jlw4 9.8s step-end infinite,jl4-move 9.8s ease-in-out infinite}
+.jsv .jlw4{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl4-jlw4 14.7s step-end infinite,jl4-move 14.7s ease-in-out infinite}
 @keyframes jl4-jlw4{0.000%{opacity:0}21.429%{opacity:1}28.571%{opacity:0}71.429%{opacity:1}78.571%{opacity:0}100%{opacity:0}}
-.jsv .jlwj{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl4-jlwj 9.8s step-end infinite,jl4-move 9.8s ease-in-out infinite}
+.jsv .jlwj{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl4-jlwj 14.7s step-end infinite,jl4-move 14.7s ease-in-out infinite}
 @keyframes jl4-jlwj{0.000%{opacity:0}42.857%{opacity:1}50.000%{opacity:0}92.857%{opacity:1}100%{opacity:0}}
 @keyframes jl4-move{0.000%{transform:translateY(0)}3.571%{transform:translateY(-5px)}7.136%{transform:translateY(0)}7.143%{transform:rotate(0)}9.286%{transform:rotate(-4deg)}12.143%{transform:rotate(4deg)}14.279%{transform:rotate(0)}14.286%{transform:translateY(0)}17.143%{transform:translateY(-14px)}20.000%{transform:translateY(0)}21.421%{transform:translateY(0)}21.429%{transform:translateX(-4px)}25.000%{transform:translateX(4px) translateY(-3px)}28.564%{transform:translateX(-4px)}28.571%{transform:rotate(0)}31.429%{transform:rotate(5deg)}34.286%{transform:rotate(5deg)}35.707%{transform:rotate(0)}35.714%{transform:translateY(0)}39.286%{transform:translateY(-5px)}42.850%{transform:translateY(0)}42.857%{transform:scale(1,1)}44.643%{transform:scale(1.04,.95)}46.786%{transform:scale(.97,1.04) translateY(-8px)}49.993%{transform:scale(1,1)}50.000%{transform:translateX(-4px)}53.571%{transform:translateX(4px) translateY(-3px)}57.136%{transform:translateX(-4px)}57.143%{transform:translateY(0)}60.000%{transform:translateY(-14px)}62.857%{transform:translateY(0)}64.279%{transform:translateY(0)}64.286%{transform:rotate(0)}66.429%{transform:rotate(-4deg)}69.286%{transform:rotate(4deg)}71.421%{transform:rotate(0)}71.429%{transform:translateY(0)}75.000%{transform:translateY(-5px)}78.564%{transform:translateY(0)}78.571%{transform:translateY(0)}81.429%{transform:translateY(-14px)}84.286%{transform:translateY(0)}85.707%{transform:translateY(0)}85.714%{transform:rotate(0)}88.571%{transform:rotate(5deg)}91.429%{transform:rotate(5deg)}92.850%{transform:rotate(0)}92.857%{transform:rotate(0)}94.286%{transform:rotate(-5deg)}95.714%{transform:rotate(5deg)}97.143%{transform:rotate(-5deg)}98.571%{transform:rotate(5deg)}99.993%{transform:rotate(0)}}
 @media (prefers-reduced-motion:reduce){.jsv .jlw1{animation:none!important;opacity:1;transform:none}.jsv .jlw2,.jsv .jlw3,.jsv .jlw4,.jsv .jlwj{animation:none!important;opacity:0}}
@@ -83002,7 +83002,7 @@ window.SQE_JOURNEY = function (A) {
        through the FLK1 meadow and the FLK2 autumn fields to revision camp and Cluckington Palace (with both exam flags) in the palace grounds at the bottom.
        reg = the top edge of each ground band, top to bottom: spring meadow (stops 1-7), autumn fields (8-14), palace grounds. */
     function layoutDesktop() {
-        var rows = TOWN ? [600, 1040, 2380, 2810] : [660, 1100, 1800, 2230], /* +130 at the top for the Welcome to Peckham sign (Monnie 20 Nov) */ cols = [200, 445, 690, 935], PB = rows[3] + 625, /* 20 Nov: +140 at the top for the FLK1 signpost, +160 between the meadow and the fields for the FLK2 signpost */ D = PB - 2145, W = 1100, H = 2275 + D; /* 03:27 Monnie: path starts higher, less empty field, flowers at the bottom no longer cut off */ /* landmarks 1.6x bigger, cards smaller (Monnie 21:29): rows spaced out */
+        var rows = TOWN ? [640, 1110, 2440, 2900] : [660, 1100, 1800, 2230], /* +130 at the top for the Welcome to Peckham sign (Monnie 20 Nov) */ cols = [200, 445, 690, 935], PB = rows[3] + 625, /* 20 Nov: +140 at the top for the FLK1 signpost, +160 between the meadow and the fields for the FLK2 signpost */ D = PB - 2145, W = 1100, H = 2275 + D; /* 03:27 Monnie: path starts higher, less empty field, flowers at the bottom no longer cut off */ /* landmarks 1.6x bigger, cards smaller (Monnie 21:29): rows spaced out */
         var ty = function (x) { return -(x - 570) * .09; }; /* each row of the path tilts gently upward to the right (Monnie 20 Nov: a path in perspective, not flat) */
         var st = [{ x: 200, y: rows[0] + ty(200) }];
         [1, 2, 3].forEach(function (s, k) { return st[s] = { x: cols[k + 1], y: rows[0] + ty(cols[k + 1]) }; });
@@ -83014,17 +83014,17 @@ window.SQE_JOURNEY = function (A) {
         return { mode: 'desk', W: W, H: H, stops: st,
             route: "M150,".concat(rows[0] + ty(150), " L960,").concat(rows[0] + R, " A110,").concat((rows[1] - rows[0]) / 2, " 0 0 1 960,").concat(rows[1] + R, " L140,").concat(rows[1] + Lf, " A110,").concat((rows[2] - rows[1]) / 2, " 0 0 0 140,").concat(rows[2] + Lf, " L960,").concat(rows[2] + R, " A110,").concat((rows[3] - rows[2]) / 2, " 0 0 1 960,").concat(rows[3] + R, " L140,").concat(rows[3] + Lf, " C20,").concat(rows[3] + Lf, " 20,").concat(PB, " 170,").concat(PB, " H570 Q600,").concat(PB, " 600,").concat(PB - 24),
             art: { x: -125, y: -262, w: 250, h: 268, gx: -115, gy: -200, gw: 220, gh: 206 },
-            lm: function (i) { return ({ x: st[i].x, y: st[i].y - 34 - (TOWN && i === 9 ? 135 : TOWN && i === 11 ? 95 : i === 2 ? 45 : 0), s: .9 }); }, /* 02:50 Monnie: less crammed: drawings 10% smaller, fairground set back */ /* Monnie 20 Nov: stagger 8-11 (farm a bit up, balloons float higher) */
+            lm: function (i) { return ({ x: st[i].x, y: st[i].y - 34 - (TOWN && i === 9 ? 135 : TOWN && i === 11 ? 95 : i === 2 ? 45 : 0), s: TOWN ? 1.05 : .9 }); } /* 03:33 Monnie: stop drawings nearer the town buildings' size, using the spare grass */, /* 02:50 Monnie: less crammed: drawings 10% smaller, fairground set back */ /* Monnie 20 Nov: stagger 8-11 (farm a bit up, balloons float higher) */
             label: function (i) { return ({ cx: st[i].x, top: st[i].y + 44 }); },
             F: { w: 188, fs: 17, lh: 19, sfs: 13, max: 19, bar: 8 },
             hen: function (i) { return i === 0 ? { x: st[0].x + 66, y: st[0].y + 22, s: .85, m: true } : left(i) ? { x: st[i].x + 88, y: st[i].y + 24, s: .85, m: false } : { x: st[i].x - 88, y: st[i].y + 24, s: .85, m: true }; }, /* just before the stop, clear of its number */
             palace: { x: 600, y: 2115 + D, s: 1 },
             flags: [{ x: 176, y: 2117 + D, s: 1, h: 110 }, { x: 812, y: 2117 + D, s: 1, h: 110 }],
-            reg: { spring: 160, autumn: TOWN ? 1905 : 1320, grounds: 1750 + D },
-            town: TOWN ? { y: 1550, b: [['mount', 370, 'The Mount', '#/mount', 1870, 330], ['jobcentre2', 805, 'Job Centre', '#/town/jobs', 1515, 290], ['giftshop2', 825, 'Hen Bargains', '#/town/shop', 1855, 290], ['butchers3', 340, "Bert's Butchers", '#/town/butcher', 1525, 300]], w: 235, h: 175, /* Monnie 20 Nov: bigger, staggered over the grass; Mount low and big, Bert's up near Contract Law */ name: [560, 1365] } : null,
+            reg: { spring: 160, autumn: TOWN ? 1965 : 1320, grounds: 1750 + D },
+            town: TOWN ? { y: 1550, b: [['mount', 370, 'The Mount', '#/mount', 1930, 330], ['jobcentre2', 805, 'Job Centre', '#/town/jobs', 1585, 290], ['giftshop2', 825, 'Hen Bargains', '#/town/shop', 1915, 290], ['butchers3', 340, "Bert's Butchers", '#/town/butcher', 1595, 300]], w: 235, h: 175, /* Monnie 20 Nov: bigger, staggered over the grass; Mount low and big, Bert's up near Contract Law */ name: [560, 1365] } : null,
             sun: { x0: 80, x1: 1020, y: 150, rise: 82, s: 1 },
             deco: function () { return cloud(330, 78, .8) + cloud(1010, 92, 1) + cloud(720, 48, .55) + sign(185, 300, 'FLK1 Meadow', 'Stops 1–7', 30, 110) + welcome(950, 228, .66)
-                + sign(TOWN ? 650 : 560, TOWN ? 1945 : 1395, 'FLK2 Harvest Fields', 'Stops 8–14', 30, TOWN ? 40 : 72)
+                + sign(TOWN ? 650 : 560, TOWN ? 2000 : 1395, 'FLK2 Harvest Fields', 'Stops 8–14', 30, TOWN ? 40 : 72)
                 + topiary(1000, 2147 + D) + topiary(1060, 2133 + D) + topiary(228, 1855 + D) + flower(330, 1840 + D, '#fff') + flower(925, 1840 + D, '#FF9EC4')
                 + [60, 330, 575, 820].map(function (x, k) { return flower(x, 2219 + D, ['#FF9EC4', '#fff', '#FFB3D9', '#fff'][k]); }).join(''); },
         };
@@ -83400,7 +83400,7 @@ window.SQE_JOURNEY = function (A) {
        The moving parts are cut out of the landmark pictures (img/map-new/anim/*.webp); the landmarks use hole-filled "-still" copies so nothing doubles. */
     var NAT_LAYER = { 'fish-clown': [.2442, .2534, .2327, .1572], 'fish-tang': [.525, .2908, .2308, .1532], 'fish-angel': [.4058, .4086, .1808, .167],
         'balloon-big': [.251, .0019, .5, .7192], 'balloon-left': [.0019, .3269, .3378, .4769], 'balloon-right': [.6737, .3615, .3243, .4615],
-        parrot: [.2656, .2173, .2207, .3712], 'falls-mask': [.4277, .4481, .2422, .4058] }; /* [x, y, w, h] as fractions of the landmark picture */
+        parrot: [.2656, .2173, .2207, .3712], 'parrot-sleep': [.2656, .2173, .2207, .3712], 'falls-mask': [.4277, .4481, .2422, .4058] }; /* [x, y, w, h] as fractions of the landmark picture */
     var natStill = function (s) { return s.replace(/img\/map-new\/(aquarium|balloons|forest)\.webp"/g, 'img/map-new/anim/$1-still.webp"'); };
     function natBox(L, slug) { var a = wpt(L, slug, 0, 0), b = wpt(L, slug, 1, 1); return { x: a.x, y: a.y, w: b.x - a.x, h: b.y - a.y }; }
     function natImg(B, n, cls, st) {
@@ -83439,7 +83439,14 @@ window.SQE_JOURNEY = function (A) {
         }).join('');
         s += natSway(F, "<mask id=\"jnfm-".concat(m, "\" maskUnits=\"userSpaceOnUse\" ").concat(natRect(F, 0, 0, 1, 1), ">").concat(natImg(F, 'falls-mask'), "</mask>")
             + "<g mask=\"url(#jnfm-".concat(m, ")\"><g class=\"jmo jnflow\" style=\"--fp:").concat(f1(P), "px\" fill=\"none\" stroke=\"#fff\" stroke-width=\"").concat(f1(Math.max(1.4, F.w * .008)), "\" stroke-linecap=\"round\" opacity=\".85\">").concat(ln, "</g></g>").concat(foam)
-            + "<g class=\"jmo".concat(day ? ' jnparrot' : '', "\" style=\"--pw:").concat(f1(F.w), "px\">").concat(natImg(F, 'parrot'), "</g>"));
+            + "<g class=\"jmo".concat(day ? ' jnparrot' : '', "\" style=\"--pw:").concat(f1(F.w), "px\">").concat(natImg(F, day ? 'parrot' : 'parrot-sleep'), "</g>"));
+        if (!day) {
+            var k = F.w / 230; /* Monnie 20 Nov: at night the parrot sleeps (eyes shut) with Zzz floating up, like the zoo */
+            s += "<g transform=\"translate(".concat(f1(F.x + .47 * F.w), ",").concat(f1(F.y + .2 * F.h), ") scale(").concat(k.toFixed(3), ")\">") + [[22, 0], [17, 1], [13, 2]].map(function (_a) {
+                var fs = _a[0], j = _a[1];
+                return "<text class=\"jmo jzz jzz".concat(j, "\" style=\"--zx:16px;opacity:0\" x=\"0\" y=\"0\" font-size=\"").concat(fs, "\" font-weight=\"900\" fill=\"#fff\" stroke=\"#111\" stroke-width=\"3\" paint-order=\"stroke\" stroke-linejoin=\"round\" text-anchor=\"middle\">").concat(j ? 'z' : 'Z', "</text>");
+            }).join('') + '</g>';
+        }
         /* little felt-tip birds cross the sky now and then (by day only) */
         if (day) {
             var top_1 = L.reg.spring, W_1 = L.W;
@@ -92153,7 +92160,7 @@ function nbStreakHTML(){
   var svg = '<svg viewBox="0 0 800 616" class="nbsvg" aria-hidden="true">', pos = [[85, 588]]; /* 20 Nov r4: wider sky so clouds spread out (Monnie) */
   /* 20 Nov: no mound, she stands on the plain grass (Monnie) */
   for (var i = 0; i < PRESENT_STEPS; i++){
-    var cx = 175 + i * 118, cy = 500 - i * 30, on = i < n; /* r3: bigger clouds, further apart, so both her feet sit on each one; top step kept low enough to miss the rainbow */
+    var cx = 175 + i * 118, cy = 485 - i * 27, on = i < n; /* QA 20 Nov: clouds 1-2 lifted clear of the grass */ /* r3: bigger clouds, further apart, so both her feet sit on each one; top step kept low enough to miss the rainbow */
     pos.push([cx + 1, cy - 16]);
     svg += '<g class="' + (i + 1 === Math.min(n, PRESENT_STEPS) ? 'nbclon' : 'nbcl') + '" style="animation-delay:-' + (i * 1.3).toFixed(1) + 's">' + stCloud(cx, cy, 92, on ? '#FFD93B' : '#fff');
     svg += '<text x="' + cx + '" y="' + (cy + 8) + '" text-anchor="middle" font-size="' + (on ? 22 : 20) + '" font-weight="800" fill="#10294A">' + (on ? '✓' : (i + 1)) + '</text></g>'; /* banner-anim: clouds drift, except the one she stands on */
@@ -92162,7 +92169,7 @@ function nbStreakHTML(){
   var lsrc = NB_STEPMISS[st] ? STEP_IMG[st] : 'img/layla-step' + st + '.webp';
   /* Britney flies beside Layla's shoulder on clouds 1-5 (right side on 1-3, left on 4-5 to miss the rainbow); hidden if her picture is missing */
   /* r3: Britney on the open side with a clear gap (right on grass/1/2, left on 3/4/5), drawn after Layla so she is never covered; fly1 on the grass, flyN on step N */
-  var brit = ''; if (NB_FLY){ var BH = LH * 0.33, rt = st <= 2, bx = rt ? lp[0] + LW / 2 + 14 : lp[0] - LW / 2 - 14 - BH, by = Math.max(14, lp[1] - pz[2] - LH * (rt ? 0.76 : 0.62) - BH / 2); brit += '<g class="nbbrit"><image href="img/britney/fly' + ([1, 1, 2, 3, 4, 5][st]) + '.webp" onerror="if(this.dataset.fb){this.parentNode.style.display=\'none\'}else{this.dataset.fb=1;this.setAttribute(\'href\',\'img/britney/fly.webp\')}" x="' + bx.toFixed(1) + '" y="' + by.toFixed(1) + '" width="' + BH.toFixed(1) + '" height="' + BH.toFixed(1) + '"/></g>'; }
+  var brit = ''; if (NB_FLY){ var BH = STEP_POSE[0][0] * 0.33, /* QA 20 Nov: Britney stays the same size on every step */ rt = st <= 2, bx = rt ? lp[0] + LW / 2 + 14 : lp[0] - LW / 2 - 14 - BH, by = Math.max(14, lp[1] - pz[2] - LH * (rt ? 0.76 : 0.62) - BH / 2); brit += '<g class="nbbrit"><image href="img/britney/fly' + ([1, 1, 2, 3, 4, 5][st]) + '.webp" onerror="if(this.dataset.fb){this.parentNode.style.display=\'none\'}else{this.dataset.fb=1;this.setAttribute(\'href\',\'img/britney/fly.webp\')}" x="' + bx.toFixed(1) + '" y="' + by.toFixed(1) + '" width="' + BH.toFixed(1) + '" height="' + BH.toFixed(1) + '"/></g>'; }
   svg += '<image class="nblayla" href="' + lsrc + '" onerror="NB_STEPMISS[' + st + ']=1;this.setAttribute(\'href\',STEP_IMG[' + st + '])" x="' + (lp[0] - LW / 2).toFixed(1) + '" y="' + (lp[1] - LH - pz[2]).toFixed(1) + '" width="' + LW.toFixed(1) + '" height="' + LH + '" preserveAspectRatio="xMidYMax meet"/>';
   svg += brit;
   var rx = 735, ry = 56; svg += '<g transform="translate(' + rx + ' ' + ry + ') scale(1.45) translate(' + (-rx) + ' ' + (-ry) + ')">';
@@ -92319,8 +92326,8 @@ function timerStrip(){
 /* 20 Nov (Monnie): the countdown, studied-today and ring tiles shrink proportionally to fit the space instead of clipping */
 function nbFit(h){ try { var ns = h.querySelector(".nbstats"); if (!ns) return; ns.style.zoom = ""; var box = ns.parentElement; while (box && getComputedStyle(box).display === "contents") box = box.parentElement; if (!box) return; var cs = getComputedStyle(box), avail = box.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight); var gap = parseFloat(getComputedStyle(ns).columnGap) || 0, kids = ns.children, need = 0; for (var i = 0; i < kids.length; i++) need += kids[i].getBoundingClientRect().width + (i ? gap : 0); if (need > avail && avail > 0) ns.style.zoom = Math.max(0.5, (avail - 2) / need).toFixed(3); } catch(e){} }
 var NBZ_W = 1730; /* 20 Nov (Monnie): above phone width the whole banner is one fixed design (as at a 2030px window) scaled evenly, so everything keeps its size and place relative to everything else */
-function nbZoom(h, t){ var z = 1; try { var on = h.classList.contains("nb") && window.innerWidth > 720 && !/[?&]nbz=0/.test(location.search); h.style.zoom = ""; h.style.width = ""; t.style.zoom = ""; h.classList.toggle("nbz", on); if (!on) return 1; var w = h.getBoundingClientRect().width; z = w / NBZ_W; h.style.width = NBZ_W + "px"; h.style.zoom = z.toFixed(4); t.style.zoom = (1 / z).toFixed(4); } catch(e){ z = 1; } return z; }
-function tabH(){ try { var h = document.querySelector(".head"), t = h && h.querySelector(".tabs"); if (!t) return; var nz = nbZoom(h, t); var v = Math.round((h.getBoundingClientRect().bottom - t.getBoundingClientRect().top) / nz) + "px"; if (h.style.getPropertyValue("--tabh") !== v) h.style.setProperty("--tabh", v); var mh = (window.innerWidth > 720 && (!h.classList.contains("compact") || h.classList.contains("nb"))) ? Math.round(Math.min((nz !== 1 ? NBZ_W : h.clientWidth) / 4.03, 400) + 26 + parseInt(v, 10)) + "px" : ""; if (h.style.minHeight !== mh) h.style.minHeight = mh; if (h.classList.contains("nb")){ NB_MID = nz === 1 && window.innerWidth > 720 && h.clientWidth <= 1060; h.classList.toggle("nbmid", NB_MID); if (nz === 1) nbFit(h); } layGuard(); } catch(e){} }
+function nbZoom(h, t){ var z = 1; try { var on = h.classList.contains("nb") && window.innerWidth > 560 && !/[?&]nbz=0/.test(location.search); h.style.zoom = ""; h.style.width = ""; t.style.zoom = ""; h.classList.toggle("nbz", on); if (!on) return 1; var w = h.getBoundingClientRect().width; z = w / NBZ_W; h.style.width = NBZ_W + "px"; h.style.zoom = z.toFixed(4); t.style.zoom = (1 / z).toFixed(4); } catch(e){ z = 1; } return z; }
+function tabH(){ try { var h = document.querySelector(".head"), t = h && h.querySelector(".tabs"); if (!t) return; var nz = nbZoom(h, t); var v = Math.round((h.getBoundingClientRect().bottom - t.getBoundingClientRect().top) / nz) + "px"; if (h.style.getPropertyValue("--tabh") !== v) h.style.setProperty("--tabh", v); var mh = (window.innerWidth > (h.classList.contains("nbz") ? 560 : 720) && (!h.classList.contains("compact") || h.classList.contains("nb"))) ? Math.round(Math.min((nz !== 1 ? NBZ_W : h.clientWidth) / 4.03, 400) + 26 + parseInt(v, 10)) + "px" : ""; if (h.style.minHeight !== mh) h.style.minHeight = mh; if (h.classList.contains("nb")){ NB_MID = nz === 1 && window.innerWidth > 720 && h.clientWidth <= 1060; h.classList.toggle("nbmid", NB_MID); if (nz === 1) nbFit(h); } layGuard(); } catch(e){} }
 var NB_MID = window.innerWidth > 720 && window.innerWidth <= 1060; /* banner-r3: the middle-band banner layout follows the banner's own width (the Topics list can narrow it on a big screen) */
 /* 22:55 guard: whatever the fonts, browser or saved layout, push the present clouds (with cloud-Layla) down until Layla's head is clear of the numbers row, and grow the banner to fit */
 function layGuard(){ try { var h = document.querySelector(".head"), st = h && h.querySelector(".streak"), ly = st && st.querySelector(".stlayla"), hs = h && h.querySelector(".hstats"); if (!st) return;
