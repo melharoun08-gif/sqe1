@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120035320";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120035646";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -2914,6 +2914,19 @@ html.dfv-on{overflow:hidden}
 @keyframes nbfx-tw{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.8)}}
 @keyframes nbfx-moon{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
 @media (prefers-reduced-motion:reduce){.head.nb .nbsky .nbstar,.head.nb .nbsky .nbmoon{animation:none!important}}
+
+/* sand-rainbow (20 Nov) */
+.glass .gsand{fill:inherit}
+.glass .gstream{stroke:inherit;stroke-linecap:round}
+.glass .gglass{stroke:#10294A;stroke-linejoin:round}
+:root[data-theme="dark"] .glass .gglass{stroke:var(--ink)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .glass .gglass{stroke:var(--ink)}}
+.glass .gspark{fill:#fff;stroke:#10294A;stroke-width:.8;opacity:0;transform-box:fill-box;transform-origin:center}
+.glass.run .gsandg{animation:rainbowdrift 4s linear infinite}
+.glass.run .gspark{animation:sparkletw 2.2s ease-in-out infinite}
+@keyframes rainbowdrift{to{filter:hue-rotate(360deg)}}
+@keyframes sparkletw{0%,100%{opacity:0;transform:scale(.3) rotate(0)}45%{opacity:1;transform:scale(1) rotate(45deg)}70%{opacity:0;transform:scale(.4) rotate(90deg)}}
+@media (prefers-reduced-motion:reduce){.glass.run .gsandg,.glass .gstream{animation:none}.glass .gsparks{display:none}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -91333,6 +91346,7 @@ window.SQE_TOWN = function(A){
     var d = A.ymd(), pd = A.planDay(d), out = [];
     ((pd && pd.reviews) || []).forEach(function(rv){
       var x = rv.x, s = x.s, t = x.t, j;
+      if (rv.cards && !(S().done || {})[x.key]) return; /* cards only for topics she has done/rated */
       if (rv.cards) j = {k: 'revc|' + d + '|' + x.key, h: '#/cards/' + s.id + '/topic/' + t.id, what: 'Go through its ' + A.topicCards(s, t.id).length + ' core revision cards', m: (rv.cm || 0) + (rv.m || 0), g: 1};
       else if (rv.gap === 6 && A.topicRes(s, t).fw) j = {k: 'rev|' + d + '|' + x.key, h: '#/topic/' + s.id + '/' + t.id + '/fwtest', what: 'Framework self-test: hide the details, say them, then reveal', m: rv.m, g: 6};
       else if (rv.gap === 10 && A.topicQs(s, t.id).length) j = {k: 'rev|' + d + '|' + x.key, h: '#/questions/' + s.id + '/' + t.id, what: 'Redo its exam-style questions', m: rv.m, g: 10};
@@ -92694,15 +92708,21 @@ function focusLeft(){ return S.focus ? Math.max(0, S.focus.end - Date.now()) : 0
 function fmtMS(ms){ var s = Math.ceil(ms / 1000); return Math.floor(s / 60) + ":" + pad(s % 60); }
 function glass(frac, size, running){
   // frac = share of sand still in the top bulb (1 = full, 0 = empty)
+  // sand-rainbow (20 Nov): glittery rainbow sand; sparkles + colour drift only while running (CSS-gated)
   frac = Math.max(0, Math.min(1, frac));
-  var top = 46 * frac, bot = 46 * (1 - frac);
+  var top = 46 * frac, bot = 46 * (1 - frac), gid = "grain" + size;
+  var star = function(x, y, r, d){ return '<path class="gspark" style="animation-delay:' + d + 's" d="M' + x + ' ' + (y - r) + ' Q' + x + ' ' + y + ' ' + (x + r) + ' ' + y + ' Q' + x + ' ' + y + ' ' + x + ' ' + (y + r) + ' Q' + x + ' ' + y + ' ' + (x - r) + ' ' + y + ' Q' + x + ' ' + y + ' ' + x + ' ' + (y - r) + 'Z"/>'; };
   return '<svg class="glass' + (running ? " run" : "") + '" width="' + size + '" height="' + Math.round(size * 1.4) + '" viewBox="0 0 100 140" aria-hidden="true">' +
     '<defs><clipPath id="gtop"><path d="M22 14 H78 C78 40 56 56 52 68 H48 C44 56 22 40 22 14Z"/></clipPath>' +
-    '<clipPath id="gbot"><path d="M48 72 H52 C56 84 78 100 78 126 H22 C22 100 44 84 48 72Z"/></clipPath></defs>' +
+    '<clipPath id="gbot"><path d="M48 72 H52 C56 84 78 100 78 126 H22 C22 100 44 84 48 72Z"/></clipPath>' +
+    '<linearGradient id="' + gid + '" gradientUnits="userSpaceOnUse" x1="10" y1="14" x2="90" y2="126">' +
+    '<stop offset="0" stop-color="#FF6FA8"/><stop offset=".2" stop-color="#FFB347"/><stop offset=".4" stop-color="#FFE45C"/><stop offset=".6" stop-color="#6FE3A1"/><stop offset=".8" stop-color="#6FB8FF"/><stop offset="1" stop-color="#B98CFF"/></linearGradient></defs>' +
     '<rect x="12" y="4" width="76" height="10" rx="4" class="gwood"/><rect x="12" y="126" width="76" height="10" rx="4" class="gwood"/>' +
+    '<g class="gsandg" fill="url(#' + gid + ')" stroke="url(#' + gid + ')">' +
     '<g clip-path="url(#gtop)"><rect x="0" y="' + (68 - top).toFixed(1) + '" width="100" height="' + top.toFixed(1) + '" class="gsand"/></g>' +
     '<g clip-path="url(#gbot)"><rect x="0" y="' + (126 - bot).toFixed(1) + '" width="100" height="' + bot.toFixed(1) + '" class="gsand"/></g>' +
-    (running && frac > 0 ? '<line x1="50" y1="66" x2="50" y2="125" class="gstream"/>' : '') +
+    (running && frac > 0 ? '<line x1="50" y1="66" x2="50" y2="125" class="gstream"/>' : '') + '</g>' +
+    (running ? '<g class="gsparks">' + star(38, 58, 5, 0) + star(62, 52, 4, .7) + star(50, 96, 4, 1.3) + star(34, 116, 5, .4) + star(66, 112, 4, 1.8) + '</g>' : '') +
     '<path d="M22 14 H78 C78 40 56 56 52 70 C56 84 78 100 78 126 H22 C22 100 44 84 48 70 C44 56 22 40 22 14Z" class="gglass"/>' +
   '</svg>';
 }
@@ -93300,6 +93320,10 @@ var CTOP = {}, QTOP = {};
 function cardTopic(s, i){ var k = s.id + "~" + i; if (!(k in CTOP) && s.cards[i] && s.cards[i][2]) CTOP[k] = s.cards[i][2]; if (!(k in CTOP)){ var c = s.cards[i], sec = null; try { sec = findSection(s, null, c[0] + " " + c[1]); } catch(e){} CTOP[k] = sec ? sec.t : ""; } return CTOP[k]; }
 function isCore(s, i){ return !s.core || !!s.core[i]; }
 function coreN(s){ return (s.cards || []).filter(function(c, i){ return isCore(s, i); }).length; }
+/* 20 Nov (Monnie): cards only unlock for topics she has done/rated; extra cards hidden unless Settings > Show extra cards */
+function topicOpen(s, tid){ return !!(tid && S.done[s.id + "/" + tid]); }
+function cardOpen(s, i){ return topicOpen(s, cardTopic(s, i)); }
+function showExtra(){ return !!(S.settings && S.settings.showExtra); }
 function topicCards(s, tid, mode){ return (s.cards || []).map(function(c, i){ return i; }).filter(function(i){ if (cardTopic(s, i) !== tid) return false; var k = isCore(s, i); return mode === "all" ? true : mode === "extra" ? !k : k; }); }
 function topicQs(s, tid){ return (s.qs || []).map(function(q, i){ var k = s.id + "#" + i; if (!(k in QTOP) && q.t) QTOP[k] = q.t; if (!(k in QTOP)){ var sec = null; try { sec = findSection(s, null, q.q + " " + q.o[q.a] + " " + q.e); } catch(e){} QTOP[k] = sec ? sec.t : ""; } return QTOP[k] === tid ? k : null; }).filter(Boolean); }
 /* "Read the notes" goes to the topic's immersive scene when it has one (src/scene.js), else the notes page */
@@ -93342,7 +93366,7 @@ function reviewHTML(pd){
   var box = function(k, href, lab, m){ var dn = !!(S.todo && S.todo[k]); return '<li><button class="tdbox' + (dn ? " on" : "") + '" data-act="todo" data-k="' + k + '" aria-label="Tick off">' + (dn ? "✓" : "") + '</button><a href="' + href + '">' + lab + '</a><span class="tdmin">' + fmtM(m) + '</span></li>'; };
   return '<li class="tdtopic"><b>🔁 Spaced review</b> <span class="muted small">going back over earlier topics so they stick (the site schedules these for you)</span><ul class="tdsteps">' +
     pd.reviews.map(function(rv){ var nc = rv.cards ? topicCards(rv.x.s, rv.x.t.id).length : 0, nm = esc(tnum(rv.x)) + " " + esc(rv.x.t.title);
-      return rv.cards ? box("revc|" + pd.d + "|" + rv.x.key, "#/cards/" + rv.x.s.id + "/topic/" + rv.x.t.id, "🃏 " + nm + ": " + nc + " core revision cards", rv.cm + rv.m)
+      return rv.cards && !topicOpen(rv.x.s, rv.x.t.id) ? '<li style="opacity:.5">🔒 ' + nm + ': revision cards unlock once you\'ve done and rated this topic</li>' : rv.cards ? box("revc|" + pd.d + "|" + rv.x.key, "#/cards/" + rv.x.s.id + "/topic/" + rv.x.t.id, "🃏 " + nm + ": " + nc + " core revision cards", rv.cm + rv.m)
         : rv.gap === 6 && topicRes(rv.x.s, rv.x.t).fw ? box("rev|" + pd.d + "|" + rv.x.key, "#/topic/" + rv.x.s.id + "/" + rv.x.t.id + "/fwtest", "🗺️ " + nm + ": framework self-test (hide the details, say them, then reveal)", rv.m)
         : rv.gap === 10 && topicQs(rv.x.s, rv.x.t.id).length ? box("rev|" + pd.d + "|" + rv.x.key, "#/questions/" + rv.x.s.id + "/" + rv.x.t.id, "✍️ " + nm + ": redo its exam-style questions", rv.m)
         : box("rev|" + pd.d + "|" + rv.x.key, "#/quick/" + rv.x.s.id + "/" + rv.x.t.id, "⚡ " + nm + ": quick-fire", rv.m); }).join("") +
@@ -93422,6 +93446,7 @@ function sideCards(r){
     s.topics.forEach(function(t, ti){
       var ids = topicCards(s, t.id); if (!ids.length) return;
       var k2 = ids.filter(function(i){ return S.cards[s.id + "~" + i] === 1; }).length;
+      if (!topicOpen(s, t.id)){ h += '<span class="tp" style="opacity:.45"><span class="ck">🔒</span><span style="flex:1">' + (ti + 1) + '. ' + esc(t.title) + '</span><span class="cnt">' + ids.length + '</span></span>'; return; }
       h += '<a class="tp' + (r[2] === "topic" && r[3] === t.id ? " cur" : "") + '" href="#/cards/' + s.id + '/topic/' + t.id + '"><span class="ck">' + (k2 === ids.length ? "🟢" : "") + '</span><span style="flex:1">' + (ti + 1) + '. ' + esc(t.title) + '</span><span class="cnt">' + k2 + '/' + ids.length + '</span></a>';
     });
     h += '</details>';
@@ -94102,7 +94127,7 @@ function nextDueText(){
   return d <= 0 ? "later today" : d === 1 ? "tomorrow" : "in " + d + " days";
 }
 function qfMistakes(){ return allQQ().filter(function(x){ var r = S.qf[x.id]; return r && r.n > r.c && r.b < 2; }); }
-function cardMistakes(){ var n = 0; SUBJ.forEach(function(x){ (x.cards || []).forEach(function(c, i){ var v = S.cards[x.id + "~" + i]; if (v === 0 || v === 0.5) n++; }); }); return n; }
+function cardMistakes(){ var n = 0; SUBJ.forEach(function(x){ (x.cards || []).forEach(function(c, i){ if (!isCore(x, i) || !cardOpen(x, i)) return; var v = S.cards[x.id + "~" + i]; if (v === 0 || v === 0.5) n++; }); }); return n; }
 VIEW.mistakes = function(){
   var q = qfMistakes().length, w = wrongIds().length, c = cardMistakes();
   var row = function(n, href, t, d){ return '<div class="mxrow"><div><b>' + t + '</b><div class="small muted">' + d + '</div></div>' + (n ? '<a class="btn primary" href="' + href + '">Start (' + n + ')</a>' : '<span class="pill g">None ✓</span>') + '</div>'; };
@@ -94289,13 +94314,15 @@ VIEW.cards = function(r){
     if (r[1] !== "all" && !s) return VIEW.cards([]);
     var learnOnly = r[2] === "learning", onlyT = r[2] === "topic" ? r[3] : null, mist = r[2] === "mistakes"; var extraOnly = r[2] === "extra" || r[4] === "extra";
     var deck = [];
-    SUBJ.forEach(function(x){ if (s && x !== s) return; (x.cards || []).forEach(function(c, i){ var id = x.id + "~" + i; if (learnOnly && S.cards[id] === 1) return; if (mist && !(S.cards[id] === 0 || S.cards[id] === 0.5)) return; if (onlyT && cardTopic(x, i) !== onlyT) return; if (extraOnly ? isCore(x, i) : !isCore(x, i)) return; deck.push({s:x, c:c, id:id}); }); });
+    SUBJ.forEach(function(x){ if (s && x !== s) return; (x.cards || []).forEach(function(c, i){ var id = x.id + "~" + i; if (!cardOpen(x, i)) return; if (learnOnly && S.cards[id] === 1) return; if (mist && !(S.cards[id] === 0 || S.cards[id] === 0.5)) return; if (onlyT && cardTopic(x, i) !== onlyT) return; if (extraOnly ? isCore(x, i) : !isCore(x, i)) return; deck.push({s:x, c:c, id:id}); }); });
     var key = r.join("/");
     if (!FC || FC.key !== key) FC = {key:key, deck:shuffle(deck), i:0, flip:false};
+    if (onlyT && s && !topicOpen(s, onlyT)) return '<div class="card"><h2>🔒 Not unlocked yet</h2><p>These cards unlock once you\'ve done this topic and rated it 🔴 🟠 or 🟢 in the Syllabus.</p><div class="btns"><a class="btn primary" href="#/topic/' + s.id + '/' + onlyT + '">Go to the topic</a><a class="btn" href="#/cards">All decks</a></div></div>';
+    if (!deck.length && !learnOnly && !mist) return '<div class="card"><h2>🔒 No cards unlocked yet</h2><p>Revision cards unlock topic by topic: once you\'ve done a topic and rated it in the Syllabus, its cards appear here.</p><div class="btns"><a class="btn primary" href="#/syllabus">Go to the Syllabus</a><a class="btn" href="#/cards">All decks</a></div></div>';
     if (!FC.deck.length) return '<div class="card"><h2>All cards known</h2><p>You\'ve marked every card in this deck as known.</p><div class="btns"><a class="btn" href="#/cards/' + r[1] + '">See the whole deck</a><a class="btn" href="#/cards">All decks</a></div></div>';
     if (FC.i >= FC.deck.length){
       var kn = FC.deck.filter(function(d){ return S.cards[d.id] === 1; }).length, so = FC.deck.filter(function(d){ return S.cards[d.id] === 0.5; }).length;
-      return '<div class="card' + (s ? skinOf(s.id) : '') + '" style="text-align:center">' + (s && skinOf(s.id) ? '<div class="swend" aria-hidden="true">' + SWJAR + '</div>' : '') + '<h2>End of the deck</h2><p style="font-size:20px">🟢 ' + kn + ' &nbsp; 🟠 ' + so + ' &nbsp; 🔴 ' + (FC.deck.length - kn - so) + '</p><div class="btns" style="justify-content:center"><button class="btn primary" data-act="fcrestart">Go again</button>' + (!extraOnly && s ? '<a class="btn" href="#/cards/' + r[1] + (onlyT ? '/topic/' + onlyT + '/extra' : '/extra') + '">⭐ Optional extra cards</a>' : '') + '<a class="btn" href="#/cards/' + r[1] + '/learning">Only the 🔴 and 🟠 ones</a><a class="btn" href="#/cards">All decks</a></div>' + (s && onlyT && skinOf(s.id) ? '<div class="swnext"><b>Next step</b><div class="btns" style="justify-content:center"><a class="btn primary" href="#/quick/' + s.id + '/' + onlyT + '">⚡ This topic\'s quick-fire ›</a>' + (s.id + "/" + onlyT === "blp/business-structures" ? '<a class="btn" href="#/scene/blp/business-structures">🍭 Back to the Sweet Shop</a>' : '') + '</div></div>' : '') + '</div>';
+      return '<div class="card' + (s ? skinOf(s.id) : '') + '" style="text-align:center">' + (s && skinOf(s.id) ? '<div class="swend" aria-hidden="true">' + SWJAR + '</div>' : '') + '<h2>End of the deck</h2><p style="font-size:20px">🟢 ' + kn + ' &nbsp; 🟠 ' + so + ' &nbsp; 🔴 ' + (FC.deck.length - kn - so) + '</p><div class="btns" style="justify-content:center"><button class="btn primary" data-act="fcrestart">Go again</button>' + (!extraOnly && s && showExtra() ? '<a class="btn" href="#/cards/' + r[1] + (onlyT ? '/topic/' + onlyT + '/extra' : '/extra') + '">⭐ Optional extra cards</a>' : '') + '<a class="btn" href="#/cards/' + r[1] + '/learning">Only the 🔴 and 🟠 ones</a><a class="btn" href="#/cards">All decks</a></div>' + (s && onlyT && skinOf(s.id) ? '<div class="swnext"><b>Next step</b><div class="btns" style="justify-content:center"><a class="btn primary" href="#/quick/' + s.id + '/' + onlyT + '">⚡ This topic\'s quick-fire ›</a>' + (s.id + "/" + onlyT === "blp/business-structures" ? '<a class="btn" href="#/scene/blp/business-structures">🍭 Back to the Sweet Shop</a>' : '') + '</div></div>' : '') + '</div>';
     }
     var d = FC.deck[FC.i];
     if (FC.atI !== FC.i || FC.atD !== d.id){ FC.atI = FC.i; FC.atD = d.id; FC.at = Date.now(); }
@@ -94306,11 +94333,15 @@ VIEW.cards = function(r){
       '<div class="btns" style="justify-content:center">' + (FC.flip ? '<span class="rate-lab">How well did you know it?</span><button class="rate" data-act="fcmark" data-v="0" aria-label="Didn\'t know it">🔴<span>Didn\'t know</span></button><button class="rate" data-act="fcmark" data-v="0.5" aria-label="Partly knew it">🟠<span>Sort of</span></button><button class="rate" data-act="fcmark" data-v="1" aria-label="Knew it">🟢<span>Knew it</span></button>' : '<button class="btn primary" data-act="fcflip">Show answer</button>') + '</div>' +
       '<div class="btns" style="justify-content:center"><button class="btn sm" data-act="fcprev"' + (FC.i ? '' : ' disabled') + '>‹ Previous card</button><button class="btn sm" data-act="fcskip">Next card ›</button></div>' + '<div class="kbd keyhint" style="text-align:center;margin-top:6px">Keys: Space = flip, then 1 🔴, 2 🟠, 3 🟢</div></div>';
   }
-  var h = '<div class="card"><h2>Revision cards</h2><p class="muted" style="margin:0">Flip a card, then rate it 🔴 🟠 or 🟢. Any card that isn\'t a 🟢 yet can be drilled on its own.</p><div class="btns"><a class="btn primary" href="#/cards/all">Shuffle every card</a><a class="btn" href="#/cards/all/learning">Only cards not yet 🟢</a></div></div><div class="card">';
+  var h = '<div class="card"><h2>Revision cards</h2><p class="muted" style="margin:0">Cards unlock topic by topic, in syllabus order: once you\'ve done a topic and rated it 🔴 🟠 or 🟢, its cards open here. Flip a card, then rate it.</p><div class="btns"><a class="btn primary" href="#/cards/all">Shuffle my unlocked cards</a><a class="btn" href="#/cards/all/learning">Only cards not yet 🟢</a></div><label class="small" style="display:inline-flex;gap:8px;align-items:center;margin-top:8px;cursor:pointer"><input type="checkbox" data-act="cardsextra"' + (showExtra() ? ' checked' : '') + '> Show extra cards (optional, off by default)</label></div><div class="card">';
   SESSIONS.forEach(function(se){
     var subs = SUBJ.filter(function(s){ return s.session === se.id && s.cards && s.cards.length; }); if (!subs.length) return;
     h += '<h3 style="margin-top:10px">' + esc(se.title) + '</h3>';
-    subs.forEach(function(s){ var nk = coreN(s), kn = s.cards.filter(function(c, i){ return isCore(s, i) && S.cards[s.id + "~" + i] === 1; }).length; h += '<div class="subjrow cardrow' + (skinOf(s.id) ? ' swrow' : '') + '"><span class="cr-t"><a href="#/cards/' + s.id + '">' + esc(s.title) + '</a>' + (s.id === "blp" && skinOf(s.id) && topicCards(s, "business-structures").length ? '<a class="swdeck" href="#/cards/blp/topic/business-structures">🍭 Sweet Shop cards: ' + topicCards(s, "business-structures").length + '</a>' : '') + '</span><span class="cr-ring">' + mring(kn, nk, "var(--good)", kn + " of " + nk + " core cards known") + '</span><span class="cr-x">' + (s.cards.length > nk ? '<a class="small" href="#/cards/' + s.id + '/extra">⭐ ' + (s.cards.length - nk) + ' optional extra</a>' : '') + '</span></div>'; });
+    subs.forEach(function(s){ var nk = 0, kn = 0, rows = '';
+      s.topics.forEach(function(t, ti){ var ids = topicCards(s, t.id); if (!ids.length) return; var op = topicOpen(s, t.id), k2 = ids.filter(function(i){ return S.cards[s.id + "~" + i] === 1; }).length, ne = showExtra() && op ? topicCards(s, t.id, "extra").length : 0; if (op){ nk += ids.length; kn += k2; }
+        rows += op ? '<li style="display:flex;gap:8px;align-items:baseline;padding:3px 0"><a href="#/cards/' + s.id + '/topic/' + t.id + '" style="flex:1">' + (ti + 1) + '. ' + esc(t.title) + '</a>' + (ne ? '<a class="small" href="#/cards/' + s.id + '/topic/' + t.id + '/extra">⭐ ' + ne + ' extra</a>' : '') + '<span class="small">' + (k2 === ids.length ? '🟢 ' : '') + k2 + '/' + ids.length + '</span></li>'
+          : '<li style="display:flex;gap:8px;align-items:baseline;padding:3px 0;opacity:.45" title="Unlocks once you\'ve done and rated this topic"><span style="flex:1">🔒 ' + (ti + 1) + '. ' + esc(t.title) + '</span><span class="small">' + ids.length + ' cards</span></li>'; });
+      h += '<div class="subjrow cardrow' + (skinOf(s.id) ? ' swrow' : '') + '"><span class="cr-t"><a href="#/cards/' + s.id + '">' + esc(s.title) + '</a></span><span class="cr-ring">' + mring(kn, nk, "var(--good)", kn + " of " + nk + " unlocked cards known") + '</span><span class="cr-x small muted">' + (nk ? nk + ' cards unlocked' : '🔒 none unlocked yet') + '</span></div><ul class="cardtopics" style="list-style:none;margin:0 0 10px;padding:0 0 0 14px">' + rows + '</ul>'; });
   });
   return h + '</div>';
 };
@@ -94492,7 +94523,7 @@ VIEW.progress = function(){
     var tried = ids.filter(function(id){ return S.qa[id]; });
     var right = tried.filter(function(id){ return S.qa[id].last === 1; }).length;
     var acc = tried.length ? Math.round(right / tried.length * 100) : null;
-    var kn = (s.cards || []).filter(function(c, i){ return S.cards[s.id + "~" + i] === 1; }).length;
+    var kn = (s.cards || []).filter(function(c, i){ return isCore(s, i) && S.cards[s.id + "~" + i] === 1; }).length;
     var mins = 0; S.logs.forEach(function(l){ if (l.s === s.id) mins += +l.m || 0; });
     rows.push({s:s, td:td, tried:tried.length, nq:ids.length, acc:acc, kn:kn, mins:mins});
     if (acc !== null && tried.length >= 3 && acc < 60) weak.push({s:s, acc:acc});
@@ -94503,7 +94534,7 @@ VIEW.progress = function(){
   TOPICS.forEach(function(x){ var r = trec(x.key); if (!r) return; if (r.conf === null || r.conf === undefined) cc.r++; else cc[r.conf]++; });
   var untouched = TOPICS.length - cc[1] - cc[0.5] - cc[0] - cc.r;
   var wrongN = tAll.filter(function(x){ return S.qa[x.id].last === -1; }).length;
-  var cardIds = []; SUBJ.forEach(function(x){ (x.cards || []).forEach(function(c, i){ cardIds.push(x.id + "~" + i); }); });
+  var cardIds = []; SUBJ.forEach(function(x){ (x.cards || []).forEach(function(c, i){ if (isCore(x, i)) cardIds.push(x.id + "~" + i); }); });
   var ck = {1:0, 0.5:0, 0:0}; cardIds.forEach(function(id){ if (S.cards[id] in ck) ck[S.cards[id]]++; });
   var twice = TOPICS.filter(function(x){ var r = trec(x.key); return r && r.n >= 2; }).length;
   var h0 = '<div class="card"><h2>Progress</h2><div class="charts">' +
@@ -94528,7 +94559,7 @@ VIEW.progress = function(){
     '<div class="card"><h3>Hours</h3><p style="font-size:26px;margin:0"><b>' + fmtH(totalMins()) + '</b></p><div class="small muted">Your routine adds about ' + Math.round(plannedUntil(S.settings.exam1) / 60) + 'h more before FLK1 and ' + Math.round(plannedUntil(S.settings.exam2) / 60) + 'h before FLK2.</div></div></div>';
   h += '<div class="card"><h3>Where you are going wrong</h3>' + (weak.length ? '<p class="small muted" style="margin:0 0 6px">Subjects where you\'re getting under 60% (after at least 3 questions):</p>' + weak.sort(function(a, b){ return a.acc - b.acc; }).map(function(w){ return '<div class="subjrow"><a href="#/subject/' + w.s.id + '">' + esc(w.s.title) + '</a><span><span class="pill b">' + w.acc + '%</span> <a class="btn sm" href="#/questions/' + w.s.id + '">Practise</a></span></div>'; }).join("") : '<p class="muted" style="margin:0">Nothing flagged yet. Subjects where you score under 60% will show up here.</p>') + '</div>';
   h += '<div class="card"><h3>Subject by subject</h3><div style="overflow-x:auto"><table class="t"><tr><th>Subject</th><th>Topics reviewed</th><th>Questions</th><th>Right</th><th>Cards known</th><th>Hours</th></tr>' +
-    rows.map(function(r){ var pc = r.acc === null ? '<span class="muted">-</span>' : '<span class="pill ' + (r.acc >= 70 ? "g" : r.acc >= 55 ? "w" : "b") + '">' + r.acc + '%</span>'; return '<tr><td><a href="#/subject/' + r.s.id + '">' + esc(r.s.title) + '</a><div class="small muted">' + esc(sessTitle(r.s.session)) + '</div></td><td>' + mring(r.td, r.s.topics.length, "var(--good)", r.td + "/" + r.s.topics.length) + '</td><td>' + mring(r.tried, r.nq, "var(--accent)", r.tried + "/" + r.nq) + '</td><td>' + pc + '</td><td>' + mring(r.kn, (r.s.cards || []).length, "var(--good)", r.kn + "/" + (r.s.cards || []).length) + '</td><td>' + (r.mins ? fmtH(r.mins) : "-") + '</td></tr>'; }).join("") + '</table></div></div>';
+    rows.map(function(r){ var pc = r.acc === null ? '<span class="muted">-</span>' : '<span class="pill ' + (r.acc >= 70 ? "g" : r.acc >= 55 ? "w" : "b") + '">' + r.acc + '%</span>'; return '<tr><td><a href="#/subject/' + r.s.id + '">' + esc(r.s.title) + '</a><div class="small muted">' + esc(sessTitle(r.s.session)) + '</div></td><td>' + mring(r.td, r.s.topics.length, "var(--good)", r.td + "/" + r.s.topics.length) + '</td><td>' + mring(r.tried, r.nq, "var(--accent)", r.tried + "/" + r.nq) + '</td><td>' + pc + '</td><td>' + mring(r.kn, coreN(r.s), "var(--good)", r.kn + "/" + coreN(r.s)) + '</td><td>' + (r.mins ? fmtH(r.mins) : "-") + '</td></tr>'; }).join("") + '</table></div></div>';
   return h;
 };
 
@@ -95769,6 +95800,7 @@ document.addEventListener("click", function(e){
       if (Date.now() - (FC.at || 0) >= READ_MS.card) earn(COIN.card, "card|" + FC.deck[FC.i].id); else if (!earnedToday("card|" + FC.deck[FC.i].id)) tooQuick();
       save(); FC.i++; FC.flip = false; render(); break;
     case "fcprev": if (FC && FC.i > 0){ FC.i--; FC.flip = false; render(); } break;
+    case "cardsextra": S.settings.showExtra = !showExtra(); save(); render(); break;
     case "fcrestart": FC.deck = shuffle(FC.deck); FC.i = 0; FC.flip = false; render(); break;
     case "mkstart": mockStart(el.getAttribute("data-s")); break;
     case "mktimed": S.mockTimed = S.mockTimed === false; save(); render(); break;
