@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120061330";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120062037";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -1875,11 +1875,12 @@ body.podcar-on .startnext{bottom:110px}
 .stth .cbag{--accent:var(--sta);--focus:var(--sta);--pale:var(--stp);--pale-line:var(--stl)}
 .ststrip{display:flex;align-items:center;gap:14px;margin:0 0 12px;padding:20px 14px 6px;border:2px solid var(--pale-line);border-radius:16px;background:var(--pale) var(--stbunt) repeat-x left 0 top 0/auto 16px;color:var(--ink);text-decoration:none}
 .ststrip:hover{border-color:var(--accent)}
+.stmap.stsign{padding:0;border:0;background:none;border-radius:0;width:150px;line-height:0;margin-left:auto}.stmap.stsign svg{display:block;width:100%;height:auto;filter:drop-shadow(2px 2px 0 #1b1b1b)}.ststrip:hover .stsign svg{transform:rotate(-2deg)}
 .stpic{flex:none;width:118px;margin-bottom:-2px}
 .stpic svg{display:block;width:100%;height:auto}
 .sttx{flex:1;min-width:0;font-size:19px;line-height:1.3;font-weight:800;color:var(--ink)}
 .stmap{flex:none;font-size:14px;font-weight:700;color:var(--accent);background:var(--surface);border:2px solid var(--pale-line);border-radius:999px;padding:4px 10px;white-space:nowrap}
-@media (max-width:480px){.ststrip{gap:10px;padding:18px 10px 4px}.stpic{width:84px}.sttx{font-size:16px}.stmap span{display:none}}
+@media (max-width:480px){.ststrip{gap:10px;padding:18px 10px 4px}.stpic{width:84px}.sttx{font-size:16px}.stsign{width:110px}}
 .stth .card{border:2px solid var(--pale-line);border-top:5px solid var(--accent)}
 .stth .viewtabs a.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .stth .lrn-bar{background:var(--pale);border-color:var(--pale-line)}
@@ -101392,7 +101393,7 @@ window.SQE_JOURNEY = function (A) {
             palace: { x: 600, y: 2115 + D, s: 1 },
             flags: [{ x: 176, y: 2117 + D, s: 1, h: 110 }, { x: 812, y: 2117 + D, s: 1, h: 110 }],
             reg: { spring: 160, autumn: TOWN ? 2095 : 1320, grounds: 1750 + D },
-            town: TOWN ? { y: 1550, b: [['mount', 370, 'The Mount', '#/mount', 2075, 285], ['jobcentre2', 805, 'Job Centre', '#/town/jobs', 1762, 245], ['giftshop2', 825, 'Hen Bargains', '#/town/shop', 2060, 245], ['butchers3', 340, "Bert's Butchers", '#/town/butcher', 1777, 255]], w: 235, h: 175, /* Monnie 20 Nov: bigger, staggered over the grass; Mount low and big, Bert's up near Contract Law */ name: [560, 1365] } : null,
+            town: TOWN ? { y: 1550, b: [['mount', 370, 'The Mount', '#/mount', 2075, 285], ['jobcentre3', 805, 'Job Centre', '#/town/jobs', 1762, 245], ['giftshop2', 825, 'Hen Bargains', '#/town/shop', 2060, 245], ['butchers3', 340, "Bert's Butchers", '#/town/butcher', 1777, 255]], w: 235, h: 175, /* Monnie 20 Nov: bigger, staggered over the grass; Mount low and big, Bert's up near Contract Law */ name: [560, 1365] } : null,
             sun: { x0: 80, x1: 1020, y: 150, rise: 82, s: 1 },
             deco: function () { return cloud(TOWN ? 560 : 330, 78, .8) + cloud(1010, 92, 1) + cloud(TOWN ? 800 : 720, 48, .55) + (TOWN ? sign(970, 330, 'FLK1 Meadow', 'Stops 1–7', 30, 40) + welcome(190, 330, .7) : sign(185, 300, 'FLK1 Meadow', 'Stops 1–7', 30, 110) + welcome(950, 228, .64))
                 + sign(TOWN ? 600 : 560, TOWN ? 2130 : 1395, 'FLK2 Harvest Fields', 'Stops 8–14', 30, TOWN ? 40 : 72)
@@ -101421,7 +101422,7 @@ window.SQE_JOURNEY = function (A) {
             hen: function (i) { return (i === 0 ? { x: st[0].x + 81, y: st[0].y + 22, s: 1, m: true } : { x: st[i].x, y: st[i].y - 42, s: 1, m: !(i % 2) }); }, /* after each stop the path heads across: right from the left side, left from the right side */
             palace: { x: 280, y: Pb, s: 1 },
             flags: [{ x: 100, y: yc + 116, s: 1, h: 80 }, { x: 320, y: yc + 116, s: 1, h: 80 }], /* tidy: planted in front of the palace, below the path, so they no longer cover the palace steps */
-            town: TOWN ? { y: 0, b: [['mount', 330, 'The Mount', '#/mount', 1010, 220], ['jobcentre2', 420, 'Job Centre', '#/town/jobs', 380, 180], ['giftshop2', 420, 'Hen Bargains', '#/town/shop', 795, 180], ['butchers3', 300, "Bert's Butchers", '#/town/butcher', 590, 190]], w: 250, h: 190, ph: 1 } /* QA 20 Nov: phone town stacked so no building overlaps another or the path */ : null,
+            town: TOWN ? { y: 0, b: [['mount', 330, 'The Mount', '#/mount', 1010, 220], ['jobcentre3', 420, 'Job Centre', '#/town/jobs', 380, 180], ['giftshop2', 420, 'Hen Bargains', '#/town/shop', 795, 180], ['butchers3', 300, "Bert's Butchers", '#/town/butcher', 590, 190]], w: 250, h: 190, ph: 1 } /* QA 20 Nov: phone town stacked so no building overlaps another or the path */ : null,
             reg: { spring: 212, autumn: st[7].y + (TOWN ? 1040 : 250), grounds: sl.y + 150 },
             sun: { x0: 50, x1: 550, y: 205, rise: 130, s: .62 },
             deco: function () { return cloud(522, 150, .7) + cloud(150, 60, .5) + sign(215, 330, 'FLK1 Meadow', 'Stops 1–7', 32, 90) + welcome(478, 330, .6)
@@ -102523,7 +102524,7 @@ window.SQE_JOURNEY = function (A) {
             return null;
         var T = THEMES[i - 1], land = LANDS[i - 1];
         var style = "--sta:".concat(T.a, ";--stad:").concat(T.ad, ";--stp:").concat(T.p, ";--stpd:").concat(T.pd, ";--stl:").concat(T.l, ";--stld:").concat(T.ld, ";--stbar:linear-gradient(90deg,").concat(T.c.slice(0, 3).join(','), ");--stbunt:").concat(bunting(T.c), ";--stm1:'").concat(T.m[0], "';--stm2:'").concat(T.m[1], "'");
-        var strip = "<a class=\"ststrip\" href=\"#/map/".concat(sid, "\" aria-label=\"Stop ").concat(i, ": ").concat(esc(land), ". See it on the map\"><span class=\"stpic\" aria-hidden=\"true\"><svg viewBox=\"-100 -150 200 156\"><g ").concat(INK, ">").concat(DRAW[i - 1](), "</g></svg></span><b class=\"sttx\">\uD83D\uDCCD Stop ").concat(i, ": ").concat(esc(land), " \u00B7 ").concat(esc(label), "</b><span class=\"stmap\">\uD83D\uDDFA\uFE0F<span> Peckham</span></span></a>");
+        var strip = "<a class=\"ststrip\" href=\"#/map/".concat(sid, "\" aria-label=\"Stop ").concat(i, ": ").concat(esc(land), ". See it on the map\"><span class=\"stpic\" aria-hidden=\"true\"><svg viewBox=\"-100 -150 200 156\"><g ").concat(INK, ">").concat(DRAW[i - 1](), "</g></svg></span><b class=\"sttx\">\uD83D\uDCCD Stop ").concat(i, ": ").concat(esc(land), " \u00B7 ").concat(esc(label), "</b><span class='stmap stsign' title='Back to Peckham'><svg viewBox='0 0 160 80' role='img' aria-label='Welcome to Peckham, twinned with Hamsterdam. Back to Peckham'><rect x='2' y='2' width='156' height='76' rx='9' fill='#fff' stroke='#111' stroke-width='3'/><rect x='7' y='7' width='146' height='66' rx='6' fill='none' stroke='#111' stroke-width='2'/><g font-family='Gochi Hand,Patrick Hand,cursive' text-anchor='middle' fill='#111'><text x='80' y='22' font-size='12'>Welcome to</text><text x='80' y='47' font-size='27' stroke='#111' stroke-width='3.5' paint-order='stroke' stroke-linejoin='round' letter-spacing='1'><tspan fill='#E63946' dy='0'>P</tspan><tspan fill='#FF9F1C' dy='2'>E</tspan><tspan fill='#2EC4B6' dy='-5'>C</tspan><tspan fill='#3A86FF' dy='5'>K</tspan><tspan fill='#FF4FA3' dy='-4'>H</tspan><tspan fill='#8AC926' dy='5'>A</tspan><tspan fill='#9B5DE5' dy='-5'>M</tspan></text><line x1='22' y1='54' x2='138' y2='54' stroke='#111' stroke-width='1.5'/><text x='80' y='67' font-size='10.5'>Twinned with Hamsterdam</text></g></svg></span></a>");
         return { i: i, land: land, style: style, strip: strip };
     }
     /* ---------- the palace scene's backdrop follows Britney along the path (a gate at the start) ---------- */
@@ -103046,14 +103047,14 @@ ROOMDATA["formation"] = {
    },
    {
     "name": "Mary Cherry",
-    "emoji": "🧑"
+    "emoji": "👩‍🍳"
    },
    {
     "name": "Mr Crumble",
     "emoji": "👴"
    }
   ],
-  "intro": "Alfie (apprentice), Mr Crumble (landlord) and Big Bert (head baker), with Layla and Britney watching.",
+  "intro": "Alfie (apprentice), Mr Crumble (landlord) and Mary Cherry (head baker), with Layla and Britney watching.",
   "steps": [
    {
     "say": [
@@ -105832,14 +105833,14 @@ ROOMDATA["distributions-accounts"] = {
    },
    {
     "name": "Ted",
-    "emoji": "🧑"
+    "emoji": "👴"
    },
    {
     "name": "Britney",
     "emoji": "🐔"
    }
   ],
-  "intro": "Dot and Sasha are the two directors of **Sprinkle Ltd**, the private company that runs the Cupcake Room. Dot, Sasha and Grandpa Bert are its shareholders. Sprinkle Ltd uses the Model Articles.",
+  "intro": "Dot and Sasha are the two directors of **Sprinkle Ltd**, the private company that runs the Cupcake Room. Dot, Sasha and Grandpa Ted are its shareholders. Sprinkle Ltd uses the Model Articles.",
   "steps": [
    {
     "say": [
@@ -110490,7 +110491,7 @@ var ROOMV3 = {
 };
 /* ROOMV3-GEN END */
 function v3inside(tid, hs, alt){ var v = ROOMV3[tid], L = v.labels || {};
-  return { img: 'img/scene/v3/' + ROOMS[tid].slug + '.webp', ratio: 2752 / 1536, alt: alt, board: v.board,
+  return { img: 'img/scene/v3/' + ROOMS[tid].slug + '.webp', ratio: 2752 / 1536, alt: alt, board: v.board, hooks: v.hooks || null,
     hotspots: hs.map(function(h){ var b = v.spots[h.id], o = Object.assign({}, h); if (b){ o.x = b[0]; o.y = b[1]; o.w = b[2]; o.h = b[3]; } if (L[h.id]){ o.icon = L[h.id][0]; o.label = L[h.id][1]; } return o; }) }; }
 
 /* build the room chain: SCENES["blp/<topicid>"] for rooms 2-16, in content/blp.js topic order */
@@ -110511,7 +110512,7 @@ var ROOM_KEYS = [], ROOM_IDX = {};
     var cols = spots.length > 9 ? 4 : 3, rows = Math.ceil(spots.length / cols) || 1;
     spots.forEach(function(h, j){ if (h.x == null){ h.x = 2 + (j % cols) * (96 / cols); h.y = 4 + Math.floor(j / cols) * (92 / rows); h.w = 96 / cols - 3; h.h = 92 / rows - 5; h.ph = true; } });
     SCENES[k] = { room: i + 1, name: m.name, icon: m.icon, bg: m.bg, treat: 'treat', treats: 'treats', enter: m.icon + ' Enter ' + m.name.replace(/^The /, 'the '),
-      inside: { img: ins.img || (m.art ? 'img/scene/' + m.slug + '.webp' : ''), ratio: ins.ratio || 16 / 9, alt: ins.alt || m.name, hotspots: hs, board: ins.board || null },
+      inside: { img: ins.img || (m.art ? 'img/scene/' + m.slug + '.webp' : ''), ratio: ins.ratio || 16 / 9, alt: ins.alt || m.name, hotspots: hs, board: ins.board || null, hooks: ins.hooks || null },
       scenario: d.scenario || null, game: d.game || null };
   });
 })();
@@ -110535,7 +110536,16 @@ var CSS = [
 '.scn-prog .scn-bar i{display:block;height:100%;background:repeating-linear-gradient(135deg,#FF5DA2 0 12px,#FF8FC7 12px 24px);transition:width .4s}',
 '.scn-art{position:relative;width:100%;border:4px solid #1b1b1b;border-radius:20px;overflow:hidden;box-shadow:5px 5px 0 #1b1b1b;background:#FFF1C9}',
 '.scn-art:has(.scn-board){container-type:inline-size}',
-'.scn-board{position:absolute;z-index:1;display:flex;align-items:center;justify-content:center;padding:var(--bpy,1cqw) var(--bpx,1cqw);box-sizing:border-box;background:none;border:0;border-radius:6px;cursor:zoom-in;color:#fff;font:400 1em/1.05 "Caveat Brush","Gochi Hand","Patrick Hand",cursive;letter-spacing:.01em;text-align:center;text-shadow:0 0 1px rgba(255,255,255,.9),0 0 3px rgba(255,255,255,.45),0 0 8px rgba(255,255,255,.18);overflow:hidden}',
+'.scn-art:has(.scn-hook){container-type:inline-size}',
+'.scn-nb{display:inline-block;padding:5px 13px;border:2.5px solid #1b1b1b;border-radius:99px;background:#FFFDF2;color:#1b1b1b!important;font-weight:800;font-size:14px;text-decoration:none!important;box-shadow:2px 2px 0 #1b1b1b;white-space:nowrap}',
+'.scn-nb:hover{background:#FFF200}',
+'.scn-navb{display:inline-flex;gap:8px;flex-wrap:wrap;margin-left:10px;vertical-align:middle}',
+'.scn-hook{position:absolute;z-index:1;display:flex;align-items:center;justify-content:center;text-align:center;box-sizing:border-box;pointer-events:none;transform:rotate(var(--rot,0deg));font:400 1em/1.02 "Gochi Hand","Patrick Hand",cursive;color:#1b1b1b;white-space:nowrap;overflow:visible}',
+'.scn-hook.tag{background:#FFFDF2;border:.18cqw solid #1b1b1b;border-radius:.6cqw;box-shadow:.18cqw .18cqw 0 #1b1b1b;padding:0 .3cqw}',
+'.scn-hook.ink{background:none}',
+'.scn-hook.white{background:none;color:#fff;text-shadow:0 0 .2cqw #1b1b1b}',
+'.scn-hook.chalk{background:none;color:#fff;font-family:"Gochi Hand",cursive;opacity:.95}',
+'.scn-board{position:absolute;z-index:1;display:flex;align-items:center;justify-content:center;padding:var(--bpy,1cqw) var(--bpx,1cqw);box-sizing:border-box;background:none;border:0;border-radius:6px;cursor:zoom-in;color:#fff;font:400 1em/1.12 "Gochi Hand","Patrick Hand",cursive;letter-spacing:.02em;letter-spacing:.01em;text-align:center;text-shadow:0 0 1px rgba(255,255,255,.9),0 0 3px rgba(255,255,255,.45),0 0 8px rgba(255,255,255,.18);overflow:hidden}',
 '.scn-board.tight{padding:calc(var(--bpy,1cqw) * .3) calc(var(--bpx,1cqw) * .3);overflow:visible}.scn-board.tight .scn-bt{line-height:1}.scn-board.tight .ln+.ln{margin-top:.05em}',
 '.scn-board.more .scn-bt::after{content:"tap to read ›";display:block;font-size:.95em;opacity:.95;text-decoration:underline;text-underline-offset:2px}',
 '.scn-board:hover,.scn-board:focus-visible{outline:3px dashed rgba(255,255,255,.7);outline-offset:-3px}',
@@ -110976,7 +110986,7 @@ window.SQE_SCENE = function(A){
   function earnC(n, key){ try { if (A.earn) A.earn(n, key); } catch(e){} }
   function ribbon(k){
     var i = ROOM_IDX[k], sc = SCENES[k], m = ROOMS[k.split('/')[1]] || {};
-    return '<div class="scn-ribbon"><span class="rb"><b>Room ' + (i + 1) + ' of ' + ROOM_KEYS.length + '</b>' + esc(m.icon || '') + ' ' + esc(m.name || sc.name) + '</span><a href="#/scene/' + hubOf(k) + '">🚪 Back to the hall</a></div>';
+    return '<div class="scn-ribbon"><span class="rb"><b>Room ' + (i + 1) + ' of ' + ROOM_KEYS.length + '</b>' + esc(m.icon || '') + ' ' + esc(m.name || sc.name) + '</span><span class="scn-navb"><a class="scn-nb" href="#/scene/' + hubOf(k) + '">Back to the hall</a><a class="scn-nb" href="#/scene/' + ROOM_KEYS[0] + '/outside">Outside the shop</a></span></div>';
   }
   function endHTML(k){
     var c = conf(k), x = A.TBYKEY[k], m = ROOMS[k.split('/')[1]] || {}, f = c === 0 ? 'sad' : c === 0.5 ? 'meh' : 'happy';
@@ -111168,7 +111178,7 @@ window.SQE_SCENE = function(A){
   function visited(x){ var s = S().scene && S().scene[x]; return !!(s && s.open && Object.keys(s.open).length); }
   function hubHTML(k){
     var hb = HUBS[k], H = hubState(hb), N = H.keys.length, nxk = H.keys[H.next];
-    var h = '<div class="scn hub"><div class="scn-head"><h2>🚪 ' + esc(hb.title) + '</h2><div class="scn-links">' + (hb.outside ? '<a href="#/scene/' + hb.outside + '/outside">🚪 Step outside</a>' : '') + '<a href="#/map/' + k.split('/')[0] + '">🗺️ Peckham</a></div>' +
+    var h = '<div class="scn hub"><div class="scn-head"><h2>🚪 ' + esc(hb.title) + '</h2><div class="scn-links">' + (hb.outside ? '<a class="scn-nb" href="#/scene/' + hb.outside + '/outside">Outside the shop</a>' : '') + '</div>' +
       '<p class="scn-sub">You\'re inside ' + esc(hb.place || 'the shop') + '. ' + (H.next < 0 ? 'Every room is done! Time to leave the shop.' : 'Each door leads to one topic. The glowing door is next: <b>' + esc((ROOMS[nxk.split('/')[1]] || SCENES[nxk]).name) + '</b>.') + '</p></div>';
     h += '<div class="scn-prog"><span>' + H.done + ' of ' + N + ' rooms done</span><span class="scn-bar" role="progressbar" aria-valuemin="0" aria-valuemax="' + N + '" aria-valuenow="' + H.done + '"><i style="width:' + Math.round(H.done / N * 100) + '%"></i></span>' + (H.next < 0 ? '<span>🏆</span>' : '') + '</div>';
     h += '<div class="scn-art hub-art' + (hb.img ? '' : ' noimg') + '" style="--rbg:' + esc(hb.bg || '#FFF1C9') + '" role="img" aria-label="' + esc(hb.alt || hb.title) + '">' + (hb.img ? '<img src="' + esc(hb.img) + '" alt="" style="aspect-ratio:auto ' + (hb.ratio || 16 / 9) + '" onerror="this.parentNode.classList.add(\'noimg\');this.parentNode.removeChild(this)">' : '<span class="hub-ph" aria-hidden="true">🚪🍬🚪🍭🚪</span>') +
@@ -111197,6 +111207,10 @@ window.SQE_SCENE = function(A){
   function keyOf(r){ return r[1] && r[2] ? r[1] + '/' + r[2] : ''; }
 
   /* the room's chalkboard: real text on the drawn board, auto-fitted (fitBoards) and tappable to read it big */
+  /* memory hooks: hand-lettered words drawn onto objects in the picture (rooms v3), e.g. "Alfie" on the door. Text lives in code, never in the drawing. */
+  function hooksHTML(view){ var H = view && view.hooks; if (!ROOMS_ON || !H || !H.length || !view.img) return ''; var r = view.ratio || 16 / 9;
+    return H.map(function(o){ var t = String(o.text || ''), n = t.split('\n').length, fs = Math.min(o.h * 0.62 / n / r, o.w * 1.9 / Math.max(4, Math.max.apply(null, t.split('\n').map(function(l){ return l.length; }))));
+      return '<span class="scn-hook ' + esc(o.style || 'tag') + '" aria-hidden="true" style="left:' + o.x + '%;top:' + o.y + '%;width:' + o.w + '%;height:' + o.h + '%;font-size:' + fs.toFixed(2) + 'cqw;--rot:' + (+o.rot || 0) + 'deg">' + esc(t).replace(/\n/g, '<br>') + '</span>'; }).join(''); }
   function boardLines(k){ return (k && BOARD_HOOKS[k.split('/')[1]]) || null; }
   function boardHTML(view, k){ var b = view && view.board, L = boardLines(k); if (!ROOMS_ON || !b || !L || !view.img) return '';
     return '<button type="button" class="scn-board" data-scn-board="' + esc(k) + '" style="left:' + b.x + '%;top:' + b.y + '%;width:' + b.w + '%;height:' + b.h + '%;--bpx:' + (b.w * 0.05).toFixed(2) + 'cqw;--bpy:' + (b.h * 0.05 / (view.ratio || 16 / 9)).toFixed(2) + 'cqw" aria-label="Chalkboard: ' + esc(L.join(' ')) + '. Tap to read it big."><span class="scn-bt">' + L.map(function(l){ return '<span class="ln">' + esc(l) + '</span>'; }).join('') + '</span></button>'; }
@@ -111212,7 +111226,12 @@ window.SQE_SCENE = function(A){
         /* too small a board for readable text (a phone): keep the lines that fit and say "tap to read" for the rest */
         for (j = lns.length - 1; j >= 0 && t.scrollHeight > box.clientHeight + 1; j--){ lns[j].style.display = 'none'; box.classList.add('more'); } }
       t.style.fontSize = lo + unit; t.setAttribute('data-fit', '1'); } }
-  if (ROOMS_ON && window.MutationObserver) try { var fitQ = 0; new MutationObserver(function(){ if (fitQ) return; fitQ = 1; requestAnimationFrame(function(){ fitQ = 0; fitBoards(); }); }).observe(document.documentElement, {childList: true, subtree: true});
+  /* 20 Nov 06:09 Monnie: no emojis anywhere in the sweet shop (they don't suit everything). Strips them from every text in the hall, rooms, sheets and games. */
+  var EMO_RE = /(?:\p{Extended_Pictographic}|\p{Regional_Indicator})(?:\uFE0F|\u20E3|\p{Emoji_Modifier}|\u200D(?:\p{Extended_Pictographic}|\p{Emoji_Presentation})\uFE0F?)*\s?/gu;
+  function stripEmo(){ try { var roots = document.querySelectorAll('.scn, .scn-ov, .scn-boardov'); for (var r = 0; r < roots.length; r++){ var w = document.createTreeWalker(roots[r], NodeFilter.SHOW_TEXT, null), n, list = [];
+      while ((n = w.nextNode())) if (/\p{Extended_Pictographic}|\p{Regional_Indicator}/u.test(n.nodeValue)) list.push(n);
+      list.forEach(function(t){ var v = t.nodeValue.replace(EMO_RE, ''); EMO_RE.lastIndex = 0; if (v !== t.nodeValue) t.nodeValue = v; }); } } catch(e){} }
+  if (ROOMS_ON && window.MutationObserver) try { var fitQ = 0; new MutationObserver(function(){ if (fitQ) return; fitQ = 1; requestAnimationFrame(function(){ fitQ = 0; stripEmo(); fitBoards(); }); }).observe(document.documentElement, {childList: true, subtree: true});
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ var f = document.querySelectorAll('.scn-bt[data-fit]'); for (var i = 0; i < f.length; i++) f[i].removeAttribute('data-fit'); fitBoards(); }); } catch(e){}
   /* picture labels (rooms preview): every label and the "Next" tag stays inside the picture, wraps to two lines (smaller type before a third line, never cut off),
      and is nudged off other labels, the number pins and the Next tag. Works from whatever spots the room data gives, so it keeps working when the pictures are redrawn. */
@@ -111301,7 +111320,7 @@ window.SQE_SCENE = function(A){
     if (lt){ var n0 = view.hotspots.length; hs += extras(k).map(function(e, j){ var h = e.h, dn = exDone(k, e), pos = 'left:' + h.x + '%;top:' + h.y + '%;width:' + h.w + '%;height:' + h.h + '%';
       return '<button type="button" class="scn-hs sp' + (dn ? ' done' : '') + (e.id === nx ? ' next' : '') + '" style="' + pos + '" data-scn="' + e.act + '" aria-label="' + (n0 + j + 1) + '. ' + esc(h.label || e.id) + (dn ? ' (done)' : '') + '"><span class="scn-pin" aria-hidden="true">' + (n0 + j + 1) + '</span><span class="scn-ico" aria-hidden="true">' + esc(h.icon || '🎬') + '</span><span class="scn-lab">' + esc(h.label || e.id) + '</span>' + (dn ? '<span class="scn-tick" aria-hidden="true">✓</span>' : '') + (e.id === nx ? '<span class="scn-nexttag" aria-hidden="true"><span class="d">Next ↓</span><span class="m">↑ Next</span></span>' : '') + '</button>'; }).join(''); }
     var lv = mode === 'inside' && !lt && nOpen(k) === order(k).length ? leaveBtn(k) : '';
-    return '<div class="scn-art' + (SC.entering ? ' zoom' : '') + (lt && !view.img ? ' noimg' : '') + '"' + (lt ? ' style="--rbg:' + esc(SCENES[k].bg || '#FFF1C9') + '"' : '') + '>' + pic + boardHTML(view, k) + hs + lv + '</div>';
+    return '<div class="scn-art' + (SC.entering ? ' zoom' : '') + (lt && !view.img ? ' noimg' : '') + '"' + (lt ? ' style="--rbg:' + esc(SCENES[k].bg || '#FFF1C9') + '"' : '') + '>' + pic + boardHTML(view, k) + hooksHTML(view) + hs + lv + '</div>';
   }
   function modalHTML(k){
     if (HUBS[k]){ if (!SC.exit) return ''; k = SC.exit.k; }
@@ -111439,7 +111458,7 @@ window.SQE_SCENE = function(A){
     var o = state(k), mode = later(k) ? 'inside' : r[3] === 'outside' || r[3] === 'inside' ? r[3] : (o.door && !rk(k) ? 'inside' : 'outside'), base = '#/scene/' + k, LT = later(k), EX = extras(k);
     var N = order(k).length + EX.length, n = nOpen(k) + EX.filter(function(e){ return exDone(k, e); }).length, h = '<div class="scn">';
     if (rk(k) && mode !== 'outside') h += ribbon(k); /* the shop front isn't a room: no "Room 1 of 16" or "Back to the hall" there */
-    h += '<div class="scn-head"><h2>' + (LT ? esc(sc.icon || '🍬') : '🍭') + ' ' + esc(sc.name) + '</h2><div class="scn-links"><a href="#/topic/' + x.s.id + '/' + x.t.id + '">📖 Full notes</a>' + (LT ? '' : mode === 'inside' ? '<a href="' + base + '/outside">🚪 Step outside</a>' : (rk(k) && HUBS[hubOf(k)] ? '<a href="#/scene/' + hubOf(k) + '">🚪 Go into the hall ›</a>' : o.door ? '<a href="' + base + '/inside">Go straight in ›</a>' : '')) + '<a href="#/map/' + x.s.id + '">🗺️ Peckham</a></div>' +
+    h += '<div class="scn-head"><h2>' + (LT ? esc(sc.icon || '🍬') : '🍭') + ' ' + esc(sc.name) + '</h2><div class="scn-links">' + (ROOMS_ON ? '<a class="scn-nb" href="#/topic/' + x.s.id + '/' + x.t.id + '">Full notes</a>' + (LT ? '' : mode === 'inside' ? '<a class="scn-nb" href="' + base + '/outside">Outside the shop</a>' : (rk(k) && HUBS[hubOf(k)] ? '<a class="scn-nb" href="#/scene/' + hubOf(k) + '">Go into the hall</a>' : '')) : '<a href="#/topic/' + x.s.id + '/' + x.t.id + '">📖 Full notes</a>' + (mode === 'inside' ? '<a href="' + base + '/outside">🚪 Step outside</a>' : o.door ? '<a href="' + base + '/inside">Go straight in ›</a>' : '') + '<a href="#/map/' + x.s.id + '">🗺️ Peckham</a>') + '</div>' +
       '<p class="scn-sub">' + esc(A.tnum(x)) + ': <b>' + esc(x.t.title) + '</b>. ' + (LT ? (order(k).length ? 'Every person and prop hides part of the notes. Tap the glowing one.' + (sc.scenario || sc.game ? ' Then play the ' + (sc.scenario && sc.game ? 'scenario and the mini-game' : sc.scenario ? 'scenario' : 'mini-game') + '.' : '') : 'This room\'s sweets are still being made. Read the full notes for now, then tell Britney how it went.') : mode === 'outside' ? 'You\'re outside the sweet shop on Cluckington High Street. Tap the door to go in.' : 'Every sweet hides part of the notes. Tap one to open it.') + '</p></div>';
     if (mode === 'outside'){
       h += artHTML(sc.outside, null, k, 'outside');
@@ -111736,7 +111755,7 @@ window.SQE_TOWN = function(A){
     return '<div class="bscene2" role="img" aria-label="Bert comes out of his butcher\'s shop and chases Layla and Britney down the path"><img class="bs2-bg" src="img/scene/berts-scene.webp" alt="" width="2000" height="1116"><span class="bs2-door"></span>' +
       '<span class="bs2 bs2-lay"><img src="img/layla-walk-1.webp" alt=""></span>' +
       '<span class="bs2 bs2-brit"><img class="a" src="img/britney/fly1.webp" alt=""><img class="b" src="img/britney/fly3.webp" alt=""></span>' +
-      '<span class="bs2 bs2-bert"><img src="img/boss/bert-run.webp" alt=""><b>Oi! Come back here!</b></span></div>';
+      '<span class="bs2 bs2-bert"><img src="img/boss/bert-knife.webp" alt=""><b>Oi! Come back here!</b></span></div>';
   }
   var BT = null; /* {sid, items, i, right, pick, ord, paid} */
   function viewButcher(r){
@@ -111758,7 +111777,7 @@ window.SQE_TOWN = function(A){
     var rec = bertS()[s.id], back = '<a class="btn" href="#/town/butcher">Back to the shop</a>';
     var n = bertSize(s);
     if (!n) return '<div class="bcard"><h2>' + esc(s.title) + ' test</h2><p>Bert is still writing this test. Check back soon.</p><div class="btns">' + back + '</div></div>';
-    return '<div class="bcard town-bert"><img src="img/boss/bert-run.webp" alt="Bert the butcher" width="612" height="800"><div><h2>' + esc(s.title) + ': Bert\'s test</h2><div class="bspeech">"' + n + ' questions on ' + esc(s.title) + '. Get ' + Math.ceil(n * BERT_PASS) + ' right to pass."</div>' +
+    return '<div class="bcard town-bert"><img src="img/boss/bert-knife.webp" alt="Bert the butcher" width="612" height="800"><div><h2>' + esc(s.title) + ': Bert\'s test</h2><div class="bspeech">"' + n + ' questions on ' + esc(s.title) + '. Get ' + Math.ceil(n * BERT_PASS) + ' right to pass."</div>' +
       (rec ? '<p class="small">Your best so far: <b>' + rec.best + '%</b>' + (rec.passed ? ' (passed)' : '') + '.</p>' : '') + '<div class="btns"><button type="button" class="btn primary" data-town="btstart" data-s="' + s.id + '">Start the test</button>' + back + '</div></div></div>';
   }
   function bertItem(q){ return {text: '<div class="town-q notes">' + md(q.q) + '</div>', opts: q.o.map(function(o){ return inl(o); }), a: q.a, why: md(q.e || ''), lab: ''}; }
@@ -111772,7 +111791,7 @@ window.SQE_TOWN = function(A){
     }
     if (b.i >= b.items.length){
       var pct = Math.round(b.right / b.items.length * 100), pass = b.right >= Math.ceil(b.items.length * BERT_PASS);
-      return '<div class="bcard" style="text-align:center"><img src="img/boss/bert-run.webp" alt="" width="612" height="800" style="width:90px;height:auto;margin:0 auto"><h2>' + (pass ? 'You passed Bert\'s test!' : 'Not this time') + '</h2><p style="font-size:19px">' + b.right + ' of ' + b.items.length + ' right (' + pct + '%). Pass mark ' + Math.round(BERT_PASS * 100) + '%.' + (b.paid ? ' <b>+' + b.paid + ' coins</b>.' : '') + '</p><p>' + (pass ? '"Hmph. Fair enough. You know your ' + esc(s.title) + '."' : '"Back to the notes with you. Look again at the ones you got wrong, then come and try again."') + '</p><div class="btns" style="justify-content:center"><button type="button" class="btn' + (pass ? '' : ' primary') + '" data-town="btstart" data-s="' + s.id + '">' + (pass ? 'Practise again' : 'Try again') + '</button><button type="button" class="btn' + (pass ? ' primary' : '') + '" data-town="btquit">Back to the shop</button></div></div>';
+      return '<div class="bcard" style="text-align:center"><img src="img/boss/bert-knife.webp" alt="" width="612" height="800" style="width:90px;height:auto;margin:0 auto"><h2>' + (pass ? 'You passed Bert\'s test!' : 'Not this time') + '</h2><p style="font-size:19px">' + b.right + ' of ' + b.items.length + ' right (' + pct + '%). Pass mark ' + Math.round(BERT_PASS * 100) + '%.' + (b.paid ? ' <b>+' + b.paid + ' coins</b>.' : '') + '</p><p>' + (pass ? '"Hmph. Fair enough. You know your ' + esc(s.title) + '."' : '"Back to the notes with you. Look again at the ones you got wrong, then come and try again."') + '</p><div class="btns" style="justify-content:center"><button type="button" class="btn' + (pass ? '' : ' primary') + '" data-town="btstart" data-s="' + s.id + '">' + (pass ? 'Practise again' : 'Try again') + '</button><button type="button" class="btn' + (pass ? ' primary' : '') + '" data-town="btquit">Back to the shop</button></div></div>';
     }
     var it = bertItem(b.items[b.i]); it.ord = b.ord; it.pick = b.pick; it.lab = s.title;
     return qCard(it, b.i + 1, b.items.length, 'btpick', 'btnext', b.i + 1 >= b.items.length ? 'See my score' : 'Next question ›', '<p class="town-note">' + b.right + ' right so far.</p>');
@@ -111961,10 +111980,10 @@ var PEOPLE = [
 ];
 /* hens and Jiminey: [id, x, b, height %, name] */
 var HENS = [
-  ['friend', 61.5, 50, 11, 'Bolu'], ['bianca', 67, 52, 10.5, 'Bianca'], ['beefy', 78, 47, 11, 'Beefy'], ['brucey', 93, 44, 11, 'Brucey'], ['bonnie', 89, 30, 9, 'Jiminey']
+  ['friend', 29, 49, 11, 'Bolu'], ['bianca', 34, 52, 10.5, 'Bianca'], ['beefy', 78, 47, 11, 'Beefy'], ['brucey', 93, 44, 11, 'Brucey'], ['bonnie', 89, 30, 9, 'Jiminey']
 ];
-var SHED = {x: 30, b: 47, h: 17};   /* the shed (img/mount/shed.webp); click opens the shelves */
-var SHED_ROOF = [29.5, 63];
+var SHED = {x: 58, b: 50, h: 18};   /* the shed (img/mount/shed.webp); click opens the shelves */
+var SHED_ROOF = [56.5, 67];
 /* Layla's walk: [x, b, pause ms, pose while paused ('a' stand, 't' wave)]; stays inside x 37..54 so she never meets the people */
 var LAYLA_WP = [[47, 37, 1400, 'a'], [44, 28, 700, 'a'], [42, 13, 1600, 't'], [49, 8, 700, 'a'], [54, 20, 900, 'a'], [51, 34, 800, 'a'], [44, 38, 1100, 'a']];
 var LAYLA_X = [40, 54];
@@ -112200,7 +112219,7 @@ window.SQE_MOUNT = function(A){
     var h = '<div class="mount"><div class="mount-top"><a class="mount-back" href="#/palace">‹ Peckham</a><h2 class="mount-title"><span class="mount-sign">The Mount</span></h2>' +
       '<span class="spill coin">' + A.cbaCoin() + ' <b>' + c.coins + '</b></span><a class="spill shop mount-shop" href="' + shop + '">🛒 Hen Bargains</a></div>' + (window.SQE_TOWN_NAV ? window.SQE_TOWN_NAV('#/mount') : '');
     h += '<div class="mount-garden mood-' + esc(m.cls) + '"><img class="mount-bg" src="img/scene/mount-garden.webp" alt="The Mount: a garden with a lawn, a round stone patio, a path, two benches, a shed and a chicken coop" width="2752" height="1536">';
-    h += '<button type="button" class="mg-act mg-shed" data-mount="shed" data-g="' + SHED.x + ',' + SHED.b + ',' + SHED.h + '" aria-label="Open Layla\'s shed (' + shedItems().length + ' things inside)"><img src="img/mount/shed.webp" alt="" onerror="this.parentNode.style.display=\'none\'"><span class="mg-tag">Shed</span></button>';
+    h += '<button type="button" class="mg-act mg-shed" data-mount="shed" data-g="' + SHED.x + ',' + SHED.b + ',' + SHED.h + '" aria-label="Open Layla\'s shed (' + shedItems().length + ' things inside)"><img src="img/mount/shed.webp" alt="" onerror="this.parentNode.style.display=\'none\'"></button>';
     var who = [];
     PEOPLE.forEach(function(p){
       if (!owned(p[0])) return;
@@ -114056,7 +114075,7 @@ function todoHTML(it){
   if (it.part === "start" || it.part === "continue") return '<li class="tdtopic"><b>' + esc(tnum(x)) + '</b> ' + esc(x.t.title) + ' <span class="muted small">' + fmtM(it.m) + '</span><ul class="tdsteps">' +
     '<li><button class="tdbox' + (stepDone(x, "notes") ? " on" : "") + '" data-act="todo" data-k="' + x.key + '|notes" aria-label="Tick off">' + (stepDone(x, "notes") ? "✓" : "") + '</button><a href="' + topicSteps(x)[0].h + '">' + (/Sweet Shop/.test(topicSteps(x)[0].l) ? topicSteps(x)[0].l.replace(/^Step 1: 🍬 Visit/, "🍬 " + (it.part === "start" ? "Start" : "Carry on in")) + (it.part === "start" ? " (big topic, it carries on next session)" : "") : "📝 " + (it.part === "start" ? "Start reading the notes (big topic, it carries on next session)" : "Carry on reading the notes")) + '</a><span class="tdmin">' + fmtM(it.m) + '</span></li></ul></li>';
   var st = topicSteps(x), sm = stepMins(x, it.m), bwon = bossS().won[x.key];
-  var brow = false /* 20 Nov: Bert off topic lists */ ? '<li class="tdboss' + (bwon ? ' won' : '') + '"><img class="bert" src="img/boss/bert-run.webp" alt="" width="612" height="800" loading="lazy"><a href="#/boss/' + x.s.id + '/' + x.t.id + '">' + (bwon ? '🏆 You beat Bert the butcher on this topic' : '⭐ Optional bonus: 🥊 Bert the butcher challenges you!') + '</a></li>' : '';
+  var brow = false /* 20 Nov: Bert off topic lists */ ? '<li class="tdboss' + (bwon ? ' won' : '') + '"><img class="bert" src="img/boss/bert-knife.webp" alt="" width="612" height="800" loading="lazy"><a href="#/boss/' + x.s.id + '/' + x.t.id + '">' + (bwon ? '🏆 You beat Bert the butcher on this topic' : '⭐ Optional bonus: 🥊 Bert the butcher challenges you!') + '</a></li>' : '';
   return '<li class="tdtopic"><b>' + esc(tnum(x)) + '</b> ' + esc(x.t.title) + ' <span class="muted small">' + fmtM(it.m) + (it.part === "finish" ? " · finish this topic" : "") + '</span><ul class="tdsteps">' + st.map(function(z){ var dn = stepDone(x, z.k); return '<li><button class="tdbox' + (dn ? " on" : "") + '"' + (z.auto ? ' disabled title="' + (z.autoT || 'Ticks itself when you rate the topic') + '"' : ' data-act="todo" data-k="' + x.key + '|' + z.k + '"') + ' aria-label="Tick off">' + (dn ? "✓" : "") + '</button><a href="' + z.h + '">' + z.l + '</a>' + (z.alt || '') + (sm(z.k) ? '<span class="tdmin">' + fmtM(sm(z.k)) + '</span>' : '') + '</li>'; }).join("") + brow + '</ul></li>';
 }
 function topicStepCount(x){ var st = topicSteps(x), d = st.filter(function(z){ return stepDone(x, z.k); }).length; return [d, st.length]; }
@@ -115783,7 +115802,7 @@ function howItWorks(){
     li('🌾 <b>Feeding:</b> do half of today\'s tasks' + (c.n ? ' (' + c.need + ' of ' + c.n + ')' : '') + ', then tap Feed Britney.') +
     li('🤒 <b>Hunger:</b> 3 days without feed and she gets very ill. Medicine (' + medPrice().p + ' coins) makes her well. She never dies.') +
     li('🐣 <b>Chicks:</b> Britney may lay a special egg on fed days (more likely with the nesting box or golden corn). It hatches into a new baby chick for her flock (Britney herself is always here). Up to ' + BROOD_MAX + ' chicks.') +
-    li('🥊 <b>Bert:</b> get ' + BOSS_WIN + ' of ' + BOSS_N + ' right to win ' + BOSS_CHEST + ' coins. Lose on a new topic and he takes Britney until you rescue her (or pay ' + BOSS_RANSOM + ').') +
+    li('🥊 <b>Bert:</b> get ' + BOSS_WIN + ' of ' + BOSS_N + ' right to win ' + BOSS_CHEST + ' coins. Get ' + (BOSS_N - BOSS_WIN + 1) + ' wrong on a new topic and he takes Britney until you rescue her (or pay ' + BOSS_RANSOM + ').') +
     li('🥚 <b>Topic eggs:</b> revise a topic for an egg, pass its quick-fire to hatch it, rate it green 🟢 to grow it.') +
     '</ul><details class="hiwmore"><summary>Exact coin amounts</summary>' + earnList() + '</details></details>';
 }
@@ -115803,7 +115822,7 @@ function viewPalace(r){
   h += '<div class="cbasay mood-' + m.cls + '"><b>' + esc(L.away ? "Palace butler" : L.ill ? "Palace vet" : nm) + ':</b> ' + esc(m.t) + '</div>';
   h += bossChestCard() + (L.away ? bossCaptivePanel("palace") : '');
   h += needCard() + feedPanel("palace") + broodCard();
-  if (!L.away) h += '<a class="palcard bpalcard" href="#/boss"><img class="bert" src="img/boss/bert-run.webp" alt="" width="612" height="800" loading="lazy"><span><b>🥊 Face the Butcher</b><span class="small">Bert quizzes you at the end of each topic. You\'ve beaten him on ' + plural(Object.keys(bossS().won).length, "topic") + '. Rules are in How it works below.</span></span></a>';
+  if (!L.away) h += '<a class="palcard bpalcard" href="#/boss"><img class="bert" src="img/boss/bert-knife.webp" alt="" width="612" height="800" loading="lazy"><span><b>🥊 Face the Butcher</b><span class="small">Bert quizzes you at the end of each topic. You\'ve beaten him on ' + plural(Object.keys(bossS().won).length, "topic") + '. Rules are in How it works below.</span></span></a>';
   h += howItWorks();
   h += '<div class="palcard"><h3>' + esc(nm) + '\'s feeds this week</h3>' + hungerStrip() + '</div>';
   h += '<div class="palcard"><h3>Your topic flock</h3><div class="cbaflock"><span>' + cbaEgg("ico") + ' <b>' + f.eggs.length + '</b> egg' + (f.eggs.length === 1 ? '' : 's') + '</span><span>' + cbaChick("ico") + ' <b>' + f.chicks.length + '</b> chick' + (f.chicks.length === 1 ? '' : 's') + '</span><span>' + cbaHen("ico") + ' <b>' + f.hens.length + '</b> grown</span></div><p class="small muted" style="margin:6px 0 0">Every topic you revise lays a topic egg: Today\'s steps, cards, quick-fire, Model Q&amp;A, podcasts and <a href="#/cba">CBA levels</a> all count. Pass the topic\'s quick-fire and it hatches; rate the topic green 🟢 and it grows up.</p></div>';
@@ -115818,13 +115837,13 @@ function g_lives(){ return gameS().lives || 1; }
 /* Rules: 10 exam-style questions on one topic (its Model Q&A first, then quick-fire, then CBA questions).
    It's a chase: Britney sits in her nest, Bert starts a few steps away. Each wrong answer he steps closer (grinning),
    each right answer he's pushed a step back (scowling). All 10 are played unless he gets her first.
-   More than half wrong (6+ of 10) = he grabs Britney and runs off. 5+ right = she beats Bert and opens a coin chest
+   5+ wrong of 10 (more than 40%) = he grabs Britney and runs off. 6+ right = she beats Bert and wins 50 coins
    (+50, once per topic; replays are practice for a few coins). Losing on a topic she hasn't beaten yet, with Britney
    at home = Bert takes Britney to his shop.
    Then: 3 rescue attempts, one a day (from the day after), each a fresh 10 questions; a win frees her (+30).
    After 3 failed rescues she pays a 300-coin ransom. While Britney is away her feeding pauses: those days count as neither fed nor missed.
    Saved state: S.game.boss = {v, won:{key:date}, cap:null|{key, from, tries:[{d, r}], ransom}, log:[{from, to, how}], chest:null|{n, why}} */
-var BOSS_N = 10, BOSS_WIN = 5, BOSS_RESCUES = 3, BOSS_RANSOM = 300, BOSS_CHEST = 50, BOSS_RESCUE_CHEST = 30, BOSS_PRACTICE = 5;
+var BOSS_N = 10, BOSS_WIN = 6, BOSS_RESCUES = 3, BOSS_RANSOM = 300, BOSS_CHEST = 50, BOSS_RESCUE_CHEST = 30, BOSS_PRACTICE = 5;
 var BOSS = null, BOSS_LOCK_SCALE = 0; /* 0 = no "Read it properly" wait (Monnie 20 Nov) */
 function bossS(){
   var g = gameS(), b = g.boss;
@@ -115883,7 +115902,8 @@ function bossQs(key){
   out.forEach(function(z){ z.ord = shuffle(z.o.map(function(_, i){ return i; })); });
   return out;
 }
-function bossNeed(n){ return n >= BOSS_N ? BOSS_WIN : Math.max(1, Math.ceil(n / 2)); }
+/* Monnie 20 Nov: she loses only with more than 40% wrong (5 of 10), so 6 right wins */
+function bossNeed(n){ return n >= BOSS_N ? BOSS_WIN : Math.max(1, n - Math.floor(n * 0.4)); }
 function bossLockMs(z){ var w = cbaWords(z.q) + cbaWords(z.o.join(" ")); return Math.round((z.kind === "qa" ? Math.min(8000, 2000 + 25 * w) : Math.min(4000, 1500 + 40 * w)) * BOSS_LOCK_SCALE); }
 /* start a fight. mode "fight" (a topic's boss) or "rescue" (a fresh 10 on the topic he took her for). Returns false if not allowed. */
 function bossStart(key, mode){
@@ -115956,8 +115976,8 @@ function bossRansom(){
 
 /* ---------- boss pictures ---------- */
 /* Bert master art = the Peckham map's Bert and shop (Monnie 20 Nov): bert-run.webp is drawn from map-new/butchers3.webp */
-var BERT_RUN = "img/boss/bert-run.webp";
-function bertImg(cls, face){ return '<img class="bert brun ' + (cls || "") + (face ? ' bf-' + face : '') + '" src="' + BERT_RUN + '" alt="Bert the butcher, shaking his wooden spoon" width="612" height="800">'; }
+var BERT_RUN = "img/boss/bert-knife.webp";
+function bertImg(cls, face){ return '<img class="bert brun ' + (cls || "") + (face ? ' bf-' + face : '') + '" src="' + BERT_RUN + '" alt="Bert the butcher, waving his meat cleaver" width="612" height="800">'; }
 /* the shop exactly as on the Peckham map, with the same door animation (Bert pops out); night version after 5 PM */
 function bertShopHTML(cls, inner){
   var hr = new Date().getHours(), night = hr >= 17 || hr < 6;
@@ -116051,7 +116071,7 @@ function bossSay(B, z){
 var BOSS_CHASE_MS = 5200;
 /* the chase scene on its own (also used by Bert's subject tests in town.js via window.SQE_BERT_CHASE) */
 function bertChaseHTML(){
-  return '<div class="arena bchasearena" role="img" aria-label="Bert the butcher chases Layla and Britney round and round, shaking his wooden spoon">' +
+  return '<div class="arena bchasearena" role="img" aria-label="Bert the butcher chases Layla and Britney, waving his meat cleaver">' +
     '<div class="bchase">' +
       '<span class="bcrun bc-lay"><img class="lw1" src="img/layla-walk-1.webp" alt=""><img class="lw2" src="img/layla-walk-2.webp" alt=""></span>' +
       '<span class="bcrun bc-brit"><img class="bw1" src="img/britney/fly1.webp" alt=""><img class="bw2" src="img/britney/fly3.webp" alt=""></span>' +
@@ -116125,8 +116145,8 @@ function bossIntro(x){
   var b = bossS(), k = x.key, qs = bossQs(k), ready = bossTopicReady(x), stake = bossStake(k), st = topicStepCount(x);
   var h = '<div class="cbag bossg"><div class="cbatop"><a class="cbaback" href="#/topic/' + x.s.id + '/' + x.t.id + '">‹ Topic</a><span class="cbattl">' + esc(tnum(x)) + ': ' + esc(x.t.title) + '</span><span class="spill coin">' + cbaCoin() + ' <b>' + cbaS().coins + '</b></span></div>';
   h += bossChestCard();
-  h += '<div class="bcard bintro">' + bertImg("bbig") + '<div><h2>🥊 Bert the butcher challenges you!</h2><div class="bspeech">"' + (b.won[k] ? "You again? Fine, let's see if you still remember " + esc(x.t.title) + "…" : stake ? "Oi! I've got my eye on that lovely hen of yours. Answer my " + BOSS_N + " questions on " + esc(x.t.title) + ". Get more than half wrong and Britney comes back to my shop! Mwahaha!" : "Answer my " + BOSS_N + " questions on " + esc(x.t.title) + ". Get " + BOSS_WIN + " right and you can have my chest of coins!") + '"</div>';
-  h += qs.length ? '<div class="bhow"><b>How to play</b><ol><li>Answer ' + qs.length + ' questions on this topic.</li><li>Every right answer pushes Bert back a step. Every wrong answer lets him creep closer to Britney.</li><li>Get <b>' + bossNeed(qs.length) + ' right</b> and you win' + (b.won[k] ? ' (practice round: +' + BOSS_PRACTICE + ' coins once a day).' : ' his <b>coin chest (+' + BOSS_CHEST + ' coins)</b>.') + '</li><li>Get <b>' + (qs.length - bossNeed(qs.length) + 1) + ' wrong</b> and he grabs Britney and runs off to his shop.</li></ol></div>' : '<p>There are no questions for this topic yet.</p>';
+  h += '<div class="bcard bintro">' + bertImg("bbig") + '<div><h2>🥊 Bert the butcher challenges you!</h2><div class="bspeech">"' + (b.won[k] ? "You again? Fine, let's see if you still remember " + esc(x.t.title) + "…" : stake ? "Oi! I've got my eye on that lovely hen of yours. Answer my " + BOSS_N + " questions on " + esc(x.t.title) + ". Get " + (BOSS_N - BOSS_WIN + 1) + " wrong and Britney is mine! Mwahaha!" : "Answer my " + BOSS_N + " questions on " + esc(x.t.title) + ". Get " + BOSS_WIN + " right and you win " + BOSS_CHEST + " coins!") + '"</div>';
+  h += qs.length ? '<div class="bhow"><b>How to play</b><ol><li>Answer ' + qs.length + ' questions on this topic.</li><li>Every right answer pushes Bert back a step. Every wrong answer lets him creep closer to Britney.</li><li>Get <b>' + bossNeed(qs.length) + ' right</b> and you win' + (b.won[k] ? ' (practice round: +' + BOSS_PRACTICE + ' coins once a day).' : ' <b>' + BOSS_CHEST + ' coins</b>.') + '</li><li>Get <b>' + (qs.length - bossNeed(qs.length) + 1) + ' wrong</b> and he grabs Britney and runs off with her.</li></ol></div>' : '<p>There are no questions for this topic yet.</p>';
   if (stake) h += '<p class="small bwarn">⚠️ If he grabs Britney, you get 3 rescue tries, one a day.</p>';
   else if (b.cap) h += '<p class="small muted">Britney is already at Bert\'s shop, so this round is just for coins. Rescue her from <a href="#/boss">Bert\'s page</a>.</p>';
   if (!ready && !b.won[k]) h += '<p class="small muted">Tip: Bert is easiest once you\'ve done this topic\'s steps on Today (' + st[0] + ' of ' + st[1] + ' done).</p>';
@@ -116138,7 +116158,7 @@ function bossHub(){
   var b = bossS(), h = '<div class="cbag bossg"><div class="cbatop"><a class="cbaback" href="#/palace">‹ Peckham</a><span class="cbattl">🥊 Bert the butcher</span><span class="spill coin">' + cbaCoin() + ' <b>' + cbaS().coins + '</b></span></div>';
   h += bossChestCard();
   if (b.cap) h += bossCaptivePanel("boss");
-  else h += '<div class="bcard bintro">' + bertShopHTML("") + '<div><h2>Bert\'s Butchers</h2><div class="bspeech">"Finish a topic and I\'ll be waiting with ' + BOSS_N + ' questions. Get ' + BOSS_WIN + ' right and you win my coin chest. Get more than half wrong and that hen of yours is mine!"</div><p class="small">' + (bossS().cap ? 'Britney is at his shop right now.' : 'Britney is safe at home.') + ' Bert beaten on <b>' + plural(Object.keys(b.won).length, "topic") + '</b>.</p></div></div>';
+  else h += '<div class="bcard bintro">' + bertShopHTML("") + '<div><h2>Bert\'s Butchers</h2><div class="bspeech">"Finish a topic and I\'ll be waiting with ' + BOSS_N + ' questions. Get ' + BOSS_WIN + ' right and you win ' + BOSS_CHEST + ' coins. Get ' + (BOSS_N - BOSS_WIN + 1) + ' wrong and that hen of yours is mine!"</div><p class="small">' + (bossS().cap ? 'Britney is at his shop right now.' : 'Britney is safe at home.') + ' Bert beaten on <b>' + plural(Object.keys(b.won).length, "topic") + '</b>.</p></div></div>';
   /* every topic is open (Monnie 20 Nov: nothing locked); topics she has finished come first */
   var ready = planSeq().filter(function(x){ return !b.won[x.key] && bossTopicReady(x); }).slice(0, 8);
   var row = function(x){ return '<li><a href="#/boss/' + x.s.id + '/' + x.t.id + '"><b>' + esc(tnum(x)) + '</b> ' + esc(x.t.title) + '</a><a class="btn sm primary" href="#/boss/' + x.s.id + '/' + x.t.id + '">Face him 🥊</a></li>'; };
@@ -116157,7 +116177,7 @@ VIEW.boss = function(r){
 /* the small call-to-action at the bottom of a topic and on Today */
 function bossTopicCTA(x){
   var b = bossS(), won = b.won[x.key];
-  return '<div class="bosscta"><img class="bert" src="img/boss/bert-run.webp" alt="" width="612" height="800" loading="lazy"><div><b>' + (won ? "🏆 You beat Bert on this topic" : "🥊 Bert the butcher is waiting") + '</b><span>' + (won ? 'Chest opened. Fancy a practice round?' : BOSS_N + ' exam-style questions on this topic. ' + BOSS_WIN + ' right wins a coin chest' + (bossStake(x.key) ? ': lose and he takes Britney!' : '.')) + '</span></div><a class="btn ' + (won ? "" : "primary") + '" href="#/boss/' + x.s.id + '/' + x.t.id + '">' + (won ? "Practice" : "Face the Butcher") + '</a></div>';
+  return '<div class="bosscta"><img class="bert" src="img/boss/bert-knife.webp" alt="" width="612" height="800" loading="lazy"><div><b>' + (won ? "🏆 You beat Bert on this topic" : "🥊 Bert the butcher is waiting") + '</b><span>' + (won ? 'Chest opened. Fancy a practice round?' : BOSS_N + ' exam-style questions on this topic. ' + BOSS_WIN + ' right wins ' + BOSS_CHEST + ' coins.' + (bossStake(x.key) ? ' ' + (BOSS_N - BOSS_WIN + 1) + ' wrong and he takes Britney!' : '')) + '</span></div><a class="btn ' + (won ? "" : "primary") + '" href="#/boss/' + x.s.id + '/' + x.t.id + '">' + (won ? "Practice" : "Face the Butcher") + '</a></div>';
 }
 
 /* ============ PODCASTS: commute episodes for each topic ============ */
