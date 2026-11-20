@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120072634";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120073453";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -100693,8 +100693,8 @@ SQE_CHECKS["accounts/framework-client-money"] = [
    prompt: "The firm delivers a bill that includes counsel's fee, which the firm has not yet paid. The client pays the whole bill. Where can the money go, and what must the firm then do?",
    answer: "It is firm money, because the disbursement has been billed, so it can go into business account. The firm must still pay counsel promptly. The old two-working-day rule no longer exists."},
   {sec: "Duty to pay into client account promptly: rule 2.3", after: 2, type: "gap",
-   text: "A Legal Aid Agency payment for the firm's [[costs]] may go straight into business account, any other exception needs an alternative arrangement agreed [[in writing]], and \"promptly\" is [[not defined]] by a fixed number of days.",
-   why: "r.2.3 has only three exceptions."},
+   text: "A Legal Aid Agency payment for the firm's [[costs]] may go straight into business account, an alternative arrangement with the client or third party must be agreed [[in writing]], and \"promptly\" is [[not defined]] by a fixed number of days.",
+   why: "r.2.3 has only three exceptions: these two, plus money held as trustee or office-holder where client account would conflict with that office."},
   {sec: "Firms that need no client account: rule 2.2", after: 2, type: "mcq",
    q: "A firm only ever holds money on account of its fees and of counsel's fees it has contracted to pay, but on one matter it now needs to hold the client's SDLT money. Can it still manage without a client account?",
    o: ["Yes, because it told the client in advance where the money would be held", "No, because SDLT is a disbursement the client is liable for, so the exemption does not cover it", "Yes, because SDLT is a disbursement", "Yes, provided the SDLT is paid within two working days"],
@@ -102744,7 +102744,7 @@ SQE_CHECKS["dr/dr-responding"] = [
    pairs: [["Whole admission of a specified sum; claimant rejects the defendant's offer of instalments", "The court decides the rate of payment"],
            ["Part admission of a specified sum", "Claimant either accepts it in full satisfaction or the claim continues as defended"],
            ["Admission of liability on an unspecified claim", "Judgment on liability, with the amount decided later"],
-           ["Defendant wants to withdraw an admission after proceedings start", "Needs the claimant's consent or the court's permission"]]},
+           ["Defendant wants to withdraw an admission made after proceedings started", "Needs the court's permission"]]},
   {sec: "Disputing the court's jurisdiction (Part 11)", after: 1, type: "gap",
    text: "To dispute jurisdiction, the defendant files an acknowledgment of service and then applies within [[14 days]] after filing it; if it does not, it is treated as accepting that the court has jurisdiction.",
    why: "CPR Part 11."},
@@ -103858,8 +103858,8 @@ SQE_CHECKS["legalsys/sovereignty-rule-of-law"] = [
    o: ["The 2015 Act, because Parliament bound itself as to the form of future Acts",
        "Neither, because the conflict makes both void until Parliament acts",
        "The 2015 Act, unless the 2025 Act was passed under the Parliament Acts",
-       "The 2025 Act, by implied repeal, because Parliament cannot bind its successors as to the content of future Acts"],
-   a: 3, why: "Ellen Street Estates: the later Act prevails to the extent of the inconsistency. Only a constitutional statute (Thoburn) resists implied repeal."},
+       "The 2025 Act, by implied repeal, because Parliament cannot bind its successors, even as to the form of future Acts"],
+   a: 3, why: "Ellen Street Estates: Parliament cannot bind itself as to the form of later legislation, so the later Act prevails to the extent of the inconsistency. Only a constitutional statute (Thoburn) resists implied repeal."},
   {sec: "Parliamentary sovereignty", after: 10, type: "gap",
    text: "A court can never strike down an Act of Parliament, but [[secondary legislation]] can be quashed.",
    why: "Courts cannot set aside Acts (Pickin; Mortensen v Peters); the most they can do is s.3 or s.4 HRA."},
@@ -104970,11 +104970,11 @@ SQE_CHECKS["tort/economic-loss"] = [
    why: "For example, advice about one genetic risk does not cover an unrelated condition."},
   {sec: "Disclaimers and exclusion clauses", after: 1, type: "mcq",
    q: "A valuer instructed by a lender values a modest house and adds a disclaimer of liability to the buyer, who relies on it. The valuation is negligent. Is the disclaimer effective against the buyer?",
-   o: ["Only if it is reasonable under UCTA, which is unlikely here",
+   o: ["Only if it passes the statutory test (fairness under the CRA for a consumer buyer), which is unlikely here",
        "Yes, a disclaimer always prevents a duty arising",
        "No, because valuers can never disclaim liability",
        "Yes, because the buyer did not pay the valuer directly"],
-   a: 0, why: "UCTA catches notices that prevent a duty arising; on these facts the disclaimer is likely unreasonable."}
+   a: 0, why: "A disclaimer cannot escape statute by denying a duty: for a consumer buyer the CRA s.62 fairness test applies (UCTA reasonableness for non-consumers), and on these facts it is likely to fail."}
 ];
 
 SQE_CHECKS["tort/psychiatric-harm"] = [
@@ -105320,9 +105320,9 @@ SQE_CHECKS["trusts/beneficial-entitlement"] = [
    why: "Gartside v IRC."},
   {sec: "Vested and contingent interests", after: 2, type: "match",
    prompt: "Classify each interest",
-   pairs: [["A in \"to A for life, remainder to B\"","Vested in possession"],
-           ["B in \"to A for life, remainder to B\"","Vested in interest"],
-           ["C in \"to C if she reaches 25\"","Contingent"],
+   pairs: [["The widow under \"to my widow for life, remainder to my son\"","Vested in possession"],
+           ["The son under \"to my widow for life, remainder to my son\"","Vested in interest"],
+           ["The niece under \"to my niece if she reaches 25\"","Contingent"],
            ["A grandchild under \"to such of my grandchildren as my trustees choose\"","Discretionary: only a hope"]]},
   {sec: "Vested and contingent interests", after: 5, type: "mcq",
    q: "A father's life policy is written in trust absolutely for his daughter. She dies before him, leaving everything by will to her partner. When the father dies, who receives the payout?",
@@ -105826,7 +105826,7 @@ SQE_CHECKS["wills/intestacy"] = [
        "A partner who lived with the intestate for 30 years without marrying"],
    a: 2, why: "Informal separation does not matter; judicial separation, death within 28 days and cohabitation all exclude a claim on intestacy."},
   {sec: "The spouse's entitlement", after: 1, type: "gap",
-   text: "Where the intestate (dying after 26 July 2023) leaves a spouse and issue, the spouse takes the personal chattels, a statutory legacy of [[£322,000]] and half the residue absolutely.",
+   text: "Where the intestate (dying on or after 26 July 2023) leaves a spouse and issue, the spouse takes the personal chattels, a statutory legacy of [[£322,000]] and half the residue absolutely.",
    why: "AEA 1925 s.46 as amended; the issue take the other half on the statutory trusts."},
   {sec: "The spouse's entitlement", after: 2, type: "mcq",
    q: "An intestate leaves a wife and their adult son. The home was held with the wife as beneficial joint tenants. How is the home treated?",
@@ -119109,6 +119109,337 @@ var ROOMV3 = {
 }
 };
 /* ROOMV3-GEN END */
+/* BURST-GEN START: Sweets explosion statements (room tid -> [{t, true, fix}]), from proposals/rooms/v4/burst-data.json via burst-patch.py. Every statement is lifted from the room deck (yes/no reveal cards, compare tables). Re-run the patch with --data-only rather than hand-editing. */
+var BURST = {
+ "partnerships": [
+  {
+   "t": "Two friends trading together for profit with nothing signed are partners.",
+   "true": true,
+   "fix": "**Yes**, if they carry on a business in common with a view of profit. No paperwork or awareness is needed."
+  },
+  {
+   "t": "Two of three partners can expel the third without an agreement.",
+   "true": false,
+   "fix": "**No.** There is **no power of expulsion** by a majority unless an express power has been agreed (**s.25**)."
+  },
+  {
+   "t": "A creditor with judgment against the firm can take a partner's own car.",
+   "true": true,
+   "fix": "**Yes.** It can enforce against partnership property **and** each partner's **personal assets**."
+  },
+  {
+   "t": "An LLP ends when one of its members dies.",
+   "true": false,
+   "fix": "**No.** The LLP is a separate person and **continues**. A general partnership would be **dissolved** by default (s.33)."
+  },
+  {
+   "t": "An LLP member is an agent of the LLP only.",
+   "true": true,
+   "fix": "LLP, agent of: The LLP only (s.6)"
+  },
+  {
+   "t": "Changing the nature of a partnership's business needs only a majority.",
+   "true": false,
+   "fix": "No: Changing the nature of the business: Unanimous (s.24(8))."
+  },
+  {
+   "t": "A new partner is not liable for debts from before they joined.",
+   "true": true,
+   "fix": "New partner: Not liable for debts from before they joined (s.17(1))"
+  },
+  {
+   "t": "An LLP member can be expelled only if the members agreed it.",
+   "true": true,
+   "fix": "LLP, expulsion: Only if agreed (reg.8)"
+  },
+  {
+   "t": "With no agreement, partners share profits equally.",
+   "true": true,
+   "fix": "General partnership, default profit share: Equal"
+  },
+  {
+   "t": "Ordinary partnership matters need everyone to agree.",
+   "true": false,
+   "fix": "No: Ordinary matters: Majority (s.24(8))."
+  }
+ ],
+ "corporate-insolvency": [
+  {
+   "t": "A company can be balance sheet solvent but cash flow insolvent.",
+   "true": true,
+   "fix": "**Yes.** For example, it owns valuable property but has no cash to pay bills due now (or the reverse). **Either test is enough** for s.123."
+  },
+  {
+   "t": "A creditor must serve a statutory demand before petitioning.",
+   "true": false,
+   "fix": "**No.** A creditor can **prove** cash-flow insolvency directly."
+  },
+  {
+   "t": "A CVA does not bind a bank holding a fixed charge.",
+   "true": true,
+   "fix": "**No**, not without the bank's consent. A CVA cannot affect a **secured creditor's** right to enforce, or the priority of **preferential** debts."
+  },
+  {
+   "t": "An unsecured creditor who voted against an approved CVA is not bound by it.",
+   "true": false,
+   "fix": "**Yes.** It binds every unsecured creditor entitled to vote, even those who voted against or never got notice."
+  },
+  {
+   "t": "Appointing an LPA receiver does not stop other creditors suing.",
+   "true": true,
+   "fix": "**No.** There is **no moratorium** in receivership."
+  },
+  {
+   "t": "Administration gives the company a moratorium.",
+   "true": true,
+   "fix": "Administration: moratorium? Yes"
+  },
+  {
+   "t": "Receivership gives the company a moratorium.",
+   "true": false,
+   "fix": "No: Receivership: moratorium? No."
+  },
+  {
+   "t": "In a members' voluntary liquidation, the members choose the liquidator.",
+   "true": true,
+   "fix": "MVL: Liquidator chosen by **members**"
+  },
+  {
+   "t": "In a creditors' voluntary liquidation, the members choose the liquidator.",
+   "true": false,
+   "fix": "No: CVL: Liquidator chosen by **creditors**."
+  },
+  {
+   "t": "A members' voluntary liquidation is for a solvent company.",
+   "true": true,
+   "fix": "**Members' voluntary (MVL)**: company is Solvent"
+  }
+ ],
+ "equity-finance": [
+  {
+   "t": "A company can deduct dividends from its profits for corporation tax.",
+   "true": false,
+   "fix": "**No.** Dividends are paid from taxed profits. **Interest** on a loan, by contrast, **is deductible**."
+  },
+  {
+   "t": "A £1 share cannot be issued for 80p.",
+   "true": true,
+   "fix": "**No.** That is a **discount** to nominal value, banned by **s.580**. The allottee would have to pay the 20p plus interest."
+  },
+  {
+   "t": "If the terms are silent, preference shares are cumulative.",
+   "true": true,
+   "fix": "**Yes.** Preference shares are **presumed cumulative**, so missed dividends carry forward."
+  },
+  {
+   "t": "A s.551 ordinary resolution must be filed.",
+   "true": true,
+   "fix": "**Yes**, within **15 days**, even though it is an ordinary resolution."
+  },
+  {
+   "t": "Shares issued for cash without a pre-emption offer are void.",
+   "true": false,
+   "fix": "**No.** It stays **valid**. The shareholders left out can claim **compensation** from the company and the officers who knowingly authorised it, within **2 years** (s.563)."
+  },
+  {
+   "t": "A company can buy back shares and pay the seller in three yearly instalments.",
+   "true": false,
+   "fix": "**No.** It must **pay in full on purchase** (s.691)."
+  },
+  {
+   "t": "Interest on a loan is deductible from profits for corporation tax.",
+   "true": true,
+   "fix": "Debt: **Interest is deductible** from profits for corporation tax"
+  },
+  {
+   "t": "A buyback is filed on forms SH03 and SH06 within 28 days.",
+   "true": true,
+   "fix": "Buyback, Companies House form: **SH03** + **SH06**, 28 days"
+  },
+  {
+   "t": "A redemption is filed on forms SH03 and SH06 within 28 days.",
+   "true": false,
+   "fix": "No: Redemption, Companies House form: **SH02**, 1 month."
+  },
+  {
+   "t": "On insolvency, shareholders are paid last, after all creditors.",
+   "true": true,
+   "fix": "Shares, on insolvency: Paid **last**, after all creditors"
+  }
+ ],
+ "cgt": [
+  {
+   "t": "A company selling its factory at a gain does not pay CGT.",
+   "true": true,
+   "fix": "**No.** A company's gains are charged to **corporation tax**."
+  },
+  {
+   "t": "There is CGT when Gran dies leaving you her shares in her will.",
+   "true": false,
+   "fix": "**No.** Death is not a disposal. You take the shares at their **probate value** (the tax-free uplift)."
+  },
+  {
+   "t": "The cost of repainting a shop is not deductible.",
+   "true": true,
+   "fix": "**No.** Repairs and maintenance are not enhancement expenditure. An **extension** would be."
+  },
+  {
+   "t": "A baker who sells one oven but keeps baking gets BADR.",
+   "true": false,
+   "fix": "**No.** It's a sale of an individual asset while the business carries on, not a disposal of the business."
+  },
+  {
+   "t": "A sole trader who incorporates but keeps the shop premises gets no s.162 relief.",
+   "true": true,
+   "fix": "**No.** Not all the assets are transferred. Use **s.165 gift relief** instead."
+  },
+  {
+   "t": "Gains above the basic rate band are taxed at 24%.",
+   "true": true,
+   "fix": "CGT on gains above the basic rate band: **24%**"
+  },
+  {
+   "t": "Gains within any unused basic rate band are taxed at 24%.",
+   "true": false,
+   "fix": "No: CGT on gains within any **unused basic rate band** (£37,700): **18%**."
+  },
+  {
+   "t": "BADR gives an 18% rate on gains up to £1m in a lifetime.",
+   "true": true,
+   "fix": "BADR: **Lower rate** (18% from 6 April 2026) on gains up to **£1m** lifetime"
+  },
+  {
+   "t": "Rollover relief gives a lower rate of tax.",
+   "true": false,
+   "fix": "No: **Rollover relief**: Defers the gain when you buy replacement business assets."
+  },
+  {
+   "t": "Gift (holdover) relief defers the gain on gifts of business assets.",
+   "true": true,
+   "fix": "**Gift (holdover) relief**: Defers the gain on gifts of business assets"
+  }
+ ],
+ "decision-making": [
+  {
+   "t": "A resolution passed by exactly 50% of the votes cast is an ordinary resolution.",
+   "true": false,
+   "fix": "**No.** An ordinary resolution needs **more than 50%**. Exactly 50% fails. (A special resolution passes at **exactly 75%**.)"
+  },
+  {
+   "t": "A director's brother is not a connected person.",
+   "true": true,
+   "fix": "**No.** **Siblings** are not connected persons."
+  },
+  {
+   "t": "An ordinary resolution at a meeting needs at least 75% of votes cast.",
+   "true": false,
+   "fix": "No: Ordinary resolution at a meeting: **More than 50%** of votes cast (s.282)."
+  },
+  {
+   "t": "Two proxies for the same member do not make a quorum.",
+   "true": true,
+   "fix": "**No.** Two proxies of the **same** member, or two representatives of the **same** corporation, count as **one**."
+  },
+  {
+   "t": "A plc AGM needs at least 21 clear days' notice.",
+   "true": true,
+   "fix": "Minimum notice, plc AGM: **21 clear days**"
+  },
+  {
+   "t": "A private company general meeting needs at least 21 clear days' notice.",
+   "true": false,
+   "fix": "No: Minimum notice, private company GM: **14 clear days**."
+  },
+  {
+   "t": "A special resolution at a meeting needs at least 75% of votes cast.",
+   "true": true,
+   "fix": "Special resolution at a meeting: **At least 75%** of votes cast (s.283)"
+  },
+  {
+   "t": "More than 25% can block a special resolution.",
+   "true": true,
+   "fix": "**More than 25%**: Can **block** special resolutions"
+  },
+  {
+   "t": "More than 25% controls ordinary resolutions.",
+   "true": false,
+   "fix": "No: **More than 25%**: Can **block** special resolutions."
+  },
+  {
+   "t": "An allotment of shares is filed within 1 month (s.555).",
+   "true": true,
+   "fix": "Allotment (issue) of shares: filed within **1 month** (s.555)"
+  }
+ ]
+};
+var BURST_CSS = [
+'.scn-sheet:has(.gm-burst),.scn-sheet:has(.bu-end){max-width:980px}',
+'.bu-how{margin:4px 0 8px;font-size:16px}.bu-how b{font-family:"Chewy",var(--font);font-weight:400;font-size:20px;letter-spacing:.02em;color:#E8207A}',
+'.gm-lane.gm-burst{--pw:min(150px,36%);height:500px;background:radial-gradient(circle at 12% 18%,#FFD6EA 0 7px,transparent 8px) 0 0/90px 90px,radial-gradient(circle at 60% 70%,#CFF2FF 0 6px,transparent 7px) 0 0/70px 70px,linear-gradient(#FFF7D6,#FFE3F1 60%,#E3F6FF);touch-action:manipulation}',
+'@supports (width:1cqw){.gm-lane.gm-burst{--pw:min(150px,36cqw)}}',
+'.gm-burst .gm-pop{bottom:calc(var(--pw) * .75 + 14px);font-size:17px}',
+'.gm-burst.shake .gm-pl{animation:buShake .14s linear infinite}',
+'@keyframes buShake{25%{transform:rotate(-4deg) translateX(-3px)}75%{transform:rotate(4deg) translateX(3px)}}',
+'.bu-lid{position:absolute;z-index:5;left:calc(50% - var(--pw) * .3);bottom:calc(4px + var(--pw) * .75 * .76);width:calc(var(--pw) * .6);height:calc(var(--pw) * .16);border:3px solid #1b1b1b;border-radius:10px 10px 6px 6px;background:repeating-linear-gradient(90deg,#FF5FA2 0 12px,#FF8CC0 12px 20px);box-shadow:2px 2px 0 #1b1b1b;pointer-events:none}',
+'.gm-burst.boom .bu-lid{animation:buLid .9s cubic-bezier(.2,.7,.4,1) forwards}',
+'@keyframes buLid{0%{transform:none}40%{transform:translate(70px,-190px) rotate(200deg)}100%{transform:translate(170px,-80px) rotate(420deg);opacity:0}}',
+'.bu-bang{position:absolute;z-index:0;left:calc(50% - var(--pw) * .8);bottom:calc(var(--pw) * .1);width:calc(var(--pw) * 1.6);aspect-ratio:1;opacity:0;pointer-events:none}',
+'.bu-bang svg{width:100%;height:100%;overflow:visible}',
+'.gm-burst.boom .bu-bang{animation:buBang .8s ease-out forwards}',
+'@keyframes buBang{0%{opacity:0;transform:scale(.2) rotate(0)}25%{opacity:1;transform:scale(1.15) rotate(12deg)}100%{opacity:0;transform:scale(1.5) rotate(30deg)}}',
+'.bu-sw{position:absolute;z-index:6;display:block;margin:0;padding:0;border:0;background:none;color:#1b1b1b;font:inherit;text-align:center;cursor:pointer;-webkit-tap-highlight-color:transparent}',
+'.bu-sw:focus-visible{outline:4px solid #1F5FBF;outline-offset:4px;border-radius:30px}',
+'.bu-sw.go{animation:buOut .75s cubic-bezier(.18,.9,.32,1.18) both}',
+'@keyframes buOut{from{transform:translate(var(--sx),var(--sy)) scale(.12) rotate(var(--sr));opacity:.4}to{transform:none;opacity:1}}',
+'.bu-in{display:flex;align-items:stretch;animation:buBob 2.6s ease-in-out var(--bd,0s) infinite alternate}',
+'@keyframes buBob{0%{transform:translateY(-5px) rotate(-2.5deg)}100%{transform:translateY(6px) rotate(2.5deg)}}',
+'.bu-sw:hover .bu-in{animation-play-state:paused}.bu-sw:hover .bu-body{transform:scale(1.04)}',
+'.bu-wr{flex:none;width:var(--we,24px);align-self:center;height:72%;min-height:44px;overflow:visible}',
+'.bu-wr.l{margin-right:-6px}.bu-wr.r{margin-left:-6px;transform:scaleX(-1)}',
+'.bu-body{position:relative;flex:1;min-width:0;display:flex;align-items:center;justify-content:center;min-height:72px;padding:12px 14px;border:3.5px solid #1b1b1b;border-radius:40px;background:var(--sc2);box-shadow:3px 4px 0 #1b1b1b;transition:transform .15s}',
+'.bu-body::before{content:"";position:absolute;inset:5px;border-radius:32px;background:repeating-linear-gradient(-55deg,transparent 0 14px,var(--sc1) 14px 20px);opacity:.28;pointer-events:none}',
+'.bu-body::after{content:"";position:absolute;left:14%;top:7px;width:22%;height:7px;border-radius:9px;background:#fff;opacity:.8;pointer-events:none}',
+'.bu-tx{position:relative;font:800 15.5px/1.22 var(--font);overflow-wrap:anywhere}',
+'.bu-fuse{position:absolute;left:22%;right:22%;bottom:-11px;height:7px;border:2px solid #1b1b1b;border-radius:9px;background:#fff;overflow:hidden}',
+'.bu-fuse i{display:block;height:100%;background:var(--sc1);animation:buFuse linear forwards;transform-origin:0 50%}',
+'@keyframes buFuse{to{transform:scaleX(0)}}',
+'.bu-sw.c0{--sc1:#FF2D8A;--sc2:#FFD1E6}.bu-sw.c1{--sc1:#F2B800;--sc2:#FFF3A8}.bu-sw.c2{--sc1:#1E9BE0;--sc2:#CDEFFF}',
+'.bu-sw.c3{--sc1:#2E9E5B;--sc2:#D7F7C8}.bu-sw.c4{--sc1:#FF7A1A;--sc2:#FFE0B8}.bu-sw.c5{--sc1:#8A4FFF;--sc2:#E6D9FF}',
+'.bu-sw.done{pointer-events:none}.bu-sw.done .bu-fuse{display:none}',
+'.bu-sw.bu-catch{animation:buCatch .8s cubic-bezier(.3,.1,.5,1) forwards}',
+'@keyframes buCatch{0%{transform:none}18%{transform:translate(calc(var(--dx) * .08),-26px) scale(1.12) rotate(-5deg)}72%{transform:translate(var(--dx),var(--dy)) scale(.3) rotate(10deg);opacity:1}100%{transform:translate(var(--dx),calc(var(--dy) + 30px)) scale(.2);opacity:0}}',
+'.bu-sw.bu-splat{animation:buSplat .9s ease-in forwards}',
+'@keyframes buSplat{0%{transform:none}10%{transform:rotate(-9deg) scale(1.06)}22%{transform:rotate(8deg)}34%{transform:rotate(-6deg)}46%{transform:rotate(3deg) scale(1)}62%{transform:scale(1.25,.35);opacity:1}100%{transform:scale(1.5,.12) translateY(40px);opacity:0}}',
+'.bu-sw.bu-gone{animation:buGone .7s ease-in forwards}',
+'@keyframes buGone{to{transform:translate(var(--gx,60px),-60px) rotate(var(--gr,25deg)) scale(.5);opacity:0}}',
+'.bu-blob{position:absolute;z-index:7;width:120px;height:90px;margin:-45px 0 0 -60px;pointer-events:none;animation:buBlob 1.4s ease-out .4s both}',
+'.bu-blob svg{width:100%;height:100%;overflow:visible}',
+'@keyframes buBlob{0%{transform:scale(.2);opacity:0}15%{transform:scale(1.1);opacity:1}25%{transform:scale(1)}70%{opacity:1}100%{opacity:0;transform:scale(1.05)}}',
+'.bu-fb{min-height:5.6em;margin:10px 0 4px;padding:10px 14px;border:3px solid #1b1b1b;border-radius:16px;background:#FFFDF6;box-shadow:3px 3px 0 #1b1b1b;font-size:16px;line-height:1.35}',
+'.bu-fb .k{display:block;font-family:"Chewy",var(--font);font-size:21px;letter-spacing:.02em;line-height:1.1;margin-bottom:3px}',
+'.bu-fb.ok{background:#E6F9DD}.bu-fb.ok .k{color:#1E7A43}.bu-fb.no{background:#FFE3EE}.bu-fb.no .k{color:#C2185B}.bu-fb.miss{background:#FFF4CC}.bu-fb.miss .k{color:#9A6400}',
+'.bu-fb.pulse{animation:buPulse .35s ease-out}',
+'@keyframes buPulse{from{transform:scale(.97)}}',
+'.bu-ico{display:inline-block;width:46px;height:28px;vertical-align:middle}.bu-ico svg{width:100%;height:100%;overflow:visible}',
+'.scn-st .ico .bu-ico{width:54px;height:34px}',
+'.scn-list li.bu-li .n{width:44px;border-radius:12px;background:#FFD1E6}.scn-list li.bu-li .n .bu-ico{width:36px;height:22px}',
+'.scn-list li.bu-li button{border-style:dashed;background:#FFF6FB}',
+'.bu-end{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;text-align:left}',
+'.bu-end h2{font-family:"Chewy",var(--font);font-weight:400;font-size:34px;margin:0}.bu-end .score{margin:4px 0;font-size:18px}',
+'.bu-endjar{position:relative;flex:none;width:150px;height:120px;--pw:140px}',
+'.bu-h{font-family:"Chewy",var(--font);font-weight:400;font-size:23px;margin:16px 0 6px}',
+'.bu-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}',
+'.bu-list li{position:relative;padding:9px 12px 9px 46px;border:2.5px solid #1b1b1b;border-radius:14px;background:#F0FBEA;line-height:1.3}',
+'.bu-list li::before{content:"";position:absolute;left:10px;top:10px;width:24px;height:16px;border:2.5px solid #1b1b1b;border-radius:10px;background:#9BE58A}',
+'.bu-list.no li{background:#FFEFF5}.bu-list.no li::before{background:#FF9AC8}',
+'.bu-list small{display:block;margin-top:3px;font-size:14px;opacity:.9}',
+'.bu-list .tag{display:inline-block;margin:3px 0 0;padding:1px 9px;border:2px solid #1b1b1b;border-radius:99px;background:#fff;font-size:12.5px;font-weight:800}',
+'@media (max-width:640px){.gm-lane.gm-burst{height:470px}.bu-tx{font-size:14px;line-height:1.18}.bu-body{padding:9px 9px;min-height:64px}.bu-sw{--we:17px}.bu-fb{font-size:15px}.bu-end h2{font-size:28px}}',
+'@media (min-width:1400px){.bu-tx{font-size:17px}}',
+'@media (prefers-reduced-motion:reduce){.bu-sw.go{animation:buFade .3s ease-out both}.bu-in,.gm-burst.shake .gm-pl{animation:none}.gm-burst.boom .bu-lid{animation:buFadeOut .3s forwards}.gm-burst.boom .bu-bang{animation:none}.bu-sw.bu-catch,.bu-sw.bu-splat,.bu-sw.bu-gone{animation:buFadeOut .3s forwards}.bu-blob{animation:buFade .2s both}.bu-fb.pulse{animation:none}}',
+'@keyframes buFade{from{opacity:0}}@keyframes buFadeOut{to{opacity:0}}'
+].join('\n');
+/* BURST-GEN END */
 function v3inside(tid, hs, alt){ var v = ROOMV3[tid], L = v.labels || {};
   return { img: 'img/scene/v3/' + ROOMS[tid].slug + '.webp', ratio: 2752 / 1536, alt: alt, board: v.board, hooks: v.hooks || null,
     hotspots: hs.map(function(h){ var b = v.spots[h.id], o = Object.assign({}, h); if (b){ o.x = b[0]; o.y = b[1]; o.w = b[2]; o.h = b[3]; } if (L[h.id]){ o.icon = L[h.id][0]; o.label = L[h.id][1]; } return o; }) }; }
@@ -119556,6 +119887,7 @@ window.SQE_SCENE = function(A){
   var SC = {open: null, step: 0, gate: false, yay: false, entering: false, exit: null};
   if (ROOMS_ON) try { document.documentElement.classList.add('scn-rooms'); } catch(e){}
   try { var st = document.createElement('style'); st.id = 'scn-css'; st.textContent = CSS; document.head.appendChild(st); } catch(e){}
+  try { var bst = document.createElement('style'); bst.id = 'scn-burst-css'; bst.textContent = BURST_CSS; document.head.appendChild(bst); } catch(e){}
   function S(){ return A.S(); }
   function state(k){ var s = S(); if (!s.scene || typeof s.scene !== 'object') s.scene = {}; var o = s.scene[k]; if (!o || typeof o !== 'object') o = s.scene[k] = {}; if (!o.open || typeof o.open !== 'object') o.open = {}; if (!o.pos || typeof o.pos !== 'object') o.pos = {}; return o; }
   function deck(k){ return A.learnDeck(k) || (ROOMS_ON && window.SQE_ROOM_LEARN && window.SQE_ROOM_LEARN[k]) || null; }
@@ -119675,7 +120007,7 @@ window.SQE_SCENE = function(A){
     return '<div class="scn-say' + (nar ? ' nar' : w.i % 2 ? ' r' : '') + '"><span class="who"><span aria-hidden="true">' + esc(w.e) + '</span><small>' + esc(l.who) + '</small></span><span class="bub">' + inl(l.text) + '</span></div>'; } /* 20 Nov: speaker name shown once (no hidden duplicate that showed up when copied) */
   /* mini-games: sort / order / match, 30-second soft timer, no fail-out, score + one-line why for each wrong at the end */
   var GT = null, GSECS = 30;
-  function stopTimer(){ if (GT){ clearInterval(GT); GT = null; } if (CT){ clearTimeout(CT); CT = null; } }
+  function stopTimer(){ bClear(); if (GT){ clearInterval(GT); GT = null; } if (CT){ clearTimeout(CT); CT = null; } }
   var CT = null;
   /* catch: items float across one by one; tap only the right ones before they go (gentle speed, no fail-out) */
   function catchRun(){ var G = SC.game; if (!G || G.type !== 'catch' || G.phase !== 'play') return; var lane = document.getElementById('gm-lane'); if (!lane) return;
@@ -119736,7 +120068,7 @@ window.SQE_SCENE = function(A){
   }
   function tick(){ var g = SC.game, el = document.querySelector('.gm-time'); if (!g || !el){ return; } var left = GSECS - Math.floor((Date.now() - g.t0) / 1000);
     if (g.phase === 'end'){ stopTimer(); return; }
-    if (left > 0){ el.textContent = '⏱ ' + left + 's'; el.className = 'gm-time'; } else { el.textContent = '⏰ Time! Finish at your own pace'; el.className = 'gm-time up'; } }
+    var bu = g.type === 'burst'; if (left > 0){ el.textContent = (bu ? '' : '⏱ ') + left + 's'; el.className = 'gm-time'; } else { el.textContent = bu ? 'Time! Keep catching' : '⏰ Time! Finish at your own pace'; el.className = 'gm-time up'; } }
   function deal(items, n, key){
     if (!n || n >= items.length) return shuf(items.slice());
     var by = {}, out = [], rest = [];
@@ -119751,26 +120083,28 @@ window.SQE_SCENE = function(A){
     out = out.concat(rest).slice(0, Math.max(g.pick, out.length));
     return shuf(out).map(function(i){ return g.items[i]; });
   }
-  function gameStart(k){
-    var g = SCENES[k].game, G = {k: k, type: g.type, t0: Date.now(), ri: 0, qi: 0, phase: 'play', wrong: [], right: 0, total: 0, fb: null};
+  function gameStart(k, gd){
+    var g = gd || SCENES[k].game, G = {k: k, g: g, type: g.type, t0: Date.now(), ri: 0, qi: 0, phase: 'play', wrong: [], right: 0, total: 0, fb: null};
     if (g.type === 'sort') G.rounds = (g.rounds || [{items: g.items}]).map(function(r){ return {items: g.rounds ? shuf(r.items) : pickItems(g), ask: r.ask}; });
     else if (g.type === 'order') G.rounds = (g.rounds || [{prompt: g.prompt, items: g.items}]).map(function(r){ return {prompt: r.prompt, items: r.items, pool: shuf(nums(r.items.length)), placed: []}; });
     else if (g.type === 'number') G.rounds = (g.rounds || [{q: g.q, opts: g.opts, a: g.a, why: g.why}]).map(function(r){ var a = typeof r.a === 'number' ? r.a : r.opts.map(String).indexOf(String(r.a != null ? r.a : r.answer)); var ix = shuf(r.opts.map(function(_, j){ return j; })); /* the source data often puts the answer in the same slot, so deal the chips in a random order */ return {q: r.q, opts: ix.map(function(j){ return r.opts[j]; }), a: ix.indexOf(a), why: r.why}; });
     else if (g.type === 'spot') G.rounds = (g.rounds || [{prompt: g.prompt, lines: g.lines}]).map(function(r){ return {prompt: r.prompt, lines: r.lines, sel: {}, shown: false}; });
+    else if (g.type === 'burst') burstInit(G, g);
     else if (g.type === 'catch'){ G.rounds = (g.rounds || [{prompt: g.prompt, items: g.items}]).map(function(r){ return {prompt: r.prompt || g.prompt, items: g.rounds ? shuf(r.items.slice()) : deal(r.items, g.pick, function(it){ return !!(it.ok || it.good || it.correct); })}; }); G.items = G.rounds[0].items; G.res = {}; G.spawned = 0; G.done = 0; }
     else { G.lefts = shuf(nums(g.pairs.length)); G.rights = (g.rights || []).slice(); g.pairs.forEach(function(p){ if (G.rights.indexOf(p.r) < 0) G.rights.push(p.r); }); G.matched = {}; G.tried = {}; G.sel = null; }
-    SC.game = G; SC.open = null; SC.exit = null; SC.scen = null; paint(); stopTimer(); GT = setInterval(tick, 500); if (G.type === 'catch') CT = setTimeout(catchRun, 600);
+    SC.game = G; SC.open = null; SC.exit = null; SC.scen = null; paint(); stopTimer(); GT = setInterval(tick, 500); if (G.type === 'catch') CT = setTimeout(catchRun, 600); else if (G.type === 'burst') burstGo(G);
   }
   function navIntoView(){ var nv = document.querySelector('.scn-sheet .scn-nav'); if (!nv) return; var r = nv.getBoundingClientRect(); if (r.bottom > innerHeight - 8) try { nv.scrollIntoView({block: 'end', behavior: 'smooth'}); } catch(e){ nv.scrollIntoView(false); } }
   function gpaint(){ var ov = document.querySelector('.scn-ov'), y = ov ? ov.scrollTop : 0; paint(); ov = document.querySelector('.scn-ov'); if (ov) ov.scrollTop = y; tick(); }
   function gameHTML(k){
-    var g = SCENES[k].game, G = SC.game, h = '<div class="scn-st"><span class="ico" aria-hidden="true">' + esc(g.icon || '🎮') + '</span><div><div class="k">Mini-game · ' + esc(SCENES[k].name) + '</div><h2 id="scn-mt">' + esc(g.title) + '</h2></div><button type="button" class="scn-x" data-scn="close" aria-label="Close">✕</button></div>';
+    var G = SC.game, g = G.g || SCENES[k].game, h = '<div class="scn-st"><span class="ico" aria-hidden="true">' + (g.type === 'burst' ? BICO : esc(g.icon || '🎮')) + '</span><div><div class="k">' + (g.bonus ? 'Bonus game · ' : 'Mini-game · ') + esc(SCENES[k].name) + '</div><h2 id="scn-mt">' + esc(g.title) + '</h2></div><button type="button" class="scn-x" data-scn="close" aria-label="Close">✕</button></div>';
+    if (G.type === 'burst') return h + (G.phase === 'end' ? burstEndHTML(g, G) : burstPlayHTML(g, G));
     if (G.phase === 'end'){
       var secs = Math.round((G.t1 - G.t0) / 1000);
       h += '<div class="gm-big"><div class="big" aria-hidden="true">' + (G.right === G.total ? '🏆🍬🎉' : G.right >= G.total * 0.6 ? '🍬⭐' : '🍬') + '</div><h2>' + (function(f){ return f >= 1 ? 'Perfect!' : f >= 0.8 ? 'Great work!' : f >= 0.6 ? 'Nice one!' : f >= 0.4 ? 'Getting there!' : 'Keep practising!'; })(G.total ? G.right / G.total : 0) + '</h2><p class="score"><b>' + G.right + ' / ' + G.total + '</b> right first time · ' + secs + 's' + (secs <= GSECS ? ' (inside the 30 seconds!)' : '') + '</p></div>';
       if (G.wrong.length) h += '<p><b>Have another look at these:</b></p><ul class="gm-res">' + G.wrong.map(function(w){ return '<li><b>' + inl(w.t) + ' → ' + inl(w.a) + '</b>' + inl(w.why || '') + '</li>'; }).join('') + '</ul>';
       if (g.end) h += '<div class="scn-says">' + sayHTML({cast: []}, {who: 'Britney', text: g.end}) + '</div>';
-      return h + '<div class="scn-nav"><button type="button" class="btn" data-scn="gagain">↺ Play again</button><button type="button" class="btn scn-eat" data-scn="gdone">✓ Done</button></div>';
+      return h + '<div class="scn-nav"><button type="button" class="btn" data-scn="gagain">↺ Play again</button>' + (burstDef(k) && !g.bonus ? '<button type="button" class="btn" data-scn="bonus">Bonus: Sweets explosion</button>' : '') + '<button type="button" class="btn scn-eat" data-scn="gdone">✓ Done</button></div>';
     }
     h += '<div class="gm-top"><span class="gm-time">⏱ ' + GSECS + 's</span><span class="gm-score">' + G.right + ' right so far</span></div><p class="gm-how">' + inl(g.how || '') + '</p>';
     if (G.type === 'sort'){
@@ -119848,6 +120182,78 @@ window.SQE_SCENE = function(A){
     else { if (!G.tried[G.sel]){ G.tried[G.sel] = 1; G.wrong.push({t: p.l, a: p.r, why: p.why}); } G.fb = {ok: false, t: 'Not that one. Try again.'}; G.shake = 'r' + v; }
     gpaint();
   }
+  /* burst ("Sweets explosion", Monnie 20 Nov): a jar bursts, statement sweets fly out and bob about; catch only the true ones.
+     True caught: drops into the jar + the fact. False caught: splat + the right version. Untapped sweets fly off (a missed true one counts as wrong).
+     Statements: BURST (generated block above); a room gets a "Bonus: Sweets explosion" (burstDef) on top of its own game. Also works as SCENES[k].game = {type: 'burst', items: [...]}. */
+  var BT = [], BLIFE = 10000;
+  var BSWP = '<path d="M30 21 L5 5 Q-1 30 5 55 L30 39 Z" fill="var(--sc1)" stroke="#1b1b1b" stroke-width="4" stroke-linejoin="round"/><path d="M22 25 L9 15 M22 35 L9 45" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".75"/>';
+  var BICO = '<span class="bu-ico" aria-hidden="true"><svg viewBox="0 0 92 56"><path d="M24 22 L4 8 Q0 28 4 48 L24 34 Z M68 22 L88 8 Q92 28 88 48 L68 34 Z" fill="#FF2D8A" stroke="#1b1b1b" stroke-width="4" stroke-linejoin="round"/><rect x="20" y="12" width="52" height="32" rx="16" fill="#FFE14D" stroke="#1b1b1b" stroke-width="4"/><path d="M34 14 L28 42 M48 14 L42 42 M62 14 L56 42" stroke="#FF8A3D" stroke-width="4" stroke-linecap="round"/></svg></span>';
+  var BBANG = '<svg viewBox="0 0 200 200"><path d="M100 4 L118 62 L176 30 L146 86 L198 104 L142 122 L170 176 L114 146 L98 198 L82 144 L28 172 L56 120 L2 100 L58 82 L26 28 L84 60 Z" fill="#FFE14D" stroke="#1b1b1b" stroke-width="6" stroke-linejoin="round"/><path d="M100 46 L110 82 L146 70 L122 98 L152 120 L114 116 L104 152 L92 116 L54 124 L80 98 L56 68 L90 82 Z" fill="#FF8A3D"/></svg>';
+  var BBLOB = '<svg viewBox="0 0 120 90"><path d="M60 8 Q72 2 76 16 Q92 6 94 24 Q114 22 106 40 Q120 52 102 60 Q108 80 88 74 Q80 90 64 80 Q50 92 42 78 Q22 86 22 68 Q2 64 14 48 Q0 34 18 28 Q16 10 36 16 Q44 2 60 8 Z" fill="#FF5FA2" stroke="#1b1b1b" stroke-width="4" stroke-linejoin="round"/><circle cx="12" cy="14" r="5" fill="#FF5FA2" stroke="#1b1b1b" stroke-width="3"/><circle cx="110" cy="80" r="6" fill="#FF5FA2" stroke="#1b1b1b" stroke-width="3"/><circle cx="104" cy="8" r="4" fill="#FF5FA2" stroke="#1b1b1b" stroke-width="3"/><text x="60" y="55" text-anchor="middle" font-family="Chewy, Bubblegum Sans, cursive" font-size="24" fill="#fff" stroke="#1b1b1b" stroke-width="4" paint-order="stroke">SPLAT!</text></svg>';
+  function burstDef(k){ var a = k && BURST[k.split('/')[1]]; return a && a.length ? {type: 'burst', bonus: 1, title: 'Sweets explosion', items: a} : null; }
+  function bRM(){ return !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches); }
+  function bClear(){ if (BT && BT.length){ BT.forEach(clearTimeout); BT = []; } }
+  function bLater(f, ms){ BT.push(setTimeout(f, ms)); }
+  function burstInit(G, g){ G.items = shuf(g.items.slice()); G.res = {}; G.spawned = 0; G.done = 0; G.inPot = 0; G.slots = {}; G.boom = false; G.fb = null; }
+  function bLane(G){ return SC.game === G ? document.getElementById('gm-lane') : null; }
+  function burstGo(G){ bClear(); var rm = bRM();
+    bLater(function(){ var lane = bLane(G); if (lane && !rm) lane.classList.add('shake'); }, 250);
+    bLater(function(){ var lane = bLane(G); if (!lane) return; lane.classList.remove('shake'); lane.classList.add('boom'); G.boom = true;
+      for (var j = 0; j < bMax(lane); j++) bLater(bSpawn, 80 + j * 420); }, rm ? 350 : 1250); }
+  function bCols(lane){ return lane.clientWidth < 560 ? 2 : 3; }
+  function bMax(lane){ return bCols(lane) + 1; }
+  function bSpawn(){ var G = SC.game, lane = G && G.type === 'burst' && bLane(G); if (!lane || G.phase !== 'play' || G.spawned >= G.items.length) return;
+    var cols = bCols(lane), free = [], s; for (s = 0; s < cols * 2; s++) if (!G.slots[s]) free.push(s); if (!free.length) return;
+    s = free[Math.floor(Math.random() * free.length)];
+    var i = G.spawned++, it = G.items[i], W = lane.clientWidth, H = lane.clientHeight, gap = 10, sw = Math.min(310, Math.floor((W - 28 - gap * (cols - 1)) / cols)), col = s % cols, row = Math.floor(s / cols);
+    var ft = lane.querySelector('.gm-pl.ft'), jh = ft ? ft.getBoundingClientRect().height : 120, rowH = (H - jh - 18) / 2, el = document.createElement('button');
+    G.slots[s] = 1;
+    el.type = 'button'; el.className = 'bu-sw c' + (i % 6); el.setAttribute('data-scn', 'gburst'); el.setAttribute('data-i', i); el.setAttribute('aria-label', 'Sweet: ' + it.t);
+    el.innerHTML = '<span class="bu-in" style="--bd:-' + (Math.random() * 2.4).toFixed(2) + 's"><svg class="bu-wr l" viewBox="0 0 30 60" preserveAspectRatio="none" aria-hidden="true">' + BSWP + '</svg><span class="bu-body"><span class="bu-tx">' + esc(it.t) + '</span></span><svg class="bu-wr r" viewBox="0 0 30 60" preserveAspectRatio="none" aria-hidden="true">' + BSWP + '</svg></span><span class="bu-fuse" aria-hidden="true"><i style="animation-duration:' + BLIFE + 'ms"></i></span>';
+    el.style.width = sw + 'px'; el.style.left = Math.max(6, Math.min(W - sw - 10, Math.round(12 + col * (sw + gap) + (Math.random() * 8 - 4)))) + 'px'; el.style.top = '0px'; el._slot = s;
+    lane.appendChild(el);
+    var eh = el.offsetHeight, top = Math.max(6, Math.round(8 + row * rowH + (rowH - eh) / 2 + (Math.random() * 12 - 6))), mx = W / 2, my = H - 4 - jh * 0.8;
+    el.style.top = Math.min(top, H - eh - 14) + 'px';
+    el.style.setProperty('--sx', Math.round(mx - (parseFloat(el.style.left) + sw / 2)) + 'px'); el.style.setProperty('--sy', Math.round(my - (parseFloat(el.style.top) + eh / 2)) + 'px'); el.style.setProperty('--sr', Math.round(Math.random() * 300 - 150) + 'deg');
+    el.style.setProperty('--gx', (col < cols / 2 ? -1 : 1) * Math.round(60 + Math.random() * 60) + 'px'); el.style.setProperty('--gr', Math.round(Math.random() * 60 - 30) + 'deg');
+    el.classList.add('go');
+    bLater(function(){ if (SC.game !== G || G.res[i] != null) return; el.classList.add('bu-gone', 'done'); el.removeAttribute('data-scn'); G.slots[el._slot] = 0; bResolve(G, i, false); setTimeout(function(){ if (el.parentNode) el.parentNode.removeChild(el); }, 750); }, BLIFE + 750);
+  }
+  function burstTap(b){ var G = SC.game, i = +b.getAttribute('data-i'); if (!G || G.type !== 'burst' || G.phase !== 'play' || G.res[i] != null) return;
+    var it = G.items[i], lane = bLane(G), ft = lane && lane.querySelector('.gm-pl.ft'); b.removeAttribute('data-scn'); b.classList.add('done'); G.slots[b._slot] = 0;
+    if (lane && ft && b.parentNode === lane){ var lr = lane.getBoundingClientRect(), r = b.getBoundingClientRect(), pr = ft.getBoundingClientRect();
+      if (it.true){ var n = G.inPot = (G.inPot || 0) + 1; b.style.setProperty('--dx', Math.round(pr.left + pr.width / 2 - (r.left + r.width / 2)) + 'px'); b.style.setProperty('--dy', Math.round(pr.top + pr.height * 0.3 - (r.top + r.height / 2)) + 'px'); b.classList.remove('go'); b.classList.add('bu-catch');
+        setTimeout(function(){ if (SC.game !== G) return; var pile = lane.querySelector('.gm-pile'); if (pile) pile.innerHTML = potPile('jar', n, true); potFx(lane, 'bump', 'True! In the jar'); }, 560); }
+      else { b.classList.remove('go'); b.classList.add('bu-splat'); var bl = document.createElement('span'); bl.className = 'bu-blob'; bl.setAttribute('aria-hidden', 'true'); bl.innerHTML = BBLOB; bl.style.left = Math.round(r.left - lr.left + r.width / 2) + 'px'; bl.style.top = Math.round(r.top - lr.top + r.height / 2) + 'px'; lane.appendChild(bl); setTimeout(function(){ if (bl.parentNode) bl.parentNode.removeChild(bl); }, 1700); potFx(lane, 'nope', 'Splat! That was false'); }
+      setTimeout(function(){ if (b.parentNode) b.parentNode.removeChild(b); }, 950);
+    } else if (b.parentNode) b.parentNode.removeChild(b);
+    bResolve(G, i, true); }
+  function bResolve(G, i, tapped){ var it = G.items[i], good = !!it.true, ok = tapped === good; G.res[i] = ok; G.done++; G.total++;
+    if (ok) G.right++; else G.wrong.push({t: it.t, a: good ? 'true' : 'false', why: it.fix});
+    var fb = null;
+    if (tapped) fb = good ? {c: 'ok', k: 'True! Into the jar it goes.', t: it.fix} : {c: 'no', k: 'Splat! That one was false.', t: it.fix};
+    else if (good) fb = {c: 'miss', k: 'Oops, a true one got away:', t: '**' + it.t + '**'};
+    if (fb){ G.fb = fb; var el = document.querySelector('.bu-fb'); if (el){ el.className = 'bu-fb ' + fb.c; el.innerHTML = bFbHTML(fb); void el.offsetWidth; el.classList.add('pulse'); } }
+    var sc = document.querySelector('.gm-score'); if (sc) sc.textContent = G.right + ' right so far';
+    if (G.done >= G.items.length) bLater(function(){ if (SC.game !== G) return; G.phase = 'end'; G.t1 = Date.now(); stopTimer(); gpaint(); }, tapped ? 1300 : 700);
+    else bLater(bSpawn, 650); }
+  function bFbHTML(fb){ return fb ? '<span class="k">' + esc(fb.k) + '</span>' + inl(fb.t || '') : '<span class="k">Ready…</span>Tap a sweet to catch it. True ones go in the jar.'; }
+  function burstPlayHTML(g, G){
+    var pot = potHTML({pot: 'jar'}, G, null).replace('</svg><span class="gm-pop"', '<text x="100" y="117" text-anchor="middle" font-family="Chewy, Bubblegum Sans, cursive" font-size="24" fill="#fff" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round" paint-order="stroke">TRUE</text></svg><span class="gm-pop"');
+    return '<div class="gm-top"><span class="gm-time">' + GSECS + 's</span><span class="gm-score">' + G.right + ' right so far</span></div>' +
+      '<p class="bu-how"><b>Catch only the true ones!</b> Tap a true sweet before its fuse runs out. Let the false ones fly away.</p>' +
+      '<div class="gm-lane gm-burst' + (G.boom ? ' boom' : '') + '" id="gm-lane"><span class="bu-bang" aria-hidden="true">' + BBANG + '</span>' + pot + '<span class="bu-lid" aria-hidden="true"></span></div>' +
+      '<div class="bu-fb' + (G.fb ? ' ' + G.fb.c : '') + '" role="status">' + bFbHTML(G.fb) + '</div>';
+  }
+  function burstEndHTML(g, G){
+    var secs = Math.round((G.t1 - G.t0) / 1000), f = G.total ? G.right / G.total : 0, tr = G.items.filter(function(x){ return x.true; });
+    var h = '<div class="bu-end"><div class="bu-endjar" aria-hidden="true">' + potHTML({pot: 'jar'}, G, null) + '</div><div><h2>' + (f >= 1 ? 'Perfect jar!' : f >= 0.8 ? 'Sweet work!' : f >= 0.6 ? 'Nice catching!' : f >= 0.4 ? 'Getting there!' : 'Keep practising!') + '</h2><p class="score"><b>' + G.right + ' / ' + G.total + '</b> right · ' + secs + 's</p><p class="score">' + (G.inPot || 0) + ' of ' + tr.length + ' true sweets in the jar</p></div></div>';
+    h += '<h3 class="bu-h">The true facts</h3><ul class="bu-list">' + tr.map(function(x){ var fx = String(x.fix || ''), same = fx.replace(/\*\*/g, '').replace(/^\s*(Yes|No)[.,]?\s*/, '') === x.t || fx.replace(/\*\*/g, '') === x.t; return '<li><b>' + esc(x.t) + '</b>' + (same ? '' : '<small>' + inl(fx.replace(/^\s*\*\*(Yes|No)[.,]?\*\*[.,]?\s*/, '')) + '</small>') + '</li>'; }).join('') + '</ul>';
+    if (G.wrong.length) h += '<h3 class="bu-h">Have another look at these</h3><ul class="bu-list no">' + G.wrong.map(function(w){ return '<li><b>' + esc(w.t) + '</b><br><span class="tag">' + (w.a === 'true' ? 'True, but it got away' : 'False, but you caught it') + '</span><small>' + inl(w.why || '') + '</small></li>'; }).join('') + '</ul>';
+    return h + '<div class="scn-nav"><button type="button" class="btn" data-scn="gagain">Play again</button><button type="button" class="btn scn-eat" data-scn="gdone">Done</button></div>';
+  }
+  function bonusLi(k){ var bd = burstDef(k); if (!bd || !rk(k)) return ''; var b = state(k).burst;
+    return '<li class="sp bu-li' + (b ? ' done' : '') + '"><button type="button" data-scn="bonus"><span class="n">' + BICO + '</span><span class="t">Bonus: Sweets explosion<small>Catch only the true facts' + (b ? ' · last go ' + b.score + ' / ' + b.n : ' · optional') + '</small></span></button></li>'; }
   /* drag a sort item onto a bin (touch or mouse); tapping a bin works too */
   document.addEventListener('pointerdown', function(e){
     var src = e.target.closest && e.target.closest('.gm-item[data-gm=drag]'); if (!src || !SC.game) return;
@@ -120017,7 +120423,7 @@ window.SQE_SCENE = function(A){
     var sc = SCENES[k], x = A.TBYKEY[k], inner = '';
     if (SC.scen && SC.scen.k === k && sc.scenario){
       inner = scenHTML(k);
-    } else if (SC.game && SC.game.k === k && sc.game){
+    } else if (SC.game && SC.game.k === k && (sc.game || SC.game.g)){
       inner = gameHTML(k);
     } else if (SC.exit && SC.exit.k === k){
       inner = exitHTML(k);
@@ -120162,7 +120568,7 @@ window.SQE_SCENE = function(A){
       if (LT){ roomFin(k); h += roomDone(k) ? endHTML(k) : '<p class="scn-lock">🔒 Open everything' + (EX.length ? ', then play the ' + EX.map(function(e){ return e.id === 'game' ? 'mini-game' : 'scenario'; }).join(' and the ') : '') + '. Then Britney asks how the topic went.</p>'; }
       else { h += n === N ? leaveBtn(k) : '<p class="scn-lock">🔒 Open all ' + N + ' to unlock the exit quiz: 🚪 Leave the shop (' + exitLabel(k) + ').</p>'; if (rk(k) && roomDone(k)){ roomFin(k); h += endHTML(k); } }
       h += '<ol class="scn-list">' + order(k).map(function(hh, i){ var dn = o.open[hh.id]; return '<li class="' + (dn ? 'done' : '') + (hh.id === nx ? ' next' : '') + '"><button type="button" data-scn="obj" data-id="' + esc(hh.id) + '"><span class="n">' + (dn ? '✓' : i + 1) + '</span><span class="t">' + esc(hh.label) + '<small>' + (function(st){ var c = st.filter(function(q){ return q.k !== 'check'; }).length; return c + ' cards' + (c < st.length ? ' + quick check' : ''); })(steps(k, hh)) + (dn ? ' · opened' : hh.id === nx ? ' · next' : '') + '</small></span></button></li>'; }).join('') +
-        EX.map(function(e, j){ var dn = exDone(k, e), sp = e.h, G = e.id === 'game'; return '<li class="sp' + (dn ? ' done' : '') + (e.id === nx ? ' next' : '') + '"><button type="button" data-scn="' + e.act + '"><span class="n">' + (dn ? '✓' : order(k).length + j + 1) + '</span><span class="t">' + esc(sp.label || sp.title) + '<small>' + (G ? '30-second mini-game' : 'Scenario: ' + sp.steps.length + ' parts') + (dn ? ' · done' : e.id === nx ? ' · next' : '') + '</small></span></button></li>'; }).join('') + '</ol>';
+        EX.map(function(e, j){ var dn = exDone(k, e), sp = e.h, G = e.id === 'game'; return '<li class="sp' + (dn ? ' done' : '') + (e.id === nx ? ' next' : '') + '"><button type="button" data-scn="' + e.act + '"><span class="n">' + (dn ? '✓' : order(k).length + j + 1) + '</span><span class="t">' + esc(sp.label || sp.title) + '<small>' + (G ? '30-second mini-game' : 'Scenario: ' + sp.steps.length + ' parts') + (dn ? ' · done' : e.id === nx ? ' · next' : '') + '</small></span></button></li>'; }).join('') + bonusLi(k) + '</ol>';
     }
     if (!SC.demoDone && /[?&]exitdemo=1\b/.test(location.search)){ SC.demoDone = true; var di = exitPool(k); if (di.length) SC.exit = {k: k, items: di, i: di.length, ans: di.map(function(){ return {ok: true}; }), saved: true}; } /* preview only: ?exitdemo=1 opens the passed exit screen without saving anything */
     h += modalHTML(k);
@@ -120234,9 +120640,12 @@ window.SQE_SCENE = function(A){
     if (a === 'gnum' && SC.game && SC.game.pick == null){ var G4 = SC.game, Q4 = G4.rounds[G4.ri]; G4.pick = +b.getAttribute('data-o'); G4.total++; if (G4.pick === Q4.a) G4.right++; else G4.wrong.push({t: Q4.q, a: String(Q4.opts[Q4.a]), why: Q4.why}); gpaint(); navIntoView(); return; }
     if (a === 'gspot' && SC.game){ var P4 = SC.game.rounds[SC.game.ri], si = +b.getAttribute('data-i'); if (!P4.shown){ if (P4.sel[si]) delete P4.sel[si]; else P4.sel[si] = 1; gpaint(); } return; }
     if (a === 'gspotrev' && SC.game){ var G5 = SC.game, P5 = G5.rounds[G5.ri]; P5.shown = true; P5.lines.forEach(function(l, i){ var on = !!P5.sel[i]; if (!l.bad && !on) return; G5.total++; if (on === !!l.bad) G5.right++; else G5.wrong.push({t: l.t, a: l.bad ? 'has a mistake' : 'is correct', why: l.why || ''}); }); gpaint(); navIntoView(); return; }
+    if (a === 'gburst'){ burstTap(b); return; }
+    if (a === 'bonus'){ var bd = burstDef(k); if (!bd) return; if (SC.game && SC.game.phase === 'end' && !(SC.game.g && SC.game.g.bonus) && SCENES[k].game){ var o6 = state(k), G6 = SC.game; o6.game = {at: Date.now(), score: G6.right, n: G6.total}; earnC(Math.min(5, G6.right), 'room|' + k + '|game'); try { A.save(); } catch(er){} } gameStart(k, bd); return; }
     if (a === 'gcatch'){ catchTap(b, +b.getAttribute('data-i')); return; }
     if (a === 'gr'){ gMatch(k, 'r', +b.getAttribute('data-r')); return; }
-    if (a === 'gagain'){ gameStart(k); return; }
+    if (a === 'gagain'){ gameStart(k, SC.game && SC.game.g); return; }
+    if (a === 'gdone' && SC.game && SC.game.g && SC.game.g.bonus){ var o7 = state(k), G7 = SC.game; o7.burst = {at: Date.now(), score: G7.right, n: G7.total}; earnC(Math.min(3, G7.right), 'room|' + k + '|burst'); SC.game = null; stopTimer(); try { A.save(); } catch(er){} A.render(); return; }
     if (a === 'gdone' && SC.game){ var o4 = state(k), G3 = SC.game; o4.game = {at: Date.now(), score: G3.right, n: G3.total}; earnC(Math.min(5, G3.right), 'room|' + k + '|game'); SC.game = null; stopTimer(); try { A.save(); } catch(er){} A.render(); showNext(); if (roomDone(k)) setTimeout(function(){ var el = document.getElementById('scn-end'); if (el) try { el.scrollIntoView({block: 'start'}); } catch(er){} }, 150); return; }
     if (a === 'door'){ if (gateOK(k) || state(k).door || (ROOMS_FREE && rk(k))) enter(k); else { SC.gate = true; paint(); } }
     else if (a === 'enter') enter(k);
@@ -123401,6 +123810,7 @@ VIEW.topic = function(r){
   if (mode === "rate"){ mode = "notes"; rateOnly = true; setTimeout(function(){ var el = document.querySelector(".review"); if (el) el.classList.add("hlsec"); }, 80); }
   if (mode === "hl"){ hl = +r[4]; mode = "notes"; setTimeout(function(){ var el = document.querySelector('.nsec[data-sec="' + hl + '"]'); if (el){ el.classList.add("hlsec"); try { el.scrollIntoView({block:"start", behavior:"smooth"}); } catch(e){ el.scrollIntoView(); } } }, 60); }
   var mm = MINDMAPS[k], steps = t.framework || smp.framework, fw = mm || steps, ct = COMIC2[k] || CARTOONS[k] || t.cartoon || smp.cartoon;
+  var navMode = mode; /* QA 20 Nov: keep the asked-for view for prev/next even when this topic falls back to notes */
   if ((mode === "cartoon" && !ct && !(DFPH[k] && DFPH[k].length)) || (mode === "framework" && !fw)) mode = "notes";
   var idx = TOPICS.indexOf(x), prev = TOPICS[idx - 1], next = TOPICS[idx + 1];
   var body;
@@ -123424,7 +123834,7 @@ VIEW.topic = function(r){
       (trec(k) ? '<p class="small muted" style="margin:8px 0 0">Reviewed ' + plural(trec(k).n, "time") + ', last ' + ago(trec(k).at) + '. Rate it again each time you come back to it. <button class="linkbtn" data-act="undone" data-k="' + k + '">Clear</button></p>' : '<p class="small muted" style="margin:8px 0 0">Your rating counts this as a review and shows on the topic list and Progress charts.</p>') +
       (mode === "cartoon" ? '' : '<div class="btns" style="justify-content:center">' + ((s.qq || []).some(function(q){ return q.t === t.id; }) ? '<a class="btn sm primary" href="#/quick/' + s.id + '/' + t.id + '">⚡ Quick fire on this topic</a>' : '') + '<a class="btn sm" href="#/questions/' + s.id + '">Practise ' + esc(s.title) + ' questions</a></div></div>') + /* 20 Nov Monnie: no question links under the cartoon */
     /* 20 Nov: Bert moved off topic pages */
-    '<div class="btns">' + (prev ? '<a class="btn sm" href="#/topic/' + prev.s.id + '/' + prev.t.id + navSuf(prev, mode) + '">‹ ' + esc(prev.t.title) + '</a>' : '') + (next ? '<a class="btn sm" href="#/topic/' + next.s.id + '/' + next.t.id + navSuf(next, mode) + '">' + esc(next.t.title) + ' ›</a>' : '') + '</div>' + /* 20 Nov Monnie: previous/next stay on the same tab (framework to framework, cartoon to cartoon when the next topic has one) */
+    '<div class="btns">' + (prev ? '<a class="btn sm" href="#/topic/' + prev.s.id + '/' + prev.t.id + navSuf(prev, navMode) + '">‹ ' + esc(prev.t.title) + '</a>' : '') + (next ? '<a class="btn sm" href="#/topic/' + next.s.id + '/' + next.t.id + navSuf(next, navMode) + '">' + esc(next.t.title) + ' ›</a>' : '') + '</div>' + /* 20 Nov Monnie: previous/next stay on the same tab (framework to framework, cartoon to cartoon when the next topic has one) */
     '</div>';
   return h;
 };
@@ -123916,7 +124326,7 @@ function fwkSteps(f, skin, k){
 var QZ = null; // {title, items:[{id, order}], i, ans:[], back}
 function startQuiz(title, ids, back, ordered, start){
   QZ = {title:title, items:(ordered ? ids.slice() : shuffle(ids)).map(function(id){ return {id:id, order:shuffle([0,1,2,3,4])}; }), i:start || 0, ans:[], back:back || "#/questions"};
-  if (location.hash === "#/play") render(); else { try { history.pushState(null, "", "#/play"); } catch(e){ location.hash = "#/play"; } render(); } /* QA 20 Nov: Back from a quiz returns to the page it started from */
+  if (location.hash === "#/play") render(); else { try { history[/^#\/questions\/(wrong|[^\/]+\/(go|shuffle))(\/|$)/.test(location.hash) ? "replaceState" : "pushState"](null, "", "#/play"); } catch(e){ location.hash = "#/play"; } render(); } /* QA 20 Nov: Back from a quiz returns to the page it started from */
 }
 VIEW.questions = function(r){
   if (r[1] === "wrong"){
