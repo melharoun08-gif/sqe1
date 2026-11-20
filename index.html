@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120084224";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120084323";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -3613,13 +3613,13 @@ a.tlink::after{content:none}
 @keyframes bmwinSob{0%,100%{translate:0 0}50%{translate:0 3%}}
 .bmwin .bmwin-bars{position:absolute;inset:0;width:100%;height:100%}
 .bmshop.night .bmwin .bmwin-bg{background:linear-gradient(#5A5068,#463E55)}
-.bthink{position:absolute;left:0;top:14%;width:34%;z-index:3;pointer-events:none}
-.bthink .bt-main{display:block;background:#fff;border:3px solid #1d1d1b;border-radius:50% / 46%;padding:14% 9%;text-align:center;font-family:var(--sharratt,inherit);font-size:clamp(13px,2.1vw,19px);line-height:1.15;color:#1d1d1b;box-shadow:2px 3px 0 rgba(0,0,0,.12)}
-.bthink i{position:absolute;display:block;background:#fff;border:2.5px solid #1d1d1b;border-radius:50%}
-.bthink .bt-d1{width:16px;height:16px;right:-4%;top:calc(100% + 6px)}
-.bthink .bt-d2{width:11px;height:11px;right:-14%;top:calc(100% + 26px)}
-.bthink .bt-d3{width:7px;height:7px;right:-22%;top:calc(100% + 42px)}
-@media (max-width:560px){.bthink .bt-main{border-width:2.5px;font-size:12px}.bthink .bt-d1{width:12px;height:12px}.bthink .bt-d2{width:8px;height:8px;top:calc(100% + 20px)}.bthink .bt-d3{width:6px;height:6px;top:calc(100% + 32px)}}
+.bthink{position:absolute;inset:0;z-index:3;pointer-events:none}
+.bthink .bt-main{position:absolute;left:7%;top:4%;width:25%;box-sizing:border-box;background:#fff;border:3px solid #1d1d1b;border-radius:50% / 50%;padding:7% 3%;text-align:center;font-family:var(--sharratt,inherit);font-size:clamp(12px,1.9vw,18px);line-height:1.2;color:#1d1d1b;box-shadow:2px 3px 0 rgba(0,0,0,.12)}
+.bthink i{position:absolute;display:block;background:#fff;border:2.5px solid #1d1d1b;border-radius:50%;transform:translate(-50%,-50%)}
+.bthink .bt-d1{width:15px;height:15px;left:35%;top:38%}
+.bthink .bt-d2{width:11px;height:11px;left:40.5%;top:44%}
+.bthink .bt-d3{width:7px;height:7px;left:45%;top:49%}
+@media (max-width:560px){.bthink .bt-main{border-width:2.5px;font-size:11.5px;width:30%;left:3%;padding:8% 2%}.bthink .bt-d1{width:11px;height:11px}.bthink .bt-d2{width:8px;height:8px}.bthink .bt-d3{width:6px;height:6px}}
 @media (prefers-reduced-motion:reduce){.bmshop .bmwin img.bmwin-brit{animation:none}}
 /* The Mount keeps its own fancy house-sign lettering (Monnie 08:20), on top of the town fonts */
 :is(.mount,#_#_#_) .mount-sign{font-family:"Snell Roundhand","Apple Chancery","Brush Script MT","Segoe Script",cursive!important;font-weight:700!important;font-style:italic}
@@ -3687,6 +3687,13 @@ a.tlink::after{content:none}
 @keyframes hlpulse{50%{outline-color:#FFB74D}}
 :root[data-theme="dark"] .nsec.hlsec{background:#4A4320!important}
 :root[data-theme="dark"] .hlpara{background:#7A6A10!important;color:#fff}
+
+/* timer strip (Monnie 20 Nov 08:42): study-length buttons (drawn books) before break buttons (drawn teacups); glitter timer always sparkles */
+.tstrip .brkbtn .sico,.sandopts .sico{vertical-align:-4px;margin-right:4px}
+.tstrip .wkbtn{border-color:var(--good)}
+.glass.glit .gsandg{animation:rainbowdrift 4s linear infinite}
+.glass.glit .gspark{animation:sparkletw 2.2s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.glass.glit .gsandg,.glass.glit .gspark{animation:none}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -107953,7 +107960,7 @@ window.SQE_JOURNEY = function (A) {
         var ar = 520 / 523, iw = h * ar, ix = x - iw / 2, iy = y - h; /* window box in butchers3 art (fractions) */
         var wx = ix + .185 * iw, wy = iy + .475 * h, ww = .34 * iw, wh = .30 * h, cw = ww * .62, ch = wh * .92, cx = wx + ww / 2 - cw / 2, cy = wy + wh - ch, bars = [1, 2, 3, 4, 5].map(function (k) { return "<line x1=\"".concat(f1(cx + cw * k / 6), "\" y1=\"").concat(f1(cy + ch * .12), "\" x2=\"").concat(f1(cx + cw * k / 6), "\" y2=\"").concat(f1(cy + ch), "\"/>"); }).join('');
         return "<a href=\"#/boss\" aria-label=\"Rescue Britney from Bert's window\"><g class=\"jcage\"><rect x=\"".concat(f1(wx), "\" y=\"").concat(f1(wy), "\" width=\"").concat(f1(ww), "\" height=\"").concat(f1(wh), "\" fill=\"#FFF6C9\" opacity=\".9\"/>")
-            + "<image href=\"".concat((/[?&]bwin=1/.test(location.search) ? 'img/britney/sad-set.webp' : BRITNEY_IMG), "\" x=\"").concat(f1(cx + cw * .08), "\" y=\"").concat(f1(cy + ch * .18), "\" width=\"").concat(f1(cw * .84), "\" height=\"").concat(f1(ch * .8), "\" preserveAspectRatio=\"xMidYMax meet\"/>")
+            + "<image href=\"".concat('img/britney/sad-set.webp', "\" x=\"").concat(f1(cx + cw * .08), "\" y=\"").concat(f1(cy + ch * .18), "\" width=\"").concat(f1(cw * .84), "\" height=\"").concat(f1(ch * .8), "\" preserveAspectRatio=\"xMidYMax meet\"/>")
             + "<g stroke=\"#5A5F66\" stroke-width=\"".concat(f1(Math.max(1.5, cw * .035)), "\" stroke-linecap=\"round\">").concat(bars, "<line x1=\"").concat(f1(cx), "\" y1=\"").concat(f1(cy + ch), "\" x2=\"").concat(f1(cx + cw), "\" y2=\"").concat(f1(cy + ch), "\"/></g>")
             + "<path d=\"M".concat(f1(cx), ",").concat(f1(cy + ch * .25), " Q").concat(f1(cx + cw / 2), ",").concat(f1(cy - ch * .2), " ").concat(f1(cx + cw), ",").concat(f1(cy + ch * .25), "\" fill=\"none\" stroke=\"#5A5F66\" stroke-width=\"").concat(f1(Math.max(1.5, cw * .04)), "\"/>")
             + "<line x1=\"".concat(f1(cx), "\" y1=\"").concat(f1(cy + ch * .25), "\" x2=\"").concat(f1(cx), "\" y2=\"").concat(f1(cy + ch), "\" stroke=\"#5A5F66\" stroke-width=\"").concat(f1(Math.max(1.5, cw * .04)), "\"/><line x1=\"").concat(f1(cx + cw), "\" y1=\"").concat(f1(cy + ch * .25), "\" x2=\"").concat(f1(cx + cw), "\" y2=\"").concat(f1(cy + ch), "\" stroke=\"#5A5F66\" stroke-width=\"").concat(f1(Math.max(1.5, cw * .04)), "\"/>")
@@ -117893,306 +117900,6 @@ window.SQE_WEAK = function(A){
 })();
 
 ;
-/* Extra sections, loaded by build.py right before app.js (after journey.js and scene.js). Defines window.SQE_EXTRAS(api),
-   which app.js calls from inside its closure (next to the SQE_SCENE call). It adds:
-     #/sra            SRA sample questions: list + filters (content/sra-samples.js, window.SQE_SRA)
-     #/sra/q/<id>     one SRA question at a time (e.g. #/sra/q/FLK1-01)
-     #/tips[/<subj>]  Examiner tips from SRA reports (content/examiner-tips.js, window.SQE_TIPS_MD = examiner-tips.md)
-   and small links on the Mock exam, Model Q&A and subject pages (by wrapping those VIEW functions, so app.js is untouched).
-   Rebuild the two content files with: python3 tools/make-extras-content.py
-   SRA terms (sra-sample-questions.json "terms"): show the disclaimer + the link to the SRA page, label every explanation
-   as ours (not SRA- or Kaplan-endorsed), credit "© Solicitors Regulation Authority / Kaplan", non-commercial use only,
-   and keep the questions up to date. REVIEW EVERY APRIL: the SRA updates the sample questions each April.
-   Last reviewed: November 2026 (questions as updated by the SRA on 2 April 2026). Update SRA_REVIEWED below when re-checked.
-   Never change a question's wording (owner rule). Plain ES5. */
-(function(){
-var SRA_REVIEWED = "November 2026";
-var SRA_DISCLAIMER = "SQE Sample Questions and Performance Indicators remain the property of the SRA. The SRA makes no warranty as to the accuracy of their reproduction or usage in these materials.";
-var SRA_CREDIT = "© Solicitors Regulation Authority / Kaplan";
-var CSS = [
-  ".xcard-note{background:var(--pale);border:1px solid var(--pale-line);border-radius:10px;padding:10px 14px;margin:10px 0;font-size:15px}",
-  ".xcard-note p{margin:4px 0}",
-  ".xfoot{font-size:13px;color:var(--muted);margin-top:14px;border-top:1px solid var(--line);padding-top:8px}",
-  ".xfoot p{margin:3px 0}",
-  ".xchips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}",
-  ".xchip{border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 12px;cursor:pointer;font-size:14px;font-weight:600}",
-  ".xchip.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}",
-  ".xfl{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-top:8px}",
-  ".xsel{max-width:100%;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);margin:4px 0 8px}",
-  ".xour{margin-top:10px;background:var(--surface);border:1px dashed var(--pale-line);border-radius:8px;padding:8px 12px}",
-  ".xour b.xl{display:block;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}",
-  ".xour p{margin:0}",
-  ".qsq .sq.xsq{min-width:38px}",
-  ".xtips details{border:1px solid var(--line);border-radius:10px;margin:10px 0;background:var(--surface)}",
-  ".xtips details>summary{cursor:pointer;padding:10px 14px;font-weight:700;font-size:18px;list-style-position:inside}",
-  ".xtips details[open]>summary{border-bottom:1px solid var(--line)}",
-  ".xtips .xin{padding:4px 14px 10px;overflow-wrap:anywhere}",
-  ".xtips details details{margin:8px 0;background:var(--alt)}",
-  ".xtips details details>summary{font-size:16px}",
-  ".xtips h4{margin:14px 0 4px;font-size:16px}",
-  ".xtips ul,.xtips ol{padding-left:22px;margin:6px 0}",
-  ".xtips li{margin:4px 0}",
-  ".xtips .tblwrap{overflow-x:auto;max-width:100%}",
-  ".xtips table{border-collapse:collapse;font-size:14px;min-width:480px}",
-  ".xtips th,.xtips td{border:1px solid var(--line);padding:4px 8px;text-align:left;vertical-align:top}",
-  ".xtips thead th{background:var(--alt)}",
-  ".xtipslink{display:inline-block;margin-top:8px;font-weight:600}"
-].join("\n");
-
-window.SQE_EXTRAS = function(api){
-  var VIEW = api.VIEW, esc = api.esc, S = api.S;
-  var D = window.SQE_SRA || {questions:[]}, QS = D.questions || [], BYQ = {};
-  QS.forEach(function(q, i){ q._i = i; BYQ[q.id] = q; });
-  var TITLE = {}, ORDER = [];
-  (api.SUBJ || []).forEach(function(s){ TITLE[s.id] = s.title; ORDER.push(s.id); });
-  function stitle(id){ return TITLE[id] || id; }
-  if (!document.getElementById("sqe-extras-css")){ var st = document.createElement("style"); st.id = "sqe-extras-css"; st.textContent = CSS; document.head.appendChild(st); }
-
-  /* ---------- state: S.sra[id] = 1 right / 0 wrong (last try); S.sraUI = filters ---------- */
-  function rec(){ var s = S(); if (!s.sra || typeof s.sra !== "object") s.sra = {}; return s.sra; }
-  function ui(){ var s = S(); if (!s.sraUI || typeof s.sraUI !== "object") s.sraUI = {p:"", s:"", w:""}; return s.sraUI; }
-  var ANS = {}, SHOWN = {id:"", at:0};
-  function match(q, f){
-    var r = rec();
-    if (f.p && q.paper !== f.p) return false;
-    if (f.s && q.subject !== f.s) return false;
-    if (f.w === "new" && (q.id in r)) return false;
-    if (f.w === "wrong" && r[q.id] !== 0) return false;
-    return true;
-  }
-  function filtered(){ var f = ui(); return QS.filter(function(q){ return match(q, f); }); }
-  function nextAfter(q, dir){
-    var f = ui();
-    for (var i = q._i + dir; i >= 0 && i < QS.length; i += dir) if (match(QS[i], f)) return QS[i];
-    return null;
-  }
-  function credits(){
-    return '<div class="xfoot"><p>' + esc(SRA_CREDIT) + '. ' + esc(SRA_DISCLAIMER) + '</p><p>SQE1 sample questions are available on the SQE website at <a href="' + esc(D.page) + '" target="_blank" rel="noopener">' + esc(D.page) + '</a>.</p><p>All answer explanations on this site are written by this site. They are not provided or endorsed by the SRA or Kaplan.</p></div>';
-  }
-  function sqState(id){ var r = rec(); return !(id in r) ? "" : r[id] === 1 ? " ok" : " bad"; }
-
-  function sraList(){
-    var f = ui(), list = filtered(), r = rec();
-    var tried = list.filter(function(q){ return q.id in r; }), right = tried.filter(function(q){ return r[q.id] === 1; });
-    var h = '<div class="card"><h2>📝 SRA sample questions</h2>' +
-      '<p class="muted" style="margin:0">The SRA\'s own SQE1 sample questions (' + QS.length + ' questions: ' + QS.filter(function(q){ return q.paper === "FLK1"; }).length + ' for FLK1 and ' + QS.filter(function(q){ return q.paper === "FLK2"; }).length + ' for FLK2), word for word as the SRA publishes them. Answer one at a time and see the SRA\'s answer straight away. Questions 46 to 110 of each paper have all been used in real SQE1 exams.</p>' +
-      '<div class="xcard-note"><p><b>' + esc(SRA_DISCLAIMER) + '</b></p>' +
-      '<p>SQE1 sample questions are available on the SQE website at <a href="' + esc(D.page) + '" target="_blank" rel="noopener">' + esc(D.page) + '</a>.</p>' +
-      '<p><b>The explanations are ours.</b> The SRA gives the correct answer but no explanation, so every explanation here is written by this site and is <b>not endorsed by the SRA or Kaplan</b>.</p>' +
-      '<p class="small">' + esc(SRA_CREDIT) + '. Questions as updated by the SRA on 2 April 2026. <b>Reviewed: ' + esc(SRA_REVIEWED) + ' (checked every April)</b>.</p></div></div>';
-    /* filters */
-    var subs = []; ORDER.forEach(function(id){ if (QS.some(function(q){ return q.subject === id && (!f.p || q.paper === f.p); })) subs.push(id); });
-    if (f.s && subs.indexOf(f.s) < 0) f.s = "";
-    function chip(k, v, lab){ return '<button class="xchip' + ((f[k] || "") === v ? ' on' : '') + '" data-sra="f" data-k="' + k + '" data-v="' + v + '" aria-pressed="' + ((f[k] || "") === v) + '">' + lab + '</button>'; }
-    h += '<div class="card"><h3 style="margin-top:0">Choose your questions</h3>' +
-      '<div class="xfl">Paper</div><div class="xchips">' + chip("p", "", "Both papers") + chip("p", "FLK1", "FLK1") + chip("p", "FLK2", "FLK2") + '</div>' +
-      '<div class="xfl"><label for="sra-subj">Subject</label></div><select id="sra-subj" class="xsel" data-sra-sel="s"><option value="">All subjects</option>' +
-        subs.map(function(id){ var n = QS.filter(function(q){ return q.subject === id && (!f.p || q.paper === f.p); }).length; return '<option value="' + id + '"' + (f.s === id ? ' selected' : '') + '>' + esc(stitle(id)) + ' (' + n + ')</option>'; }).join("") + '</select>' +
-      '<div class="xfl">Show</div><div class="xchips">' + chip("w", "", "All") + chip("w", "new", "Not tried yet") + chip("w", "wrong", "Wrong last time") + '</div>' +
-      '<p style="margin:8px 0 0"><b>' + list.length + '</b> question' + (list.length === 1 ? '' : 's') + ' · ' + tried.length + ' tried' + (tried.length ? ' · <b>' + Math.round(right.length / tried.length * 100) + '%</b> right' : '') + '</p>';
-    var first = list.filter(function(q){ return !(q.id in r); })[0] || list[0];
-    h += '<div class="btns">' + (first ? '<a class="btn primary" href="#/sra/q/' + first.id + '">' + (tried.length && tried.length < list.length ? 'Carry on' : 'Start') + ' (' + esc(first.paper) + ' Q' + first.number + ') ›</a>' : '') +
-      (QS.some(function(q){ return r[q.id] === 0; }) && f.w !== "wrong" ? '<button class="btn bad" data-sra="f" data-k="w" data-v="wrong">Show the ones I got wrong</button>' : '') + '</div></div>';
-    /* squares */
-    ["FLK1", "FLK2"].forEach(function(p){
-      var ps = list.filter(function(q){ return q.paper === p; }); if (!ps.length) return;
-      h += '<div class="card"><h3 style="margin-top:0">' + p + '</h3><div class="sqkey small muted"><span><i class="sq"></i> not tried</span><span><i class="sq ok"></i> right</span><span><i class="sq bad"></i> wrong</span></div><div class="qsq">' +
-        ps.map(function(q){ return '<a class="sq xsq' + sqState(q.id) + '" href="#/sra/q/' + q.id + '" title="' + esc(p + ' question ' + q.number + ' · ' + stitle(q.subject)) + '">' + q.number + '</a>'; }).join("") + '</div></div>';
-    });
-    if (!list.length) h += '<div class="card"><p>No questions match these choices.</p><button class="btn" data-sra="reset">Show all questions</button></div>';
-    return h;
-  }
-
-  function sraQuestion(q){
-    var r = rec(), a = ANS[q.id];
-    if (SHOWN.id !== q.id){ SHOWN = {id:q.id, at:Date.now()}; }
-    var pv = nextAfter(q, -1), nx = nextAfter(q, 1);
-    var h = '<div class="card"><div class="small muted"><a href="#/sra">SRA sample questions</a> › ' + esc(q.paper) + '</div>' +
-      '<div class="qmeta"><span><b>' + esc(q.paper) + ' · Question ' + q.number + '</b> · ' + esc(stitle(q.subject)) + '</span><span class="small muted">' + (q.id in r ? (r[q.id] === 1 ? '✓ right last time' : '✗ wrong last time') : 'not tried yet') + '</span></div>' +
-      '<div class="qtext">' + esc(q.stem) + '</div><div class="opts">';
-    "ABCDE".split("").forEach(function(L){
-      var cls = "opt";
-      if (a){ if (L === q.answer) cls += " right"; else if (L === a) cls += " wrong"; }
-      h += '<button class="' + cls + '" data-sra="pick" data-o="' + L + '"' + (a ? ' disabled' : '') + '><span class="L">' + L + '</span><span>' + esc(q.options[L]) + '</span></button>';
-    });
-    h += '</div>';
-    if (a){
-      var ok = a === q.answer;
-      h += '<div class="explain"><h4 style="color:' + (ok ? 'var(--good)' : 'var(--bad)') + '">' + (ok ? '✓ Correct. The answer is ' + q.answer : '✗ Not quite. The answer is ' + q.answer) + '</h4>' +
-        (q.percent_correct != null ? '<p class="small" style="margin:2px 0">The SRA says ' + esc(q.percent_correct) + '% of candidates got this question right when it was used.</p>' : '') +
-        '<div class="xour"><b class="xl">Our explanation (not SRA-endorsed)</b><p>' + esc(q.explanation) + '</p></div>' +
-        '<p class="small" style="margin:8px 0 0"><a href="' + esc(q.url) + '" target="_blank" rel="noopener">See this question on the SRA website ↗</a></p></div>' +
-        '<div class="btns"><button class="btn" data-sra="go" data-id="' + (pv ? pv.id : '') + '"' + (pv ? '' : ' disabled') + '>‹ Previous</button>' +
-        (nx ? '<button class="btn primary" data-sra="go" data-id="' + nx.id + '">Next question ›</button>' : '<a class="btn primary" href="#/sra">Back to the list</a>') +
-        '<button class="btn" data-sra="again">Try it again</button>' + (nx ? '<a class="btn" href="#/sra">Back to the list</a>' : '') + '</div>';
-    } else {
-      h += '<div class="btns"><button class="btn sm" data-sra="go" data-id="' + (pv ? pv.id : '') + '"' + (pv ? '' : ' disabled') + '>‹ Previous</button>' +
-        '<button class="btn sm" data-sra="go" data-id="' + (nx ? nx.id : '') + '"' + (nx ? '' : ' disabled') + '>Skip ›</button><a class="btn sm" href="#/sra">Back to the list</a></div><div class="kbd" style="margin-top:6px">Tip: press keys A to E to answer.</div>';
-    }
-    return h + credits() + '</div>';
-  }
-
-  VIEW.sra = function(r){
-    if (r[1] === "q" && BYQ[r[2]]) return sraQuestion(BYQ[r[2]]);
-    /* #/sra/paper/FLK1 = that paper's not-yet-tried questions (linked from the revision days on Today) */
-    if (r[1] === "paper" && /^FLK[12]$/.test(r[2] || "")){ var f = ui(); f.p = r[2]; f.s = ""; f.w = "new"; }
-    return sraList();
-  };
-
-  function pick(L){
-    var r = route(); if (r[0] !== "sra" || r[1] !== "q") return;
-    var q = BYQ[r[2]]; if (!q || ANS[q.id] || !q.options[L]) return;
-    ANS[q.id] = L; var ok = L === q.answer;
-    rec()[q.id] = ok ? 1 : 0;
-    try {
-      if (api.earn && api.COIN && api.READ_MS){
-        if (Date.now() - (SHOWN.at || 0) >= api.READ_MS.qa) api.earn(api.COIN.qaDone + (ok ? api.COIN.qaRight : 0), "sra|" + q.id);
-        else if (api.tooQuick && !(api.earnedToday && api.earnedToday("sra|" + q.id))) api.tooQuick();
-      }
-    } catch(e){ if (window.console) console.error(e); }
-    api.save(); api.render();
-  }
-  function route(){ return api.route(); }
-
-  document.addEventListener("click", function(e){
-    var el = e.target.closest && e.target.closest("[data-sra]"); if (!el) return;
-    var act = el.getAttribute("data-sra");
-    if (act === "pick") pick(el.getAttribute("data-o"));
-    else if (act === "go"){ var id = el.getAttribute("data-id"); if (id && BYQ[id]){ delete ANS[id]; location.hash = "#/sra/q/" + id; } }
-    else if (act === "again"){ var rr = route(); if (rr[2]){ delete ANS[rr[2]]; SHOWN = {id:"", at:0}; api.render(); } }
-    else if (act === "f"){ var f = ui(); f[el.getAttribute("data-k")] = el.getAttribute("data-v"); api.save(); api.render(); }
-    else if (act === "reset"){ var f2 = ui(); f2.p = f2.s = f2.w = ""; api.save(); api.render(); }
-  });
-  document.addEventListener("change", function(e){
-    var el = e.target; if (!el || !el.getAttribute || !el.getAttribute("data-sra-sel")) return;
-    ui()[el.getAttribute("data-sra-sel")] = el.value; api.save(); api.render();
-  });
-  document.addEventListener("keydown", function(e){
-    if (e.ctrlKey || e.metaKey || e.altKey || (e.target && /INPUT|SELECT|TEXTAREA/.test(e.target.tagName))) return;
-    var k = String(e.key || "").toUpperCase(); if (!/^[A-E]$/.test(k)) return;
-    var r = route(); if (r[0] === "sra" && r[1] === "q") pick(k);
-  });
-
-  /* ---------- Examiner tips (#/tips, #/tips/<subject>) ---------- */
-  /* bold subject lines in Part 3 of examiner-tips.md -> subject id */
-  var TIPSUBJ = [["Business Law & Practice", "blp"], ["Dispute Resolution", "dr"], ["Contract Law", "contract"], ["Tort", "tort"], ["Legal System", "legalsys"], ["Legal Services", "ls"],
-    ["Ethics & Professional Conduct", "ethics"], ["Wills & Administration", "wills"], ["Trusts", "trusts"], ["Land Law", "land"], ["Property Practice", "property"],
-    ["Criminal Law (", "crimlaw"], ["Criminal Practice", "crimprac"], ["Solicitors Accounts", "accounts"]];
-  function subjOfLine(t){ for (var i = 0; i < TIPSUBJ.length; i++) if (t.indexOf(TIPSUBJ[i][0]) === 0) return TIPSUBJ[i][1]; return null; }
-  function tinl(s){
-    return esc(s).replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, function(m, t, u){ return '<a href="' + u + '" target="_blank" rel="noopener">' + t + '</a>'; })
-      .replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/(^|[^*\w])\*([^*\s][^*]*?)\*(?!\w)/g, "$1<i>$2</i>");
-  }
-  /* small markdown renderer for the tips file: bullets (nested), numbered lists, tables, paragraphs, ### headings */
-  function tmd(lines){
-    var out = [], stack = [], i;
-    function close(n){ while (stack.length > n){ out.push("</li></" + stack.pop() + ">"); } }
-    for (i = 0; i < lines.length; i++){
-      var line = lines[i].replace(/\s+$/, ""), m;
-      if (!line.trim() || /^---+$/.test(line.trim())){ if (!line.trim() && stack.length && i + 1 < lines.length && /^\s+\S/.test(lines[i + 1]) && !/^\s*(- |\d+\. )/.test(lines[i + 1])) continue; if (/^---+$/.test(line.trim())) close(0); continue; }
-      if ((m = line.match(/^(\s*)(- |\d+\. )(.*)$/))){
-        var lvl = Math.floor(m[1].length / 2) + 1, tag = m[2] === "- " ? "ul" : "ol";
-        if (lvl > stack.length + 1) lvl = stack.length + 1;
-        if (lvl > stack.length){ out.push("<" + tag + "><li>"); stack.push(tag); }
-        else { close(lvl); if (stack[lvl - 1] !== tag){ close(lvl - 1); out.push("<" + tag + "><li>"); stack.push(tag); } else out.push("</li><li>"); }
-        out.push(tinl(m[3])); continue;
-      }
-      if (/^\s+\S/.test(line) && stack.length){ out.push("<p style=\"margin:4px 0\">" + tinl(line.trim()) + "</p>"); continue; }
-      close(0);
-      if (/^\|.*\|$/.test(line.trim())){
-        var rows = []; while (i < lines.length && /^\|.*\|$/.test(lines[i].trim())){ rows.push(lines[i].trim()); i++; } i--;
-        var cells = function(r){ return r.slice(1, -1).split("|").map(function(c){ return c.trim(); }); };
-        var body = rows.filter(function(r){ return !/^\|[\s:|-]+\|$/.test(r); });
-        out.push('<div class="tblwrap"><table><thead><tr>' + cells(body[0]).map(function(c){ return "<th>" + tinl(c) + "</th>"; }).join("") + '</tr></thead><tbody>' +
-          body.slice(1).map(function(r){ return "<tr>" + cells(r).map(function(c){ return "<td>" + tinl(c) + "</td>"; }).join("") + "</tr>"; }).join("") + '</tbody></table></div>');
-        continue;
-      }
-      if (/^### /.test(line)){ out.push("<h4>" + tinl(line.slice(4)) + "</h4>"); continue; }
-      out.push("<p>" + tinl(line) + "</p>");
-    }
-    close(0);
-    return out.join("");
-  }
-  var TIPS = null;
-  function parseTips(){
-    if (TIPS) return TIPS;
-    var lines = String(window.SQE_TIPS_MD || "").replace(/\r/g, "").split("\n"), title = "", intro = [], parts = [], cur = null;
-    lines.forEach(function(l){
-      if (/^# /.test(l) && !title){ title = l.slice(2).trim(); return; }
-      if (/^## /.test(l)){ cur = {h:l.slice(3).trim(), pre:[], subs:[]}; parts.push(cur); return; }
-      if (!cur){ intro.push(l); return; }
-      var bm = l.match(/^\*\*(.+)\*\*\s*$/), sid = bm && subjOfLine(bm[1]);
-      if (sid){ cur.subs.push({id:sid, h:bm[1], lines:[], group:cur.group || ""}); return; }
-      if (/^### /.test(l) && cur.subs.length){ cur.group = l.slice(4).trim(); cur.subs.push({group:cur.group, head:true}); return; }
-      if (/^### /.test(l) && /Subject/i.test(cur.h) && !cur.subs.length){ cur.group = l.slice(4).trim(); cur.subs.push({group:cur.group, head:true}); return; }
-      if (cur.subs.length && !cur.subs[cur.subs.length - 1].head) cur.subs[cur.subs.length - 1].lines.push(l); else cur.pre.push(l);
-    });
-    /* trailing '---' after the last subject belongs to nothing */
-    TIPS = {title:title, intro:intro, parts:parts};
-    return TIPS;
-  }
-  function tipsFor(sid){ var t = parseTips(), f = null; t.parts.forEach(function(p){ p.subs.forEach(function(s){ if (s.id === sid) f = s; }); }); return f; }
-  VIEW.tips = function(r){
-    var t = parseTips(), want = r[1] || "";
-    if (!t.parts.length) return '<div class="card"><h2>🎓 Examiner tips</h2><p>The tips aren\'t loaded yet.</p></div>';
-    var h = '<div class="card xtips"><h2>🎓 ' + esc(t.title || "Examiner tips") + '</h2>' + tmd(t.intro) +
-      '<div class="btns"><button class="btn sm" data-tips="open">Open all</button><button class="btn sm" data-tips="close">Close all</button><a class="btn sm" href="#/sra">📝 SRA sample questions</a></div></div>';
-    h += '<div class="card xtips">';
-    t.parts.forEach(function(p){
-      var hasWant = want && p.subs.some(function(s){ return s.id === want; });
-      h += '<details' + (!want || hasWant ? ' open' : '') + '><summary>' + tinl(p.h) + '</summary><div class="xin">' + tmd(p.pre);
-      p.subs.forEach(function(s){
-        if (s.head){ h += '<h4>' + tinl(s.group) + '</h4>'; return; }
-        h += '<details id="tips-' + s.id + '"' + (s.id === want ? ' open' : '') + '><summary>' + tinl(s.h) + '</summary><div class="xin">' + tmd(s.lines) +
-          '<p class="small"><a href="#/subject/' + s.id + '">Go to ' + esc(stitle(s.id)) + ' ›</a></p></div></details>';
-      });
-      h += '</div></details>';
-    });
-    h += '</div>';
-    if (want) setTimeout(function(){ var el = document.getElementById("tips-" + want); if (el && el.scrollIntoView) try { el.scrollIntoView({block:"start"}); } catch(e){} }, 30);
-    return h;
-  };
-  document.addEventListener("click", function(e){
-    var el = e.target.closest && e.target.closest("[data-tips]"); if (!el) return;
-    var open = el.getAttribute("data-tips") === "open";
-    [].forEach.call(document.querySelectorAll(".xtips details"), function(d){ d.open = open; });
-  });
-
-  /* ---------- links from existing pages (wrapped, so app.js needs no edits) ---------- */
-  var SRABTN = '<a class="btn primary" href="#/sra" style="font-size:18px;padding:14px 22px">📝 Official SRA sample questions (220, with the SRA\'s answers) ›</a>';
-  var oMock = VIEW.mock;
-  if (oMock) VIEW.mock = function(r){
-    var h = oMock(r);
-    if (h.indexOf("<h2>Mock exam</h2>") >= 0 && h.indexOf('#/sra"') < 0){
-      var at = h.indexOf('<div class="mk-timer">');
-      h = at >= 0 ? h.slice(0, at) + '<div class="btns">' + SRABTN + '</div>' + h.slice(at) : h.replace("<h2>Mock exam</h2>", "<h2>Mock exam</h2>" + '<div class="btns">' + SRABTN + '</div>');
-    }
-    return h;
-  };
-  var oQ = VIEW.questions;
-  if (oQ) VIEW.questions = function(r){
-    var h = oQ(r);
-    if (!r[1] && h.indexOf('#/sra"') < 0){
-      var mk = 'data-act="qmix">Mixed set of 20</button>', at = h.indexOf(mk);
-      if (at >= 0) h = h.slice(0, at + mk.length) + SRABTN + h.slice(at + mk.length);
-      else h = h.replace("</h2>", "</h2>" + '<div class="btns">' + SRABTN + '</div>');
-    }
-    return h;
-  };
-  var oSub = VIEW.subject;
-  if (oSub) VIEW.subject = function(r){
-    var h = oSub(r), sid = r[1];
-    if (sid && tipsFor(sid)){
-      var link = '<a class="xtipslink" href="#/tips/' + sid + '">🎓 Examiner tips for this subject</a>';
-      var at = h.indexOf('<div class="tboxes">');
-      h = at >= 0 ? h.slice(0, at) + link + h.slice(at) : h.replace("</h2>", "</h2>" + link);
-    }
-    return h;
-  };
-};
-})();
-
-;
 (function(){
 "use strict";
 /* ============ DATA (filled by content files) ============ */
@@ -119080,7 +118787,7 @@ var CBA_SHOP = [
   {id:"bonnie", n:"Jiminey the rabbit", d:"A fluffy ginger bunny with floppy ears. A new friend for the chickens.", p:500},
   {id:"palace", n:"Luxury coop makeover", d:"A full pamper for The Mount coop: fresh paint, fairy lights, velvet perches and a tiny chandelier. The hens are obsessed.", p:1500},
   /* Monnie item hidden until she approves a drawing of herself (20 Nov 06:42: both samples rejected) */
-  /* {id:"monnie", n:"Monnie", d:"Your sister, straight off a hospital shift in her scrubs and stethoscope. She moves in to The Mount to cheer you on.", p:1000}, */
+  {id:"monnie", n:"Monnie", d:"Your sister, straight off a hospital shift in her scrubs and stethoscope. She moves in to The Mount to cheer you on.", p:1000},
   {id:"yasmin", n:"Yasmin", d:"Your sister, with Jiminey in her arms. She comes to hang out in The Mount garden.", p:600},
   {id:"mo", n:"Mo", d:"Your brother. He comes round to The Mount garden.", p:600},
   {id:"parents", n:"Mama and Baba", d:"Take them for free! They'll give their (unwanted) opinions on your revision and your life!", p:0}
@@ -121672,7 +121379,7 @@ window.SQE_BERT_SHOP = bertShopHTML;
 /* Monnie 20 Nov 08:12: while Bert has her, Britney (the Peckham drawing, sad) sits in his shop window behind prison bars instead of the meat,
    thinking "Layla, please save me!" in a bubble beside the shop (only its little trail circles touch the shop) */
 var BOSS_BARS = '<svg class="bmwin-bars" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><g stroke="#2E2A2B" stroke-width="3.6" stroke-linecap="round"><path d="M14 0v100M38 0v100M62 0v100M86 0v100"/></g><path d="M0 5h100M0 95h100" stroke="#2E2A2B" stroke-width="6"/><g stroke="#9A9394" stroke-width="1.1"><path d="M13 2v96M37 2v96M61 2v96M85 2v96"/></g></svg>';
-var BOSS_WINDOW_ON = /[?&]bwin=1/.test(location.search); /* TEMP: the new window picture waits for Monnie's OK (preview with ?bwin=1) */
+var BOSS_WINDOW_ON = true; /* Monnie 20 Nov 08:40: pictures go straight in */
 function bossShopImg(cls){
   if (!BOSS_WINDOW_ON) return bertShopHTML("bshop " + (cls || ""), '<span class="bmcage">' + bossBrit("scared") + BOSS_CAGE + '</span>');
   var win = '<span class="bmwin"><span class="bmwin-bg"></span><img class="bmwin-brit" src="img/britney/sad-set.webp" alt="">' + BOSS_BARS + '</span>';
