@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120061101";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120061330";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -102019,7 +102019,8 @@ window.SQE_JOURNEY = function (A) {
             location.hash = '#/mount'; };
         sv.classList.add('jwalking');
         try {
-            g.scrollIntoView({ block: 'center', behavior: 'smooth' });
+            var r = g.closest('svg').getBoundingClientRect(), m = mv.ownerSVGElement || g.closest('svg'), vb = m.viewBox.baseVal, k = r.width / (vb.width || r.width), yy = r.top + scrollY + (a[1] - (vb.y || 0)) * k;
+            window.scrollTo({ top: Math.max(0, yy - innerHeight * .6), behavior: 'smooth' });
         }
         catch (e) { }
         if (!mv.animate || matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -103044,8 +103045,8 @@ ROOMDATA["formation"] = {
     "emoji": "🧑‍🍳"
    },
    {
-    "name": "Big Bert",
-    "emoji": "👨‍🍳"
+    "name": "Mary Cherry",
+    "emoji": "🧑"
    },
    {
     "name": "Mr Crumble",
@@ -103061,7 +103062,7 @@ ROOMDATA["formation"] = {
       "text": "(climbing down) I'm starting my own business, Snap Happy Gingerbread Ltd! I've just signed Mr Crumble's market-stall lease 'for and on behalf of Snap Happy Gingerbread Ltd'."
      },
      {
-      "who": "Big Bert",
+      "who": "Mary Cherry",
       "text": "Has Companies House registered your company yet?"
      },
      {
@@ -103074,7 +103075,7 @@ ROOMDATA["formation"] = {
      "Alfie, personally.",
      "Snap Happy Gingerbread Ltd, automatically from Friday.",
      "Nobody: the lease is void because the company didn't exist.",
-     "Big Bert, because Alfie is his apprentice."
+     "Mary Cherry, because Alfie is her apprentice."
     ],
     "a": 0,
     "why": "a contract made for a company before it is incorporated is a contract with the person who made it, and they are personally liable (s.51(1)).",
@@ -103119,8 +103120,8 @@ ROOMDATA["formation"] = {
       "text": "But I wrote 'for and on behalf of' the company. Doesn't that get me off?"
      },
      {
-      "who": "Big Bert",
-      "text": "(shaking his head, moustache wobbling) Afraid not, lad."
+      "who": "Mary Cherry",
+      "text": "(shaking her head, chef hat wobbling) Afraid not, love."
      }
     ],
     "q": "Does signing \"for and on behalf of\" the company count as an \"agreement to the contrary\" that removes Alfie's personal liability?",
@@ -103165,7 +103166,7 @@ ROOMDATA["formation"] = {
    {
     "say": [
      {
-      "who": "Big Bert",
+      "who": "Mary Cherry",
       "text": "Right. Next time you open a shop, how do you stay out of this mess?"
      }
     ],
@@ -105830,8 +105831,8 @@ ROOMDATA["distributions-accounts"] = {
     "emoji": "👦"
    },
    {
-    "name": "Bert",
-    "emoji": "👴"
+    "name": "Ted",
+    "emoji": "🧑"
    },
    {
     "name": "Britney",
@@ -105894,7 +105895,7 @@ ROOMDATA["distributions-accounts"] = {
     "say": [
      {
       "who": "Britney",
-      "text": "A year later Sprinkle Ltd has £25,000 of distributable profits. Dot, for the board: \"We recommend a final dividend of £10,000.\" At the general meeting, Sasha and Bert want £15,000."
+      "text": "A year later Sprinkle Ltd has £25,000 of distributable profits. Dot, for the board: \"We recommend a final dividend of £10,000.\" At the general meeting, Sasha and Ted want £15,000."
      }
     ],
     "q": "What can the shareholders do?",
@@ -105924,7 +105925,7 @@ ROOMDATA["distributions-accounts"] = {
       "text": "I knew the tray was empty, but nobody told me that was against the law!"
      },
      {
-      "who": "Bert",
+      "who": "Ted",
       "text": "I just got a cheque in the post. I had no idea about the company's figures."
      }
     ],
@@ -105932,11 +105933,11 @@ ROOMDATA["distributions-accounts"] = {
     "opts": [
      "Neither: both believed it was a proper dividend.",
      "Both: every shareholder must repay an unlawful dividend.",
-     "Sasha repays; Bert keeps his.",
-     "Bert repays; Sasha is protected because she relied on the accountant."
+     "Sasha repays; Ted keeps his.",
+     "Ted repays; Sasha is protected because she relied on the accountant."
     ],
     "a": 2,
-    "why": "Sasha knew the facts that made it unlawful; Bert is an innocent passive investor.",
+    "why": "Sasha knew the facts that made it unlawful; Ted is an innocent passive investor.",
     "whys": [
      "Knowing the facts is enough; ignorance of the law is no defence.",
      "A shareholder with no knowledge or reasonable grounds keeps it.",
@@ -111960,13 +111961,13 @@ var PEOPLE = [
 ];
 /* hens and Jiminey: [id, x, b, height %, name] */
 var HENS = [
-  ['friend', 59, 47, 11, 'Bolu'], ['bianca', 64.5, 51, 10.5, 'Bianca'], ['beefy', 78, 47, 11, 'Beefy'], ['brucey', 93, 44, 11, 'Brucey'], ['bonnie', 89, 30, 9, 'Jiminey']
+  ['friend', 61.5, 50, 11, 'Bolu'], ['bianca', 67, 52, 10.5, 'Bianca'], ['beefy', 78, 47, 11, 'Beefy'], ['brucey', 93, 44, 11, 'Brucey'], ['bonnie', 89, 30, 9, 'Jiminey']
 ];
-var SHED = {x: 36, b: 43.5, h: 27};   /* the shed (img/mount/shed.webp); click opens the shelves */
-var SHED_ROOF = [36, 66];
+var SHED = {x: 30, b: 47, h: 17};   /* the shed (img/mount/shed.webp); click opens the shelves */
+var SHED_ROOF = [29.5, 63];
 /* Layla's walk: [x, b, pause ms, pose while paused ('a' stand, 't' wave)]; stays inside x 37..54 so she never meets the people */
-var LAYLA_WP = [[47, 37, 1400, 'a'], [41, 27, 700, 'a'], [40, 13, 1600, 't'], [49, 8, 700, 'a'], [54, 20, 900, 'a'], [51, 34, 800, 'a'], [44, 38, 1100, 'a']];
-var LAYLA_X = [37, 54];
+var LAYLA_WP = [[47, 37, 1400, 'a'], [44, 28, 700, 'a'], [42, 13, 1600, 't'], [49, 8, 700, 'a'], [54, 20, 900, 'a'], [51, 34, 800, 'a'], [44, 38, 1100, 'a']];
+var LAYLA_X = [40, 54];
 var WALK_PX = 105;   /* Layla's speed, picture pixels per second (calm) */
 var STEP_PX = 34;    /* frame change every STEP_PX walked */
 /* Britney's day: walk / peck / fly / sit. Positions are where her feet are. */
@@ -111979,7 +111980,7 @@ var HEN_WALK_PX = 48;
 var FEED_SPOT = [44.5, 18], FEED_BRIT = [53, 15];
 var GRAINS = [[51, 13], [55.5, 16], [52.5, 18.5], [57, 12.5], [49.5, 16.5], [54, 11], [58, 17.5], [50.5, 11.5], [55, 20]];
 /* the shed's shelves, as % of the inside picture: [top of the shelf board, left, right] */
-var SHELVES = [[33, 12, 88], [58, 12, 88], [83, 12, 88]];
+var SHELVES = [[23.3, 15, 91], [42.7, 15, 91], [62.4, 15, 91]];
 var SHED_SKIP = {friend:1, bianca:1, beefy:1, brucey:1, bonnie:1, parents:1, yasmin:1, mo:1, monnie:1, coop:1, palace:1, swing:1, nestbox:1};
 var TREATS = ['pandan', 'latte', 'cookies'];
 var JOY_MS = 6000;
@@ -112119,7 +112120,7 @@ window.SQE_MOUNT = function(A){
     '@keyframes mgzoom{from{transform:scale(.6);opacity:.3}to{transform:none;opacity:1}}' +
     '.mg-shedin>img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}' +
     '.mg-shelf{position:absolute;display:flex;align-items:flex-end;justify-content:center;gap:1.4%;transform:translateY(-100%)}' +
-    '.mg-shelf .it{display:block;width:10.5%;aspect-ratio:1;flex:none;position:relative;outline:none}' +
+    '.mg-shelf .it{display:block;width:11%;aspect-ratio:1;flex:none;position:relative;outline:none}' +
     '.mg-shelf .it img,.mg-shelf .it svg{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 2px 0 rgba(0,0,0,.18))}' +
     '.mg-shelf .it b{position:absolute;left:50%;bottom:100%;transform:translateX(-50%);background:#fff;border:2px solid #1d1d1b;border-radius:8px;padding:1px 6px;font-size:12px;white-space:nowrap;opacity:0;transition:opacity .15s;pointer-events:none;z-index:2}' +
     '.mg-shelf .it:hover b,.mg-shelf .it:focus b{opacity:1}' +
