@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120022647";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120022737";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -2754,9 +2754,9 @@ html.dfv-on{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.jsv .jbf,.jsv .jbm1,.jsv .jbm2,.jsv .jbm3{animation:none!important}.jsv .jbf1{opacity:1}}
 
 /* map-layla3 + town night (20 Nov): Layla takes turns between 3 poses (ahead / glancing at Britney / waving), 7s each; Bert's shop shuts at night */
-.jsv .jlw1{animation:jm-l3 10.5s ease-in-out infinite}
-.jsv .jlw2{animation:jm-l3 10.5s ease-in-out infinite;animation-delay:-7s}
-.jsv .jlw3{opacity:0;animation:jm-l3 10.5s ease-in-out infinite;animation-delay:-3.5s}
+.jsv .jlw1{animation:jm-l3 8.4s ease-in-out infinite}
+.jsv .jlw2{animation:jm-l3 8.4s ease-in-out infinite;animation-delay:-5.6s}
+.jsv .jlw3{opacity:0;animation:jm-l3 8.4s ease-in-out infinite;animation-delay:-2.8s}
 @keyframes jm-l3{0%{opacity:1}30%{opacity:1}34%{opacity:0}96%{opacity:0}100%{opacity:1}}
 .jsv .jtnight{opacity:0}
 @media (prefers-reduced-motion:reduce){.jsv .jlw1{animation:none!important;opacity:1}.jsv .jlw2,.jsv .jlw3{animation:none!important;opacity:0}}
@@ -2785,6 +2785,17 @@ html.dfv-on{overflow:hidden}
  .head.nb .nbring .ring circle{transform:scale(.5946)}
  .head.nb.nb .ringtxt{max-width:84px;font-size:10.5px}
 }}
+/* banner-r3 middle band (721-1060px, e.g. Monnie's half-screen Mac window): the whole scene shown full width along the bottom over a sky fill,
+   Layla's staircase stands on the drawn grass at the left, title + dates + 3 stats + ring + Remember sit above the empty sky, clear of the sun and the girls */
+@media (min-width:721px) and (max-width:1060px){
+ .head.nb,.head.nb.compact{background-image:url(img/banner-bg4.webp),url(img/sky-tile.webp)!important;background-repeat:no-repeat,repeat!important;background-size:100% auto,800px auto!important;background-position:right bottom var(--tabh,50px),left top!important}
+ .head.nb.nb .nbstage{--nbh:clamp(230px,33cqw,330px);--nbw:calc(var(--nbh) * 600 / 616);display:grid;width:100%;grid-template-columns:var(--nbw) minmax(0,1fr);column-gap:14px;row-gap:0;padding:0 0 19cqw;align-items:start}
+ .head.nb.nb .nbl{grid-column:1;grid-row:1;align-self:end;margin-bottom:-15cqw}
+ .head.nb.nb .nbc{display:flex;grid-column:2;grid-row:1;width:auto;max-width:calc(74cqw - var(--nbw) - 30px);gap:8px}
+ .head.nb.nb.nb.nb .kw{grid-column:auto;width:100%!important}
+ .head.nb.nb .nbtitle h1{font-size:clamp(24px,3.4cqw,34px)}
+ .head.nb.nb .nbtitle .sub{font-size:13px;gap:0 10px}
+}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
