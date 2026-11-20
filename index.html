@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120101300";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120102018";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -3729,10 +3729,14 @@ a.tlink::after{content:none}
 .head .kw b{font-size:23px!important}
 .head .kw .kwd{font-size:19px!important;line-height:1.25!important}
 /* Monnie's test-mode badge (20 Nov 09:18) */
-.monbadge{position:fixed;right:12px;bottom:12px;z-index:99999;display:flex;align-items:center;gap:10px;flex-wrap:wrap;max-width:340px;background:#7B1FA2;color:#fff;border:3px solid #222;border-radius:14px;padding:8px 12px;box-shadow:0 3px 0 #222;font-size:14px;line-height:1.25}
-.monbadge b{font-size:16px;width:100%}
-.monbadge span{flex:1 1 160px}
-.monbadge button{background:#fff;color:#222;border:2px solid #222;border-radius:999px;font-weight:700;padding:4px 12px;cursor:pointer}
+.monbadge{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:40;display:flex;align-items:center;font-size:14px;line-height:1.25}
+/* 20 Nov 10:15 (Monnie): collapsed to a small side tab so it never covers game or pop-up buttons; sits under overlays (z 40) */
+.monbadge .montab{writing-mode:vertical-rl;transform:rotate(180deg);background:#7B1FA2;color:#fff;border:2px solid #222;border-right:0;border-radius:10px 0 0 10px;padding:10px 5px;font:inherit;font-weight:700;font-size:12px;cursor:pointer;opacity:.85}
+.monbadge .montab:hover{opacity:1}
+.monbadge .monmore{display:none;flex-direction:column;gap:6px;max-width:220px;margin-left:6px;background:#7B1FA2;color:#fff;border:2px solid #222;border-radius:12px;padding:8px 10px;box-shadow:0 3px 0 #222}
+.monbadge.open .monmore{display:flex}
+.monbadge .monmore b{font-size:15px}
+.monbadge .monoff{align-self:flex-start;background:#fff;color:#222;border:2px solid #222;border-radius:999px;font-weight:700;padding:4px 12px;cursor:pointer}
 
 /* QA 20 Nov: TEMP M/N/B test buttons only on Monnie's devices (visit once with ?monnie=1), so Layla can't free Britney with B */
 html:not(.monnie) .head .nbmbtn{display:none!important}
@@ -3936,6 +3940,7 @@ a.pkback:hover .pksign{transform:rotate(-3deg) scale(1.05)}
 @media (prefers-reduced-motion:reduce){.bhandback .bhb-lay,.bhandback .bhb-lay img{animation:none!important}.bhandback .bhb-lay img:not(.s0):not(.hd){opacity:0!important}.bhandback .bhb-lay img.s0,.bhandback .bhb-lay img.hd{opacity:1!important}.bhandback .bhb-brit{display:none}}
 /* The Mount: everything under the fancy title is Calibri (Monnie 10:01); the title keeps its house-sign lettering, the town tabs keep theirs */
 :is(.mount,.mg-shedbox,#_#_#_) *:not(.mount-sign):not(.town-nav):not(.town-nav *):not(svg):not(svg *){font-family:Calibri,Carlito,"Segoe UI",Candara,Arial,sans-serif!important}
+.bossg .bspeech,.tb-red .bspeech{border-color:var(--bsp-line)!important;background:var(--bsp-bg)!important}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -106691,7 +106696,17 @@ window.SQE_PODCASTS = {
   "tort/remedies": {file: "podcasts/tort-08-remedies.m4a", mins: 24},
   "contract/privity-third-parties": {file: "podcasts/contract-04-privity-third-parties.m4a", mins: 24},
   "contract/express-terms": {file: "podcasts/contract-05-express-terms.m4a", mins: 25},
-  "contract/implied-terms": {file: "podcasts/contract-06-implied-terms.m4a", mins: 26}
+  "contract/implied-terms": {file: "podcasts/contract-06-implied-terms.m4a", mins: 26},
+  "ethics/principles-competence": {file: "podcasts/ethics-01-principles-competence.m4a", mins: 24},
+  "ethics/trust-fairness-undertakings": {file: "podcasts/ethics-02-trust-fairness-undertakings.m4a", mins: 21},
+  "ethics/instructions-capacity-service": {file: "podcasts/ethics-04-instructions-capacity-service.m4a", mins: 19},
+  "ethics/client-money": {file: "podcasts/ethics-05-client-money.m4a", mins: 23},
+  "ethics/business-referrals-publicity": {file: "podcasts/ethics-06-business-referrals-publicity.m4a", mins: 23},
+  "ethics/conflicts-of-interest": {file: "podcasts/ethics-07-conflicts-of-interest.m4a", mins: 24},
+  "ethics/confidentiality-disclosure": {file: "podcasts/ethics-08-confidentiality-disclosure.m4a", mins: 23},
+  "ethics/cooperation-reporting": {file: "podcasts/ethics-09-cooperation-reporting.m4a", mins: 22},
+  "ethics/complaints-legal-ombudsman": {file: "podcasts/ethics-10-complaints-legal-ombudsman.m4a", mins: 15},
+  "ethics/firms-compliance-protections": {file: "podcasts/ethics-11-firms-compliance-protections.m4a", mins: 20}
 };
 
 ;
@@ -126441,6 +126456,7 @@ var CSS = [
 '.scn-st .k,.scn-mn,.scn-xq .qmeta{color:var(--ink)}',
 '.scn-revisit .t small{color:var(--ink);opacity:.8}',
 '.scn-nextup{margin:12px 0 4px}',
+'.qt-card{text-align:center}.qt-card .qt-s{font-size:clamp(19px,2.4vw,24px);line-height:1.35;font-weight:700;margin:10px auto 16px;max-width:30em}.qt-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}.qt-b{min-width:130px;font-size:20px!important;padding:12px 22px!important;border:3px solid #1b1b1b!important;box-shadow:3px 3px 0 #1b1b1b!important;border-radius:999px!important;color:#fff!important}.qt-t{background:#2E9E5B!important}.qt-f{background:#E8453C!important}.qt-r{font-size:18px;line-height:1.4;max-width:32em;margin:6px auto 0;padding:12px 14px;border-radius:14px;border:3px solid #1b1b1b}.qt-r.ok{background:#DDF6E4}.qt-r.no{background:#FFE3E0}',
 '.scn-xres{margin-top:12px}',
 /* britney-asks (19 Nov): Britney's speech bubble + big faces on the exit pass screen */
 '.scn-brit{margin:16px auto 6px;max-width:640px;background:#FFF0F6;border:2.5px solid #1b1b1b;border-radius:20px;box-shadow:4px 4px 0 #1b1b1b;padding:14px 14px 16px;color:#1b1b1b}',
@@ -126666,7 +126682,8 @@ var CSS = [
 '.hub-art:has(.hub-hs:hover) .hub-hs:not(:hover) .scn-lab,.hub-art:has(.hub-hs:hover) .hub-hs:not(:hover) .scn-nexttag{display:none}',
 '.hub-art:has(.hub-hs:hover) .hub-hs.next:not(:hover){animation:none}',
 /* rooms: like the hall, a spot's label shows only on hover (and the Next spot's always), so labels never pile up or overlap; while one is hovered the others hide */
-'html.scn-rooms .scn-art:not(.hub-art) .scn-hs:not(.door):not(.next) .scn-lab{display:none}',
+'html.scn-rooms .scn-art:not(.hub-art) .scn-hs:not(.door) .scn-lab{display:none}',
+'html.scn-rooms .scn-art:not(.hub-art) .scn-hs.next:hover .scn-nexttag,html.scn-rooms .scn-art:not(.hub-art) .scn-hs.next:focus-visible .scn-nexttag{display:none}',
 'html.scn-rooms .scn-art:not(.hub-art) .scn-hs:not(.door):hover .scn-lab,html.scn-rooms .scn-art:not(.hub-art) .scn-hs:not(.door):focus-visible .scn-lab{display:block}',
 'html.scn-rooms .scn-art .scn-hs.lay .scn-lab{display:block!important;visibility:hidden}',
 'html.scn-rooms .scn-art:not(.hub-art) .scn-hs:hover,html.scn-rooms .scn-art:not(.hub-art) .scn-hs:focus-visible{z-index:9}',
@@ -126728,7 +126745,12 @@ window.SQE_SCENE = function(A){
   function steps(k, h){
     var st = [];
     if (h.big && A.NOTECHECK[k] && A.NOTECHECK[k].big) st.push({k: 'big', sec: 'The big idea'});
-    cardsOf(k, h).forEach(function(c){ st.push({k: 'card', sec: c.sec, c: c.c}); });
+    var cl = cardsOf(k, h), qts = qtPool(k, h), used = [];
+    cl.forEach(function(c, ci){ st.push({k: 'card', sec: c.sec, c: c.c});
+      if (qts && (ci + 1) % 3 === 0 && ci < cl.length - 1){ var near = cl.slice(Math.max(0, ci - 2), ci + 1).map(function(z){ return z.c; }), q = null;
+        for (var qi = 0; qi < qts.length && !q; qi++) if (used.indexOf(qi) < 0 && near.indexOf(qts[qi].card) >= 0) q = qi;
+        for (qi = 0; qi < qts.length && q == null; qi++) if (used.indexOf(qi) < 0) q = qi;
+        if (q != null){ used.push(q); st.push({k: 'qt', sec: 'Quick tap', q: qts[q].x}); } } }); /* Monnie 20 Nov: every 4th click-through is something to do, not just reading */
     var chk = h.check === null ? null : checkHTML(k, h.check, secOf(k, h).h);
     if (h.label === 'Jar: Partnership' && bulletsOn()){ st.push({k: 'bx', w: 'spot', sec: 'Quick play'}); st.push({k: 'bx', w: 'tf', sec: 'Quick play'}); } /* bullets-sample extras */
     if (chk) st.push({k: 'check', sec: secOf(k, h).h, html: chk});
@@ -126739,13 +126761,21 @@ window.SQE_SCENE = function(A){
   function actPos(k, h){ var v = ROOMV3[k.split('/')[1]], o = v && v.order; if (o && o.length && typeof o[0] === 'string'){ var i = o.indexOf(h.id); if (i >= 0) return i + 1; } return order(k).indexOf(h) + 1; }
   function saNorm(x){ return String(x || '').replace(/[^A-Za-z0-9]/g, '').toLowerCase(); }
   function saCard(d, x){ var sec = d.sections[x.s[0]], cs = sec && sec.cards || [], c = saNorm(x.ct); if (c) for (var i = 0; i < cs.length; i++) if (saNorm(cs[i].title).indexOf(c) === 0) return i; return x.s[1]; }
-  function actOf(k, h){ if (!ROOMS_ON || !h || !k || !h.cards) return null; var R0 = SPOTACTS[k.split('/')[1]], d = deck(k); if (!R0 || !d) return null; var p = actPos(k, h); if (!p || p % 4) return null;
-    var kind = ['burst', 'catch', 'sort'][(p / 4 - 1) % 3], h0 = h.cards[0][0];
+  function actOf(k, h){ if (!ROOMS_ON || !h || !k || !h.cards) return null; var R0 = SPOTACTS[k.split('/')[1]], d = deck(k); if (!R0 || !d) return null; var p = actPos(k, h); if (!p || p % 3) return null; /* Monnie 20 Nov 10:18: a few more hands-on games than every 4th spot */
+    var kind = ['burst', 'catch', 'sort'][(p / 3 - 1) % 3], h0 = h.cards[0][0];
     function inR(x){ var sc = x.s[0], i = saCard(d, x); return h.cards.some(function(c){ if (c[0] !== sc || !d.sections[sc]) return false; var ab = range(d.sections[sc].cards || [], c); return i >= ab[0] && i < ab[1]; }); }
     function top(got, all){ if (got.length >= 4) return got.slice(0, 10); var rest = all.filter(function(x){ return got.indexOf(x) < 0; }).sort(function(a, b){ return Math.abs(a.s[0] - h0) - Math.abs(b.s[0] - h0) || a.s[0] - b.s[0] || a.s[1] - b.s[1]; }); return got.concat(rest.slice(0, Math.max(0, 6 - got.length))); } /* fewer than 4 of its own: top up from the nearest sections */
     if (kind === 'sort'){ for (var j = 0; j < R0.sets.length; j++){ var m = R0.sets[j].items.filter(inR); if (m.length >= 4) return {id: h.id, kind: 'sort', bins: R0.sets[j].bins, items: m}; }
       var tf = top(R0.tf.filter(inR), R0.tf); return tf.length ? {id: h.id, kind: 'sort', bins: ['True', 'False'], items: tf.map(function(x){ return {t: x.t, bin: x['true'] ? 0 : 1, why: x.fix}; })} : null; }
     var it = top(R0.tf.filter(inR), R0.tf); return it.length ? {id: h.id, kind: kind, items: it} : null; }
+  function qtPool(k, h){ if (!ROOMS_ON || !h || !h.cards) return null; var R0 = SPOTACTS[k.split('/')[1]], d = deck(k); if (!R0 || !d || !R0.tf.length) return null; var h0 = h.cards[0][0];
+    var mine = [], rest = []; R0.tf.forEach(function(x){ var sec = d.sections[x.s[0]], i = saCard(d, x), card = sec && sec.cards && sec.cards[i], inn = h.cards.some(function(c){ if (c[0] !== x.s[0] || !sec) return false; var ab = range(sec.cards || [], c); return i >= ab[0] && i < ab[1]; }); (inn ? mine : rest).push({x: x, card: card}); });
+    rest.sort(function(a, b){ return Math.abs(a.x.s[0] - h0) - Math.abs(b.x.s[0] - h0) || a.x.s[0] - b.x.s[0] || a.x.s[1] - b.x.s[1]; });
+    return mine.concat(rest); }
+  function qtCard(p, key){ var x = p.q, v = SC.qt && SC.qt[key], ok = v != null && (v === 1) === !!x['true'];
+    return '<div class="lrn-card lrn-chk qt-card"><div class="lrn-ico" aria-hidden="true">⚡</div><h3 class="lrn-t">True or false?</h3><p class="qt-s">' + esc(x.t) + '</p>' +
+      (v == null ? '<div class="qt-btns"><button type="button" class="btn qt-b qt-t" data-scn="qtf" data-v="1">True</button><button type="button" class="btn qt-b qt-f" data-scn="qtf" data-v="0">False</button></div>'
+        : '<p class="qt-r ' + (ok ? 'ok' : 'no') + '"><b>' + (ok ? 'Yes! ' : 'Not quite. ') + 'It\'s ' + (x['true'] ? 'true' : 'false') + '.</b>' + (x.fix ? ' ' + esc(x.fix) : '') + '</p>') + '</div>'; }
   function actDone(k, h){ var o = state(k); return !!(o.open[h.id] || o.acts[h.id]); }
   var SA_NAME = {burst: 'Sweets explosion', 'catch': 'Catch the true facts', sort: 'Sort onto the trays'};
   var SA_HOW = {burst: 'The jar bursts and sweets fly out. Tap only the true ones before their fuse runs out.', 'catch': 'Facts whizz past one at a time. Tap the true ones into the container. Let the false ones go.', sort: 'Drag each card onto the right tray, or tap a tray.'};
@@ -127230,7 +127260,7 @@ window.SQE_SCENE = function(A){
       [lab, tag].forEach(function(e){ if (e){ e.classList.remove('js', 'up'); e.style.left = e.style.top = e.style.width = e.style.maxWidth = e.style.fontSize = ''; } });
       var pin = hs.querySelector('.scn-pin'); if (pin && getComputedStyle(pin).display !== 'none') obst.push(labRect(pin, art));
       var vis = function(e){ return e && getComputedStyle(e).display !== 'none' && !hs.classList.contains('open'); };
-      if ((HUB || ROOMS_ON) && lab && !vis(lab) && !hs.classList.contains('locked')){ hs.classList.add('lay'); jobs.push({hs: hs, lab: lab, tag: null, solo: true}); return; } /* hall hover label: placed now, shown on hover */
+      if ((HUB || ROOMS_ON) && lab && !vis(lab) && !hs.classList.contains('locked')){ hs.classList.add('lay'); jobs.push({hs: hs, lab: lab, tag: null, solo: true}); if (vis(tag)) jobs.unshift({hs: hs, lab: null, tag: tag}); return; } /* Monnie 20 Nov: no 'X is next' sentence; the Next tag alone sits under the glowing object */ /* hall hover label: placed now, shown on hover */
       if (vis(lab) || vis(tag)) jobs[hs.classList.contains('next') ? 'unshift' : 'push']({hs: hs, lab: vis(lab) ? lab : null, tag: vis(tag) ? tag : null});
     });
     jobs.forEach(function(j){ var hs = j.hs, hr = {x: hs.offsetLeft, y: hs.offsetTop, w: hs.offsetWidth, h: hs.offsetHeight}, bx = hs.offsetLeft + hs.clientLeft, by = hs.offsetTop + hs.clientTop, lr = null;
@@ -127243,6 +127273,9 @@ window.SQE_SCENE = function(A){
         if (lr){ var cx = lr.x + lr.w / 2, cands = [{x: cx - tw / 2, y: lr.y - th - 3}, {x: cx - tw / 2, y: lr.y + lr.h + 6, up: true}, {x: lr.x - tw - 4, y: lr.y + (lr.h - th) / 2}, {x: lr.x + lr.w + 4, y: lr.y + (lr.h - th) / 2}], best = null;
           cands.forEach(function(c, ci){ var r = {x: Math.max(4, Math.min(W - 4 - tw, c.x)), y: Math.max(4, Math.min(H - 4 - th, c.y)), w: tw, h: th}, ov = 0; obst.forEach(function(o){ ov += labOver(r, o); }); var sc = ov * 40 + ci * 30 + Math.abs(r.x - c.x) + Math.abs(r.y - c.y) * 2; if (!best || sc < best.sc){ best = r; best.sc = sc; best.up = !!c.up; } });
           tr = best; up = best.up; }
+        else if (ROOMS_ON && !HUB){ var ccx = hr.x + hr.w / 2, bst = null; /* rooms: straight under the object pointing up at it, or above it pointing down if there's no room below */
+          [{x: ccx - tw / 2, y: hr.y + hr.h + 4, up: true}, {x: ccx - tw / 2, y: hr.y - th - 4}].forEach(function(c, ci){ var fits = c.y >= 2 && c.y + th <= H - 2, r = {x: Math.max(4, Math.min(W - 4 - tw, c.x)), y: Math.max(2, Math.min(H - 2 - th, c.y)), w: tw, h: th}, ov = 0; obst.forEach(function(o){ ov += labOver(r, o); }); var sc = (fits ? 0 : 1e6) + ov * 4 + ci * 200; if (!bst || sc < bst.sc){ bst = r; bst.sc = sc; bst.up = !!c.up; } });
+          tr = bst; up = bst.up; lr = 1; }
         else tr = labBest({x: tp.x, y: tp.y, w: tw, h: th}, tw, th, W, H, obst);
         if (lr) j.tag.classList.add(up ? 'up' : 'dn');
         j.tag.style.left = Math.round(tr.x - bx) + 'px'; j.tag.style.top = Math.round(tr.y - by) + 'px'; obst.push({x: tr.x, y: tr.y, w: tw, h: th}); }
@@ -127277,7 +127310,7 @@ window.SQE_SCENE = function(A){
     var hs = view.hotspots.map(function(h, i){
       var dn = done && done[h.id], pos = 'left:' + h.x + '%;top:' + h.y + '%;width:' + h.w + '%;height:' + h.h + '%';
       if (h.leaf) return '<button type="button" class="scn-hs door' + (SC.entering ? ' open' : '') + '" style="' + pos + (view.img ? ';background:#FFE9F3 url(img/scene/shop-hall2.webp) 50% 70%/auto 100% no-repeat' : '') + '" data-scn="door" aria-label="' + esc(h.label) + '"><span class="scn-leaf"' + (view.img ? ' style="background:url(' + esc(view.img) + ') ' + (h.x / (100 - h.w) * 100).toFixed(2) + '% ' + (h.y / (100 - h.h) * 100).toFixed(2) + '%/' + (10000 / h.w).toFixed(2) + '% ' + (10000 / h.h).toFixed(2) + '% no-repeat">' : '>' + h.leaf()) + '</span><span class="scn-lab">' + esc(h.label) + '</span></button>';
-      return '<button type="button" class="scn-hs' + (dn ? ' done' : '') + (h.id === nx ? ' next' : '') + '" style="' + pos + '" data-scn="obj" data-id="' + esc(h.id) + '" aria-label="' + (i + 1) + '. ' + esc(h.label) + (dn ? ' (opened)' : '') + '"><span class="scn-pin" aria-hidden="true">' + (i + 1) + '</span>' + (lt ? '<span class="scn-ico" aria-hidden="true">' + esc(h.icon || '🍬') + '</span>' : '') + '<span class="scn-lab">' + esc(h.label) + '</span>' + (dn ? '<span class="scn-tick" aria-hidden="true">✓</span>' : '') + (h.id === nx ? '<span class="scn-nexttag" aria-hidden="true"><span class="d">Next ↓</span><span class="m">↑ Next</span></span>' : '') + '</button>';
+      return '<button type="button" class="scn-hs' + (dn ? ' done' : '') + (h.id === nx ? ' next' : '') + '" style="' + pos + '" data-scn="obj" data-id="' + esc(h.id) + '" aria-label="' + (i + 1) + '. ' + esc(h.label) + (dn ? ' (opened)' : '') + '"><span class="scn-pin" aria-hidden="true">' + (i + 1) + '</span>' + (lt ? '<span class="scn-ico" aria-hidden="true">' + esc(h.icon || '🍬') + '</span>' : '') + '<span class="scn-lab">' + esc(ROOMS_ON ? String(h.label).replace(/^[^:]{2,70}:\s+(?=\S)/, '') : h.label) + '</span>' + (dn ? '<span class="scn-tick" aria-hidden="true">✓</span>' : '') + (h.id === nx ? '<span class="scn-nexttag" aria-hidden="true"><span class="d">Next ↓</span><span class="m">↑ Next</span></span>' : '') + '</button>';
     }).join('');
     if (lt){ var n0 = view.hotspots.length; hs += extras(k).map(function(e, j){ var h = e.h, dn = exDone(k, e), pos = 'left:' + h.x + '%;top:' + h.y + '%;width:' + h.w + '%;height:' + h.h + '%';
       return '<button type="button" class="scn-hs sp' + (dn ? ' done' : '') + (e.id === nx ? ' next' : '') + '" style="' + pos + '" data-scn="' + e.act + '" aria-label="' + (n0 + j + 1) + '. ' + esc(h.label || e.id) + (dn ? ' (done)' : '') + '"><span class="scn-pin" aria-hidden="true">' + (n0 + j + 1) + '</span><span class="scn-ico" aria-hidden="true">' + esc(h.icon || '🎬') + '</span><span class="scn-lab">' + esc(h.label || e.id) + '</span>' + (dn ? '<span class="scn-tick" aria-hidden="true">✓</span>' : '') + (e.id === nx ? '<span class="scn-nexttag" aria-hidden="true"><span class="d">Next ↓</span><span class="m">↑ Next</span></span>' : '') + '</button>'; }).join(''); }
@@ -127309,6 +127342,7 @@ window.SQE_SCENE = function(A){
       else if (p.k === 'check') card = '<div class="lrn-card lrn-chk"><div class="lrn-ico" aria-hidden="true">⚡</div><h3 class="lrn-t">Quick check</h3><p class="lrn-sub">Has that gone in? Tap an answer.</p>' + p.html + '</div>';
       else if (p.k === 'bx') card = ''; /* bullets-sample extras: drawn below */
       else if (p.k === 'act') card = actCard(k, h, p.a);
+      else if (p.k === 'qt') card = qtCard(p, h.id + '/' + i);
       else card = A.learnCard(p.c);
       if (bulletsOn()){ /* bullets live in every jar; guess-first case + games only in the Partnership jar */
         if (p.k === 'bx') card = bxCard(p.w);
@@ -127317,7 +127351,7 @@ window.SQE_SCENE = function(A){
       }
       var last = i === n - 1, dn2 = !!state(k).open[h.id];
       inner = '<div class="scn-st"><div><div class="k">' + esc(h.label.split(':')[0]) + ' · ' + esc(p.sec) + '</div><h2 id="scn-mt">' + inl(titleOf(k, h)) + '</h2></div><button type="button" class="scn-x" data-scn="close" aria-label="Close">✕</button></div>' +
-        '<div class="scn-mbar" role="progressbar" aria-valuemin="1" aria-valuemax="' + n + '" aria-valuenow="' + (i + 1) + '"><i style="width:' + Math.round((i + 1) / n * 100) + '%"></i></div><div class="scn-mn">' + (p.k === 'act' ? 'Last one: now play it' : p.k === 'check' ? (st[n - 1].k === 'act' ? 'Quick check' : 'Last one: quick check') : (i + 1) + ' of ' + st.filter(function(q){ return q.k !== 'check' && q.k !== 'act'; }).length) + '</div>' + card +
+        '<div class="scn-mbar" role="progressbar" aria-valuemin="1" aria-valuemax="' + n + '" aria-valuenow="' + (i + 1) + '"><i style="width:' + Math.round((i + 1) / n * 100) + '%"></i></div><div class="scn-mn">' + (p.k === 'act' ? 'Last one: now play it' : p.k === 'check' ? (st[n - 1].k === 'act' ? 'Quick check' : 'Last one: quick check') : (p.k === 'qt' ? 'Quick tap' : (st.slice(0, i + 1).filter(function(q){ return q.k !== 'check' && q.k !== 'act' && q.k !== 'qt'; }).length) + ' of ' + st.filter(function(q){ return q.k !== 'check' && q.k !== 'act' && q.k !== 'qt'; }).length)) + '</div>' + card +
         '<div class="scn-nav"><button type="button" class="btn" data-scn="prev"' + (i ? '' : ' disabled') + '>‹ Back</button>' +
         (last ? '<button type="button" class="btn scn-eat' + ((ROOMS_ON && p.k === 'check' && /class="nck"/.test(p.html)) || (p.k === 'act' && !actDone(k, h)) ? ' wait" aria-disabled="true' : '') + '" data-scn="eat">' + (dn2 ? '✓ Done' : '🍬 Done! Eat it') + '</button>' : '<button type="button" class="btn primary" data-scn="next">Next ›</button>') + '</div>';
     }
@@ -127434,7 +127468,7 @@ window.SQE_SCENE = function(A){
       if (!LT) h += '<p class="scn-hint">' + (n === N ? '🏆 You\'ve opened everything! Open any sweet again to go over it. <button type="button" class="lrn-link" data-scn="restock">↺ Restock the shop (start again)</button>' : 'The glowing one is a good next pick, but you can open them in any order.') + '</p>';
       if (LT){ roomFin(k); h += roomDone(k) ? endHTML(k) : '<p class="scn-lock">🔒 Open everything' + (EX.length ? ', then play the ' + EX.map(function(e){ return e.id === 'game' ? 'mini-game' : 'scenario'; }).join(' and the ') : '') + '. Then Britney asks how the topic went.</p>'; }
       else { h += n === N ? leaveBtn(k) : '<p class="scn-lock">🔒 Open all ' + N + ' to unlock the exit quiz: 🚪 Leave the shop (' + exitLabel(k) + ').</p>'; if (rk(k) && roomDone(k)){ roomFin(k); h += endHTML(k); } }
-      h += '<ol class="scn-list">' + order(k).map(function(hh, i){ var dn = o.open[hh.id]; return '<li class="' + (dn ? 'done' : '') + (hh.id === nx ? ' next' : '') + '"><button type="button" data-scn="obj" data-id="' + esc(hh.id) + '"><span class="n">' + (dn ? '✓' : i + 1) + '</span><span class="t">' + esc(hh.label) + '<small>' + (function(st){ var c = st.filter(function(q){ return q.k !== 'check' && q.k !== 'act'; }).length, ga = st.some(function(q){ return q.k === 'act'; }); return c + ' cards' + (st.some(function(q){ return q.k === 'check'; }) ? ' + quick check' : '') + (ga ? ' + game' : ''); })(steps(k, hh)) + (dn ? ' · opened' : hh.id === nx ? ' · next' : '') + '</small></span></button></li>'; }).join('') +
+      h += '<ol class="scn-list">' + order(k).map(function(hh, i){ var dn = o.open[hh.id]; return '<li class="' + (dn ? 'done' : '') + (hh.id === nx ? ' next' : '') + '"><button type="button" data-scn="obj" data-id="' + esc(hh.id) + '"><span class="n">' + (dn ? '✓' : i + 1) + '</span><span class="t">' + esc(hh.label) + '<small>' + (function(st){ var c = st.filter(function(q){ return q.k !== 'check' && q.k !== 'act' && q.k !== 'qt'; }).length, ga = st.some(function(q){ return q.k === 'act'; }); return c + ' cards' + (st.some(function(q){ return q.k === 'check'; }) ? ' + quick check' : '') + (ga ? ' + game' : ''); })(steps(k, hh)) + (dn ? ' · opened' : hh.id === nx ? ' · next' : '') + '</small></span></button></li>'; }).join('') +
         EX.map(function(e, j){ var dn = exDone(k, e), sp = e.h, G = e.id === 'game'; return '<li class="sp' + (dn ? ' done' : '') + (e.id === nx ? ' next' : '') + '"><button type="button" data-scn="' + e.act + '"><span class="n">' + (dn ? '✓' : order(k).length + j + 1) + '</span><span class="t">' + esc(sp.label || sp.title) + '<small>' + (G ? '30-second mini-game' : 'Scenario: ' + sp.steps.length + ' parts') + (dn ? ' · done' : e.id === nx ? ' · next' : '') + '</small></span></button></li>'; }).join('') + bonusLi(k) + '</ol>';
     }
     if (!SC.demoDone && /[?&]exitdemo=1\b/.test(location.search)){ SC.demoDone = true; var di = exitPool(k); if (di.length) SC.exit = {k: k, items: di, i: di.length, ans: di.map(function(){ return {ok: true}; }), saved: true}; } /* preview only: ?exitdemo=1 opens the passed exit screen without saving anything */
@@ -127509,6 +127543,7 @@ window.SQE_SCENE = function(A){
     if (a === 'gspot' && SC.game){ var P4 = SC.game.rounds[SC.game.ri], si = +b.getAttribute('data-i'); if (!P4.shown){ if (P4.sel[si]) delete P4.sel[si]; else P4.sel[si] = 1; gpaint(); } return; }
     if (a === 'gspotrev' && SC.game){ var G5 = SC.game, P5 = G5.rounds[G5.ri]; P5.shown = true; P5.lines.forEach(function(l, i){ var on = !!P5.sel[i]; if (!l.bad && !on) return; G5.total++; if (on === !!l.bad) G5.right++; else G5.wrong.push({t: l.t, a: l.bad ? 'has a mistake' : 'is correct', why: l.why || ''}); }); gpaint(); navIntoView(); return; }
     if (a === 'gburst'){ burstTap(b); return; }
+    if (a === 'qtf' && SC.open){ SC.qt = SC.qt || {}; SC.qt[SC.open + '/' + SC.step] = +b.getAttribute('data-v'); paint(); return; }
     if (a === 'actgo' && SC.open){ var h9 = hsById(SCENES[k], SC.open), gd9 = actGame(k, h9); if (!gd9) return; var o9 = state(k); if (!o9.open[h9.id]){ o9.pos[h9.id] = steps(k, h9).length - 1; try { A.save(); } catch(er){} } gameStart(k, gd9); return; }
     if (a === 'actskip' && SC.open){ var o10 = state(k); if (!o10.acts[SC.open]) o10.acts[SC.open] = {skip: Date.now()}; try { A.save(); } catch(er){} paint(); return; }
     if (a === 'gdone' && SC.game && SC.game.g && SC.game.g.act){ var G8 = SC.game, o8 = state(k), id8 = G8.g.act, h8 = hsById(SCENES[k], id8); o8.acts[id8] = {at: Date.now(), score: G8.right, n: G8.total}; earnC(Math.min(3, G8.right), 'room|' + k + '|act|' + id8); SC.game = null; stopTimer(); try { A.save(); } catch(er){} if (h8){ SC.open = id8; SC.step = steps(k, h8).length - 1; SC.gate = false; SC.yay = false; SC.exit = null; } A.render(); return; }
@@ -130750,7 +130785,7 @@ function todoHTML(it){
   if (it.part === "start" || it.part === "continue") return '<li class="tdtopic"><b>' + esc(tnum(x)) + '</b> ' + esc(x.t.title) + ' <span class="muted small">' + fmtM(it.m) + '</span><ul class="tdsteps">' +
     '<li><button class="tdbox' + (stepDone(x, "notes") ? " on" : "") + '" data-act="todo" data-k="' + x.key + '|notes" aria-label="Tick off">' + (stepDone(x, "notes") ? "✓" : "") + '</button><a href="' + topicSteps(x)[0].h + '">' + (/Sweet Shop/.test(topicSteps(x)[0].l) ? topicSteps(x)[0].l.replace(/^Step 1: 🍬 Visit/, "🍬 " + (it.part === "start" ? "Start" : "Carry on in")) + (it.part === "start" ? " (big topic, it carries on next session)" : "") : "📝 " + (it.part === "start" ? "Start reading the notes (big topic, it carries on next session)" : "Carry on reading the notes")) + '</a><span class="tdmin">' + fmtM(it.m) + '</span></li></ul></li>';
   var st = topicSteps(x), sm = stepMins(x, it.m), bwon = bossS().won[x.key];
-  var brow = false /* 20 Nov: Bert off topic lists */ ? '<li class="tdboss' + (bwon ? ' won' : '') + '"><img class="bert" src="img/boss/bert-knife.webp" alt="" width="612" height="800" loading="lazy"><a href="#/boss/' + x.s.id + '/' + x.t.id + '">' + (bwon ? '🏆 You beat Bert the butcher on this topic' : '⭐ Optional bonus: 🥊 Bert the butcher challenges you!') + '</a></li>' : '';
+  var brow = false /* 20 Nov: Bert off topic lists */ ? '<li class="tdboss' + (bwon ? ' won' : '') + '"><img class="bert" src="img/boss/bert-knife.webp" alt="" width="612" height="800" loading="lazy"><a href="#/boss/' + x.s.id + '/' + x.t.id + '">' + (bwon ? '🏆 You beat Bert the butcher on this topic' : '⭐ Optional bonus: Bert the butcher challenges you!') + '</a></li>' : '';
   return '<li class="tdtopic"><b>' + esc(tnum(x)) + '</b> ' + esc(x.t.title) + ' <span class="muted small">' + fmtM(it.m) + (it.part === "finish" ? " · finish this topic" : "") + '</span><ul class="tdsteps">' + st.map(function(z){ var dn = stepDone(x, z.k); return '<li><button class="tdbox' + (dn ? " on" : "") + '"' + (z.auto ? ' disabled title="' + (z.autoT || 'Ticks itself when you rate the topic') + '"' : ' data-act="todo" data-k="' + x.key + '|' + z.k + '"') + ' aria-label="Tick off">' + (dn ? "✓" : "") + '</button><a href="' + z.h + '">' + z.l + '</a>' + (z.alt || '') + (sm(z.k) ? '<span class="tdmin">' + fmtM(sm(z.k)) + '</span>' : '') + '</li>'; }).join("") + brow + '</ul></li>';
 }
 function topicStepCount(x){ var st = topicSteps(x), d = st.filter(function(z){ return stepDone(x, z.k); }).length; return [d, st.length]; }
@@ -130798,7 +130833,7 @@ function viewPlan(){
       else if (!x.m) h += x.d.slice(5) === "12-25" ? '<b class="hol">CHRISTMAS DAY!!! 🎄</b>' : x.d.slice(5) === "01-01" ? '<b class="hol">NEW YEAR\'S DAY!!! 🎆</b>' : '<span class="muted">Day off. Rest is part of revision 😴</span>';
       else if (x.rev) h += '<a href="' + x.rev.href + '"><b>' + esc(x.rev.t) + '</b></a><div class="small muted">' + esc(x.rev.sub) + '</div>';
       else h += '<ul class="plist">' + x.items.map(planItemHTML).join("") + '</ul>' + (x.reviews.length || x.mixed ? '<div class="small revline">🔁 Review: ' + x.reviews.map(function(rv){ return '<a href="#/quick/' + rv.x.s.id + '/' + rv.x.t.id + '">' + esc(tnum(rv.x)) + '</a>'; }).join(", ") + (x.mixed ? (x.reviews.length ? ' + ' : '') + '🔀 mixed quiz' : '') + '</div>' : '');
-      if (x.bert && x.bert.length && x.m) h += '<div class="small revline">' + x.bert.map(function(b){ return '🥊 <a href="#/town/butcher/' + b.s.id + '">Bert\'s Butchers: ' + esc(b.s.title) + ' test</a>'; }).join(", ") + '</div>'; /* town preview (?town=1) only */
+      if (x.bert && x.bert.length && x.m) h += '<div class="small revline">' + x.bert.map(function(b){ return '<a href="#/town/butcher/' + b.s.id + '">Bert\'s Butchers: ' + esc(b.s.title) + ' test</a>'; }).join(", ") + '</div>'; /* town preview (?town=1) only */
       h += '</div></div>';
     });
     h += '</div>';
@@ -132665,7 +132700,7 @@ function howItWorks(){
     li('🌾 <b>Feeding:</b> do half of today\'s tasks' + (c.n ? ' (' + c.need + ' of ' + c.n + ')' : '') + ', then tap Feed Britney.') +
     li('🤒 <b>Hunger:</b> 3 days without feed and she gets very ill. Medicine (' + medPrice().p + ' coins) makes her well. She never dies.') +
     li('🐣 <b>Chicks:</b> Britney may lay a special egg on fed days (more likely with the nesting box or golden corn). It hatches into a new baby chick for her flock (Britney herself is always here). Up to ' + BROOD_MAX + ' chicks.') +
-    li('🥊 <b>Bert:</b> get ' + BOSS_WIN + ' of ' + BOSS_N + ' right to win ' + BOSS_CHEST + ' coins. Get ' + (BOSS_N - BOSS_WIN + 1) + ' wrong on a new topic and he takes Britney until you rescue her (or pay ' + BOSS_RANSOM + ').') +
+    li('<b>Bert:</b> get ' + BOSS_WIN + ' of ' + BOSS_N + ' right to win ' + BOSS_CHEST + ' coins. Get ' + (BOSS_N - BOSS_WIN + 1) + ' wrong on a new topic and he takes Britney until you rescue her (or pay ' + BOSS_RANSOM + ').') +
     li('🥚 <b>Topic eggs:</b> revise a topic for an egg, pass its Quick fire to hatch it, rate it green 🟢 to grow it.') +
     '</ul><details class="hiwmore"><summary>Exact coin amounts</summary>' + earnList() + '</details></details>';
 }
@@ -132685,7 +132720,7 @@ function viewPalace(r){
   h += '<div class="cbasay mood-' + m.cls + '"><b>' + esc(L.away ? "Palace butler" : L.ill ? "Palace vet" : nm) + ':</b> ' + esc(m.t) + '</div>';
   h += bossChestCard() + (L.away ? bossCaptivePanel("palace") : '');
   h += needCard() + feedPanel("palace") + broodCard();
-  if (!L.away) h += '<a class="palcard bpalcard" href="#/town/butcher"><img class="bert" src="img/boss/bert-knife.webp" alt="" width="612" height="800" loading="lazy"><span><b>🥊 Face the Butcher</b><span class="small">Bert quizzes you at the end of each topic. You\'ve beaten him on ' + plural(Object.keys(bossS().won).length, "topic") + '. Rules are in How it works below.</span></span></a>';
+  if (!L.away) h += '<a class="palcard bpalcard" href="#/town/butcher"><img class="bert" src="img/boss/bert-knife.webp" alt="" width="612" height="800" loading="lazy"><span><b>Face the Butcher</b><span class="small">Bert quizzes you at the end of each topic. You\'ve beaten him on ' + plural(Object.keys(bossS().won).length, "topic") + '. Rules are in How it works below.</span></span></a>';
   h += howItWorks();
   h += '<div class="palcard"><h3>' + esc(nm) + '\'s feeds this week</h3>' + hungerStrip() + '</div>';
   h += '<div class="palcard"><h3>Your topic flock</h3><div class="cbaflock"><span>' + cbaEgg("ico") + ' <b>' + f.eggs.length + '</b> egg' + (f.eggs.length === 1 ? '' : 's') + '</span><span>' + cbaChick("ico") + ' <b>' + f.chicks.length + '</b> chick' + (f.chicks.length === 1 ? '' : 's') + '</span><span>' + cbaHen("ico") + ' <b>' + f.hens.length + '</b> grown</span></div><p class="small muted" style="margin:6px 0 0">Every topic you revise lays a topic egg: Today\'s steps, cards, Quick fire, Model Q&amp;A, podcasts and <a href="#/cba">CBA levels</a> all count. Pass the topic\'s Quick fire and it hatches; rate the topic green 🟢 and it grows up.</p></div>';
@@ -133019,7 +133054,7 @@ function bertChaseHTML(){
 window.SQE_BERT_CHASE = bertChaseHTML; window.SQE_BERT_CHASE_MS = BOSS_CHASE_MS;
 function bossChase(B){
   var x = TBYKEY[B.key], c = cbaS(), started = B.chaseAt || (B.chaseAt = Date.now()), left = Math.max(0, started + BOSS_CHASE_MS - Date.now());
-  var h = '<div class="cbag bossg"><div class="cbatop"><a class="cbaback" href="' + (B.mode === "rescue" ? "#/boss" : "#/topic/" + x.s.id + "/" + x.t.id) + '">‹ ' + (B.mode === "rescue" ? "Bert's page" : "Topic") + '</a><span class="cbattl">' + (B.mode === "rescue" ? "🗝️ Rescue mission: " : "🥊 Bert the butcher: ") + esc(x.t.title) + '</span><span class="spill coin">' + cbaCoin() + ' <b>' + c.coins + '</b></span></div>';
+  var h = '<div class="cbag bossg"><div class="cbatop"><a class="cbaback" href="' + (B.mode === "rescue" ? "#/boss" : "#/topic/" + x.s.id + "/" + x.t.id) + '">‹ ' + (B.mode === "rescue" ? "Bert's page" : "Topic") + '</a><span class="cbattl">' + (B.mode === "rescue" ? "Rescue mission: " : "Bert the butcher: ") + esc(x.t.title) + '</span><span class="spill coin">' + cbaCoin() + ' <b>' + c.coins + '</b></span></div>';
   h += bertChaseHTML();
   h += '<div class="bsay"><p>' + (B.mode === "rescue" ? "Bert's not giving Britney back without a fight!" : "Uh oh! Bert wants Britney! Answer his " + B.qs.length + " questions to keep him away.") + '</p></div>';
   h += '<div class="btns cbac"><button class="btn primary big" data-act="bosschase">' + (left ? "Skip ›" : "Start the questions ›") + '</button></div></div>';
@@ -133032,7 +133067,7 @@ function bossDuel(){
   if (!B.at) B.at = Date.now();
   var lock = bossLockMs(z), left = B.ans === null ? Math.max(0, B.at + lock - Date.now()) : 0;
   var hits = B.right, miss = B.wrong;
-  var h = '<div class="cbag bossg"><div class="cbatop"><a class="cbaback" href="' + (B.mode === "rescue" ? "#/boss" : "#/topic/" + x.s.id + "/" + x.t.id) + '">‹ ' + (B.mode === "rescue" ? "Bert's page" : "Topic") + '</a><span class="cbattl">' + (B.mode === "rescue" ? "🗝️ Rescue mission: " : "🥊 Bert the butcher: ") + esc(x.t.title) + '</span><span class="spill coin">' + cbaCoin() + ' <b>' + c.coins + '</b></span></div>';
+  var h = '<div class="cbag bossg"><div class="cbatop"><a class="cbaback" href="' + (B.mode === "rescue" ? "#/boss" : "#/topic/" + x.s.id + "/" + x.t.id) + '">‹ ' + (B.mode === "rescue" ? "Bert's page" : "Topic") + '</a><span class="cbattl">' + (B.mode === "rescue" ? "Rescue mission: " : "Bert the butcher: ") + esc(x.t.title) + '</span><span class="spill coin">' + cbaCoin() + ' <b>' + c.coins + '</b></span></div>';
   h += bossScene(B) + bossSay(B, z);
   if (!B.stake && B.mode === "fight") h += '<p class="small muted bnostake">' + (bossS().cap ? 'Britney is already at Bert\'s shop, so this round is just for coins.' : 'You\'ve already beaten Bert on this topic, so this is a practice round: nothing to lose.') + '</p>';
   h += '<div class="cbacard ask bq"><div class="bqmeta"><span>Question ' + (B.i + 1) + ' of ' + B.qs.length + '</span><span>' + hits + ' right · ' + miss + ' wrong</span></div>';
@@ -133086,23 +133121,23 @@ function bossIntro(x){
   /* 20 Nov: once Bert has Britney, this topic shows the capture (not a fresh challenge) */
   if (b.cap) h += bossCaptivePanel("boss");
   if (b.cap) return h + '</div>'; /* Monnie 20 Nov: Bert already has her, so no new round until she is rescued */
-  h += '<div class="bcard bintro">' + bertImg("bbig") + '<div><h2>🥊 Bert the butcher challenges you!</h2><div class="bspeech">"' + (b.won[k] ? "You again? Fine, let's see if you still remember " + esc(x.t.title) + "…" : stake ? "Oi! I've got my eye on that lovely hen of yours. Answer my " + BOSS_N + " questions on " + esc(x.t.title) + ". Get " + (BOSS_N - BOSS_WIN + 1) + " wrong and Britney is mine! Mwahaha!" : "Answer my " + BOSS_N + " questions on " + esc(x.t.title) + ". Get " + BOSS_WIN + " right and you win " + BOSS_CHEST + " coins!") + '"</div>';
+  h += '<div class="bcard bintro">' + bertImg("bbig") + '<div><h2>Bert the butcher challenges you!</h2><div class="bspeech">"' + (b.won[k] ? "You again? Fine, let's see if you still remember " + esc(x.t.title) + "…" : stake ? "Oi! I've got my eye on that lovely hen of yours. Answer my " + BOSS_N + " questions on " + esc(x.t.title) + ". Get " + (BOSS_N - BOSS_WIN + 1) + " wrong and Britney is mine! Mwahaha!" : "Answer my " + BOSS_N + " questions on " + esc(x.t.title) + ". Get " + BOSS_WIN + " right and you win " + BOSS_CHEST + " coins!") + '"</div>';
   h += qs.length ? '<div class="bhow"><b>How to play</b><ol><li>Answer ' + qs.length + ' questions on this topic.</li><li>Every right answer pushes Bert back a step. Every wrong answer lets him creep closer to Britney.</li><li>Get <b>' + bossNeed(qs.length) + ' right</b> and you win' + (b.won[k] ? ' (practice round: +' + BOSS_PRACTICE + ' coins once a day).' : ' <b>' + BOSS_CHEST + ' coins</b>.') + '</li><li>Get <b>' + (qs.length - bossNeed(qs.length) + 1) + ' wrong</b> and he grabs Britney and runs off with her.</li></ol></div>' : '<p>There are no questions for this topic yet.</p>';
   if (stake) h += '<p class="small bwarn">⚠️ If he grabs Britney, you get her back by getting the questions you missed right.</p>';
   else if (b.cap) h += '<p class="small muted">Britney is already at Bert\'s shop, so this round is just for coins. Rescue her from <a href="#/town/butcher">Bert\'s page</a>.</p>';
   if (!ready && !b.won[k]) h += '<p class="small muted">Tip: Bert is easiest once you\'ve done this topic\'s steps on Today (' + st[0] + ' of ' + st[1] + ' done).</p>';
-  h += '<div class="btns">' + (qs.length ? '<button class="btn primary big" data-act="bossgo" data-k="' + k + '">' + (b.won[k] ? "Practice round 🥊" : "Face the Butcher! 🥊") + '</button>' : '') + '<a class="btn big" href="#/topic/' + x.s.id + '/' + x.t.id + '">Revise first</a></div></div></div>';
+  h += '<div class="btns">' + (qs.length ? '<button class="btn primary big" data-act="bossgo" data-k="' + k + '">' + (b.won[k] ? "Practice round" : "Face the Butcher!") + '</button>' : '') + '<a class="btn big" href="#/topic/' + x.s.id + '/' + x.t.id + '">Revise first</a></div></div></div>';
   return h + '</div>';
 }
 /* #/boss hub: Bert's shop, rescues and ransom, chests, topics ready for a fight */
 function bossHub(){
-  var b = bossS(), h = '<div class="cbag bossg"><div class="cbatop"><a class="cbaback pkback" href="#/palace" title="Back to Peckham"><img class="pksign" src="img/peckham-sign.webp" alt="Back to Peckham" width="300" height="152"></a><span class="cbattl">🥊 Bert the butcher</span><span class="spill coin">' + cbaCoin() + ' <b>' + cbaS().coins + '</b></span></div>';
+  var b = bossS(), h = '<div class="cbag bossg"><div class="cbatop"><a class="cbaback pkback" href="#/palace" title="Back to Peckham"><img class="pksign" src="img/peckham-sign.webp" alt="Back to Peckham" width="300" height="152"></a><span class="cbattl">Bert the butcher</span><span class="spill coin">' + cbaCoin() + ' <b>' + cbaS().coins + '</b></span></div>';
   h += bossChestCard();
   if (b.cap) h += bossCaptivePanel("boss");
   else h += '<div class="bcard bintro">' + bertShopHTML("") + '<div><h2>Bert\'s Butchers</h2><div class="bspeech">"Finish a topic and I\'ll be waiting with ' + BOSS_N + ' questions. Get ' + BOSS_WIN + ' right and you win ' + BOSS_CHEST + ' coins. Get ' + (BOSS_N - BOSS_WIN + 1) + ' wrong and that hen of yours is mine!"</div><p class="small">' + (bossS().cap ? 'Britney is at his shop right now.' : 'Britney is safe at home.') + ' Bert beaten on <b>' + plural(Object.keys(b.won).length, "topic") + '</b>.</p></div></div>';
   /* every topic is open (Monnie 20 Nov: nothing locked); topics she has finished come first */
   var ready = planSeq().filter(function(x){ return !b.won[x.key] && bossTopicReady(x); }).slice(0, 8);
-  var row = function(x){ return '<li><a href="#/boss/' + x.s.id + '/' + x.t.id + '"><b>' + esc(tnum(x)) + '</b> ' + esc(x.t.title) + '</a><a class="btn sm primary" href="#/boss/' + x.s.id + '/' + x.t.id + '">Face him 🥊</a></li>'; };
+  var row = function(x){ return '<li><a href="#/boss/' + x.s.id + '/' + x.t.id + '"><b>' + esc(tnum(x)) + '</b> ' + esc(x.t.title) + '</a><a class="btn sm primary" href="#/boss/' + x.s.id + '/' + x.t.id + '">Face him</a></li>'; };
   if (ready.length) h += '<div class="bcard"><h3>Topics you\'ve just finished</h3><ul class="blist">' + ready.map(row).join("") + '</ul></div>';
   h += '<div class="bcard"><h3>Pick any topic</h3><p class="small muted" style="margin:0 0 8px">Every topic is open. Tap a subject to see its topics.</p>' + SUBJ.map(function(s){ var xs = planSeq().filter(function(x){ return x.s.id === s.id && !b.won[x.key]; }); return xs.length ? '<details class="bsubj"><summary>' + esc(s.title) + ' <span class="small muted">(' + xs.length + ')</span></summary><ul class="blist">' + xs.map(row).join("") + '</ul></details>' : ''; }).join("") + '</div>';
   var won = planSeq().filter(function(x){ return b.won[x.key]; });
@@ -133122,7 +133157,7 @@ VIEW.boss = function(r){
 function bossTopicCTA(x){
   var b = bossS(), won = b.won[x.key];
   if (b.cap) return '<div class="bosscta"><img class="bert" src="' + BERT_RUN + '" alt="" width="612" height="800" loading="lazy"><div><b>Bert has Britney!</b><span>Get the questions you missed right to set her free.</span></div><a class="btn primary" href="#/boss/rescue">Get her back</a></div>';
-  return '<div class="bosscta"><img class="bert" src="img/boss/bert-knife.webp" alt="" width="612" height="800" loading="lazy"><div><b>' + (won ? "🏆 You beat Bert on this topic" : "🥊 Bert the butcher is waiting") + '</b><span>' + (won ? 'Chest opened. Fancy a practice round?' : BOSS_N + ' Model Q&A questions on this topic. ' + BOSS_WIN + ' right wins ' + BOSS_CHEST + ' coins.' + (bossStake(x.key) ? ' ' + (BOSS_N - BOSS_WIN + 1) + ' wrong and he takes Britney!' : '')) + '</span></div><a class="btn ' + (won ? "" : "primary") + '" href="#/boss/' + x.s.id + '/' + x.t.id + '">' + (won ? "Practice" : "Face the Butcher") + '</a></div>';
+  return '<div class="bosscta"><img class="bert" src="img/boss/bert-knife.webp" alt="" width="612" height="800" loading="lazy"><div><b>' + (won ? "🏆 You beat Bert on this topic" : "Bert the butcher is waiting") + '</b><span>' + (won ? 'Chest opened. Fancy a practice round?' : BOSS_N + ' Model Q&A questions on this topic. ' + BOSS_WIN + ' right wins ' + BOSS_CHEST + ' coins.' + (bossStake(x.key) ? ' ' + (BOSS_N - BOSS_WIN + 1) + ' wrong and he takes Britney!' : '')) + '</span></div><a class="btn ' + (won ? "" : "primary") + '" href="#/boss/' + x.s.id + '/' + x.t.id + '">' + (won ? "Practice" : "Face the Butcher") + '</a></div>';
 }
 
 /* ============ PODCASTS: commute episodes for each topic ============ */
@@ -133712,8 +133747,9 @@ try { if (/[?&#]monnie=1/.test(location.href)) localStorage.setItem("sqe_monnie"
   window.addEventListener("hashchange", function(){ setTimeout(sync, 0); }); setTimeout(sync, 0);
 })();
 (function(){ try { if (!document.documentElement.classList.contains("monnie")) return; var b = document.createElement("div"); b.className = "monbadge"; b.setAttribute("role", "status");
-  b.innerHTML = '<b>Monnie\'s test mode</b><span>Only on this browser. Layla never sees this.</span><button type="button">Turn off</button>';
-  b.querySelector("button").addEventListener("click", function(){ try { localStorage.removeItem("sqe_monnie"); } catch(e){} location.href = location.href.replace(/([?&])(monnie|try)=[^&#]*&?/g, "$1").replace(/[?&](#|$)/, "$1"); setTimeout(function(){ location.reload(); }, 50); });
+  b.innerHTML = '<button type="button" class="montab" aria-expanded="false">Test mode</button><div class="monmore"><b>Monnie\'s test mode</b><span>Only on this browser. Layla never sees this.</span><button type="button" class="monoff">Turn off</button></div>';
+  b.querySelector(".montab").addEventListener("click", function(){ var o = b.classList.toggle("open"); this.setAttribute("aria-expanded", o ? "true" : "false"); });
+  b.querySelector(".monoff").addEventListener("click", function(){ try { localStorage.removeItem("sqe_monnie"); } catch(e){} location.href = location.href.replace(/([?&])(monnie|try)=[^&#]*&?/g, "$1").replace(/[?&](#|$)/, "$1"); setTimeout(function(){ location.reload(); }, 50); });
   (document.body || document.documentElement).appendChild(b); } catch(e){} })();
 /* Stop themes: a topic's pages (notes cards, cartoon, framework, CBA, Quick fire, Bert) take the look of its subject's stop on the Journey map:
    a header strip with the stop's drawing, the stop's colours and little motifs. Built by journey.js (THEMES there); switched on subject by subject here. */
