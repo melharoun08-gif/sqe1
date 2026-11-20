@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120044817";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120045713";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -2898,7 +2898,7 @@ html.dfv-on{overflow:hidden}
 @keyframes nbfx-peckr{0%,55%,100%{transform:none}64%{transform:rotate(6deg)}70%{transform:rotate(2deg)}76%{transform:rotate(6deg)}86%{transform:none}}
 /* the grey and white hens tip a little less (4deg) so their cut-outs never uncover the coop leg or Yasmin's side */
 @keyframes nbfx-peckl4{0%,55%,100%{transform:none}64%{transform:rotate(-4deg)}70%{transform:rotate(-1.5deg)}76%{transform:rotate(-4deg)}86%{transform:none}}
-@keyframes nbfx-peckr4{0%,55%,100%{transform:none}64%{transform:rotate(4deg)}70%{transform:rotate(1.5deg)}76%{transform:rotate(4deg)}86%{transform:none}}
+@keyframes nbfx-peckr4{0%,55%,100%{transform:none}64%{transform:rotate(3deg)}70%{transform:rotate(1deg)}76%{transform:rotate(3deg)}86%{transform:none}}
 @keyframes nbfx-bob{0%,100%{transform:none}50%{transform:translateY(-2.5px)}}
 /* the gap pictures (grass/sky painted in) sit under each cut-out and never move, so a moving hen shows grass, not a second hen */
 .head.nb .nbfx .fxgap{animation:none!important;transform:none!important}
@@ -3014,6 +3014,85 @@ html.dfv-on{overflow:hidden}
 @keyframes jbert-f1{0%{opacity:0}64.00%{opacity:1}66.86%{opacity:0}69.71%{opacity:1}72.57%{opacity:0}75.43%{opacity:1}78.28%{opacity:0}80%{opacity:0}}
 @keyframes jbert-f2{0%{opacity:0}64.00%{opacity:0}66.86%{opacity:1}69.71%{opacity:0}72.57%{opacity:1}75.43%{opacity:0}78.28%{opacity:1}80%{opacity:0}}
 @media (prefers-reduced-motion:reduce){.jsv .jbert-f1,.jsv .jbert-f2{animation:none;opacity:0}}
+
+/* tabs-bigger (20 Nov): bigger tab labels in the scaled banner; app.js tabCols() picks 15, 8 or 5 even columns */
+.head.nb.nbz .tabs{gap:4px}
+.head.nb.nbz .tabs a,.head.nb.nbz .tabs a.two{font-size:var(--tabfs,16px)!important;line-height:1.1;padding:6px 3px 4px;min-height:50px}
+/* bert-master + town logos (thread "Fix Job Centre, Bert's and The Mount", 20 Nov) */
+/* the Peckham map's Bert's Butchers with its door animation (same frames + timings as the map: .jbert-* rules) */
+.bmshop{position:relative;width:min(100%,420px);aspect-ratio:520/523;margin:0 auto 10px}
+.bmshop>span.bs-day,.bmshop img{position:absolute;inset:0;width:100%;height:100%}
+.bmshop .bs-f1{opacity:0;animation:bs-f1 14s step-end infinite}.bmshop .bs-f2{opacity:0;animation:bs-f2 14s step-end infinite}
+.bmshop .bs-c{animation:bs-c 14s step-end infinite}.bmshop .bs-b{opacity:0;animation:bs-b 14s step-end infinite}
+.bmshop .bs-n{opacity:0}.bmshop.night .bs-n{opacity:1}.bmshop.night .bs-day{display:none}
+@keyframes bs-c{0%{opacity:1}50%{opacity:0}82%{opacity:1}}@keyframes bs-b{0%{opacity:0}58%{opacity:1}60.5%{opacity:0}}
+@keyframes bs-f1{0%{opacity:0}64%{opacity:1}66.86%{opacity:0}69.71%{opacity:1}72.57%{opacity:0}75.43%{opacity:1}78.28%{opacity:0}80%{opacity:0}}
+@keyframes bs-f2{0%{opacity:0}64%{opacity:0}66.86%{opacity:1}69.71%{opacity:0}72.57%{opacity:1}75.43%{opacity:0}78.28%{opacity:1}80%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.bmshop .bs-c,.bmshop .bs-b,.bmshop .bs-f1,.bmshop .bs-f2{animation:none;opacity:0}}
+.bcapt .bmshop.bshop,.bmshop.bres-shop{max-width:380px;margin:8px auto}
+.bmcage{position:absolute;left:19%;top:47%;width:33%;z-index:2}
+.bmcage .bbrit{position:absolute;left:14%;right:14%;bottom:6%}
+.bmcage .bcage{position:relative;display:block;width:100%;height:auto}
+.bintro .bmshop{width:100%;margin:0}
+/* full-body Bert (bert-run.webp, drawn from the map Bert) */
+.bert.brun.bsmall{margin:0 auto 6px}
+.abert .brunimg{transform:none}  /* bert-run.webp already faces left, towards Britney */
+.bbody .brunimg{position:relative;opacity:1}
+.f-laugh .brunimg{animation:bspoon .3s ease-in-out infinite alternate}
+@keyframes bspoon{from{rotate:-3deg}to{rotate:4deg}}
+/* the duel's shop door matches the map shop: red and white awning, purple door */
+.bdoor::before{background:repeating-linear-gradient(90deg,#E8262E 0 13px,#fff 13px 26px)}
+.bdoor{background:#F2A7C6}
+.bdoor::after{background:#8E5BB5;box-shadow:inset 10px 10px 0 -4px #7546A0}
+/* Britney instead of her nest */
+.ahen.nonest .bnest{height:auto}
+.ahen.nonest .bnbird{position:relative;left:0;right:0;bottom:0}
+.bbrit{position:relative}.bbrit img{width:100%;height:auto;display:block}
+.bbrit .bsweat{position:absolute;right:4%;top:-4%;font-style:normal;font-size:26px;animation:bsweat .8s ease-in-out infinite}
+@keyframes bsweat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.ahen.happy .bnbird{animation:hjump .55s ease-out 2}
+.bcarry .bbrit{width:100%}
+/* the chase before the questions: Layla and Britney run, Bert chases shaking his spoon, round and back */
+.bchasearena{height:300px}
+.bchase{position:absolute;inset:0}
+.bcrun{position:absolute;bottom:14px;left:-30%;display:block;animation:bcgo 5.2s linear infinite both}
+.bc-lay{width:96px;height:178px;animation-delay:0s}
+.bc-brit{width:110px;height:76px;bottom:120px;animation-delay:.35s}
+.bc-bert{width:160px;height:209px;bottom:8px;animation-delay:1s}
+.bcrun img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.bc-lay img,.bc-brit img{animation:bcstep .36s steps(1) infinite}
+.bc-lay .lw2,.bc-brit .bw2{animation-delay:.18s;opacity:0}
+@keyframes bcstep{0%{opacity:1}50%{opacity:0}}
+.bc-lay>img{transform-origin:50% 100%}
+.bc-bert img{transform-origin:50% 100%;animation:bcbert .26s ease-in-out infinite alternate}
+@keyframes bcbert{from{transform:scaleX(-1) translateY(0) rotate(-5deg)}to{transform:scaleX(-1) translateY(-10px) rotate(5deg)}}
+.bshout{position:absolute;left:50%;top:-30px;transform:translateX(-50%);white-space:nowrap;background:#fff;border:2.5px solid #1d1d1b;border-radius:14px;padding:2px 10px;font-family:var(--sharratt);font-weight:400;font-size:18px}
+@keyframes bcgo{0%{left:-30%;transform:scaleX(1)}46%{left:112%;transform:scaleX(1)}50%{left:112%;transform:scaleX(-1)}96%{left:-30%;transform:scaleX(-1)}100%{left:-30%;transform:scaleX(1)}}
+.bc-bert .bshout{animation:bshoutflip 5.2s linear 1s infinite both}
+@keyframes bshoutflip{0%,49.9%{transform:translateX(-50%) scaleX(1)}50%,100%{transform:translateX(-50%) scaleX(-1)}}
+@media (max-width:560px){.bchasearena{height:240px}.bc-lay{width:72px;height:134px}.bc-bert{width:120px;height:157px}.bc-brit{width:84px;height:58px;bottom:95px}.bshout{font-size:15px}}
+@media (prefers-reduced-motion:reduce){.bcrun{animation:none}.bc-lay{left:62%}.bc-brit{left:76%}.bc-bert{left:20%}}
+details.bsubj{border-top:1px solid #F3E3CC;padding:6px 0}details.bsubj:first-of-type{border-top:0}
+details.bsubj summary{cursor:pointer;font-family:var(--hand);font-size:19px}
+/* Job Centre logo: parody of the real Jobcentre Plus logo (green box, white lowercase wordmark, endorsement line) */
+.jcp2{flex:none;display:inline-flex;flex-direction:column;align-items:flex-start;gap:4px}
+.jcp2 .box{background:#3DAA35;color:#fff;padding:10px 14px 9px;border-radius:3px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;line-height:.92;letter-spacing:-.8px}
+.jcp2 .box b{display:block;font-size:30px;font-weight:700}.jcp2 .box span{display:block;font-size:30px;font-weight:300}
+.jcp2 .end{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:11px;color:#333;letter-spacing:0}
+@media (max-width:560px){.jcp2 .box b,.jcp2 .box span{font-size:24px}}
+/* Bert's Butchers logo: the map shop's sign board over its red and white awning */
+.bblogo{flex:none;display:inline-flex;flex-direction:column;align-items:center;width:150px}
+.bblogo .sb{background:#fff;border:3px solid #1d1d1b;border-radius:40px 40px 6px 6px/22px 22px 6px 6px;padding:7px 10px 5px;text-align:center;font-family:"Chewy","Bubblegum Sans",sans-serif;font-size:21px;line-height:.95;color:#1d1d1b;letter-spacing:.5px;position:relative;z-index:1}
+.bblogo .aw{width:100%;height:26px;margin-top:-3px;border:3px solid #1d1d1b;border-top-width:3px;background:repeating-linear-gradient(90deg,#E8262E 0 18.75px,#fff 18.75px 37.5px);border-radius:0 0 14px 14px;-webkit-mask:radial-gradient(circle at 50% 100%,#000 0,#000 100%);box-sizing:border-box}
+.town-bertlogo{display:flex;gap:14px;align-items:center}
+@media (max-width:560px){.town-bertlogo{flex-direction:column}}
+/* The Mount: a house sign */
+.mount-sign{display:inline-block;background:#2F3A33;color:#F6EBD2;border:4px solid #C9A86A;border-radius:999px;padding:4px 26px 8px;font-family:"Snell Roundhand","Apple Chancery","Brush Script MT","Segoe Script",cursive;font-weight:700;font-style:italic;font-size:36px;letter-spacing:.5px;box-shadow:0 0 0 3px #2F3A33,2px 4px 0 3px rgba(0,0,0,.18);line-height:1.1}
+@media (max-width:600px){.mount-sign{font-size:28px;padding:3px 18px 6px}}
+/* Layla's step picture: the night copy (white paper between the outer curls removed) shows only at night */
+.head.nb .nblayla.nbngt{display:none}
+.head.nb.nbnight .nblayla.nbngt{display:inline}
+.head.nb.nbnight .nblayla.nbday{display:none}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -101107,7 +101186,7 @@ window.SQE_JOURNEY = function (A) {
             palace: { x: 600, y: 2115 + D, s: 1 },
             flags: [{ x: 176, y: 2117 + D, s: 1, h: 110 }, { x: 812, y: 2117 + D, s: 1, h: 110 }],
             reg: { spring: 160, autumn: TOWN ? 2095 : 1320, grounds: 1750 + D },
-            town: TOWN ? { y: 1550, b: [['mount', 370, 'The Mount', '#/mount', 2075, 285], ['jobcentre2', 805, 'Job Centre', '#/town/jobs', 1762, 245], ['giftshop2', 825, 'Hen Bargs', '#/town/shop', 2060, 245], ['butchers3', 340, "Bert's Butchers", '#/town/butcher', 1777, 255]], w: 235, h: 175, /* Monnie 20 Nov: bigger, staggered over the grass; Mount low and big, Bert's up near Contract Law */ name: [560, 1365] } : null,
+            town: TOWN ? { y: 1550, b: [['mount', 370, 'The Mount', '#/mount', 2075, 285], ['jobcentre2', 805, 'Job Centre', '#/town/jobs', 1762, 245], ['giftshop2', 825, 'Hen Bargains', '#/town/shop', 2060, 245], ['butchers3', 340, "Bert's Butchers", '#/town/butcher', 1777, 255]], w: 235, h: 175, /* Monnie 20 Nov: bigger, staggered over the grass; Mount low and big, Bert's up near Contract Law */ name: [560, 1365] } : null,
             sun: { x0: 80, x1: 1020, y: 150, rise: 82, s: 1 },
             deco: function () { return cloud(TOWN ? 560 : 330, 78, .8) + cloud(1010, 92, 1) + cloud(TOWN ? 800 : 720, 48, .55) + (TOWN ? sign(970, 330, 'FLK1 Meadow', 'Stops 1–7', 30, 40) + welcome(190, 330, .7) : sign(185, 300, 'FLK1 Meadow', 'Stops 1–7', 30, 110) + welcome(950, 228, .64))
                 + sign(TOWN ? 600 : 560, TOWN ? 2130 : 1395, 'FLK2 Harvest Fields', 'Stops 8–14', 30, TOWN ? 40 : 72)
@@ -101136,7 +101215,7 @@ window.SQE_JOURNEY = function (A) {
             hen: function (i) { return (i === 0 ? { x: st[0].x + 81, y: st[0].y + 22, s: 1, m: true } : { x: st[i].x, y: st[i].y - 42, s: 1, m: !(i % 2) }); }, /* after each stop the path heads across: right from the left side, left from the right side */
             palace: { x: 280, y: Pb, s: 1 },
             flags: [{ x: 100, y: yc + 116, s: 1, h: 80 }, { x: 320, y: yc + 116, s: 1, h: 80 }], /* tidy: planted in front of the palace, below the path, so they no longer cover the palace steps */
-            town: TOWN ? { y: 0, b: [['mount', 330, 'The Mount', '#/mount', 1010, 220], ['jobcentre2', 420, 'Job Centre', '#/town/jobs', 380, 180], ['giftshop2', 420, 'Hen Bargs', '#/town/shop', 795, 180], ['butchers3', 300, "Bert's Butchers", '#/town/butcher', 590, 190]], w: 250, h: 190, ph: 1 } /* QA 20 Nov: phone town stacked so no building overlaps another or the path */ : null,
+            town: TOWN ? { y: 0, b: [['mount', 330, 'The Mount', '#/mount', 1010, 220], ['jobcentre2', 420, 'Job Centre', '#/town/jobs', 380, 180], ['giftshop2', 420, 'Hen Bargains', '#/town/shop', 795, 180], ['butchers3', 300, "Bert's Butchers", '#/town/butcher', 590, 190]], w: 250, h: 190, ph: 1 } /* QA 20 Nov: phone town stacked so no building overlaps another or the path */ : null,
             reg: { spring: 212, autumn: st[7].y + (TOWN ? 1040 : 250), grounds: sl.y + 150 },
             sun: { x0: 50, x1: 550, y: 205, rise: 130, s: .62 },
             deco: function () { return cloud(522, 150, .7) + cloud(150, 60, .5) + sign(215, 330, 'FLK1 Meadow', 'Stops 1–7', 32, 90) + welcome(478, 330, .6)
@@ -108620,7 +108699,12 @@ var CSS = [
 '.scn-chalk-tip{display:block;margin-top:8px;font:700 13px/1.2 var(--font);color:rgba(255,255,255,.8)}',
 '.scn-chalk:hover .scn-chalk-in,.scn-chalk:focus-visible .scn-chalk-in{outline:3px dashed rgba(255,255,255,.6);outline-offset:-6px}',
 '@media (min-width:1500px){.scn-chalk .scn-bt{font-size:32px}}',
-'@media (max-width:640px){.scn-chalk{padding:8px;border-radius:12px;box-shadow:3px 3px 0 #1b1b1b}.scn-chalk-in{padding:10px 10px 8px}.scn-chalk .scn-bt{font-size:22px}}'
+'@media (max-width:640px){.scn-chalk{padding:8px;border-radius:12px;box-shadow:3px 3px 0 #1b1b1b}.scn-chalk-in{padding:10px 10px 8px}.scn-chalk .scn-bt{font-size:22px}}',
+'.scn-chalk .ln,.scn-boardin .ln{text-wrap:balance}',
+/* hall: labels and tags never catch taps (they can sit over a neighbouring door); the number pin is part of its door's tap area */
+'.scn-art.hub-art .scn-lab,.scn-art.hub-art .scn-lab.js,.scn-art.hub-art .scn-nexttag{pointer-events:none}',
+'.hub-hs .scn-pin{pointer-events:auto}',
+'html.scn-rooms .scn{min-height:calc(100vh - 16px)}' /* a short scene (the shop front) can still sit at the top of the screen */
 ].join('\n');
 
 /* bullets-sample: preview flag + splitter (no wording changes: only cuts the existing text at sentence ends) */
@@ -108654,6 +108738,7 @@ function bulletize(cardHTML){
 window.SQE_SCENE = function(A){
   var VIEW = A.VIEW, esc = A.esc, inl = A.inl;
   var SC = {open: null, step: 0, gate: false, yay: false, entering: false, exit: null};
+  if (ROOMS_ON) try { document.documentElement.classList.add('scn-rooms'); } catch(e){}
   try { var st = document.createElement('style'); st.id = 'scn-css'; st.textContent = CSS; document.head.appendChild(st); } catch(e){}
   function S(){ return A.S(); }
   function state(k){ var s = S(); if (!s.scene || typeof s.scene !== 'object') s.scene = {}; var o = s.scene[k]; if (!o || typeof o !== 'object') o = s.scene[k] = {}; if (!o.open || typeof o.open !== 'object') o.open = {}; if (!o.pos || typeof o.pos !== 'object') o.pos = {}; return o; }
@@ -108971,7 +109056,7 @@ window.SQE_SCENE = function(A){
   /* picture labels (rooms preview): every label and the "Next" tag stays inside the picture, wraps to two lines (smaller type before a third line, never cut off),
      and is nudged off other labels, the number pins and the Next tag. Works from whatever spots the room data gives, so it keeps working when the pictures are redrawn. */
   function labRect(el, art){ var r = el.getBoundingClientRect(), a = art.getBoundingClientRect(); return {x: r.left - a.left - art.clientLeft, y: r.top - a.top - art.clientTop, w: r.width, h: r.height}; }
-  function labOver(a, b){ var w = Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x), h = Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y); return w > 0 && h > 0 ? w * h : 0; }
+  function labOver(a, b){ var g = 4, w = Math.min(a.x + a.w, b.x + b.w + g) - Math.max(a.x, b.x - g), h = Math.min(a.y + a.h, b.y + b.h + g) - Math.max(a.y, b.y - g); /* keep a 4px gap between pills */ return w > 0 && h > 0 ? w * h : 0; }
   function labFit(lab, W, door){
     var fs0 = door ? (parseFloat(getComputedStyle(lab).fontSize) || 13) : W >= 900 ? 14 : W >= 700 ? 13 : 12, maxW = Math.round(Math.max(90, Math.min(W * (door ? 0.4 : 0.3), 240))), fs, lines = 1;
     lab.style.width = 'max-content'; lab.style.maxWidth = maxW + 'px';
@@ -108994,6 +109079,9 @@ window.SQE_SCENE = function(A){
   function layArt(art){
     if (!art || art.classList.contains('zoom')) return; var W = art.clientWidth, H = art.clientHeight; if (W < 50 || H < 50) return;
     var hss = [].slice.call(art.querySelectorAll('.scn-hs')), obst = [], jobs = [];
+    if (art.classList.contains('hub-art')) hss.forEach(function(hs){ var pin = hs.querySelector('.scn-pin'); hs.style.minWidth = hs.style.marginLeft = ''; if (pin) pin.style.top = '';
+      var w = hs.offsetWidth; if (w < 28){ hs.style.minWidth = '28px'; hs.style.marginLeft = -Math.round((28 - w) / 2) + 'px'; } /* thin doors (phone): a tappable width, centred on the door */
+      if (pin && getComputedStyle(pin).display !== 'none' && pin.offsetTop + pin.offsetHeight > hs.clientHeight - 2) pin.style.top = Math.max(0, hs.clientHeight - pin.offsetHeight - 2) + 'px'; }); /* the number pin stays inside its door's tap area */
     hss.forEach(function(hs){ var lab = hs.querySelector('.scn-lab'), tag = hs.querySelector('.scn-nexttag');
       [lab, tag].forEach(function(e){ if (e){ e.classList.remove('js', 'up'); e.style.left = e.style.top = e.style.width = e.style.maxWidth = e.style.fontSize = ''; } });
       var pin = hs.querySelector('.scn-pin'); if (pin && getComputedStyle(pin).display !== 'none') obst.push(labRect(pin, art));
@@ -109177,7 +109265,7 @@ window.SQE_SCENE = function(A){
     } else h += '<div class="kbd" style="margin-top:8px">Keys: ' + L.slice(0, it.ord.length).split('').join(', ') + '</div>';
     return h + '</div>';
   }
-  function showNext(){ var el = document.querySelector('.scn-hs.next') || document.querySelector('.scn-leave'); if (!el || !el.getBoundingClientRect) return; var r = el.getBoundingClientRect(); if (r.top < 70 || r.bottom > innerHeight - 50) try { el.scrollIntoView({block: 'center'}); } catch(e){ el.scrollIntoView(); } }
+  function showNext(){ var el = document.querySelector('.scn-hs.next') || document.querySelector('.scn-leave'); if (!el || !el.getBoundingClientRect) return; var r = el.getBoundingClientRect(); if (r.top < 70 || r.bottom > innerHeight - 50) try { if (ROOMS_ON && typeof ANCH !== 'undefined') ANCH.stop = true; el.scrollIntoView({block: 'center'}); } catch(e){ el.scrollIntoView(); } }
 
   VIEW.scene = function(r){
     var k = keyOf(r), sc = SCENES[k], x = A.TBYKEY[k];
@@ -109300,9 +109388,25 @@ window.SQE_SCENE = function(A){
       if (e.key === 'Enter' && ex.ans[ex.i] != null){ e.preventDefault(); ex.i++; paint(); return; } }
     if (SC.open && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')){ e.preventDefault(); go(k, e.key === 'ArrowRight' ? 1 : -1); }
   });
-  addEventListener('hashchange', function(){ /* any route change closes an open pop-up (e.g. the locked-door question no longer follows you inside) */ SC.open = null; SC.gate = false; SC.yay = false; SC.exit = null; SC.scen = null; SC.game = null; stopTimer(); paint(); if (ROOMS_ON) sceneTop(); });
+  addEventListener('hashchange', function(){ /* any route change closes an open pop-up (e.g. the locked-door question no longer follows you inside) */ SC.open = null; SC.gate = false; SC.yay = false; SC.exit = null; SC.scen = null; SC.game = null; stopTimer(); paint(); });
   /* rooms preview: a new scene (door tap, hall, back to the hall) opens with the scene's top at the top of the screen, straight away, instead of flashing the page top and then scrolling */
-  function sceneTop(){ var r = A.route(); if (r[0] !== 'scene') return; var el = document.querySelector('.scn'); if (!el) return; var t = el.getBoundingClientRect().top + (window.scrollY || window.pageYOffset || 0) - 8; window.scrollTo(0, Math.max(0, t)); }
+  function scrollNow(y){ try { window.scrollTo({top: Math.max(0, y), left: 0, behavior: 'instant'}); } catch(e){ window.scrollTo(0, Math.max(0, y)); } }
+  function sceneTop(){ var r = A.route(); if (r[0] !== 'scene') return; var el = document.querySelector('.scn'); if (!el) return; scrollNow(el.getBoundingClientRect().top + (window.scrollY || window.pageYOffset || 0) - 8); }
+  /* runs as a microtask straight after the page is drawn for a new scene route, so the first frame painted is already at the scene top; then, for a moment,
+     keeps the scene top in place while the banner and pictures above it settle (no slide), until the person scrolls or taps */
+  var ANCH = {stop: true}, lastSR = '';
+  function anchorScene(){ ANCH.stop = true; var me = ANCH = {stop: false}, t0 = Date.now(); function off(){ me.stop = true; }
+    ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function(ev){ addEventListener(ev, off, {once: true, passive: true}); });
+    (function f(){ if (me.stop || Date.now() - t0 > 1600) return; var el = document.querySelector('.scn'); if (el){ var t = el.getBoundingClientRect().top; if (Math.abs(t - 8) > 1) scrollNow((window.scrollY || 0) + t - 8); } requestAnimationFrame(f); })(); }
+  if (ROOMS_ON && window.MutationObserver) try { var appEl = document.getElementById('app'); new MutationObserver(function(){ var r = A.route(); if (r[0] !== 'scene'){ lastSR = ''; return; } var rs = r.join('/'); if (rs === lastSR || !document.querySelector('.scn')) return; lastSR = rs; sceneTop(); anchorScene(); }).observe(appEl || document.documentElement, appEl ? {childList: true} : {childList: true, subtree: true}); } catch(e){}
+  /* rooms: where hotspot boxes overlap, a click goes to the box the pointer is most centrally inside (a label pill is always its own hotspot's) */
+  if (ROOMS_ON) document.addEventListener('click', function(e){
+    var hs = e.target.closest && e.target.closest('.scn-art:not(.hub-art) .scn-hs'); if (!hs || e.__scnRes || (!e.clientX && !e.clientY) || e.target.closest('.scn-lab')) return;
+    var art = hs.closest('.scn-art'), best = null, bs = 9, n = 0;
+    [].forEach.call(art.querySelectorAll('.scn-hs'), function(h){ var r = h.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) return; n++;
+      var sc = Math.max(Math.abs(e.clientX - (r.left + r.width / 2)) / (r.width / 2), Math.abs(e.clientY - (r.top + r.height / 2)) / (r.height / 2)); if (sc < bs){ bs = sc; best = h; } });
+    if (n > 1 && best && best !== hs){ e.preventDefault(); e.stopPropagation(); best.click(); }
+  }, true);
   window.__sceneExitFor = function(k){ return exitPool(k).map(function(it){ var h = objFor(k, it); return {kind: it.kind, q: it.q.slice(0, 60), obj: h && h.id}; }); };
   return {coverage: coverage};
 };
@@ -109314,7 +109418,7 @@ window.SQE_SCENE = function(A){
      #/town/jobs           Job Centre: today's spaced reviews (cards included) as paid jobs
      #/town/butcher[/subj] Bert's Butchers: the end-of-subject test (window.SQE_BERT[subj], falling back to the Model Q&A
                            questions until those files exist) + a link to Face the Butcher (#/boss)
-     #/town/shop           Hen Bargs: Britney's shop items, with an optional gamble before a purchase: 10 SRA sample questions,
+     #/town/shop           Hen Bargains: Britney's shop items, with an optional gamble before a purchase: 10 SRA sample questions,
                            6+ right = half price, fewer = DOUBLE (Monnie 20 Nov). Free items can't be gambled.
    With the flag, the timetable also gets a "Bert's Butchers: <subject> test" slot on the study day after each subject's last learning day.
    Loaded by build.py right before app.js (like scene.js). Defines window.SQE_TOWN(api), called by app.js from inside its closure. Plain ES5.
@@ -109323,7 +109427,7 @@ window.SQE_SCENE = function(A){
 var JOB_COINS = {1: 12, 3: 10, 6: 12, 10: 15};  /* Job Centre pay, by review gap: 1 = revision cards, 3 = quick-fire, 6 = framework self-test, 10 = exam-style questions */
 var BERT_PER_TOPIC = 2, BERT_MAX = 20, BERT_PASS = 0.6, BERT_MINS = 2;  /* subject test: questions per topic, cap, pass mark, minutes per question (timetable) */
 var BERT_PASS_COINS = 50;    /* paid once per subject, the first time she passes its test */
-var GAMBLE_N = 10, GAMBLE_PASS = 6, GAMBLE_OFF = 0.5, GAMBLE_UP = 2;  /* Hen Bargs gamble: questions, right answers needed, half off / pay DOUBLE */
+var GAMBLE_N = 10, GAMBLE_PASS = 6, GAMBLE_OFF = 0.5, GAMBLE_UP = 2;  /* Hen Bargains gamble: questions, right answers needed, half off / pay DOUBLE */
 var SRA_CREDIT = "© Solicitors Regulation Authority / Kaplan. SQE Sample Questions and Performance Indicators remain the property of the SRA. The SRA makes no warranty as to the accuracy of their reproduction or usage in these materials. Explanations are this site's own, not SRA-endorsed.";
 var TOWN_ON = !/[?&]town=0/.test(location.search); window.SQE_TOWN_LIVE = TOWN_ON; /* live 20 Nov (Monnie wants Peckham finished on the live site) */
 
@@ -109345,16 +109449,13 @@ window.SQE_TOWN = function(A){
     '.town-desk{display:flex;gap:14px;align-items:flex-start;background:linear-gradient(#FFF8EC,#FFF1DC);border-color:#F0C89C}' +
     '.town-sign{flex:none;width:86px;height:86px;border-radius:16px;background:#E0457B;color:#fff;display:grid;place-items:center;text-align:center;font-weight:800;font-size:15px;line-height:1.1;border:3px solid #fff;box-shadow:0 0 0 2px #E0457B}' +
     '.town-desk .bspeech{margin:6px 0 0}' +
-    /* Hen Bargs (Monnie 20 Nov): Sharratt felt-tip lettering everywhere on the page; the sign is a Home Bargains-style parody drawn in CSS */
-    '.hb,.hb *{font-family:var(--sharratt)!important;letter-spacing:.02em}' +
+    /* Hen Bargains (Monnie 20 Nov): Sharratt felt-tip lettering everywhere on the page; the logo copies the Home Bargains logo (hbLogo, SVG) with "hen bargs" */
+    '.hb-logo{flex:none;width:120px;height:120px;display:block;border-radius:6px;box-shadow:3px 4px 0 #111}' +
+    '.hb .hb-logo,.hb .hb-logo *{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;letter-spacing:normal}' +
+    '.hb,.hb *:not(text){font-family:var(--sharratt)!important;letter-spacing:.02em}' +
     '.hb .sdesc,.hb .town-risk,.hb .town-note,.hb #town-q,.hb #town-q *,.hb .town-credit,.hb .bspeech{font-family:"Patrick Hand",var(--sharratt)!important;letter-spacing:0}' +
     '.hb .bspeech{font-size:19px;line-height:1.35}.hb .bspeech b{font-family:var(--sharratt)!important;color:#E0457B;font-size:1.15em;font-weight:400}' +
     '.hb h2,.hb .cbattl,.hb .sitm>b,.hb .sprice,.hb .btn,.hb .town-nav a{font-weight:400!important}.hb h2{font-size:32px;margin:0}.hb .sitm>b{font-size:18px;line-height:1.15}.hb .sdesc{font-size:16px}.hb .town-risk{font-size:15px}' +
-    '.hb-logo{flex:none;position:relative;width:132px;height:112px;border-radius:18px;background:#E6007E;border:4px solid #fff;box-shadow:0 0 0 3px #B8005F,4px 5px 0 3px #111;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 0 10px;color:#fff;line-height:.82;transform:rotate(-3deg)}' +
-    '.hb-roof{position:absolute;top:12px;left:50%;width:46px;height:46px;margin-left:-23px;border-top:7px solid #FFD400;border-left:7px solid #FFD400;border-radius:4px 0 0 0;transform:rotate(45deg)}' +
-    '.hb-roof::after{content:"";position:absolute;left:-1px;top:-16px;width:12px;height:12px;background:#E0303A;border-radius:50% 50% 30% 30%;box-shadow:9px -3px 0 #E0303A,18px 0 0 #E0303A;transform:rotate(-45deg)}' +
-    '.hb-hen{font-family:var(--sharratt)!important;font-size:44px;letter-spacing:-1px;text-shadow:3px 3px 0 #8A0049;position:relative;z-index:1}' +
-    '.hb-bargs{font-family:var(--sharratt)!important;font-size:34px;letter-spacing:0;color:#FFD400;text-shadow:3px 3px 0 #8A0049}' +
     '.town-jobs{display:grid;gap:10px}' +
     '.town-job{display:grid;grid-template-columns:1fr auto;gap:6px 14px;align-items:center;border:2px solid #F3E3CC;border-radius:16px;padding:12px 14px;background:#fff}' +
     '.town-job.done{background:#F1FAF4;border-color:#BFE3CC}' +
@@ -109386,7 +109487,7 @@ window.SQE_TOWN = function(A){
     '.jcp .t{font-family:var(--sharratt)!important;font-size:14px;color:#00843D;margin-top:3px;letter-spacing:.06em}' +
     '.town-desk.jcdesk{align-items:center}' +
     '@media (max-width:560px){.jcp .w{font-size:24px}}' +
-    '@media (max-width:560px){.hb-logo{margin:4px auto}.town-job{grid-template-columns:1fr}.town-job .jr{align-items:flex-start;flex-direction:row;flex-wrap:wrap}.town-desk{flex-direction:column}.town-sign{width:auto;height:auto;padding:6px 12px}.town-bert img{width:70px}}';
+    '@media (max-width:560px){.hb-logo{margin:4px auto;width:110px;height:110px}.town-job{grid-template-columns:1fr}.town-job .jr{align-items:flex-start;flex-direction:row;flex-wrap:wrap}.town-desk{flex-direction:column}.town-sign{width:auto;height:auto;padding:6px 12px}.town-bert img{width:70px}}';
   document.head.appendChild(css);
 
   function S(){ return A.S(); }
@@ -109396,8 +109497,8 @@ window.SQE_TOWN = function(A){
   function subj(id){ return A.SUBJ.filter(function(s){ return s.id === id; })[0]; }
   function subjDone(s){ return s.topics.length && s.topics.every(function(t){ return learned(s.id + '/' + t.id); }); }
   function top(here){
-    var h = '<div class="cbag town"><div class="cbatop"><a class="cbaback" href="#/palace">‹ Peckham</a><span class="cbattl">' + esc({jobs: 'Job Centre', butcher: 'Bert\'s Butchers', shop: 'Hen Bargs'}[here]) + '</span><span class="spill coin">' + COIN() + ' <b>' + A.cbaS().coins + '</b></span></div>';
-    return h + '<nav class="town-nav" aria-label="Town">' + [['jobs', 'Job Centre'], ['butcher', 'Bert\'s Butchers'], ['shop', 'Hen Bargs'], ['#/mount', 'The Mount']].map(function(b){ return '<a href="' + (b[0].charAt(0) === '#' ? b[0] : '#/town/' + b[0]) + '"' + (b[0] === here ? ' class="on" aria-current="page"' : '') + '>' + b[1] + '</a>'; }).join('') + '</nav>';
+    var h = '<div class="cbag town"><div class="cbatop"><a class="cbaback" href="#/palace">‹ Peckham</a><span class="cbattl">' + esc({jobs: 'Job Centre', butcher: 'Bert\'s Butchers', shop: 'Hen Bargains'}[here]) + '</span><span class="spill coin">' + COIN() + ' <b>' + A.cbaS().coins + '</b></span></div>';
+    return h + '<nav class="town-nav" aria-label="Town">' + [['jobs', 'Job Centre'], ['butcher', 'Bert\'s Butchers'], ['shop', 'Hen Bargains'], ['#/mount', 'The Mount']].map(function(b){ return '<a href="' + (b[0].charAt(0) === '#' ? b[0] : '#/town/' + b[0]) + '"' + (b[0] === here ? ' class="on" aria-current="page"' : '') + '>' + b[1] + '</a>'; }).join('') + '</nav>';
   }
   function scrollTop(sel){ setTimeout(function(){ var el = document.querySelector(sel); if (el && el.getBoundingClientRect().top < 0) try { el.scrollIntoView({block: 'start'}); } catch(e){} }, 20); }
   /* one multiple-choice question card. it = {text (html), opts [html], a (index), ord, pick, why (html), lab} */
@@ -109429,7 +109530,7 @@ window.SQE_TOWN = function(A){
     L.forEach(function(j){ if (j.done) paid += A.earn(j.pay, 'job|' + d + '|' + j.k); });
     if (paid) setTimeout(function(){ try { A.save(); } catch(e){} }, 0);
     var left = L.filter(function(j){ return !j.done; }).length;
-    var h = top('jobs').replace('class="cbag town"', 'class="cbag town town-sh"') + '<div class="bcard town-desk jcdesk"><div class="jcp" aria-hidden="true"><span class="w">jobcentre<i>pluck</i></span><span class="t">PECKHAM</span></div><div><h2>Job Centre</h2><div class="bspeech">' +
+    var h = top('jobs').replace('class="cbag town"', 'class="cbag town town-sh"') + '<div class="bcard town-desk jcdesk"><div class="jcp2" aria-hidden="true"><span class="box"><b>jobcentre</b><span>pluck</span></span><span class="end">Part of the Department for Hens</span></div><div><h2>Job Centre</h2><div class="bspeech">' +
       (!L.length ? '"Hello love! No jobs today, I\'m afraid. Come back tomorrow and I\'ll have something for you."'
         : left ? '"Hello love! I\'ve got ' + (L.length === 1 ? 'a job' : L.length + ' jobs') + ' for you today. Each one is a quick look back at a topic you\'ve already learned, so it sticks. Pick one and I\'ll pay you when it\'s done."'
         : '"All done for today. Lovely work! Come back tomorrow for more."') + '</div></div></div>';
@@ -109463,11 +109564,11 @@ window.SQE_TOWN = function(A){
     if (s && BT && BT.sid === sid) return h + bertRun(s) + '</div>';
     if (s) return h + bertIntro(s) + '</div>';
     h = h.replace('class="cbag town"', 'class="cbag town town-sh"');
-    h += '<div class="bcard"><img class="town-shopimg" src="img/boss/butcher-shop.webp" alt="Bert\'s Butchers: Bert outside his shop" width="900" height="600"><div class="town-bert"><img src="img/boss/bert.webp" alt="Bert the butcher" width="256" height="360"><div><h2>Bert\'s Butchers</h2><div class="bspeech">"Learned a whole subject, have you? Then you sit my test. ' + Math.round(BERT_PASS * 100) + '% to pass, and I\'ll be marking."</div></div></div></div>';
+    h += '<div class="bcard">' + (window.SQE_BERT_SHOP ? window.SQE_BERT_SHOP('') : '') + '<div class="town-bert town-bertlogo"><div class="bblogo" aria-hidden="true"><span class="sb">BERT\'S<br>BUTCHERS</span><span class="aw"></span></div><div><h2>Bert\'s Butchers</h2><div class="bspeech">"Learned a whole subject, have you? Then you sit my test. ' + Math.round(BERT_PASS * 100) + '% to pass, and I\'ll be marking."</div></div></div></div>';
     var B = bertS();
-    h += '<div class="bcard"><h3>Subject tests</h3><p class="town-note" style="margin:0 0 10px">Each subject\'s test unlocks here once you\'ve learned every topic in it. About ' + BERT_PER_TOPIC + ' questions a topic, up to ' + BERT_MAX + '. Pass mark ' + Math.round(BERT_PASS * 100) + '%. First pass: +' + BERT_PASS_COINS + ' coins.</p><ul class="town-subj">' + A.SUBJ.map(function(s){
-      var rec = B[s.id], ok = subjDone(s), dn = s.topics.filter(function(t){ return learned(s.id + '/' + t.id); }).length;
-      return '<li class="' + (rec && rec.passed ? 'pass' : ok ? '' : 'locked') + '"><span class="sn"><b>' + esc(s.title) + '</b><span>' + (rec && rec.passed ? '✓ Passed · best ' + rec.best + '%' : rec ? 'Not passed yet · best ' + rec.best + '%' : ok ? 'Ready: ' + bertSize(s) + ' questions' : dn + ' of ' + s.topics.length + ' topics learned') + '</span></span>' +
+    h += '<div class="bcard"><h3>Subject tests</h3><p class="town-note" style="margin:0 0 10px">Every subject\'s test is open: best sat once you\'ve learned all its topics. About ' + BERT_PER_TOPIC + ' questions a topic, up to ' + BERT_MAX + '. Pass mark ' + Math.round(BERT_PASS * 100) + '%. First pass: +' + BERT_PASS_COINS + ' coins.</p><ul class="town-subj">' + A.SUBJ.map(function(s){
+      var rec = B[s.id], ok = true /* Monnie 20 Nov: never locked */, fin = subjDone(s), dn = s.topics.filter(function(t){ return learned(s.id + '/' + t.id); }).length;
+      return '<li class="' + (rec && rec.passed ? 'pass' : ok ? '' : 'locked') + '"><span class="sn"><b>' + esc(s.title) + '</b><span>' + (rec && rec.passed ? '✓ Passed · best ' + rec.best + '%' : rec ? 'Not passed yet · best ' + rec.best + '%' : bertSize(s) + ' questions' + (fin ? ' · all topics learned' : ' · ' + dn + ' of ' + s.topics.length + ' topics learned')) + '</span></span>' +
         (ok ? '<a class="btn' + (rec && rec.passed ? '' : ' primary') + '" href="#/town/butcher/' + s.id + '">' + (rec && rec.passed ? 'Practise again' : rec ? 'Try again' : 'Sit the test') + '</a>' : '<span class="small muted">Locked</span>') + '</li>';
     }).join('') + '</ul></div>';
     h += '<div class="bcard"><h3>Face the Butcher</h3><p style="margin:0">Exam-style questions on one topic. Beat Bert to win his coin chest.</p><div class="btns"><a class="btn" href="#/boss">Face the Butcher</a></div></div>';
@@ -109475,10 +109576,9 @@ window.SQE_TOWN = function(A){
   }
   function bertIntro(s){
     var rec = bertS()[s.id], back = '<a class="btn" href="#/town/butcher">Back to the shop</a>';
-    if (!subjDone(s)) return '<div class="bcard"><h2>' + esc(s.title) + ' test</h2><p>Bert\'s test unlocks when you\'ve learned every topic in ' + esc(s.title) + '.</p><div class="btns">' + back + '</div></div>';
     var n = bertSize(s);
     if (!n) return '<div class="bcard"><h2>' + esc(s.title) + ' test</h2><p>Bert is still writing this test. Check back soon.</p><div class="btns">' + back + '</div></div>';
-    return '<div class="bcard town-bert"><img src="img/boss/bert.webp" alt="Bert the butcher" width="256" height="360"><div><h2>' + esc(s.title) + ': Bert\'s test</h2><div class="bspeech">"' + n + ' questions on ' + esc(s.title) + '. Get ' + Math.ceil(n * BERT_PASS) + ' right to pass. Take your time."</div>' +
+    return '<div class="bcard town-bert"><img src="img/boss/bert-run.webp" alt="Bert the butcher" width="612" height="800"><div><h2>' + esc(s.title) + ': Bert\'s test</h2><div class="bspeech">"' + n + ' questions on ' + esc(s.title) + '. Get ' + Math.ceil(n * BERT_PASS) + ' right to pass. Take your time."</div>' +
       (rec ? '<p class="small">Your best so far: <b>' + rec.best + '%</b>' + (rec.passed ? ' (passed)' : '') + '.</p>' : '') + '<div class="btns"><button type="button" class="btn primary" data-town="btstart" data-s="' + s.id + '">Start the test</button>' + back + '</div></div></div>';
   }
   function bertItem(q){ return {text: '<div class="town-q notes">' + md(q.q) + '</div>', opts: q.o.map(function(o){ return inl(o); }), a: q.a, why: md(q.e || ''), lab: ''}; }
@@ -109486,7 +109586,7 @@ window.SQE_TOWN = function(A){
     var b = BT;
     if (b.i >= b.items.length){
       var pct = Math.round(b.right / b.items.length * 100), pass = b.right >= Math.ceil(b.items.length * BERT_PASS);
-      return '<div class="bcard" style="text-align:center"><img src="img/boss/bert.webp" alt="" width="256" height="360" style="width:90px;height:auto"><h2>' + (pass ? 'You passed Bert\'s test!' : 'Not this time') + '</h2><p style="font-size:19px">' + b.right + ' of ' + b.items.length + ' right (' + pct + '%). Pass mark ' + Math.round(BERT_PASS * 100) + '%.' + (b.paid ? ' <b>+' + b.paid + ' coins</b>.' : '') + '</p><p>' + (pass ? '"Hmph. Fair enough. You know your ' + esc(s.title) + '."' : '"Back to the notes with you. Look again at the ones you got wrong, then come and try again."') + '</p><div class="btns" style="justify-content:center"><button type="button" class="btn' + (pass ? '' : ' primary') + '" data-town="btstart" data-s="' + s.id + '">' + (pass ? 'Practise again' : 'Try again') + '</button><button type="button" class="btn' + (pass ? ' primary' : '') + '" data-town="btquit">Back to the shop</button></div></div>';
+      return '<div class="bcard" style="text-align:center"><img src="img/boss/bert-run.webp" alt="" width="612" height="800" style="width:90px;height:auto;margin:0 auto"><h2>' + (pass ? 'You passed Bert\'s test!' : 'Not this time') + '</h2><p style="font-size:19px">' + b.right + ' of ' + b.items.length + ' right (' + pct + '%). Pass mark ' + Math.round(BERT_PASS * 100) + '%.' + (b.paid ? ' <b>+' + b.paid + ' coins</b>.' : '') + '</p><p>' + (pass ? '"Hmph. Fair enough. You know your ' + esc(s.title) + '."' : '"Back to the notes with you. Look again at the ones you got wrong, then come and try again."') + '</p><div class="btns" style="justify-content:center"><button type="button" class="btn' + (pass ? '' : ' primary') + '" data-town="btstart" data-s="' + s.id + '">' + (pass ? 'Practise again' : 'Try again') + '</button><button type="button" class="btn' + (pass ? ' primary' : '') + '" data-town="btquit">Back to the shop</button></div></div>';
     }
     var it = bertItem(b.items[b.i]); it.ord = b.ord; it.pick = b.pick; it.lab = s.title;
     return qCard(it, b.i + 1, b.items.length, 'btpick', 'btnext', b.i + 1 >= b.items.length ? 'See my score' : 'Next question ›', '<p class="town-note">' + b.right + ' right so far.</p>');
@@ -109500,7 +109600,7 @@ window.SQE_TOWN = function(A){
     A.save();
   }
 
-  /* ---------- Hen Bargs + gamble ---------- */
+  /* ---------- Hen Bargains + gamble ---------- */
   function sraAll(){ return ((window.SQE_SRA || {}).questions || []).filter(function(q){ return q && q.id && q.stem && q.options && q.answer; }); }
   function sraPool(){ /* GAMBLE_N SRA sample questions at random, learned subjects first */
     var Q = sraAll(), known = {};
@@ -109533,9 +109633,14 @@ window.SQE_TOWN = function(A){
     if (g.i === 0 && g.pick == null) h += '<div class="btns"><button type="button" class="btn" data-town="gcancel">Changed my mind</button></div>';
     return h + '<p class="town-credit">' + esc(SRA_CREDIT) + '</p></div>';
   }
+  function hbLogo(){ /* the real Home Bargains logo layout: blue | red square, white italic h + bold b, name underneath ("hen bargs") */
+    return '<svg class="hb-logo" viewBox="0 0 200 200" role="img" aria-label="Hen Bargains logo: hb, hen bargs"><rect width="200" height="200" fill="#E2231A"/><rect width="82" height="200" fill="#A9DCF2"/>' +
+      '<g fill="#fff" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="700"><text x="42" y="124" font-size="118" font-style="italic">h</text><text x="110" y="124" font-size="118">b</text>' +
+      '<text x="40" y="166" font-size="27" font-style="italic" font-weight="400">hen</text><text x="94" y="166" font-size="27">bargs</text></g></svg>';
+  }
   function viewShop(){
     var c = A.cbaS(), h = top('shop').replace('<div class="cbag town">', '<div class="cbag town hb">'), g = gam(), nQ = sraAll().length;
-    h += '<div class="bcard town-desk hb-desk"><div class="hb-logo" role="img" aria-label="Hen Bargs"><span class="hb-roof"></span><span class="hb-hen">hen</span><span class="hb-bargs">bargs</span></div><div><h2>Hen Bargs</h2><div class="bspeech">"Everything here is for Britney. Feeling lucky? Before you pay, answer ' + GAMBLE_N + ' SRA sample questions. Get ' + GAMBLE_PASS + ' or more right and it\'s half price. Fewer than ' + GAMBLE_PASS + ' and you pay <b>DOUBLE!!!</b>"</div></div></div>';
+    h += '<div class="bcard town-desk hb-desk">' + hbLogo() + '<div><h2>Hen Bargains</h2><div class="bspeech">"Everything here is for Britney. Feeling lucky? Before you pay, answer ' + GAMBLE_N + ' SRA sample questions. Get ' + GAMBLE_PASS + ' or more right and it\'s half price. Fewer than ' + GAMBLE_PASS + ' and you pay <b>DOUBLE!!!</b>"</div></div></div>';
     if (g) h += gamHTML();
     h += '<div class="cbashop">';
     A.CBA_SHOP().forEach(function(it){
@@ -109545,14 +109650,27 @@ window.SQE_TOWN = function(A){
       else if (st === 'need') btn = '<span class="sneed">Buy the ' + esc(A.cbaItem(it.need).n) + ' first</span>';
       else if (st === 'later') btn = '<span class="sneed">Not right now</span>';
       else if (st === 'poor') btn = '<button class="btn" disabled>Need ' + (it.p - c.coins) + ' more</button>';
-      else btn = '<div class="btns"><button type="button" class="btn primary" data-town="buy" data-i="' + it.id + '"' + (g ? ' disabled' : '') + '>' + (it.eat ? 'Feed her' : 'Buy') + '</button>' +
+      else btn = '<div class="btns"><button type="button" class="btn primary" data-town="buy" data-i="' + it.id + '"' + (g ? ' disabled' : '') + '>' + (it.eat ? 'Feed her' : it.p > 0 ? 'Buy' : 'Take them!') + '</button>' +
         (nQ >= GAMBLE_N && it.p > 0 && !g && c.coins >= pr.hi ? '<button type="button" class="btn" data-town="gamble" data-i="' + it.id + '">Gamble</button>' : '') + '</div>' +
         (nQ >= GAMBLE_N && it.p > 0 ? '<span class="town-risk">' + (c.coins >= pr.hi ? 'Gamble: ' + pr.lo + ' with ' + GAMBLE_PASS + '+ right, DOUBLE (' + pr.hi + ') with fewer' : 'Can\'t gamble: fewer than ' + GAMBLE_PASS + ' right means paying DOUBLE (' + pr.hi + ') and you have ' + c.coins) + '</span>' : '');
-      h += '<div class="sitm' + (st === 'own' ? ' have' : '') + (st === 'need' ? ' locked' : '') + '"><span class="spic">' + A.cbaItemPic(it.id) + '</span><b>' + esc(it.n) + '</b><span class="sdesc">' + esc(it.d) + '</span>' + (st === 'own' ? '' : '<span class="sprice">' + it.p + ' ' + COIN() + '</span>') + btn + '</div>';
+      h += '<div class="sitm' + (st === 'own' ? ' have' : '') + (st === 'need' ? ' locked' : '') + '"><span class="spic">' + A.cbaItemPic(it.id) + '</span><b>' + esc(it.n) + '</b><span class="sdesc">' + esc(it.d) + '</span>' + (st === 'own' ? '' : '<span class="sprice">' + (it.p > 0 ? it.p + ' ' + COIN() : 'FREE') + '</span>') + btn + '</div>';
     });
     return h + '</div></div>';
   }
 
+  /* 20 Nov (Monnie): from the day after she finishes a subject's last topic, Today gets "Bert's Butchers: <subject> test" automatically until she passes it (as well as the planned slot) */
+  function bertDue(pd){
+    var out = (pd.bert || []).slice(), have = {}; out.forEach(function(b){ have[b.s.id] = 1; });
+    if (pd.d !== A.ymd()) return out;
+    var B = bertS();
+    A.SUBJ.forEach(function(s){
+      if (have[s.id] || (B[s.id] && B[s.id].passed) || !subjDone(s)) return;
+      var fin = 0; s.topics.forEach(function(t){ var v = S().done[s.id + '/' + t.id], at = v && (typeof v === 'number' ? v : v.at); if (at > fin) fin = at; });
+      if (fin && A.ymd(new Date(fin)) >= pd.d) return; /* finished today: Bert comes tomorrow */
+      out.push({s: s});
+    });
+    return out;
+  }
   /* ---------- timetable: a "Bert's Butchers: <subject> test" slot on the study day after each subject's last learning day ---------- */
   if (A.hooks) A.hooks({
     plan: function(days){
@@ -109564,10 +109682,10 @@ window.SQE_TOWN = function(A){
       });
     },
     todo: function(pd){
-      return (pd.bert || []).map(function(b){ var k = 'bert|' + pd.d + '|' + b.s.id, dn = !!(S().todo && S().todo[k]), n = bertSize(b.s) || Math.min(BERT_MAX, b.s.topics.length * BERT_PER_TOPIC);
+      return bertDue(pd).map(function(b){ var k = 'bert|' + pd.d + '|' + b.s.id, dn = !!(S().todo && S().todo[k]), n = bertSize(b.s) || Math.min(BERT_MAX, b.s.topics.length * BERT_PER_TOPIC);
         return '<li class="tdtopic"><b>🥊 Bert\'s Butchers: ' + esc(b.s.title) + ' test</b> <span class="muted small">required end-of-subject test, ' + n + ' questions, pass mark ' + Math.round(BERT_PASS * 100) + '%</span><ul class="tdsteps"><li><button class="tdbox' + (dn ? ' on' : '') + '" data-act="todo" data-k="' + k + '" aria-label="Tick off">' + (dn ? '✓' : '') + '</button><a href="#/town/butcher/' + b.s.id + '">Sit Bert\'s ' + esc(b.s.title) + ' test</a><span class="tdmin">' + esc(A.fmtM(n * BERT_MINS)) + '</span></li></ul></li>'; }).join('');
     },
-    tasks: function(pd){ return (pd.bert || []).map(function(b){ return 'bert|' + pd.d + '|' + b.s.id; }); }
+    tasks: function(pd){ return bertDue(pd).map(function(b){ return 'bert|' + pd.d + '|' + b.s.id; }); }
   });
 
   VIEW.town = function(r){
@@ -109581,7 +109699,7 @@ window.SQE_TOWN = function(A){
     if (A.route()[0] !== 'town') return;
     var b = e.target.closest && e.target.closest('[data-town]'); if (!b) return;
     var a = b.getAttribute('data-town'), g = gam();
-    if (a === 'btstart'){ var s = subj(b.getAttribute('data-s')); if (!s || !subjDone(s)) return; var items = bertDraw(s); if (!items.length) return; BT = {sid: s.id, items: items, i: 0, right: 0, paid: 0}; btOrd(); A.render(); scrollTop('.town'); }
+    if (a === 'btstart'){ var s = subj(b.getAttribute('data-s')); if (!s) return; var items = bertDraw(s); if (!items.length) return; BT = {sid: s.id, items: items, i: 0, right: 0, paid: 0}; btOrd(); A.render(); scrollTop('.town'); }
     else if (a === 'btquit'){ BT = null; location.hash = '#/town/butcher'; }
     else if (a === 'btpick' && BT && BT.pick == null){ BT.pick = +b.getAttribute('data-o'); if (BT.pick === BT.items[BT.i].a) BT.right++; A.render(); }
     else if (a === 'btnext' && BT && BT.pick != null){ BT.i++; if (BT.i >= BT.items.length) btFinish(); else btOrd(); A.render(); scrollTop('#town-q'); }
@@ -109682,7 +109800,13 @@ window.SQE_MOUNT = function(A){
     '.mount-cup{position:absolute;right:-26%;top:38%;width:42%}.mount-cup img,.mount-cup svg{display:block;width:100%;height:auto}' +
     /* Mum and Dad */
     '.mount-parents{position:absolute;left:66%;bottom:34%;width:10%;transform:translateX(-50%);z-index:3;pointer-events:none}' +
-    '.mount-parents>img{display:block;width:100%;height:auto}' +
+    /* Monnie 20 Nov 04:48: Mama and Baba animated, as two separate layers cut from the same picture (no redraw) */
+    '.mount-parents .mp-pair{position:relative;width:100%;aspect-ratio:537/600}' +
+    '.mount-parents .mp-pair img{position:absolute;bottom:0;height:100%;width:auto;transform-origin:50% 100%}' +
+    '.mount-parents .mp-baba{left:0;animation:mpbaba 2.6s ease-in-out infinite}' +
+    '.mount-parents .mp-mama{right:0;animation:mpmama 2.2s ease-in-out infinite .4s}' +
+    '@keyframes mpbaba{0%,100%{transform:rotate(-3deg)}25%{transform:translateY(-4%) rotate(0)}50%{transform:rotate(3deg)}75%{transform:translateY(-4%) rotate(0)}}' +
+    '@keyframes mpmama{0%,100%{transform:rotate(3deg)}20%{transform:translateY(-7%) rotate(0)}40%{transform:rotate(-3deg)}60%{transform:translateY(-7%) rotate(0) scaleX(-1)}80%{transform:rotate(3deg) scaleX(-1)}90%{transform:rotate(3deg)}}' +
     '.mount-bubble{position:absolute;bottom:100%;right:30%;margin-bottom:6px;background:#fff;border:2px solid #3B2F1E;border-radius:14px;padding:4px 9px;font-weight:700;font-size:clamp(10px,1.25vw,16px);line-height:1.2;color:#3B2F1E;width:max-content;max-width:min(240px,32vw);text-align:left;box-shadow:0 2px 0 rgba(0,0,0,.12);transition:opacity .25s}' +
     '.mount-bubble:after{content:"";position:absolute;right:16px;bottom:-9px;border:8px solid transparent;border-top-color:#3B2F1E;border-bottom:0}' +
     '.mount-bubble.fade{opacity:0}' +
@@ -109752,7 +109876,7 @@ window.SQE_MOUNT = function(A){
       else btn = '<button type="button" class="btn primary" data-mount="' + (plain ? 'corn' : 'give') + '" data-i="' + id + '">' + (plain ? 'Feed ' + esc(nm) : 'Give') + ' · ' + it.p + ' ' + A.cbaCoin() + '</button>';
       return '<li class="' + (gv ? 'ate' : '') + '"><span class="tp">' + A.prizePic(id) + '</span><span class="tn"><b>' + esc(it.n) + '</b><span>' + (plain ? 'A plain bowl of corn. Keeps her going.' : ate && !gv ? 'Bought today. Give it to her!' : 'She goes absolutely wild for this.') + '</span></span>' + btn + '</li>';
     }
-    return '<div class="palcard mount-treats"><h3>🍰 Treats for ' + esc(nm) + '</h3><p class="small muted" style="margin:0">One of each a day. Treats bought in <a href="' + shop + '">Hen Bargs</a> today can be given here.</p><ul>' + row('corn', true) + TREATS.map(function(id){ return row(id, false); }).join('') + '</ul></div>';
+    return '<div class="palcard mount-treats"><h3>🍰 Treats for ' + esc(nm) + '</h3><p class="small muted" style="margin:0">One of each a day. Treats bought in <a href="' + shop + '">Hen Bargains</a> today can be given here.</p><ul>' + row('corn', true) + TREATS.map(function(id){ return row(id, false); }).join('') + '</ul></div>';
   }
 
   VIEW.mount = function(r){
@@ -109760,12 +109884,12 @@ window.SQE_MOUNT = function(A){
     var c = A.cbaS(), o = c.own, L = A.henLife(), m = A.henMood(L), nm = A.henName(L);
     var shop = '#/town/shop';
     var hatched = L.stage === 'hen' || L.stage === 'chick';
-    var h = '<div class="mount"><div class="mount-top"><a class="mount-back" href="#/palace">‹ Peckham</a><h2 class="mount-title">The Mount</h2>' +
-      '<span class="spill coin">' + A.cbaCoin() + ' <b>' + c.coins + '</b></span><a class="spill shop mount-shop" href="' + shop + '">🛒 Hen Bargs</a></div>';
+    var h = '<div class="mount"><div class="mount-top"><a class="mount-back" href="#/palace">‹ Peckham</a><h2 class="mount-title"><span class="mount-sign">The Mount</span></h2>' +
+      '<span class="spill coin">' + A.cbaCoin() + ' <b>' + c.coins + '</b></span><a class="spill shop mount-shop" href="' + shop + '">🛒 Hen Bargains</a></div>';
     h += '<div class="mount-garden mood-' + esc(m.cls) + '"><img class="mount-bg" src="img/scene/mount-garden.webp" alt="The Mount: a garden with a lawn, a round stone patio, a path, two benches and a chicken coop" width="2752" height="1536">';
     var onShelf = SHELF.filter(function(id){ return o[id] && A.cbaItem(id) && (id.indexOf('rec_') !== 0 || o.player); });
     if (onShelf.length) h += '<div class="mount-shelf" aria-label="Britney\'s shelf">' + shelfRows(onShelf, 8) + '<div class="legs"><i></i><i></i></div></div>';
-    if (o.parents || o.mum || o.dad) h += '<div class="mount-parents" title="Mama and Baba"><img src="img/souvenir/parents.webp" alt="Mama and Baba" onerror="this.parentNode.style.display=\'none\'"><span class="mount-bubble" aria-live="polite">' + esc(parentLine()) + '</span></div>';
+    if (o.parents || o.mum || o.dad) h += '<div class="mount-parents" title="Mama and Baba"><div class="mp-pair" role="img" aria-label="Mama and Baba"><img class="mp-baba" src="img/souvenir/baba.webp" alt=""><img class="mp-mama" src="img/souvenir/mama.webp" alt=""></div><span class="mount-bubble" aria-live="polite">' + esc(parentLine()) + '</span></div>';
     h += '<div class="mount-layla" title="Layla"><img src="img/layla-walk-1.webp" alt="Layla" width="163" height="300">' +
       (o.crocs ? '<span class="mount-crocs l">' + CROC + '</span><span class="mount-crocs r">' + CROC + '</span>' : '') +
       (o.cup ? '<span class="mount-cup" title="Big lilac cup">' + A.prizePic('cup') + '</span>' : '') + '<span class="mount-tag">Layla</span></div>';
@@ -109788,7 +109912,7 @@ window.SQE_MOUNT = function(A){
     else h += '<div class="mount-hen mount-brit nohen" title="' + esc(L.away ? 'Britney is at Bert\'s Butchers' : 'Britney') + '">' + A.henPic(L, m) + '</div>';
     h += '</div>';
     if (onShelf.length) h += '<div class="mount-shelflist">On Britney\'s shelf:' + shelfRows(onShelf, 99) + '</div>';
-    h += '<p class="mount-who">' + (who.length ? 'In the garden with ' + esc(nm) + ' and Layla: ' + esc(who.join(', ')) + '.' : (L.stage === 'none' || L.stage === 'egg' ? esc(nm) + ' hasn\'t hatched yet, so the garden is empty for now.' : 'Only ' + esc(nm) + ' lives here so far.') + ' Buy her some hen friends in <a href="' + shop + '">Hen Bargs</a>.') + '</p>';
+    h += '<p class="mount-who">' + (who.length ? 'In the garden with ' + esc(nm) + ' and Layla: ' + esc(who.join(', ')) + '.' : (L.stage === 'none' || L.stage === 'egg' ? esc(nm) + ' hasn\'t hatched yet, so the garden is empty for now.' : 'Only ' + esc(nm) + ' lives here so far.') + ' Buy her some hen friends in <a href="' + shop + '">Hen Bargains</a>.') + '</p>';
     h += '<div class="mount-panels">';
     if (L.stage !== 'none' && L.stage !== 'egg') h += '<div class="cbasay mood-' + esc(m.cls) + '"><b>' + esc(L.away ? 'Palace butler' : L.ill ? 'Palace vet' : nm) + ':</b> ' + esc(m.t) + '</div>';
     if (L.away) h += A.bossCaptivePanel('palace');
@@ -110394,7 +110518,10 @@ function nbStreakHTML(){
   /* Britney flies beside Layla's shoulder on clouds 1-5 (right side on 1-3, left on 4-5 to miss the rainbow); hidden if her picture is missing */
   /* r3: Britney on the open side with a clear gap (right on grass/1/2, left on 3/4/5), drawn after Layla so she is never covered; fly1 on the grass, flyN on step N */
   var brit = ''; if (NB_FLY){ var BH = STEP_POSE[0][0] * 0.33, /* QA 20 Nov: Britney stays the same size on every step */ rt = st <= 2, bx = rt ? lp[0] + LW / 2 + 14 : lp[0] - LW / 2 - 14 - BH, by = Math.max(14, lp[1] - pz[2] - LH * (rt ? 0.76 : 0.62) - BH / 2); brit += '<g class="nbbrit"><image href="img/britney/fly' + ([1, 1, 2, 3, 4, 5][st]) + '.webp" onerror="if(this.dataset.fb){this.parentNode.style.display=\'none\'}else{this.dataset.fb=1;this.setAttribute(\'href\',\'img/britney/fly.webp\')}" x="' + bx.toFixed(1) + '" y="' + by.toFixed(1) + '" width="' + BH.toFixed(1) + '" height="' + BH.toFixed(1) + '"/></g>'; }
-  svg += '<image class="nblayla nbst' + st + '" href="' + lsrc + '" onerror="NB_STEPMISS[' + st + ']=1;this.setAttribute(\'href\',STEP_IMG[' + st + '])" x="' + (lp[0] - LW / 2).toFixed(1) + '" y="' + (lp[1] - LH - pz[2]).toFixed(1) + '" width="' + LW.toFixed(1) + '" height="' + LH + '" preserveAspectRatio="xMidYMax meet"/>';
+  var lgeo = '" x="' + (lp[0] - LW / 2).toFixed(1) + '" y="' + (lp[1] - LH - pz[2]).toFixed(1) + '" width="' + LW.toFixed(1) + '" height="' + LH + '" preserveAspectRatio="xMidYMax meet"/>';
+  svg += '<image class="nblayla nbst' + st + ' nbday" href="' + lsrc + '" onerror="NB_STEPMISS[' + st + ']=1;this.setAttribute(\'href\',STEP_IMG[' + st + '])' + lgeo;
+  /* night copy without the white paper showing between her outer curls (layla-stepN-n.webp); CSS shows one or the other by .nbnight */
+  if (!NB_STEPMISS[st]) svg += '<image class="nblayla nbst' + st + ' nbngt" href="img/layla-step' + st + '-n.webp" onerror="this.setAttribute(\'href\',\'' + lsrc + '\')' + lgeo;
   svg += brit;
   var rx = 735, ry = 56; svg += '<g transform="translate(' + rx + ' ' + ry + ') scale(1.45) translate(' + (-rx) + ' ' + (-ry) + ')"><g class="nbrain">'; /* nbrain: the rainbow, clouds and present float together */
   ["#E0457B","#F59F2A","#F7D038","#4CB963","#3B8FE0","#8A5CD6"].forEach(function(c, j){ var r = 46 - j * 5; svg += '<path d="M' + (rx - r) + ' ' + ry + 'a' + r + ' ' + r + ' 0 0 1 ' + (2 * r) + ' 0" fill="none" stroke="' + c + '" stroke-width="5.8"/>'; });
@@ -110576,7 +110703,9 @@ function timerStrip(){
 function nbFit(h){ try { var ns = h.querySelector(".nbstats"); if (!ns) return; ns.style.zoom = ""; var box = ns.parentElement; while (box && getComputedStyle(box).display === "contents") box = box.parentElement; if (!box) return; var cs = getComputedStyle(box), avail = box.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight); var gap = parseFloat(getComputedStyle(ns).columnGap) || 0, kids = ns.children, need = 0; for (var i = 0; i < kids.length; i++) need += kids[i].getBoundingClientRect().width + (i ? gap : 0); if (need > avail && avail > 0) ns.style.zoom = Math.max(0.5, (avail - 2) / need).toFixed(3); } catch(e){} }
 var NBZ_W = 1730; /* 20 Nov (Monnie): above phone width the whole banner is one fixed design (as at a 2030px window) scaled evenly, so everything keeps its size and place relative to everything else */
 function nbZoom(h, t){ var z = 1; try { var on = h.classList.contains("nb") && window.innerWidth > 560 && !/[?&]nbz=0/.test(location.search); h.style.zoom = ""; h.style.width = ""; t.style.zoom = ""; h.classList.toggle("nbz", on); if (!on) return 1; var w = h.getBoundingClientRect().width; z = w / NBZ_W; h.style.width = NBZ_W + "px"; h.style.zoom = z.toFixed(4); t.style.zoom = (1 / z).toFixed(4); } catch(e){ z = 1; } return z; }
-function tabH(){ try { var h = document.querySelector(".head"), t = h && h.querySelector(".tabs"); if (!t) return; var nz = nbZoom(h, t); var v = Math.round((h.getBoundingClientRect().bottom - t.getBoundingClientRect().top) / nz) + "px"; if (h.style.getPropertyValue("--tabh") !== v) h.style.setProperty("--tabh", v); var mh = (window.innerWidth > (h.classList.contains("nbz") ? 560 : 720) && (!h.classList.contains("compact") || h.classList.contains("nb"))) ? Math.round(Math.min((nz !== 1 ? NBZ_W : h.clientWidth) / 4.03, 400) + 26 + parseInt(v, 10)) + "px" : ""; if (h.style.minHeight !== mh) h.style.minHeight = mh; if (h.classList.contains("nb")){ NB_MID = nz === 1 && window.innerWidth > 720 && h.clientWidth <= 1060; h.classList.toggle("nbmid", NB_MID); if (nz === 1) nbFit(h); } layGuard(); } catch(e){} }
+/* tabs-bigger (20 Nov): pick 15 / 8 / 5 columns from the tab bar's own width and its widest label, so rows are even and no label runs into its neighbour */
+function tabCols(h, t){ try { if (!h.classList.contains("nbz")){ t.style.removeProperty("grid-template-columns"); t.style.removeProperty("--tabfs"); return; } var W = t.getBoundingClientRect().width, mx = 0, a = t.querySelector("a"), f0 = a ? parseFloat(getComputedStyle(a).fontSize) || 16 : 16; t.querySelectorAll("a span").forEach(function(s){ mx = Math.max(mx, s.getBoundingClientRect().width); }); var pick = [5, 16]; [[15, 16], [15, 15], [8, 16], [8, 15], [8, 14]].some(function(o){ if ((W - 4 * (o[0] - 1)) / o[0] >= mx * o[1] / f0 + 12){ pick = o; return true; } }); var v = "repeat(" + pick[0] + ",minmax(0,1fr))"; if (t.style.getPropertyValue("grid-template-columns") !== v) t.style.setProperty("grid-template-columns", v, "important"); if (t.style.getPropertyValue("--tabfs") !== pick[1] + "px") t.style.setProperty("--tabfs", pick[1] + "px"); t.setAttribute("data-cols", pick[0]); } catch(e){} }
+function tabH(){ try { var h = document.querySelector(".head"), t = h && h.querySelector(".tabs"); if (!t) return; var nz = nbZoom(h, t); tabCols(h, t); var v = Math.round((h.getBoundingClientRect().bottom - t.getBoundingClientRect().top) / nz) + "px"; if (h.style.getPropertyValue("--tabh") !== v) h.style.setProperty("--tabh", v); var mh = (window.innerWidth > (h.classList.contains("nbz") ? 560 : 720) && (!h.classList.contains("compact") || h.classList.contains("nb"))) ? Math.round(Math.min((nz !== 1 ? NBZ_W : h.clientWidth) / 4.03, 400) + 26 + parseInt(v, 10)) + "px" : ""; if (h.style.minHeight !== mh) h.style.minHeight = mh; if (h.classList.contains("nb")){ NB_MID = nz === 1 && window.innerWidth > 720 && h.clientWidth <= 1060; h.classList.toggle("nbmid", NB_MID); if (nz === 1) nbFit(h); } layGuard(); } catch(e){} }
 var NB_MID = window.innerWidth > 720 && window.innerWidth <= 1060; /* banner-r3: the middle-band banner layout follows the banner's own width (the Topics list can narrow it on a big screen) */
 /* 22:55 guard: whatever the fonts, browser or saved layout, push the present clouds (with cloud-Layla) down until Layla's head is clear of the numbers row, and grow the banner to fit */
 function layGuard(){ try { var h = document.querySelector(".head"), st = h && h.querySelector(".streak"), ly = st && st.querySelector(".stlayla"), hs = h && h.querySelector(".hstats"); if (!st) return;
@@ -110943,7 +111072,7 @@ var CBA_SHOP = [
   {id:"nestbox", n:"Cosy nesting box", d:"A snug straw bed. Britney is more likely to lay a chick egg.", p:400},
   {id:"bonnie", n:"Jiminey the rabbit", d:"A fluffy ginger bunny with floppy ears. A new friend for the chickens.", p:500},
   {id:"palace", n:"Luxury coop makeover", d:"A full pamper for The Mount coop: fresh paint, fairy lights, velvet perches and a tiny chandelier. The hens are obsessed.", p:1500},
-  {id:"parents", n:"Mama and Baba", d:"They move in to The Mount. Comes with opinions about your revision and your life. No refunds.", p:500}
+  {id:"parents", n:"Mama and Baba", d:"Take them for free! They'll give their (unwanted) opinions on your revision and your life.", p:0}
 ];
 function cbaItem(id){ return CBA_SHOP.filter(function(x){ return x.id === id; })[0]; }
 /* a gold coin (the coin emoji looks like a moon on some Macs) */
@@ -111438,7 +111567,7 @@ function todoHTML(it){
   if (it.part === "start" || it.part === "continue") return '<li class="tdtopic"><b>' + esc(tnum(x)) + '</b> ' + esc(x.t.title) + ' <span class="muted small">' + fmtM(it.m) + '</span><ul class="tdsteps">' +
     '<li><button class="tdbox' + (stepDone(x, "notes") ? " on" : "") + '" data-act="todo" data-k="' + x.key + '|notes" aria-label="Tick off">' + (stepDone(x, "notes") ? "✓" : "") + '</button><a href="' + notesHref(x) + '">📝 ' + (it.part === "start" ? "Start reading the notes (big topic, it carries on next session)" : "Carry on reading the notes") + '</a><span class="tdmin">' + fmtM(it.m) + '</span></li></ul></li>';
   var st = topicSteps(x), sm = stepMins(x, it.m), bwon = bossS().won[x.key];
-  var brow = false /* 20 Nov: Bert off topic lists */ ? '<li class="tdboss' + (bwon ? ' won' : '') + '"><img class="bert" src="img/boss/bert.webp" alt="" width="256" height="360" loading="lazy"><a href="#/boss/' + x.s.id + '/' + x.t.id + '">' + (bwon ? '🏆 You beat Bert the butcher on this topic' : '⭐ Optional bonus: 🥊 Bert the butcher challenges you!') + '</a></li>' : '';
+  var brow = false /* 20 Nov: Bert off topic lists */ ? '<li class="tdboss' + (bwon ? ' won' : '') + '"><img class="bert" src="img/boss/bert-run.webp" alt="" width="612" height="800" loading="lazy"><a href="#/boss/' + x.s.id + '/' + x.t.id + '">' + (bwon ? '🏆 You beat Bert the butcher on this topic' : '⭐ Optional bonus: 🥊 Bert the butcher challenges you!') + '</a></li>' : '';
   return '<li class="tdtopic"><b>' + esc(tnum(x)) + '</b> ' + esc(x.t.title) + ' <span class="muted small">' + fmtM(it.m) + (it.part === "finish" ? " · finish this topic" : "") + '</span><ul class="tdsteps">' + st.map(function(z){ var dn = stepDone(x, z.k); return '<li><button class="tdbox' + (dn ? " on" : "") + '"' + (z.auto ? ' disabled title="Ticks itself when you rate the topic"' : ' data-act="todo" data-k="' + x.key + '|' + z.k + '"') + ' aria-label="Tick off">' + (dn ? "✓" : "") + '</button><a href="' + z.h + '">' + z.l + '</a>' + (z.alt || '') + (sm(z.k) ? '<span class="tdmin">' + fmtM(sm(z.k)) + '</span>' : '') + '</li>'; }).join("") + brow + '</ul></li>';
 }
 function topicStepCount(x){ var st = topicSteps(x), d = st.filter(function(z){ return stepDone(x, z.k); }).length; return [d, st.length]; }
@@ -112722,7 +112851,11 @@ function showPops(){
   document.body.appendChild(el);
   var w = el.offsetWidth, maxR = window.innerWidth - 6, sd = document.querySelector(".layout > .side"), sr = sd && sd.getBoundingClientRect(); /* keep the pop-up off the Topic list sidebar */
   if (sr && sr.width > 40 && sr.left > 200 && sr.top < y + 40 && sr.bottom > y) maxR = Math.min(maxR, sr.left - 8);
-  el.style.left = Math.max(6, Math.min(maxR - w, x - w / 2)) + "px"; el.style.top = y + "px";
+  el.style.left = Math.max(6, Math.min(maxR - w, x - w / 2)) + "px";
+  var eh = el.offsetHeight, er = el.getBoundingClientRect(), keep = [].slice.call(document.querySelectorAll(".scn-ribbon .rb, .scn-head h2")).map(function(k){ return k.getBoundingClientRect(); }).filter(function(k){ return k.width && k.bottom > 0 && k.top < window.innerHeight; });
+  function hits(yy){ return keep.some(function(k){ return er.left < k.right + 4 && er.right > k.left - 4 && yy < k.bottom + 4 && yy + eh > k.top - 4; }); } /* keep it clear of the room ribbon and title too */
+  if (hits(y)){ var ys = []; keep.forEach(function(k){ ys.push(k.top - eh - 8, k.bottom + 8); }); ys = ys.filter(function(yy){ return yy >= 4 && yy <= window.innerHeight - eh - 4 && !hits(yy); }).sort(function(p, q){ return Math.abs(p - y) - Math.abs(q - y); }); if (ys.length) y = ys[0]; }
+  el.style.top = y + "px";
   setTimeout(function(){ if (el.parentNode) el.parentNode.removeChild(el); }, 1900);
   if (n && bag){ bag.classList.remove("wig"); void bag.offsetWidth; bag.classList.add("wig"); }
 }
@@ -113202,7 +113335,7 @@ function viewPalace(r){
   if (L.stage !== "none" && L.stage !== "egg") h += '<div class="cbasay mood-' + m.cls + '"><b>' + esc(L.away ? "Palace butler" : L.ill ? "Palace vet" : nm) + ':</b> ' + esc(m.t) + '</div>';
   h += bossChestCard() + (L.away ? bossCaptivePanel("palace") : '');
   h += needCard() + incubCard(L) + (L.stage === "none" || L.stage === "egg" ? '' : feedPanel("palace")) + broodCard();
-  if (!L.away) h += '<a class="palcard bpalcard" href="#/boss"><img class="bert" src="img/boss/bert.webp" alt="" width="256" height="360" loading="lazy"><span><b>🥊 Face the Butcher</b><span class="small">Bert quizzes you at the end of each topic. You\'ve beaten him on ' + plural(Object.keys(bossS().won).length, "topic") + '. Rules are in How it works below.</span></span></a>';
+  if (!L.away) h += '<a class="palcard bpalcard" href="#/boss"><img class="bert" src="img/boss/bert-run.webp" alt="" width="612" height="800" loading="lazy"><span><b>🥊 Face the Butcher</b><span class="small">Bert quizzes you at the end of each topic. You\'ve beaten him on ' + plural(Object.keys(bossS().won).length, "topic") + '. Rules are in How it works below.</span></span></a>';
   h += howItWorks();
   if (L.stage !== "none" && L.stage !== "egg") h += '<div class="palcard"><h3>' + esc(nm) + '\'s feeds this week</h3>' + hungerStrip() + '</div>';
   h += '<div class="palcard"><h3>Your topic flock</h3><div class="cbaflock"><span>' + cbaEgg("ico") + ' <b>' + f.eggs.length + '</b> egg' + (f.eggs.length === 1 ? '' : 's') + '</span><span>' + cbaChick("ico") + ' <b>' + f.chicks.length + '</b> chick' + (f.chicks.length === 1 ? '' : 's') + '</span><span>' + cbaHen("ico") + ' <b>' + f.hens.length + '</b> grown</span></div><p class="small muted" style="margin:6px 0 0">Every topic you revise lays a topic egg: Today\'s steps, cards, quick-fire, Model Q&amp;A, podcasts and <a href="#/cba">CBA levels</a> all count. Pass the topic\'s quick-fire and it hatches; rate the topic green 🟢 and it grows up.</p></div>';
@@ -113224,7 +113357,7 @@ function g_lives(){ return gameS().lives || 1; }
    After 3 failed rescues she pays a 300-coin ransom. While Britney is away her feeding pauses: those days count as neither fed nor missed.
    Saved state: S.game.boss = {v, won:{key:date}, cap:null|{key, from, tries:[{d, r}], ransom}, log:[{from, to, how}], chest:null|{n, why}} */
 var BOSS_N = 10, BOSS_WIN = 5, BOSS_RESCUES = 3, BOSS_RANSOM = 300, BOSS_CHEST = 50, BOSS_RESCUE_CHEST = 30, BOSS_PRACTICE = 5;
-var BOSS = null, BOSS_LOCK_SCALE = 1;
+var BOSS = null, BOSS_LOCK_SCALE = 0; /* 0 = no "Read it properly" wait (Monnie 20 Nov) */
 function bossS(){
   var g = gameS(), b = g.boss;
   if (!b || typeof b !== "object") b = g.boss = {};
@@ -113253,7 +113386,7 @@ function bossAway(ds){
   return false;
 }
 function bossCaptive(){ return !!bossS().cap; }
-function bossHatched(){ var g = gameS(); return g.phase === "hen"; }
+function bossHatched(){ return true; } /* Monnie 20 Nov: in the Bert game Britney is always there (she is on the Peckham path), so there is always someone to steal */
 /* a loss can only cost Britney if she has hatched, is at home, and this topic hasn't been beaten yet */
 function bossStake(key){ var b = bossS(); return bossHatched() && !b.cap && !b.won[key]; }
 function bossRescueState(){
@@ -113354,8 +113487,21 @@ function bossRansom(){
 }
 
 /* ---------- boss pictures ---------- */
-function bertImg(cls, face){ return '<img class="bert ' + (cls || "") + '" src="img/boss/' + (face ? 'bert-' + face : 'bert') + '.webp" alt="Bert the butcher, a cheeky cartoon butcher with a big moustache and a wooden spoon' + (face === "scowl" ? ', scowling' : face === "laugh" ? ', laughing' : '') + '" width="' + (face ? 360 : 256) + '" height="' + (face ? 504 : 360) + '">'; }
-function bossShopImg(cls){ return '<img class="bshop ' + (cls || "") + '" src="img/boss/butcher-shop.webp" alt="Bert\'s Butchers: Bert outside his shop and Britney in a cage in the window" width="900" height="600" loading="lazy">'; }
+/* Bert master art = the Peckham map's Bert and shop (Monnie 20 Nov): bert-run.webp is drawn from map-new/butchers3.webp */
+var BERT_RUN = "img/boss/bert-run.webp";
+function bertImg(cls, face){ return '<img class="bert brun ' + (cls || "") + (face ? ' bf-' + face : '') + '" src="' + BERT_RUN + '" alt="Bert the butcher, shaking his wooden spoon" width="612" height="800">'; }
+/* the shop exactly as on the Peckham map, with the same door animation (Bert pops out); night version after 5 PM */
+function bertShopHTML(cls, inner){
+  var hr = new Date().getHours(), night = hr >= 17 || hr < 6;
+  return '<div class="bmshop ' + (cls || "") + (night ? " night" : "") + '" role="img" aria-label="Bert\'s Butchers, Bert at his shop door"><span class="bs-day"><img src="img/map-new/butchers3.webp" alt=""><img class="bs-f1" src="img/map-new/anim/bert-fist.webp" alt=""><img class="bs-f2" src="img/map-new/anim/bert-fist2.webp" alt=""><img class="bs-c" src="img/map-new/anim/bert-closed.webp" alt=""><img class="bs-b" src="img/map-new/anim/bert-blink.webp" alt=""></span><img class="bs-n" src="img/map-new/butchers3-night.webp" alt="">' + (inner || "") + '</div>';
+}
+window.SQE_BERT_SHOP = bertShopHTML;
+function bossShopImg(cls){ return bertShopHTML("bshop " + (cls || ""), '<span class="bmcage">' + bossBrit("scared") + BOSS_CAGE + '</span>'); }
+/* Britney in the Bert game: the map's Britney picture; happy when Bert is pushed back, scared when he comes closer */
+function bossBrit(mood){
+  var src = /happy|jump/.test(mood) ? (/jump/.test(mood) ? "img/britney/set/excited.webp" : "img/britney/set/happy.webp") : "img/britney/master2-cgpt.webp";
+  return '<span class="hen henimg bbrit ' + mood + '"><img src="' + src + '" alt="" width="800" height="800">' + (/scared|worried/.test(mood) ? '<i class="bsweat" aria-hidden="true">💦</i>' : '') + '</span>';
+}
 function bossChestSvg(open){
   return '<svg class="bchest' + (open ? " open" : "") + '" viewBox="0 0 200 150" aria-hidden="true">' +
     '<g class="coinsp">' + [[60,40],[90,28],[120,36],[100,46],[140,48],[75,52]].map(function(p){ return '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="10" fill="#FFD43B" stroke="#B8860B" stroke-width="2"/>'; }).join("") + '<path d="M40 30l6-10M160 30l-6-10M100 8v-8" stroke="#FFD43B" stroke-width="4" stroke-linecap="round"/></g>' +
@@ -113389,9 +113535,7 @@ function bossCaptivePanel(where){
 /* ---------- the duel: a chase. Britney in her nest on the left, Bert creeping in from the right ---------- */
 /* Bert in layers: three faces (grin, gleeful laugh, angry scowl) stacked, plus a fist-and-spoon arm that shakes */
 function bossBert(face, carry){
-  var h = '<span class="bwalk f-' + face + '"><span class="bbody">';
-  ["grin", "laugh", "scowl"].forEach(function(f){ h += '<img class="bf bf-' + f + '" src="img/boss/bert-' + f + '.webp" alt="" width="360" height="504">'; });
-  return h + '<img class="barm" src="img/boss/bert-arm.webp" alt="" width="360" height="504">' + (carry ? '<span class="bcarry">' + carry + '</span>' : '') + '</span></span>';
+  return '<span class="bwalk f-' + face + '"><span class="bbody"><img class="bf bf-grin brunimg" src="' + BERT_RUN + '" alt="" width="612" height="800">' + (carry ? '<span class="bcarry">' + carry + '</span>' : '') + '</span></span>';
 }
 var BOSS_CAGE = '<svg class="bcage" viewBox="0 0 100 110" aria-hidden="true"><path d="M8 34Q50 -6 92 34" fill="none" stroke="#5B5249" stroke-width="5" stroke-linecap="round"/><path d="M8 34v70M27 18v86M50 12v92M73 18v86M92 34v70" stroke="#5B5249" stroke-width="4" stroke-linecap="round"/><path d="M4 104h92" stroke="#5B5249" stroke-width="7" stroke-linecap="round"/><circle cx="50" cy="8" r="5" fill="none" stroke="#5B5249" stroke-width="3"/></svg>';
 /* what happens at the end of the round, for the scene: grab (he takes her), reach (nothing to take), flee (she won), or "" */
@@ -113402,15 +113546,15 @@ function bossEndFx(B){
 }
 function bossScene(B){
   var L = henLife(), home = B.mode === "rescue" || !bossS().cap, fx = bossEndFx(B), anim = !B.shown;
-  var d = B.dist, pd = anim ? B.pdist : d, max = B.maxD, fear = fx === "flee" ? "happy jump" : d <= 2 ? "scared" : d <= 4 ? "worried" : (B.mv === "back" ? "happy" : "ok");
+  var d = B.dist, pd = anim ? B.pdist : d, max = B.maxD, fear = fx === "flee" ? "happy jump" : fx ? "scared" : B.mv === "back" ? "happy" : B.mv === "closer" ? "scared" : d <= 2 ? "worried" : "ok";
   var face = fx === "flee" ? "scowl" : fx ? "laugh" : B.mv === "closer" ? "laugh" : B.mv === "back" ? "scowl" : "grin";
-  var bird = !home ? '' : !bossHatched() ? cbaEgg("wob") : L.stage === "chick" ? cbaChick("bnhen " + fear) : cbaHen("bnhen " + fear, cbaWear());
-  var carry = fx === "grab" ? (B.mode === "rescue" ? '<span class="bcaged">' + bird.replace("bnhen", "") + BOSS_CAGE + '</span>' : bird.replace("bnhen " + fear, "scared")) : "";
+  var bird = !home ? '' : bossBrit("bnhen " + fear);
+  var carry = fx === "grab" ? (B.mode === "rescue" ? '<span class="bcaged">' + bossBrit("scared") + BOSS_CAGE + '</span>' : bossBrit("scared")) : "";
   var at = function(n){ return (Math.max(0, n - 1) / (max - 1)).toFixed(3); }; /* 1 step away = right beside the nest */
   var steps = ''; for (var k = 1; k <= max; k++) steps += '<i style="--k:' + at(k) + '"></i>';
   var h = '<div class="arena' + (B.mode === "rescue" ? " rescue" : "") + '"><div class="atrack' + (anim ? "" : " " + B.mv + (fx ? " " + fx : "")) + '" id="btrack" style="--d:' + at(pd) + '">';
   h += '<span class="bsteps" aria-hidden="true">' + steps + '</span><span class="bdoor" aria-hidden="true"></span>';
-  h += '<span class="ahen ' + fear + '"><span class="bnest">' + (bird ? '<span class="bnbird">' + bird + '</span>' : '') + cbaNest('').replace('<span class="nin"></span>', '') + (B.mode === "rescue" ? '<span class="bnbird bcagewrap">' + BOSS_CAGE + '</span>' : '') + '</span>' + (fear === "scared" && bossHatched() && home ? '<span class="bfeath" aria-hidden="true">' + [0, 1, 2].map(function(n){ return '<svg viewBox="0 0 20 34" style="--n:' + n + '"><path d="M10 2C3 9 2 22 9 31c8-8 9-21 1-29z" fill="#fff" stroke="#CFC6B8" stroke-width="1.6"/><path d="M10 6v26" stroke="#CFC6B8" stroke-width="1.2"/></svg>'; }).join("") + '</span>' : '') + '</span>';
+  h += '<span class="ahen nonest ' + fear + '"><span class="bnest">' + (bird ? '<span class="bnbird">' + bird + '</span>' : '') + (B.mode === "rescue" ? '<span class="bnbird bcagewrap">' + BOSS_CAGE + '</span>' : '') + '</span>' + (fear === "scared" && bossHatched() && home ? '<span class="bfeath" aria-hidden="true">' + [0, 1, 2].map(function(n){ return '<svg viewBox="0 0 20 34" style="--n:' + n + '"><path d="M10 2C3 9 2 22 9 31c8-8 9-21 1-29z" fill="#fff" stroke="#CFC6B8" stroke-width="1.6"/><path d="M10 6v26" stroke="#CFC6B8" stroke-width="1.2"/></svg>'; }).join("") + '</span>' : '') + '</span>';
   h += '<span class="abert" role="img" aria-label="Bert the butcher, ' + d + ' steps from Britney">' + bossBert(face, carry) + '</span></div></div>';
   if (anim){
     B.shown = 1;
@@ -113435,8 +113579,25 @@ function bossSay(B, z){
   var dots = ''; for (var i = 0; i < B.maxMiss; i++) dots += '<i class="' + (i < B.wrong ? "x" : "") + '"></i>';
   return '<div class="bsay" aria-live="polite"><p>' + esc(msg) + '</p>' + (fx ? '' : '<p class="bdanger"><span class="bdots" aria-hidden="true">' + dots + '</span><span>' + (left > 0 ? plural(left, "more wrong answer") + (B.mode === "rescue" || (B.stake && bossStake(B.key)) ? " and he grabs Britney." : " and he reaches " + who + ".") : "") + '</span></p>') + '</div>';
 }
+/* the chase before the first question (Monnie 20 Nov): Bert runs after Layla and Britney shaking his spoon */
+var BOSS_CHASE_MS = 5200;
+function bossChase(B){
+  var x = TBYKEY[B.key], c = cbaS(), started = B.chaseAt || (B.chaseAt = Date.now()), left = Math.max(0, started + BOSS_CHASE_MS - Date.now());
+  var h = '<div class="cbag bossg"><div class="cbatop"><a class="cbaback" href="' + (B.mode === "rescue" ? "#/boss" : "#/topic/" + x.s.id + "/" + x.t.id) + '">‹ ' + (B.mode === "rescue" ? "Bert's page" : "Topic") + '</a><span class="cbattl">' + (B.mode === "rescue" ? "🗝️ Rescue mission: " : "🥊 Bert the butcher: ") + esc(x.t.title) + '</span><span class="spill coin">' + cbaCoin() + ' <b>' + c.coins + '</b></span></div>';
+  h += '<div class="arena bchasearena" role="img" aria-label="Bert the butcher chases Layla and Britney round and round, shaking his wooden spoon">' +
+    '<div class="bchase" style="--o:-' + (BOSS_CHASE_MS - left) + 'ms">' +
+      '<span class="bcrun bc-lay"><img class="lw1" src="img/layla-walk-1.webp" alt=""><img class="lw2" src="img/layla-walk-2.webp" alt=""></span>' +
+      '<span class="bcrun bc-brit"><img class="bw1" src="img/britney/fly1.webp" alt=""><img class="bw2" src="img/britney/fly3.webp" alt=""></span>' +
+      '<span class="bcrun bc-bert"><img src="' + BERT_RUN + '" alt=""><b class="bshout">Oi! Come back here!</b></span>' +
+    '</div></div>';
+  h += '<div class="bsay"><p>' + (B.mode === "rescue" ? "Bert's not giving Britney back without a fight!" : "Uh oh! Bert wants Britney! Answer his " + B.qs.length + " questions to keep him away.") + '</p></div>';
+  h += '<div class="btns cbac"><button class="btn primary big" data-act="bosschase">' + (left ? "Skip ›" : "Start the questions ›") + '</button></div></div>';
+  if (left){ var B0 = B; setTimeout(function(){ if (BOSS === B0 && !B0.chased && location.hash === "#/boss/fight"){ B0.chased = 1; render(); } }, left + 50); }
+  return h;
+}
 function bossDuel(){
   var B = BOSS, x = TBYKEY[B.key], z = B.qs[B.i], c = cbaS();
+  if (!B.chased && B.i === 0 && B.ans === null) return bossChase(B);
   if (!B.at) B.at = Date.now();
   var lock = bossLockMs(z), left = B.ans === null ? Math.max(0, B.at + lock - Date.now()) : 0;
   var hits = B.right, miss = B.wrong;
@@ -113445,7 +113606,6 @@ function bossDuel(){
   if (!B.stake && B.mode === "fight") h += '<p class="small muted bnostake">' + (!bossHatched() ? 'Britney hasn\'t hatched yet, so Bert can\'t take anyone: this one is just for coins.' : bossS().cap ? 'Britney is already at Bert\'s shop, so this round is just for coins.' : 'You\'ve already beaten Bert on this topic, so this is a practice round: nothing to lose.') + '</p>';
   h += '<div class="cbacard ask bq"><div class="bqmeta"><span>Question ' + (B.i + 1) + ' of ' + B.qs.length + '</span><span>' + hits + ' right · ' + miss + ' wrong</span></div>';
   h += '<div class="cbaq bqtext">' + (z.kind === "qa" ? esc(z.q).replace(/\n\s*\n/g, "<br><br>").replace(/\n/g, "<br>") : inl(z.q)) + '</div>';
-  if (left) h += '<div class="block" id="block" style="--d:' + lock + 'ms;--o:-' + (lock - left) + 'ms"><i class="fill"></i><span>📖 Read it properly: the answers unlock in a moment</span></div>';
   h += '<div class="opts">';
   z.ord.forEach(function(oi, pos){
     var cls = "opt bopt"; if (B.ans !== null){ if (oi === z.a) cls += " right"; else if (oi === B.ans) cls += " wrong"; }
@@ -113506,9 +113666,12 @@ function bossHub(){
   var b = bossS(), h = '<div class="cbag bossg"><div class="cbatop"><a class="cbaback" href="#/palace">‹ Palace</a><span class="cbattl">🥊 Bert the butcher</span><span class="spill coin">' + cbaCoin() + ' <b>' + cbaS().coins + '</b></span></div>';
   h += bossChestCard();
   if (b.cap) h += bossCaptivePanel("boss");
-  else h += '<div class="bcard bintro">' + bertImg("bbig") + '<div><h2>Bert\'s Butchers</h2><div class="bspeech">"Finish a topic and I\'ll be waiting with ' + BOSS_N + ' questions. Get ' + BOSS_WIN + ' right and you win my coin chest. Get more than half wrong and that hen of yours is mine!"</div><p class="small">' + (bossHatched() ? 'Britney is safe at home.' : 'Britney hasn\'t hatched yet, so Bert can\'t take anyone. Fights still win coin chests.') + ' Bert beaten on <b>' + plural(Object.keys(b.won).length, "topic") + '</b>.</p></div></div>';
+  else h += '<div class="bcard bintro">' + bertShopHTML("") + '<div><h2>Bert\'s Butchers</h2><div class="bspeech">"Finish a topic and I\'ll be waiting with ' + BOSS_N + ' questions. Get ' + BOSS_WIN + ' right and you win my coin chest. Get more than half wrong and that hen of yours is mine!"</div><p class="small">' + (bossHatched() ? 'Britney is safe at home.' : 'Britney hasn\'t hatched yet, so Bert can\'t take anyone. Fights still win coin chests.') + ' Bert beaten on <b>' + plural(Object.keys(b.won).length, "topic") + '</b>.</p></div></div>';
+  /* every topic is open (Monnie 20 Nov: nothing locked); topics she has finished come first */
   var ready = planSeq().filter(function(x){ return !b.won[x.key] && bossTopicReady(x); }).slice(0, 8);
-  h += '<div class="bcard"><h3>Topics ready for Bert</h3>' + (ready.length ? '<ul class="blist">' + ready.map(function(x){ return '<li><a href="#/boss/' + x.s.id + '/' + x.t.id + '"><b>' + esc(tnum(x)) + '</b> ' + esc(x.t.title) + '</a><a class="btn sm primary" href="#/boss/' + x.s.id + '/' + x.t.id + '">Face him 🥊</a></li>'; }).join("") + '</ul>' : '<p class="small muted" style="margin:0">None right now. When you tick off every step for a topic on Today, Bert challenges you. You can also face him from the bottom of any topic\'s notes.</p>') + '</div>';
+  var row = function(x){ return '<li><a href="#/boss/' + x.s.id + '/' + x.t.id + '"><b>' + esc(tnum(x)) + '</b> ' + esc(x.t.title) + '</a><a class="btn sm primary" href="#/boss/' + x.s.id + '/' + x.t.id + '">Face him 🥊</a></li>'; };
+  if (ready.length) h += '<div class="bcard"><h3>Topics you\'ve just finished</h3><ul class="blist">' + ready.map(row).join("") + '</ul></div>';
+  h += '<div class="bcard"><h3>Pick any topic</h3><p class="small muted" style="margin:0 0 8px">Every topic is open. Tap a subject to see its topics.</p>' + SUBJ.map(function(s){ var xs = planSeq().filter(function(x){ return x.s.id === s.id && !b.won[x.key]; }); return xs.length ? '<details class="bsubj"><summary>' + esc(s.title) + ' <span class="small muted">(' + xs.length + ')</span></summary><ul class="blist">' + xs.map(row).join("") + '</ul></details>' : ''; }).join("") + '</div>';
   var won = planSeq().filter(function(x){ return b.won[x.key]; });
   if (won.length) h += '<div class="bcard"><h3>Beaten 🏆</h3><ul class="blist">' + won.map(function(x){ return '<li><a href="#/boss/' + x.s.id + '/' + x.t.id + '"><b>' + esc(tnum(x)) + '</b> ' + esc(x.t.title) + '</a><span class="small muted">' + esc(fmtDate(b.won[x.key])) + '</span></li>'; }).join("") + '</ul></div>';
   return h + '</div>';
@@ -113522,7 +113685,7 @@ VIEW.boss = function(r){
 /* the small call-to-action at the bottom of a topic and on Today */
 function bossTopicCTA(x){
   var b = bossS(), won = b.won[x.key];
-  return '<div class="bosscta"><img class="bert" src="img/boss/bert.webp" alt="" width="256" height="360" loading="lazy"><div><b>' + (won ? "🏆 You beat Bert on this topic" : "🥊 Bert the butcher is waiting") + '</b><span>' + (won ? 'Chest opened. Fancy a practice round?' : BOSS_N + ' exam-style questions on this topic. ' + BOSS_WIN + ' right wins a coin chest' + (bossStake(x.key) ? ': lose and he takes Britney!' : '.')) + '</span></div><a class="btn ' + (won ? "" : "primary") + '" href="#/boss/' + x.s.id + '/' + x.t.id + '">' + (won ? "Practice" : "Face the Butcher") + '</a></div>';
+  return '<div class="bosscta"><img class="bert" src="img/boss/bert-run.webp" alt="" width="612" height="800" loading="lazy"><div><b>' + (won ? "🏆 You beat Bert on this topic" : "🥊 Bert the butcher is waiting") + '</b><span>' + (won ? 'Chest opened. Fancy a practice round?' : BOSS_N + ' exam-style questions on this topic. ' + BOSS_WIN + ' right wins a coin chest' + (bossStake(x.key) ? ': lose and he takes Britney!' : '.')) + '</span></div><a class="btn ' + (won ? "" : "primary") + '" href="#/boss/' + x.s.id + '/' + x.t.id + '">' + (won ? "Practice" : "Face the Butcher") + '</a></div>';
 }
 
 /* ============ PODCASTS: commute episodes for each topic ============ */
@@ -113865,6 +114028,7 @@ document.addEventListener("click", function(e){
     case "gbuy": buyNeed(el.getAttribute("data-i")); render(); break;
     case "chickname": broodName(el.getAttribute("data-i")); render(); break;
     case "feed": feedHen(); render(); break;
+    case "bosschase": if (BOSS && !BOSS.done){ BOSS.chased = 1; BOSS.at = 0; render(); } break;
     case "bossgo": if (bossStart(el.getAttribute("data-k"), "fight")){ if (location.hash === "#/boss/fight") render(); else location.hash = "#/boss/fight"; } break;
     case "bossrescue": if (bossRescue()){ if (location.hash === "#/boss/fight") render(); else location.hash = "#/boss/fight"; } else render(); break;
     case "bosspick": if (BOSS && !BOSS.done && BOSS.ans === null){ bossAnswer(+el.getAttribute("data-o")); render(); bossScroll(); } break;
