@@ -1161,7 +1161,7 @@ window.SQE_JOURNEY = function (A) {
             return '';
         var sc = Math.min(w / n[0], h / n[1]), x0 = x - n[0] * sc / 2, y0 = y - n[1] * sc, X = function (v) { return f1(x0 + v * sc); }, Y = function (v) { return f1(y0 + v * sc); }, S = function (v) { return f1(v * sc); };
         var s = "<image class=\"jmo jtf2 jtf2-".concat(b[0], "\" href=\"img/map-new/anim/").concat(b[0], "-f2.webp\" x=\"").concat(f1(x0), "\" y=\"").concat(f1(y0), "\" width=\"").concat(S(n[0]), "\" height=\"").concat(S(n[1]), "\"/>");
-        var T = function (cx, cy, rot, fs, len, inner) { return "<text x=\"".concat(X(cx), "\" y=\"").concat(Y(cy), "\" transform=\"rotate(").concat(rot, " ").concat(X(cx), " ").concat(Y(cy), ")\" font-size=\"").concat(S(fs), "\" textLength=\"").concat(S(len), "\" lengthAdjust=\"spacingAndGlyphs\" text-anchor=\"middle\" style=\"font-family:Calibri,Carlito,'Segoe UI',Arial,sans-serif;font-weight:700;paint-order:stroke;stroke:#1b1b1b;stroke-width:").concat(S(2.2), "px;stroke-linejoin:round\">").concat(inner, "</text>"); };
+        var T = function (cx, cy, rot, fs, len, inner) { return "<text x=\"".concat(X(cx), "\" y=\"").concat(Y(cy), "\" transform=\"rotate(").concat(rot, " ").concat(X(cx), " ").concat(Y(cy), ")\" font-size=\"").concat(S(fs), "\" textLength=\"").concat(S(len), "\" lengthAdjust=\"spacingAndGlyphs\" text-anchor=\"middle\" style=\"font-family:Calibri,Carlito,'Segoe UI','Helvetica Neue',Arial,'Liberation Sans','DejaVu Sans',sans-serif;font-weight:700;paint-order:stroke;stroke:#1b1b1b;stroke-width:").concat(S(2.2), "px;stroke-linejoin:round\">").concat(inner, "</text>"); };
         if (b[0] === 'jobcentre4')
             s += T(305, 247, -3.4, 46, 470, '<tspan fill="#fff">job</tspan><tspan fill="#FFD23F">centre</tspan><tspan fill="#fff"> pluck</tspan><tspan fill="#FF8A1F">+</tspan>');
         if (b[0] === 'giftshop3')
@@ -66532,77 +66532,106 @@ window.SQE_SCENE = function(A){
   var fq = 0; try { if (document.fonts && document.fonts.addEventListener) document.fonts.addEventListener('loadingdone', function(){ clearTimeout(fq); fq = setTimeout(function(){ if (document.querySelector('.scn-board')) dispatchEvent(new Event('resize')); }, 120); }); } catch(e){}
 })();
 
-/* QA fault 13 (20 Nov): Layla and Britney in the sweet shop. Shop front: they walk along the pavement to the door, Layla turns her back to us
-   and steps up to it; tapping the door, they walk in. Entrance hall: they walk in from the front (back view) and stop on the floor.
-   Only the approved sprites the Peckham map uses (img/layla-walk-1/2, img/layla-back-walk-1/2, img/britney/set/neutral/happy). Drawn on the
-   floor, under the labels and pins, and never in the way of a tap (pointer-events:none). Plays once per visit; a re-render shows the end pose. */
+/* QA fault 13 (20 Nov, redone 21:00 for Monnie): Layla and Britney in the sweet shop, to scale (the door is 1.25 x her height).
+   Shop front: she walks along the pavement with the jointed stride Hen Bargains uses (img/mount/lw-thigh/shin/torso, same hip/knee maths),
+   turns her back to us at the door and waits; tapping the door, she walks through the doorway (back view, clipped by the door frame) and Britney follows.
+   Entrance hall: every time it opens they walk in from the front (back view) and stop on the floor. Britney is hen-sized beside her.
+   Under the labels and pins, never in the way of a tap (pointer-events:none). Reduced motion: end poses only. */
 (function(){ if (typeof document === 'undefined' || !window.SQE_ROOMS_ON) return;
-  var RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches, seen = {}, goIn = 0;
+  var RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches, seen = {}, goIn = 0, RAF = {};
+  var FIG = 277 / 300, HEN = 0.3; /* the rig's feet sit at 277 of its 300-high box; a hen is about 0.3 of Layla's height */
   var css = document.createElement('style'); css.id = 'scn-lbpair-css';
   css.textContent = [
-    '.lb-pair{position:absolute;z-index:1;pointer-events:none;height:var(--lh);width:0}',
-    '.lb-pair .lb-l{position:absolute;left:0;bottom:0;height:100%;width:0}',
-    '.lb-pair .lb-l img{position:absolute;bottom:0;height:100%;width:auto;max-width:none;transform:translateX(-50%);opacity:0}',
-    '.lb-pair .lb-b{position:absolute;bottom:0;height:36%;width:0}',
-    '.lb-pair .lb-b img{position:absolute;bottom:0;height:100%;width:auto;max-width:none;transform:translateX(-50%);opacity:0}',
-    '.lb-pair .lb-b.flip img{transform:translateX(-50%) scaleX(-1)}',
-    '.lb-pair.lb-side .lb-w1,.lb-pair.lb-side .lb-b1{animation:lbF1 .36s step-end infinite}.lb-pair.lb-side .lb-w2,.lb-pair.lb-side .lb-b2{animation:lbF2 .36s step-end infinite}',
-    '.lb-pair.lb-back .lb-k1{animation:lbF1 .36s step-end infinite}.lb-pair.lb-back .lb-k2{animation:lbF2 .36s step-end infinite}.lb-pair.lb-back .lb-b1{animation:lbF1 .36s step-end infinite}.lb-pair.lb-back .lb-b2{animation:lbF2 .36s step-end infinite}',
-    '.lb-pair.lb-wait .lb-k1{opacity:1}.lb-pair.lb-stand .lb-w1{opacity:1}',
-    '.lb-pair.lb-wait .lb-b1,.lb-pair.lb-stand .lb-b1{animation:lbF1 2.4s step-end infinite}.lb-pair.lb-wait .lb-b2,.lb-pair.lb-stand .lb-b2{animation:lbF2 2.4s step-end infinite}',
-    '.lb-pair.lb-wait .lb-b,.lb-pair.lb-stand .lb-b{animation:lbPeck 1.2s steps(3,end) infinite alternate;transform-origin:50% 100%}',
-    '.lb-pair.lb-stand .lb-l{animation:lbBreath 1.6s steps(2,end) infinite alternate;transform-origin:50% 100%}',
+    '.lb-pair{position:absolute;z-index:1;pointer-events:none;width:0}',
+    '.lb-clip{position:absolute;z-index:10;pointer-events:none;overflow:hidden}',
+    '.lb-rig{position:absolute;left:0;bottom:-' + ((1 - FIG) * 100).toFixed(2) + '%;height:100%;aspect-ratio:179/300;transform:translateX(-50%);display:none}',
+    '.lb-rig .lb-r,.lb-rig .lb-legs,.lb-rig img{position:absolute;left:0;top:0;width:100%;height:100%;max-width:none;transform-origin:0 0}.lb-rig .lb-legs{transform-origin:50% 50%}.lb-rig .far{filter:brightness(.72)}',
+    '.lb-rig .lb-bb{position:absolute;inset:0;transform-origin:50% 100%}.lb-pair.lb-mstand .lb-bb{animation:lbBreath 4.4s ease-in-out infinite}',
+    '.lb-back{position:absolute;left:0;bottom:0;height:' + (FIG * 100).toFixed(2) + '%;width:0;display:none}',
+    '.lb-back img{position:absolute;bottom:0;height:100%;width:auto;max-width:none;transform:translateX(-50%);opacity:0}',
+    '.lb-pair.lb-mside .lb-rig,.lb-pair.lb-mstand .lb-rig{display:block}.lb-pair.lb-mback .lb-back,.lb-pair.lb-mwait .lb-back{display:block}',
+    '.lb-pair.lb-mback .lb-k1{animation:lbF1 .4s step-end infinite}.lb-pair.lb-mback .lb-k2{animation:lbF2 .4s step-end infinite}.lb-pair.lb-mwait .lb-k1{opacity:1}',
+    '.lb-b{position:absolute;bottom:0;height:' + (FIG * HEN * 100).toFixed(2) + '%;width:0}',
+    '.lb-b img{position:absolute;bottom:0;height:100%;width:auto;max-width:none;transform:translateX(-50%);opacity:0;transform-origin:50% 100%}.lb-b.flip img{transform:translateX(-50%) scaleX(-1)}',
+    '.lb-b .lb-b1{opacity:1}.lb-pair.lb-mside .lb-b,.lb-pair.lb-mback .lb-b{animation:lbHop .4s steps(2,end) infinite}',
+    '.lb-pair.lb-mwait .lb-b1,.lb-pair.lb-mstand .lb-b1{animation:lbF1 2.4s step-end infinite}.lb-pair.lb-mwait .lb-b2,.lb-pair.lb-mstand .lb-b2{animation:lbF2 2.4s step-end infinite}',
+    '.lb-pair.lb-mwait .lb-b,.lb-pair.lb-mstand .lb-b{animation:lbPeck 3.2s steps(1,end) infinite;transform-origin:50% 100%}',
     '@keyframes lbF1{0%{opacity:1}50%{opacity:0}100%{opacity:1}}@keyframes lbF2{0%{opacity:0}50%{opacity:1}100%{opacity:0}}',
-    '@keyframes lbPeck{from{transform:rotate(0)}to{transform:rotate(4deg)}}@keyframes lbBreath{from{transform:scaleY(1)}to{transform:scaleY(1.012)}}',
-    '.lb-pair.lb-go{transition:left var(--t,1s) steps(var(--st,12),end),bottom var(--t,1s) steps(var(--st,12),end),height var(--t,1s) steps(var(--st,12),end),opacity .5s}',
-    '.lb-pair.gone{opacity:0}',
-    '@media (prefers-reduced-motion:reduce){.lb-pair *,.lb-pair{animation:none!important;transition:none!important}.lb-pair.lb-side .lb-w1,.lb-pair.lb-side .lb-b1,.lb-pair.lb-back .lb-k1,.lb-pair.lb-back .lb-b1{opacity:1}}'
+    '@keyframes lbHop{0%{transform:none}50%{transform:translateY(-8%)}}@keyframes lbBreath{0%,100%{transform:none}50%{transform:scaleY(1.008)}}',
+    '@keyframes lbPeck{0%,58%,100%{transform:none}64%{transform:rotate(14deg) translateY(4%)}68%{transform:none}74%{transform:rotate(14deg) translateY(4%)}80%{transform:none}}',
+    /* the door label moves up to the glass while Layla stands at the door, so she never covers it */
+    '.scn-art:has(> .lb-pair, > .lb-clip) .scn-hs.door .scn-lab{bottom:auto;top:5%}',
+    '@media (prefers-reduced-motion:reduce){.lb-pair *,.lb-pair{animation:none!important}.lb-pair.lb-mback .lb-k1{opacity:1}}'
   ].join('\n');
   document.head.appendChild(css);
   function pairHTML(){
-    return '<span class="lb-l">' +
-      '<img class="lb-w1" src="img/layla-walk-1.webp" alt=""><img class="lb-w2" src="img/layla-walk-2.webp" alt="">' +
-      '<img class="lb-k1" src="img/layla-back-walk-1.webp" alt=""><img class="lb-k2" src="img/layla-back-walk-2.webp" alt="">' +
-      '</span><span class="lb-b"><img class="lb-b1" src="img/britney/set/neutral.webp" alt=""><img class="lb-b2" src="img/britney/set/happy.webp" alt=""></span>'; }
-  /* place: x = Layla's centre (% of the picture width), y = her feet (% from the bottom), h = her height (% of the picture height); bx = Britney's centre offset (in Layla heights) */
-  function put(el, p){ el.style.left = p.x + '%'; el.style.bottom = p.y + '%'; el.style.setProperty('--lh', p.h + '%'); el.style.height = p.h + '%';
-    var b = el.querySelector('.lb-b'); b.style.left = 'calc(' + p.bx + ' * var(--lhpx, 100px))'; b.classList.toggle('flip', !!p.bf); }
-  function mode(el, m){ el.classList.remove('lb-side', 'lb-back', 'lb-wait', 'lb-stand'); el.classList.add(m); }
-  function go(el, p, secs, steps){ el.style.setProperty('--t', secs + 's'); el.style.setProperty('--st', steps); el.classList.add('lb-go'); put(el, p); }
-  function sizeVar(el, art){ el.style.setProperty('--lhpx', (art.clientHeight * parseFloat(el.style.height) / 100).toFixed(1) + 'px'); }
-  /* the shop front: door box is x 70.2-84 %, y 32-88.5 % of the picture */
-  var OUT = {start: {x: 9, y: 2.5, h: 30, bx: 0.38}, door: {x: 76.6, y: 2.5, h: 30, bx: 0.38}, step: {x: 77, y: 8.5, h: 27, bx: 0.38}, inside: {x: 77, y: 13, h: 22, bx: 0.38}};
-  /* the hall: floor between the lower doors; pins sit above 74 % */
-  var HALL = {start: {x: 47, y: -14, h: 30, bx: 0.36}, end: {x: 47, y: 3.5, h: 21, bx: 0.36, bf: 1}};
+    return '<span class="lb-rig"><span class="lb-bb"><span class="lb-r"><span class="lb-legs"><img class="far" src="img/mount/lw-thigh.webp" alt=""><img class="far" src="img/mount/lw-shin.webp" alt=""><img src="img/mount/lw-thigh.webp" alt=""><img src="img/mount/lw-shin.webp" alt=""></span>' +
+      '<img src="img/mount/lw-torso-r.webp" alt=""></span></span></span>' +
+      '<span class="lb-back"><img class="lb-k1" src="img/layla-back-walk-1.webp" alt=""><img class="lb-k2" src="img/layla-back-walk-2.webp" alt=""></span>' +
+      '<span class="lb-b"><img class="lb-b1" src="img/britney/set/neutral.webp" alt=""><img class="lb-b2" src="img/britney/set/happy.webp" alt=""></span>'; }
+  /* Hen Bargains' walk (town.js hbWalk): the hips swing the legs, the knee bends as each leg swings forward, the body rises to keep a foot on the floor */
+  var HIP = [90, 165], KNEE = [120, 220], ANG = 28.6, LEG = 62.6, STRIDE = 140;
+  function leg(p){ p = ((p % 1) + 1) % 1; return [16 * Math.cos(2 * Math.PI * p), p > .5 ? 42 * Math.sin(Math.PI * (p - .5) / .5) : 3]; }
+  function legCss(a, bend){ var hx = (HIP[0] / 1.79).toFixed(2), hy = (HIP[1] / 3).toFixed(2), kx = (KNEE[0] / 1.79).toFixed(2), ky = (KNEE[1] / 3).toFixed(2);
+    var th = 'translate(' + hx + '%,' + hy + '%) rotate(' + (ANG - a).toFixed(2) + 'deg) translate(-' + hx + '%,-' + hy + '%)';
+    return [th, th + ' translate(' + kx + '%,' + ky + '%) rotate(' + bend.toFixed(2) + 'deg) translate(-' + kx + '%,-' + ky + '%)']; }
+  function ankle(a, bend){ var r = Math.PI / 180; return HIP[1] + LEG * Math.cos(a * r) + LEG * Math.cos((a - bend) * r); }
+  function legs(el, dist, moving){ var ims = el.querySelectorAll('.lb-legs img'), rig = el.querySelector('.lb-r'); if (ims.length < 4) return;
+    var near = moving ? leg(dist / STRIDE) : [5, 2], far = moving ? leg(dist / STRIDE + .5) : [-5, 2], cn = legCss(near[0], near[1]), cf = legCss(far[0], far[1]);
+    ims[0].style.transform = cf[0]; ims[1].style.transform = cf[1]; ims[2].style.transform = cn[0]; ims[3].style.transform = cn[1];
+    rig.style.transformOrigin = (HIP[0] / 1.79).toFixed(2) + '% ' + (HIP[1] / 3).toFixed(2) + '%';
+    rig.style.transform = 'translateY(' + ((277 - Math.max(ankle(near[0], near[1]), ankle(far[0], far[1]))) / 3).toFixed(2) + '%)'; }
+  /* p = {x: Layla's centre, fy: her feet (from the top), fh: her height, all % of the box she is in; bx: Britney's centre offset in Layla heights; bf: Britney faces left} */
+  function put(el, p){ var bh = p.fh / FIG; el.style.left = p.x.toFixed(3) + '%'; el.style.bottom = (100 - p.fy).toFixed(3) + '%'; el.style.height = bh.toFixed(3) + '%';
+    var b = el.querySelector('.lb-b'), H = el.parentNode ? el.parentNode.clientHeight * bh / 100 * FIG : 100; b.style.left = (p.bx * H).toFixed(1) + 'px'; b.classList.toggle('flip', !!p.bf); }
+  function mode(el, m){ el.classList.remove('lb-mside', 'lb-mback', 'lb-mwait', 'lb-mstand'); el.classList.add(m); if (m === 'lb-mstand') legs(el, 0, false); }
+  function lerp(a, b, k){ var o = {}; for (var n in b) o[n] = typeof b[n] === 'number' && typeof a[n] === 'number' ? a[n] + (b[n] - a[n]) * k : b[n]; return o; }
+  /* move from a to b over ms; the side walk drives the legs from the distance walked, so her feet never slide */
+  function walk(el, key, a, b, ms, side, done){ cancelAnimationFrame(RAF[key]); var t0 = 0, box = el.parentNode;
+    function f(now){ if (!el.isConnected) return; if (!t0) t0 = now; var k = Math.min(1, (now - t0) / ms), p = lerp(a, b, k); put(el, p);
+      if (side){ var hpx = box.clientHeight * p.fh / 100 / FIG; legs(el, Math.abs(p.x - a.x) / 100 * box.clientWidth / hpx * 300, k < 1); }
+      if (k < 1) RAF[key] = requestAnimationFrame(f); else if (done) done(); }
+    RAF[key] = requestAnimationFrame(f); }
+  /* the shop front picture (1376 x 768): the door leaf runs x 70.3-84 %, y 32-88 %, the step at 89 %. Door 56 % high, so Layla is 56 / 1.25 = 44.8 % */
+  var D = {l: 70.3, t: 32, w: 13.7, b: 89}, LH = 44.8;
+  var OUT = {start: {x: 8, fy: 96, fh: LH * 1.04, bx: 0.33}, door: {x: 77.1, fy: 95, fh: LH * 1.03, bx: 0.33}, step: {x: 77.1, fy: 89, fh: LH, bx: 0.3}};
+  /* inside the door box (coordinates of the .lb-clip): from the step into the hall behind */
+  function inDoor(p){ return {x: (p.x - D.l) / D.w * 100, fy: (p.fy - D.t) / (D.b - D.t) * 100, fh: p.fh / (D.b - D.t) * 100, bx: p.bx, bf: p.bf}; }
+  var IN0 = inDoor(OUT.step), IN1 = inDoor({x: 77.1, fy: 80, fh: LH * 0.62, bx: 0.3});
+  /* the hall picture: back-wall doors are 21 % high at the floor line (73 %), the front side doors 48 % high at 99 %, so a door at feet height y is 21 + 1.04 (y - 73) and Layla is that / 1.25 */
+  function hallH(fy){ return (21 + 1.04 * (fy - 73)) / 1.25; }
+  var HALL = {start: {x: 50, fy: 108, fh: hallH(108), bx: 0.34}, end: {x: 50, fy: 92, fh: hallH(92), bx: 0.36, bf: 1}};
   function view(){ var h = String(location.hash);
     if (/^#\/scene\/blp\/hall\b/.test(h)) { var a = document.querySelector('.scn-art.hub-art'); return a ? {k: 'hall', art: a} : null; }
     if (/^#\/scene\/blp\/business-structures(\/outside)?(\?|$)/.test(h)) { var b = document.querySelector('.scn-art:not(.hub-art)'); return b && b.querySelector('.scn-hs.door') ? {k: 'out', art: b} : null; }
     return null; }
-  function mount(){ var v = view(); if (!v) return; var art = v.art, img = art.querySelector(':scope > img'); if (!img) return;
-    var el = art.querySelector(':scope > .lb-pair');
-    var entering = v.k === 'out' && (art.classList.contains('zoom') || Date.now() - goIn < 2500);
-    if (el && !(entering && !el.classList.contains('lb-in'))) { sizeVar(el, art); return; }
-    if (!el){ el = document.createElement('span'); el.className = 'lb-pair'; el.setAttribute('aria-hidden', 'true'); el.innerHTML = pairHTML();
-      if (v.k === 'hall') el.style.zIndex = '0';
-      var after = art.querySelector(':scope > .scn-amblayer') || img; after.insertAdjacentElement('afterend', el); }
-    var played = seen[v.k];
-    if (v.k === 'out'){
-      if (entering){ el.classList.add('lb-in'); mode(el, 'lb-back'); put(el, OUT.step); sizeVar(el, art); void el.offsetWidth; if (RM){ el.classList.add('gone'); return; } go(el, OUT.inside, 0.9, 6); setTimeout(function(){ el.classList.add('gone'); }, 500); return; }
-      if (played || RM){ mode(el, 'lb-wait'); put(el, OUT.step); sizeVar(el, art); seen.out = 1; return; }
-      seen.out = 1; mode(el, 'lb-side'); put(el, OUT.start); sizeVar(el, art); void el.offsetWidth;
-      go(el, OUT.door, 3.4, 26);
-      setTimeout(function(){ if (!el.isConnected || el.classList.contains('lb-in')) return; mode(el, 'lb-back'); go(el, OUT.step, 1.1, 6); }, 3450);
-      setTimeout(function(){ if (!el.isConnected || el.classList.contains('lb-in')) return; mode(el, 'lb-wait'); }, 4600);
+  function make(){ var el = document.createElement('span'); el.className = 'lb-pair'; el.setAttribute('aria-hidden', 'true'); el.innerHTML = pairHTML(); return el; }
+  function mount(){ var v = view(); if (!v) return; var art = v.art, img = art.querySelector(':scope > img'); if (!img || !art.clientHeight) return;
+    var after = art.querySelector(':scope > .scn-amblayer') || img;
+    if (v.k === 'hall'){
+      var eh = art.querySelector(':scope > .lb-pair'); if (eh){ if (!RAF.hall && eh.classList.contains('lb-mstand')) put(eh, HALL.end); return; }
+      eh = make(); eh.style.zIndex = '0'; after.insertAdjacentElement('afterend', eh);
+      if (seen.hall || RM){ mode(eh, 'lb-mstand'); put(eh, HALL.end); seen.hall = 1; return; }
+      seen.hall = 1; mode(eh, 'lb-mback'); put(eh, HALL.start);
+      walk(eh, 'hall', HALL.start, HALL.end, 2600, false, function(){ RAF.hall = 0; mode(eh, 'lb-mstand'); put(eh, HALL.end); });
       return; }
-    if (played || RM){ mode(el, 'lb-stand'); put(el, HALL.end); sizeVar(el, art); seen.hall = 1; return; }
-    seen.hall = 1; mode(el, 'lb-back'); put(el, HALL.start); sizeVar(el, art); void el.offsetWidth;
-    go(el, HALL.end, 2.2, 14); var tick = setInterval(function(){ if (!el.isConnected){ clearInterval(tick); return; } sizeVar(el, art); }, 200);
-    setTimeout(function(){ clearInterval(tick); if (!el.isConnected) return; mode(el, 'lb-stand'); sizeVar(el, art); }, 2300);
+    var entering = art.classList.contains('zoom') || Date.now() - goIn < 2500, clip = art.querySelector(':scope > .lb-clip'), el = art.querySelector(':scope > .lb-pair');
+    if (entering){ if (clip) return; if (el) el.parentNode.removeChild(el);
+      clip = document.createElement('span'); clip.className = 'lb-clip'; clip.style.cssText = 'left:' + D.l + '%;top:' + D.t + '%;width:' + D.w + '%;height:' + (D.b - D.t) + '%';
+      el = make(); clip.appendChild(el); art.appendChild(clip); mode(el, 'lb-mback'); put(el, IN0);
+      if (RM) return; walk(el, 'in', IN0, IN1, 1500, false, null); return; }
+    if (el){ if (!RAF.out && el.classList.contains('lb-mwait')) put(el, OUT.step); return; }
+    el = make(); after.insertAdjacentElement('afterend', el);
+    if (seen.out || RM){ mode(el, 'lb-mwait'); put(el, OUT.step); seen.out = 1; return; }
+    seen.out = 1; mode(el, 'lb-mside'); put(el, OUT.start);
+    walk(el, 'out', OUT.start, OUT.door, 4600, true, function(){ if (!el.isConnected) return; mode(el, 'lb-mback');
+      walk(el, 'out', OUT.door, OUT.step, 900, false, function(){ RAF.out = 0; if (el.isConnected) mode(el, 'lb-mwait'); }); });
   }
   var q = 0; function soon(){ if (q) return; q = 1; requestAnimationFrame(function(){ q = 0; try { mount(); } catch(e){} }); }
-  addEventListener('hashchange', function(){ var v = String(location.hash); if (!/^#\/scene\/blp\/hall\b/.test(v)) seen.hall = 0; if (!/^#\/scene\/blp\/business-structures(\/outside)?(\?|$)/.test(v)) seen.out = 0; goIn = 0; soon(); });
+  addEventListener('hashchange', function(){ var v = String(location.hash); if (!/^#\/scene\/blp\/hall\b/.test(v)) seen.hall = 0; else if (goIn) seen.hall = 0; /* through the door: the hall always opens with them walking in */
+    if (!/^#\/scene\/blp\/business-structures(\/outside)?(\?|$)/.test(v)) seen.out = 0; goIn = 0; soon(); });
   document.addEventListener('click', function(e){ var d = e.target && e.target.closest && e.target.closest('[data-scn=door]'); if (d) { goIn = Date.now(); setTimeout(soon, 0); } }, true);
-  addEventListener('resize', soon);
+  addEventListener('resize', function(){ [].forEach.call(document.querySelectorAll('.lb-pair'), function(p){ if (p.parentNode) p.parentNode.removeChild(p); }); soon(); });
   try { new MutationObserver(soon).observe(document.documentElement, {childList: true, subtree: true}); } catch(e){ setInterval(soon, 500); }
   soon();
 })();
@@ -72542,7 +72571,7 @@ var BOSS_KICK_LINE = "Smell me, Krell me!";
 function bossHomeView(){
   return '<div class="cbag bossg"><div class="cbatop"><a class="cbaback" href="#/town/butcher">‹ Bert\'s Butchers</a><span class="cbattl">Britney is coming home</span><span class="spill coin">' + cbaCoin() + ' <b>' + cbaS().coins + '</b></span></div>' +
     '<div class="arena bhandback" role="img" aria-label="Bert hands Britney back, she flies to Layla, and Layla kicks Bert away"><span class="bdoor" aria-hidden="true"></span>' +
-    '<span class="bhb-lay"><img class="w" src="img/layla-walk-1.webp" alt=""><img class="k" src="img/layla-kick.webp" alt=""><img class="s0" src="img/layla-step0.webp" alt=""><img class="s3" src="img/layla-step3.webp" alt=""><img class="wa" src="img/layla-walk-1.webp" alt=""><img class="wb" src="img/layla-walk-2.webp" alt=""><img class="hd" src="img/britney/set/happy.webp" alt=""><b class="bhb-say">' + esc(BOSS_KICK_LINE) + '</b><b class="bhb-say bhb-beak">You can\'t beat the Beaker!!!</b></span>' +
+    '<span class="bhb-lay"><img class="w" src="img/layla-walk-1.webp" alt=""><img class="k" src="img/layla-kick.webp" alt=""><img class="s0" src="img/layla-step3.webp" alt=""><img class="s3" src="img/layla-step3.webp" alt=""><img class="wa" src="img/layla-walk-1.webp" alt=""><img class="wb" src="img/layla-walk-2.webp" alt=""><img class="hd" src="img/britney/set/happy.webp" alt=""><b class="bhb-say">' + esc(BOSS_KICK_LINE) + '</b><b class="bhb-say bhb-beak">You can\'t beat the Beaker!!!</b></span>' +
     '<span class="bhb-bert"><span class="bb"><img src="' + BERT_RUN + '" alt=""></span><b class="bshout">Fine! Take your hen!</b></span>' +
     '<span class="bhb-brit"><img class="f" src="img/britney/fly1.webp" alt=""><img class="s" src="img/britney/set/happy.webp" alt=""></span></div>' +
     '<div class="bsay"><p>Bert has to hand Britney back. When he tries to come closer, Layla kicks him back into his shop, punches the air, and Britney flies up onto her head. Britney is safe!</p></div>' +
@@ -73132,8 +73161,9 @@ function render(){
   var r = route();
   if (!VIEW[r[0]]) r = ["home"];
   var curKey = r[0] === "topic" ? r[1] + "/" + r[2] : (r[0] === "subject" ? r[1] + "/" : null);
-  var body;
-  try { body = VIEW[r[0]](r); }
+  var body, LT = window.SQE_LATE;
+  if (LT && !LT.ready && LATE_RX.test(r[0])) body = LT.failed ? '<div class="card"><h2>This page couldn\'t load</h2><p class="muted">Check your internet connection, then reload the page.</p><button class="btn" type="button" onclick="location.reload()">Reload</button></div>' : '<div class="card"><p class="muted" style="margin:0">Loading…</p></div>'; /* speed (19:40): CBA, Bert's tests, mind maps and notes checks arrive in js/l-*.js after the first render */
+  else try { body = VIEW[r[0]](r); }
   catch(e){ body = '<div class="card"><h2>Something went wrong on this page</h2><p class="muted">' + esc(e.message) + '</p><a class="btn" href="#/home">Go home</a></div>'; if (window.console) console.error(e); }
   var th = null; try { th = stopTheme(r); } catch(eT){ if (window.console) console.error(eT); }
   var nt = nextTopic();
@@ -73160,6 +73190,7 @@ function render(){
   try { ragFaces(app); } catch(eR){ if (window.console) console.error(eR); }
   try { topicLinks(app); } catch(eTL){ if (window.console) console.error(eTL); } /* topic-links (20 Nov) */
 }
+var LATE_RX = /^(topic|cba|boss|scene|town|weak|play|mistakes|frameworks|cartoons)$/; /* routes that wait for js/l-*.js (see render) */
 function applyTheme(){ var t = S.settings.theme; document.documentElement.setAttribute("data-theme", t === "dark" ? "dark" : "light"); } /* 14:30 (QA): the drawn site is made for light colours, so "match my device" no longer turns it dark on a dark-mode laptop; Dark only when picked */
 
 /* ============ EVENTS ============ */
@@ -73237,8 +73268,9 @@ document.addEventListener("click", function(e){
     case "resqnext": if (RESQ && RESQ.ans != null) RESQPREV = {id:RESQ.id, ord:RESQ.ord, ans:RESQ.ans}; RESQ = null; RESQV = 0; render(); sceneFocus(".bintro.bdone, .bossg .cbatop"); break; /* QA 17:26: "You did it!" and each next rescue question open in view */
     case "resqprev": RESQV = 1; render(); break;
     case "resqback": RESQV = 0; render(); break;
-    case "bhreplay": render(); break;
+    case "bhreplay": render(); bhGo(); break;
     case "resqcollect": if (bossResqLeft().length === 0 && bossS().cap){ bossFree("rescue"); save(); location.hash = "#/boss/home"; } break;
+    /* (hand-back scene starts only once it is on screen: see bhGo) */
     case "podtick": { var pk = el.getAttribute("data-k"), pr = podS()[pk] || {}; if (pr.at) delete pr.at; else { pr.at = Date.now(); if (!pr.paid){ pr.paid = Date.now(); earn(POD_COINS, "pod|" + pk, true); } layEgg(pk); } podS()[pk] = pr; save(); var pli = el.closest(".podrow"); el.classList.toggle("on", !!pr.at); el.textContent = pr.at ? "✓" : ""; if (pli){ pli.classList.toggle("done", !!pr.at); var peb = pli.querySelector(".podearn b"); if (peb && pr.paid) peb.textContent = "✓ " + POD_COINS; } podRowPaint(pk); break; }
     case "cbapet": { var hn = el.querySelector(".hen"); if (hn){ hn.classList.remove("jump"); void hn.getBoundingClientRect(); hn.classList.add("jump"); } var hp = document.createElement("span"); hp.className = "heart"; hp.textContent = "❤️"; el.appendChild(hp); setTimeout(function(){ if (hp.parentNode) hp.parentNode.removeChild(hp); }, 1200); break; }
     case "caljump": { e.preventDefault(); var dj = document.getElementById("d" + el.getAttribute("data-d")); if (dj){ dj.classList.add("flash2"); dj.scrollIntoView({behavior:"smooth", block:"center"}); setTimeout(function(){ dj.classList.remove("flash2"); }, 1600); } break; }
@@ -73360,6 +73392,7 @@ window.addEventListener("hashchange", function(){
   render();
   if (r[0] === "cba" && r[2]) cbaFocus();
   if (r[0] === "town" && r[1] === "jobs") sceneFocus(".jcscene, .jcdesk");
+  if (r[0] === "boss" && r[1] === "home") { sceneFocus(".bhandback"); bhGo(); }
   if (r[0] === "boss" && r[1] === "rescue") sceneFocus(".bintro.bdone"); /* Monnie 20 Nov 16:15: the Job Centre opens on the scene (and the day arrows stay there), never the top banner */
   /* Monnie 20 Nov: Face the Butcher / subject test links (Today, topics, Bert's list) open scrolled straight to that test, not the banner */
   if (((r[0] === "boss" && r[1] && r[2]) || (r[0] === "town" && r[1] === "butcher" && r[2])) && !(window.SQE_QBACK_T && Date.now() - window.SQE_QBACK_T < 3000)) cbaFocus(); /* not when coming back from the notes: that lands on the exact question */
@@ -73367,6 +73400,9 @@ window.addEventListener("hashchange", function(){
 /* bring the game card into view on CBA level pages (the banner can fill a laptop screen) */
 function sceneFocus(sel){ [30, 300].forEach(function(ms){ setTimeout(function(){ var g = document.querySelector(sel); if (!g) return; var t = g.getBoundingClientRect().top; if (t > 8 || t < 0) window.scrollTo({top: window.scrollY + t - 8}); }, ms); }); }
 window.SQE_SCENE_FOCUS = sceneFocus;
+/* Monnie 20 Nov 19:31 ("where's Bert gone?"): the hand-back scene waits, frozen at its first frame, until it is on screen, so she always sees Bert hand Britney over and get kicked */
+function bhGo(){ var tries = 0; (function chk(){ var e = document.querySelector(".bhandback:not(.go)"); if (!e) return; var r = e.getBoundingClientRect(); if ((r.top >= -20 && r.top < innerHeight * .55) || tries > 120){ e.classList.add("go"); return; } tries++; setTimeout(chk, 250); })(); }
+if (/^#\/boss\/home/.test(location.hash)) setTimeout(function(){ sceneFocus(".bhandback"); bhGo(); }, 500);
 setTimeout(function(){ if (/^#\/town\/jobs/.test(location.hash)) sceneFocus(".jcscene, .jcdesk"); else if (/^#\/boss\/rescue/.test(location.hash)) sceneFocus(".bintro.bdone"); }, 500); /* QA 17:26: opening these links directly lands on the scene too */
 function cbaFocus(){ setTimeout(function(){ var g = document.querySelector(".cbag .cbatop") || document.querySelector(".cbag"); if (!g) return; var t = g.getBoundingClientRect().top; if (t > 8 || t < 0) window.scrollTo({top: window.scrollY + t - 8}); }, 30); }
 window.addEventListener("storage", function(e){ if (e.key === KEY){ load(); if (!podPlaying()) render(); } });
@@ -73421,6 +73457,10 @@ if (window.SQE_WEAK) try { window.SQE_WEAK({hooks:function(h){ WEAKHOOK = h || {
 /* SRA sample questions (#/sra) + examiner tips (#/tips): extras.js defines window.SQE_EXTRAS; it also adds links on the Mock exam, Model Q&A and subject pages */
 if (window.SQE_EXTRAS) try { window.SQE_EXTRAS({S:function(){ return S; }, VIEW:VIEW, save:save, render:render, route:route, esc:esc, SUBJ:SUBJ, earn:earn, earnedToday:earnedToday, tooQuick:tooQuick, COIN:COIN, READ_MS:READ_MS}); } catch(ex){ if (window.console) console.error(ex); }
 load(); if (window.SQE_PREVIEW_DEMO && !S.demoSeeded){ S.demoSeeded = 1; gameDemo(); } render(); startTick(); sandTick();
+/* speed (19:40): when the late data file lands, redraw. A page that was showing "Loading…" redraws through the hashchange path (so Bert's/CBA pages still scroll to the test); other pages redraw quietly unless she is typing or a podcast is playing */
+if (window.SQE_LATE && !window.SQE_LATE.ready) window.SQE_LATE.cb.push(function(){ PLAN = null; var r0 = route()[0], a = document.activeElement;
+  if (LATE_RX.test(r0)){ try { window.dispatchEvent(new HashChangeEvent("hashchange")); } catch(eH){ render(); } return; }
+  if (!podPlaying() && !(a && /INPUT|TEXTAREA|SELECT/.test(a.tagName))) render(); });
 if (window.SQESync) try { window.SQESync.init({get:function(){ return S; }, set:function(v){ S = v; }, save:save, render:render, canRender:function(){ var a = document.activeElement; return !podPlaying() && !(a && /INPUT|TEXTAREA|SELECT/.test(a.tagName)); }}); } catch(e){ if (window.console) console.error(e); }
 window.__sqe = {seenToday:seenToday, bossQs:function(k){ return bossQs(k); }, layRoll:function(ds){ return layRoll(ds); }, S:function(){ return S; }, TOPICS:TOPICS, SUBJ:SUBJ, findSection:findSection, boss:function(){ return BOSS; }, bossLockScale:function(v){ BOSS_LOCK_SCALE = v; }, PODS:PODS};
 })();
