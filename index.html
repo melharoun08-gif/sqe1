@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120041930";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120041954";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -41449,148 +41449,805 @@ window.SQE_MINDMAPS["contract/equitable-remedies-guarantees"] = {
 ;
 window.SQE_MINDMAPS = window.SQE_MINDMAPS || {};
 window.SQE_MINDMAPS["tort/negligence"] = {
- title: "Negligence: duty of care and breach",
- sub: "Duty (known category? new? omission?) · breach (standard + factors) · proving breach",
- branches: [
-  {h: "Duty: the starting point", pts: ["**Donoghue v Stevenson** (1932): snail in ginger beer; maker owed a duty to the drinker", "**Neighbour principle**: people closely and directly affected by what you do", "Claimant must prove **duty, breach, causation, damage**"]},
-  {h: "Known category or new?", pts: ["**Robinson** (2018): first ask if precedent already gives a duty (drivers, doctors, employers, makers)", "If yes: **duty exists**, no need for Caparo", "Only a truly **new situation** uses **Caparo**"]},
-  {h: "Caparo test (new situations)", pts: ["**Foreseeable** harm to the claimant", "**Proximity** between the parties", "**Fair, just and reasonable** to impose a duty", "Develop the law **incrementally** by analogy"]},
-  {h: "Omissions and rescue", pts: ["**No general duty to act** or rescue a stranger (Smith v Littlewoods)", "Exceptions: **assumed responsibility**, **control** over the wrongdoer, **created the danger**, special relationship, occupier", "Rescuers **are owed** a duty (Haynes v Harwood)", "Volunteer rescuer only liable for making things **worse**"]},
-  {h: "Public bodies", pts: ["Same rules as private people (**Robinson**)", "Police: no duty to protect from **third parties** (Hill, Michael)", "Fire brigade: no duty to attend; liable if they **make it worse** (Capital & Counties)", "Ambulance that **accepts the call** owes a duty (Kent v Griffiths)"]},
-  {h: "Breach: the standard", pts: ["**Objective**: the reasonable person in the defendant's position (Blyth)", "**Learners** judged as competent (**Nettleship v Weston**)", "**Professionals**: Bolam (responsible body) + **Bolitho** (logical)", "Advice on risks: **Montgomery** (material risks to this patient)", "**Children**: reasonable child of that age (Mullin v Richards)"]},
-  {h: "Breach: the factors", pts: ["**Likelihood** of harm (**Bolton v Stone**: cricket ball, tiny risk, no breach)", "**Seriousness** of harm (**Paris v Stepney**: one-eyed worker, goggles)", "**Cost** of precautions (**Latimer**: sawdust, closing factory not needed)", "**Social value** (**Watt v Herts**: fire engine emergency)", "Common practice is good evidence, not conclusive"]},
-  {h: "Proving breach", pts: ["**Res ipsa loquitur** (the facts speak for themselves): thing under defendant's control + would not happen without negligence + cause unknown (Scott)", "A relevant **criminal conviction** is evidence of breach (CEA 1968 s.11)"]}
+ "title": "Negligence: duty of care and breach",
+ "sub": "Duty (known category? new? omission?) · breach (standard + factors) · proving breach",
+ "branches": [
+  {
+   "h": "Duty: the starting point",
+   "pts": [
+    "**Donoghue v Stevenson** (1932): snail in ginger beer; maker owed a duty to the drinker",
+    "**Neighbour principle**: people closely and directly affected by what you do",
+    "Claimant must prove **duty, breach, causation, damage**"
+   ]
+  },
+  {
+   "h": "Known category or new?",
+   "pts": [
+    "**Robinson** (2018): first ask if precedent already gives a duty (drivers, doctors, employers, makers)",
+    "If yes: **duty exists**, no need for Caparo",
+    "Only a truly **new situation** uses **Caparo**"
+   ]
+  },
+  {
+   "h": "Caparo test (new situations)",
+   "pts": [
+    "**Foreseeable** harm to the claimant",
+    "**Proximity** between the parties",
+    "**Fair, just and reasonable** to impose a duty",
+    "Develop the law **incrementally** by analogy"
+   ]
+  },
+  {
+   "h": "Omissions and rescue",
+   "pts": [
+    "**No general duty to act** or rescue a stranger (Smith v Littlewoods)",
+    "Exceptions: **assumed responsibility**, **control** over the wrongdoer, **created the danger**, special relationship, occupier",
+    "Rescuers **are owed** a duty (Haynes v Harwood)",
+    "Volunteer rescuer only liable for making things **worse**"
+   ]
+  },
+  {
+   "h": "Public bodies",
+   "pts": [
+    "Same rules as private people (**Robinson**)",
+    "Police: no duty to protect from **third parties** (Hill, Michael)",
+    "Fire brigade: no duty to attend; liable if they **make it worse** (Capital & Counties)",
+    "Ambulance that **accepts the call** owes a duty (Kent v Griffiths)"
+   ]
+  },
+  {
+   "h": "Breach: the standard",
+   "pts": [
+    "**Objective**: the reasonable person in the defendant's position (Blyth)",
+    "**Learners** judged as competent (**Nettleship v Weston**)",
+    "**Professionals**: Bolam (responsible body) + **Bolitho** (logical)",
+    "Advice on risks: **Montgomery** (material risks to this patient)",
+    "**Children**: reasonable child of that age (Mullin v Richards)"
+   ]
+  },
+  {
+   "h": "Breach: the factors",
+   "pts": [
+    "**Likelihood** of harm (**Bolton v Stone**: cricket ball, tiny risk, no breach)",
+    "**Seriousness** of harm (**Paris v Stepney**: one-eyed worker, goggles)",
+    "**Cost** of precautions (**Latimer**: sawdust, closing factory not needed)",
+    "**Social value** (**Watt v Herts**: fire engine emergency)",
+    "Common practice is good evidence, not conclusive"
+   ]
+  },
+  {
+   "h": "Proving breach",
+   "pts": [
+    "**Res ipsa loquitur** (the facts speak for themselves): thing under defendant's control + would not happen without negligence + cause unknown (Scott)",
+    "A relevant **criminal conviction** is evidence of breach (CEA 1968 s.11)"
+   ]
+  }
  ]
 };
 window.SQE_MINDMAPS["tort/causation-remoteness"] = {
- title: "Causation and remoteness",
- sub: "Factual causation · legal causation (breaking the chain) · remoteness",
- branches: [
-  {h: "Factual causation", pts: ["**But for** the breach, would the harm have happened?", "**Barnett v Chelsea**: arsenic victim would have died anyway, so no liability", "Claimant proves it on the **balance of probabilities**"]},
-  {h: "Hard cases", pts: ["**Material contribution** to the harm can be enough (Bonnington)", "Mesothelioma: **material increase in risk** (Fairchild)", "**Loss of a chance** under 50% is not recoverable in clinical negligence (Hotson, Gregg v Scott)"]},
-  {h: "Breaking the chain", pts: ["**Novus actus interveniens**: a new intervening act", "Claimant's own **unreasonable** act (**McKew**: steep stairs, no rail)", "Third party's free, deliberate act can break it; foreseeable acts usually do not", "Ordinary medical negligence usually does **not** break it"]},
-  {h: "Remoteness", pts: ["Only the reasonably foreseeable **type** of harm (**Wagon Mound**: oil fire unforeseeable)", "Exact **way** it happened need not be foreseen (**Hughes v Lord Advocate**: paraffin lamp)", "**Jolley v Sutton**: children meddling with an old boat was foreseeable"]},
-  {h: "Eggshell skull", pts: ["**Take your victim as you find them**", "**Smith v Leech Brain**: burn led to cancer, liable for it all", "The **extent** of harm need not be foreseeable"]}
- ]
-};
-window.SQE_MINDMAPS["tort/defences"] = {
- title: "Defences: consent, contributory negligence, illegality",
- sub: "Partial defence · full defences · rescuers",
- branches: [
-  {h: "Contributory negligence", pts: ["**Partial** defence: damages cut by what is **just and equitable** (Law Reform (Contributory Negligence) Act 1945)", "Claimant failed to take reasonable care of **themselves** and it contributed to the damage", "**Froom v Butcher**: no seatbelt, **25%** if injury avoided entirely, **15%** if less severe", "Children: judged by what a child of that age would do"]},
-  {h: "Consent (volenti)", pts: ["**Full** defence", "Claimant had **full knowledge** of the risk and **freely agreed** to it", "Knowing of a risk is **not** the same as agreeing to it", "Cannot exclude liability for **death or personal injury** by a business notice (CRA 2015 / UCTA)"]},
-  {h: "Rescuers", pts: ["Rescuers are **not** treated as consenting (**Haynes v Harwood**: runaway horses)", "Rarely contributorily negligent unless reckless"]},
-  {h: "Illegality", pts: ["**Ex turpi causa**: no claim if harm arises from the claimant's own serious wrongdoing", "Courts apply the **Patel v Mirza** policy approach", "Joint criminal venture (e.g. getaway driver) usually bars the claim"]}
+ "title": "Causation and remoteness",
+ "sub": "Factual causation · legal causation (breaking the chain) · remoteness",
+ "branches": [
+  {
+   "h": "Factual causation",
+   "pts": [
+    "**But for** the breach, would the harm have happened?",
+    "**Barnett v Chelsea**: arsenic victim would have died anyway, so no liability",
+    "Claimant proves it on the **balance of probabilities**"
+   ]
+  },
+  {
+   "h": "Hard cases",
+   "pts": [
+    "**Material contribution** to the harm can be enough (Bonnington)",
+    "Mesothelioma: **material increase in risk** (Fairchild)",
+    "**Loss of a chance** under 50% is not recoverable in clinical negligence (Hotson, Gregg v Scott)"
+   ]
+  },
+  {
+   "h": "Breaking the chain",
+   "pts": [
+    "**Novus actus interveniens**: a new intervening act",
+    "Claimant's own **unreasonable** act (**McKew**: steep stairs, no rail)",
+    "Third party's free, deliberate act can break it; foreseeable acts usually do not",
+    "Ordinary medical negligence usually does **not** break it"
+   ]
+  },
+  {
+   "h": "Remoteness",
+   "pts": [
+    "Only the reasonably foreseeable **type** of harm (**Wagon Mound**: oil fire unforeseeable)",
+    "Exact **way** it happened need not be foreseen (**Hughes v Lord Advocate**: paraffin lamp)",
+    "**Jolley v Sutton**: children meddling with an old boat was foreseeable"
+   ]
+  },
+  {
+   "h": "Eggshell skull",
+   "pts": [
+    "**Take your victim as you find them**",
+    "**Smith v Leech Brain**: burn led to cancer, liable for it all",
+    "The **extent** of harm need not be foreseeable"
+   ]
+  }
  ]
 };
 window.SQE_MINDMAPS["tort/economic-loss"] = {
- title: "Pure economic loss and negligent misstatement",
- sub: "Types of loss · loss from acts · defective things · Hedley Byrne · Caparo · extended Hedley Byrne · scope of duty · disclaimers",
- branches: [
-  {h: "The big idea", pts: ["**Pure economic loss**: money lost with no physical damage to the claimant or their property", "Fear of **indeterminate liability**; contract is the normal protection for money", "**Consequential** loss (flows from physical damage) is recoverable under ordinary rules", "Rule: **no duty** for pure economic loss caused by a negligent **act**"]},
-  {h: "Loss caused by acts", pts: ["**Spartan Steel** (1973): power cable cut; damaged melt and its profit recoverable", "Profit on **four further melts** lost in the cut: pure economic loss, **not recoverable**", "**Weller** (1966): cattle disease escapes, auctioneers lose trade: **no duty**", "Sort heads: **physical damage** + loss from it (yes) vs loss from interruption only (no)"]},
-  {h: "Defective things", pts: ["Product or building that damages **only itself**: repair cost or lost value is pure economic loss", "**Murphy v Brentwood** (1991): council approved bad foundations; £35,000 loss not recoverable", "Remedy is **contract** or the **Defective Premises Act 1972** for dwellings", "Damage to **other property** or injury is recoverable; **Junior Books** confined to its facts"]},
-  {h: "Hedley Byrne", pts: ["**Hedley Byrne** (1964): credit reference; duty possible in a **special relationship**", "Bank escaped: **\"without responsibility\"** disclaimer meant no assumption of responsibility", "Need **assumption of responsibility** (objective), **special skill**, reasonable **reliance**", "Defendant knew or ought to know of **reliance**; social occasions usually no duty", "**Chaudhry v Prabhakar** (1989): friend who offered to find a sound car owed a duty"]},
-  {h: "Wider audience: Caparo", pts: ["**Caparo** (1990): auditors owed no duty to shareholder or investor relying on accounts", "Statutory audit is for shareholders **as a body** to supervise management, not to invest", "Duty if maker knew it went to the claimant/**identifiable class** for a **particular transaction**", "…and claimant very likely to rely **without independent inquiry**", "**Playboy Club** (2018): bank unaware of real recipient; no duty. **NRAM v Steel** (2018): other side's solicitor"]},
-  {h: "Surveys and services", pts: ["**Smith v Eric S Bush** (1990): lender's valuer liable to buyer of modest house; disclaimer unreasonable", "**Henderson v Merrett** (1995): Hedley Byrne covers **services**; concurrent contract and tort", "**White v Jones** (1995): solicitor's delay with will; duty to **intended beneficiaries**", "**Spring v Guardian** (1995): referee owes duty to the **subject** of the reference", "**Customs & Excise v Barclays** (2006): freezing order imposed, not assumed: **no duty**"]},
-  {h: "Scope of duty (SAAMCO)", pts: ["Liable only for loss within the **purpose** of the duty: what risk was it meant to guard against?", "**Khan v Meadows** (2021): GP liable for **haemophilia** costs, not the unrelated **autism**", "**SAAMCO** (1996): overvaluer liable for overvaluation, not the general **market fall**", "Director liable only if he **personally assumed responsibility** (**Williams v Natural Life** 1998)"]},
-  {h: "Disclaimers", pts: ["A disclaimer may show **no assumption of responsibility**", "**UCTA s.2(2)**: non-consumers, non-injury loss excluded only if **reasonable** (s.11)", "**UCTA s.13** catches notices that stop a duty arising", "**CRA 2015**: consumer notices tested for **fairness** (s.62); death/PI never excluded (**s.65**)"]}
+ "title": "Pure economic loss and negligent misstatement",
+ "sub": "Types of loss · acts · defective things · Hedley Byrne · Caparo · services · scope of duty · disclaimers",
+ "branches": [
+  {
+   "h": "The big idea",
+   "pts": [
+    "**Pure economic loss**: money lost with no physical damage to the claimant or their own property",
+    "Fear of **indeterminate liability**; contract is the normal way to protect money",
+    "**Consequential** loss flowing from physical damage is recoverable under ordinary rules",
+    "General rule: **no duty** for pure economic loss caused by a careless **act**"
+   ]
+  },
+  {
+   "h": "Loss caused by acts",
+   "pts": [
+    "**Spartan Steel** (1973): power cable cut; damaged melt and its lost profit **recoverable**",
+    "Profit on **four further melts** lost during the power cut: pure economic loss, **not recoverable**",
+    "**Weller** (1966): virus escaped, cattle markets shut; auctioneers' lost trade: **no duty**",
+    "Sort each head: damage and loss from it (**yes**) versus loss from the interruption only (**no**)"
+   ]
+  },
+  {
+   "h": "Defective things",
+   "pts": [
+    "Product or building that damages **only itself**: repair cost or lost value is pure economic loss",
+    "**Murphy v Brentwood** (1991): council passed bad foundations; £35,000 loss in value **not recoverable**",
+    "Remedy lies in **contract** or the **Defective Premises Act 1972** for dwellings",
+    "Damage to **other property**, or injury, is recoverable"
+   ]
+  },
+  {
+   "h": "Hedley Byrne",
+   "pts": [
+    "**Hedley Byrne** (1964): bank's careless credit reference; duty possible in a **special relationship**",
+    "Bank escaped: its **\"without responsibility\"** disclaimer showed no assumption of responsibility",
+    "Need **assumption of responsibility** (judged objectively), special skill and **reasonable reliance**",
+    "Defendant knew or ought to know of the reliance; advice on a **social occasion** usually no duty",
+    "**Chaudhry v Prabhakar** (1989): friend who offered to find a sound used car **owed a duty**"
+   ]
+  },
+  {
+   "h": "Wider audience: Caparo",
+   "pts": [
+    "**Caparo** (1990): bidder relied on audited accounts; auditors owed **no duty**",
+    "Statutory audit is for shareholders **as a body** to supervise management, not to invest",
+    "Duty if maker knew it would reach the claimant or an **identifiable class** for a **particular deal**",
+    "...and that the claimant would very likely rely on it **without independent inquiry**",
+    "**Playboy Club** (2018): bank's reference; it did not know the casino was the recipient: **no duty**",
+    "**NRAM v Steel** (2018): lender relied on the borrower's solicitor's statement: **no duty**"
+   ]
+  },
+  {
+   "h": "Surveys and services",
+   "pts": [
+    "**Smith v Eric S Bush** (1990): lender's valuer missed removed chimney supports; **liable** to buyer",
+    "**Henderson v Merrett** (1995): Lloyd's agents managing investors' affairs; covers **services**",
+    "**White v Jones** (1995): solicitor delayed a new will; duty to the **intended beneficiaries**",
+    "**Spring v Guardian** (1995): careless reference called an agent dishonest; duty to its **subject**",
+    "**Customs v Barclays** (2006): bank ignored a freezing order; duty imposed, not assumed: **no duty**"
+   ]
+  },
+  {
+   "h": "Scope of duty",
+   "pts": [
+    "Liable only for loss within the **purpose** of the duty: what risk was it meant to guard against?",
+    "**Khan v Meadows** (2021): GP wrongly ruled out haemophilia gene; liable for **haemophilia**, not autism",
+    "**SAAMCO case** (1996): lender's valuer liable for the **overvaluation**, not the general market fall",
+    "Director liable only if he **personally assumed responsibility** to the claimant"
+   ]
+  },
+  {
+   "h": "Disclaimers",
+   "pts": [
+    "Disclaimer may show **no assumption of responsibility** (Hedley Byrne)",
+    "**Unfair Contract Terms Act 1977 s.2(2)**: non-injury loss excludable only if **reasonable**",
+    "**Section 13** catches notices that stop a duty arising: Smith v Eric S Bush disclaimer failed",
+    "**Consumer Rights Act 2015**: consumer notices must be **fair** (s.62); death or injury never (s.65)"
+   ]
+  }
  ]
 };
 window.SQE_MINDMAPS["tort/psychiatric-harm"] = {
- title: "Psychiatric harm",
- sub: "Recognised illness · primary victims · secondary victims (Alcock) · Paul (accident) · rescuers · stress at work",
- branches: [
-  {h: "The threshold", pts: ["Need a **recognised psychiatric illness** on medical evidence (PTSD, clinical depression)", "Ordinary **grief, fear, distress** is not enough, however intense", "**Rothwell** (2007): pleural plaques and anxiety about disease not actionable", "Psychiatric harm **following physical injury** is just part of those damages"]},
-  {h: "Primary victims", pts: ["In the **zone of physical danger**, or **reasonably believed** they were", "**Dulieu v White** (1901): landlady feared for herself when van crashed into pub", "**Page v Smith** (1996): minor crash revived ME; test is foreseeable **personal injury**", "**Eggshell skull** applies; **no Alcock** controls needed", "Fearing for **someone else** does not make you primary (**White**)"]},
-  {h: "Alcock controls", pts: ["**Alcock** (1992): Hillsborough relatives; all claims failed; four controls for secondary victims", "1 **Close tie**: presumed for parents/children, spouses, fiancé(e)s; others must prove it", "2 **Proximity**: at the accident or **immediate aftermath** (**McLoughlin**: 2 hours ok; 8 hours too late)", "3 Perceived by **own unaided senses**: being told or watching **TV** fails", "4 Illness foreseeable in a person of **reasonable fortitude** (**Bourhill v Young** 1943)"]},
-  {h: "Paul: need an accident", pts: ["**Paul** (2024, UKSC): girls saw father die of undiagnosed heart disease: **no claim**", "Must witness an **accident**: an external, unexpected event causing injury or risk", "Death or crisis from **illness**, even negligently untreated, is not an accident", "No separate **sudden shock** or **horrifying** requirement", "Medical case with a **real accident** (patient dropped, wrong injection) still possible"]},
-  {h: "Other secondary points", pts: ["**Taylor v A Novo** (2013): daughter saw later collapse, not the original accident: fails", "**Bystanders** with no close tie: generally no claim", "**Attia v British Gas** (1988): watching own house burn can in principle be recoverable", "**Greatorex** (2000): no duty to relative when the victim injures **himself**"]},
-  {h: "Rescuers", pts: ["**No special category** for rescuers", "**White** (1999): Hillsborough police failed; must be primary (in danger) or meet Alcock", "Being the defendant's **employee** did not help", "**Chadwick** (1967): train crash helper recovered as he was in **physical danger**"]},
-  {h: "Stress at work", pts: ["Ordinary employer's duty; **no Alcock** controls or sudden event needed", "**Hatton** (2002) / **Barber** (2004): was harm to **this employee** foreseeable? Look for warning signs", "Employer may assume staff cope with normal pressure; **counselling** service often discharges duty", "**Walker v Northumberland** (1995): liable for the **second** breakdown, not the first"]}
+ "title": "Psychiatric harm",
+ "sub": "Recognised illness · primary victims · Alcock controls · Paul (accident) · other secondary points · rescuers · stress at work",
+ "branches": [
+  {
+   "h": "The threshold",
+   "pts": [
+    "Need a **recognised psychiatric illness** on medical evidence (post-traumatic stress disorder, depression)",
+    "Ordinary **grief, fear, distress** is not enough, however intense",
+    "**Rothwell** (2007): harmless asbestos scarring and anxiety about disease: **not actionable**",
+    "Psychiatric harm **following physical injury** is just part of those damages"
+   ]
+  },
+  {
+   "h": "Primary victims",
+   "pts": [
+    "In the **zone of physical danger**, or **reasonably believed** they were",
+    "**Dulieu v White** (1901): landlady feared for herself when a van crashed into the pub: **recovered**",
+    "**Page v Smith** (1996): minor crash revived his ME; test is foreseeable **personal injury**",
+    "**Eggshell skull** applies; **no Alcock** controls needed",
+    "Fearing only for **someone else** does not make you a primary victim"
+   ]
+  },
+  {
+   "h": "Alcock controls",
+   "pts": [
+    "**Alcock** (1992): Hillsborough relatives on TV, elsewhere or at the mortuary: **all failed**",
+    "1 **Close tie**: presumed for parents and children, spouses, engaged couples; others must prove it",
+    "2 **Proximity**: at the accident or its **immediate aftermath**; body identified 8 hours later: too late",
+    "**McLoughlin** (1983): mother saw injured family at hospital 2 hours later: within **aftermath**",
+    "3 Perceived by **own unaided senses**: being told, or watching **TV**, fails",
+    "4 Illness foreseeable in a person of **reasonable fortitude** (**Bourhill**: stranger heard a crash)"
+   ]
+  },
+  {
+   "h": "Paul: need an accident",
+   "pts": [
+    "**Paul** (2024): girls saw father die of undiagnosed heart disease: **no claim**",
+    "Must witness an **accident**: an external, unexpected event causing injury or risk of it",
+    "Death or crisis from **illness**, even negligently untreated, is not an accident",
+    "No separate **sudden shock** or **horrifying** event requirement",
+    "Medical case with a **real accident** (patient dropped, wrong injection) still possible"
+   ]
+  },
+  {
+   "h": "Other secondary points",
+   "pts": [
+    "**Taylor v A Novo** (2013): daughter saw collapse weeks after the work accident: **fails**",
+    "**Bystanders** with no close tie: generally no claim",
+    "**Attia** (1988): woman watched her house burn down: claim possible **in principle**",
+    "**Greatorex** (2000): father saw son's self-inflicted crash: victim owes relative **no duty**"
+   ]
+  },
+  {
+   "h": "Rescuers",
+   "pts": [
+    "**No special category** for rescuers",
+    "**White** (1999): police tending Hillsborough victims **failed**: not in danger, not Alcock",
+    "Being the defendant's **employee** did not help",
+    "**Chadwick** (1967): train crash helper recovered because he was in **physical danger**"
+   ]
+  },
+  {
+   "h": "Stress at work",
+   "pts": [
+    "Ordinary employer's duty; **no Alcock** controls or sudden event needed",
+    "Was harm to **this employee** foreseeable? Look for **warning signs** (Court of Appeal guidance)",
+    "Employer may assume staff cope with normal pressure; **counselling** service often enough",
+    "**Walker** (1995): manager's second breakdown after promised help never came: **liable**"
+   ]
+  }
  ]
 };
 window.SQE_MINDMAPS["tort/employers-liability"] = {
- title: "Employers' primary liability",
- sub: "Primary vs vicarious · non-delegable duty · four aspects · standard of care · statutory duty · defences",
- branches: [
-  {h: "Primary vs vicarious", pts: ["**Primary**: employer itself broke the duty it owes its employees", "**Vicarious**: employer liable for an employee's tort, without fault", "Same facts can give both; primary useful where **no individual** was negligent"]},
-  {h: "Non-delegable duty", pts: ["Personal duty to take **reasonable care** for each employee's safety", "**Wilsons & Clyde Coal** (1938): delegating to a competent manager no defence", "Can delegate the **task**, not the **responsibility**", "**McDermid v Nash Dredging** (1987): unsafe Dutch tug captain; employer still liable", "Owed to **each employee individually**, including known vulnerabilities"]},
-  {h: "Staff and equipment", pts: ["Employ **competent** staff; deal with known dangerous ones", "**Hudson v Ridge** (1957): four years of known practical jokes; employer liable", "**EL(DE)A 1969 s.1**: defect due to **third-party fault** deemed employer's negligence", "Employer then claims **contribution/indemnity** from the maker; not strict liability", "**Equipment** is wide: a ship (**Coltman**), a flagstone (**Knowles**)"]},
-  {h: "Safe place and system", pts: ["Workplace **reasonably safe**, incl. third-party premises (less control: **Wilson v Tyneside**)", "**Latimer v AEC** (1953): flooded floor; closing the factory not required", "Safe system: devise, **train**, **supervise**, warn and **enforce**", "**General Cleaning v Christmas** (1953): window cleaner; must devise system, not leave it to workers", "**Bux** (1973): goggles given but not enforced: liable. **Qualcast** (1959): experienced moulder: no claim"]},
-  {h: "Standard of care", pts: ["**Reasonable care**, not absolute; usual breach factors apply", "**Paris v Stepney** (1951): one-eyed worker needed goggles; duty to the **individual**", "Common practice is evidence, not conclusive; keep up with **known risks**", "Work **stress**: harm to this employee foreseeable (**Hatton**, **Barber**)"]},
-  {h: "Breach of statutory duty", pts: ["Separate tort where Parliament intended a **civil claim**", "**ERRA 2013 s.69** amended **HSWA 1974 s.47**: regulations not actionable for breaches from **1 Oct 2013**", "Employee must now usually prove **common law negligence**", "Regulations remain **evidence of the standard**"]},
-  {h: "Defences and extras", pts: ["**Contributory negligence** (1945 Act) is the usual defence", "**Volenti** rarely works (**Smith v Baker** 1891); exception **ICI v Shatwell** (1965)", "Compulsory insurance (**ELCIA 1969**): minimum **£5 million**", "Limitation **3 years** for personal injury, or date of knowledge for disease"]}
+ "title": "Employers' primary liability",
+ "sub": "Primary vs vicarious · non-delegable duty · staff and equipment · place and system · standard · statutory duty · defences",
+ "branches": [
+  {
+   "h": "Primary vs vicarious",
+   "pts": [
+    "**Primary**: the employer itself broke the duty it owes its employees",
+    "**Vicarious**: employer liable for an employee's tort, without its own fault",
+    "Same facts can give both; primary is useful where **no individual** was negligent"
+   ]
+  },
+  {
+   "h": "Non-delegable duty",
+   "pts": [
+    "Personal duty to take **reasonable care** for each employee's safety",
+    "**Wilsons & Clyde Coal** (1938): safety left to a competent manager; miner crushed: **liable**",
+    "Can delegate the **task**, not the **responsibility**",
+    "**McDermid** (1987): employee hurt by Dutch tug captain's unsafe system: employer **liable**",
+    "Owed to **each employee individually**, including known vulnerabilities"
+   ]
+  },
+  {
+   "h": "Staff and equipment",
+   "pts": [
+    "Employ **competent** staff; deal with known dangerous ones",
+    "**Hudson v Ridge** (1957): known practical joker tripped a colleague: employer **liable**",
+    "**Employers' Liability (Defective Equipment) Act 1969**: maker's fault deemed the employer's",
+    "Employer then claims from the maker; employee must still prove **someone's fault**",
+    "**Equipment** is wide: a ship (**Coltman**, 1988), a flagstone being laid (**Knowles**, 1993)"
+   ]
+  },
+  {
+   "h": "Safe place and system",
+   "pts": [
+    "Workplace **reasonably safe**, including third-party premises (less control there)",
+    "**Latimer v AEC** (1953): flooded oily floor; closing the factory not required: **no breach**",
+    "Safe system: devise, **train**, **supervise**, warn and **enforce**",
+    "**General Cleaning v Christmas** (1953): window cleaner's hand trapped by sash: **liable**",
+    "**Bux** (1973): goggles given, use not enforced: **liable**",
+    "**Qualcast** (1959): experienced moulder chose not to wear spats provided: **no claim**"
+   ]
+  },
+  {
+   "h": "Standard of care",
+   "pts": [
+    "**Reasonable care**, not absolute; the usual breach factors apply",
+    "**Paris v Stepney** (1951): one-eyed worker needed goggles; duty owed to the **individual**",
+    "Common practice is evidence, not conclusive; keep up with **known risks**",
+    "Work **stress**: was harm to this employee foreseeable? (see Psychiatric harm)"
+   ]
+  },
+  {
+   "h": "Statutory duty",
+   "pts": [
+    "Separate tort where Parliament intended a **civil claim**",
+    "**Enterprise and Regulatory Reform Act 2013 s.69**: regulation breaches not actionable",
+    "Applies to breaches from **1 October 2013** (amended Health and Safety at Work Act 1974 s.47)",
+    "Employee must now usually prove **negligence**; regulations are evidence of the standard"
+   ]
+  },
+  {
+   "h": "Defences and extras",
+   "pts": [
+    "**Contributory negligence** (1945 Act) is the usual defence",
+    "**Smith v Baker** (1891): quarry worker knew of crane overhead; knowing is **not consent**",
+    "**ICI v Shatwell** (1965): brothers tested detonators against orders: **consent succeeded**",
+    "**Employers' Liability (Compulsory Insurance) Act 1969**: cover of at least **£5 million**",
+    "Limitation **3 years** for personal injury, or from date of knowledge for disease"
+   ]
+  }
  ]
 };
 window.SQE_MINDMAPS["tort/vicarious-liability"] = {
- title: "Vicarious liability",
- sub: "The idea · two-stage test · employment and akin to employment · independent contractors · close connection · non-delegable duties · indemnity",
- branches: [
-  {h: "The big idea", pts: ["Employer liable for an employee's tort without fault: **strict liability**", "Needs a **tort by the employee** first", "Employer and employee **jointly and severally** liable", "Two stages (**Christian Brothers** 2012): **relationship**, then **close connection**"]},
-  {h: "Stage 1: employees", pts: ["No single test: **control**, **integration**, **economic reality**", "**Ready Mixed Concrete** (1968): drivers owning lorries were **self-employed**; label not conclusive", "Borrowed employee: lender presumed liable (**Mersey Docks v Coggins** 1947)", "**Dual vicarious liability** possible (**Viasystems** 2005)"]},
-  {h: "Akin to employment", pts: ["**Christian Brothers** (2012): lay order liable for brothers teaching at another body's school", "**Cox v MoJ** (2016): prisoner in kitchen; work **integral** to defendant, which **created the risk**", "**Armes** (2017): council liable for **foster parents** it recruited and supervised", "Policy factors explain the category; **not** a free-standing checklist (**BXB** 2023)"]},
-  {h: "Independent contractors", pts: ["**Barclays** (2020): self-employed doctor with own practice: **not liable**", "Tortfeasor in **business on his own account** means no vicarious liability", "**BXB** (2023): elder akin to employee, but rape at home failed **stage 2**"]},
-  {h: "Close connection", pts: ["Tort **so closely connected** with authorised acts it is fair to treat as in the course of employment", "**Lister v Hesley Hall** (2001): warden abusing boys in his care: **liable**", "**Mohamud** (2016): kiosk attendant attacked customer in unbroken sequence: **liable**", "**Morrison** (2020): auditor's **personal vendetta** leaking data: **not liable**", "**Bellman** (2018): MD punched staff asserting authority: **liable**; mere opportunity not enough"]},
-  {h: "Classic illustrations", pts: ["Authorised job done in a **prohibited way**: liable (**Limpus**: racing bus)", "Careless at work: liable (**Century Insurance**: cigarette while delivering petrol)", "Prohibited act for **employer's purposes**: liable (**Rose v Plenty**); for own: not (**Twine**)", "**Frolic of his own**: not liable (**Hilton**); paid travel to job: liable (**Smith v Stages**)"]},
-  {h: "Other routes", pts: ["**Partnership Act 1890 s.10**: firm liable for partner's wrongs in ordinary business", "**Police Act 1996 s.88**: chief officer liable for officers' torts", "**Non-delegable duty**: liable for contractor (**Woodland** 2013: school swimming lesson)", "Also **extra-hazardous** work (**Honeywill**) and work on the highway"]},
-  {h: "Indemnity", pts: ["Employer may claim **indemnity** from the employee (**Lister v Romford Ice** 1957)", "Contribution under the **Civil Liability (Contribution) Act 1978**", "Insurers in practice only pursue **collusion or wilful misconduct**"]}
+ "title": "Vicarious liability",
+ "sub": "The idea · employees · akin to employment · contractors · close connection · classic cases · other routes · indemnity",
+ "branches": [
+  {
+   "h": "The big idea",
+   "pts": [
+    "Employer liable for an employee's tort without fault: **strict liability**",
+    "Needs a **tort by the employee** first",
+    "Employer and employee are **jointly and severally** liable",
+    "Two stages: **relationship** (employment or akin), then **close connection**"
+   ]
+  },
+  {
+   "h": "Stage 1: employees",
+   "pts": [
+    "No single test: **control**, **integration**, **economic reality**",
+    "**Ready Mixed Concrete** (1968): drivers owning their lorries were **self-employed**",
+    "The parties' **label** is not conclusive",
+    "**Mersey Docks** (1947): crane driver lent with crane stayed the **lender's** employee",
+    "**Viasystems** (2005): lent fitter's mate damaged sprinklers: **both** firms liable"
+   ]
+  },
+  {
+   "h": "Akin to employment",
+   "pts": [
+    "**Christian Brothers** (2012): lay order liable for brothers teaching at another body's school",
+    "**Cox** (2016): prisoner in prison kitchen dropped a sack; Ministry of Justice **liable**",
+    "**Armes** (2017): council liable for **foster parents** it recruited and supervised",
+    "Policy factors explain the category; **not** a free-standing checklist (**BXB**, 2023)"
+   ]
+  },
+  {
+   "h": "Contractors",
+   "pts": [
+    "**Barclays** (2020): self-employed doctor examining applicants assaulted them: **not liable**",
+    "Tortfeasor in **business on his own account**: no vicarious liability",
+    "**BXB** (2023): Jehovah's Witness elder akin to employee, but rape at home failed **stage 2**"
+   ]
+  },
+  {
+   "h": "Close connection",
+   "pts": [
+    "Tort **so closely connected** with authorised acts that liability is fair and just",
+    "**Lister** (2001): boarding house warden abused boys in his care: **liable**",
+    "**Mohamud** (2016): kiosk attendant attacked customer in one unbroken sequence: **liable**",
+    "**Morrison** (2020): auditor leaked payroll data in a **personal vendetta**: not liable",
+    "**Bellman** (2018): managing director punched employee asserting authority: **liable**",
+    "Mere **opportunity** created by the job is not enough"
+   ]
+  },
+  {
+   "h": "Classic illustrations",
+   "pts": [
+    "Job done in a **prohibited way**: liable (**Limpus**: bus driver raced a rival bus)",
+    "Careless at work: liable (**Century Insurance**: driver smoked while delivering petrol)",
+    "Forbidden act for **employer's purposes**: liable (**Rose v Plenty**: boy helping milkman)",
+    "For **own purposes**: not liable (**Twine**: forbidden lift for a hitchhiker)",
+    "**Frolic**: not liable (**Hilton**: café trip); paid travel to job: liable (**Smith v Stages**)"
+   ]
+  },
+  {
+   "h": "Other routes",
+   "pts": [
+    "**Partnership Act 1890 s.10**: firm liable for partner's wrongs in the ordinary business",
+    "**Police Act 1996 s.88**: chief officer liable for officers' torts",
+    "**Woodland** (2013): pupil nearly drowned in contractor-run lesson: **non-delegable duty**",
+    "Also **extra-hazardous** work (**Honeywill**: flash photography in a cinema), highway work"
+   ]
+  },
+  {
+   "h": "Indemnity",
+   "pts": [
+    "**Lister v Romford Ice** (1957): driver who reversed into his father must **indemnify** employer",
+    "Contribution under the **Civil Liability (Contribution) Act 1978**",
+    "Insurers in practice pursue employees only for **collusion or wilful misconduct**"
+   ]
+  }
+ ]
+};
+window.SQE_MINDMAPS["tort/defences"] = {
+ "title": "Defences: consent, contributory negligence, illegality",
+ "sub": "Partial defence · full defences · rescuers",
+ "branches": [
+  {
+   "h": "Contributory negligence",
+   "pts": [
+    "**Partial** defence: damages cut by what is **just and equitable** (Law Reform (Contributory Negligence) Act 1945)",
+    "Claimant failed to take reasonable care of **themselves** and it contributed to the damage",
+    "**Froom v Butcher**: no seatbelt, **25%** if injury avoided entirely, **15%** if less severe",
+    "Children: judged by what a child of that age would do"
+   ]
+  },
+  {
+   "h": "Consent (volenti)",
+   "pts": [
+    "**Full** defence",
+    "Claimant had **full knowledge** of the risk and **freely agreed** to it",
+    "Knowing of a risk is **not** the same as agreeing to it",
+    "Cannot exclude liability for **death or personal injury** by a business notice (CRA 2015 / UCTA)"
+   ]
+  },
+  {
+   "h": "Rescuers",
+   "pts": [
+    "Rescuers are **not** treated as consenting (**Haynes v Harwood**: runaway horses)",
+    "Rarely contributorily negligent unless reckless"
+   ]
+  },
+  {
+   "h": "Illegality",
+   "pts": [
+    "**Ex turpi causa**: no claim if harm arises from the claimant's own serious wrongdoing",
+    "Courts apply the **Patel v Mirza** policy approach",
+    "Joint criminal venture (e.g. getaway driver) usually bars the claim"
+   ]
+  }
  ]
 };
 window.SQE_MINDMAPS["tort/remedies"] = {
- title: "Remedies for personal injury and death; limitation",
- sub: "Heads of damages · future loss · lump sum variations · deductions and mitigation · property · death claims · other remedies · limitation",
- branches: [
-  {h: "Heads of damages", pts: ["Aim: **restitutio in integrum**, usually a once-and-for-all **lump sum**", "**Special damages**: past losses to trial; **general damages**: PSLA and future loss", "**PSLA**: no pain award if unconscious (**Lim Poh Choo**); amenity objective (**West v Shephard**)", "**Judicial College Guidelines**; general damages **+10%** (Simmons v Castle); whiplash **tariff** (CLA 2018)", "Private treatment claimable (**LR(PI)A 1948 s.2(4)**); gratuitous care held on trust (**Hunt v Severs**)"]},
-  {h: "Future losses", pts: ["**Multiplicand** (net annual loss) x **multiplier** (Ogden Tables)", "Discount rate set by Lord Chancellor (**Damages Act 1996 s.A1**): **+0.5%** since 11 Jan 2025", "Lower rate means a **higher multiplier** and award", "**Smith v Manchester** award: disadvantage on the labour market", "**Lost years** for living claimant, less own living costs (**Pickett** 1980)"]},
-  {h: "Lump sum variations", pts: ["**Periodical payments** for future loss, e.g. care (**Damages Act 1996 s.2**)", "**Provisional damages** if chance of serious disease or deterioration (**SCA 1981 s.32A**)", "**Interim payments** before trial (CPR Part 25); **interest** added"]},
-  {h: "Deductions, mitigation", pts: ["**State benefits** deducted via the **CRU** (1997 Act), from matching heads, **never PSLA**", "**Sick pay** deducted", "Not deducted: **private insurance** (Bradburn), **charity**, disability pension (**Parry v Cleaver**)", "Claimant must take **reasonable steps** to mitigate; **burden on defendant**"]},
-  {h: "Property damage", pts: ["Damaged: reasonable **repair cost** or **diminution in value**", "Destroyed: **market value** at the time", "**Loss of use**: hire charges; impecunious claimant gets credit hire (**Lagden v O'Connor** 2003)"]},
-  {h: "Claims on death", pts: ["**LR(MP)A 1934 s.1**: estate's claim survives; losses up to death and **funeral**", "**FAA 1976**: dependants' **loss of dependency** (multiplicand x multiplier); estate benefits **disregarded** (s.4)", "Dependants incl. spouse, **2-year cohabitant**, parents, children, siblings; **remarriage** ignored", "**Bereavement** (s.1A): **£15,120** to spouse, 2-year cohabitant, parents of unmarried **minor**", "Reduced for deceased's **contributory negligence** (s.5)"]},
-  {h: "Other remedies", pts: ["**Nominal damages** only for torts actionable **per se**, not negligence", "**Aggravated** damages compensate for manner of the tort; rare in negligence", "**Exemplary** damages only in **Rookes v Barnard** categories", "**Injunctions** mainly relevant in nuisance"]},
-  {h: "Limitation (LA 1980)", pts: ["Tort generally: **6 years** from damage (s.2); latent damage s.14A + **15-year longstop**", "Personal injury: **3 years** from injury or **date of knowledge** (s.11, s.14); **s.33** discretion", "Death and **FAA**: 3 years from death or knowledge; **CPA**: 3 years + absolute **10-year longstop**", "Knowledge: injury **significant**, **attributable**, defendant's **identity**", "**Children**: time runs from 18 (s.28); **fraud/concealment** from discovery (s.32)"]}
+ "title": "Remedies for personal injury and death; limitation",
+ "sub": "Heads of damages · future loss · lump sum variations · deductions · property · death claims · other remedies · limitation",
+ "branches": [
+  {
+   "h": "Heads of damages",
+   "pts": [
+    "Aim: put the claimant back as if no tort, usually a once-and-for-all **lump sum**",
+    "**Special damages**: past losses to trial; **general damages**: pain, suffering, future loss",
+    "**Pain, suffering and loss of amenity**: Judicial College Guidelines, plus **10%**",
+    "Amenity is objective (**West v Shephard**: brain-damaged woman still recovered)",
+    "Road traffic **whiplash**: fixed **tariff** (Civil Liability Act 2018), raised from 31 May 2025",
+    "**Hunt v Severs** (1994): free care by the negligent rider himself: **not** recoverable"
+   ]
+  },
+  {
+   "h": "Future losses",
+   "pts": [
+    "**Multiplicand** (net annual loss) x **multiplier** (Ogden Tables)",
+    "Discount rate set by the Lord Chancellor: **+0.5%** since 11 January 2025",
+    "Lower rate means a **higher multiplier** and award",
+    "**Smith v Manchester** award: still in work but disadvantaged on the labour market",
+    "**Pickett** (1980): living claimant with shortened life recovers **lost years** earnings"
+   ]
+  },
+  {
+   "h": "Lump sum variations",
+   "pts": [
+    "**Periodical payments** for future loss, e.g. care (**Damages Act 1996 s.2**)",
+    "**Provisional damages** for a chance of serious deterioration (Senior Courts Act 1981 s.32A)",
+    "**Interim payments** before trial; **interest** added",
+    "Private treatment claimable despite the NHS (**Law Reform (Personal Injuries) Act 1948**)"
+   ]
+  },
+  {
+   "h": "Deductions",
+   "pts": [
+    "**State benefits** repaid via the Compensation Recovery Unit, from matching heads, **never PSLA**",
+    "Employer's **sick pay** deducted",
+    "Not deducted: own **insurance** (**Bradburn**, 1874: passenger's accident policy), **charity**",
+    "**Parry v Cleaver** (1970): police officer's disability pension **not deducted**",
+    "Claimant must take **reasonable steps** to mitigate; burden on the defendant"
+   ]
+  },
+  {
+   "h": "Property damage",
+   "pts": [
+    "Damaged: reasonable **repair cost** or **diminution in value**",
+    "Destroyed: **market value** at the time",
+    "**Lagden v O'Connor** (2003): poor claimant recovered **credit hire** car charges"
+   ]
+  },
+  {
+   "h": "Claims on death",
+   "pts": [
+    "**Law Reform (Miscellaneous Provisions) Act 1934**: estate claims losses to death, **funeral**",
+    "**Fatal Accidents Act 1976**: dependants claim **loss of dependency** (multiplicand x multiplier)",
+    "Dependants include spouse, **2-year cohabitant**, parents, children, siblings; remarriage ignored",
+    "**Bereavement £15,120** (s.1A): spouse, 2-year cohabitant, parents of unmarried **minor**",
+    "Reduced for the deceased's **contributory negligence** (s.5)"
+   ]
+  },
+  {
+   "h": "Other remedies",
+   "pts": [
+    "**Nominal damages** only for torts actionable **per se**, not negligence",
+    "**Aggravated** damages compensate for the manner of the tort; rare in negligence",
+    "**Exemplary** damages only in narrow categories (oppressive officials, profit-seeking, statute)",
+    "**Injunctions** mainly relevant in nuisance"
+   ]
+  },
+  {
+   "h": "Limitation",
+   "pts": [
+    "**Limitation Act 1980**: tort generally **6 years** from damage (s.2)",
+    "Latent damage: 3 years from knowledge (s.14A), **15-year longstop** (s.14B)",
+    "Personal injury: **3 years** from injury or **date of knowledge** (ss.11, 14); **s.33** discretion",
+    "Death claims: 3 years; Consumer Protection Act: 3 years, absolute **10-year longstop**",
+    "**Children**: time runs from 18 (s.28); **fraud or concealment**: from discovery (s.32)"
+   ]
+  }
  ]
 };
 window.SQE_MINDMAPS["tort/occupiers-liability"] = {
- title: "Occupiers' liability (1957 and 1984 Acts)",
- sub: "Occupier and premises · visitor or not · 1957 Act duty · children, skilled visitors, warnings, contractors · exclusion · 1984 Act",
- branches: [
-  {h: "Occupier and premises", pts: ["Two Acts: **OLA 1957** for visitors, **OLA 1984** for non-visitors", "Acts cover **state of the premises**; activities fall under ordinary negligence", "Test is **control** (**Wheat v Lacon** 1966): there can be **more than one occupier**", "No ownership or presence needed (**Harris v Birkenhead** 1976)", "**Premises** include fixed or movable structures, vessels, vehicles (s.1(3)(a))"]},
-  {h: "Visitor or non-visitor?", pts: ["**Visitors**: express or **implied** permission, contract (s.5), right by law (s.2(6))", "**Non-visitors**: trespassers, private rights of way, right to roam", "**Public rights of way**: neither Act (**McGeown** 1995)", "Exceeding **area, time or purpose** makes a visitor a **trespasser** (**The Calgarth**)"]},
-  {h: "1957: duty to visitors", pts: ["**s.2(2)**: reasonable care that the **visitor** is reasonably safe for permitted purposes", "Covers **personal injury and property damage**", "No duty for **obvious risks** to adults (**Darby v National Trust** 2001)"]},
-  {h: "Special visitors", pts: ["**s.2(3)(a)**: children less careful; **allurements** (**Glasgow v Taylor**: poisonous berries)", "**Jolley v Sutton** (2000): abandoned boat; children's ingenuity must be anticipated", "**Phipps v Rochester** (1955): occupier may expect **parents** to supervise toddlers", "**s.2(3)(b)**: skilled visitors guard against risks of **their calling** (**Roles v Nathan**: sweeps)", "**Ogwo v Taylor** (1988): fire officer can recover; skill reduces duty, does not remove it"]},
-  {h: "Warnings and contractors", pts: ["**s.2(4)(a)**: warning must enable visitor to be **reasonably safe**; none needed for obvious risks (**Staples**)", "**s.2(4)(b)**: not liable if reasonable to use contractor, checked **competence** and the work", "**Haseldine v Daw** (1941): technical lift repair: not liable", "**Woodward v Hastings** (1945): icy step easy to check: **liable**", "**Bottomley** (2003): check contractor's **insurance**"]},
-  {h: "Defences and exclusion", pts: ["**Volenti** (s.2(5)) and **contributory negligence**", "**UCTA s.2(1)**: business occupier cannot exclude **death or PI**; other loss if **reasonable**", "Free **recreational** access is not business liability (UCTA s.1(3))", "**CRA 2015 s.65**: trader cannot exclude death/PI to consumers; private occupiers may exclude"]},
-  {h: "1984: when duty arises", pts: ["**Herrington** (1972): child on electrified line; duty of common humanity", "**s.1(3)**: all three: aware of **danger**; knows non-visitor may be in **vicinity**; risk reasonably guarded against", "Needs **actual knowledge** of facts (**Swain v Puri** 1996)", "Judged at the **time** of injury (**Donoghue v Folkestone**: winter midnight dive)", "**Rhind** (2004): hidden container unknown: condition (a) fails"]},
-  {h: "1984: content of duty", pts: ["**s.1(4)**: reasonable care that non-visitor not **injured** by the danger", "**s.1(5)**: discharged by **warning** or discouraging; **s.1(6)** volenti", "**s.1(8)**: **personal injury only**, no property damage", "**Tomlinson** (2003) and **Ratcliff** (1999): **obvious risks** freely run by adults: no liability", "**Keown** (2006): danger from **activity**, not premises: no duty"]}
+ "title": "Occupiers' liability (1957 and 1984 Acts)",
+ "sub": "Occupier and premises · visitor or not · 1957 duty · special visitors · warnings and contractors · exclusion · 1984 Act",
+ "branches": [
+  {
+   "h": "Occupier and premises",
+   "pts": [
+    "**Occupiers' Liability Act 1957** for visitors; **1984 Act** for non-visitors",
+    "Acts cover the **state of the premises**; activities fall under ordinary negligence",
+    "**Wheat v Lacon** (1966): brewery and pub manager **both** occupiers; test is **control**",
+    "**Harris v Birkenhead** (1976): council with legal control of empty house was **occupier**",
+    "**Premises** include fixed or movable structures, vessels, vehicles, aircraft (s.1(3)(a))"
+   ]
+  },
+  {
+   "h": "Visitor or not?",
+   "pts": [
+    "**Visitors**: express or **implied** permission, contract (s.5), right conferred by law (s.2(6))",
+    "**Non-visitors**: trespassers, users of private rights of way, right to roam",
+    "**Public rights of way**: neither Act applies",
+    "Exceeding **area, time or purpose** makes a visitor a **trespasser** (no sliding down banisters)"
+   ]
+  },
+  {
+   "h": "1957: duty to visitors",
+   "pts": [
+    "**s.2(2)**: reasonable care that the **visitor** is reasonably safe for the permitted purpose",
+    "Covers **personal injury and property damage**",
+    "**Darby v National Trust** (2001): drowning in a pond is an **obvious risk**: no duty"
+   ]
+  },
+  {
+   "h": "Special visitors",
+   "pts": [
+    "**s.2(3)(a)**: expect children to be less careful; **allurements**",
+    "**Glasgow v Taylor** (1922): child ate poisonous berries in a park: **liable**",
+    "**Jolley** (2000): abandoned boat fell on a boy; children's **ingenuity** must be anticipated",
+    "**Phipps** (1955): 5-year-old alone fell in a trench; **parents** expected to supervise",
+    "**Roles v Nathan** (1963): warned sweeps died of fumes: trade risk (**s.2(3)(b)**), not liable",
+    "**Ogwo v Taylor** (1988): fire officer burned fighting a negligent fire **recovered**"
+   ]
+  },
+  {
+   "h": "Warnings, contractors",
+   "pts": [
+    "**s.2(4)(a)**: a warning must enable the visitor to be **reasonably safe**",
+    "No warning needed for obvious risks (**Staples**: slippery algae on a harbour wall)",
+    "**s.2(4)(b)**: not liable if reasonable to use contractor, checked **competence** and work",
+    "**Haseldine v Daw** (1941): technical lift repair: **not liable**",
+    "**Woodward v Hastings** (1945): icy school step easy to check: **liable**",
+    "**Bottomley** (2003): uninsured fireworks team; club liable for not checking **insurance**"
+   ]
+  },
+  {
+   "h": "Defences and exclusion",
+   "pts": [
+    "**Volenti** (s.2(5)) and **contributory negligence**",
+    "**Unfair Contract Terms Act 1977 s.2(1)**: business occupier cannot exclude **death or injury**",
+    "Free **recreational** access is not business liability (s.1(3))",
+    "**Consumer Rights Act 2015 s.65**: trader to consumer, same; private occupiers may exclude"
+   ]
+  },
+  {
+   "h": "1984: when duty arises",
+   "pts": [
+    "**Herrington** (1972): child burned on electrified line; duty of common humanity",
+    "**s.1(3)**: aware of **danger**; knows non-visitor may be **nearby**; risk reasonably guarded",
+    "**Swain v Puri** (1996): boy fell from factory roof; needs **actual knowledge** of the facts",
+    "**Donoghue v Folkestone** (2003): midnight winter dive: judged at the **time**, no duty",
+    "**Rhind** (2004): container hidden in lake silt was unknown: condition (a) fails"
+   ]
+  },
+  {
+   "h": "1984: content of duty",
+   "pts": [
+    "**s.1(4)**: reasonable care that the non-visitor is not **injured** by the danger",
+    "**s.1(5)**: discharged by **warning** or discouraging; **s.1(6)** volenti",
+    "**s.1(8)**: **personal injury only**, no property damage",
+    "**Tomlinson** (2003): adult dived in park lake despite signs: **obvious risk**, not liable",
+    "**Keown** (2006): boy climbed underside of fire escape: danger from **activity**, no duty"
+   ]
+  }
  ]
 };
 window.SQE_MINDMAPS["tort/product-liability"] = {
- title: "Product liability",
- sub: "Three routes · negligence duty · examination and warnings · breach and damage · CPA 1987: who, defect, damage, defences · limitation",
- branches: [
-  {h: "Three routes", pts: ["**Contract** (CRA 2015 s.9): strict, but only for the buyer (**privity**)", "**Negligence** against the manufacturer: must prove **fault**", "**CPA 1987 Part 1**: strict; prove **defect** and **causation**, not fault"]},
-  {h: "Negligence: duty", pts: ["**Donoghue v Stevenson** (1932): snail in ginger beer; manufacturer owed consumer a duty", "Narrow rule: reaches **ultimate consumer** with no reasonable possibility of **intermediate examination**", "Also **repairers** (**Haseldine**), assemblers, suppliers who should check (**Andrews v Hopkinson**)", "Owed to anyone **foreseeably affected**; products incl. packaging, labels, instructions"]},
-  {h: "Examination and warnings", pts: ["Need reasonable **expectation** of examination, not mere opportunity", "**Evans v Triplex** (1936): windscreen shattered after a year: not liable", "Adequate **warning** discharges duty (**Holmes v Ashford**: hair dye; **Kubach**: retailer liable)", "Continuing duty to **warn and recall** (**Walton v British Leyland** 1978)"]},
-  {h: "Breach and damage", pts: ["Breach in **design, manufacture, testing, instructions** or warnings", "Negligence may be **inferred** (**Grant v Australian Knitting Mills** 1936: sulphites in underpants)", "Recover **personal injury** and damage to **other property**", "Not the **product itself**: pure economic loss (**Murphy**); claim in contract"]},
-  {h: "CPA: who is liable", pts: ["**s.2(1)**: damage caused wholly or partly by a **defect** in a product", "**Producer** (incl. component maker), **own-brander**, **importer** into the UK", "**Supplier** only if asked to identify the producer and **fails** (s.2(3))", "**Joint and several** (s.2(5)); cannot be **excluded** (**s.7**)"]},
-  {h: "CPA: defect (s.3)", pts: ["Safety not such as **persons generally are entitled to expect**; all circumstances", "Not defective just because a **later version** is safer", "**A v NBA** (2001): hepatitis C in blood: **defective** even though undetectable", "**Abouzaid** (2000): pushchair strap: defective. **Richardson** (condom), **Bogle** (hot tea): not", "**Wilkes v DePuy** (2016): **holistic** risk-benefit approach; **Gee** (2018): known disclosed risk"]},
-  {h: "CPA: damage (s.5)", pts: ["**Death** or **personal injury**", "Property only if **private use** (business property excluded)", "Not the **defective product itself** or a product supplied with it as a component", "Property claim must **exceed £275**; then full amount recoverable"]},
-  {h: "CPA defences (s.4)", pts: ["(a) **Compliance** with legal requirement; (b) **no supply**; (c) **non-commercial** supply", "(d) Defect **not present** when supplied (misuse, tampering, wear)", "(e) **Development risks**: fails once the risk is **known** anywhere (**A v NBA**)", "(f) **Component** producer: defect due to finished product's design; **contributory negligence** (s.6(4))", "Limitation **3 years** (s.11A) with absolute **10-year longstop** from circulation"]}
+ "title": "Product liability",
+ "sub": "Three routes · negligence duty · examination and warnings · breach and damage · Consumer Protection Act: who, defect, damage, defences",
+ "branches": [
+  {
+   "h": "Three routes",
+   "pts": [
+    "**Contract** (Consumer Rights Act 2015 s.9): strict, but only for the buyer",
+    "**Negligence** against the manufacturer: must prove **fault**",
+    "**Consumer Protection Act 1987 (CPA) Part 1**: strict; prove **defect** and **causation**"
+   ]
+  },
+  {
+   "h": "Negligence: duty",
+   "pts": [
+    "**Donoghue v Stevenson** (1932): snail in ginger beer; maker owed the drinker a duty",
+    "Goods reach the **ultimate consumer** with no reasonable chance of **intermediate examination**",
+    "Also **repairers** (**Haseldine**: lift engineers) and dealers who should check (used cars)",
+    "Owed to anyone **foreseeably affected**; packaging, labels and instructions included"
+   ]
+  },
+  {
+   "h": "Examination, warnings",
+   "pts": [
+    "Need a reasonable **expectation** of examination, not mere opportunity",
+    "**Evans v Triplex** (1936): windscreen shattered a year after fitting: **not liable**",
+    "**Holmes v Ashford** (1950): hairdresser ignored maker's warning to test dye: hairdresser liable",
+    "**Kubach** (1937): retailer ignored warning to test chemical; schoolgirl hurt: **retailer** liable",
+    "**Walton** (1978): carmaker knew wheels came off: duty to **warn and recall**"
+   ]
+  },
+  {
+   "h": "Breach and damage",
+   "pts": [
+    "Breach in **design, manufacture, testing, instructions** or warnings",
+    "**Grant** (1936): sulphites left in new underpants caused dermatitis: negligence **inferred**",
+    "Recover **personal injury** and damage to **other property**",
+    "Not the **product itself**: pure economic loss; that claim lies in contract"
+   ]
+  },
+  {
+   "h": "CPA: who is liable",
+   "pts": [
+    "**s.2(1)**: damage caused wholly or partly by a **defect** in a product",
+    "**Producer** (including component maker), **own-brander**, **importer** into the UK",
+    "**Supplier** only if asked to identify the producer and it **fails** (s.2(3))",
+    "**Joint and several** (s.2(5)); cannot be **excluded** (s.7)"
+   ]
+  },
+  {
+   "h": "CPA: defect (s.3)",
+   "pts": [
+    "Safety not such as **persons generally are entitled to expect**; all circumstances",
+    "Not defective just because a **later version** is safer",
+    "**A v National Blood Authority** (2001): undetectable hepatitis C in blood: **defective**",
+    "**Abouzaid** (2000): pushchair strap whipped buckle into boy's eye: **defective**",
+    "Not defective: **Richardson** (split condom), **Bogle** (hot drinks scalded children)",
+    "**Wilkes** (2016): fractured hip implant; **holistic** risk-benefit test: not defective"
+   ]
+  },
+  {
+   "h": "CPA: damage (s.5)",
+   "pts": [
+    "**Death** or **personal injury**",
+    "Property only if for **private use**: business property excluded",
+    "Not the **defective product itself** or a product it came fitted to",
+    "Property claim must **exceed £275**; then the full amount is recoverable"
+   ]
+  },
+  {
+   "h": "CPA defences (s.4)",
+   "pts": [
+    "(a) **Compliance** with law; (b) **no supply**; (c) **non-commercial** supply",
+    "(d) Defect **not present** when supplied (misuse, tampering, wear)",
+    "(e) **Development risks**: fails once the risk is **known** anywhere (blood case)",
+    "(f) **Component** maker: defect due to finished product's design; contributory negligence",
+    "Limitation **3 years** (Limitation Act 1980 s.11A), absolute **10-year longstop**"
+   ]
+  }
  ]
 };
 window.SQE_MINDMAPS["tort/nuisance-rylands"] = {
- title: "Nuisance and Rylands v Fletcher",
- sub: "Private nuisance: kinds, parties, unreasonableness, defences, remedies · public nuisance · Rylands v Fletcher",
- branches: [
-  {h: "Private nuisance: what", pts: ["**Unreasonable interference** with use or enjoyment of land", "**Hunter**: encroachment, **physical damage**, interference with quiet enjoyment", "Single escape can count if from a continuing state (**Crown River Cruises**)", "**Jalla v Shell** (2023): one-off oil spill not a continuing nuisance", "No right to a view or TV; but **Fearn v Tate** (2023): intrusive **overlooking** is nuisance"]},
-  {h: "Who sues and is sued", pts: ["Only a **proprietary interest** or exclusive possession (**Hunter v Canary Wharf** 1997)", "Family, guests and lodgers **cannot** sue", "Sue the **creator**, or occupier who **adopts or continues** it (**Sedleigh-Denfield** 1940)", "Natural hazards: **measured duty** (**Goldman v Hargrave**; **Leakey** 1980)", "Landlord only if **authorised** it (**Tetley v Chitty**; not **Coventry (No 2)**)"]},
-  {h: "Unreasonable use?", pts: ["Ordinary person, **give and take**; reasonable care is no answer", "**Locality** (Sturges v Bridgman), but not for **physical damage** (**St Helen's Smelting**)", "Planning permission may change locality (**Gillingham**) but is only a factor (**Coventry v Lawrence**)", "**Duration and time** of day (**De Keyser's**: night pile-driving)", "**Sensitivity** (Robinson v Kilvert; **Network Rail v Morris**); **malice** (Christie v Davey; Hollywood Silver Fox)"]},
-  {h: "Nuisance defences", pts: ["Damage must be of a **foreseeable type** (**Wagon Mound (No 2)**)", "**Prescription**: **20 years** of actionable nuisance against the claimant", "**Statutory authority** for inevitable result (**Allen v Gulf Oil**; not **Manchester Ship Canal** 2024)", "Not defences: **coming to the nuisance** (**Miller v Jackson**), public benefit, planning permission"]},
-  {h: "Remedies", pts: ["**Injunction** (prohibitory, mandatory, interim, quia timet): discretionary", "**Damages in lieu** (SCA 1981 s.50): wide discretion, not mechanical **Shelfer** (**Coventry v Lawrence**)", "Damages for physical damage, lost value, **amenity**; **not personal injury**", "**Abatement**: reasonable self-help, usually with **notice**"]},
-  {h: "Public nuisance", pts: ["Materially affects comfort of a **class** of the public (**AG v PYA Quarries** 1957)", "Crime now statutory (**PCSCA 2022 s.78**); tort remains", "Individual needs **special damage** (**Castle v St Augustine's**: golf ball; **Tate & Lyle**)", "Covers **personal injury** and economic loss; no proprietary interest needed"]},
-  {h: "Rylands v Fletcher", pts: ["**Rylands** (1868): reservoir flooded mine; **strict liability** for isolated escapes", "Elements: **brought onto land**; **exceptionally high risk** if it escapes; **non-natural use**", "**Escape** needed (**Read v Lyons**: explosion inside factory fails)", "Damage of a **foreseeable type** (**Cambridge Water** 1994: solvent in borehole)", "**Transco** (2003): water to flats natural; **Stannard v Gore** (2012): tyres fire fails; no PI"]},
-  {h: "Rylands defences", pts: ["**Act of a stranger** (**Box v Jubb**; **Perry v Kendricks**)", "**Act of God**, rarely succeeds (**Nichols v Marsland**)", "**Consent / common benefit** (Peters); **statutory authority** (Green v Chelsea Waterworks)", "**Default of the claimant** (**Ponting v Noakes**); contributory negligence"]}
+ "title": "Nuisance and Rylands v Fletcher",
+ "sub": "Private nuisance: kinds · parties · unreasonableness · defences · remedies · public nuisance · Rylands and its defences",
+ "branches": [
+  {
+   "h": "Private nuisance: what",
+   "pts": [
+    "**Unreasonable interference** with the use or enjoyment of land",
+    "Kinds: **encroachment**, **physical damage**, interference with quiet enjoyment",
+    "**Crown River Cruises** (1996): fireworks debris set a barge alight: single escape counts",
+    "**Jalla v Shell** (2023): one-day oil spill off Nigeria: **not a continuing** nuisance",
+    "**Fearn v Tate** (2023): viewing platform looked into glass flats: **overlooking** is nuisance"
+   ]
+  },
+  {
+   "h": "Who sues and is sued",
+   "pts": [
+    "**Hunter v Canary Wharf** (1997): tower blocked TV; only those with a **property interest** sue",
+    "Family, guests and lodgers **cannot** sue in private nuisance",
+    "**Sedleigh-Denfield** (1940): occupier used trespasser's drain that flooded: **continued** it",
+    "**Leakey** (1980): slipping natural mound; **measured duty** to act on known natural hazards",
+    "**Tetley v Chitty** (1986): council let land for go-karting: landlord **authorised** nuisance"
+   ]
+  },
+  {
+   "h": "Unreasonable use?",
+   "pts": [
+    "Ordinary person, **give and take**; taking reasonable care is no answer",
+    "**Locality** matters (**Sturges**: confectioner's noise by doctor's room), not for damage",
+    "**St Helen's Smelting** (1865): fumes killed trees in industrial area: **liable**",
+    "**Coventry v Lawrence** (2014): speedway noise; **planning permission** only a factor",
+    "**Time** (De Keyser's: night pile-driving); **sensitivity** (Robinson v Kilvert: special paper)",
+    "**Malice**: **Christie v Davey** (1893): banging trays to disrupt music lessons: nuisance"
+   ]
+  },
+  {
+   "h": "Nuisance defences",
+   "pts": [
+    "Damage must be of a **foreseeable type** (**Wagon Mound (No 2)**: oil fire damaged ships)",
+    "**Prescription**: **20 years** of actionable nuisance against the claimant",
+    "**Allen v Gulf Oil** (1981): refinery authorised by Act: **statutory authority** for inevitable harm",
+    "Not defences: **coming to the nuisance** (**Miller v Jackson**: houses by cricket ground)",
+    "Also not defences: **public benefit**, planning permission as such"
+   ]
+  },
+  {
+   "h": "Remedies",
+   "pts": [
+    "**Injunction** (prohibitory, mandatory, interim, quia timet): discretionary",
+    "**Damages in lieu** (Senior Courts Act 1981 s.50): wide discretion (**Coventry v Lawrence**)",
+    "Damages for physical damage, lost value, **amenity**; **not personal injury**",
+    "**Abatement**: reasonable self-help, usually with **notice**"
+   ]
+  },
+  {
+   "h": "Public nuisance",
+   "pts": [
+    "**PYA Quarries** (1957): quarry dust and vibration affected a **class** of the public",
+    "Crime now statutory (Police, Crime, Sentencing and Courts Act 2022 s.78); **tort remains**",
+    "**Castle v St Augustine's** (1922): golf ball cost taxi driver an eye: **special damage**",
+    "Covers **personal injury** and economic loss; no property interest needed"
+   ]
+  },
+  {
+   "h": "Rylands v Fletcher",
+   "pts": [
+    "**Rylands** (1868): reservoir flooded neighbour's mine; **strict liability** for isolated escapes",
+    "Elements: **brought onto land**; **exceptionally high risk** if it escapes; **non-natural use**",
+    "**Read v Lyons** (1947): explosion inside munitions factory: no **escape**, no claim",
+    "**Cambridge Water** (1994): solvent seeped into distant borehole: type **not foreseeable**",
+    "**Transco** (2003): water pipe to flats is natural use; **no personal injury** claims"
+   ]
+  },
+  {
+   "h": "Rylands defences",
+   "pts": [
+    "**Act of a stranger** (**Perry**: children dropped a match into a petrol tank)",
+    "**Act of God**, rarely succeeds (**Nichols v Marsland**: extraordinary storm burst lakes)",
+    "**Consent or common benefit**; **statutory authority**",
+    "**Default of the claimant** (**Ponting**: claimant's horse ate yew over the boundary)"
+   ]
+  }
  ]
 };
 
@@ -45483,6 +46140,491 @@ window.SQE_FRAMEWORKS["ls/transparency-client-care"] = {
   }
  ],
  "outro": "**Price information only for listed services, but complaints and regulatory information for every firm.**"
+};
+
+;
+window.SQE_FRAMEWORKS = window.SQE_FRAMEWORKS || {};
+window.SQE_FRAMEWORKS["tort/negligence"] = {
+ "intro": "Use this for any negligence question about whether the defendant owed the claimant a duty of care and whether they breached it; then go to Causation and remoteness.",
+ "steps": [
+  {
+   "h": "Which element, what harm?",
+   "ask": "Which element of negligence is the question really testing, and is the harm physical injury or property damage?",
+   "body": "- The claimant must prove **duty, breach, causation and remoteness** on the **balance of probabilities** (more likely than not)\n- Facts saying the defendant \"clearly\" owed a duty point to breach or causation; an unusual claimant or a failure to act points to duty\n- Physical injury or property damage: ordinary duty rules below\n- **Pure economic loss** or **psychiatric harm**: restricted duty rules (see those topics)",
+   "yes": "go to step 2",
+   "no": "use Pure economic loss or Psychiatric harm"
+  },
+  {
+   "h": "Established category?",
+   "ask": "Does the relationship fall within an established category of duty?",
+   "body": "- **Robinson v Chief Constable of West Yorkshire Police** (2018): officers arresting a suspect fell onto an elderly passer-by: a positive act causing physical injury is an established category, so a duty exists with no further test\n- Categories: road users, doctor and patient, employer and employee, manufacturer and consumer, occupier and visitor, school and pupil, professional and client\n- **Donoghue v Stevenson** (1932): snail in ginger beer bought by a friend: the manufacturer owes the ultimate consumer a duty (Lord Atkin's neighbour principle)\n- **Darnley v Croydon Health Services NHS Trust** (2018): receptionist wrongly told a head-injury patient he faced a long wait; he left and collapsed: within the hospital's established duty to booked-in patients\n!! The Caparo factors are not applied where an established category fits",
+   "yes": "duty owed: go to step 6",
+   "no": "failure to act or public body: step 4 or 5; truly novel: step 3"
+  },
+  {
+   "h": "Novel case: Caparo factors",
+   "ask": "In a genuinely novel situation, is damage foreseeable, is there proximity, and is it fair, just and reasonable to impose a duty?",
+   "body": "- Develop the law **incrementally**, by analogy with established categories (Robinson)\n- **Caparo Industries v Dickman** (1990): takeover bidder relied on negligently audited accounts: auditors owed no duty (liability to an indeterminate class)\n- Consider **all three** factors: foreseeability, proximity, fair just and reasonable (the SRA sample: a passing motorist puts the wrong oil in a stranger's car)\n- The claimant must be in a foreseeable class: **Haley v London Electricity Board** (1965): blind man fell over a trench guarded only well enough for sighted people: duty owed",
+   "yes": "duty owed: go to step 6",
+   "no": "no duty: claim fails"
+  },
+  {
+   "h": "Omission or third party?",
+   "ask": "Is the complaint a failure to act, or a failure to stop someone else causing harm, and does an exception apply?",
+   "body": "- General rule: **no duty to rescue** or to prevent harm by others: **Smith v Littlewoods** (1987): vandals set fire to an empty cinema and it spread next door: not liable; **Topp v London Country Bus** (1993): bus left with keys in was stolen and the thief killed a cyclist: not liable\n- **Assumption of responsibility**: **Barrett v Ministry of Defence** (1995): officers took charge of an unconscious drunk airman but nobody watched him: liable; **Stansbie v Troman** (1948): decorator left the door unlocked and a burglar stole jewellery: liable\n- **Control of the third party**: **Home Office v Dorset Yacht** (1970): young offenders escaped while officers slept and damaged yachts: duty; **Carmarthenshire County Council v Lewis** (1955): child wandered out of a nursery onto a road and a lorry driver was killed: liable\n- **Creating the danger**: **Haynes v Harwood** (1935): horses left unattended bolted when a boy threw a stone: liable; also a **known danger on own land** (**Goldman v Hargrave**: lightning-struck tree left to burn) and knowingly **stopping someone else's rescue** (Tindall)\n- **Rescuers are owed a duty**: **Baker v TE Hopkins** (1959): doctor died going down a fume-filled well to help workmen: recovered; a volunteer rescuer is liable only for making things worse (**East Suffolk Rivers Catchment Board v Kent** (1941): slow sea wall repair: not liable)",
+   "yes": "exception applies: duty owed, go to step 6",
+   "no": "no duty: claim fails"
+  },
+  {
+   "h": "Public body?",
+   "ask": "Is the defendant a public authority, and did it make things worse by a positive act or merely fail to make them better?",
+   "body": "- Same rules as private persons; no general immunity (Robinson)\n- **Made things worse**: **Capital & Counties v Hampshire County Council** (1997): fire officer turned off the sprinklers and the building burned: liable\n- **Assumed responsibility**: **Kent v Griffiths** (2000): ambulance accepted a call for a named asthma patient and took 40 minutes without good reason: liable\n- **Failed to protect**: no duty: **Hill v Chief Constable of West Yorkshire** (1989): police failed to catch the Yorkshire Ripper; **Michael v Chief Constable of South Wales** (2015): 999 call downgraded and the caller was killed by her ex-partner\n- **Tindall v Chief Constable of Thames Valley Police** (2024): police left black ice untreated and a fatal crash followed: no duty, they did not make it worse; **Poole Borough Council v GN** (2019): council investigated but did not protect children from abusive neighbours: no duty\n- **Gorringe v Calderdale** (2004): council did not paint \"SLOW\" on the road: a statutory road-safety duty gives no private claim",
+   "yes": "positive act or assumed responsibility: duty owed, go to step 6",
+   "no": "no duty: claim fails"
+  },
+  {
+   "h": "Set the standard of care",
+   "ask": "What would a reasonable person doing this activity, in the defendant's position, have done?",
+   "body": "- **Objective** reasonable person: **Blyth v Birmingham Waterworks** (1856): water main burst in an extreme frost: not negligent\n- **No allowance for inexperience**: **Nettleship v Weston** (1971): learner driver hit a lamp post, injuring her instructor: judged as a competent driver; **Wilsher v Essex Area Health Authority** (1987): junior doctor judged by the standard of the post held\n- **Professionals**: **Bolam** (1957): electric shock therapy without relaxants when doctors were divided: not negligent if a responsible body agrees; **Bolitho** (1998): doctor did not attend a child with breathing problems: the supporting opinion must withstand logical analysis\n- **Warning of risks**: **Montgomery v Lanarkshire Health Board** (2015): diabetic mother not told of the shoulder dystocia risk: must disclose **material risks** (reasonable patient or this patient); which alternatives are reasonable is a Bolam question (**McCulloch v Forth Valley Health Board** (2023): painkiller option reasonably ruled out)\n- **Amateurs**: **Wells v Cooper** (1958): DIY door handle came off: reasonable amateur carpenter standard, met; **children**: **Mullin v Richards** (1998): 15-year-olds' ruler fight: reasonable 15-year-old, not liable\n- **Illness**: standard lowered only if an unknown condition removed control: **Mansfield v Weetabix** (1998): unknown hypoglycaemia: not liable; **Roberts v Ramsbottom** (1980): driver kept driving after feeling a stroke: liable",
+   "yes": "go to step 7"
+  },
+  {
+   "h": "Did the defendant fall below it?",
+   "ask": "Weighing the risk against the cost of precautions, did the defendant fail to do what a reasonable person would have done?",
+   "body": "- **Likelihood**: **Bolton v Stone** (1951): cricket ball hit out about six times in 30 years: no breach; contrast **Miller v Jackson** (1977): balls in a garden every season: breach\n- **Seriousness**: **Paris v Stepney Borough Council** (1951): one-eyed worker given no goggles was blinded: breach\n- **Cost and practicality**: **Latimer v AEC** (1953): flooded, oily factory floor, all available sawdust used: closing the factory not required, no breach\n- **Social value**: **Watt v Hertfordshire County Council** (1954): unsecured jack carried to save a trapped woman: no breach; but **Ward v London County Council** (1938): fire engine through a red light: breach\n- Statutes: **Compensation Act 2006 s.1** (court **may** consider deterring desirable activities); **Social Action, Responsibility and Heroism Act 2015** ss.2-4 (court **must** consider social benefit, responsible approach, heroism)\n- **Common practice** is strong but not conclusive evidence; **no hindsight**: **Roe v Minister of Health** (1954): disinfectant seeped through invisible cracks into anaesthetic: no breach",
+   "yes": "breach: go to step 8 if proof is in issue, otherwise Causation and remoteness",
+   "no": "no breach: claim fails"
+  },
+  {
+   "h": "Proving breach",
+   "ask": "Can the claimant prove the breach, directly or by inference?",
+   "body": "- The claimant bears the burden, on the **balance of probabilities**\n- **Res ipsa loquitur** (\"the thing speaks for itself\"): defendant's control, accident would not normally happen without negligence, cause unknown: **Scott v London and St Katherine Docks** (1865): sugar bags fell from a crane onto a passer-by\n- Applied: **Byrne v Boadle** (1863): flour barrel fell from a warehouse window; **Ward v Tesco** (1976): customer slipped on spilt yoghurt; not applied: **Easson v London and North Eastern Railway** (1944): child fell from a train door passengers could open\n- Only an inference: the defendant can rebut it with an explanation, and the legal burden stays on the claimant (**Ng Chun Pui v Lee Chuen Tat** (1988): coach crossed the central reservation after a car cut in: claim failed)\n- **Civil Evidence Act 1968 s.11**: a conviction (e.g. careless driving) is admissible and the defendant is taken to have committed the offence unless they prove otherwise",
+   "yes": "breach established: go to Causation and remoteness",
+   "no": "breach not proved: claim fails"
+  }
+ ],
+ "outro": "Most questions turn on **one** feature (a learner, a failure to warn, a public body failing to act, a tiny risk): find it, apply the matching rule, and ignore options that apply Caparo to an established category."
+};
+window.SQE_FRAMEWORKS["tort/causation-remoteness"] = {
+ "intro": "Use this once duty and breach are established, to decide whether the breach caused the loss and whether the loss is recoverable.",
+ "steps": [
+  {
+   "h": "But-for test",
+   "ask": "But for the breach, would the claimant have suffered the damage anyway?",
+   "body": "- Proved on the **balance of probabilities** (over 50%)\n- **Barnett v Chelsea & Kensington Hospital Management Committee** (1969): casualty doctor sent away a watchman poisoned with arsenic who would have died even if treated: no liability\n- Failure to act: ask what a careful defendant would have done (**Bolitho** (1998): doctor who failed to attend would not have intubated, and that choice was not negligent: causation failed)\n- **Performance Cars v Abraham** (1962): defendant damaged a car that already needed a respray: no liability for the respray",
+   "yes": "would have happened anyway: check steps 2 and 3, otherwise no claim",
+   "no": "factual causation proved: go to step 4"
+  },
+  {
+   "h": "Loss of a chance?",
+   "ask": "Is the claim really for the loss of a chance of a better outcome?",
+   "body": "- **Personal injury**: all or nothing; a chance of **50% or less** recovers nothing\n- **Hotson v East Berkshire Area Health Authority** (1987): delayed diagnosis of a hip injury, but only a 25% chance of avoiding disability anyway: nothing\n- **Gregg v Scott** (2005): delayed cancer referral cut survival chance from 42% to 25%: nothing\n- **Financial loss** depending on what a third party would have done: a **real and substantial** chance is valued as a percentage (**Allied Maples v Simmons & Simmons** (1995): solicitors' error lost the client the chance to negotiate protection from the seller)",
+   "yes": "apply the matching rule, then go to step 4",
+   "no": "go to step 3"
+  },
+  {
+   "h": "Multiple causes",
+   "ask": "Is this a disease with several possible causes where the but-for test cannot be satisfied?",
+   "body": "- Cumulative, indivisible disease: **material contribution** to the harm gives full liability (**Bonnington Castings v Wardlaw** (1956): lung disease from both guilty and innocent silica dust); also medical cases (**Williams v Bermuda Hospitals Board** (2016): delayed appendicitis treatment)\n- Divisible disease (deafness, asbestosis): damages **apportioned** to each defendant's share (**Holtby v Brigham & Cowan** (2000): asbestosis after work for several employers)\n- **Mesothelioma only**: **material increase in risk** is enough (**Fairchild v Glenhaven Funeral Services** (2002): asbestos exposure by several employers); one negligent defendant suffices (**Sienkiewicz v Greif** (2011): rest of exposure from the general environment)\n- Mesothelioma defendants are **jointly and severally** liable for the whole (**Compensation Act 2006 s.3**)\n!! Do not use these exceptions for ordinary single-cause injuries",
+   "yes": "causation established on that basis: go to step 4",
+   "no": "causation fails: no claim"
+  },
+  {
+   "h": "Successive causes",
+   "ask": "Did a later event cause the same loss?",
+   "body": "- Later **tort**: the first defendant still pays for the original disability (**Baker v Willoughby** (1970): leg injured by a careless driver was later shot by robbers and amputated)\n- Later **natural illness**: liability ends when it would have disabled the claimant anyway (**Jobling v Associated Dairies** (1982): unrelated spinal disease three years after a work back injury)",
+   "yes": "adjust the period of loss, then go to step 5",
+   "no": "go to step 5"
+  },
+  {
+   "h": "Intervening act",
+   "ask": "Did a later act break the chain of causation (novus actus interveniens, a new intervening act)?",
+   "body": "- Courts are slow to find a break: the more **foreseeable** the act, the less likely it breaks the chain\n- **Third party**: breaks only if free, deliberate and informed, or grossly unreasonable (**Knightley v Johns** (1982): inspector ordered a constable to ride the wrong way through a tunnel: broken; **Lamb v Camden London Borough Council** (1981): squatters damaged a house left empty after a flood: council not liable); ordinary medical negligence and rescues do not break it\n- **Claimant**: breaks only if **wholly unreasonable** (**McKew v Holland & Hannen & Cubitts** (1969): weak leg, steep stairs, no handrail, no help: broken; **Wieland v Cyril Lord Carpets** (1969): neck collar stopped her using bifocals and she fell: not broken)\n- **Suicide** caused by the breach, or the very risk the duty guarded against, does not break it (**Corr v IBC Vehicles** (2008): depression after a work accident; **Reeves v Commissioner of Police** (2000): known suicide risk in a police cell)\n- **Natural event**: only if unforeseeable and independent of the breach",
+   "yes": "defendant liable only for damage before the break",
+   "no": "go to step 6"
+  },
+  {
+   "h": "Remoteness",
+   "ask": "Was the TYPE of damage reasonably foreseeable?",
+   "body": "- **The Wagon Mound (No 1)** (1961): oil spilled in Sydney harbour unexpectedly caught fire and burned a wharf: fire was not a foreseeable type of damage, no liability\n- **Manner** need not be foreseen: **Hughes v Lord Advocate** (1963): boy burned when a paraffin lamp fell into a manhole and exploded: liable\n- **Extent** need not be foreseen: **Jolley v Sutton London Borough Council** (2000): abandoned boat fell on a boy repairing it: liable\n- Harm of a **different kind** is too remote: **Doughty v Turner Manufacturing** (1964): chemical eruption, not a splash, from molten metal; **Tremain v Pike** (1969): rare Weil's disease from rats' urine; contrast **Bradford v Robinson Rentals** (1967): frostbite in an unheated van: cold injury foreseeable, liable\n- **Eggshell skull**: liable for the full extent of a foreseeable type (**Smith v Leech Brain** (1962): burn on the lip triggered fatal cancer); includes financial weakness (**Lagden v O'Connor** (2003): poor claimant recovered credit hire charges)",
+   "yes": "damage recoverable: go on to Defences and Remedies",
+   "no": "damage too remote: not recoverable"
+  }
+ ],
+ "outro": "When a twist follows the accident (a weakness, a later fall, a doctor's error, a strange chain of events), name the hurdle it engages: **but-for**, **chain of causation** or **remoteness of type**."
+};
+window.SQE_FRAMEWORKS["tort/economic-loss"] = {
+ "intro": "Use this when the claimant has lost money but has not been injured and none of their own property has been damaged.",
+ "steps": [
+  {
+   "h": "Classify the loss",
+   "ask": "Does the financial loss flow from physical damage to the claimant's own person or property?",
+   "body": "- **Consequential** loss (lost earnings after an injury, profit lost because the claimant's own machine was damaged): ordinary negligence rules\n- **Spartan Steel v Martin** (1973): workmen cut a power cable to a steel factory: the damaged melt and its lost profit were recoverable; profit on four later melts was pure economic loss and was not\n- Any defect that damages **only the thing itself** is pure economic loss: **Murphy v Brentwood District Council** (1991): council passed defective foundations; the house lost £35,000 in value: not recoverable",
+   "yes": "consequential loss: recoverable under ordinary negligence rules",
+   "no": "pure economic loss: go to step 2"
+  },
+  {
+   "h": "Act or statement?",
+   "ask": "Was the loss caused by careless advice, information or a service, rather than a careless act?",
+   "body": "- Careless **act** (cutting a cable, damaging a third party's property): **no duty**: **Weller v Foot and Mouth Disease Research Institute** (1966): virus escaped and cattle markets closed; auctioneers' lost trade not recoverable\n- Defective product or building: claim in **contract**, or under the **Defective Premises Act 1972** for dwellings\n- **Statement, advice or service**: a **Hedley Byrne** duty is possible",
+   "yes": "go to step 3",
+   "no": "no duty in negligence: claim fails"
+  },
+  {
+   "h": "Assumption of responsibility",
+   "ask": "Did the defendant assume responsibility to this claimant, who reasonably relied on it?",
+   "body": "- **Hedley Byrne v Heller** (1964): bank gave a careless credit reference on a client: a duty can arise in a **special relationship**, but its \"without responsibility\" disclaimer showed none was assumed\n- Look for **special skill**, **reliance** that is reasonable and known to the defendant; social occasions only if responsibility was clearly taken (**Chaudhry v Prabhakar** (1989): friend who offered to find a sound used car: duty)\n- Wider audience: the defendant must know the statement will reach the claimant (or an **identifiable class**) for a **particular transaction** and be relied on **without independent inquiry** (**Caparo Industries v Dickman** (1990): auditors owed no duty to a takeover bidder)\n- No duty: **NRAM v Steel** (2018): lender relied on the borrower's solicitor; **Playboy Club v Banca Nazionale del Lavoro** (2018): bank did not know the casino was the real recipient of its reference\n- Duty: **Smith v Eric S Bush** (1990): lender's valuer missed removed chimney supports, liable to the buyer; **Henderson v Merrett** (1995): Lloyd's agents managing investors' business (services); **White v Jones** (1995): solicitor's delay with a will (intended beneficiaries); **Spring v Guardian Assurance** (1995): careless reference (its subject)\n- Responsibility imposed rather than assumed: no duty (**Customs and Excise v Barclays Bank** (2006): bank ignored a freezing order)",
+   "yes": "duty owed: go to step 4",
+   "no": "no duty: claim fails"
+  },
+  {
+   "h": "Disclaimer",
+   "ask": "Does a disclaimer or exclusion clause defeat the claim?",
+   "body": "- The disclaimer may show no responsibility was assumed (Hedley Byrne)\n- Business to non-consumer: **Unfair Contract Terms Act 1977 s.2(2)**: valid only if **reasonable** (s.11); s.13 catches notices that stop a duty arising\n- **Smith v Eric S Bush**: valuer's disclaimer to the buyer of a modest house was unreasonable\n- Trader to consumer: **Consumer Rights Act 2015 s.62** fairness; death or personal injury never excludable (s.65)",
+   "yes": "valid disclaimer: no liability",
+   "no": "go to step 5"
+  },
+  {
+   "h": "Breach, causation, scope",
+   "ask": "Was the advice careless, did reliance cause the loss, and is the loss within the scope of the duty?",
+   "body": "- Usual breach and causation rules\n- **Scope of duty**: ask what risk the duty was meant to guard against (**Manchester Building Society v Grant Thornton** (2021): auditors' wrong accounting advice on interest rate swaps)\n- **Khan v Meadows** (2021): GP wrongly told a woman she did not carry haemophilia: liable for her son's haemophilia costs, not his unrelated autism\n- **South Australia Asset Management v York Montague** (1996): lender's overvaluing valuer liable for the overvaluation, not the general market fall\n- Directors are personally liable only if they personally assumed responsibility",
+   "yes": "damages for the loss within scope",
+   "no": "no or reduced damages"
+  }
+ ],
+ "outro": "For a valuation, accounts, reference or will, ask whether responsibility was assumed to **this** claimant for **this** purpose; then test any business disclaimer for reasonableness or fairness."
+};
+window.SQE_FRAMEWORKS["tort/psychiatric-harm"] = {
+ "intro": "Use this whenever the claimant's main harm is mental rather than physical.",
+ "steps": [
+  {
+   "h": "Recognised illness?",
+   "ask": "Has the claimant suffered a medically recognised psychiatric illness?",
+   "body": "- For example post-traumatic stress disorder (PTSD), clinical depression, pathological grief\n- Ordinary grief, distress, fear or anxiety is **not** enough: **Rothwell v Chemical & Insulating Co** (2007): workers with harmless asbestos scarring and anxiety about disease: no claim\n- Psychiatric harm following the claimant's own physical injury: simply part of those damages",
+   "yes": "go to step 2",
+   "no": "no claim for psychiatric harm"
+  },
+  {
+   "h": "Stress at work?",
+   "ask": "Is the illness caused by work pressure from the claimant's own employer?",
+   "body": "- Ordinary employer's duty; no Alcock controls and no sudden event needed\n- Was harm to **this** employee **reasonably foreseeable**? Look for warning signs: known vulnerability, earlier illness, complaints (Court of Appeal guidance of 2002, approved by the House of Lords in 2004)\n- Employer may assume staff cope with normal pressure; a confidential counselling service often discharges the duty\n- **Walker v Northumberland County Council** (1995): social services manager returned after a breakdown, promised help never came: liable for the second breakdown",
+   "yes": "apply that test, then breach and causation",
+   "no": "go to step 3"
+  },
+  {
+   "h": "Primary victim?",
+   "ask": "Was the claimant in the zone of physical danger, or did they reasonably believe they were?",
+   "body": "- **Dulieu v White** (1901): landlady feared for herself when a van crashed into the pub: recovered\n- **Page v Smith** (1996): minor crash, no physical injury, but his chronic fatigue syndrome became permanent: if **personal injury** was foreseeable, psychiatric harm need not be; the eggshell skull rule applies\n- Rescuers are primary victims only if in danger: **White v Chief Constable of South Yorkshire** (1999): police tending Hillsborough victims failed; **Chadwick v British Railways Board** (1967): helper in danger in train wreckage recovered",
+   "yes": "primary victim: liable if personal injury foreseeable, no Alcock controls",
+   "no": "secondary victim: go to step 4"
+  },
+  {
+   "h": "Was there an accident?",
+   "ask": "Did the claimant witness an accident: an external, unexpected event causing injury, or the risk of injury, to another?",
+   "body": "- **Paul v Royal Wolverhampton NHS Trust** (2024): girls saw their father collapse and die from heart disease doctors had failed to diagnose: **no claim**; illness is not an accident\n- No separate requirement of a sudden shock or a horrifying event\n- The witnessed event must be the accident itself: **Taylor v A Novo** (2013): daughter saw her mother collapse three weeks after a workplace accident: failed\n- **Greatorex v Greatorex** (2000): a victim who injures himself owes no duty to a relative who sees it (fire officer father attended son's crash)",
+   "yes": "go to step 5",
+   "no": "no secondary victim claim"
+  },
+  {
+   "h": "All four Alcock controls?",
+   "ask": "Does the secondary victim satisfy every Alcock control?",
+   "body": "- **Alcock v Chief Constable of South Yorkshire** (1992): Hillsborough relatives who watched on television, were elsewhere in the ground or identified bodies later: all failed\n- **Close tie of love and affection**: presumed for parent and child, spouses, engaged couples; others (siblings, friends) must prove it\n- **Proximity**: at the accident or its **immediate aftermath** (**McLoughlin v O'Brian** (1983): mother saw injured family at hospital about 2 hours later, before they were cleaned up: within); identifying a body after 8 hours is too late\n- **Own unaided senses**: being told, or watching on television, is not enough\n- Illness foreseeable in a person of **reasonable fortitude** (**Bourhill v Young** (1943): pregnant stranger who heard a crash: no claim)",
+   "yes": "secondary victim claim succeeds (subject to breach and causation)",
+   "no": "claim fails"
+  }
+ ],
+ "outro": "With several relatives in different positions, test each one separately against the **accident** requirement and **every** Alcock control: one failed control defeats that claim."
+};
+window.SQE_FRAMEWORKS["tort/employers-liability"] = {
+ "intro": "Use this when an employee is injured at work and the question is whether the employer is liable for its own failings (not vicariously for a colleague's tort).",
+ "steps": [
+  {
+   "h": "Employee?",
+   "ask": "Is the claimant an employee of the defendant?",
+   "body": "- Decided by control, integration and economic reality (as in vicarious liability)\n- Genuinely self-employed contractors are owed only the ordinary duty of care or the occupiers' duty",
+   "yes": "go to step 2",
+   "no": "no employer's duty: use ordinary negligence or occupiers' liability"
+  },
+  {
+   "h": "Non-delegable duty",
+   "ask": "Has the employer tried to rely on delegating safety to someone else?",
+   "body": "- Personal duty to take reasonable care for **each** employee's safety; the **task** can be delegated, the **responsibility** cannot\n- **Wilsons & Clyde Coal v English** (1938): miner crushed when haulage started at shift end; safety left to a competent manager: employer still liable\n- **McDermid v Nash Dredging** (1987): employee sent to work on a tug run by a Dutch company was injured by its captain's unsafe system: employer liable",
+   "yes": "delegation is no answer: go to step 3",
+   "no": "go to step 3"
+  },
+  {
+   "h": "Which aspect of the duty?",
+   "ask": "Which of the four aspects of the duty is engaged?",
+   "body": "- **Competent staff**: **Hudson v Ridge Manufacturing** (1957): known practical joker tripped a colleague after years of warnings: liable\n- **Equipment**: **Employers' Liability (Defective Equipment) Act 1969 s.1**: a defect due to a third party's fault (e.g. the manufacturer) is deemed the employer's negligence; \"equipment\" includes a ship (**Coltman v Bibby Tankers** (1988)) and a flagstone being laid (**Knowles v Liverpool City Council** (1993))\n- **Safe place**: reasonable, not perfect (**Latimer v AEC** (1953): flooded floor, all sawdust used: closing the factory not required)\n- **Safe system**: devise, instruct, supervise, enforce (**General Cleaning Contractors v Christmas** (1953): window cleaner fell when a sash closed on his hand: liable; **Bux v Slough Metals** (1973): goggles provided but use not enforced: liable)",
+   "yes": "go to step 4"
+  },
+  {
+   "h": "Breach",
+   "ask": "Did the employer fall below the standard of a reasonable employer?",
+   "body": "- **Likelihood and seriousness**, judged for this employee: **Paris v Stepney Borough Council** (1951): one-eyed worker should have had goggles: liable\n- **Cost and practicability** of precautions (Latimer)\n- Industry practice and known risks; health and safety regulations as **evidence** of the standard\n- **Qualcast v Haynes** (1959): experienced moulder chose not to wear the spats provided: no claim\n- Work stress: was psychiatric harm to this employee foreseeable? (see Psychiatric harm)",
+   "yes": "go to step 5",
+   "no": "no primary liability (consider vicarious liability)"
+  },
+  {
+   "h": "Statutory duty?",
+   "ask": "Is the claim based only on breach of health and safety regulations?",
+   "body": "- Breaches from **1 October 2013** are not actionable in themselves (**Enterprise and Regulatory Reform Act 2013 s.69**, amending **Health and Safety at Work etc. Act 1974 s.47**), save narrow exceptions\n- The employee must prove common law **negligence**",
+   "yes": "reframe as a negligence claim, then go to step 6",
+   "no": "go to step 6"
+  },
+  {
+   "h": "Causation, defences, insurance",
+   "ask": "Did the breach cause the injury, and is there a defence?",
+   "body": "- Usual causation and remoteness rules\n- **Contributory negligence** (Law Reform (Contributory Negligence) Act 1945): common, e.g. ignoring safety instructions\n- **Volenti** (consent) rarely: **Smith v Baker** (1891): quarry worker knew a crane swung stones overhead: knowledge is not consent; exception **ICI v Shatwell** (1965): shotfirer brothers tested detonators without cover against orders\n- Compulsory insurance (**Employers' Liability (Compulsory Insurance) Act 1969**: at least £5 million); limitation 3 years for personal injury",
+   "yes": "employer liable, damages possibly reduced",
+   "no": "no liability"
+  }
+ ],
+ "outro": "Test the employer's excuse (a competent manager, a reputable supplier, a contractor, an experienced worker) against the **non-delegable duty** and the **1969 Defective Equipment Act**."
+};
+window.SQE_FRAMEWORKS["tort/vicarious-liability"] = {
+ "intro": "Use this when someone other than the person who committed the tort (usually an employer) is sued for that tort.",
+ "steps": [
+  {
+   "h": "Tort by the individual?",
+   "ask": "Did the individual (the tortfeasor) commit a tort against the claimant?",
+   "body": "- Negligence, assault, fraud and so on must be established first\n- The tortfeasor stays personally liable; employer and employee are **jointly and severally** liable",
+   "yes": "go to step 2",
+   "no": "no vicarious liability (consider the employer's primary liability)"
+  },
+  {
+   "h": "Stage 1: relationship",
+   "ask": "Is the relationship one of employment or akin to employment?",
+   "body": "- Employment: **control**, **integration**, **economic reality**; labels are not conclusive (**Ready Mixed Concrete v Minister of Pensions** (1968): drivers owning their lorries were self-employed)\n- Akin to employment: work integral to the defendant's activities, for its benefit, risk created by assigning it (**Christian Brothers** (2012): lay brothers teaching at another body's school; **Cox v Ministry of Justice** (2016): prisoner working in the kitchen dropped a sack on the manager; **Armes v Nottinghamshire County Council** (2017): foster parents recruited and supervised by the council)\n- The policy factors explain the category; they are not a free-standing checklist (Supreme Court, 2023)\n- Borrowed employee: the lender is presumed liable (**Mersey Docks v Coggins & Griffith** (1947): crane driver lent with his crane); both firms can be liable (**Viasystems v Thermal Transfer** (2005): lent fitter's mate damaged a sprinkler)",
+   "yes": "go to step 4",
+   "no": "go to step 3"
+  },
+  {
+   "h": "Independent contractor?",
+   "ask": "Was the tortfeasor in business on their own account, and if so is there a non-delegable duty?",
+   "body": "- Own independent business: **no** vicarious liability (**Various Claimants v Barclays Bank** (2020): self-employed doctor examining job applicants assaulted them: bank not liable)\n- Still check for a **non-delegable duty**: **Woodland v Swimming Teachers Association** (2013): pupil nearly drowned in a contractor-run school swimming lesson: education authority liable\n- Also extra-hazardous work (**Honeywill & Stein v Larkin** (1934): magnesium flash photography in a cinema) and work on the highway\n- Occupier who reasonably used a competent contractor: not liable (Occupiers' Liability Act 1957 s.2(4)(b))",
+   "yes": "liability only through a non-delegable duty",
+   "no": "no liability for the contractor's tort"
+  },
+  {
+   "h": "Stage 2: close connection",
+   "ask": "Was the tort so closely connected with what the tortfeasor was authorised to do that it is fair and just to hold the defendant liable?",
+   "body": "- Liable: **Lister v Hesley Hall** (2001): boarding house warden abused boys in his care; **Mohamud v WM Morrison** (2016): kiosk attendant followed a customer out and attacked him in an unbroken sequence; **Bellman v Northampton Recruitment** (2018): managing director punched an employee while asserting his authority\n- Not liable: **WM Morrison v Various Claimants** (2020): auditor leaked payroll data in a personal vendetta; **BXB** (2023): Jehovah's Witness elder raped a member at his home: mere opportunity\n- Job done in a prohibited or careless way: liable (**Limpus v London General Omnibus** (1862): bus driver raced a rival; **Century Insurance** (1942): tanker driver lit a cigarette while delivering petrol; **Rose v Plenty** (1976): milkman let a boy help against orders)\n- Own purposes or a frolic: not liable (**Twine v Bean's Express** (1946): forbidden lift to a hitchhiker; **Hilton v Thomas Burton** (1961): workmen drove to a café on an unauthorised break)\n!! \"The employer told him not to\" is no defence on its own: ask whose purposes the act served",
+   "yes": "defendant vicariously liable: go to step 5",
+   "no": "no vicarious liability"
+  },
+  {
+   "h": "Consequences",
+   "ask": "Who else is liable, and can the defendant recover from the tortfeasor?",
+   "body": "- Indemnity from the employee is possible in principle (**Lister v Romford Ice** (1957): lorry driver reversed into his father, a colleague); contribution under the **Civil Liability (Contribution) Act 1978**\n- In practice insurers pursue employees only for collusion or wilful misconduct\n- Partners: firm liable for a partner's wrongs in the ordinary course of business (**Partnership Act 1890 s.10**); police: chief officer liable (**Police Act 1996 s.88**)"
+  }
+ ],
+ "outro": "Decide whether the wrong was the **job done badly** (liable) or a **personal matter** the job merely gave the chance to commit (not liable)."
+};
+window.SQE_FRAMEWORKS["tort/defences"] = {
+ "intro": "Use this once a claim in negligence (or under the Occupiers' Liability Acts) is made out, to see whether the defendant can defeat or reduce it; the defendant must prove any defence.",
+ "steps": [
+  {
+   "h": "Is consent ruled out?",
+   "ask": "Is the defence of volenti non fit injuria (consent) barred by statute or by the claimant's position?",
+   "body": "- Passenger in a vehicle needing compulsory insurance: **Road Traffic Act 1988 s.149** makes acceptance of the risk ineffective (not aircraft)\n- Employees rarely consent: **Smith v Baker** (1891): quarry worker knew a crane swung stones overhead: knowledge is not consent\n- Rescuers: **Haynes v Harwood** (1935): constable stopped runaway horses; **Baker v TE Hopkins** (1959): doctor went down a fume-filled well\n- Duty to prevent suicide: **Reeves v Commissioner of Police** (2000): known suicide risk in a police cell; **Kirkham v Chief Constable of Greater Manchester** (1990): risk not passed on to the prison\n- Seeing a notice is not, by itself, consent (**Unfair Contract Terms Act 1977 s.2(3)**); a business cannot exclude liability for negligent death or personal injury (s.2(1); **Consumer Rights Act 2015 s.65**)",
+   "yes": "volenti unavailable: go to step 3",
+   "no": "go to step 2"
+  },
+  {
+   "h": "Volenti",
+   "ask": "Did the claimant, knowing the nature and extent of the risk, freely agree to accept it, including the risk of the defendant's negligence?",
+   "body": "- Complete defence: the claim fails\n- Knowing of a risk is not agreeing to it; carelessly running a risk is contributory negligence instead\n- **Morris v Murray** (1991): passenger flew with a pilot who had drunk heavily all afternoon: obvious, extreme risk: defence succeeded\n- **ICI v Shatwell** (1965): shotfirer brothers tested detonators without cover against orders: succeeded\n- **Nettleship v Weston** (1971): instructor who checked the learner's insurance did not consent to her negligence\n- Sport: ordinary risks accepted, not reckless foul play (**Condon v Basi** (1985): leg broken by a reckless sliding tackle: liable); no capacity if very drunk or a young child",
+   "yes": "complete defence: claim fails",
+   "no": "go to step 3"
+  },
+  {
+   "h": "Illegality",
+   "ask": "Does the loss flow from the claimant's own crime, or from a joint criminal enterprise with the defendant (ex turpi causa)?",
+   "body": "- **Patel v Mirza** (2016): money paid to bet using insider information was recovered: weigh the purpose of the law broken, other policies and **proportionality**\n- Loss from the claimant's own crime and sentence: barred (**Gray v Thames Trains** (2009): rail crash victim with PTSD later killed a man; **Henderson v Dorset Healthcare** (2020): psychotic patient killed her mother after the trust failed to recall her)\n- Joint enterprise: barred (**Pitts v Hunt** (1990): pillion passenger egged on a drunk, unlicensed rider; **Joyce v O'Brien** (2013): fell off a getaway van holding stolen ladders); escaping custody (**Vellino** (2001): jumped from a window to avoid arrest)\n- Incidental wrongdoing: not barred (**Revill v Newbery** (1996): burglar shot through a shed door recovered, reduced by two-thirds)\n- Taking a lift from a drunk driver is not the passenger's crime",
+   "yes": "claim fails completely",
+   "no": "go to step 4"
+  },
+  {
+   "h": "Contributory negligence",
+   "ask": "Did the claimant fail to take reasonable care for their own safety, contributing to the damage?",
+   "body": "- **Law Reform (Contributory Negligence) Act 1945 s.1(1)**: damages reduced as **just and equitable** for the claimant's share of responsibility\n- Must contribute to the **damage**, not necessarily the accident, and be within the risk run (**Jones v Livox Quarries** (1952): worker riding on the back of a vehicle was crushed when another vehicle hit it)\n- Weigh **blameworthiness** and **causative potency** (**Jackson v Murray** (2015): girl stepped from behind a minibus into a speeding car: 50%)\n- No seatbelt: **25%** if injury avoided, **15%** if less severe, **nil** if no difference (**Froom v Butcher** (1976)); no helmet about 15%; knowingly taking a lift from a drunk driver about 20% (**Owens v Brimmell** (1977))\n- Children: a child of that age (**Gough v Thorne** (1966): 13-year-old waved across by a lorry driver: not at fault); agony of the moment (**Jones v Boyce** (1816): passenger jumped from a coach he reasonably feared would overturn: no reduction)\n- Never **100%**; assess full damages first, then reduce",
+   "yes": "reduce full damages by the percentage",
+   "no": "full damages"
+  }
+ ],
+ "outro": "Separate real **agreement** to the risk (volenti) from **carelessness** (contributory negligence) and **criminal conduct** (illegality), and check the statutory bars first."
+};
+window.SQE_FRAMEWORKS["tort/remedies"] = {
+ "intro": "Use this to work out what a successful personal injury or fatal accident claimant recovers, and whether the claim is in time.",
+ "steps": [
+  {
+   "h": "Is the claim in time?",
+   "ask": "Was the claim issued within the Limitation Act 1980 period?",
+   "body": "- Personal injury: **3 years** from injury or **date of knowledge** (ss.11, 14: injury significant, attributable to the act, identity of the defendant); court may disapply (**s.33**)\n- Property damage or economic loss: **6 years** from damage (s.2); latent damage: 3 years from knowledge, **15-year longstop** (ss.14A, 14B)\n- Death: 3 years from death or knowledge (ss.11(5), 12); Consumer Protection Act 1987: 3 years with an absolute **10-year longstop** (s.11A)\n- Child: time runs from **18** (s.28); fraud or concealment: from discovery (s.32)",
+   "yes": "go to step 2",
+   "no": "complete defence, unless s.33, s.28 or s.32 helps"
+  },
+  {
+   "h": "Pain, suffering, amenity",
+   "ask": "What is the award for pain, suffering and loss of amenity (PSLA)?",
+   "body": "- Judicial College Guidelines and reported cases, plus **10%** (Court of Appeal uplift for most claims since 2013)\n- Loss of amenity is objective: **H West & Son v Shephard** (1964): severely brain-damaged woman with little awareness still recovered\n- No award for pain if unaware: **Lim Poh Choo v Camden and Islington Area Health Authority** (1980): patient left severely brain-damaged\n- Road traffic whiplash (up to two years): fixed **tariff** (Civil Liability Act 2018; Whiplash Injury Regulations 2021, amounts raised for accidents from 31 May 2025)",
+   "yes": "go to step 3"
+  },
+  {
+   "h": "Financial losses",
+   "ask": "What past and future financial losses has the claimant suffered?",
+   "body": "- Special damages: **net** lost earnings, expenses (private treatment allowed: **Law Reform (Personal Injuries) Act 1948 s.2(4)**)\n- Free family care held on trust for the carer, but not where the carer is the defendant (**Hunt v Severs** (1994): injured pillion passenger cared for by the negligent rider)\n- Future loss: **multiplicand** (net annual loss) x **multiplier** (Ogden Tables; discount rate **+0.5%** from 11 January 2025, set by the Lord Chancellor)\n- **Smith v Manchester** award: still in work but disadvantaged on the labour market; **lost years** (**Pickett v British Rail Engineering** (1980): living claimant with shortened life)\n- Periodical payments (**Damages Act 1996 s.2**); provisional damages for a chance of serious deterioration (**Senior Courts Act 1981 s.32A**); interim payments (CPR Part 25)",
+   "yes": "go to step 4"
+  },
+  {
+   "h": "Deductions and mitigation",
+   "ask": "Must anything be deducted, or did the claimant fail to mitigate?",
+   "body": "- **State benefits** recovered through the Compensation Recovery Unit (**Social Security (Recovery of Benefits) Act 1997**), from matching heads only, **never from PSLA**; employer's sick pay deducted\n- Not deducted: own **insurance** (**Bradburn v Great Western Railway** (1874): injured passenger's accident insurance), **charity**, disability pensions (**Parry v Cleaver** (1970): police officer's pension)\n- Unreasonable failure to mitigate: that loss is not recoverable; burden on the defendant\n- Property: repair cost or diminution in value; hire charges (**Lagden v O'Connor** (2003): poor claimant recovered credit hire)\n- Then reduce for any **contributory negligence**",
+   "yes": "adjust the award; go to step 5 if there was a death",
+   "no": "go to step 5 if there was a death"
+  },
+  {
+   "h": "Death claims",
+   "ask": "Did the victim die, and who can claim what?",
+   "body": "- **Estate** (**Law Reform (Miscellaneous Provisions) Act 1934 s.1**): losses up to death, pre-death PSLA, funeral costs; no lost years or bereavement\n- **Dependants** (**Fatal Accidents Act 1976 s.1(3)**: spouse or civil partner, 2-year cohabitant, parents, children, siblings and others): loss of dependency by multiplicand x multiplier; benefits from the estate ignored (s.4); widow's remarriage prospects ignored (s.3(3))\n- **Bereavement £15,120** (s.1A): spouse or civil partner, 2-year cohabitant, or parents of an unmarried minor; shared equally\n- Not adult children, siblings or a fiancé(e) who had not lived with the deceased for two years\n- Reduced for the deceased's contributory negligence (s.5)"
+  }
+ ],
+ "outro": "Questions test **one head** at a time (who gets bereavement damages, what is deducted, when time ran, how future loss is calculated); the exam gives any figures needed."
+};
+window.SQE_FRAMEWORKS["tort/occupiers-liability"] = {
+ "intro": "Use this when someone is injured, or their property damaged, because of the state of premises.",
+ "steps": [
+  {
+   "h": "Occupier and premises?",
+   "ask": "Does the defendant have enough control over the premises, and does the danger come from their state?",
+   "body": "- Test is **control**; more than one occupier is possible (**Wheat v E Lacon** (1966): brewery and pub manager were both occupiers of the upstairs)\n- No ownership or presence needed (**Harris v Birkenhead Corporation** (1976): council with legal control of an empty house)\n- Premises include fixed or movable structures, vessels, vehicles and aircraft (Occupiers' Liability Act 1957 s.1(3)(a))\n- Danger from an **activity** rather than the state of the premises: ordinary negligence",
+   "yes": "go to step 2",
+   "no": "not an occupier or not the premises: use ordinary negligence"
+  },
+  {
+   "h": "Visitor or not?",
+   "ask": "Did the claimant have permission, a contract or a legal right to be there, and stay within it?",
+   "body": "- Visitors: invited, implied permission (**Lowery v Walker** (1911): long-tolerated short cut), contract (s.5), right conferred by law (s.2(6))\n- Going beyond the permitted area, time or purpose makes a visitor a **trespasser** (invited to use the stairs, not slide down the banisters)\n- Public right of way: neither Act; private right of way and right to roam: the 1984 Act",
+   "yes": "visitor: go to step 3 (Occupiers' Liability Act 1957)",
+   "no": "non-visitor: go to step 5 (Occupiers' Liability Act 1984)"
+  },
+  {
+   "h": "1957 Act: breach",
+   "ask": "Did the occupier fail to take reasonable care to see that the visitor was reasonably safe for the permitted purpose?",
+   "body": "- **s.2(2)** common duty of care; covers personal injury and property damage; no duty for obvious risks to adults (**Darby v National Trust** (2001): drowning in a pond)\n- **Children** (s.2(3)(a)): allurements (**Glasgow Corporation v Taylor** (1922): child ate poisonous berries in a park: liable); parents expected to supervise toddlers (**Phipps v Rochester Corporation** (1955): 5-year-old alone fell into a trench: not liable)\n- **Skilled visitors** (s.2(3)(b)) guard against their trade's risks (**Roles v Nathan** (1963): warned chimney sweeps died of fumes: not liable)\n- **Warnings** (s.2(4)(a)) must enable the visitor to be reasonably safe; none needed for obvious risks (**Staples v West Dorset** (1995): slippery algae on the harbour wall)\n- **Contractors** (s.2(4)(b)): reasonable to use one, checked competence and insurance, checked the work if feasible (**Haseldine v Daw** (1941): technical lift repair: not liable; **Woodward v Mayor of Hastings** (1945): icy school step easy to check: liable; **Bottomley v Todmorden Cricket Club** (2003): uninsured fireworks team: liable)",
+   "yes": "go to step 4",
+   "no": "no liability"
+  },
+  {
+   "h": "1957 Act: defences",
+   "ask": "Does volenti, contributory negligence or a valid exclusion apply?",
+   "body": "- Risks willingly accepted (s.2(5)); contributory negligence reduces damages\n- Business occupier cannot exclude negligent death or personal injury (**Unfair Contract Terms Act 1977 s.2(1)**); other loss only if reasonable (s.2(2)); free recreational access is not business liability (s.1(3))\n- Trader to consumer: **Consumer Rights Act 2015 s.65**; other terms must be fair (s.62)\n- Private occupier may exclude by notice",
+   "yes": "no or reduced liability",
+   "no": "occupier liable"
+  },
+  {
+   "h": "1984 Act: duty and breach",
+   "ask": "Are all three s.1(3) conditions met, and did the occupier take reasonable care?",
+   "body": "- (a) aware of the danger; (b) knows the non-visitor is or may come near it; (c) risk one it may reasonably be expected to protect against\n- Actual knowledge of facts needed (**Swain v Natui Ram Puri** (1996): boy fell from a factory roof); judged at the time (**Donoghue v Folkestone Properties** (2003): midnight winter dive from a slipway: no duty); **Rhind v Astbury Water Park** (2004): hidden container in lake silt unknown: no duty\n- Duty: reasonable care against **injury** (s.1(4)); a warning or discouragement can discharge it (s.1(5)); volenti (s.1(6))\n- Obvious risks freely run by adults: no liability (**Tomlinson v Congleton** (2003): man dived in a park lake despite signs; **Ratcliff v McConnell** (1999): student dived into a closed pool at night)\n- **Personal injury only**: no property damage (s.1(8))",
+   "yes": "occupier liable for personal injury (subject to contributory negligence)",
+   "no": "no liability"
+  }
+ ],
+ "outro": "Fix the claimant's **status** first (visitor who strayed, trespassing child, skilled worker), then test the occupier's excuse (warning, contractor, exclusion notice) under the matching Act."
+};
+window.SQE_FRAMEWORKS["tort/product-liability"] = {
+ "intro": "Use this when someone is injured, or property is damaged, by a defective product.",
+ "steps": [
+  {
+   "h": "Which route and what loss?",
+   "ask": "Is the claim for personal injury or damage to other property, rather than the product itself?",
+   "body": "- Product itself (repair cost, lost value): **contract** only; in tort it is pure economic loss\n- Buyer: **Consumer Rights Act 2015 s.9** (satisfactory quality) against the seller: strict, but only for a party to the contract\n- Anyone injured: **negligence** and/or **Consumer Protection Act 1987 (CPA) Part 1**",
+   "yes": "go to step 2",
+   "no": "contract claim against the seller only"
+  },
+  {
+   "h": "CPA: right defendant?",
+   "ask": "Is the defendant a producer, own-brander, importer, or a supplier who failed to identify them?",
+   "body": "- **Producer**: manufacturer, abstractor or processor, including a component maker (s.1(2), s.2(2)(a))\n- **Own-brander** holding itself out as producer (s.2(2)(b)); **importer into the UK** (s.2(2)(c))\n- **Supplier** only if asked to identify the producer or its own supplier and it fails to (s.2(3))\n- Liability is joint and several (s.2(5)) and cannot be excluded (s.7)",
+   "yes": "go to step 3",
+   "no": "consider negligence (step 6)"
+  },
+  {
+   "h": "CPA: defect?",
+   "ask": "Is the product's safety not such as persons generally are entitled to expect (s.3)?",
+   "body": "- All circumstances: marketing, get-up, **instructions and warnings**, expected use, time of supply; a later safer version does not make it defective\n- Defective: **A v National Blood Authority** (2001): blood infected with hepatitis C, undetectable at the time; **Abouzaid v Mothercare** (2000): elastic pushchair strap whipped its buckle into a boy's eye\n- Not defective: **Richardson v LRC Products** (2000): split condom; **Bogle v McDonald's** (2002): hot drinks scalded children; **Wilkes v DePuy** (2016): fractured hip implant part, holistic risk-benefit approach; **Gee v DePuy** (2018): metal-on-metal hips with a disclosed risk\n- Claimant proves defect and causation, not fault",
+   "yes": "go to step 4",
+   "no": "no CPA claim: consider negligence (step 6)"
+  },
+  {
+   "h": "CPA: recoverable damage?",
+   "ask": "Is the damage within s.5?",
+   "body": "- Death and personal injury: yes\n- Property: only if for **private** use; not the product itself or a product it was supplied in as a component\n- Property claim must exceed **£275**; then the full amount is recoverable",
+   "yes": "go to step 5",
+   "no": "use negligence for business property or small claims"
+  },
+  {
+   "h": "CPA: defences and time",
+   "ask": "Can the defendant prove a s.4 defence, or is the claim out of time?",
+   "body": "- (a) compliance with a legal requirement; (b) did not supply; (c) non-business supply; (d) defect not present when supplied\n- (e) **development risks**: fails once the risk was known anywhere, even if undetectable (A v National Blood Authority); (f) component maker: defect due to the finished product's design\n- Contributory negligence (s.6(4))\n- **3 years** from damage or knowledge, absolute **10-year longstop** from circulation (Limitation Act 1980 s.11A)",
+   "yes": "no or reduced CPA liability",
+   "no": "producer liable under the CPA"
+  },
+  {
+   "h": "Negligence route",
+   "ask": "Did a manufacturer, repairer or supplier owe and breach a duty of care?",
+   "body": "- **Donoghue v Stevenson** (1932): snail in ginger beer: duty to the ultimate consumer where no reasonable possibility of intermediate examination; also repairers (**Haseldine v Daw** (1941): lift repairers)\n- Expected examination or an adequate warning can shift liability: **Evans v Triplex Safety Glass** (1936): windscreen shattered after a year: not liable; **Holmes v Ashford** (1950): hairdresser ignored the warning to test hair dye: hairdresser liable\n- Breach may be inferred: **Grant v Australian Knitting Mills** (1936): excess sulphites in new underpants caused dermatitis\n- Recover personal injury and other property (including business property, no £275 threshold); not the product itself",
+   "yes": "liable in negligence",
+   "no": "no negligence claim"
+  }
+ ],
+ "outro": "Check in turn the **defendant category**, the **defect**, and the **s.5 damage limits** (no product itself, no business property, over £275); if the Consumer Protection Act fails, try negligence or contract."
+};
+window.SQE_FRAMEWORKS["tort/nuisance-rylands"] = {
+ "intro": "Use this when harm comes from the defendant's use of land: noise, smells, encroachment, flooding, an obstruction of the public, or an escape of something dangerous.",
+ "steps": [
+  {
+   "h": "Which tort?",
+   "ask": "Is it a continuing interference with land, harm to a class of the public, or an isolated escape of something dangerous?",
+   "body": "- Interference with **use and enjoyment of land**: private nuisance (step 2)\n- Affects a **class of the public** (highway obstruction, pollution): public nuisance (step 5)\n- **Isolated escape** of a dangerous thing accumulated on land: Rylands v Fletcher (step 6)\n- **Personal injury**: only public nuisance or negligence",
+   "yes": "go to the matching step"
+  },
+  {
+   "h": "Private nuisance: parties",
+   "ask": "Does the claimant have a proprietary interest, and is the defendant responsible for the nuisance?",
+   "body": "- Claimant: owner, tenant or exclusive possession (**Hunter v Canary Wharf** (1997): residents whose TV was blocked by a tower; family members and lodgers cannot sue)\n- Defendant: the **creator**, or an occupier who adopts or continues a trespasser's or natural nuisance (**Sedleigh-Denfield v O'Callaghan** (1940): used a trespasser's drain pipe that blocked and flooded the neighbour; **Leakey v National Trust** (1980): slipping natural mound: measured duty)\n- Landlord only if it **authorised** the nuisance (**Tetley v Chitty** (1986): council let land to a go-kart club: liable); not merely for knowing of it (**Coventry v Lawrence (No 2)** (2014): landlords of a speedway stadium: not liable)",
+   "yes": "go to step 3",
+   "no": "no private nuisance claim"
+  },
+  {
+   "h": "Unreasonable interference?",
+   "ask": "Is the interference substantial and unreasonable, judged by the ordinary person and give and take?",
+   "body": "- Kinds: encroachment, physical damage, loss of amenity, including intrusive overlooking (**Fearn v Tate Gallery** (2023): viewing platform looked into glass-walled flats: nuisance); reasonable care is no answer\n- **Locality**: **Sturges v Bridgman** (1879): confectioner's noisy machinery next to a doctor's consulting room; irrelevant for physical damage (**St Helen's Smelting v Tipping** (1865): smelter fumes killed trees); planning permission is only a factor (**Coventry v Lawrence** (2014): speedway noise still a nuisance)\n- **Time and duration** (**De Keyser's Royal Hotel v Spicer** (1914): pile-driving at night); **sensitivity**: damage must be foreseeable to an ordinary use (**Network Rail v Morris** (2004): signals affected studio guitars: not liable)\n- **Malice** (**Christie v Davey** (1893): banging trays to disrupt neighbour's music lessons; **Hollywood Silver Fox Farm v Emmett** (1936): guns fired to stop foxes breeding)\n- Ordinary domestic use is not a nuisance; damage must be of a foreseeable type (**The Wagon Mound (No 2)** (1967): oil fire damaged ships)",
+   "yes": "go to step 4",
+   "no": "no nuisance"
+  },
+  {
+   "h": "Defences and remedies",
+   "ask": "Is there a defence, and what remedy fits?",
+   "body": "- Defences: **20 years' prescription**; **statutory authority** for the inevitable result (**Allen v Gulf Oil** (1981): refinery authorised by Act; contrast **Manchester Ship Canal v United Utilities** (2024): sewage discharges not authorised); consent\n- Not defences: **coming to the nuisance** (**Miller v Jackson** (1977): houses built beside an old cricket ground), public benefit, planning permission\n- **Injunction** (discretionary), or **damages in lieu** (Senior Courts Act 1981 s.50), with a flexible discretion after Coventry v Lawrence\n- Damages: physical damage, loss in value, loss of amenity; **no personal injury**; **abatement** (reasonable self-help, usually with notice)"
+  },
+  {
+   "h": "Public nuisance",
+   "ask": "Has a class of the public been materially affected, and did the claimant suffer special damage?",
+   "body": "- Class of the public: **Attorney General v PYA Quarries** (1957): quarry dust and vibration affected local residents\n- **Special damage** beyond the public: **Castle v St Augustine's Links** (1922): golf ball smashed a taxi windscreen and cost the driver an eye; **Tate & Lyle v Greater London Council** (1983): ferry terminals silted up a jetty\n- Personal injury and economic loss recoverable; no interest in land needed\n- The crime is now statutory (**Police, Crime, Sentencing and Courts Act 2022 s.78**); the tort remains",
+   "yes": "individual can sue",
+   "no": "only the Attorney General or a local authority can act"
+  },
+  {
+   "h": "Rylands v Fletcher",
+   "ask": "Did something exceptionally dangerous, brought on to land in an extraordinary use, escape and cause foreseeable damage to land?",
+   "body": "- **Rylands v Fletcher** (1868): reservoir burst into old mine shafts and flooded a neighbour's mine: strict liability\n- **Brought on and kept**; **exceptionally high risk** if it escapes; **non-natural** use (extraordinary and unusual): not water piped to flats (**Transco v Stockport** (2003)) or stored tyres that caught fire (**Stannard v Gore** (2012))\n- **Escape** to other land (**Read v J Lyons** (1947): explosion inside a munitions factory: no claim); **foreseeable type** of damage (**Cambridge Water v Eastern Counties Leather** (1994): solvent seeped into a distant borehole: not foreseeable)\n- Claimant needs an interest in land; **no personal injury**\n- Defences: act of a stranger (**Perry v Kendricks Transport** (1956): children dropped a match into a petrol tank); act of God (**Nichols v Marsland** (1876): extraordinary storm); consent or common benefit; statutory authority; claimant's default",
+   "yes": "strict liability for the damage",
+   "no": "no Rylands claim: consider negligence or private nuisance"
+  }
+ ],
+ "outro": "Sort claimants by **interest in land** and **type of harm** (personal injury only in public nuisance or negligence) before weighing reasonableness."
 };
 
 ;
