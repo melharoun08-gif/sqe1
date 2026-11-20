@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120001731";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120002244";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -2551,6 +2551,55 @@ html.dfv-on{overflow:hidden}
 .tabs a[data-tab="hours"]{--tc:#A3D400!important}
 .tabs a[data-tab="progress"]{--tc:#FF8FC7!important}
 .tabs a[data-tab="settings"]{--tc:#5B6CFF!important}
+
+/* map-motion: gentle looping life on the journey map (CSS transforms and opacity only; all stop under reduced motion).
+   Markup: mapLife()/mapSVG() in tools/journey-src.js. Elements with an SVG transform attribute (stars) only animate opacity. */
+.jsv .jmo{transform-box:fill-box;transform-origin:50% 50%}
+.jsv .jcloud{animation:jm-cloud 40s ease-in-out infinite alternate}
+.jsv .jcloud:nth-of-type(2n){animation-delay:-13s;animation-direction:alternate-reverse}
+.jsv .jsunr{animation:jm-spin 60s linear infinite}
+.jsv .jwheel{animation:jm-spin 40s linear infinite}
+.jsv .jbeam{animation:jm-spin 10s linear infinite}
+.jsv .jfish{animation:jm-fish 16s ease-in-out infinite}
+.jsv .jf2{animation-duration:21s;animation-delay:-7s}
+.jsv .jf3{animation-duration:13s;animation-delay:-4s}
+.jsv .jplane{animation:jm-plane 24s linear infinite}
+.jsv .jrise{animation:jm-rise 18s linear infinite}
+.jsv .jr2{animation-duration:24s;animation-delay:-11s}
+.jsv .japple{animation:jm-apple 15s linear infinite}
+.jsv .jsway{transform-origin:50% 100%;animation:jm-sway 7s ease-in-out infinite alternate}
+.jsv a:nth-of-type(odd) .jsway{animation-delay:-3s}
+.jsv .jflag{transform-origin:0 50%;animation:jm-flag 3s ease-in-out infinite alternate}
+.jsv .jbob{transform-origin:50% 100%;animation:jm-bob 2.6s ease-in-out infinite alternate}
+.jsv .jstar{animation:jm-twinkle 4s ease-in-out infinite}
+.jsv .jglow{animation:jm-glow 5s ease-in-out infinite}
+.jsv .jzb{animation:jm-blink 4s linear infinite}
+.jsv .jzt{animation:jm-trunk 8s linear infinite}
+.jsv .jz0{animation:jm-trunk0 8s linear infinite} /* the base zoo picture steps aside while the trunk frame shows (no ghost trunk) */
+@keyframes jm-cloud{from{transform:translateX(-30px)}to{transform:translateX(30px)}}
+@keyframes jm-spin{to{transform:rotate(360deg)}}
+/* fish face left; scaleX(-1) faces right. They turn round at each end of the swim */
+@keyframes jm-fish{0%{transform:translateX(-40px) scaleX(-1)}46%{transform:translateX(40px) scaleX(-1)}50%{transform:translateX(40px) scaleX(1)}96%{transform:translateX(-40px) scaleX(1)}100%{transform:translateX(-40px) scaleX(-1)}}
+/* fade in on the apron, taxi right, lift off and climb, fade out; it returns to the start while invisible */
+@keyframes jm-plane{0%{opacity:0;transform:translate(0,0) rotate(0)}5%{opacity:1;transform:translate(0,0) rotate(0);animation-timing-function:ease-in}
+  32%{transform:translate(110px,0) rotate(0);animation-timing-function:ease-in-out}38%{transform:translate(150px,-12px) rotate(-12deg);animation-timing-function:ease-out}
+  52%{opacity:1}58%{opacity:0;transform:translate(225px,-100px) rotate(-15deg)}59%,100%{opacity:0;transform:translate(0,0) rotate(0)}}
+@keyframes jm-rise{0%{opacity:0;transform:translate(0,0)}10%{opacity:1;transform:translate(3px,-22px)}40%{transform:translate(18px,-88px)}
+  70%{opacity:1;transform:translate(28px,-154px)}90%{opacity:0;transform:translate(40px,-200px)}91%,100%{opacity:0;transform:translate(0,0)}}
+/* the apple appears on the tree, hangs, drops with a small bounce, rests, fades, and grows back */
+@keyframes jm-apple{0%{opacity:0;transform:translateY(0)}6%{opacity:1;transform:translateY(0)}40%{opacity:1;transform:translateY(0);animation-timing-function:cubic-bezier(.55,0,1,.6)}
+  46%{transform:translateY(var(--fall,40px));animation-timing-function:ease-out}49%{transform:translateY(calc(var(--fall,40px) - 5px));animation-timing-function:ease-in}52%{transform:translateY(var(--fall,40px))}
+  84%{opacity:1;transform:translateY(var(--fall,40px))}92%{opacity:0;transform:translateY(var(--fall,40px))}93%,100%{opacity:0;transform:translateY(0)}}
+@keyframes jm-sway{from{transform:skewX(-1deg)}to{transform:skewX(1deg)}}
+@keyframes jm-flag{from{transform:skewY(-1.5deg) scaleX(.97)}to{transform:skewY(1.5deg) scaleX(1)}}
+@keyframes jm-bob{from{transform:translateY(0)}to{transform:translateY(-3px)}}
+@keyframes jm-twinkle{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes jm-glow{0%,100%{opacity:1}30%{opacity:.82}55%{opacity:.95}70%{opacity:.78}}
+/* giraffe: shut eyes for about 140ms every 4s; elephant: trunk up for 1.2s every 8s. Frames are pixel-aligned copies of zoo.webp */
+@keyframes jm-blink{0%,9.9%{opacity:0}10%,13.4%{opacity:1}13.5%,100%{opacity:0}}
+@keyframes jm-trunk{0%,29.9%{opacity:0}30%,44.9%{opacity:1}45%,100%{opacity:0}}
+@keyframes jm-trunk0{0%,30.1%{opacity:1}30.2%,44.7%{opacity:0}44.8%,100%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.jsv .jmo{animation:none!important}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -78929,17 +78978,36 @@ window.SQE_JOURNEY = function (A) {
         return "<g transform=\"translate(".concat(x, ",").concat(y, ") scale(").concat(s, ")\" ").concat(INK, "><rect x=\"-5\" y=\"-26\" width=\"10\" height=\"26\" fill=\"#8B5A2B\"/><circle cx=\"0\" cy=\"-42\" r=\"20\" fill=\"").concat(c, "\"/></g>");
     };
     var topiary = function (x, y) { return "<g transform=\"translate(".concat(x, ",").concat(y, ")\" ").concat(INK, "><rect x=\"-12\" y=\"-16\" width=\"24\" height=\"16\" fill=\"#E07A5F\"/><path d=\"M0,-16 V-30\" fill=\"none\"/><circle cx=\"0\" cy=\"-44\" r=\"17\" fill=\"#52B788\"/></g>"); };
-    /* region signs (Monnie: show stops 1-7 / 8-14 more imaginatively): a wooden arrow sign on a little post, big region name + small stop range */
+    /* region signs (Monnie 20 Nov): a wooden plank signpost planted in the grass. (x,y) = centre of the board, fs = big line size, post = post length below the board.
+       Big region name + stop range; plank seams and wood grain, a chunky post that goes into a little mound of earth, a shadow and grass tufts in front of it. */
+    var textEm = function (t) { return t.split('').reduce(function (n, c) { return n + (/[MWmw]/.test(c) ? .68 : /[ iltfI1·]/.test(c) ? .27 : /[A-Z0-9–]/.test(c) ? .47 : .44); }, 0); }; /* rough Chewy glyph widths, in em */
+    var signSize = function (t1, t2, fs) { var w = Math.max(textEm(t1) * fs, textEm(t2) * fs * .72) + fs * 1.1; return { w: w + fs * .55, h: fs * 2.45 }; };
     var sign = function (x, y, t1, t2, fs, post) {
-        var w = Math.max(t1.length * fs * .56, t2.length * fs * .42) + 60, h = fs * 2.3, l = x - w / 2, r = x + w / 2 - 18, tp = y - h / 2, bt = y + h / 2;
-        var base = bt - 4 + (post || fs * 1.6); /* planted in the grass: a shadow and grass tufts where the post meets the ground (Monnie: not floating) */
-        return "<ellipse cx=\"".concat(x, "\" cy=\"").concat(base, "\" rx=\"26\" ry=\"6\" fill=\"#111\" opacity=\".2\"/><g ").concat(INK, "><rect x=\"").concat(x - 6, "\" y=\"").concat(bt - 4, "\" width=\"12\" height=\"").concat(post || fs * 1.6, "\" fill=\"#7A4A21\"/>")
-            + "<path d=\"M".concat(x - 20, ",").concat(base + 1, " q2,-11 5,0 q2,-13 5,0 q2,-9 4,0 M").concat(x + 7, ",").concat(base + 1, " q2,-12 5,0 q2,-9 5,0\" fill=\"#52B788\" stroke=\"#2D6A4F\" stroke-width=\"2.5\"/>")
-            + "<path d=\"M".concat(l, ",").concat(tp, " H").concat(r, " L").concat(r + 26, ",").concat(y, " L").concat(r, ",").concat(bt, " H").concat(l, " Z\" fill=\"#B87333\"/>")
-            + "<path d=\"M".concat(l + 10, ",").concat(tp + h * .36, " H").concat(r - 6, " M").concat(l + 18, ",").concat(tp + h * .7, " H").concat(r - 30, "\" stroke=\"#8A5226\" stroke-width=\"2\" fill=\"none\"/>")
-            + "<circle cx=\"".concat(l + 12, "\" cy=\"").concat(tp + 10, "\" r=\"3.5\" fill=\"#3B2A1A\" stroke=\"none\"/><circle cx=\"").concat(l + 12, "\" cy=\"").concat(bt - 10, "\" r=\"3.5\" fill=\"#3B2A1A\" stroke=\"none\"/></g>")
-            + "<text class=\"jpl\" x=\"".concat(x, "\" y=\"").concat(y - fs * .1, "\" font-size=\"").concat(fs, "\" style=\"fill:#FFF6E0;paint-order:stroke;stroke:#3B2A1A;stroke-width:4px\">").concat(esc(t1), "</text>")
-            + "<text class=\"jpl\" x=\"".concat(x, "\" y=\"").concat(y + fs * .9, "\" font-size=\"").concat(fs * .72, "\" style=\"fill:#FFF6E0;paint-order:stroke;stroke:#3B2A1A;stroke-width:4px\">").concat(esc(t2), "</text>");
+        var Z = signSize(t1, t2, fs), w = Z.w - fs * .55, h = Z.h, l = x - Z.w / 2, r = l + w, tip = r + fs * .55, tp = y - h / 2, bt = y + h / 2, cx = (l + r) / 2;
+        var pw = Math.max(16, Math.min(26, fs * .42)), px = cx, base = bt + post, F = function (v) { return v.toFixed(1); };
+        var gr = function (y0, x0, x1, a) { var d = "M".concat(F(x0), ",").concat(F(y0)); var n = Math.max(3, Math.round((x1 - x0) / (fs * 1.4))); var sw = (x1 - x0) / n; for (var k = 0; k < n; k++)
+            d += " q".concat(F(sw / 2), ",").concat(F(k % 2 ? a : -a), " ").concat(F(sw), ",0"); return d; };
+        var s = "<g class=\"jsign\" aria-hidden=\"true\">"
+            + "<ellipse cx=\"".concat(F(px + 6), "\" cy=\"").concat(F(base + 3), "\" rx=\"").concat(F(pw * 1.9), "\" ry=\"").concat(F(pw * .42), "\" fill=\"#111\" opacity=\".22\"/>")
+            + "<g ".concat(INK, "><rect x=\"").concat(F(px - pw / 2), "\" y=\"").concat(F(tp - fs * .35), "\" width=\"").concat(F(pw), "\" height=\"").concat(F(base - tp + fs * .35), "\" rx=\"3\" fill=\"#8B5A2B\"/></g>")
+            + "<path d=\"M".concat(F(px - pw * .12), ",").concat(F(bt + 6), " V").concat(F(base - 6), " M").concat(F(px + pw * .22), ",").concat(F(bt + 14), " v").concat(F(Math.max(4, post * .35)), "\" stroke=\"#5E3A17\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\"/>")
+            + "<path d=\"M".concat(F(px - pw * 1.25), ",").concat(F(base + 2), " q").concat(F(pw * 1.25), ",").concat(F(-pw * .75), " ").concat(F(pw * 2.5), ",0 Z\" fill=\"#8C6239\" stroke=\"#111\" stroke-width=\"3\" stroke-linejoin=\"round\"/>")
+            + "<path d=\"".concat([[-2.3, 1], [.6, 1.1], [-1.2, .8], [1.5, .85], [-.3, .75]].map(function (_a) {
+                var o = _a[0], z = _a[1];
+                var u = pw * .27 * z;
+                return "M".concat(F(px + pw * o), ",").concat(F(base + 4), " q").concat(F(u * .4), ",").concat(F(-u * 2.6), " ").concat(F(u), ",0 q").concat(F(u * .5), ",").concat(F(-u * 3.4), " ").concat(F(u), ",0 q").concat(F(u * .4), ",").concat(F(-u * 2.4), " ").concat(F(u), ",0");
+            }).join(' '), "\" fill=\"#6CC24A\" stroke=\"#2D6A4F\" stroke-width=\"2.5\" stroke-linejoin=\"round\"/>")
+            + "<g ".concat(INK, "><path d=\"M").concat(F(l), ",").concat(F(tp + 4), " Q").concat(F(l), ",").concat(F(tp), " ").concat(F(l + 4), ",").concat(F(tp), " H").concat(F(r), " L").concat(F(tip), ",").concat(F(y), " L").concat(F(r), ",").concat(F(bt), " H").concat(F(l + 4), " Q").concat(F(l), ",").concat(F(bt), " ").concat(F(l), ",").concat(F(bt - 4), " Z\" fill=\"#C8894A\"/></g>")
+            + "<path d=\"M".concat(F(l + 2), ",").concat(F(tp + h * .5), " H").concat(F(r + fs * .27), "\" stroke=\"#111\" stroke-width=\"2.5\" fill=\"none\"/>")
+            + "<path d=\"".concat(gr(tp + h * .2, l + fs * .3, r - fs * .2, 3), " ").concat(gr(tp + h * .36, l + fs * .9, r - fs * .6, 2.5), " ").concat(gr(tp + h * .68, l + fs * .4, r - fs * .1, 3), " ").concat(gr(tp + h * .85, l + fs * .8, r - fs * .7, 2.5), "\" stroke=\"#9A5F2C\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" opacity=\".85\"/>")
+            + "<ellipse cx=\"".concat(F(l + w * .82), "\" cy=\"").concat(F(tp + h * .27), "\" rx=\"").concat(F(fs * .22), "\" ry=\"").concat(F(fs * .09), "\" fill=\"none\" stroke=\"#7A4A21\" stroke-width=\"2\"/><ellipse cx=\"").concat(F(l + w * .16), "\" cy=\"").concat(F(tp + h * .76), "\" rx=\"").concat(F(fs * .18), "\" ry=\"").concat(F(fs * .08), "\" fill=\"none\" stroke=\"#7A4A21\" stroke-width=\"2\"/>")
+            + [[l + fs * .28, tp + h * .25], [l + fs * .28, tp + h * .75], [r - fs * .15, tp + h * .25], [r - fs * .15, tp + h * .75]].map(function (_a) {
+                var a = _a[0], b = _a[1];
+                return "<circle cx=\"".concat(F(a), "\" cy=\"").concat(F(b), "\" r=\"").concat(F(Math.max(3, fs * .07)), "\" fill=\"#3B2A1A\"/>");
+            }).join('')
+            + "<text class=\"jpl\" x=\"".concat(F(cx), "\" y=\"").concat(F(tp + h * .45), "\" font-size=\"").concat(fs, "\" style=\"fill:#FFF6E0;paint-order:stroke;stroke:#3B2A1A;stroke-width:").concat(F(Math.max(4, fs * .14)), "px;stroke-linejoin:round\">").concat(esc(t1), "</text>")
+            + "<text class=\"jpl\" x=\"".concat(F(cx), "\" y=\"").concat(F(tp + h * .85), "\" font-size=\"").concat(F(fs * .72), "\" style=\"fill:#FFF6E0;paint-order:stroke;stroke:#3B2A1A;stroke-width:").concat(F(Math.max(4, fs * .12)), "px;stroke-linejoin:round\">").concat(esc(t2), "</text>");
+        return s + '</g>';
     };
     var tag = function (x, y, t, fs, c) { var w = t.length * fs * .5 + 30, h = fs + 16; return "<rect x=\"".concat(x - w / 2, "\" y=\"").concat(y - h / 2, "\" width=\"").concat(w, "\" height=\"").concat(h, "\" rx=\"").concat(h / 2, "\" fill=\"").concat(c, "\" ").concat(INK, "/><text class=\"jpl\" x=\"").concat(x, "\" y=\"").concat(y + fs * .34, "\" font-size=\"").concat(fs, "\">").concat(esc(t), "</text>"); };
     function roundPoly(p, r) {
@@ -79027,8 +79095,8 @@ window.SQE_JOURNEY = function (A) {
        through the FLK1 meadow and the FLK2 autumn fields to revision camp and Cluckington Palace (with both exam flags) in the palace grounds at the bottom.
        reg = the top edge of each ground band, top to bottom: spring meadow (stops 1-7), autumn fields (8-14), palace grounds. */
     function layoutDesktop() {
-        var rows = [390, 830, 1370, 1800], cols = [200, 445, 690, 935], PB = rows[3] + 625, D = PB - 2145, W = 1100, H = 2235 + D; /* landmarks 1.6x bigger, cards smaller (Monnie 21:29): rows spaced out */
-        var ty = function (x) { return -(x - 570) * .05; }; /* each row of the path tilts gently upward to the right (Monnie 20 Nov: a path in perspective, not flat) */
+        var rows = [530, 970, 1670, 2100], cols = [200, 445, 690, 935], PB = rows[3] + 625, /* 20 Nov: +140 at the top for the FLK1 signpost, +160 between the meadow and the fields for the FLK2 signpost */ D = PB - 2145, W = 1100, H = 2235 + D; /* landmarks 1.6x bigger, cards smaller (Monnie 21:29): rows spaced out */
+        var ty = function (x) { return -(x - 570) * .09; }; /* each row of the path tilts gently upward to the right (Monnie 20 Nov: a path in perspective, not flat) */
         var st = [{ x: 200, y: rows[0] + ty(200) }];
         [1, 2, 3].forEach(function (s, k) { return st[s] = { x: cols[k + 1], y: rows[0] + ty(cols[k + 1]) }; });
         [4, 5, 6, 7].forEach(function (s, k) { return st[s] = { x: cols[3 - k], y: rows[1] + ty(cols[3 - k]) }; });
@@ -79045,23 +79113,23 @@ window.SQE_JOURNEY = function (A) {
             hen: function (i) { return i === 0 ? { x: st[0].x - 104, y: st[0].y + 22, s: .85, m: true } : left(i) ? { x: st[i].x + 74, y: st[i].y + 24, s: .85, m: false } : { x: st[i].x - 74, y: st[i].y + 24, s: .85, m: true }; },
             palace: { x: 600, y: 2115 + D, s: 1 },
             flags: [{ x: 176, y: 2117 + D, s: 1, h: 110 }, { x: 812, y: 2117 + D, s: 1, h: 110 }],
-            reg: { spring: 160, autumn: 1020, grounds: 1750 + D },
+            reg: { spring: 160, autumn: 1190, grounds: 1750 + D },
             sun: { x0: 80, x1: 1020, y: 150, rise: 82, s: 1 },
-            deco: function () { return cloud(330, 78, .8) + cloud(1010, 92, 1) + cloud(720, 48, .55) + sign(200, 163, 'FLK1 Meadow', 'Stops 1–7', 26, 22)
-                + sign(570, 1044, 'FLK2 Harvest Fields', 'Stops 8–14', 27, 18)
+            deco: function () { return cloud(330, 78, .8) + cloud(1010, 92, 1) + cloud(720, 48, .55) + sign(185, 230, 'FLK1 Meadow', 'Stops 1–7', 50, 55)
+                + sign(560, 1265, 'FLK2 Harvest Fields', 'Stops 8–14', 54, 44)
                 + topiary(1000, 2147 + D) + topiary(1060, 2133 + D) + topiary(228, 1855 + D) + flower(330, 1840 + D, '#fff') + flower(925, 1840 + D, '#FF9EC4')
                 + [60, 330, 575, 820].map(function (x, k) { return flower(x, 2219 + D, ['#FF9EC4', '#fff', '#FFB3D9', '#fff'][k]); }).join('') + flower(345, 2215 + D, '#FFD6A5'); },
         };
     }
     function layoutPhone() {
-        var W = 600, R = 280, G = 150, y0 = 320;
+        var W = 600, R = 280, G = 290, y0 = 540; /* 20 Nov: room at the top for the FLK1 signpost and between stops 7 and 8 for the FLK2 signpost */
         var st = [];
         for (var i = 0; i <= 15; i++)
             st[i] = { x: i % 2 ? 530 : 70, y: y0 + i * R + (i >= 8 ? G : 0) };
         var pts = [[70, y0 - 40]];
-        var tp = function (x) { return -(x - 300) * .07; }; /* each crossing tilts gently upward to the right (Monnie 20 Nov) */
+        var tp = function (x) { return -(x - 300) * .1; }; /* each crossing tilts gently upward to the right (Monnie 20 Nov) */
         for (var i = 0; i < 15; i++) {
-            var a = st[i], b = st[i + 1], yc_1 = (a.y + b.y) / 2;
+            var a = st[i], b = st[i + 1], yc_1 = i === 7 ? a.y + 190 : (a.y + b.y) / 2; /* after stop 7 the path crosses early, leaving the FLK2 signpost room below */
             pts.push([a.x, a.y], [a.x, yc_1 + tp(a.x)], [b.x, yc_1 + tp(b.x)]);
         }
         var sl = st[15], Pb = sl.y + 485, yc = Pb + 94, H = yc + 150; /* palace base, the path along the front of the palace, page height (tidy: room for the exam flags under the path) */
@@ -79074,10 +79142,10 @@ window.SQE_JOURNEY = function (A) {
             hen: function (i) { return ({ x: st[i].x, y: st[i].y - 32, s: 1, m: !(i % 2) }); }, /* after each stop the path heads across: right from the left side, left from the right side */
             palace: { x: 280, y: Pb, s: 1 },
             flags: [{ x: 100, y: yc + 116, s: 1, h: 80 }, { x: 320, y: yc + 116, s: 1, h: 80 }], /* tidy: planted in front of the palace, below the path, so they no longer cover the palace steps */
-            reg: { spring: 212, autumn: st[7].y + 222, grounds: sl.y + 150 },
+            reg: { spring: 212, autumn: st[7].y + 250, grounds: sl.y + 150 },
             sun: { x0: 50, x1: 550, y: 205, rise: 130, s: .62 },
-            deco: function () { return cloud(522, 150, .7) + cloud(150, 60, .5) + sign(330, 186, 'FLK1 Meadow', 'Stops 1–7', 38, 20)
-                + sign(295, st[7].y + 290, 'FLK2 Harvest Fields', 'Stops 8–14', 30, 20)
+            deco: function () { return cloud(522, 150, .7) + cloud(150, 60, .5) + sign(335, 330, 'FLK1 Meadow', 'Stops 1–7', 70, 50)
+                + sign(362, st[7].y + 332, 'FLK2 Harvest Fields', 'Stops 8–14', 48, 48)
                 + flower(28, H - 14, '#FF9EC4') + flower(580, H - 14, '#fff') + flower(40, sl.y + 250, '#fff') + flower(565, sl.y + 250, '#FF9EC4'); },
         };
     }
@@ -79145,7 +79213,7 @@ window.SQE_JOURNEY = function (A) {
     var artImg = function (slug, x, y, w, h) { return "<image href=\"img/map-new/".concat(slug, ".webp\" x=\"").concat(x, "\" y=\"").concat(y, "\" width=\"").concat(w, "\" height=\"").concat(h, "\" preserveAspectRatio=\"xMidYMax meet\"/>"); };
     /* ---------- map-motion (20 Nov, Monnie): sky by Layla's real time of day, and gentle looping life on the map (CSS only; stops under reduced motion) ---------- */
     var qs = function () { return (location.search || '') + '&' + (location.hash || ''); };
-    function skyHour() { var ov = /[?&]hour=(\d+)/.exec(qs()); if (ov)
+    function skyHour() { var ov = /[?&]hour=(\d+(?:\.\d+)?)/.exec(qs()); if (ov)
         return (+ov[1]) % 24; var d = new Date(); return d.getHours() + d.getMinutes() / 60; }
     function skyPhase(h) { return h >= 21 || h < 6 ? 'night' : h >= 18 ? 'dusk' : h < 8 ? 'dawn' : 'day'; }
     var NAT = { fairground: [520, 457], lighthouse: [507, 520], pier: [520, 502], aquarium: [520, 509], farm: [520, 502], airport: [520, 472], balloons: [518, 520], zoo: [520, 509] };
@@ -79155,53 +79223,191 @@ window.SQE_JOURNEY = function (A) {
         return { x: p.x + (a.x + (a.w - dw) / 2 + fx * dw) * p.s, y: p.y + (a.y + a.h - dh + fy * dh) * p.s, dw: dw * p.s, dh: dh * p.s };
     }
     var f1 = function (n) { return n.toFixed(1); };
+    /* map-sky (20 Nov): the sky blends smoothly through the day. Key hours: [hour, sky top, sky middle, sky at the horizon, tint colour, tint strength, night (0-1: stars, moon, lit windows)].
+       Between two key hours every colour is mixed, so dawn (5-8) and dusk (18-21) shade in gradually instead of switching. */
+    var SKY_K = [
+        [0, '#121A46', '#1C275E', '#2F3E7A', '#0B1640', .4, 1],
+        [5, '#121A46', '#1C275E', '#2F3E7A', '#0B1640', .4, 1],
+        [6, '#2B3070', '#6E5C9E', '#F4A483', '#2A2060', .2, .6],
+        [7, '#8DB4F0', '#F4B9CB', '#FFD6A6', '#FF9A6A', .07, 0],
+        [8, '#A9D4FF', '#CBE7FF', '#E9F6FF', '#FFB070', .02, 0],
+        [9, '#BFE3FF', '#CFEAFF', '#DDF2FF', '#FFB070', 0, 0],
+        [17, '#BFE3FF', '#CFEAFF', '#DDF2FF', '#FFB070', 0, 0],
+        [18, '#93C6F2', '#FFD49A', '#FFE4B5', '#FF9A3A', .05, 0],
+        [19, '#6C7DCF', '#FF8F86', '#FFC48C', '#FF5E3A', .1, .1],
+        [20, '#2E3478', '#7B509C', '#E8898A', '#3A2470', .24, .65],
+        [21, '#121A46', '#1C275E', '#2F3E7A', '#0B1640', .4, 1],
+        [24, '#121A46', '#1C275E', '#2F3E7A', '#0B1640', .4, 1]
+    ];
+    var skyMix = function (a, b, t) { return '#' + [1, 3, 5].map(function (i) { var v = Math.round(parseInt(a.substr(i, 2), 16) * (1 - t) + parseInt(b.substr(i, 2), 16) * t); return (v < 16 ? '0' : '') + v.toString(16); }).join(''); };
+    function skyState(h) {
+        h = ((h % 24) + 24) % 24;
+        var k = 0;
+        while (k < SKY_K.length - 2 && SKY_K[k + 1][0] <= h)
+            k++;
+        var A = SKY_K[k], B = SKY_K[k + 1], t = (h - A[0]) / (B[0] - A[0] || 1), mx = function (i) { return skyMix(A[i], B[i], t); }, nm = function (i) { return A[i] + (B[i] - A[i]) * t; };
+        return { c: [mx(1), mx(2), mx(3)], tc: mx(4), ta: +nm(5).toFixed(3), n: +nm(6).toFixed(3) };
+    }
+    /* where the sun is at each hour, per layout ([hour, x, y]): it peeps over the meadow on the left, climbs steeply past the FLK1 sign, crosses high over the
+       landmarks at midday and sinks on the far right (clear of the library on desktop, behind the little cloud on phones). The moon takes a high arc at night. */
+    var SKY_PATH = {
+        desk: { s: .85, sun: [[5.6, 40, 215], [6, 40, 196], [7, 52, 116], [8, 92, 82], [9, 170, 62], [10, 260, 54], [12, 470, 46], [14, 680, 46], [16, 880, 54], [17, 958, 64], [18, 1022, 80], [19, 1064, 116], [20, 1076, 228], [20.4, 1076, 240]],
+            moon: { x0: 400, x1: 790, y: 98, a: 6, s: 1 } },
+        phone: { s: .62, sun: [[5.6, 40, 260], [6, 40, 240], [7, 46, 122], [8, 66, 95], [9, 100, 78], [10, 140, 66], [12, 240, 54], [14, 360, 54], [16, 450, 64], [17, 490, 78], [18, 515, 98], [19, 530, 132], [20, 540, 262], [20.4, 540, 280]],
+            moon: { x0: 225, x1: 540, y: 96, a: 40, s: .8 } }
+    };
+    function skySunAt(m, h) {
+        var P = SKY_PATH[m].sun;
+        if (h < P[0][0] || h > P[P.length - 1][0])
+            return null;
+        var k = 0;
+        while (k < P.length - 2 && P[k + 1][0] <= h)
+            k++;
+        var a = P[k], b = P[k + 1], t = Math.max(0, Math.min(1, (h - a[0]) / (b[0] - a[0])));
+        return { x: a[1] + (b[1] - a[1]) * t, y: a[2] + (b[2] - a[2]) * t, w: +(Math.max(0, 1 - Math.min(h - 6, 20 - h) / 2.5) * .55).toFixed(2) };
+    } /* w: the sun glows orange near the horizon */
+    function skyMoonAt(m, h) { var M = SKY_PATH[m].moon, r = ((h - 19.5) % 24 + 24) % 24, t = r > 17 ? 0 : Math.min(1, r / 11); /* r: hours since the moon came up at 7.30pm */ /* r: hours since the moon came up at 7.30pm */ return { x: M.x0 + (M.x1 - M.x0) * t, y: M.y - M.a * Math.sin(t * Math.PI) }; }
+    var skyTr = function (p, s) { return "translate(".concat(f1(p.x), ",").concat(f1(p.y), ") scale(").concat(s, ")"); };
     function skyDefs(L, ph) {
-        var m = L.mode;
-        return "<defs><radialGradient id=\"jglow-".concat(m, "\"><stop offset=\"0\" stop-color=\"#FFF4B0\" stop-opacity=\"1\"/><stop offset=\".45\" stop-color=\"#FFD25A\" stop-opacity=\".75\"/><stop offset=\"1\" stop-color=\"#FFB020\" stop-opacity=\"0\"/></radialGradient>")
+        var m = L.mode, S = skyState(skyHour());
+        skyArm();
+        /* the tint never dims the palace name plate or the exam flags, so their writing stays easy to read at night */
+        var P = L.palace, flag = function (f) { return "<path transform=\"translate(".concat(f.x, ",").concat(f.y, ") scale(").concat(f.s, ")\" d=\"M-4,").concat(-(f.h || 120) - 4, " H154 L140,").concat(-(f.h || 120) + 26, " L154,").concat(-(f.h || 120) + 56, " H-4 Z\" fill=\"#000\"/>"); };
+        return "<defs><radialGradient id=\"jglow-".concat(m, "\"><stop offset=\"0\" stop-color=\"#FFF4B0\" stop-opacity=\".95\"/><stop offset=\".5\" stop-color=\"#FFD25A\" stop-opacity=\".6\"/><stop offset=\"1\" stop-color=\"#FFB020\" stop-opacity=\"0\"/></radialGradient>")
+            + "<radialGradient id=\"jglowc-".concat(m, "\"><stop offset=\"0\" stop-color=\"#B8FFF8\" stop-opacity=\".6\"/><stop offset=\".55\" stop-color=\"#4CC9F0\" stop-opacity=\".3\"/><stop offset=\"1\" stop-color=\"#4CC9F0\" stop-opacity=\"0\"/></radialGradient>")
             + "<linearGradient id=\"jbeam-".concat(m, "\" x1=\"0\" x2=\"1\"><stop offset=\"0\" stop-color=\"#FFF6B8\" stop-opacity=\".75\"/><stop offset=\"1\" stop-color=\"#FFF6B8\" stop-opacity=\"0\"/></linearGradient>")
-            + "<linearGradient id=\"jsky-".concat(m, "\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">").concat(ph === 'dusk' ? '<stop offset="0" stop-color="#FF8A7A"/><stop offset=".55" stop-color="#FFB38A"/><stop offset="1" stop-color="#FFD9B8"/>' : ph === 'dawn' ? '<stop offset="0" stop-color="#BFD9FF"/><stop offset="1" stop-color="#FFD3C2"/>' : ph === 'night' ? '<stop offset="0" stop-color="#1B2456"/><stop offset="1" stop-color="#3A4A8C"/>' : '<stop offset="0" stop-color="#BFE3FF"/><stop offset="1" stop-color="#DDF2FF"/>', "</linearGradient></defs>");
+            + "<linearGradient id=\"jsky-".concat(m, "\" gradientUnits=\"userSpaceOnUse\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"").concat(L.reg.spring + 16, "\">").concat(S.c.map(function (c, k) { return "<stop offset=\"".concat(k / 2, "\" stop-color=\"").concat(c, "\"/>"); }).join(''), "</linearGradient>")
+            + "<mask id=\"jtm-".concat(m, "\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"").concat(L.W, "\" height=\"").concat(L.H, "\"><rect width=\"").concat(L.W, "\" height=\"").concat(L.H, "\" fill=\"#fff\"/><rect x=\"").concat(P.x - 122 * P.s, "\" y=\"").concat(P.y - 152 * P.s, "\" width=\"").concat(244 * P.s, "\" height=\"").concat(50 * P.s, "\" rx=\"14\" fill=\"#000\"/>").concat(L.flags.map(flag).join(''), "</mask></defs>");
     }
-    /* the sun crosses the sky from 6am (left, low) to 9pm (right, setting behind the meadow); hidden at night */
+    /* the sun follows SKY_PATH; it is drawn before the meadow, so it rises from and sets behind the grass */
     function skySun(L, h) {
-        var S = L.sun;
-        if (!S || skyPhase(h) === 'night')
+        if (!L.sun)
             return '';
-        var u = Math.max(0, Math.min(1, (h - 6) / 15)), x = S.x0 + u * (S.x1 - S.x0), y = S.y - Math.sin(u * Math.PI) * S.rise;
-        return "<g transform=\"translate(".concat(f1(x), ",").concat(f1(y), ") scale(").concat(S.s, ")\">").concat(sun(0, 0), "</g>");
+        var m = L.mode, p = skySunAt(m, h);
+        return "<g class=\"jsunp\" transform=\"".concat(skyTr(p || { x: -200, y: -200 }, SKY_PATH[m].s), "\"").concat(p ? '' : ' style="display:none"', ">").concat(sun(0, 0), "<circle class=\"jsunw\" r=\"33\" fill=\"#FF7A3D\" opacity=\"").concat(p ? p.w : 0, "\"/></g>");
     }
-    function skyNight(L) {
-        var m = L.mode, W = L.W, top = L.reg.spring - 26;
+    /* sky spots stars and the moon keep clear of (they are drawn above the tint): the FLK1 sign, the clouds, Layla at the gate (phone) and every landmark picture */
+    var SKY_KEEP = { desk: [[86, 126, 326, 202], [262, 44, 392, 94], [946, 52, 1078, 108], [684, 24, 764, 60]], phone: [[176, 136, 490, 236], [478, 116, 566, 164], [116, 36, 192, 72], [0, 150, 175, 320]] };
+    function skyNight(L, h) {
+        var m = L.mode, W = L.W, top = L.reg.spring - 22;
         var s = '', seed = 7;
         var rnd = function () { return (seed = (seed * 16807) % 2147483647) / 2147483647; };
-        var n = m === 'phone' ? 14 : 22;
-        for (var k = 0; k < n; k++) {
-            var x = 20 + rnd() * (W - 40), y = 12 + rnd() * (top - 12), r = 1.6 + rnd() * 1.8;
-            s += "<path class=\"jmo jstar\" style=\"animation-delay:-".concat(f1(rnd() * 4), "s\" transform=\"translate(").concat(f1(x), ",").concat(f1(y), ") scale(").concat(f1(r), ")\" d=\"M0,-3 L.8,-.8 3,0 .8,.8 0,3 -.8,.8 -3,0 -.8,-.8Z\" fill=\"#FFF6C8\"/>");
+        var keep = SKY_KEEP[m].slice();
+        ART_SLUG.concat(['gate', 'camp']).forEach(function (sl) { var a = wpt(L, sl, 0, 0), b = wpt(L, sl, 1, 1); keep.push([a.x - 6, a.y - 6, b.x + 6, b.y]); });
+        var n = m === 'phone' ? 16 : 28;
+        var c = 0;
+        var _loop_1 = function (k) {
+            var x = 16 + rnd() * (W - 32), y = 10 + rnd() * (top - 10), r = 1.6 + rnd() * 1.8, d = f1(rnd() * 4);
+            if (keep.some(function (b) { return x > b[0] - 6 && x < b[2] + 6 && y > b[1] - 6 && y < b[3] + 6; }))
+                return "continue";
+            c++;
+            s += "<path class=\"jmo jstar\" style=\"animation-delay:-".concat(d, "s\" transform=\"translate(").concat(f1(x), ",").concat(f1(y), ") scale(").concat(f1(r), ")\" d=\"M0,-3 L.8,-.8 3,0 .8,.8 0,3 -.8,.8 -3,0 -.8,-.8Z\" fill=\"#FFF6C8\"/>");
+        };
+        for (var k = 0; k < 400 && c < n; k++) {
+            _loop_1(k);
         }
-        var mx = m === 'phone' ? 470 : W - 170, my = m === 'phone' ? 70 : 72;
-        return s + "<g transform=\"translate(".concat(mx, ",").concat(my, ")\"><circle r=\"40\" fill=\"#FFF6C8\" opacity=\".18\"/><path d=\"M8,-30 A30,30 0 1 0 8,30 A22,22 0 1 1 8,-30Z\" fill=\"#FFF2B0\" stroke=\"#111\" stroke-width=\"3\"/></g>");
+        return s + "<g class=\"jmoon\" transform=\"".concat(skyTr(skyMoonAt(m, h), SKY_PATH[m].moon.s), "\"><circle r=\"40\" fill=\"#FFF6C8\" opacity=\".18\"/><path d=\"M-.6,-30 A30,30 0 1 0 27.9,11.1 A25,25 0 1 1 -.6,-30Z\" fill=\"#FFF2B0\" stroke=\"#111\" stroke-width=\"3\"/></g>");
     }
-    var glow = function (x, y, r, d) { return "<circle class=\"jmo jglow\" style=\"animation-delay:-".concat(d || 0, "s\" cx=\"").concat(f1(x), "\" cy=\"").concat(f1(y), "\" r=\"").concat(r, "\" fill=\"url(#jglow-GLOWID)\"/>"); };
-    /* night lights over a few landmarks (palace windows, pier lamps, fairground bulbs, lighthouse beam) */
+    /* a point on any drawn picture (fx, fy = fractions of the picture's width and height) in map coordinates, plus the picture's drawn width */
+    var SKY_NAT = { sweetshop: [520, 461], fairground: [520, 457], library: [520, 504], airport: [520, 472], zoo: [520, 509], museum: [520, 499], pier: [520, 502], aquarium: [520, 509], farm: [520, 502],
+        botanic: [518, 520], balloons: [518, 520], forest: [512, 520], icerink: [520, 487], lighthouse: [507, 520], gate: [520, 332], camp: [520, 510], palace: [1130, 1140] };
+    function wpt(L, slug, fx, fy) {
+        var A = L.art;
+        var p, a;
+        if (slug === 'palace') {
+            var P = L.palace;
+            p = { x: P.x, y: P.y, s: P.s };
+            a = { x: -230, y: -420, w: 460, h: 428 };
+        }
+        else if (slug === 'gate' || slug === 'camp') {
+            p = L.lm(slug === 'gate' ? 0 : 15);
+            a = { x: A.gx, y: A.gy, w: A.gw, h: A.gh };
+        }
+        else {
+            p = L.lm(ART_SLUG.indexOf(slug) + 1);
+            a = { x: A.x, y: A.y, w: A.w, h: A.h };
+        }
+        var n = SKY_NAT[slug], sc = Math.min(a.w / n[0], a.h / n[1]), dw = n[0] * sc, dh = n[1] * sc;
+        return { x: p.x + (a.x + (a.w - dw) / 2 + fx * dw) * p.s, y: p.y + (a.y + a.h - dh + fy * dh) * p.s, dw: dw * p.s };
+    }
+    /* lit windows, lamps and doors, measured on the drawn pictures (img/map-new/*.webp): [fx, fy, rx, ry] with the radii as fractions of the picture's width */
+    var SKY_LIGHTS = {
+        palace: [[.40, .322, .03, .045], [.493, .314, .03, .048], [.583, .322, .03, .045], [.258, .347, .026, .04], [.728, .347, .026, .04], [.113, .53, .022, .036], [.875, .53, .022, .036], [.133, .744, .03, .05], [.85, .744, .03, .05], [.497, .82, .07, .08]],
+        sweetshop: [[.217, .58, .07, .17], [.35, .58, .07, .17], [.483, .58, .07, .17], [.648, .59, .03, .075], [.723, .59, .03, .075], [.675, .44, .06, .025]],
+        library: [[.167, .54, .08, .2], [.825, .54, .08, .2], [.49, .38, .13, .07], [.31, .585, .05, .05], [.68, .585, .05, .05], [.5, .63, .07, .06]],
+        pier: [[.35, .319, .045, .045], [.947, .319, .045, .045], [.15, .47, .1, .05], [.66, .535, .17, .045]],
+        lighthouse: [[.5, .407, .04, .05], [.5, .545, .04, .05], [.5, .715, .05, .06]],
+        fairground: [[.78, .32, .03, .05], [.708, .56, .03, .05], [.775, .835, .05, .07]],
+        museum: [[.125, .67, .04, .075], [.872, .67, .04, .075], [.308, .695, .05, .08], [.692, .695, .05, .08], [.5, .61, .07, .035]],
+        airport: [[.092, .275, .04, .05], [.195, .275, .05, .05], [.292, .275, .04, .05], [.167, .028, .04, .04], [.5, .59, .2, .07], [.158, .745, .1, .05], [.84, .745, .1, .05], [.5, .81, .07, .08]],
+        aquarium: [[.213, .81, .07, .07], [.787, .81, .07, .07], [.5, .8, .09, .1]],
+        camp: [[.5, .5, .08, .13]],
+        farm: [[.33, .56, .012, .012], [.6, .47, .012, .012], [.86, .6, .012, .012], [.22, .68, .012, .012], [.5, .66, .012, .012]]
+    }; /* the farm has no windows: fireflies over the field */
+    var SKY_WHEEL = [-90, -55, -125, -15, 195, 154, 26, 90]; /* the yellow bulbs drawn round the Ferris wheel rim (degrees) */
+    var glow = function (x, y, rx, ry, d, g) { return "<ellipse class=\"jmo jglow\" style=\"animation-delay:-".concat(f1(d || 0), "s\" cx=\"").concat(f1(x), "\" cy=\"").concat(f1(y), "\" rx=\"").concat(f1(rx), "\" ry=\"").concat(f1(ry), "\" fill=\"url(#").concat(g || 'jglow', "-GLOWID)\"/>"); };
+    /* night lights over the landmarks (windows, lamps, the Ferris wheel bulbs, the aquarium's glow, the lighthouse beam) */
     function nightLights(L) {
-        var s = '';
-        var P = L.palace, pp = function (fx, fy) { return ({ x: P.x + (-212 + fx * 424) * P.s, y: P.y + (-420 + fy * 428) * P.s }); };
-        [[.395, .325], [.5, .325], [.605, .325], [.118, .53], [.855, .53], [.13, .73], [.84, .73]].forEach(function (_a, k) {
-            var a = _a[0], b = _a[1];
-            var q = pp(a, b);
-            s += glow(q.x, q.y, 16, k * .7);
-        });
-        var d = pp(.487, .76);
-        s += glow(d.x, d.y, 26, 1.3);
-        [[.355, .31], [.947, .31]].forEach(function (_a, k) {
-            var a = _a[0], b = _a[1];
-            var q = apt(L, 'pier', a, b);
-            s += glow(q.x, q.y, 15, k);
-        });
-        var lh = apt(L, 'lighthouse', .487, .18), bl = L.mode === 'phone' ? 150 : 190;
-        s += "<g class=\"jmo jbeam\"><path d=\"M".concat(f1(lh.x), ",").concat(f1(lh.y), " l").concat(bl, ",-22 v44 Z M").concat(f1(lh.x), ",").concat(f1(lh.y), " l").concat(-bl, ",22 v-44 Z\" fill=\"url(#jbeam-").concat(L.mode, ")\"/></g>") + glow(lh.x, lh.y, 18, 0);
-        ['sweetshop', 'library'].forEach(function (sl) { var p = L.lm(ART_SLUG.indexOf(sl) + 1); s += glow(p.x - 30, p.y - 110, 14, .4) + glow(p.x + 30, p.y - 110, 14, 1.1); });
+        var s = '', k = 0;
+        var aq = wpt(L, 'aquarium', .5, .4);
+        s += glow(aq.x, aq.y, aq.dw * .5, aq.dw * .36, 0, 'jglowc');
+        Object.keys(SKY_LIGHTS).forEach(function (sl) { return SKY_LIGHTS[sl].forEach(function (_a) {
+            var fx = _a[0], fy = _a[1], rx = _a[2], ry = _a[3];
+            var q = wpt(L, sl, fx, fy), gr = Math.max(rx, ry) > .03 ? 1 : 1.8;
+            s += glow(q.x, q.y, Math.max(5, rx * q.dw * gr), Math.max(5, ry * q.dw * gr), (k++ % 7) * .6);
+        }); });
+        var wc = wpt(L, 'fairground', .33, .414);
+        SKY_WHEEL.forEach(function (a, j) { var r = .277 * wc.dw, t = a * Math.PI / 180; s += glow(wc.x + Math.cos(t) * r, wc.y + Math.sin(t) * r, .03 * wc.dw, .03 * wc.dw, j * .5); });
+        var lh = wpt(L, 'lighthouse', .5, .19), bl = L.mode === 'phone' ? 150 : 190;
+        s += "<g class=\"jmo jbeam\"><path d=\"M".concat(f1(lh.x), ",").concat(f1(lh.y), " l").concat(bl, ",-22 v44 Z M").concat(f1(lh.x), ",").concat(f1(lh.y), " l").concat(-bl, ",22 v-44 Z\" fill=\"url(#jbeam-").concat(L.mode, ")\"/></g>") + glow(lh.x, lh.y, .07 * lh.dw, .06 * lh.dw, 0);
         return s.replace(/GLOWID/g, L.mode);
+    }
+    /* the tint over the whole map (never over the stop numbers and plates, drawn after it) and the night layer, faded in by how dark it is */
+    function skyOver(L, h) {
+        var S = skyState(h);
+        return "<rect class=\"jskytint\" width=\"".concat(L.W, "\" height=\"").concat(L.H, "\" fill=\"").concat(S.tc, "\" opacity=\"").concat(S.ta, "\" mask=\"url(#jtm-").concat(L.mode, ")\" pointer-events=\"none\"/>")
+            + "<g class=\"jnight\" aria-hidden=\"true\" pointer-events=\"none\" style=\"opacity:".concat(S.n).concat(S.n > 0 ? '' : ';display:none', "\">").concat(skyNight(L, h)).concat(MAP_ART ? nightLights(L) : '', "</g>");
+    }
+    /* if the map stays open, look at the clock again every 10 minutes (and when the tab comes back into view) and just retouch the sky's attributes */
+    var SKY_T = 0;
+    function skyArm() {
+        if (SKY_T || typeof setInterval !== 'function')
+            return;
+        SKY_T = setInterval(skyTick, 6e5);
+        if (typeof document !== 'undefined')
+            document.addEventListener('visibilitychange', function () { if (!document.hidden)
+                skyTick(); });
+    }
+    function skyTick() {
+        if (/[?&]hour=/.test(qs()))
+            return;
+        var h = skyHour(), S = skyState(h);
+        [].forEach.call(document.querySelectorAll('.jmap .jsv svg'), function (sv) {
+            var m = sv.parentNode.classList.contains('jphone') ? 'phone' : 'desk', q = function (c) { return sv.querySelector(c); };
+            [].forEach.call(sv.querySelectorAll('#jsky-' + m + ' stop'), function (e, k) { return e.setAttribute('stop-color', S.c[k]); });
+            var t = q('.jskytint');
+            if (t) {
+                t.setAttribute('fill', S.tc);
+                t.setAttribute('opacity', S.ta);
+            }
+            var n = q('.jnight');
+            if (n) {
+                n.style.opacity = S.n;
+                n.style.display = S.n > 0 ? '' : 'none';
+            }
+            var su = q('.jsunp'), p = skySunAt(m, h);
+            if (su) {
+                su.style.display = p ? '' : 'none';
+                if (p)
+                    su.setAttribute('transform', skyTr(p, SKY_PATH[m].s));
+                var w = q('.jsunw');
+                if (w)
+                    w.setAttribute('opacity', p ? p.w : 0);
+            }
+            var mo = q('.jmoon');
+            if (mo)
+                mo.setAttribute('transform', skyTr(skyMoonAt(m, h), SKY_PATH[m].moon.s));
+        });
     }
     var fish = function (c) { return "<path d=\"M-9,0 C-5,-6 5,-6 8,0 C5,6 -5,6 -9,0Z M8,0 L14,-5 L14,5Z\" fill=\"".concat(c, "\" stroke=\"#111\" stroke-width=\"1.6\" stroke-linejoin=\"round\"/><circle cx=\"-4\" cy=\"-1\" r=\"1.3\" fill=\"#111\"/>"); };
     var minib = function (c1, c2) { return "<path d=\"M0,-30 C-15,-30 -17,-14 -10,-6 L-4,2 H4 L10,-6 C17,-14 15,-30 0,-30Z\" fill=\"".concat(c1, "\" stroke=\"#111\" stroke-width=\"2\"/><path d=\"M0,-30 C-5,-24 -5,-10 -4,2 M0,-30 C5,-24 5,-10 4,2\" fill=\"none\" stroke=\"").concat(c2, "\" stroke-width=\"2.5\"/><path d=\"M-4,2 L-4,7 M4,2 L4,7\" stroke=\"#111\" stroke-width=\"1.4\"/><rect x=\"-5\" y=\"7\" width=\"10\" height=\"7\" rx=\"1.5\" fill=\"#B07A45\" stroke=\"#111\" stroke-width=\"1.6\"/>"); };
@@ -79209,7 +79415,7 @@ window.SQE_JOURNEY = function (A) {
     /* daytime-and-night life drawn over the landmarks */
     function mapLife(L) {
         var s = '';
-        var w = apt(L, 'fairground', .33, .415), r = 144 * w.dw / 520;
+        var w = apt(L, 'fairground', .33, .405), r = 145 * w.dw / 520; /* centre of the drawn rim (fitted to its bulbs), radius 145 of 520 px */
         var b = '';
         for (var k = 0; k < 12; k++) {
             var a = k * Math.PI / 6;
@@ -79240,9 +79446,9 @@ window.SQE_JOURNEY = function (A) {
         var band = function (y, amp, c) { return "<path d=\"M-10,".concat(y, " L0,").concat(y).concat(wavy(y, W, amp, 8), " L").concat(W + 10, ",").concat(y, " V").concat(H + 10, " H-10 Z\" fill=\"").concat(c, "\" ").concat(INK, "/>"); };
         s += band(reg.spring, 8, '#C9EFA4') + band(reg.autumn, 7, '#F7D9A8') + band(reg.grounds, 12, '#FFD6EA'); /* sky at the top, then the meadow, the autumn fields and the palace grounds */
         s += L.deco();
-        /* garden path (Monnie 20 Nov): a grass border along both sides, soil showing between irregular rounded stone slabs (laid by stones()) */
+        /* garden path (Monnie 20 Nov): a grass verge along both sides (felt-tip edge), grey grout showing between flagstones laid by stones() */
         var rp = function (w, c, x) { return "<path ".concat(x || '', " d=\"").concat(L.route, "\" fill=\"none\" stroke=\"").concat(c, "\" stroke-width=\"").concat(w, "\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"); };
-        s += rp(84, '#4F8F34') + rp(78, '#8ACB64') + rp(56, '#8C6E4E') + rp(52, '#A88660', 'class="jroute"') + rp(52, '#B8946A', 'class="jdone" stroke-dasharray="0 99999"');
+        s += rp(106, '#2D6A4F') + rp(100, '#8ACB64') + rp(60, '#4A4540') + rp(56, '#9A9184', 'class="jroute"') + rp(56, '#A89E90', 'class="jdone" stroke-dasharray="0 99999"');
         s += "<g class=\"jstones\"></g>";
         var g0 = L.lm(0);
         s += "<g transform=\"translate(".concat(g0.x, ",").concat(g0.y, ") scale(").concat(g0.s, ")\" ").concat(INK, ">").concat(MAP_ART ? artImg('gate', L.art.gx, L.art.gy, L.art.gw, L.art.gh) : gate(), "</g>");
@@ -79253,10 +79459,10 @@ window.SQE_JOURNEY = function (A) {
             if (MAP_ART && SWAY[sl])
                 art = "<g class=\"jmo jsway\">".concat(art, "</g>"); /* trees and plants sway gently */
             if (MAP_ART && sl === 'zoo')
-                art += [['zoo-blink', 'jzb'], ['zoo-trunk', 'jzt']].map(function (_a) {
+                art = art.replace('<image ', '<image class="jmo jz0" ') + [['zoo-blink', 'jzb'], ['zoo-trunk', 'jzt']].map(function (_a) {
                     var f = _a[0], c = _a[1];
-                    return artImg(f, A.x, A.y, A.w, A.h).replace('<image ', "<image class=\"jmo ".concat(c, "\" style=\"opacity:0\" onerror=\"this.style.display='none'\" "));
-                }).join(''); /* the giraffe blinks, the elephant raises its trunk */
+                    return artImg(f, A.x, A.y, A.w, A.h).replace('<image ', "<image class=\"jmo ".concat(c, "\" style=\"opacity:0\" onerror=\"this.style.display='none'").concat(c === 'jzt' ? ";this.parentNode.querySelector('.jz0').style.animation='none'" : '', "\" "));
+                }).join(''); /* the giraffe blinks, the elephant raises its trunk (the base picture steps aside while the trunk frame shows, so the old trunk does not ghost through) */
             s += "<a href=\"".concat(stopHref(o.s.id), "\" aria-label=\"Stop ").concat(i, ", ").concat(esc(o.land), ": ").concat(esc(o.s.title), "\"><g class=\"jhit\" transform=\"translate(").concat(p.x, ",").concat(p.y, ") scale(").concat(p.s, ")\" ").concat(INK, ">").concat(art, "</g></a>");
         });
         if (MAP_ART)
@@ -79266,10 +79472,7 @@ window.SQE_JOURNEY = function (A) {
         var P = L.palace;
         s += "<g transform=\"translate(".concat(P.x, ",").concat(P.y, ") scale(").concat(P.s, ")\"><g ").concat(INK, ">").concat(MAP_ART ? artImg('palace-hen', -230, -420, 460, 428) : palace(), "</g>").concat(MAP_ART ? '<rect x="-118" y="-148" width="236" height="42" rx="12" fill="#FFFDF5" stroke="#111" stroke-width="3.5"/>' : '', "<text class=\"jpl\" x=\"0\" y=\"-119\" font-size=\"25\">Cluckington Palace</text></g>");
         s += flagArt(L.flags[0], 'FLK1 exam', esc(dm(J.ex1))) + flagArt(L.flags[1], 'FLK2 exam', esc(dm(J.ex2)));
-        if (ph !== 'day')
-            s += "<rect width=\"".concat(W, "\" height=\"").concat(H, "\" fill=\"").concat(ph === 'night' ? '#0B1640' : ph === 'dusk' ? '#FF5E3A' : '#FFB070', "\" opacity=\"").concat(ph === 'night' ? .42 : ph === 'dusk' ? .1 : .07, "\" pointer-events=\"none\"/>"); /* dusk / night tint */
-        if (ph === 'night')
-            s += "<g aria-hidden=\"true\" pointer-events=\"none\">".concat(skyNight(L)).concat(MAP_ART ? nightLights(L) : '', "</g>");
+        s += skyOver(L, hr); /* map-sky: the tint and the night layer (stars, moon, lit windows) blend in with the hour */
         L.stops.forEach(function (p, i) {
             var m = marker(i, p, i === 0 ? '' : i === 15 ? 'rev' : jStatus(J, i)), o = i > 0 && i < 15 ? J.stops[i - 1] : null; /* the stop numbers are tappable too */
             s += o ? "<a class=\"jnum\" href=\"".concat(stopHref(o.s.id), "\" aria-label=\"Stop ").concat(i, ": ").concat(esc(o.s.title), "\">").concat(m, "</a>") : m;
@@ -79310,54 +79513,74 @@ window.SQE_JOURNEY = function (A) {
             var at = +box.getAttribute('data-at'), c = JSON.parse(box.getAttribute('data-c'));
             var best = 0, bd = 1e12;
             if (at > 0)
-                for (var t = 0; t <= Lt; t += 4) {
-                    var p = path.getPointAtLength(t), d = Math.pow((p.x - c[0]), 2) + Math.pow((p.y - c[1]), 2);
+                for (var t_1 = 0; t_1 <= Lt; t_1 += 4) {
+                    var p = path.getPointAtLength(t_1), d = Math.pow((p.x - c[0]), 2) + Math.pow((p.y - c[1]), 2);
                     if (d < bd) {
                         bd = d;
-                        best = t;
+                        best = t_1;
                     }
                 }
             box.querySelector('.jdone').setAttribute('stroke-dasharray', "".concat(best, " ").concat(Lt + 100));
             var seed = 11;
             var rnd = function () { return (seed = (seed * 16807) % 2147483647) / 2147483647; };
-            /* garden path seen from above (Monnie 20 Nov): irregular stone slabs with soft rounded edges, soil between them, a soft shadow under each,
-               grass tufts along both borders; slabs a touch warmer where Britney has walked */
-            var PAST = ['#CFC9C2', '#C4C8CC', '#C9CEC4', '#CCC6CE', '#D6CFC1', '#C2C1BD', '#D3CCC5'], DONE = ['#E0D2C8', '#CAD4DC', '#CEDAC8', '#D8CEDC', '#E6D8BC', '#D5D1C8', '#E3D3C6'];
-            var out = '', sh = '', tf = '', k = 0;
-            var blob = function (cx, cy, rx, ry, rot) {
-                var n = 7, c = Math.cos(rot), sn = Math.sin(rot), P = [];
-                for (var j = 0; j < n; j++) {
-                    var a = j * 2 * Math.PI / n + (rnd() - .5) * .5, r = .86 + rnd() * .18, x = Math.cos(a) * rx * r, y = Math.sin(a) * ry * r;
-                    P.push([cx + x * c - y * sn, cy + x * sn + y * c]);
+            /* garden path seen from above (Monnie 20 Nov): flagstones laid across the path, 1 to 3 per row, irregular rounded quadrilaterals with thin grout gaps,
+               soft pastel-grey tints (pale grey, grey-blue, grey-pink, grey-green, sandy grey) and a thin felt-tip edge; a touch lighter where Britney has walked.
+               Rows follow the path round the bends; grass tufts along both verges. */
+            var PAST = ['#D8D7D3', '#BCC8D6', '#DCC4C8', '#C1D2BC', '#DDCFB7', '#CBC8C3', '#C9C2D3', '#D3CCC2'], DONE = ['#E7E6E2', '#CCD8E6', '#EAD4D8', '#D1E2CB', '#ECDFC6', '#DCD9D4', '#D9D2E3', '#E3DCD2'];
+            var HW = 26.5, g = 1.7, F = function (v) { return v.toFixed(1); };
+            var fr = function (t) {
+                t = Math.max(0, Math.min(Lt, t));
+                var a = path.getPointAtLength(Math.max(0, t - 1.5)), b = path.getPointAtLength(Math.min(Lt, t + 1.5)), p = path.getPointAtLength(t), an = Math.atan2(b.y - a.y, b.x - a.x);
+                return { x: p.x, y: p.y, tx: Math.cos(an), ty: Math.sin(an) };
+            };
+            var at2 = function (f, dt, o) { return [f.x + f.tx * dt - f.ty * o, f.y + f.ty * dt + f.tx * o]; };
+            var quad = function (P) {
+                var L = function (p, q, u) { return [p[0] + (q[0] - p[0]) * u, p[1] + (q[1] - p[1]) * u]; }, S = function (v) { return F(v[0]) + ',' + F(v[1]); };
+                var d = '';
+                for (var j = 0; j < 4; j++) {
+                    var p = P[j], q = P[(j + 1) % 4], n = P[(j + 2) % 4];
+                    d += (j ? ' L' : 'M') + S(L(p, q, .24)) + ' L' + S(L(p, q, .76)) + ' Q' + S(q) + ' ' + S(L(q, n, .24));
                 }
-                var m = function (p, q) { return [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2]; }, F = function (v) { return v[0].toFixed(1) + ',' + v[1].toFixed(1); };
-                var d = 'M' + F(m(P[n - 1], P[0]));
-                for (var j = 0; j < n; j++)
-                    d += 'Q' + F(P[j]) + ' ' + F(m(P[j], P[(j + 1) % n]));
                 return d + 'Z';
             };
-            var _loop_1 = function (t) {
-                var p = path.getPointAtLength(t), p2 = path.getPointAtLength(Math.min(Lt, t + 1)), w = t <= best, C = w ? DONE : PAST;
-                var an = Math.atan2(p2.y - p.y, p2.x - p.x), nx = -Math.sin(an), ny = Math.cos(an);
-                var offs = k % 2 ? [-14.5, 0, 14.5] : [-10.5, 10.5], ry = k % 2 ? 6.6 : 9.4;
-                offs.forEach(function (o, j) {
-                    var jt = (rnd() - .5) * 2.4, x = p.x + nx * (o + jt) + Math.cos(an) * (rnd() - .5) * 3, y = p.y + ny * (o + jt) + Math.sin(an) * (rnd() - .5) * 3;
-                    var d = blob(x, y, 9.6 + rnd() * 1.4, ry + rnd() * 1.2, an + (rnd() - .5) * .35);
+            var by = {};
+            var sh = '', tf = '', k = 0, t = 3, prev = -1, sk0 = 0;
+            var _loop_2 = function () {
+                var len = 20 + rnd() * 16;
+                if (Lt - 3 - (t + len) < 12)
+                    len = Lt - 3 - t;
+                var sk1 = t + len >= Lt - 4 ? 0 : (rnd() - .5) * 10; /* joints between rows run slightly askew */
+                var t1 = t + len, A_1 = fr(t + g), B = fr(t1 - g), walked = (t + t1) / 2 <= best, C = walked ? DONE : PAST;
+                var r = rnd(), cuts = r < .16 ? [] : r < .66 ? [(rnd() - .5) * 18] : [-9 + (rnd() - .5) * 6, 9 + (rnd() - .5) * 6];
+                var E = [-HW].concat(cuts, [HW]);
+                for (var j = 0; j < E.length - 1; j++) {
+                    var o0 = E[j] + (j ? g : 0), o1 = E[j + 1] - (j < E.length - 2 ? g : 0), J = function () { return (rnd() - .5) * 2.6; }, Jo = function () { return (rnd() - .5) * 2; };
+                    var P = [at2(A_1, J() + sk0 * o0 / HW, o0 + Jo()), at2(B, J() + sk1 * o0 / HW, o0 + Jo()), at2(B, J() + sk1 * o1 / HW, o1 + Jo()), at2(A_1, J() + sk0 * o1 / HW, o1 + Jo())];
+                    var d = quad(P);
                     sh += d;
-                    out += "<path d=\"".concat(d, "\" fill=\"").concat(C[(k * 3 + j * 2 + Math.floor(rnd() * 3)) % 7], "\"/>");
+                    var ci = Math.floor(rnd() * C.length);
+                    if (ci === prev)
+                        ci = (ci + 1) % C.length;
+                    prev = ci;
+                    (by[C[ci]] = by[C[ci]] || []).push(d);
+                }
+                var m = fr((t + t1) / 2);
+                [1, -1].forEach(function (sd) {
+                    if (rnd() < .6) {
+                        var e = (HW + 15 + rnd() * 9) * sd, p = at2(m, (rnd() - .5) * 8, e);
+                        tf += "M".concat(F(p[0] - 7), ",").concat(F(p[1] + 4), " q1.5,-10 3.5,0 q2,-13 4,0 q1.5,-10 3.5,0");
+                    }
                 });
-                if (k % 2 === 0)
-                    [1, -1].forEach(function (sd) {
-                        if (rnd() < .6) {
-                            var e = 33 + rnd() * 4, x = p.x + nx * e * sd, y = p.y + ny * e * sd;
-                            tf += "M".concat((x - 4).toFixed(1), ",").concat((y + 2).toFixed(1), " l2,-6 l2,6 l2,-7 l2,7");
-                        }
-                    });
+                t = t1;
+                k++;
+                sk0 = sk1;
             };
-            for (var t = 12; t < Lt - 6; t += 23, k++) {
-                _loop_1(t);
+            while (t < Lt - 6) {
+                _loop_2();
             }
-            out = "<path d=\"".concat(sh, "\" fill=\"#3E2E1E\" opacity=\".28\" transform=\"translate(1.4,2)\"/><g stroke=\"#7E776E\" stroke-width=\".9\">").concat(out, "</g><path d=\"").concat(tf, "\" fill=\"none\" stroke=\"#3F7F2A\" stroke-width=\"1.8\" stroke-linejoin=\"round\"/>");
+            var out = "<path d=\"".concat(sh, "\" fill=\"#2E2A26\" opacity=\".22\" transform=\"translate(1.2,1.8)\"/><g stroke=\"#57514A\" stroke-width=\"1.4\" stroke-linejoin=\"round\">");
+            Object.keys(by).forEach(function (c) { out += "<path d=\"".concat(by[c].join(''), "\" fill=\"").concat(c, "\"/>"); });
+            out += "</g><path d=\"".concat(tf, "\" fill=\"none\" stroke=\"#2D6A4F\" stroke-width=\"2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>");
             box.querySelector('.jstones').innerHTML = out;
         });
     }
@@ -79961,7 +80184,7 @@ window.SQE_SCENE = function(A){
       var dn = S().todo && S().todo[k + '|notes'];
       inner = '<div class="scn-yay"><div class="big" aria-hidden="true">🏆🍭🎉</div><h2 id="scn-mt">You\'ve eaten the whole shop!</h2><p>Every card in <b>' + esc(x.t.title) + '</b> is done: ' + order(k).length + ' of ' + order(k).length + ' treats opened.</p>' +
         (dn ? '<p><b>✓ “Read the notes” is ticked off on Today.</b></p>' : '') +
-        '<p>Last step: pass the <b>exit quiz</b> (10 questions, 6 to pass) to leave the shop.</p><div class="btns"><button type="button" class="btn primary" data-scn="leave">🚪 Leave the shop: exit quiz</button><a class="btn" href="#/topic/' + x.s.id + '/' + x.t.id + '/framework">🗺️ Go over the framework first</a><a class="btn" href="#/home">Back to Today</a><button type="button" class="btn" data-scn="close">Stay in the shop</button></div></div>';
+        '<p>Last step: pass the <b>exit quiz</b> (' + exitLabel(k) + ') to leave the shop.</p><div class="btns"><button type="button" class="btn primary" data-scn="leave">🚪 Leave the shop: exit quiz</button><a class="btn" href="#/topic/' + x.s.id + '/' + x.t.id + '/framework">🗺️ Go over the framework first</a><a class="btn" href="#/home">Back to Today</a><button type="button" class="btn" data-scn="close">Stay in the shop</button></div></div>';
     } else if (SC.gate){
       var g = sc.outside.gate, ok = gateOK(k), ans = gateAns(k);
       inner = '<div class="scn-st"><span class="ico" aria-hidden="true">🔒</span><div><div class="k">The door is locked</div><h2 id="scn-mt">Answer this to get in</h2></div><button type="button" class="scn-x" data-scn="close" aria-label="Close">✕</button></div>' +
@@ -79997,9 +80220,11 @@ window.SQE_SCENE = function(A){
   function exitPool(k){
     var x = A.TBYKEY[k], s = x.s, qa = [], qq;
     try { qa = (A.topicQs(s, x.t.id) || []).map(function(id){ var r = A.qById(id); return r ? {kind: 'qa', id: id, q: r.q.q, o: r.q.o, a: r.q.a, e: r.q.e, ord: shuf(nums(r.q.o.length))} : null; }).filter(Boolean); } catch(e){}
-    qq = shuf((s.qq || []).filter(function(z){ return z.t === x.t.id; })).slice(0, Math.max(0, EXIT_N - qa.length)).map(function(z){ return {kind: 'qq', x: z, q: z.q, o: z.o, a: 0, e: z.e, ord: shuf([0, 1, 2, 3])}; });
-    return shuf(qa.slice(0, EXIT_N).concat(qq));
+    qq = shuf((s.qq || []).filter(function(z){ return z.t === x.t.id; })).map(function(z){ return {kind: 'qq', x: z, q: z.q, o: z.o, a: 0, e: z.e, ord: shuf([0, 1, 2, 3])}; });
+    return shuf(qa.concat(qq)); /* 20 Nov Monnie: ALL model Qs + ALL quick-fire */
   }
+  function exitCount(k){ try { var x = A.TBYKEY[k]; return (A.topicQs(x.s, x.t.id) || []).length + (x.s.qq || []).filter(function(z){ return z.t === x.t.id; }).length; } catch(e){ return 10; } }
+  function exitLabel(k){ var n = exitCount(k); return n + ' questions, ' + exitNeed(n) + ' to pass'; }
   function exitNeed(n){ return Math.ceil(n * EXIT_PASS - 1e-9); }
   function startExit(k){ var items = exitPool(k); if (!items.length) return; SC.exit = {k: k, items: items, i: 0, ans: [], saved: false}; SC.open = null; SC.gate = false; SC.yay = false; paint(); }
   function pickExit(k, oi){
@@ -80022,7 +80247,7 @@ window.SQE_SCENE = function(A){
     ix.sets.forEach(function(st, i){ var sc = 0; for (var w in q) if (st[w]) sc += Math.log(1 + ix.hs.length / ix.df[w]); if (sc > bs){ bs = sc; best = ix.hs[i]; } });
     return best;
   }
-  function leaveBtn(k){ var o = state(k), p = !!o.passed; return '<button type="button" class="scn-leave' + (p ? ' passed' : '') + '" data-scn="leave"><span aria-hidden="true">🚪</span><span>' + (p ? 'Exit quiz passed ✓' : 'Leave the shop') + '<small>' + (p ? 'Take it again any time' : 'Exit quiz: 10 questions, 6 to pass') + '</small></span></button>'; }
+  function leaveBtn(k){ var o = state(k), p = !!o.passed; return '<button type="button" class="scn-leave' + (p ? ' passed' : '') + '" data-scn="leave"><span aria-hidden="true">🚪</span><span>' + (p ? 'Exit quiz passed ✓' : 'Leave the shop') + '<small>' + (p ? 'Take it again any time' : 'Exit quiz: ' + exitLabel(k)) + '</small></span></button>'; }
   /* britney-asks (19 Nov): Britney asks how the topic went; her face follows the rating Layla taps (green happy, amber unsure, red sad) */
   function britAsk(k){
     var c = window.SQE_CONF ? window.SQE_CONF(k) : null, f = c === 0 ? 'sad' : c === 0.5 ? 'meh' : 'happy';
@@ -80090,7 +80315,7 @@ window.SQE_SCENE = function(A){
       h += artHTML(sc.inside, o.open, k, 'inside');
       var nx = nextId(k);
       h += '<p class="scn-hint">' + (n === N ? '🏆 You\'ve opened everything! Open any sweet again to go over it. <button type="button" class="lrn-link" data-scn="restock">↺ Restock the shop (start again)</button>' : 'The glowing one is a good next pick, but you can open them in any order.') + '</p>';
-      h += n === N ? leaveBtn(k) : '<p class="scn-lock">🔒 Open all ' + N + ' to unlock the exit quiz: 🚪 Leave the shop (10 questions, 6 to pass).</p>';
+      h += n === N ? leaveBtn(k) : '<p class="scn-lock">🔒 Open all ' + N + ' to unlock the exit quiz: 🚪 Leave the shop (' + exitLabel(k) + ').</p>';
       h += '<ol class="scn-list">' + order(k).map(function(hh, i){ var dn = o.open[hh.id]; return '<li class="' + (dn ? 'done' : '') + (hh.id === nx ? ' next' : '') + '"><button type="button" data-scn="obj" data-id="' + esc(hh.id) + '"><span class="n">' + (dn ? '✓' : i + 1) + '</span><span class="t">' + esc(hh.label) + '<small>' + (function(st){ var c = st.filter(function(q){ return q.k !== 'check'; }).length; return c + ' cards' + (c < st.length ? ' + quick check' : ''); })(steps(k, hh)) + (dn ? ' · opened' : hh.id === nx ? ' · next' : '') + '</small></span><span aria-hidden="true">' + esc(hh.icon || '🍬') + '</span></button></li>'; }).join('') + '</ol>';
     }
     if (!SC.demoDone && /[?&]exitdemo=1\b/.test(location.search)){ SC.demoDone = true; var di = exitPool(k); if (di.length) SC.exit = {k: k, items: di, i: di.length, ans: di.map(function(){ return {ok: true}; }), saved: true}; } /* preview only: ?exitdemo=1 opens the passed exit screen without saving anything */
