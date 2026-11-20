@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120133257";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120133815";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -110491,6 +110491,12 @@ window.SQE_JOURNEY = function (A) {
                     if (u < 1 && Math.abs(dx) > 3)
                         P.m = (dx > 0 ? 1 : -1) * dir_1;
                     placePair(g_2, mode_1, P, u < 1 ? Math.abs(Math.sin(Math.PI * (s - s0_1) / hopLen_1)) * (mode_1 === 'phone' ? 9 : 7) : 0);
+                    try {
+                        var r = g_2.getBoundingClientRect(), c = (r.top + r.bottom) / 2, lo = innerHeight * .3, hi = innerHeight * .7;
+                        if (c < lo || c > hi)
+                            window.scrollBy(0, (c - (c < lo ? lo : hi)) * .35);
+                    }
+                    catch (_) { } /* the page follows her */
                     if (u < 1)
                         requestAnimationFrame(step_1);
                     else
@@ -110813,7 +110819,7 @@ window.SQE_JOURNEY = function (A) {
         if (!i)
             return null;
         var T = THEMES[i - 1], land = LANDS[i - 1];
-        var style = "--sta:".concat(T.a, ";--stad:").concat(T.ad, ";--stp:").concat(T.p, ";--stpd:").concat(T.pd, ";--stl:").concat(T.l, ";--stld:").concat(T.ld, ";--stbar:linear-gradient(90deg,").concat(T.c.slice(0, 3).join(','), ");--stbunt:").concat(bunting(T.c), ";--stm1:'").concat(T.m[0], "';--stm2:'").concat(T.m[1], "'");
+        var style = "--sta:".concat(T.a, ";--stad:").concat(T.ad, ";--stp:").concat(T.p, ";--stpd:").concat(T.pd, ";--stl:").concat(T.l, ";--stld:").concat(T.ld, ";--stbar:linear-gradient(90deg,").concat(T.c.slice(0, 3).join(','), ");--stbunt:").concat((window.SQE_STOPDECO && window.SQE_STOPDECO(sid, T.c)) || bunting(T.c), ";--stm1:'").concat(T.m[0], "';--stm2:'").concat(T.m[1], "'");
         var strip = "<a class=\"ststrip\" href=\"#/map/".concat(sid, "\" aria-label=\"Stop ").concat(i, ": ").concat(esc(land), ". See it on the map\"><span class=\"stpic\" aria-hidden=\"true\"><svg viewBox=\"-100 -150 200 156\"><g ").concat(INK, ">").concat(DRAW[i - 1](), "</g></svg></span><b class=\"sttx\">Stop ").concat(i, ": ").concat(esc(land), " \u00B7 ").concat(esc(label), "</b><span class='stmap stsign' title='Back to Peckham'><svg viewBox='-158 -82 316 240' role='img' aria-label='Welcome to Peckham, twinned with Hamsterdam. Back to Peckham'>").concat(welcome(0, 0, 1), "</svg></span></a>");
         return { i: i, land: land, style: style, strip: strip };
     }
@@ -148009,6 +148015,54 @@ if (ROOMS_ON && ROOM_KEYS.length) HUBS["blp/hall"] = { title: "The Entrance Hall
    gives SCENES["<subj>/<tid>"] (rooms, all "later"-style: straight inside, scenario + mini-game) and HUBS[hub.key]. The sweet shop (blp) keeps its own chain above.
    STOP_OF[k] = subject id, STOP_IDX[k] = room index in its stop, STOP_KEYS[subj] = room keys, STOP_HUB[subj] = hub key (#/scene/<subj> opens it). */
 var STOPDATA = window.SQE_STOPDATA = window.SQE_STOPDATA || {}, STOP_KEYS = {}, STOP_IDX = {}, STOP_OF = {}, STOP_HUB = {};
+/* STOP-SKINS (Monnie 20 Nov 13:05): every stop has its own look. Only the sweet shop uses sweets, jars, bunting and pink.
+   STOPSKIN[<subject id>] = colours (a1 strong, a2 dark, pale), c = item colours, bul = the small drawn shape used for bullets, icons, confetti and the page strip,
+   item/items = what flies out in the burst game, pot/potName = the container it lands in, sort/bin = the sort game's name and its drop zones. */
+var STOPSKIN = window.SQE_STOPSKIN = {
+  dr:       {a1: '#E63946', a2: '#B3261E', pale: '#FFF4DC', c: ['#E63946', '#FFC300', '#4361EE', '#2EC4B6', '#FF8C42', '#9B5DE5'], bul: 'ticket', item: 'ticket', items: 'tickets', pot: 'bucket', potName: 'prize bucket', sort: 'Sort into the prize stalls', bin: 'stall'},
+  ls:       {a1: '#2B5C92', a2: '#7A4519', pale: '#FBF3E6', c: ['#8D5A3B', '#2B5C92', '#C8423C', '#2B8A5B', '#E0A100', '#6B4FA0'], bul: 'book', item: 'library card', items: 'library cards', pot: 'box', potName: 'returns box', sort: 'Shelve the cards', bin: 'shelf'},
+  contract: {a1: '#2F6FE0', a2: '#1D4F91', pale: '#EAF3FF', c: ['#4361EE', '#E63946', '#4CC9F0', '#FFC300', '#2EC4B6', '#9B5DE5'], bul: 'plane', item: 'boarding pass', items: 'boarding passes', pot: 'case', potName: 'suitcase', sort: 'Send them to the right gate', bin: 'gate'},
+  tort:     {a1: '#2F8A3A', a2: '#2F6B1F', pale: '#F1F8E8', c: ['#FFC300', '#52B788', '#F4A261', '#8D5A3B', '#2B8A5B', '#E76F51'], bul: 'paw', item: 'zoo ticket', items: 'zoo tickets', pot: 'bucket', potName: 'feeding bucket', sort: 'Sort into the enclosures', bin: 'enclosure'},
+  legalsys: {a1: '#6A4BB0', a2: '#5A3E8E', pale: '#F4F0FB', c: ['#9B5DE5', '#FFC300', '#8D99AE', '#C8423C', '#4361EE', '#2EC4B6'], bul: 'column', item: 'exhibit label', items: 'exhibit labels', pot: 'case', potName: 'display case', sort: 'Sort into the galleries', bin: 'gallery'},
+  ethics:   {a1: '#0B7FA6', a2: '#0B5E7A', pale: '#E8F8FC', c: ['#4CC9F0', '#E63946', '#FFC300', '#2EC4B6', '#FF8C42', '#4361EE'], bul: 'star', item: 'postcard', items: 'postcards', pot: 'bucket', potName: 'beach bucket', sort: 'Sort into the beach huts', bin: 'beach hut'},
+  wills:    {a1: '#0A8A99', a2: '#075E6B', pale: '#E6FAFA', c: ['#4CC9F0', '#2EC4B6', '#FF9F1C', '#4361EE', '#FF6B6B', '#9B5DE5'], bul: 'fish', item: 'fish', items: 'fish', pot: 'bucket', potName: 'tank', sort: 'Sort into the tanks', bin: 'tank'},
+  accounts: {a1: '#B8651A', a2: '#7A4A12', pale: '#FDF5E6', c: ['#FFC300', '#C8423C', '#52B788', '#8D5A3B', '#F4A261', '#4361EE'], bul: 'egg', item: 'egg', items: 'eggs', pot: 'basket', potName: 'egg basket', sort: 'Sort into the pens', bin: 'pen'},
+  trusts:   {a1: '#2E8B4A', a2: '#2B6E3F', pale: '#EEF8F0', c: ['#52B788', '#FF6FB5', '#FFC300', '#9B5DE5', '#E76F51', '#4CC9F0'], bul: 'flower', item: 'seed packet', items: 'seed packets', pot: 'bucket', potName: 'flower pot', sort: 'Plant them in the right beds', bin: 'bed'},
+  land:     {a1: '#C0398F', a2: '#9C2C7A', pale: '#FDF0FA', c: ['#E63946', '#FFC300', '#4361EE', '#2EC4B6', '#FF8C42', '#9B5DE5'], bul: 'balloon', item: 'balloon', items: 'balloons', pot: 'basket', potName: 'balloon basket', sort: 'Sort into the baskets', bin: 'basket'},
+  property: {a1: '#2B8A4F', a2: '#1F6B3A', pale: '#EAF7EE', c: ['#2B8A5B', '#FFC300', '#E63946', '#52B788', '#FF8C42', '#8D5A3B'], bul: 'leaf', item: 'leaf', items: 'leaves', pot: 'box', potName: 'explorer\'s crate', sort: 'Sort into the camps', bin: 'camp'},
+  crimlaw:  {a1: '#2C7BC0', a2: '#1F5C8C', pale: '#EEF7FD', c: ['#4CC9F0', '#9BB8E0', '#C77DFF', '#4361EE', '#2EC4B6', '#FF6FB5'], bul: 'snow', item: 'snowflake', items: 'snowflakes', pot: 'bucket', potName: 'ice bucket', sort: 'Sort into the lanes', bin: 'lane'},
+  crimprac: {a1: '#C8372D', a2: '#A1271F', pale: '#FDF1EF', c: ['#E63946', '#4361EE', '#FFC300', '#2EC4B6', '#FF8C42', '#1D3557'], bul: 'anchor', item: 'lantern', items: 'lanterns', pot: 'bucket', potName: 'lobster pot', sort: 'Sort into the boats', bin: 'boat'}
+};
+Object.keys(STOPSKIN).forEach(function(id){ STOPSKIN[id].id = id; });
+function skMix(hex, w){ var h = hex.replace('#', ''); if (h.length === 3) h = h.replace(/./g, '$&$&'); var o = '#'; for (var i = 0; i < 6; i += 2){ var v = Math.round(parseInt(h.substr(i, 2), 16) * (1 - w) + 255 * w); o += ('0' + v.toString(16)).slice(-2); } return o; }
+/* the small drawn shapes (24 x 24, black felt-tip outline) */
+function STOPSHAPE(n, c1, c2){ var K = ' stroke="#1b1b1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"', c2b = c2 || skMix(c1, .6), s;
+  switch (n){
+    case 'ticket': s = '<path d="M2 6h20v4a2 2 0 0 0 0 4v4H2v-4a2 2 0 0 0 0-4z" fill="' + c1 + '"' + K + '/><path d="M16 7.5v9" stroke="#fff" stroke-width="1.6" stroke-dasharray="1.6 1.8"/><path d="M6 10.5h6M6 13.5h4" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>'; break;
+    case 'bulb': s = '<rect x="9.5" y="2" width="5" height="4.5" rx="1" fill="#9AA5B1"' + K + '/><circle cx="12" cy="13.5" r="7" fill="' + c1 + '"' + K + '/><path d="M8.6 12a3.4 3.4 0 0 1 3.4-3.4" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round"/>'; break;
+    case 'book': s = '<rect x="5" y="2.5" width="14" height="19" rx="1.5" fill="' + c1 + '"' + K + '/><path d="M8 2.5v19M5 7h14M5 17h14" fill="none"' + K + '/>'; break;
+    case 'plane': s = '<path d="M12 2c1.2 0 1.6 1.4 1.6 3v4.2l7.4 4.3v2.2l-7.4-2.2v4.6l2.4 1.8v1.6L12 20.3 8 21.5v-1.6l2.4-1.8v-4.6L3 15.7v-2.2l7.4-4.3V5c0-1.6.4-3 1.6-3z" fill="' + c1 + '"' + K + '/>'; break;
+    case 'paw': s = '<ellipse cx="12" cy="15.5" rx="5.5" ry="4.5" fill="' + c1 + '"' + K + '/><circle cx="5" cy="9.5" r="2.3" fill="' + c1 + '"' + K + '/><circle cx="9.5" cy="5.2" r="2.3" fill="' + c1 + '"' + K + '/><circle cx="14.5" cy="5.2" r="2.3" fill="' + c1 + '"' + K + '/><circle cx="19" cy="9.5" r="2.3" fill="' + c1 + '"' + K + '/>'; break;
+    case 'column': s = '<path d="M3.5 4h17l-2 3h-13z M5 19.5h14V22H5z" fill="' + c1 + '"' + K + '/><rect x="7" y="7" width="10" height="12.5" fill="' + c2b + '"' + K + '/><path d="M10 8.5v9.5M14 8.5v9.5" fill="none"' + K + '/>'; break;
+    case 'star': s = '<path d="M12 2.5l2.6 6.2 6.7.5-5.1 4.4 1.6 6.6L12 16.6l-5.8 3.6 1.6-6.6-5.1-4.4 6.7-.5z" fill="' + c1 + '"' + K + '/>'; break;
+    case 'fish': s = '<path d="M2.5 12c3-5 10-6 14.5-1l4.5-3.5v9L17 13c-4.5 5-11.5 4-14.5-1z" fill="' + c1 + '"' + K + '/><circle cx="7.5" cy="11" r="1.2" fill="#1b1b1b"/>'; break;
+    case 'egg': s = '<ellipse cx="12" cy="13" rx="7" ry="9" fill="' + c1 + '"' + K + '/><path d="M8.5 10a4 4 0 0 1 2.5-3.2" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round"/>'; break;
+    case 'flower': s = [0, 72, 144, 216, 288].map(function(a){ var r = a * Math.PI / 180; return '<circle cx="' + (12 + 6 * Math.sin(r)).toFixed(1) + '" cy="' + (12 - 6 * Math.cos(r)).toFixed(1) + '" r="4" fill="' + c1 + '"' + K + '/>'; }).join('') + '<circle cx="12" cy="12" r="3.4" fill="#FFC300"' + K + '/>'; break;
+    case 'balloon': s = '<path d="M12 16.5c0 2-1.5 3-1 5.5" fill="none"' + K + '/><ellipse cx="12" cy="9" rx="6.5" ry="7.5" fill="' + c1 + '"' + K + '/><path d="M10.6 16.6h2.8L12 15z" fill="' + c1 + '"' + K + '/><path d="M8.5 7.5a3.5 3.5 0 0 1 2.5-3" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round"/>'; break;
+    case 'leaf': s = '<path d="M3.5 20.5C3.5 9 10 3.5 20.5 3.5c0 10.5-5.5 17-17 17z" fill="' + c1 + '"' + K + '/><path d="M5 19L15 9M10 14h4M8 12v-3" fill="none"' + K + '/>'; break;
+    case 'snow': s = '<path d="M12 2.5v19M3.8 7.2l16.4 9.6M3.8 16.8l16.4-9.6" stroke="#1b1b1b" stroke-width="4.4" stroke-linecap="round"/><path d="M12 2.5v19M3.8 7.2l16.4 9.6M3.8 16.8l16.4-9.6" stroke="' + c1 + '" stroke-width="2.2" stroke-linecap="round"/>'; break;
+    case 'anchor': s = '<path d="M12 7.5V21M7 11h10M4 14.5c1 4.5 4 6.5 8 6.5s7-2 8-6.5" fill="none" stroke="#1b1b1b" stroke-width="4.4" stroke-linecap="round"/><path d="M12 7.5V21M7 11h10M4 14.5c1 4.5 4 6.5 8 6.5s7-2 8-6.5" fill="none" stroke="' + c1 + '" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="5" r="2.6" fill="' + c1 + '"' + K + '/>'; break;
+    default: s = '<circle cx="12" cy="12" r="7" fill="' + c1 + '"' + K + '/>';
+  }
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">' + s + '</svg>'; }
+window.SQE_STOPSHAPE = STOPSHAPE;
+function skUrl(svg){ return 'url("data:image/svg+xml,' + encodeURIComponent(svg) + '")'; }
+/* the strip across the top of a stop's notes pages and step cards (journey.js): the Fairground gets a string of lights, the others a row of their own shape */
+window.SQE_STOPDECO = function(sid, cols){ var S = STOPSKIN[sid]; if (!S) return null; var c = cols && cols.length ? cols : S.c, s = '';
+  if (S.bul === 'ticket'){ s = '<path d="M0,3 Q60,10 120,3" fill="none" stroke="#3B3B3B" stroke-width="1.4"/>';
+    for (var k = 0; k < 6; k++){ var x = k * 20 + 10, y = 3 + Math.sin(x / 120 * Math.PI) * 6.2; s += '<rect x="' + (x - 2) + '" y="' + y.toFixed(1) + '" width="4" height="3" fill="#9AA5B1" stroke="#3B3B3B" stroke-width=".8"/><circle cx="' + x + '" cy="' + (y + 7).toFixed(1) + '" r="4.2" fill="' + ['#FFE14D', '#FF5A5F', '#7FD8FF', '#FFE14D', '#9BE58A', '#FFB45C'][k] + '" stroke="#3B3B3B" stroke-width="1"/>'; } }
+  else for (var j = 0; j < 5; j++) s += '<g transform="translate(' + (j * 24 + 4) + ',1) scale(.66)">' + STOPSHAPE(S.bul, c[j % c.length]).replace(/^<svg[^>]*>|<\/svg>$/g, '') + '</g>';
+  return skUrl('<svg xmlns="http://www.w3.org/2000/svg" width="120" height="18" viewBox="0 0 120 18">' + s + '</svg>'); };
 (function(){
   if (!ROOMS_ON) return;
   Object.keys(STOPDATA).forEach(function(sid){
@@ -148641,6 +148695,12 @@ window.SQE_SCENE = function(A){
   /* catch games: a felt-tip cartoon container the right cards drop into, picked from the game's title/prompt words (g.pot overrides); jar by default */
   var PK = ' stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"', PL = ' fill="none" stroke-linecap="round"';
   var POTS = {
+    bucket: {m: .3, b: 64, s: 4.5, ly: 112,
+      back: '<ellipse cx="100" cy="42" rx="76" ry="14" fill="#5A2A22"' + PK + '/>',
+      front: '<path d="M24 42 L44 144 L156 144 L176 42 Q100 60 24 42 Z" fill="#fff"/><path d="M48 52 L60 144 L80 144 L76 57 Z M124 57 L120 144 L140 144 L152 52 Z" fill="var(--sk1,#E63946)"/><path d="M24 42 L44 144 L156 144 L176 42 Q100 60 24 42 Z" fill="none"' + PK + '/><path d="M22 38 Q100 58 178 38 L176 50 Q100 70 24 50 Z" fill="var(--sk1,#E63946)"' + PK + '/>'},
+    'case': {m: .36, b: 56, s: 5, ly: 120,
+      back: '<path d="M78 40 L78 22 Q78 14 86 14 L114 14 Q122 14 122 22 L122 40" fill="none" stroke="#1b1b1b" stroke-width="9"' + PL + '/><path d="M78 40 L78 22 Q78 14 86 14 L114 14 Q122 14 122 22 L122 40" fill="none" stroke="#8D5A3B" stroke-width="4"' + PL + '/>',
+      front: '<rect x="20" y="56" width="160" height="88" rx="14" fill="var(--sk1,#2F6FE0)"' + PK + '/><path d="M20 86 L180 86" stroke="#1b1b1b" stroke-width="4"/><rect x="54" y="50" width="16" height="14" rx="3" fill="#FFC300"' + PK + '/><rect x="130" y="50" width="16" height="14" rx="3" fill="#FFC300"' + PK + '/>'},
     bowl: {m: .3, b: 64, s: 4.5, ly: 112,
       back: '<path d="M138 46 L178 6" stroke="#1b1b1b" stroke-width="14"' + PL + '/><path d="M138 46 L178 6" stroke="#E0A35A" stroke-width="6"' + PL + '/><ellipse cx="100" cy="42" rx="88" ry="18" fill="#7A4420"' + PK + '/><ellipse cx="100" cy="47" rx="68" ry="9" fill="#F2C27B"/>',
       front: '<path d="M70 130 L64 145 L136 145 L130 130 Z" fill="#E8488C"' + PK + '/><path d="M12 42 Q16 128 100 132 Q184 128 188 42 Q150 60 100 60 Q50 60 12 42 Z" fill="#FF5FA2"' + PK + '/><path d="M24 76 Q100 102 176 76" stroke="#fff" stroke-width="7" stroke-dasharray="1 15"' + PL + '/><path d="M34 70 Q40 100 62 114" stroke="#fff" stroke-width="6" opacity=".85"' + PL + '/>'},
@@ -148657,9 +148717,10 @@ window.SQE_SCENE = function(A){
       back: '<path d="M44 40 L58 6 L142 6 L156 40 Z" fill="#E8A65A"' + PK + '/><path d="M30 56 L44 40 L156 40 L170 56 Z" fill="#8A5524"' + PK + '/>',
       front: '<path d="M30 56 L170 56 L170 144 L30 144 Z" fill="#F0B46A"' + PK + '/><path d="M30 56 L170 56 L184 78 L16 78 Z" fill="#E09A4C"' + PK + '/><path d="M92 78 L92 144 M108 78 L108 144" stroke="#FFE7B8" stroke-width="5"' + PL + '/>'}
   };
-  function potType(g, CR){ if (g.pot && POTS[g.pot]) return g.pot; var s = ((g.title || '') + ' ' + (CR && CR.prompt || '') + ' ' + (g.label || '')).toLowerCase();
+  function potType(g, CR){ var t0 = potType0(g, CR); return SKIN && t0 === 'jar' ? SKIN.pot : t0; }
+  function potType0(g, CR){ if (g.pot && POTS[g.pot]) return g.pot; var s = ((g.title || '') + ' ' + (CR && CR.prompt || '') + ' ' + (g.label || '')).toLowerCase();
     return /\bbowl|\bmix/.test(s) ? 'bowl' : /\bjar\b/.test(s) ? 'jar' : /\bbasket|\bpick\b|\bgather|\bcollect/.test(s) ? 'basket' : /\btray\b|\bstack|\btower|\bbak(e|ing)\b|\boven/.test(s) ? 'tray' : /\bbox\b|\bcrate|\bparcel|\bpack\b/.test(s) ? 'box' : 'jar'; }
-  function potPile(t, n, fresh){ var P = POTS[t], h = '', C = ['#FFE14D', '#7FD8FF', '#FF9AC8', '#9BE58A', '#FFB45C', '#C7A6FF'];
+  function potPile(t, n, fresh){ var P = POTS[t] || POTS.jar, h = '', C = SKIN ? SKIN.c : ['#FFE14D', '#7FD8FF', '#FF9AC8', '#9BE58A', '#FFB45C', '#C7A6FF'];
     for (var j = 0; j < Math.min(n, 9); j++){ var jx = P.tw ? (j * 37) % 9 - 4 : (j * 53) % 23 - 11, rot = P.tw ? (j * 29) % 7 - 3 : (j * 41) % 31 - 15;
       h += '<span class="gm-pc' + (fresh && j === n - 1 ? ' new' : '') + '" style="bottom:' + (P.b + j * P.s) + '%;left:' + ((P.tw ? 30 : 28) + jx) + '%;width:' + (P.tw ? 40 : 44) + '%;background:' + C[j % C.length] + ';transform:rotate(' + rot + 'deg)"></span>'; }
     return h; }
@@ -148667,7 +148728,7 @@ window.SQE_SCENE = function(A){
     var lab = m ? '<text x="100" y="' + P.ly + '" text-anchor="middle" font-family="Caveat Brush, Gochi Hand, cursive" font-size="' + (P.lz || 28) + '" fill="#fff" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round" paint-order="stroke">' + esc(m[0]) + '</text>' : '';
     return sv + 'bk' + vb + P.back + '</svg><div class="gm-pl gm-pile" aria-hidden="true">' + potPile(t, G.inPot || 0) + '</div>' + sv + 'ft' + vb + P.front + lab + '</svg><span class="gm-pop" aria-hidden="true"></span>'; }
   function potFx(lane, cls, txt){ if (!lane) return; lane.classList.remove('bump', 'nope'); void lane.offsetWidth; lane.classList.add(cls); setTimeout(function(){ lane.classList.remove(cls); }, 500);
-    var p = lane.querySelector('.gm-pop'); if (p){ p.className = 'gm-pop'; void p.offsetWidth; p.textContent = txt; p.className = 'gm-pop go ' + (cls === 'bump' ? 'ok' : 'no'); } }
+    var p = lane.querySelector('.gm-pop'); if (p){ p.className = 'gm-pop'; void p.offsetWidth; p.textContent = SK(txt); p.className = 'gm-pop go ' + (cls === 'bump' ? 'ok' : 'no'); } }
   /* a tapped card: a right one arcs up and drops into the container (which bounces and fills); a wrong one wobbles and falls away */
   function catchTap(b, i){ var G = SC.game; if (!G || G.type !== 'catch' || G.res[i] != null) return; var it = G.items[i], good = !!(it.ok || it.good || it.correct), lane = document.getElementById('gm-lane'), ft = lane && lane.querySelector('.gm-pl.ft');
     b.removeAttribute('data-scn'); b.classList.add('gm-tapped');
@@ -148809,6 +148870,68 @@ window.SQE_SCENE = function(A){
   var BT = [], BLIFE = 10000;
   var BSWP = '<path d="M30 21 L5 5 Q-1 30 5 55 L30 39 Z" fill="var(--sc1)" stroke="#1b1b1b" stroke-width="4" stroke-linejoin="round"/><path d="M22 25 L9 15 M22 35 L9 45" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".75"/>';
   var BICO = '<span class="bu-ico" aria-hidden="true"><svg viewBox="0 0 92 56"><path d="M24 22 L4 8 Q0 28 4 48 L24 34 Z M68 22 L88 8 Q92 28 88 48 L68 34 Z" fill="#FF2D8A" stroke="#1b1b1b" stroke-width="4" stroke-linejoin="round"/><rect x="20" y="12" width="52" height="32" rx="16" fill="#FFE14D" stroke="#1b1b1b" stroke-width="4"/><path d="M34 14 L28 42 M48 14 L42 42 M62 14 L56 42" stroke="#FF8A3D" stroke-width="4" stroke-linecap="round"/></svg></span>';
+  /* per-stop skin: set from the current room or hall key before anything is drawn (VIEW.scene, paint, toasts) */
+  var BICO0 = BICO, BSWP0 = BSWP, SKIN = null;
+  function skCap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+  function skWords(S){ if (S._w) return S._w; var it = S.item, its = S.items, pn = S.potName;
+    return S._w = [
+      ['Sort onto the trays', S.sort], ['Drag each card onto the right tray, or tap a tray.', 'Drag each card onto the right ' + S.bin + ', or tap a ' + S.bin + '.'],
+      ['The jar bursts and sweets fly out.', 'The ' + pn + ' bursts open and ' + its + ' fly out.'],
+      ['into the container', 'into the ' + pn], ['Tap a true sweet before', 'Tap a true ' + it + ' before'],
+      ['Tap a sweet to catch it. True ones go in the jar.', 'Tap a ' + it + ' to catch it. True ones go in the ' + pn + '.'],
+      ['True! Into the jar it goes.', 'True! Into the ' + pn + ' it goes.'], ['True! In the jar', 'True! In the ' + pn],
+      ['Perfect jar!', 'Perfect catching!'], ['Sweet work!', 'Great work!'], [' true sweets in the jar', ' true ' + its + ' in the ' + pn],
+      ['Sweet: ', skCap(it) + ': '], ['Sweets explosion', skCap(it) + ' explosion'],
+      ['then eat it!', 'then tick it off!'], ['Done! Eat it', 'Done! Tick it off'], ['Eat it', 'Done'],
+      ['You\'ve eaten the whole shop!', 'You\'ve done every spot!'], ['This room\'s sweets are still being made', 'This room is still being built'],
+      ['Open any sweet again', 'Open any spot again'], ['Restock the shop (start again)', 'Start this room again'],
+      ['Yum! Everything opened.', 'Everything opened!'], ['Yum! ', 'Nice! '], [' eaten. ', ' done. '], ['treats opened', 'spots opened'],
+      ['A sweet for your jar.', 'Nice one.'], ['Leave the shop', 'Leave'], ['the shop', 'the ' + (STOPDATA[S.id] && STOPDATA[S.id].hub ? String(STOPDATA[S.id].hub.place || 'room').replace(/^the /, '') : 'room')],
+      ['🍬 ', ''], ['🍭 ', ''], ['🍫 ', ''], ['🍡 ', ''], ['🫙 ', ''], ['🍬', ''], ['🍭', ''], ['🍫', ''], ['🍡', ''], ['🫙', '']
+    ]; }
+  function skinFor(k){ var sid = k && (STOP_OF[k] || (HUBS[k] && HUBS[k].stop)), S = sid && STOPSKIN[sid] || null; SKIN = S;
+    BICO = S ? '<span class="bu-ico" aria-hidden="true">' + STOPSHAPE(S.bul, S.a1).replace('<svg ', '<svg overflow="visible" ') + '</span>' : BICO0; BSWP = S ? '' : BSWP0; return S; }
+  function SK(s){ if (!SKIN || typeof s !== 'string') return s; skWords(SKIN).forEach(function(p){ s = s.split(p[0]).join(p[1]); }); return s; }
+  function skRoot(){ return SKIN ? ' stsk stsk-' + SKIN.id + '" style="--sk1:' + SKIN.a1 + ';--sk2:' + SKIN.a2 + ';--skp:' + SKIN.pale : ''; }
+  /* stop-scoped copies of every scene style that uses the sweet shop's pinks, with the stop's own colours */
+  function skHsl(hex){ var h = hex.slice(1); if (h.length === 3) h = h.replace(/./g, '$&$&'); var r = parseInt(h.substr(0, 2), 16) / 255, g = parseInt(h.substr(2, 2), 16) / 255, b = parseInt(h.substr(4, 2), 16) / 255;
+    var mx = Math.max(r, g, b), mn = Math.min(r, g, b), l = (mx + mn) / 2, d = mx - mn, s = 0, hh = 0; if (d){ s = l > .5 ? d / (2 - mx - mn) : d / (mx + mn); hh = mx === r ? (g - b) / d + (g < b ? 6 : 0) : mx === g ? (b - r) / d + 2 : (r - g) / d + 4; hh *= 60; } return [hh, s, l]; }
+  var SKPINK = /#[0-9a-fA-F]{6}\b|#[0-9a-fA-F]{3}\b/g;
+  function skIsPink(hex){ var x = skHsl(hex); return x[0] >= 300 && x[0] <= 352 && x[1] > .35 ? x[2] : -1; }
+  function skHasPink(t){ var m = t.match(SKPINK) || []; for (var i = 0; i < m.length; i++) if (skIsPink(m[i]) >= 0) return true; return false; }
+  function skMap(t, S){ return t.replace(SKPINK, function(m){ var l = skIsPink(m); return l < 0 ? m : l > .9 ? S.pale : l > .74 ? skMix(S.a1, .55) : l > .5 ? S.a1 : S.a2; }); }
+  function skScope(css, S){ var kf = [], re = /@keyframes\s+([\w-]+)\s*\{((?:[^{}]*\{[^{}]*\})*)[^{}]*\}/g, m;
+    while ((m = re.exec(css))) if (skHasPink(m[2])) kf.push(m[1]);
+    function blk(str){ var o = '', j = 0; while (j < str.length){ var ob = str.indexOf('{', j); if (ob < 0) break; var sel = str.slice(j, ob).trim(), dep = 1, q = ob + 1;
+        while (q < str.length && dep){ if (str[q] === '{') dep++; else if (str[q] === '}') dep--; q++; }
+        var body = str.slice(ob + 1, q - 1); j = q;
+        if (/^@(media|supports)/.test(sel)){ var inner = blk(body); if (inner) o += sel + '{' + inner + '}'; continue; }
+        var km = /^@keyframes\s+([\w-]+)/.exec(sel); if (km){ if (kf.indexOf(km[1]) >= 0) o += '@keyframes ' + km[1] + '-' + S.id + '{' + skMap(body, S) + '}'; continue; }
+        if (sel.charAt(0) === '@') continue;
+        var usesKf = kf.filter(function(n){ return new RegExp('\\b' + n + '\\b').test(body); });
+        if (!skHasPink(body) && !usesKf.length) continue;
+        var b2 = skMap(body, S); usesKf.forEach(function(n){ b2 = b2.replace(new RegExp('\\b' + n + '\\b', 'g'), n + '-' + S.id); });
+        o += sel.split(',').map(function(x){ x = x.trim(); return /^html\./.test(x) ? x.replace(/^(html\.[\w-]+)\s*/, '$1 .stsk-' + S.id + ' ') : '.stsk-' + S.id + ' ' + x; }).join(',') + '{' + b2 + '}'; }
+      return o; }
+    return blk(css); }
+  function skCSS(){ var all = [CSS, BURST_CSS, SPOTACTS_CSS].map(function(x){ return Array.isArray(x) ? x.join('') : String(x || ''); }).join(''), o = '';
+    o += '.stsk .bu-wr{display:none}.stsk .bu-body{border-radius:10px}.stsk .bu-body::before{inset:5px;border-radius:6px;background:repeating-linear-gradient(90deg,transparent 0 12px,var(--sc1) 12px 14px);opacity:.16}' +
+      '.stsk .bu-lid{background:repeating-linear-gradient(90deg,var(--sk1) 0 12px,#fff 12px 20px)}' +
+      '.stsk .gm-bin{position:relative;padding-top:26px;border-radius:10px 10px 16px 16px;background:repeating-linear-gradient(90deg,var(--sk1) 0 16px,#fff 16px 32px) top/100% 17px no-repeat,var(--skp)}' +
+      '.stsk .gm-bin.hot{background:repeating-linear-gradient(90deg,var(--sk1) 0 16px,#fff 16px 32px) top/100% 17px no-repeat,#FFF200}' +
+      '.stsk .gm-bin.flash-ok{background:repeating-linear-gradient(90deg,var(--sk1) 0 16px,#fff 16px 32px) top/100% 17px no-repeat,#B8F2C9}.stsk .gm-bin.flash-no{background:repeating-linear-gradient(90deg,var(--sk1) 0 16px,#fff 16px 32px) top/100% 17px no-repeat,#FFD2C2}' +
+      '.stsk .bu-how b{color:var(--sk2)}.stsk .scn-sheet.bul-on .lrn-fact{background:var(--skp);border-left-color:var(--sk1)}' +
+      '.stsk .scn-confetti i svg,.scn-confetti.sk i svg{width:30px;height:30px}' +
+      '.stsk-dr .bu-body{border-radius:6px}.stsk-dr .bu-body::before{inset:6px auto 6px 14px;width:0;border-left:3px dashed var(--sc1);border-radius:0;background:none;opacity:.85}';
+    Object.keys(STOPSKIN).forEach(function(id){ var S = STOPSKIN[id], P = '.stsk-' + id;
+      o += skScope(all, S);
+      o += P + ' .scn-sheet ul.scn-bul li::before{width:22px;height:18px;top:.25em;background:' + skUrl(STOPSHAPE(S.bul, S.a1)) + ' center/contain no-repeat}';
+      o += P + ' .gm-lane.gm-burst{background:' + (S.bul === 'ticket' ? window.SQE_STOPDECO(id) + ' 0 4px/120px 18px repeat-x,' : '') + skUrl(STOPSHAPE(S.bul, skMix(S.a1, .82), skMix(S.a1, .9)).replace(/#1b1b1b/g, skMix(S.a1, .7))) + ' 10px 34px/64px 64px,linear-gradient(#fff,' + S.pale + ')}';
+      S.c.forEach(function(c, i){ o += P + ' .bu-sw.c' + i + '{--sc1:' + c + ';--sc2:' + skMix(c, .78) + '}'; });
+      o += P + ' .gm-pc{border-radius:4px}';
+    });
+    return o; }
+  try { var skst = document.createElement('style'); skst.id = 'scn-skin-css'; skst.textContent = skCSS(); document.head.appendChild(skst); } catch(e){ try { console.warn('skin css', e); } catch(e2){} }
   var BBANG = '<svg viewBox="0 0 200 200"><path d="M100 4 L118 62 L176 30 L146 86 L198 104 L142 122 L170 176 L114 146 L98 198 L82 144 L28 172 L56 120 L2 100 L58 82 L26 28 L84 60 Z" fill="#FFE14D" stroke="#1b1b1b" stroke-width="6" stroke-linejoin="round"/><path d="M100 46 L110 82 L146 70 L122 98 L152 120 L114 116 L104 152 L92 116 L54 124 L80 98 L56 68 L90 82 Z" fill="#FF8A3D"/></svg>';
   var BBLOB = '<svg viewBox="0 0 120 90"><path d="M60 8 Q72 2 76 16 Q92 6 94 24 Q114 22 106 40 Q120 52 102 60 Q108 80 88 74 Q80 90 64 80 Q50 92 42 78 Q22 86 22 68 Q2 64 14 48 Q0 34 18 28 Q16 10 36 16 Q44 2 60 8 Z" fill="#FF5FA2" stroke="#1b1b1b" stroke-width="4" stroke-linejoin="round"/><circle cx="12" cy="14" r="5" fill="#FF5FA2" stroke="#1b1b1b" stroke-width="3"/><circle cx="110" cy="80" r="6" fill="#FF5FA2" stroke="#1b1b1b" stroke-width="3"/><circle cx="104" cy="8" r="4" fill="#FF5FA2" stroke="#1b1b1b" stroke-width="3"/><text x="60" y="55" text-anchor="middle" font-family="Chewy, Bubblegum Sans, cursive" font-size="24" fill="#fff" stroke="#1b1b1b" stroke-width="4" paint-order="stroke">SPLAT!</text></svg>';
   function burstDef(k){ var a = k && BURST[k.split('/')[1]]; if (!(a && a.length) && k && ROOM_IDX[k] === 0 && SPOTACTS[k.split('/')[1]]){ a = shuf(SPOTACTS[k.split('/')[1]].tf).slice(0, 12); } /* room 1: no scenario or mini-game, so its bonus comes from its own spot statements */ return a && a.length ? {type: 'burst', bonus: 1, title: burstName(k), items: a} : null; }
@@ -148829,7 +148952,7 @@ window.SQE_SCENE = function(A){
     var i = G.spawned++, it = G.items[i], W = lane.clientWidth, H = lane.clientHeight, gap = 10, sw = Math.min(310, Math.floor((W - 28 - gap * (cols - 1)) / cols)), col = s % cols, row = Math.floor(s / cols);
     var ft = lane.querySelector('.gm-pl.ft'), jh = ft ? ft.getBoundingClientRect().height : 120, rowH = (H - jh - 18) / 2, el = document.createElement('button');
     G.slots[s] = 1;
-    el.type = 'button'; el.className = 'bu-sw c' + (i % 6); el.setAttribute('data-scn', 'gburst'); el.setAttribute('data-i', i); el.setAttribute('aria-label', 'Sweet: ' + it.t);
+    el.type = 'button'; el.className = 'bu-sw c' + (i % 6); el.setAttribute('data-scn', 'gburst'); el.setAttribute('data-i', i); el.setAttribute('aria-label', SK('Sweet: ') + it.t);
     el.innerHTML = '<span class="bu-in" style="--bd:-' + (Math.random() * 2.4).toFixed(2) + 's"><svg class="bu-wr l" viewBox="0 0 30 60" preserveAspectRatio="none" aria-hidden="true">' + BSWP + '</svg><span class="bu-body"><span class="bu-tx">' + esc(it.t) + '</span></span><svg class="bu-wr r" viewBox="0 0 30 60" preserveAspectRatio="none" aria-hidden="true">' + BSWP + '</svg></span><span class="bu-fuse" aria-hidden="true"><i style="animation-duration:' + BLIFE + 'ms"></i></span>';
     el.style.width = sw + 'px'; el.style.left = Math.max(6, Math.min(W - sw - 10, Math.round(12 + col * (sw + gap) + (Math.random() * 8 - 4)))) + 'px'; el.style.top = '0px'; el._slot = s;
     lane.appendChild(el);
@@ -148844,7 +148967,7 @@ window.SQE_SCENE = function(A){
     var it = G.items[i], lane = bLane(G), ft = lane && lane.querySelector('.gm-pl.ft'); b.removeAttribute('data-scn'); b.classList.add('done'); G.slots[b._slot] = 0;
     if (lane && ft && b.parentNode === lane){ var lr = lane.getBoundingClientRect(), r = b.getBoundingClientRect(), pr = ft.getBoundingClientRect();
       if (it.true){ var n = G.inPot = (G.inPot || 0) + 1; b.style.setProperty('--dx', Math.round(pr.left + pr.width / 2 - (r.left + r.width / 2)) + 'px'); b.style.setProperty('--dy', Math.round(pr.top + pr.height * 0.3 - (r.top + r.height / 2)) + 'px'); b.classList.remove('go'); b.classList.add('bu-catch');
-        setTimeout(function(){ if (SC.game !== G) return; var pile = lane.querySelector('.gm-pile'); if (pile) pile.innerHTML = potPile('jar', n, true); potFx(lane, 'bump', 'True! In the jar'); }, 560); }
+        setTimeout(function(){ if (SC.game !== G) return; var pile = lane.querySelector('.gm-pile'); if (pile) pile.innerHTML = potPile(G.pot || 'jar', n, true); potFx(lane, 'bump', 'True! In the jar'); }, 560); }
       else { b.classList.remove('go'); b.classList.add('bu-splat'); var bl = document.createElement('span'); bl.className = 'bu-blob'; bl.setAttribute('aria-hidden', 'true'); bl.innerHTML = BBLOB; bl.style.left = Math.round(r.left - lr.left + r.width / 2) + 'px'; bl.style.top = Math.round(r.top - lr.top + r.height / 2) + 'px'; lane.appendChild(bl); setTimeout(function(){ if (bl.parentNode) bl.parentNode.removeChild(bl); }, 1700); potFx(lane, 'nope', 'Splat! That was false'); }
       setTimeout(function(){ if (b.parentNode) b.parentNode.removeChild(b); }, 950);
     } else if (b.parentNode) b.parentNode.removeChild(b);
@@ -148858,9 +148981,9 @@ window.SQE_SCENE = function(A){
     var sc = document.querySelector('.gm-score'); if (sc) sc.textContent = G.right + ' right so far';
     if (G.done >= G.items.length) bLater(function(){ if (SC.game !== G) return; G.phase = 'end'; G.t1 = Date.now(); stopTimer(); gpaint(); }, tapped ? 1300 : 700);
     else bLater(bSpawn, 650); }
-  function bFbHTML(fb){ return fb ? '<span class="k">' + esc(fb.k) + '</span>' + inl(fb.t || '') : '<span class="k">Ready…</span>Tap a sweet to catch it. True ones go in the jar.'; }
+  function bFbHTML(fb){ return SK(fb ? '<span class="k">' + esc(fb.k) + '</span>' + inl(fb.t || '') : '<span class="k">Ready…</span>Tap a sweet to catch it. True ones go in the jar.'); }
   function burstPlayHTML(g, G){
-    var pot = potHTML({pot: 'jar'}, G, null).replace('</svg><span class="gm-pop"', '<text x="100" y="117" text-anchor="middle" font-family="Chewy, Bubblegum Sans, cursive" font-size="24" fill="#fff" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round" paint-order="stroke">TRUE</text></svg><span class="gm-pop"');
+    var pot = potHTML({pot: SKIN ? SKIN.pot : 'jar'}, G, null).replace('</svg><span class="gm-pop"', '<text x="100" y="117" text-anchor="middle" font-family="Chewy, Bubblegum Sans, cursive" font-size="24" fill="#fff" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round" paint-order="stroke">TRUE</text></svg><span class="gm-pop"');
     return '<div class="gm-top"><span class="gm-time">' + GSECS + 's</span><span class="gm-score">' + G.right + ' right so far</span></div>' +
       '<p class="bu-how"><b>Catch only the true ones!</b> Tap a true sweet before its fuse runs out. Let the false ones fly away.</p>' +
       '<div class="gm-lane gm-burst' + (G.boom ? ' boom' : '') + '" id="gm-lane"><span class="bu-bang" aria-hidden="true">' + BBANG + '</span>' + pot + '<span class="bu-lid" aria-hidden="true"></span></div>' +
@@ -148868,7 +148991,7 @@ window.SQE_SCENE = function(A){
   }
   function burstEndHTML(g, G){
     var secs = Math.round((G.t1 - G.t0) / 1000), f = G.total ? G.right / G.total : 0, tr = G.items.filter(function(x){ return x.true; });
-    var h = '<div class="bu-end"><div class="bu-endjar" aria-hidden="true">' + potHTML({pot: 'jar'}, G, null) + '</div><div><h2>' + (f >= 1 ? 'Perfect jar!' : f >= 0.8 ? 'Sweet work!' : f >= 0.6 ? 'Nice catching!' : f >= 0.4 ? 'Getting there!' : 'Keep practising!') + '</h2><p class="score"><b>' + G.right + ' / ' + G.total + '</b> right · ' + secs + 's</p><p class="score">' + (G.inPot || 0) + ' of ' + tr.length + ' true sweets in the jar</p></div></div>';
+    var h = '<div class="bu-end"><div class="bu-endjar" aria-hidden="true">' + potHTML({pot: SKIN ? SKIN.pot : 'jar'}, G, null) + '</div><div><h2>' + (f >= 1 ? 'Perfect jar!' : f >= 0.8 ? 'Sweet work!' : f >= 0.6 ? 'Nice catching!' : f >= 0.4 ? 'Getting there!' : 'Keep practising!') + '</h2><p class="score"><b>' + G.right + ' / ' + G.total + '</b> right · ' + secs + 's</p><p class="score">' + (G.inPot || 0) + ' of ' + tr.length + ' true sweets in the jar</p></div></div>';
     h += '<h3 class="bu-h">The true facts</h3><ul class="bu-list">' + tr.map(function(x){ var fx = String(x.fix || ''), same = fx.replace(/\*\*/g, '').replace(/^\s*(Yes|No)[.,]?\s*/, '') === x.t || fx.replace(/\*\*/g, '') === x.t; return '<li><b>' + esc(x.t) + '</b>' + (same ? '' : '<small>' + inl(fx.replace(/^\s*\*\*(Yes|No)[.,]?\*\*[.,]?\s*/, '')) + '</small>') + '</li>'; }).join('') + '</ul>';
     if (G.wrong.length) h += '<h3 class="bu-h">Have another look at these</h3><ul class="bu-list no">' + G.wrong.map(function(w){ return '<li><b>' + esc(w.t) + '</b><br><span class="tag">' + (w.a === 'true' ? 'True, but it got away' : 'False, but you caught it') + '</span><small>' + inl(w.why || '') + '</small></li>'; }).join('') + '</ul>';
     return h + '<div class="scn-nav"><button type="button" class="btn" data-scn="gagain">Play again</button><button type="button" class="btn scn-eat" data-scn="gdone">Done</button></div>';
@@ -148893,10 +149016,10 @@ window.SQE_SCENE = function(A){
     return {keys: keys, fin: fin, next: nx, done: fin.filter(Boolean).length};
   }
   function visited(x){ var s = S().scene && S().scene[x]; return !!(s && s.open && Object.keys(s.open).length); }
-  function hubHTML(k){ var hb0 = HUBS[k]; return hb0 && hb0.stop ? Wst(hb0.stop, hubHTML0(k)) : hubHTML0(k); }
+  function hubHTML(k){ var hb0 = HUBS[k]; skinFor(k); return hb0 && hb0.stop ? SK(Wst(hb0.stop, hubHTML0(k))) : hubHTML0(k); }
   function hubHTML0(k){
     var hb = HUBS[k], H = hubState(hb), N = H.keys.length, nxk = H.keys[H.next];
-    var h = '<div class="scn hub"><div class="scn-head"><h2>🚪 ' + esc(hb.title) + '</h2><div class="scn-links">' + (hb.outside ? '<a class="scn-nb" href="#/scene/' + hb.outside + '/outside">Outside the shop</a>' : '') + '</div>' +
+    var h = '<div class="scn hub' + skRoot() + '"><div class="scn-head"><h2>🚪 ' + esc(hb.title) + '</h2><div class="scn-links">' + (hb.outside ? '<a class="scn-nb" href="#/scene/' + hb.outside + '/outside">Outside the shop</a>' : '') + '</div>' +
       '<p class="scn-sub">You\'re inside ' + esc(hb.place || 'the shop') + '. ' + (H.next < 0 ? 'Every room is done! Time to leave the shop.' : 'Each door leads to one topic. The glowing door is next: <b>' + esc((ROOMS[nxk.split('/')[1]] || SCENES[nxk]).name) + '</b>.') + '</p></div>';
     h += '<div class="scn-prog"><span>' + H.done + ' of ' + N + ' rooms done</span><span class="scn-bar" role="progressbar" aria-valuemin="0" aria-valuemax="' + N + '" aria-valuenow="' + H.done + '"><i style="width:' + Math.round(H.done / N * 100) + '%"></i></span>' + (H.next < 0 ? '<span>🏆</span>' : '') + '</div>';
     h += '<div class="scn-art hub-art' + (hb.img ? '' : ' noimg') + '" style="--rbg:' + esc(hb.bg || '#FFF1C9') + '" role="img" aria-label="' + esc(hb.alt || hb.title) + '">' + (hb.img ? '<img src="' + esc(hb.img) + '" alt="" style="aspect-ratio:auto ' + (hb.ratio || 16 / 9) + '" onerror="this.parentNode.classList.add(\'noimg\');this.parentNode.removeChild(this)">' : '<span class="hub-ph" aria-hidden="true">🚪🍬🚪🍭🚪</span>') +
@@ -149191,12 +149314,12 @@ window.SQE_SCENE = function(A){
   function showNext(){ var el = document.querySelector('.scn-hs.next') || document.querySelector('.scn-leave'); if (!el || !el.getBoundingClientRect) return; var r = el.getBoundingClientRect(); if (r.top < 70 || r.bottom > innerHeight - 50) try { if (ROOMS_ON && typeof ANCH !== 'undefined') ANCH.stop = true; el.scrollIntoView({block: 'center'}); } catch(e){ el.scrollIntoView(); } }
 
   VIEW.scene = function(r){
-    var k = keyOf(r), sc = SCENES[k], x = A.TBYKEY[k];
+    var k = keyOf(r), sc = SCENES[k], x = A.TBYKEY[k]; skinFor(k);
     if (HUBS[k]) return hubHTML(k);
     if (ROOMS_ON && sc && rk(k) && ROOM_IDX[k] !== 0 && HUBS[hubOf(k)] && r[3] !== 'inside' && r[3] !== 'outside'){ /* room 1's plain link (map stop, Today) shows the shop front instead */ try { history.replaceState(null, '', '#/scene/' + hubOf(k)); } catch(e){} return hubHTML(hubOf(k)); }
     if (!sc || !x || (!deck(k) && !later(k))) return '<div class="card"><h2>This scene isn\'t ready yet</h2><a class="btn" href="#/palace">Back to Peckham</a></div>';
     var o = state(k), mode = later(k) ? 'inside' : r[3] === 'outside' || r[3] === 'inside' ? r[3] : (o.door && !rk(k) ? 'inside' : 'outside'), base = '#/scene/' + k, LT = later(k), EX = extras(k);
-    var N = order(k).length + EX.length, n = nOpen(k) + EX.filter(function(e){ return exDone(k, e); }).length, h = '<div class="scn">';
+    var N = order(k).length + EX.length, n = nOpen(k) + EX.filter(function(e){ return exDone(k, e); }).length, h = '<div class="scn' + skRoot() + '">';
     if (rk(k) && mode !== 'outside') h += ribbon(k); /* the shop front isn't a room: no "Room 1 of 16" or "Back to the hall" there */
     h += '<div class="scn-head"><h2>' + (LT ? esc(sc.icon || '🍬') : '🍭') + ' ' + esc(sc.name) + '</h2><div class="scn-links">' + (ROOMS_ON ? '<a class="scn-nb" href="#/topic/' + x.s.id + '/' + x.t.id + '">Full notes</a>' + (LT ? '' : mode === 'inside' ? '<a class="scn-nb" href="' + base + '/outside">Outside the shop</a>' : (rk(k) && HUBS[hubOf(k)] ? '<a class="scn-nb" href="#/scene/' + hubOf(k) + '">Go into the hall</a>' : '')) : '<a href="#/topic/' + x.s.id + '/' + x.t.id + '">📖 Full notes</a>' + (mode === 'inside' ? '<a href="' + base + '/outside">🚪 Step outside</a>' : o.door ? '<a href="' + base + '/inside">Go straight in ›</a>' : '') + '<a href="#/map/' + x.s.id + '">🗺️ Peckham</a>') + '</div>' +
       '<p class="scn-sub">' + esc(A.tnum(x)) + ': <b>' + esc(x.t.title) + '</b>. ' + (LT ? (order(k).length ? 'Every person and prop hides part of the notes. Tap the glowing one.' + (sc.scenario || sc.game ? ' Then play the ' + (sc.scenario && sc.game ? 'scenario and the mini-game' : sc.scenario ? 'scenario' : 'mini-game') + '.' : '') : 'This room\'s sweets are still being made. Read the full notes for now, then tell Britney how it went.') : mode === 'outside' ? 'You\'re outside the sweet shop on Cluckington High Street. Tap the door to go in.' : 'Every sweet hides part of the notes. Tap one to open it.') + '</p></div>';
@@ -149216,21 +149339,21 @@ window.SQE_SCENE = function(A){
     }
     if (!SC.demoDone && /[?&]exitdemo=1\b/.test(location.search)){ SC.demoDone = true; var di = exitPool(k); if (di.length) SC.exit = {k: k, items: di, i: di.length, ans: di.map(function(){ return {ok: true}; }), saved: true}; } /* preview only: ?exitdemo=1 opens the passed exit screen without saving anything */
     h += modalHTML(k);
-    return h + '</div>';
+    return SK(h + '</div>');
   };
 
   function cur(){ var r = A.route(), k = keyOf(r); return r[0] === 'scene' && (SCENES[k] || HUBS[k]) ? k : ''; }
   function paint(){ /* repaint only the modal, so the page doesn't jump */
     var k = cur(); if (!k) return;
-    var old = document.querySelector('.scn-ov'), html = modalHTML(k), tmp = document.createElement('div'); tmp.innerHTML = html;
+    var old = document.querySelector('.scn-ov'), html = (skinFor(k), SK(modalHTML(k))), tmp = document.createElement('div'); tmp.innerHTML = html;
     var nw = tmp.firstChild;
     if (old && nw){ old.parentNode.replaceChild(nw, old); try { if (window.SQE_RAGFACES) window.SQE_RAGFACES(nw); } catch(e){} }
     else if (old) old.parentNode.removeChild(old);
     else if (nw){ var host = document.querySelector('.scn'); if (host) host.appendChild(nw); }
     if (nw){ var sh = nw.querySelector('.scn-sheet'); nw.scrollTop = 0; var f = nw.querySelector('[data-scn=next],[data-scn=eat],[data-scn=enter],[data-scn=xnext],[data-scn=xpick],.nck-o:not([disabled]),.scn-x'); if (f) try { f.focus({preventScroll: true}); } catch(e){} }
   }
-  function toast(t){ [].forEach.call(document.querySelectorAll('.scn-toast'), function(x){ x.parentNode.removeChild(x); }); var d = document.createElement('div'); d.className = 'scn-toast'; d.setAttribute('role', 'status'); d.textContent = t; document.body.appendChild(d); setTimeout(function(){ if (d.parentNode) d.parentNode.removeChild(d); }, 2700); }
-  function confetti(){ var d = document.createElement('div'), em = ['🍬', '🍭', '🍫', '⭐', '🎉', '🍡']; d.className = 'scn-confetti'; for (var i = 0; i < 36; i++){ var e = document.createElement('i'); e.textContent = em[i % em.length]; e.style.left = Math.round(Math.random() * 96) + '%'; e.style.animationDelay = (Math.random() * 1.2).toFixed(2) + 's'; d.appendChild(e); } document.body.appendChild(d); setTimeout(function(){ if (d.parentNode) d.parentNode.removeChild(d); }, 4500); }
+  function toast(t){ [].forEach.call(document.querySelectorAll('.scn-toast'), function(x){ x.parentNode.removeChild(x); }); var d = document.createElement('div'); d.className = 'scn-toast'; d.setAttribute('role', 'status'); d.textContent = SK(t); document.body.appendChild(d); setTimeout(function(){ if (d.parentNode) d.parentNode.removeChild(d); }, 2700); }
+  function confetti(){ var d = document.createElement('div'), em = ['🍬', '🍭', '🍫', '⭐', '🎉', '🍡'], SKc = SKIN; d.className = 'scn-confetti' + (SKc ? ' sk' : ''); for (var i = 0; i < 36; i++){ var e = document.createElement('i'); if (SKc) e.innerHTML = STOPSHAPE(i % 3 === 2 ? 'star' : SKc.bul, SKc.c[i % SKc.c.length]); else e.textContent = em[i % em.length]; e.style.left = Math.round(Math.random() * 96) + '%'; e.style.animationDelay = (Math.random() * 1.2).toFixed(2) + 's'; d.appendChild(e); } document.body.appendChild(d); setTimeout(function(){ if (d.parentNode) d.parentNode.removeChild(d); }, 4500); }
   function openObj(k, id){ var o = state(k), h = hsById(SCENES[k], id); if (!h) return; SC.open = id; SC.gate = false; SC.yay = false; SC.exit = null; var n = steps(k, h).length; SC.step = o.open[id] ? 0 : Math.max(0, Math.min(n - 1, o.pos[id] || 0)); o.at = id; try { A.save(); } catch(e){} paint(); }
   function go(k, d){ var h = hsById(SCENES[k], SC.open); if (!h) return; var stp = steps(k, h), n = stp.length, i = SC.step + d; if (i < 0 || i >= n) return; if (d > 0 && ROOMS_ON && stp[SC.step] && stp[SC.step].k === 'check'){ var pd = pendChecks(); if (pd.length){ toast('Answer the quick check first, then play!'); try { pd[0].scrollIntoView({block: 'center', behavior: 'smooth'}); } catch(e){} return; } } SC.step = i; var o = state(k); if (!o.open[h.id]){ o.pos[h.id] = i; try { A.save(); } catch(e){} } paint(); }
   function close(){ SC.open = null; SC.gate = false; SC.yay = false; SC.exit = null; SC.scen = null; SC.game = null; stopTimer(); var k = cur(); if (k) A.render(); }
@@ -150559,8 +150682,10 @@ window.SQE_MOUNT = function(A){
     legs.style.transform = L.face === 'l' ? 'scaleX(-1)' : '';
     var dy = cw ? 277 - ankleY(5, 2) : 277 - Math.max(ankleY(near[0], near[1]), ankleY(far[0], far[1]));   /* keep the lowest foot on the ground: the body rises as the legs pass */
     rig.style.transformOrigin = (HIP[0] / BOX[0] * 100).toFixed(2) + '% ' + (HIP[1] / BOX[1] * 100).toFixed(2) + '%';
-    var rot = cw ? L.spin : L.fr === 'k' ? (L.lean || 0) : L.fr === 'v' ? Math.sin((L.dist || 0) / (STRIDE_PX * 0.5) * Math.PI * 2) * 1.6 : 0;
+    var rot = cw ? L.spin : L.fr === 'v' ? Math.sin((L.dist || 0) / (STRIDE_PX * 0.5) * Math.PI * 2) * 1.6 : 0, lean = L.fr === 'k' ? (L.lean || 0) * (L.face === 'l' ? -1 : 1) : 0;
     rig.style.transform = 'translateY(' + (dy / BOX[1] * 100).toFixed(2) + '%)' + (rot ? ' rotate(' + (L.face === 'l' ? -rot : rot).toFixed(1) + 'deg)' : '');
+    var hxp = (HIP[0] / BOX[0] * 100).toFixed(2) + '%', hyp = (HIP[1] / BOX[1] * 100).toFixed(2) + '%', ltf = lean ? 'translate(' + hxp + ',' + hyp + ') rotate(' + lean.toFixed(1) + 'deg) translate(-' + hxp + ',-' + hyp + ')' : '';
+    tq.forEach(function(c){ var im = rig.querySelector('img.' + c); if (im && im.style.transform !== ltf) im.style.transform = ltf; });   /* only her top half bends forward; legs stay planted */
   }
   /* bubble above the speaker's head; the tail points at the head even when the bubble is nudged to stay inside the garden */
   function aim(g, say, who){
