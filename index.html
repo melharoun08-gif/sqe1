@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120005711";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120010525";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -2605,21 +2605,27 @@ html.dfv-on{overflow:hidden}
 /* newbanner: PREVIEW ONLY. app.js adds .nb to .head when the URL has ?newbanner=1; every rule here is scoped to .head.nb so the live banner is untouched.
    Layout: [cloud staircase + Layla | title, dates, numbers, Remember | ring, coin bag], kept left of the drawn coop/hens/girls. */
 .head.nb,.head.nb.compact{background-image:url(img/banner-bg4.webp),url(img/banner-ext.webp)!important}
-.head.nb .nbstage{order:1;position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,380px) clamp(360px,30cqw,440px);justify-content:space-between;column-gap:clamp(16px,2cqw,40px);align-items:start;width:min(calc(100% - 500px),1120px);box-sizing:border-box;padding:0 0 14px;color:#10294A}
-.head.nb .nbl{position:relative;min-width:0;max-width:380px}
-.head.nb .nbsteps{position:relative;width:100%;max-width:380px}
+/* fun (left): staircase box is a fixed design (600x616 viewBox) whose size follows --nbh; bubble and bag scale with it so nothing collides */
+.head.nb{--nbh:clamp(230px,29.6vw,380px);--nbw:calc(var(--nbh) * 600 / 616)}
+.head.nb .nbstage{order:1;position:relative;z-index:2;display:grid;grid-template-columns:var(--nbw) minmax(0,440px);justify-content:space-between;column-gap:18px;align-items:start;width:min(calc(100% - 536px),1120px);box-sizing:border-box;padding:0 0 14px;color:#10294A}
+.head.nb .nbl{position:relative;min-width:0;width:var(--nbw)}
+.head.nb .nbsteps{position:relative;width:100%}
 .head.nb .nbsvg{display:block;width:100%;height:auto;overflow:visible}
-.head.nb .nbbub{position:absolute;left:0;top:0;z-index:2;max-width:50%;display:flex;flex-direction:column;align-items:flex-start;background:#fff;border:2.5px solid #10294A;border-radius:28px;padding:7px 16px 9px;box-shadow:0 3px 0 #10294A;font-size:12.5px;line-height:1.22;color:#10294A;box-sizing:border-box}
-.head.nb .nbbub::after{content:"";position:absolute;left:30px;bottom:-11px;width:18px;height:18px;background:#fff;border:solid #10294A;border-width:0 2.5px 2.5px 0;transform:rotate(45deg) skew(8deg,8deg);border-bottom-right-radius:5px}
-.head.nb .nbbn{display:flex;align-items:center;gap:6px;font-size:19px;font-weight:800;line-height:1.1;margin-bottom:2px}
+.head.nb .nbbub{position:absolute;left:0;top:0;z-index:2;max-width:50%;display:flex;flex-direction:column;align-items:flex-start;background:#fff;border:2.5px solid #10294A;border-radius:2.2em;padding:.55em 1.25em .7em;box-shadow:0 3px 0 #10294A;font-size:min(12.5px,.974vw);line-height:1.22;color:#10294A;box-sizing:border-box}
+.head.nb .nbbub::after{content:"";position:absolute;left:2.4em;bottom:-.9em;width:1.4em;height:1.4em;background:#fff;border:solid #10294A;border-width:0 2.5px 2.5px 0;transform:rotate(45deg) skew(8deg,8deg);border-bottom-right-radius:.4em}
+.head.nb .nbbn{display:flex;align-items:center;gap:.45em;font-size:1.52em;font-weight:800;line-height:1.1;margin-bottom:.15em;white-space:nowrap}
 .head.nb .nbbub span{font-weight:700}
-.head.nb .nbbub small{font-size:11.5px;font-weight:700;color:#10294A!important;margin-top:2px}
-.head.nb .nbbub .stbtn{margin-top:4px}
-.head.nb .nbflame{position:static;flex:none;width:28px;height:28px;margin:0;border-radius:50%;background:#FFD93B;border:2.5px solid #10294A;box-sizing:border-box;display:grid;place-items:center}
-.head.nb .nbflame svg{width:18px;height:18px;display:block}
+.head.nb .nbbub small{font-size:.92em;font-weight:700;color:#10294A!important;margin-top:.2em}
+.head.nb .nbbub .stbtn{margin-top:.35em;font-size:1em}
+.head.nb .nbflame{position:static;flex:none;width:1.45em;height:1.45em;margin:0;border-radius:50%;background:#FFD93B;border:2px solid #10294A;box-sizing:border-box;display:grid;place-items:center}
+.head.nb .nbflame svg{width:68%;height:68%;display:block}
 .head.nb .stgift.wob{transform-origin:545px 45px}
-.head.nb.nb .nbl .mbag{position:absolute;right:0;bottom:0;margin:0!important;max-width:46%;box-sizing:border-box;box-shadow:0 3px 0 #10294A;border:2.5px solid #10294A!important;z-index:2}
-.head.nb .nbl .mbag .mbn,.head.nb .nbl .mbag small{color:#10294A!important}
+.head.nb.nb .nbl .mbag{position:absolute;right:0;bottom:0;margin:0!important;max-width:none;box-sizing:border-box;font-size:min(13px,1.013vw);gap:.5em;padding:.25em .8em .25em .3em;border-radius:1.1em;box-shadow:0 3px 0 #10294A;border:2.5px solid #10294A!important;z-index:2}
+.head.nb .nbl .mbag .mbsvg{width:4em;height:4.6em}
+.head.nb .nbl .mbag .mbn{font-size:1em;color:#10294A!important}
+.head.nb .nbl .mbag .mbn b{font-size:1.85em}
+.head.nb .nbl .mbag small{font-size:.885em;max-width:none;color:#10294A!important}
+/* serious (centre) */
 .head.nb .nbc{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;min-width:0}
 .head.nb .nbtitle h1{margin:0;font-size:clamp(26px,2.3vw,40px);line-height:1.05;font-weight:800;color:#0b2340!important}
 .head.nb .nbtitle .sub{display:flex;flex-wrap:wrap;justify-content:center;gap:0 14px;margin-top:5px;font-size:14px;font-weight:700;color:#10294A!important}
@@ -2627,7 +2633,7 @@ html.dfv-on{overflow:hidden}
 .head.nb .nbstats .stat{display:flex;flex-direction:column;justify-content:center;background:#fff;border:2.5px solid #10294A;border-radius:14px;padding:3px 7px 4px;box-shadow:0 3px 0 #10294A;min-width:58px}
 .head.nb .nbstats .stat b{font-size:22px;line-height:1.1;white-space:nowrap}
 .head.nb .nbstats .stat b small{font-size:12.5px;font-weight:700}
-.head.nb .nbstats .stat span{display:block;max-width:76px;margin:0 auto;font-size:10.5px;font-weight:800;line-height:1.2}
+.head.nb .nbstats .stat span{display:block;max-width:60px;margin:0 auto;font-size:10.5px;font-weight:800;line-height:1.2}
 .head.nb.nb .kw{position:relative!important;left:auto!important;top:auto!important;width:100%!important;max-width:none!important;min-width:0;margin:0!important;flex:none;box-sizing:border-box;text-align:left}
 .head.nb .nbring{display:flex;align-items:center;gap:8px;background:#fff;border:2.5px solid #10294A;border-radius:14px;padding:3px 8px 3px 3px;box-shadow:0 3px 0 #10294A;text-align:left;flex:none}
 .head.nb .nbring .ring,.head.nb .nbring .ring svg{width:52px;height:52px;flex:none}
@@ -2642,9 +2648,35 @@ html.dfv-on{overflow:hidden}
  .head.nb,.head.nb.compact{background-image:url(img/banner-bg4.webp),url(img/sky-tile.webp)!important}
  .head.nb.nb{padding-top:12px!important}
  .head.nb .nbstage{display:flex;flex-direction:column;align-items:center;width:100%;gap:14px;padding-bottom:12px}
- .head.nb .nbl{width:min(100%,420px)}
+ .head.nb .nbl{width:min(100%,400px)}
+ .head.nb .nbbub{font-size:12px}
+ .head.nb.nb .nbl .mbag{font-size:12.5px}
  .head.nb .nbc{width:min(100%,420px)}
 }
+
+/* map-motion-zoo (20 Nov, Monnie): the big airport plane zooms off and lands back; the zoo animals sleep at night with Z z z and a gentle snore.
+   Markup: life_zoo() in tools/journey-src.js. The original pictures in the stop links are hidden with opacity (so they stay tappable) only when the redrawn layers exist. */
+.jsv:has(.jairst) .jhit image[href="img/map-new/airport.webp"]{opacity:0}
+.jsv:has(.jzsleep) .jhit .jz0,.jsv:has(.jzsleep) .jhit .jzb,.jsv:has(.jzsleep) .jhit .jzt{opacity:0!important;animation:none!important}
+.jsv .jbigplane{animation:jmz-big 24s linear infinite}
+/* the small taxiing plane: mapLife's copy is behind the redrawn airport, so life_zoo draws it again in front; it runs only while the big plane is away (one plane on show at a time) */
+.jsv:has(.jplanez) .jplane{display:none}
+.jsv .jplanez{animation:jmz-small 24s linear infinite}
+.jsv .jzsleep{transform-origin:50% 100%;animation:jmz-snore 3.6s ease-in-out infinite}
+.jsv .jzz{animation:jmz-z 3.6s ease-out infinite}
+.jsv .jzz1{animation-delay:1.2s}
+.jsv .jzz2{animation-delay:2.4s}
+/* sits 5s, zooms off up and right, gone about 8s, glides back in from the left, nose-down, and settles on its spot */
+@keyframes jmz-big{0%,20%{opacity:1;transform:translate(0,0) rotate(0);animation-timing-function:cubic-bezier(.5,0,.9,.4)}
+  29%{opacity:1;transform:translate(520px,-300px) rotate(-6deg)}30%{opacity:0;transform:translate(560px,-320px) rotate(-6deg)}
+  31%,62%{opacity:0;transform:translate(-420px,-300px) rotate(12deg)}64%{opacity:1;transform:translate(-360px,-255px) rotate(12deg);animation-timing-function:cubic-bezier(.2,.6,.35,1)}
+  80%{transform:translate(0,4px) rotate(2deg);animation-timing-function:ease-in-out}84%{transform:translate(0,-3px) rotate(-1deg)}88%,100%{opacity:1;transform:translate(0,0) rotate(0)}}
+@keyframes jmz-small{0%,32%{opacity:0;transform:translate(0,0) rotate(0)}35%{opacity:1;transform:translate(0,0) rotate(0);animation-timing-function:ease-in}
+  48%{transform:translate(110px,0) rotate(0);animation-timing-function:ease-in-out}51%{transform:translate(150px,-12px) rotate(-12deg);animation-timing-function:ease-out}
+  57%{opacity:1}61%{opacity:0;transform:translate(225px,-100px) rotate(-15deg)}62%,100%{opacity:0;transform:translate(0,0) rotate(0)}}
+@keyframes jmz-snore{0%,100%{transform:scale(1,1)}45%{transform:scale(1.008,1.018)}}
+@keyframes jmz-z{0%{opacity:0;transform:translate(0,0) scale(.5)}20%{opacity:1}70%{opacity:.9}100%{opacity:0;transform:translate(var(--zx,18px),-52px) scale(1.15)}}
+@media (prefers-reduced-motion:reduce){.jsv .jbigplane,.jsv .jplanez,.jsv .jzsleep,.jsv .jzz{animation:none!important}.jsv .jzz{opacity:0!important}.jsv .jzz0{opacity:1!important}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -79996,6 +80028,25 @@ window.SQE_JOURNEY = function (A) {
         s += "<g transform=\"translate(".concat(f1(fa.x), ",").concat(f1(fa.y), ")\" style=\"--fall:").concat(f1(fb.y - fa.y), "px\"><circle class=\"jmo japple\" style=\"opacity:0\" r=\"6\" fill=\"#E63946\" stroke=\"#111\" stroke-width=\"2\"/></g>");
         return "<g class=\"jlife\" aria-hidden=\"true\" pointer-events=\"none\">".concat(s, "</g>");
     }
+    /* map-motion-zoo (20 Nov, Monnie): the big drawn plane at the airport takes off and comes back in to land; at night the zoo giraffe and elephant are asleep, snoring Z z z.
+       Both landmark pictures are redrawn here from pixel-aligned copies (img/map-new/anim/), and the originals inside the stop links go transparent (still tappable) via CSS :has(). */
+    function life_zoo(L, hr) {
+        var s = '';
+        var A = L.art;
+        var at = function (slug, inner) { var p = L.lm(ART_SLUG.indexOf(slug) + 1); return "<g transform=\"translate(".concat(p.x, ",").concat(p.y, ") scale(").concat(p.s, ")\">").concat(inner, "</g>"); };
+        s += at('airport', "<g class=\"jairst\">".concat(artImg('anim/airport-still', A.x, A.y, A.w, A.h), "</g><g class=\"jmo jbigplane\">").concat(artImg('anim/airport-plane', A.x, A.y, A.w, A.h), "</g>"));
+        var ap = apt(L, 'airport', .12, .97);
+        s += "<g transform=\"translate(".concat(f1(ap.x), ",").concat(f1(ap.y), ")\"><g class=\"jmo jplanez\" style=\"opacity:0\">").concat(plane, "</g></g>"); /* mapLife's small taxiing plane, redrawn here so it is in front of the redrawn airport */
+        if (skyPhase(hr) === 'night') {
+            s += at('zoo', "<g class=\"jmo jzsleep\">".concat(artImg('anim/zoo-sleep', A.x, A.y, A.w, A.h), "</g>"));
+            var zz = function (q, dir) { var k = q.dw / 160; return "<g transform=\"translate(".concat(f1(q.x), ",").concat(f1(q.y), ") scale(").concat(k.toFixed(3), ")\">") + [[24, 0], [19, 1], [15, 2]].map(function (_a) {
+                var fs = _a[0], j = _a[1];
+                return "<text class=\"jmo jzz jzz".concat(j, "\" style=\"--zx:").concat(dir * 18, "px;opacity:0\" x=\"0\" y=\"0\" font-size=\"").concat(fs, "\" font-weight=\"900\" fill=\"#fff\" stroke=\"#111\" stroke-width=\"3\" paint-order=\"stroke\" stroke-linejoin=\"round\" text-anchor=\"middle\">").concat(j ? 'z' : 'Z', "</text>");
+            }).join('') + "</g>"; };
+            s += zz(apt(L, 'zoo', .30, .06), -1) + zz(apt(L, 'zoo', .83, .13), 1);
+        }
+        return "<g class=\"jlife jlifez\" aria-hidden=\"true\" pointer-events=\"none\">".concat(s, "</g>");
+    }
     var SWAY = { forest: 1, botanic: 1, farm: 1 };
     /* ---------- the map ---------- */
     function mapSVG(J, L) {
@@ -80027,6 +80078,8 @@ window.SQE_JOURNEY = function (A) {
         });
         if (MAP_ART)
             s += mapLife(L);
+        if (MAP_ART)
+            s += life_zoo(L, hr);
         var pc = L.lm(15);
         s += "<g transform=\"translate(".concat(pc.x, ",").concat(pc.y, ") scale(").concat(pc.s, ")\" ").concat(INK, ">").concat(MAP_ART ? artImg('camp', L.art.gx, L.art.gy, L.art.gw, L.art.gh) : camp(), "</g>");
         var P = L.palace;
@@ -80608,11 +80661,16 @@ SCENES["blp/business-structures"] = {
                  hotspots: [ {id, x, y, w, h, icon, label, title?, big?, cards: [[sec, from, to]], check?} ] },   same format as room 1
        scenario?: { x?, y?, w?, h?, icon?, label?, title, cast: [{name, emoji?}], intro?,
                     steps: [ {say: [{who, text}], q, opts: [4 strings], a: rightIndex, why, whys?: [4 one-liners]} ], outro?: {who, text} },
-       game?: { x?, y?, w?, h?, icon?, label?, title, how, type: "sort" | "order" | "match", end?: "one line shown at the end",
-                sort:  bins: [labels], items: [{t, bin: binIndex, why}], pick?: n (random n, at least 3 per bin)
-                       or rounds: [{items: [...], ask?: {q, opts, a, why}}]
-                order: items: [{t, why}] in the right order (shown shuffled), prompt?   or rounds: [{prompt, items}]
-                match: pairs: [{l, r, why}] (tap a left item, then its right item; several lefts may share one right) }
+       game?: { x?, y?, w?, h?, icon?, label?, title, how, type, end?: "one line shown at the end", then by type:
+                sort:   bins: [labels], items: [{t, bin: binIndex, why}], pick?: n (random n, at least 3 per bin)
+                        or rounds: [{items: [...], ask?: {q, opts, a, why}}]               (tap a bin, or drag the item onto it)
+                order:  items: [{t, why}] in the right order (shown shuffled), prompt?    or rounds: [{prompt, items}]   (tap in order, or ▲ ▼)
+                match:  pairs: [{l, r, why}] (tap a left item, then its right item; several lefts may share one right)
+                catch:  prompt, items: [{t, ok: true if it should be tapped, why}]    (they float past one by one; no fail-out)
+                number: q, opts: [4-6 figures], a: index (or the figure itself), why   or rounds: [{q, opts, a, why}]
+                spot:   prompt, lines: [{t, bad?: true, why}] (6-8 lines, 2-3 bad)     or rounds: [{prompt, lines}]
+              Every game has a 30-second soft timer (no fail-out) and ends with the score + the why for each wrong one. }
+   Two hotspots may share (nearly) the same box, e.g. "part 1" / "part 2" of one object: the glowing one is always the next to open.
      }
    x/y/w/h are percent of the picture. Leave them out and the object gets a placeholder spot in a grid.
    A room with a learn deck but no ROOMDATA gets one object per deck section. A room with no deck is a placeholder.
@@ -80629,13 +80687,13 @@ window.SQE_ROOMS_ON = ROOMS_ON;
 var ROOM_NEW_DECKS = ["blp/decision-making", "blp/partnerships", "blp/distributions-accounts", "blp/corporation-tax"];
 if (!ROOMS_ON && window.SQE_LEARN){ window.SQE_LEARN_HELD = window.SQE_LEARN_HELD || {}; ROOM_NEW_DECKS.forEach(function(k){ if (window.SQE_LEARN[k]){ window.SQE_LEARN_HELD[k] = window.SQE_LEARN[k]; delete window.SQE_LEARN[k]; } }); }
 var ROOMS = {
-  "business-structures":          {name: "The Sweet Jar Room",        icon: "🍭", slug: "sweetshop-inside", bg: "#FFF1C9"},
-  "formation":                    {name: "The Gingerbread Room",      icon: "🏠", slug: "room-gingerbread", bg: "#F6D7A7"},
-  "directors":                    {name: "The Cake Room",             icon: "🎂", slug: "room-cake",        bg: "#FFE3EE"},
-  "decision-making":              {name: "The Ice Cream Parlour",     icon: "🍦", slug: "room-icecream",    bg: "#DDF3FF"},
-  "shareholders-minority":        {name: "The Pick ’n’ Mix Room",     icon: "🍬", slug: "room-pickmix2",     bg: "#F3E3FF"},
+  "business-structures":          {name: "The Sweet Jar Room",        icon: "🍭", slug: "sweetshop-inside", art: 1, bg: "#FFF1C9"},
+  "formation":                    {name: "The Gingerbread Room",      icon: "🏠", slug: "room-gingerbread", art: 1, bg: "#F6D7A7"},
+  "directors":                    {name: "The Cake Room",             icon: "🎂", slug: "room-cake", art: 1,        bg: "#FFE3EE"},
+  "decision-making":              {name: "The Ice Cream Parlour",     icon: "🍦", slug: "room-icecream", art: 1,    bg: "#DDF3FF"},
+  "shareholders-minority":        {name: "The Pick ’n’ Mix Room",     icon: "🍬", slug: "room-pickmix2", art: 1,     bg: "#F3E3FF"},
   "partnerships":                 {name: "The Doughnut Room",         icon: "🍩", slug: "room-doughnut",    bg: "#CFF3E6"},
-  "equity-finance":               {name: "The Chocolate Room",        icon: "🍫", slug: "room-chocolate",   bg: "#EBD3C0"},
+  "equity-finance":               {name: "The Chocolate Room",        icon: "🍫", slug: "room-chocolate", art: 1,   bg: "#EBD3C0"},
   "debt-security":                {name: "The Toffee and Fudge Room", icon: "🍯", slug: "room-toffee",      bg: "#FBE2B4"},
   "distributions-accounts":       {name: "The Cupcake Room",          icon: "🧁", slug: "room-cupcake",     bg: "#FFE0F0"},
   "corporate-insolvency":         {name: "The Jelly Room",            icon: "🍮", slug: "room-jelly",       bg: "#E2FFD6"},
@@ -80646,6 +80704,7 @@ var ROOMS = {
   "corporation-tax":              {name: "The Milkshake Bar",         icon: "🥤", slug: "room-milkshake",   bg: "#E0F7FA"},
   "vat-iht-bpr":                  {name: "The Gift Wrapping Room",    icon: "🎁", slug: "room-giftwrap",    bg: "#E8EAFF"}
 };
+/* art: 1 = the room's picture img/scene/<slug>.webp exists (no art = plain coloured background, and nothing is requested, so no 404s). Set it when a picture lands. */
 var ROOMDATA = {};
 var B = {name: "Britney", emoji: "🐔"};
 
@@ -80991,16 +81050,16 @@ var ROOM_KEYS = [], ROOM_IDX = {};
     var cols = spots.length > 9 ? 4 : 3, rows = Math.ceil(spots.length / cols) || 1;
     spots.forEach(function(h, j){ if (h.x == null){ h.x = 2 + (j % cols) * (96 / cols); h.y = 4 + Math.floor(j / cols) * (92 / rows); h.w = 96 / cols - 3; h.h = 92 / rows - 5; h.ph = true; } });
     SCENES[k] = { room: i + 1, name: m.name, icon: m.icon, bg: m.bg, treat: 'treat', treats: 'treats', enter: m.icon + ' Enter ' + m.name.replace(/^The /, 'the '),
-      inside: { img: ins.img || 'img/scene/' + m.slug + '.webp', ratio: ins.ratio || 1376 / 768, alt: ins.alt || m.name, hotspots: hs },
+      inside: { img: ins.img || (m.art ? 'img/scene/' + m.slug + '.webp' : ''), ratio: ins.ratio || 1376 / 768, alt: ins.alt || m.name, hotspots: hs },
       scenario: d.scenario || null, game: d.game || null };
   });
 })();
 
 /* hubs: one per map stop (every stop will get its own hub later). The sweet shop's entrance hall = #/scene/blp/hall */
 var HUBS = window.SQE_HUBS = window.SQE_HUBS || {};
-if (ROOMS_ON && ROOM_KEYS.length) HUBS["blp/hall"] = { title: "The Entrance Hall", place: "the sweet shop", img: "img/scene/shop-hall.webp", ratio: 1376 / 768, bg: "#FFE9F3",
+if (ROOMS_ON && ROOM_KEYS.length) HUBS["blp/hall"] = { title: "The Entrance Hall", place: "the sweet shop", img: "" /* "img/scene/shop-hall.webp" once it is drawn */, ratio: 1376 / 768, bg: "#FFE9F3",
   alt: "The sweet shop's entrance hall, with doors to sixteen rooms", rooms: ROOM_KEYS.slice(), outside: "blp/business-structures",
-  thumb: function(k){ var m = ROOMS[k.split('/')[1]]; return m ? 'img/scene/' + m.slug + '.webp' : ''; } };
+  thumb: function(k){ var m = ROOMS[k.split('/')[1]]; return m && m.art ? 'img/scene/' + m.slug + '.webp' : ''; } };
 
 var CSS = [
 '.scn{max-width:1000px;margin:0 auto 18px}',
@@ -81262,6 +81321,21 @@ var CSS = [
 '.gm-res li{padding:8px 12px;border:2px solid #1b1b1b;border-radius:12px;background:#FFF5FA;color:#1b1b1b;font-size:15px}',
 '.gm-res li b{display:block}',
 '.gm-big{text-align:center}.gm-big .big{font-size:56px;line-height:1}.gm-big h2{font-family:"Chewy",var(--font);font-weight:400;font-size:30px;margin:4px 0}',
+'.gm-nums{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:10px 0}',
+'.gm-num{min-width:110px;padding:12px 16px;border:3px solid #1b1b1b;border-radius:16px;background:#FFFDF6;color:#1b1b1b;font:800 20px/1.1 var(--font);box-shadow:0 4px 0 #1b1b1b;cursor:pointer}',
+'.gm-num.right{background:#DFF7EA;border-color:#2E7D32}.gm-num.wrong{background:#FFE0EC;border-color:#A3215B}.gm-num.dim{opacity:.55}',
+'.gm-lines{list-style:none;margin:8px 0;padding:0;display:grid;gap:6px}',
+'.gm-line{display:block;width:100%;text-align:left;font:inherit;font-size:15px;padding:9px 12px;border:2.5px solid #1b1b1b;border-radius:12px;background:#FFFDF6;color:#1b1b1b;cursor:pointer}',
+'.gm-line small{display:block;margin-top:4px;font-size:13.5px;font-weight:600}',
+'.gm-line.sel{background:#FFF200;box-shadow:0 0 0 3px #FF2D8A}',
+'.gm-line.ok{background:#DFF7EA}.gm-line.no{background:#FFE0EC}.gm-line[disabled]{cursor:default}',
+'.gm-mv{display:flex;gap:4px;flex:none}.gm-mv button{width:38px;height:38px;border:2.5px solid #1b1b1b;border-radius:10px;background:#fff;color:#1b1b1b;font-size:15px;cursor:pointer}.gm-mv button[disabled]{opacity:.35}',
+'.gm-slots li .gm-chip{flex:1}',
+'.gm-lane{position:relative;height:260px;margin:8px 0;border:3px solid #1b1b1b;border-radius:18px;background:linear-gradient(#E8F7FF,#FFF0F6);overflow:hidden}',
+'.gm-fly{position:absolute;left:0;max-width:70%;padding:9px 14px;border:2.5px solid #1b1b1b;border-radius:99px;background:#fff;color:#1b1b1b;font:700 15px/1.25 var(--font);box-shadow:2px 3px 0 #1b1b1b;cursor:pointer;white-space:normal;animation:gmFly 7s linear forwards}',
+'@keyframes gmFly{from{transform:translateX(-105%)}to{transform:translateX(calc(100vw))}}',
+'.gm-lane{container-type:inline-size}',
+'@supports (width:1cqw){@keyframes gmFly{from{transform:translateX(-105%)}to{transform:translateX(100cqw)}}}',
 '.hub-doors{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 0;padding:0;list-style:none}',
 '.hub-door{position:relative;display:flex;flex-direction:column;width:100%;height:100%;padding:0;border:3px solid #1b1b1b;border-radius:16px 16px 10px 10px;background:#FFFDF6;color:#1b1b1b;font:inherit;text-align:left;text-decoration:none;box-shadow:3px 3px 0 #1b1b1b;cursor:pointer;overflow:hidden}',
 '.hub-door .th{display:block;aspect-ratio:1376/768;background:var(--rbg,#FFF1C9) center/cover no-repeat;border-bottom:3px solid #1b1b1b;font-size:34px;display:grid;place-items:center}',
@@ -81275,6 +81349,8 @@ var CSS = [
 '.hub-door.next .stt{background:#FFF200}',
 '.hub-door.locked{background:#EEE7EC}.hub-door.locked .th{filter:grayscale(.85) brightness(.85)}',
 '.hub-art{position:relative}',
+'.hub-art.noimg{display:grid;place-items:center;aspect-ratio:1376/420}',
+'.hub-ph{font-size:46px;letter-spacing:12px}',
 '.hub-leave{margin-top:14px}',
 '@media (max-width:900px){.hub-doors{grid-template-columns:repeat(2,1fr)}}',
 '@media (prefers-reduced-motion:reduce){.scn-say,.hub-door.next{animation:none}}',
@@ -81371,28 +81447,246 @@ window.SQE_SCENE = function(A){
     Object.keys(seen).forEach(function(id){ var p = id.split(':'); if (!d.sections[+p[0]] || +p[1] >= d.sections[+p[0]].cards.length) bad.push('object points at missing card ' + id); });
     return bad;
   }
-  Object.keys(SCENES).forEach(function(k){ var b = coverage(k); if (b.length && window.console) console.warn('Scene ' + k + ' does not cover its learn deck:', b); });
+  Object.keys(SCENES).forEach(function(k){ if (!deck(k) || !SCENES[k].inside.hotspots.length) return; var b = coverage(k); if (b.length && window.console) console.warn('Scene ' + k + ' does not cover its learn deck:', b); });
   window.__sceneCoverage = coverage;
+  /* ---------- rooms preview (?rooms=1): room chain, scenario, mini-games, room end, entrance hall ---------- */
+  function rk(k){ return ROOMS_ON && ROOM_IDX[k] != null; }
+  function later(k){ return rk(k) && ROOM_IDX[k] > 0; }
+  function hubOf(){ return 'blp/hall'; }
+  function extras(k){ var sc = SCENES[k], a = []; if (!later(k)) return a; if (sc.scenario) a.push({id: 'scenario', h: sc.scenario, act: 'scen'}); if (sc.game) a.push({id: 'game', h: sc.game, act: 'game'}); return a; }
+  function exDone(k, e){ var st = state(k); return e.id === 'scenario' ? !!st.sc : !!st.game; }
+  function roomDone(k){ if (nOpen(k) < order(k).length) return false; if (!later(k)) return !!state(k).passed; return extras(k).every(function(e){ return exDone(k, e); }); }
+  function conf(k){ return window.SQE_CONF ? window.SQE_CONF(k) : null; }
+  function roomFin(k){ var st = state(k); if (st.fin) return true; if (roomDone(k) && conf(k) != null){ st.fin = Date.now(); try { A.save(); } catch(e){} return true; } return false; }
+  function earnC(n, key){ try { if (A.earn) A.earn(n, key); } catch(e){} }
+  function ribbon(k){
+    var i = ROOM_IDX[k], sc = SCENES[k], m = ROOMS[k.split('/')[1]] || {};
+    return '<div class="scn-ribbon"><span class="rb"><b>Room ' + (i + 1) + ' of ' + ROOM_KEYS.length + '</b>' + esc(m.icon || '') + ' ' + esc(m.name || sc.name) + '</span><a href="#/scene/' + hubOf(k) + '">🚪 Back to the hall</a></div>';
+  }
+  function endHTML(k){
+    var c = conf(k), x = A.TBYKEY[k], m = ROOMS[k.split('/')[1]] || {}, f = c === 0 ? 'sad' : c === 0.5 ? 'meh' : 'happy';
+    var say = c === 1 ? 'Yay! Green it is. Back to the hall: the next door is glowing!' : c === 0.5 ? 'Hmm, a bit wobbly. We\'ll come back to it.' : c === 0 ? 'Oh no! Don\'t worry, we\'ll go over it again.' : 'Tap a face:';
+    var h = '<div class="scn-end" id="scn-end"><div class="scn-brit' + (c == null ? '' : ' rated') + '" data-face="' + f + '"><p class="scn-brit-k"><b>' + esc(m.name || SCENES[k].name) + ' done!</b> Before you go back to the hall…</p>' +
+      '<div class="scn-brit-row"><span class="scn-brit-hen"><img src="img/britney/face-' + f + '.webp" alt="Britney the hen looking ' + (f === 'meh' ? 'unsure' : f) + '" width="300" height="300" onerror="this.onerror=null;this.src=\'img/britney/plain.webp\'"></span>' +
+      '<div class="scn-brit-say" role="status"><span class="q">How did you find ' + esc(x.t.title) + '?</span><span class="a">' + say + '</span></div></div>' + (window.SQE_RATE ? window.SQE_RATE(k) : '') + '</div>';
+    if (c != null) h += '<a class="scn-nextroom" href="#/scene/' + hubOf(k) + '">🚪 Back to the hall ›</a>';
+    if (later(k)) h += '<div class="scn-endbtns"><button type="button" class="btn" data-scn="leave">🎯 Practise: exit quiz (' + exitCount(k) + ' questions, optional)</button></div>';
+    return h + '</div>';
+  }
+  /* scenario: comic-style dialogue, then tap-to-choose; wrong shows the right one + why */
+  function whoOf(sp, name){ var c = sp.cast || [], i; for (i = 0; i < c.length; i++) if (c[i].name === name) return {e: c[i].emoji || '💬', i: i}; return {e: name === 'Britney' ? '🐔' : '💬', i: -1}; }
+  function scenStart(k){ var sp = SCENES[k].scenario; SC.scen = {k: k, i: 0, pick: null, right: 0, ord: shuf(nums(sp.steps[0].opts.length))}; SC.open = null; SC.exit = null; SC.game = null; paint(); }
+  function scenHTML(k){
+    var sp = SCENES[k].scenario, s = SC.scen, n = sp.steps.length, L = 'ABCD';
+    var h = '<div class="scn-st"><span class="ico" aria-hidden="true">' + esc(sp.icon || '🎬') + '</span><div><div class="k">Scenario · ' + esc(SCENES[k].name) + '</div><h2 id="scn-mt">' + esc(sp.title) + '</h2></div><button type="button" class="scn-x" data-scn="close" aria-label="Close">✕</button></div>';
+    if (s.i >= n){
+      return h + '<div class="gm-big"><div class="big" aria-hidden="true">🎬🍬</div><h2>Case closed!</h2><p class="score"><b>' + s.right + ' / ' + n + '</b> right first time</p></div>' +
+        (sp.outro ? '<div class="scn-says">' + sayHTML(sp, sp.outro) + '</div>' : '') + '<div class="scn-nav"><span></span><button type="button" class="btn scn-eat" data-scn="scendone">✓ Done</button></div>';
+    }
+    var st = sp.steps[s.i], p = s.pick;
+    h += '<div class="scn-mbar"><i style="width:' + Math.round((s.i + (p == null ? 0 : 1)) / n * 100) + '%"></i></div><div class="scn-mn">Part ' + (s.i + 1) + ' of ' + n + '</div>';
+    if (s.i === 0) h += '<div class="scn-cast">' + (sp.cast || []).map(function(c){ return '<span>' + esc(c.emoji || '') + ' ' + esc(c.name) + '</span>'; }).join('') + '</div>' + (sp.intro ? '<p class="scn-intro">' + inl(sp.intro) + '</p>' : '');
+    h += '<div class="scn-says">' + (st.say || []).map(function(l){ return sayHTML(sp, l); }).join('') + '</div><p class="scn-q">' + inl(st.q) + '</p><div class="scn-opts">';
+    s.ord.forEach(function(oi, pos){ var cls = p == null ? '' : oi === st.a ? ' right' : oi === p ? ' wrong' : ' dim';
+      h += '<button type="button" class="scn-opt' + cls + '" data-scn="scpick" data-o="' + oi + '"' + (p == null ? '' : ' disabled') + '><b>' + L.charAt(pos) + '.</b> ' + inl(st.opts[oi]) + '</button>'; });
+    h += '</div>';
+    if (p != null){
+      var ok = p === st.a;
+      h += '<div class="scn-fb' + (ok ? ' ok' : '') + '" role="status"><b>' + (ok ? '✓ Right! ' : '✗ Not quite. ') + '</b>' + (!ok && st.whys && st.whys[p] ? inl(st.whys[p]) + '<br>' : '') + (ok ? '' : '<b>The answer is ' + L.charAt(s.ord.indexOf(st.a)) + ':</b> ' + inl(st.opts[st.a]) + '<br>') + '<b>Why:</b> ' + inl(st.why || '') + '</div>' +
+        '<div class="scn-nav"><span></span><button type="button" class="btn primary" data-scn="scnext">' + (s.i + 1 >= n ? 'Finish ›' : 'Next ›') + '</button></div>';
+    }
+    return h;
+  }
+  function sayHTML(sp, l){ var w = whoOf(sp, l.who), nar = l.who === 'Britney';
+    return '<div class="scn-say' + (nar ? ' nar' : w.i % 2 ? ' r' : '') + '"><span class="who" aria-hidden="true">' + esc(w.e) + '<small>' + esc(l.who) + '</small></span><span class="bub"><span class="sr-only" style="position:absolute;left:-9999px">' + esc(l.who) + ': </span>' + inl(l.text) + '</span></div>'; }
+  /* mini-games: sort / order / match, 30-second soft timer, no fail-out, score + one-line why for each wrong at the end */
+  var GT = null, GSECS = 30;
+  function stopTimer(){ if (GT){ clearInterval(GT); GT = null; } if (CT){ clearTimeout(CT); CT = null; } }
+  var CT = null;
+  /* catch: items float across one by one; tap only the right ones before they go (gentle speed, no fail-out) */
+  function catchRun(){ var G = SC.game; if (!G || G.type !== 'catch' || G.phase !== 'play') return; var lane = document.getElementById('gm-lane'); if (!lane) return;
+    if (G.spawned < G.items.length){ var i = G.spawned++, it = G.items[i], el = document.createElement('button');
+      el.type = 'button'; el.className = 'gm-fly'; el.setAttribute('data-scn', 'gcatch'); el.setAttribute('data-i', i); el.style.top = (6 + (i * 37) % 68) + '%'; el.innerHTML = inl(it.t);
+      el.addEventListener('animationend', function(){ if (el.parentNode) el.parentNode.removeChild(el); catchHit(i, false); });
+      lane.appendChild(el); CT = setTimeout(catchRun, 2100); }
+  }
+  function catchHit(i, tapped){
+    var G = SC.game, k = cur(); if (!G || G.type !== 'catch' || G.res[i] != null) return; var it = G.items[i], good = !!(it.ok || it.good), ok = tapped === good; G.res[i] = ok; G.done++; G.total++;
+    if (ok) G.right++; else G.wrong.push({t: it.t, a: good ? 'one to tap' : 'not one to tap', why: it.why});
+    var fb = document.querySelector('.gm-fb'), sc = document.querySelector('.gm-score');
+    if (tapped || !ok){ G.fb = {ok: ok, t: (ok ? 'Got it! ' : tapped ? 'Not that one. ' : 'Missed one: ' + it.t + '. ') + (it.why || '')}; if (fb){ fb.className = 'gm-fb ' + (ok ? 'ok' : 'no'); fb.innerHTML = (ok ? '✓ ' : '✗ ') + inl(G.fb.t); } }
+    if (sc) sc.textContent = G.right + ' right so far';
+    if (G.done >= G.items.length){ gEnd(); gpaint(); }
+  }
+  function tick(){ var g = SC.game, el = document.querySelector('.gm-time'); if (!g || !el){ return; } var left = GSECS - Math.floor((Date.now() - g.t0) / 1000);
+    if (g.phase === 'end'){ stopTimer(); return; }
+    if (left > 0){ el.textContent = '⏱ ' + left + 's'; el.className = 'gm-time'; } else { el.textContent = '⏰ Time! Finish at your own pace'; el.className = 'gm-time up'; } }
+  function pickItems(g){
+    var it = g.items.map(function(x, i){ return i; });
+    if (!g.pick || g.pick >= it.length) return shuf(it).map(function(i){ return g.items[i]; });
+    var byBin = {}, out = [], rest = [];
+    shuf(it).forEach(function(i){ var b = g.items[i].bin; byBin[b] = byBin[b] || []; if (byBin[b].length < 3) { byBin[b].push(i); out.push(i); } else rest.push(i); });
+    out = out.concat(rest).slice(0, Math.max(g.pick, out.length));
+    return shuf(out).map(function(i){ return g.items[i]; });
+  }
+  function gameStart(k){
+    var g = SCENES[k].game, G = {k: k, type: g.type, t0: Date.now(), ri: 0, qi: 0, phase: 'play', wrong: [], right: 0, total: 0, fb: null};
+    if (g.type === 'sort') G.rounds = (g.rounds || [{items: g.items}]).map(function(r){ return {items: g.rounds ? shuf(r.items) : pickItems(g), ask: r.ask}; });
+    else if (g.type === 'order') G.rounds = (g.rounds || [{prompt: g.prompt, items: g.items}]).map(function(r){ return {prompt: r.prompt, items: r.items, pool: shuf(nums(r.items.length)), placed: []}; });
+    else if (g.type === 'number') G.rounds = (g.rounds || [{q: g.q, opts: g.opts, a: g.a, why: g.why}]).map(function(r){ var a = typeof r.a === 'number' ? r.a : r.opts.map(String).indexOf(String(r.a != null ? r.a : r.answer)); return {q: r.q, opts: r.opts, a: a, why: r.why}; });
+    else if (g.type === 'spot') G.rounds = (g.rounds || [{prompt: g.prompt, lines: g.lines}]).map(function(r){ return {prompt: r.prompt, lines: r.lines, sel: {}, shown: false}; });
+    else if (g.type === 'catch'){ G.items = shuf(g.items.slice()); G.res = {}; G.spawned = 0; G.done = 0; }
+    else { G.lefts = shuf(nums(g.pairs.length)); G.rights = []; g.pairs.forEach(function(p){ if (G.rights.indexOf(p.r) < 0) G.rights.push(p.r); }); G.matched = {}; G.tried = {}; G.sel = null; }
+    SC.game = G; SC.open = null; SC.exit = null; SC.scen = null; paint(); stopTimer(); GT = setInterval(tick, 500); if (G.type === 'catch') CT = setTimeout(catchRun, 600);
+  }
+  function gpaint(){ var ov = document.querySelector('.scn-ov'), y = ov ? ov.scrollTop : 0; paint(); ov = document.querySelector('.scn-ov'); if (ov) ov.scrollTop = y; tick(); }
+  function gameHTML(k){
+    var g = SCENES[k].game, G = SC.game, h = '<div class="scn-st"><span class="ico" aria-hidden="true">' + esc(g.icon || '🎮') + '</span><div><div class="k">Mini-game · ' + esc(SCENES[k].name) + '</div><h2 id="scn-mt">' + esc(g.title) + '</h2></div><button type="button" class="scn-x" data-scn="close" aria-label="Close">✕</button></div>';
+    if (G.phase === 'end'){
+      var secs = Math.round((G.t1 - G.t0) / 1000);
+      h += '<div class="gm-big"><div class="big" aria-hidden="true">' + (G.right === G.total ? '🏆🍬🎉' : '🍬⭐') + '</div><h2>' + (G.right === G.total ? 'Perfect!' : 'Nice one!') + '</h2><p class="score"><b>' + G.right + ' / ' + G.total + '</b> right first time · ' + secs + 's' + (secs <= GSECS ? ' (inside the 30 seconds!)' : '') + '</p></div>';
+      if (G.wrong.length) h += '<p><b>Have another look at these:</b></p><ul class="gm-res">' + G.wrong.map(function(w){ return '<li><b>' + inl(w.t) + ' → ' + inl(w.a) + '</b>' + inl(w.why || '') + '</li>'; }).join('') + '</ul>';
+      if (g.end) h += '<div class="scn-says">' + sayHTML({cast: []}, {who: 'Britney', text: g.end}) + '</div>';
+      return h + '<div class="scn-nav"><button type="button" class="btn" data-scn="gagain">↺ Play again</button><button type="button" class="btn scn-eat" data-scn="gdone">✓ Done</button></div>';
+    }
+    h += '<div class="gm-top"><span class="gm-time">⏱ ' + GSECS + 's</span><span class="gm-score">' + G.right + ' right so far</span></div><p class="gm-how">' + inl(g.how || '') + '</p>';
+    if (G.type === 'sort'){
+      var R = G.rounds[G.ri];
+      if (G.rounds.length > 1) h += '<div class="scn-mn">Round ' + (G.ri + 1) + ' of ' + G.rounds.length + '</div>';
+      if (G.phase === 'ask'){
+        var q = R.ask, p = G.askPick;
+        h += '<p class="scn-q">' + inl(q.q) + '</p><div class="scn-opts">' + q.opts.map(function(o, i){ var cls = p == null ? '' : i === q.a ? ' right' : i === p ? ' wrong' : ' dim'; return '<button type="button" class="scn-opt' + cls + '" data-scn="gask" data-o="' + i + '"' + (p == null ? '' : ' disabled') + '>' + inl(o) + '</button>'; }).join('') + '</div>';
+        if (p != null) h += '<div class="scn-fb' + (p === q.a ? ' ok' : '') + '"><b>' + (p === q.a ? '✓ Right! ' : '✗ It\'s ' + inl(q.opts[q.a]) + '. ') + '</b>' + inl(q.why || '') + '</div><div class="scn-nav"><span></span><button type="button" class="btn primary" data-scn="gnext">Next ›</button></div>';
+        return h;
+      }
+      var it = R.items[G.qi];
+      h += '<div class="scn-mn">' + (G.qi + 1) + ' of ' + R.items.length + '</div><div class="gm-item" data-gm="drag">' + inl(it.t) + '</div><div class="gm-bins">' + g.bins.map(function(b, i){ return '<button type="button" class="gm-bin" data-scn="gbin" data-b="' + i + '">' + inl(b) + '</button>'; }).join('') + '</div>';
+      h += '<p class="gm-fb' + (G.fb ? (G.fb.ok ? ' ok' : ' no') : '') + '" role="status">' + (G.fb ? (G.fb.ok ? '✓ ' : '✗ ') + inl(G.fb.t) : '') + '</p>';
+    } else if (G.type === 'order'){
+      var O = G.rounds[G.ri];
+      if (G.rounds.length > 1) h += '<div class="scn-mn">Round ' + (G.ri + 1) + ' of ' + G.rounds.length + '</div>';
+      h += '<p class="scn-q">' + inl(O.prompt || 'Put these in order') + '</p><ol class="gm-slots">';
+      for (var j = 0; j < O.items.length; j++){ var pi = O.placed[j];
+        if (pi == null) h += '<li><span class="empty"></span></li>';
+        else { var cls = O.checked ? (pi === j ? ' ok' : ' no') : ''; h += '<li><button type="button" class="gm-chip' + cls + '" data-scn="gun" data-i="' + j + '"' + (O.checked ? ' disabled' : '') + '>' + inl(O.items[pi].t) + (O.checked ? (pi === j ? ' ✓' : ' ✗') : '') + '</button>' + (O.checked ? '' : '<span class="gm-mv"><button type="button" data-scn="gmv" data-i="' + j + '" data-d="-1" aria-label="Move up"' + (j ? '' : ' disabled') + '>▲</button><button type="button" data-scn="gmv" data-i="' + j + '" data-d="1" aria-label="Move down"' + (j < O.placed.length - 1 ? '' : ' disabled') + '>▼</button></span>') + '</li>'; } }
+      h += '</ol>';
+      if (!O.checked){
+        if (!O.placed.length) h += '<p class="gm-how">Tap the first step, then the next… Tap a placed step to take it back, or use ▲ ▼ to move it.</p>';
+        h += '<div class="gm-pool">' + O.pool.filter(function(i){ return O.placed.indexOf(i) < 0; }).map(function(i){ return '<button type="button" class="gm-chip" data-scn="gput" data-i="' + i + '">' + inl(O.items[i].t) + '</button>'; }).join('') + '</div>';
+        if (O.placed.length === O.items.length) h += '<div class="scn-nav"><span></span><button type="button" class="btn primary" data-scn="gcheck">Check my order ›</button></div>';
+      } else {
+        h += '<div class="scn-fb' + (O.score === O.items.length ? ' ok' : '') + '"><b>' + O.score + ' of ' + O.items.length + ' in the right place.</b>' + (O.score === O.items.length ? '' : ' The right order: ' + O.items.map(function(x, i){ return (i + 1) + '. ' + inl(x.t); }).join(' · ')) + '</div><div class="scn-nav"><span></span><button type="button" class="btn primary" data-scn="gnext">Next ›</button></div>';
+      }
+    } else if (G.type === 'number'){
+      var Q = G.rounds[G.ri], np = G.pick;
+      if (G.rounds.length > 1) h += '<div class="scn-mn">Question ' + (G.ri + 1) + ' of ' + G.rounds.length + '</div>';
+      h += '<p class="scn-q">' + inl(Q.q) + '</p><div class="gm-nums">' + Q.opts.map(function(o, i){ var cls = np == null ? '' : i === Q.a ? ' right' : i === np ? ' wrong' : ' dim'; return '<button type="button" class="gm-num' + cls + '" data-scn="gnum" data-o="' + i + '"' + (np == null ? '' : ' disabled') + '>' + inl(String(o)) + '</button>'; }).join('') + '</div>';
+      if (np != null) h += '<div class="scn-fb' + (np === Q.a ? ' ok' : '') + '"><b>' + (np === Q.a ? '✓ Right! ' : '✗ It\'s ' + inl(String(Q.opts[Q.a])) + '. ') + '</b>' + inl(Q.why || '') + '</div><div class="scn-nav"><span></span><button type="button" class="btn primary" data-scn="gnext">Next ›</button></div>';
+    } else if (G.type === 'spot'){
+      var P = G.rounds[G.ri];
+      if (G.rounds.length > 1) h += '<div class="scn-mn">Round ' + (G.ri + 1) + ' of ' + G.rounds.length + '</div>';
+      h += '<p class="scn-q">' + inl(P.prompt || 'Tap the lines with a mistake in them.') + '</p><ul class="gm-lines">' + P.lines.map(function(l, i){ var on = !!P.sel[i], cls = on ? ' sel' : '';
+        if (P.shown) cls = (on === !!l.bad ? ' ok' : ' no') + (l.bad ? ' bad' : '');
+        return '<li><button type="button" class="gm-line' + cls + '" data-scn="gspot" data-i="' + i + '"' + (P.shown ? ' disabled' : '') + '>' + (P.shown ? (l.bad ? '❌ ' : '✅ ') : on ? '🚩 ' : '') + inl(l.t) + (P.shown && (l.bad || on) && l.why ? '<small>' + inl(l.why) + '</small>' : '') + '</button></li>'; }).join('') + '</ul>';
+      h += P.shown ? '<div class="scn-nav"><span></span><button type="button" class="btn primary" data-scn="gnext">Next ›</button></div>' : '<div class="scn-nav"><span class="gm-how">' + Object.keys(P.sel).length + ' flagged</span><button type="button" class="btn primary" data-scn="gspotrev">Reveal the mistakes ›</button></div>';
+    } else if (G.type === 'catch'){
+      h += '<p class="scn-q">' + inl(g.prompt || 'Tap only the right ones before they float away.') + '</p><div class="gm-lane" id="gm-lane"></div><p class="gm-fb' + (G.fb ? (G.fb.ok ? ' ok' : ' no') : '') + '" role="status">' + (G.fb ? (G.fb.ok ? '✓ ' : '✗ ') + inl(G.fb.t) : '') + '</p>';
+    } else {
+      h += '<div class="gm-match"><div class="gm-left">' + G.lefts.map(function(i){ var p = g.pairs[i], m = G.matched[i];
+        return '<button type="button" class="gm-chip' + (m ? ' ok' : G.sel === i ? ' sel' : '') + (G.shake === 'l' + i ? ' no' : '') + '" data-scn="gl" data-i="' + i + '"' + (m ? ' disabled' : '') + '>' + inl(p.l) + (m ? ' <b>→ ' + inl(p.r) + '</b>' : '') + '</button>'; }).join('') + '</div>' +
+        '<div class="gm-right">' + G.rights.map(function(r, ri){ return '<button type="button" class="gm-chip' + (G.shake === 'r' + ri ? ' no' : '') + '" data-scn="gr" data-r="' + ri + '">' + inl(r) + '</button>'; }).join('') + '</div></div>';
+      h += '<p class="gm-fb' + (G.fb ? (G.fb.ok ? ' ok' : ' no') : '') + '" role="status">' + (G.fb ? (G.fb.ok ? '✓ ' : '✗ ') + inl(G.fb.t) : (G.sel == null ? 'Tap a behaviour on the left first.' : 'Now tap the right one on the right.')) + '</p>';
+    }
+    return h;
+  }
+  function gEnd(){ var G = SC.game; G.phase = 'end'; G.t1 = Date.now(); stopTimer(); if (G.right === G.total) setTimeout(confetti, 60); }
+  function gSort(k, b){
+    var g = SCENES[k].game, G = SC.game; if (!G || G.phase !== 'play') return; var R = G.rounds[G.ri], it = R.items[G.qi], ok = b === it.bin;
+    G.total++; if (ok) G.right++; else G.wrong.push({t: it.t, a: g.bins[it.bin], why: it.why});
+    G.fb = {ok: ok, t: ok ? it.why : 'It goes in ' + g.bins[it.bin] + '. ' + it.why};
+    G.qi++;
+    if (G.qi >= R.items.length){ if (R.ask){ G.phase = 'ask'; G.askPick = null; } else if (G.ri + 1 < G.rounds.length){ G.ri++; G.qi = 0; } else gEnd(); }
+    gpaint();
+    var btn = document.querySelector('.gm-bin[data-b="' + (ok ? b : it.bin) + '"]'); if (btn){ btn.classList.add(ok ? 'flash-ok' : 'flash-no'); setTimeout(function(){ btn.classList.remove('flash-ok', 'flash-no'); }, 700); }
+  }
+  function gNext(){ var G = SC.game; if (!G) return;
+    if (G.type === 'sort'){ if (G.ri + 1 < G.rounds.length){ G.ri++; G.qi = 0; G.phase = 'play'; G.fb = null; } else gEnd(); }
+    else if (G.type === 'order' || G.type === 'number' || G.type === 'spot'){ if (G.ri + 1 < G.rounds.length){ G.ri++; G.pick = null; } else gEnd(); }
+    gpaint(); }
+  function gMatch(k, side, v){
+    var g = SCENES[k].game, G = SC.game; G.shake = null;
+    if (side === 'l'){ if (G.matched[v]) return; G.sel = v; G.fb = null; gpaint(); return; }
+    if (G.sel == null){ G.fb = {ok: false, t: 'Tap a behaviour on the left first, then its match.'}; gpaint(); return; }
+    var p = g.pairs[G.sel], r = G.rights[v];
+    if (p.r === r){ G.matched[G.sel] = 1; G.total++; if (!G.tried[G.sel]) G.right++; G.fb = {ok: true, t: p.why}; G.sel = null; if (Object.keys(G.matched).length === g.pairs.length) gEnd(); }
+    else { if (!G.tried[G.sel]){ G.tried[G.sel] = 1; G.wrong.push({t: p.l, a: p.r, why: p.why}); } G.fb = {ok: false, t: 'Not that one. Try again.'}; G.shake = 'r' + v; }
+    gpaint();
+  }
+  /* drag a sort item onto a bin (touch or mouse); tapping a bin works too */
+  document.addEventListener('pointerdown', function(e){
+    var src = e.target.closest && e.target.closest('.gm-item[data-gm=drag]'); if (!src || !SC.game) return;
+    var r = src.getBoundingClientRect(), dx = e.clientX - r.left, dy = e.clientY - r.top, x0 = e.clientX, y0 = e.clientY, cl = null, hot = null;
+    function at(ev){ var el = document.elementFromPoint(ev.clientX, ev.clientY); return el && el.closest ? el.closest('.gm-bin') : null; }
+    function mv(ev){ if (!cl){ if (Math.abs(ev.clientX - x0) + Math.abs(ev.clientY - y0) < 8) return; cl = src.cloneNode(true); cl.classList.add('drag'); cl.style.width = r.width + 'px'; document.body.appendChild(cl); }
+      ev.preventDefault(); cl.style.left = (ev.clientX - dx) + 'px'; cl.style.top = (ev.clientY - dy) + 'px'; var b = at(ev); if (hot !== b){ if (hot) hot.classList.remove('hot'); hot = b; if (hot) hot.classList.add('hot'); } }
+    function up(ev){ document.removeEventListener('pointermove', mv); document.removeEventListener('pointerup', up); document.removeEventListener('pointercancel', up);
+      if (hot) hot.classList.remove('hot'); if (cl){ cl.parentNode.removeChild(cl); var b = at(ev); if (b){ var k = cur(); if (k) gSort(k, +b.getAttribute('data-b')); } } }
+    document.addEventListener('pointermove', mv, {passive: false}); document.addEventListener('pointerup', up); document.addEventListener('pointercancel', up);
+  });
+  /* the entrance hall: one door per room; done ✓ (traffic-light colour), the next one glows, later ones locked */
+  var RAGC = {1: '#2E9E5B', 0.5: '#E8A300', 0: '#D62839'};
+  function hubState(hb){
+    var keys = hb.rooms.filter(function(x){ return SCENES[x] && A.TBYKEY[x]; }), fin = keys.map(function(x){ return roomFin(x); }), nx = fin.indexOf(false);
+    return {keys: keys, fin: fin, next: nx, done: fin.filter(Boolean).length};
+  }
+  function visited(x){ var s = S().scene && S().scene[x]; return !!(s && s.open && Object.keys(s.open).length); }
+  function hubHTML(k){
+    var hb = HUBS[k], H = hubState(hb), N = H.keys.length, nxk = H.keys[H.next];
+    var h = '<div class="scn hub"><div class="scn-head"><h2>🚪 ' + esc(hb.title) + '</h2><div class="scn-links">' + (hb.outside ? '<a href="#/scene/' + hb.outside + '/outside">🚪 Step outside</a>' : '') + '<a href="#/map/' + k.split('/')[0] + '">🗺️ Map</a></div>' +
+      '<p class="scn-sub">You\'re inside ' + esc(hb.place || 'the shop') + '. ' + (H.next < 0 ? 'Every room is done! Time to leave the shop.' : 'Each door leads to one topic. The glowing door is next: <b>' + esc((ROOMS[nxk.split('/')[1]] || SCENES[nxk]).name) + '</b>.') + '</p></div>';
+    h += '<div class="scn-prog"><span>' + H.done + ' of ' + N + ' rooms done</span><span class="scn-bar" role="progressbar" aria-valuemin="0" aria-valuemax="' + N + '" aria-valuenow="' + H.done + '"><i style="width:' + Math.round(H.done / N * 100) + '%"></i></span>' + (H.next < 0 ? '<span>🏆</span>' : '') + '</div>';
+    h += '<div class="scn-art hub-art' + (hb.img ? '' : ' noimg') + '" style="--rbg:' + esc(hb.bg || '#FFF1C9') + '" role="img" aria-label="' + esc(hb.alt || hb.title) + '">' + (hb.img ? '<img src="' + esc(hb.img) + '" alt="" onerror="this.parentNode.classList.add(\'noimg\');this.parentNode.removeChild(this)">' : '<span class="hub-ph" aria-hidden="true">🚪🍬🚪🍭🚪</span>') + '</div>';
+    if (H.next < 0) h += '<button type="button" class="scn-leave hub-leave" data-scn="hleave" data-k="' + esc(H.keys[N - 1]) + '"><span aria-hidden="true">🚪</span><span>Leave the shop<small>Exit quiz: ' + exitLabel(H.keys[N - 1]) + '</small></span></button>';
+    h += '<ul class="hub-doors">' + H.keys.map(function(x, i){
+      var sc = SCENES[x], t = A.TBYKEY[x], done = H.fin[i], nxt = i === H.next, open = done || nxt || visited(x) || (H.next < 0), c = conf(x);
+      var cls = done ? ' done' : nxt ? ' next' : open ? '' : ' locked', href = '#/scene/' + x + (i === 0 ? '/inside' : '');
+      var stt = done ? '<span class="stt" style="background:' + (RAGC[c] || '#2E9E5B') + '" aria-label="done">✓</span>' : nxt ? '<span class="stt" aria-label="next">▶</span>' : open ? '' : '<span class="stt" aria-label="locked">🔒</span>';
+      var th = hb.thumb ? hb.thumb(x) : (sc.inside && sc.inside.img), m = ROOMS[x.split('/')[1]] || {};
+      var inner = '<span class="th" style="--rbg:' + esc(m.bg || '#FFF1C9') + (th ? ';background-image:url(' + esc(th) + ')' : '') + '" aria-hidden="true">' + esc(m.icon || '🍬') + '</span>' + stt +
+        '<span class="tx"><span class="no">Room ' + (i + 1) + (done ? ' · done' : nxt ? ' · next' : open ? '' : ' · locked') + '</span><span class="nm">' + esc(m.name || sc.name) + '</span><span class="tp">' + esc(t.t.title) + '</span></span>';
+      return '<li>' + (open ? '<a class="hub-door' + cls + '" href="' + href + '">' + inner + '</a>' : '<button type="button" class="hub-door' + cls + '" data-scn="hlock" data-k="' + esc(x) + '">' + inner + '</button>') + '</li>';
+    }).join('') + '</ul>';
+    h += modalHTML(k);
+    return h + '</div>';
+  }
 
   function order(k){ return SCENES[k].inside.hotspots; }
-  function nextId(k){ var o = state(k).open, h = order(k); for (var i = 0; i < h.length; i++) if (!o[h[i].id]) return h[i].id; return null; }
+  function nextId(k){ var o = state(k).open, h = order(k); for (var i = 0; i < h.length; i++) if (!o[h[i].id]) return h[i].id; var ex = extras(k); for (i = 0; i < ex.length; i++) if (!exDone(k, ex[i])) return ex[i].id; return null; }
   function nOpen(k){ var o = state(k).open; return order(k).filter(function(h){ return o[h.id]; }).length; }
   function keyOf(r){ return r[1] && r[2] ? r[1] + '/' + r[2] : ''; }
 
   function artHTML(view, done, k, mode){
-    var pic = view.img ? '<img src="' + esc(view.img) + '" alt="' + esc(view.alt || '') + '">' : '<svg viewBox="0 0 1000 ' + Math.round(1000 / view.ratio) + '" role="img" aria-label="' + esc(view.alt || '') + '" xmlns="http://www.w3.org/2000/svg">' + view.svg(done) + '</svg>';
+    var lt = mode === 'inside' && later(k);
+    var pic = lt && !view.img ? '' : view.img ? '<img src="' + esc(view.img) + '" alt="' + esc(view.alt || '') + '"' + (lt ? ' onerror="this.parentNode.classList.add(\'noimg\');this.parentNode.removeChild(this)"' : '') + '>' : '<svg viewBox="0 0 1000 ' + Math.round(1000 / view.ratio) + '" role="img" aria-label="' + esc(view.alt || '') + '" xmlns="http://www.w3.org/2000/svg">' + view.svg(done) + '</svg>';
     var nx = mode === 'inside' ? nextId(k) : null;
     var hs = view.hotspots.map(function(h, i){
       var dn = done && done[h.id], pos = 'left:' + h.x + '%;top:' + h.y + '%;width:' + h.w + '%;height:' + h.h + '%';
       if (h.leaf) return '<button type="button" class="scn-hs door' + (SC.entering ? ' open' : '') + '" style="' + pos + (view.img ? ';background:#FFE08A' : '') + '" data-scn="door" aria-label="' + esc(h.label) + '"><span class="scn-leaf"' + (view.img ? ' style="background:url(' + esc(view.img) + ') ' + (h.x / (100 - h.w) * 100).toFixed(2) + '% ' + (h.y / (100 - h.h) * 100).toFixed(2) + '%/' + (10000 / h.w).toFixed(2) + '% ' + (10000 / h.h).toFixed(2) + '% no-repeat">' : '>' + h.leaf()) + '</span><span class="scn-lab">' + esc(h.label) + '</span></button>';
-      return '<button type="button" class="scn-hs' + (dn ? ' done' : '') + (h.id === nx ? ' next' : '') + '" style="' + pos + '" data-scn="obj" data-id="' + esc(h.id) + '" aria-label="' + (i + 1) + '. ' + esc(h.label) + (dn ? ' (opened)' : '') + '"><span class="scn-pin" aria-hidden="true">' + (i + 1) + '</span><span class="scn-lab">' + esc(h.label) + '</span>' + (dn ? '<span class="scn-tick" aria-hidden="true">✓</span>' : '') + (h.id === nx ? '<span class="scn-nexttag" aria-hidden="true"><span class="d">Next ↓</span><span class="m">↑ Next</span></span>' : '') + '</button>';
+      return '<button type="button" class="scn-hs' + (dn ? ' done' : '') + (h.id === nx ? ' next' : '') + '" style="' + pos + '" data-scn="obj" data-id="' + esc(h.id) + '" aria-label="' + (i + 1) + '. ' + esc(h.label) + (dn ? ' (opened)' : '') + '"><span class="scn-pin" aria-hidden="true">' + (i + 1) + '</span>' + (lt ? '<span class="scn-ico" aria-hidden="true">' + esc(h.icon || '🍬') + '</span>' : '') + '<span class="scn-lab">' + esc(h.label) + '</span>' + (dn ? '<span class="scn-tick" aria-hidden="true">✓</span>' : '') + (h.id === nx ? '<span class="scn-nexttag" aria-hidden="true"><span class="d">Next ↓</span><span class="m">↑ Next</span></span>' : '') + '</button>';
     }).join('');
-    var lv = mode === 'inside' && nOpen(k) === order(k).length ? leaveBtn(k) : '';
-    return '<div class="scn-art' + (SC.entering ? ' zoom' : '') + '">' + pic + hs + lv + '</div>';
+    if (lt){ var n0 = view.hotspots.length; hs += extras(k).map(function(e, j){ var h = e.h, dn = exDone(k, e), pos = 'left:' + h.x + '%;top:' + h.y + '%;width:' + h.w + '%;height:' + h.h + '%';
+      return '<button type="button" class="scn-hs sp' + (dn ? ' done' : '') + (e.id === nx ? ' next' : '') + '" style="' + pos + '" data-scn="' + e.act + '" aria-label="' + (n0 + j + 1) + '. ' + esc(h.label || e.id) + (dn ? ' (done)' : '') + '"><span class="scn-pin" aria-hidden="true">' + (n0 + j + 1) + '</span><span class="scn-ico" aria-hidden="true">' + esc(h.icon || '🎬') + '</span><span class="scn-lab">' + esc(h.label || e.id) + '</span>' + (dn ? '<span class="scn-tick" aria-hidden="true">✓</span>' : '') + (e.id === nx ? '<span class="scn-nexttag" aria-hidden="true"><span class="d">Next ↓</span><span class="m">↑ Next</span></span>' : '') + '</button>'; }).join(''); }
+    var lv = mode === 'inside' && !lt && nOpen(k) === order(k).length ? leaveBtn(k) : '';
+    return '<div class="scn-art' + (SC.entering ? ' zoom' : '') + (lt && !view.img ? ' noimg' : '') + '"' + (lt ? ' style="--rbg:' + esc(SCENES[k].bg || '#FFF1C9') + '"' : '') + '>' + pic + hs + lv + '</div>';
   }
   function modalHTML(k){
+    if (HUBS[k]){ if (!SC.exit) return ''; k = SC.exit.k; }
     var sc = SCENES[k], x = A.TBYKEY[k], inner = '';
-    if (SC.exit && SC.exit.k === k){
+    if (SC.scen && SC.scen.k === k && sc.scenario){
+      inner = scenHTML(k);
+    } else if (SC.game && SC.game.k === k && sc.game){
+      inner = gameHTML(k);
+    } else if (SC.exit && SC.exit.k === k){
       inner = exitHTML(k);
     } else if (SC.yay){
       var dn = S().todo && S().todo[k + '|notes'];
@@ -81484,11 +81778,11 @@ window.SQE_SCENE = function(A){
         try { A.save(); } catch(e){}
         if (pass) setTimeout(confetti, 60);
       }
-      if (pass) return head + '<div class="scn-xres"><div class="big" aria-hidden="true">🏆🚪🎉</div><h2>You passed! Out you go</h2><p class="score">' + right + ' / ' + n + ' (' + Math.round(right / n * 100) + '%)</p><p>The pass mark is ' + need + ' out of ' + n + ' (60%). <b>✓ The Sweet Shop exit quiz is passed.</b></p>' +
+      if (pass) return head + '<div class="scn-xres"><div class="big" aria-hidden="true">🏆🚪🎉</div><h2>You passed! Out you go</h2><p class="score">' + right + ' / ' + n + ' (' + Math.round(right / n * 100) + '%)</p><p>The pass mark is ' + need + ' out of ' + n + ' (60%). <b>✓ ' + (later(k) ? esc(SCENES[k].name) : 'The Sweet Shop') + ' exit quiz is passed.</b></p>' +
         (S().todo && S().todo[k + '|qa'] ? '<p class="small">✓ Model Q&amp;A and quick-fire for this topic are ticked off on Today.</p>' : '') +
         (window.SQE_RATE ? (/[?&]britask=1/.test(location.search) ? britAsk(k) : '<div class="scn-rateq"><p><b>You\'re out of the shop!</b> Before you set off on your next journey, rate this topic:</p>' + window.SQE_RATE(k) + '</div>') : '') + /* britney-asks held until master Britney approved; preview ?britask=1 */
         (function(){ var nx = (window.SQE_NEXT ? window.SQE_NEXT() : {h: '#/home', l: 'Back to Today'}); return '<p class="scn-nextup"><b>What next?</b> ' + (nx.h === '#/home' ? 'Back to Today\'s list.' : 'The next thing on today\'s list.') + '</p>' +
-        '<div class="btns scn-outbtns"><a class="btn primary" href="' + nx.h + '">Next: ' + esc(nx.l) + ' ›</a>'; })() + '<a class="btn scn-tomap" href="#/palace">🏰 Back to the map</a><button type="button" class="btn" data-scn="close">Stay in the shop</button></div></div>';
+        '<div class="btns scn-outbtns">' + (rk(k) ? '<a class="btn primary" href="#/scene/' + hubOf(k) + '">🚪 Back to the hall ›</a>' : '') + '<a class="btn' + (rk(k) ? '' : ' primary') + '" href="' + nx.h + '">Next: ' + esc(nx.l) + ' ›</a>'; })() + '<a class="btn scn-tomap" href="#/palace">🏰 Back to the map</a><button type="button" class="btn" data-scn="close">Stay in the shop</button></div></div>';
       var seen = {}, rev = [];
       ex.items.forEach(function(it, i){ if (ex.ans[i] && ex.ans[i].ok) return; var h = objFor(k, it); if (!h) return; if (!seen[h.id]){ seen[h.id] = {h: h, n: 0}; rev.push(seen[h.id]); } seen[h.id].n++; });
       rev.sort(function(p, q){ return order(k).indexOf(p.h) - order(k).indexOf(q.h); });
@@ -81515,11 +81809,13 @@ window.SQE_SCENE = function(A){
 
   VIEW.scene = function(r){
     var k = keyOf(r), sc = SCENES[k], x = A.TBYKEY[k];
-    if (!sc || !x || !deck(k)) return '<div class="card"><h2>This scene isn\'t ready yet</h2><a class="btn" href="#/palace">Back to the map</a></div>';
-    var o = state(k), mode = r[3] === 'outside' || r[3] === 'inside' ? r[3] : (o.door ? 'inside' : 'outside'), base = '#/scene/' + k;
-    var N = order(k).length, n = nOpen(k), h = '<div class="scn">';
-    h += '<div class="scn-head"><h2>🍭 ' + esc(sc.name) + '</h2><div class="scn-links"><a href="#/topic/' + x.s.id + '/' + x.t.id + '">📖 Full notes</a>' + (mode === 'inside' ? '<a href="' + base + '/outside">🚪 Step outside</a>' : (o.door ? '<a href="' + base + '/inside">Go straight in ›</a>' : '')) + '<a href="#/map/' + x.s.id + '">🗺️ Map</a></div>' +
-      '<p class="scn-sub">' + esc(A.tnum(x)) + ': <b>' + esc(x.t.title) + '</b>. ' + (mode === 'outside' ? 'You\'re outside the sweet shop on Cluckington High Street. Tap the door to go in.' : 'Every sweet hides part of the notes. Tap one to open it.') + '</p></div>';
+    if (HUBS[k]) return hubHTML(k);
+    if (!sc || !x || (!deck(k) && !later(k))) return '<div class="card"><h2>This scene isn\'t ready yet</h2><a class="btn" href="#/palace">Back to the map</a></div>';
+    var o = state(k), mode = later(k) ? 'inside' : r[3] === 'outside' || r[3] === 'inside' ? r[3] : (o.door ? 'inside' : 'outside'), base = '#/scene/' + k, LT = later(k), EX = extras(k);
+    var N = order(k).length + EX.length, n = nOpen(k) + EX.filter(function(e){ return exDone(k, e); }).length, h = '<div class="scn">';
+    if (rk(k)) h += ribbon(k);
+    h += '<div class="scn-head"><h2>' + (LT ? esc(sc.icon || '🍬') : '🍭') + ' ' + esc(sc.name) + '</h2><div class="scn-links"><a href="#/topic/' + x.s.id + '/' + x.t.id + '">📖 Full notes</a>' + (LT ? '' : mode === 'inside' ? '<a href="' + base + '/outside">🚪 Step outside</a>' : (o.door ? '<a href="' + base + '/inside">Go straight in ›</a>' : '')) + '<a href="#/map/' + x.s.id + '">🗺️ Map</a></div>' +
+      '<p class="scn-sub">' + esc(A.tnum(x)) + ': <b>' + esc(x.t.title) + '</b>. ' + (LT ? (order(k).length ? 'Every person and prop hides part of the notes. Tap the glowing one.' + (sc.scenario || sc.game ? ' Then play the ' + (sc.scenario && sc.game ? 'scenario and the mini-game' : sc.scenario ? 'scenario' : 'mini-game') + '.' : '') : 'This room\'s sweets are still being made. Read the full notes for now, then tell Britney how it went.') : mode === 'outside' ? 'You\'re outside the sweet shop on Cluckington High Street. Tap the door to go in.' : 'Every sweet hides part of the notes. Tap one to open it.') + '</p></div>';
     if (mode === 'outside'){
       h += artHTML(sc.outside, null, k, 'outside');
     } else {
@@ -81528,16 +81824,18 @@ window.SQE_SCENE = function(A){
       if (at && !o.open[at.id] && (o.pos[at.id] || 0) > 0) h += '<button type="button" class="btn primary scn-carry" data-scn="obj" data-id="' + esc(at.id) + '">▶ Carry on: ' + esc(at.label) + ' (card ' + (o.pos[at.id] + 1) + ')</button>';
       h += artHTML(sc.inside, o.open, k, 'inside');
       var nx = nextId(k);
-      h += '<p class="scn-hint">' + (n === N ? '🏆 You\'ve opened everything! Open any sweet again to go over it. <button type="button" class="lrn-link" data-scn="restock">↺ Restock the shop (start again)</button>' : 'The glowing one is a good next pick, but you can open them in any order.') + '</p>';
-      h += n === N ? leaveBtn(k) : '<p class="scn-lock">🔒 Open all ' + N + ' to unlock the exit quiz: 🚪 Leave the shop (' + exitLabel(k) + ').</p>';
-      h += '<ol class="scn-list">' + order(k).map(function(hh, i){ var dn = o.open[hh.id]; return '<li class="' + (dn ? 'done' : '') + (hh.id === nx ? ' next' : '') + '"><button type="button" data-scn="obj" data-id="' + esc(hh.id) + '"><span class="n">' + (dn ? '✓' : i + 1) + '</span><span class="t">' + esc(hh.label) + '<small>' + (function(st){ var c = st.filter(function(q){ return q.k !== 'check'; }).length; return c + ' cards' + (c < st.length ? ' + quick check' : ''); })(steps(k, hh)) + (dn ? ' · opened' : hh.id === nx ? ' · next' : '') + '</small></span></button></li>'; }).join('') + '</ol>';
+      if (!LT) h += '<p class="scn-hint">' + (n === N ? '🏆 You\'ve opened everything! Open any sweet again to go over it. <button type="button" class="lrn-link" data-scn="restock">↺ Restock the shop (start again)</button>' : 'The glowing one is a good next pick, but you can open them in any order.') + '</p>';
+      if (LT){ roomFin(k); h += roomDone(k) ? endHTML(k) : '<p class="scn-lock">🔒 Open everything' + (EX.length ? ', then play the ' + EX.map(function(e){ return e.id === 'game' ? 'mini-game' : 'scenario'; }).join(' and the ') : '') + '. Then Britney asks how the topic went.</p>'; }
+      else { h += n === N ? leaveBtn(k) : '<p class="scn-lock">🔒 Open all ' + N + ' to unlock the exit quiz: 🚪 Leave the shop (' + exitLabel(k) + ').</p>'; if (rk(k) && roomDone(k)){ roomFin(k); h += endHTML(k); } }
+      h += '<ol class="scn-list">' + order(k).map(function(hh, i){ var dn = o.open[hh.id]; return '<li class="' + (dn ? 'done' : '') + (hh.id === nx ? ' next' : '') + '"><button type="button" data-scn="obj" data-id="' + esc(hh.id) + '"><span class="n">' + (dn ? '✓' : i + 1) + '</span><span class="t">' + esc(hh.label) + '<small>' + (function(st){ var c = st.filter(function(q){ return q.k !== 'check'; }).length; return c + ' cards' + (c < st.length ? ' + quick check' : ''); })(steps(k, hh)) + (dn ? ' · opened' : hh.id === nx ? ' · next' : '') + '</small></span></button></li>'; }).join('') +
+        EX.map(function(e, j){ var dn = exDone(k, e), sp = e.h, G = e.id === 'game'; return '<li class="sp' + (dn ? ' done' : '') + (e.id === nx ? ' next' : '') + '"><button type="button" data-scn="' + e.act + '"><span class="n">' + (dn ? '✓' : order(k).length + j + 1) + '</span><span class="t">' + esc(sp.label || sp.title) + '<small>' + (G ? '30-second mini-game' : 'Scenario: ' + sp.steps.length + ' parts') + (dn ? ' · done' : e.id === nx ? ' · next' : '') + '</small></span></button></li>'; }).join('') + '</ol>';
     }
     if (!SC.demoDone && /[?&]exitdemo=1\b/.test(location.search)){ SC.demoDone = true; var di = exitPool(k); if (di.length) SC.exit = {k: k, items: di, i: di.length, ans: di.map(function(){ return {ok: true}; }), saved: true}; } /* preview only: ?exitdemo=1 opens the passed exit screen without saving anything */
     h += modalHTML(k);
     return h + '</div>';
   };
 
-  function cur(){ var r = A.route(); return r[0] === 'scene' && SCENES[keyOf(r)] ? keyOf(r) : ''; }
+  function cur(){ var r = A.route(), k = keyOf(r); return r[0] === 'scene' && (SCENES[k] || HUBS[k]) ? k : ''; }
   function paint(){ /* repaint only the modal, so the page doesn't jump */
     var k = cur(); if (!k) return;
     var old = document.querySelector('.scn-ov'), html = modalHTML(k), tmp = document.createElement('div'); tmp.innerHTML = html;
@@ -81551,11 +81849,12 @@ window.SQE_SCENE = function(A){
   function confetti(){ var d = document.createElement('div'), em = ['🍬', '🍭', '🍫', '⭐', '🎉', '🍡']; d.className = 'scn-confetti'; for (var i = 0; i < 36; i++){ var e = document.createElement('i'); e.textContent = em[i % em.length]; e.style.left = Math.round(Math.random() * 96) + '%'; e.style.animationDelay = (Math.random() * 1.2).toFixed(2) + 's'; d.appendChild(e); } document.body.appendChild(d); setTimeout(function(){ if (d.parentNode) d.parentNode.removeChild(d); }, 4500); }
   function openObj(k, id){ var o = state(k), h = hsById(SCENES[k], id); if (!h) return; SC.open = id; SC.gate = false; SC.yay = false; SC.exit = null; var n = steps(k, h).length; SC.step = o.open[id] ? 0 : Math.max(0, Math.min(n - 1, o.pos[id] || 0)); o.at = id; try { A.save(); } catch(e){} paint(); }
   function go(k, d){ var h = hsById(SCENES[k], SC.open); if (!h) return; var n = steps(k, h).length, i = SC.step + d; if (i < 0 || i >= n) return; SC.step = i; var o = state(k); if (!o.open[h.id]){ o.pos[h.id] = i; try { A.save(); } catch(e){} } paint(); }
-  function close(){ SC.open = null; SC.gate = false; SC.yay = false; SC.exit = null; var k = cur(); if (k) A.render(); }
+  function close(){ SC.open = null; SC.gate = false; SC.yay = false; SC.exit = null; SC.scen = null; SC.game = null; stopTimer(); var k = cur(); if (k) A.render(); }
   function eat(k){
     var o = state(k), id = SC.open, was = nOpen(k), N = order(k).length, h = hsById(SCENES[k], id);
     if (!o.open[id]) o.open[id] = Date.now(); delete o.pos[id];
     SC.open = null;
+    if (nOpen(k) === N && was < N && later(k)){ var s1 = S(); s1.todo = s1.todo || {}; if (!s1.todo[k + '|notes']) s1.todo[k + '|notes'] = Date.now(); try { A.save(); } catch(e){} A.render(); showNext(); toast('Yum! Everything opened.' + (extras(k).length ? ' Now the glowing ' + (nextId(k) === 'game' ? 'mini-game' : 'scenario') + '!' : '')); return; }
     if (nOpen(k) === N && was < N){ var s = S(); s.todo = s.todo || {}; if (!s.todo[k + '|notes']) s.todo[k + '|notes'] = Date.now(); SC.yay = true; try { A.save(); } catch(e){} A.render(); confetti(); return; }
     try { A.save(); } catch(e){} A.render(); showNext();
     if (was < nOpen(k)) toast('Yum! ' + h.label + ' eaten. ' + nOpen(k) + ' of ' + N + ' treats opened.');
@@ -81566,14 +81865,41 @@ window.SQE_SCENE = function(A){
     var d = document.querySelector('.scn-hs.door'), art = document.querySelector('.scn-art');
     if (d) d.classList.add('open'); if (art) art.classList.add('zoom');
     var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-    setTimeout(function(){ SC.entering = false; location.hash = '#/scene/' + k + '/inside'; setTimeout(showNext, 120); }, reduce ? 50 : 1700);
+    setTimeout(function(){ SC.entering = false; location.hash = rk(k) && HUBS[hubOf(k)] ? '#/scene/' + hubOf(k) : '#/scene/' + k + '/inside'; setTimeout(showNext, 120); }, reduce ? 50 : 1700);
   }
   document.addEventListener('click', function(e){
     var k = cur(); if (!k) return;
     /* the door's quick check: answering it right unlocks the door (the notes page's handler has already saved the answer) */
     if (SC.gate && e.target.closest && e.target.closest('.nck-o') && document.querySelector('.scn-gate')){ /* the notes page's handler has already saved the answer and swapped the box */ setTimeout(function(){ if (!SC.gate || !gateAns(k)) return; paint(); if (gateOK(k)) setTimeout(function(){ if (SC.gate && cur() === k) enter(k); }, 1800); }, 0); }
+    if (e.target.closest && e.target.closest('.scn-end [data-act=trate]')) setTimeout(function(){ var nb = document.querySelector('.scn-nextroom'); if (nb) try { nb.scrollIntoView({block: 'center'}); } catch(er){} }, 120);
     var b = e.target.closest && e.target.closest('[data-scn]'); if (!b) return;
     var a = b.getAttribute('data-scn');
+    if (HUBS[k]){
+      if (a === 'hlock'){ var H = hubState(HUBS[k]), nk = H.keys[H.next]; toast('🔒 Finish ' + (nk ? (ROOMS[nk.split('/')[1]] || SCENES[nk]).name : 'the glowing room') + ' first: its door is glowing.'); return; }
+      if (a === 'hleave'){ startExit(b.getAttribute('data-k')); return; }
+      if (!SC.exit) return; k = SC.exit.k;
+      if (a === 'obj'){ location.hash = '#/scene/' + k + (ROOM_IDX[k] === 0 ? '/inside' : ''); return; }
+    }
+    if (a === 'scen'){ scenStart(k); return; }
+    if (a === 'game'){ gameStart(k); return; }
+    if (a === 'scpick' && SC.scen && SC.scen.pick == null){ var ss = SC.scen, sst = SCENES[k].scenario.steps[ss.i]; ss.pick = +b.getAttribute('data-o'); if (ss.pick === sst.a){ ss.right++; earnC(1, 'room|' + k + '|sc|' + ss.i); } gpaint(); return; }
+    if (a === 'scnext' && SC.scen){ var s2 = SC.scen, sp2 = SCENES[k].scenario; s2.i++; s2.pick = null; if (s2.i < sp2.steps.length) s2.ord = shuf(nums(sp2.steps[s2.i].opts.length)); paint(); return; }
+    if (a === 'scendone' && SC.scen){ var o3 = state(k); if (!o3.sc) o3.sc = Date.now(); o3.scScore = SC.scen.right; SC.scen = null; try { A.save(); } catch(er){} A.render(); showNext(); toast('🎬 Scenario done!' + (nextId(k) === 'game' ? ' Now the mini-game.' : '')); return; }
+    if (a === 'gbin'){ gSort(k, +b.getAttribute('data-b')); return; }
+    if (a === 'gask' && SC.game && SC.game.askPick == null){ var G1 = SC.game, q1 = G1.rounds[G1.ri].ask; G1.askPick = +b.getAttribute('data-o'); G1.total++; if (G1.askPick === q1.a) G1.right++; else G1.wrong.push({t: q1.q, a: q1.opts[q1.a], why: q1.why}); gpaint(); return; }
+    if (a === 'gnext'){ gNext(); return; }
+    if (a === 'gput' && SC.game){ var O1 = SC.game.rounds[SC.game.ri]; O1.placed.push(+b.getAttribute('data-i')); gpaint(); return; }
+    if (a === 'gun' && SC.game){ var O2 = SC.game.rounds[SC.game.ri]; O2.placed.splice(+b.getAttribute('data-i'), 1); gpaint(); return; }
+    if (a === 'gcheck' && SC.game){ var G2 = SC.game, O3 = G2.rounds[G2.ri]; O3.checked = true; O3.score = 0; O3.placed.forEach(function(pi, j){ G2.total++; if (pi === j){ O3.score++; G2.right++; } else G2.wrong.push({t: O3.items[j].t, a: 'place ' + (j + 1), why: O3.items[j].why}); }); gpaint(); return; }
+    if (a === 'gl'){ gMatch(k, 'l', +b.getAttribute('data-i')); return; }
+    if (a === 'gmv' && SC.game){ var O4 = SC.game.rounds[SC.game.ri], mi = +b.getAttribute('data-i'), mj = mi + (+b.getAttribute('data-d')); if (mj >= 0 && mj < O4.placed.length){ var tmp = O4.placed[mi]; O4.placed[mi] = O4.placed[mj]; O4.placed[mj] = tmp; } gpaint(); return; }
+    if (a === 'gnum' && SC.game && SC.game.pick == null){ var G4 = SC.game, Q4 = G4.rounds[G4.ri]; G4.pick = +b.getAttribute('data-o'); G4.total++; if (G4.pick === Q4.a) G4.right++; else G4.wrong.push({t: Q4.q, a: String(Q4.opts[Q4.a]), why: Q4.why}); gpaint(); return; }
+    if (a === 'gspot' && SC.game){ var P4 = SC.game.rounds[SC.game.ri], si = +b.getAttribute('data-i'); if (!P4.shown){ if (P4.sel[si]) delete P4.sel[si]; else P4.sel[si] = 1; gpaint(); } return; }
+    if (a === 'gspotrev' && SC.game){ var G5 = SC.game, P5 = G5.rounds[G5.ri]; P5.shown = true; P5.lines.forEach(function(l, i){ var on = !!P5.sel[i]; if (!l.bad && !on) return; G5.total++; if (on === !!l.bad) G5.right++; else G5.wrong.push({t: l.t, a: l.bad ? 'has a mistake' : 'is correct', why: l.why || ''}); }); gpaint(); return; }
+    if (a === 'gcatch'){ var ci = +b.getAttribute('data-i'); if (b.parentNode) b.parentNode.removeChild(b); catchHit(ci, true); return; }
+    if (a === 'gr'){ gMatch(k, 'r', +b.getAttribute('data-r')); return; }
+    if (a === 'gagain'){ gameStart(k); return; }
+    if (a === 'gdone' && SC.game){ var o4 = state(k), G3 = SC.game; o4.game = {at: Date.now(), score: G3.right, n: G3.total}; earnC(Math.min(5, G3.right), 'room|' + k + '|game'); SC.game = null; stopTimer(); try { A.save(); } catch(er){} A.render(); showNext(); if (roomDone(k)) setTimeout(function(){ var el = document.getElementById('scn-end'); if (el) try { el.scrollIntoView({block: 'start'}); } catch(er){} }, 150); return; }
     if (a === 'door'){ if (gateOK(k) || state(k).door) enter(k); else { SC.gate = true; paint(); } }
     else if (a === 'enter') enter(k);
     else if (a === 'obj') openObj(k, b.getAttribute('data-id'));
@@ -81586,10 +81912,10 @@ window.SQE_SCENE = function(A){
     else if (a === 'xpick') pickExit(k, +b.getAttribute('data-o'));
     else if (a === 'bx'){ var bq = b.getAttribute('data-q'); if (BX.ans[bq] == null){ var was0 = bxRight(); BX.ans[bq] = +b.getAttribute('data-v'); BX.fresh = bxRight() > was0 ? bq : ''; var ov0 = document.querySelector('.scn-ov'), sy = ov0 ? ov0.scrollTop : 0; paint(); var ov = document.querySelector('.scn-ov'); if (ov) ov.scrollTop = sy; BX.fresh = ''; } } /* bullets-sample extras */
     else if (a === 'xnext'){ if (SC.exit){ SC.exit.i++; paint(); } }
-    else if (a === 'restock'){ var o = state(k); o.open = {}; o.pos = {}; o.at = null; try { A.save(); } catch(er){} A.render(); }
+    else if (a === 'restock'){ var o = state(k); o.open = {}; o.pos = {}; o.at = null; delete o.sc; delete o.game; delete o.fin; try { A.save(); } catch(er){} A.render(); }
   });
   document.addEventListener('keydown', function(e){
-    var k = cur(); if (!k || !document.querySelector('.scn-ov')) return;
+    var k = cur(); if (!k || !document.querySelector('.scn-ov')) return; if (HUBS[k]){ if (!SC.exit) return; k = SC.exit.k; }
     if (e.key === 'Escape'){ e.preventDefault(); close(); return; }
     if (e.ctrlKey || e.metaKey || e.altKey || (e.target && /INPUT|SELECT|TEXTAREA/.test(e.target.tagName))) return;
     if (SC.exit && SC.exit.i < SC.exit.items.length){ var ex = SC.exit, it = ex.items[ex.i], L = 'abcde'.slice(0, it.ord.length).indexOf(e.key.toLowerCase());
@@ -81597,7 +81923,7 @@ window.SQE_SCENE = function(A){
       if (e.key === 'Enter' && ex.ans[ex.i] != null){ e.preventDefault(); ex.i++; paint(); return; } }
     if (SC.open && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')){ e.preventDefault(); go(k, e.key === 'ArrowRight' ? 1 : -1); }
   });
-  addEventListener('hashchange', function(){ /* any route change closes an open pop-up (e.g. the locked-door question no longer follows you inside) */ SC.open = null; SC.gate = false; SC.yay = false; SC.exit = null; paint(); });
+  addEventListener('hashchange', function(){ /* any route change closes an open pop-up (e.g. the locked-door question no longer follows you inside) */ SC.open = null; SC.gate = false; SC.yay = false; SC.exit = null; SC.scen = null; SC.game = null; stopTimer(); paint(); });
   window.__sceneExitFor = function(k){ return exitPool(k).map(function(it){ var h = objFor(k, it); return {kind: it.kind, q: it.q.slice(0, 60), obj: h && h.id}; }); };
   return {coverage: coverage};
 };
@@ -82165,9 +82491,9 @@ function nbStreakHTML(){
   var svg = '<svg viewBox="0 0 600 616" class="nbsvg" aria-hidden="true">', pos = [[85, 588]];
   svg += '<path d="M20 618C26 596 52 586 85 586S144 596 150 618Z" fill="#79C34F" stroke="#10294A" stroke-width="3" stroke-linejoin="round"/><path d="M42 602l-3-9M48 601l1-8M124 602l3-9M118 600l-1-8" stroke="#10294A" stroke-width="2.4" stroke-linecap="round"/>';
   for (var i = 0; i < PRESENT_STEPS; i++){
-    var cx = 220 + i * 58, cy = 409 - i * 60, on = i < n;
-    pos.push([cx - 3, cy - 20]);
-    svg += stCloud(cx, cy, 56, on ? '#FFD93B' : '#fff');
+    var cx = 220 + i * 58, cy = 403 - i * 60, on = i < n;
+    pos.push([cx + 1, cy - 9]);
+    svg += stCloud(cx, cy, 60, on ? '#FFD93B' : '#fff');
     svg += '<text x="' + cx + '" y="' + (cy + 8) + '" text-anchor="middle" font-size="' + (on ? 22 : 20) + '" font-weight="800" fill="#10294A">' + (on ? '✓' : (i + 1)) + '</text>';
   }
   var st = Math.min(n, PRESENT_STEPS), lp = pos[st], LH = 150, LW = LH * 227 / 547;
@@ -85708,7 +86034,7 @@ function stopTheme(r){
 var JPIC = null, JMAP = null; /* Journey to Cluckington Palace (top of the palace tab; #/map/<subj> opens a stop's panel there): journey.js defines window.SQE_JOURNEY; it adds VIEW.map and makes the palace scene's backdrop follow Britney along the path */
 if (window.SQE_JOURNEY) try { var JX = window.SQE_JOURNEY({S:function(){ return S; }, VIEW:VIEW, buildPlan:buildPlan, parseYmd:parseYmd, ymd:ymd, fmtDate:fmtDate, SUBJ:SUBJ, route:route, todoHTML:todoHTML}); if (JX && JX.scene) cbaScene = JX.scene(cbaScene); if (JX && JX.map) JMAP = JX.map; if (JX && JX.theme) JTHEME = JX.theme; if (JX && JX.pic) JPIC = JX.pic; } catch(ej){ if (window.console) console.error(ej); }
 /* immersive topic scenes (#/scene/<subj>/<topic>, e.g. the Sweet Shop for Business Law 1): scene.js defines window.SQE_SCENE */
-if (window.SQE_SCENE) try { window.SQE_SCENE({S:function(){ return S; }, VIEW:VIEW, save:save, render:render, route:route, esc:esc, inl:inl, md:md, tnum:tnum, TBYKEY:TBYKEY, NOTECHECK:NOTECHECK, learnDeck:learnDeck, learnCard:learnCard, bigIdeaHTML:bigIdeaHTML, learnBigLines:learnBigLines, nckS:nckS, topicQs:topicQs, qById:qById, record:record, qfRecord:qfRecord, nck:function(k, head){ var p = NCK; NCK = k; try { return nckHTML(head); } finally { NCK = p; } }}); } catch(es){ if (window.console) console.error(es); }
+if (window.SQE_SCENE) try { window.SQE_SCENE({S:function(){ return S; }, VIEW:VIEW, save:save, earn:earn, render:render, route:route, esc:esc, inl:inl, md:md, tnum:tnum, TBYKEY:TBYKEY, NOTECHECK:NOTECHECK, learnDeck:learnDeck, learnCard:learnCard, bigIdeaHTML:bigIdeaHTML, learnBigLines:learnBigLines, nckS:nckS, topicQs:topicQs, qById:qById, record:record, qfRecord:qfRecord, nck:function(k, head){ var p = NCK; NCK = k; try { return nckHTML(head); } finally { NCK = p; } }}); } catch(es){ if (window.console) console.error(es); }
 /* SRA sample questions (#/sra) + examiner tips (#/tips): extras.js defines window.SQE_EXTRAS; it also adds links on the Mock exam, Model Q&A and subject pages */
 if (window.SQE_EXTRAS) try { window.SQE_EXTRAS({S:function(){ return S; }, VIEW:VIEW, save:save, render:render, route:route, esc:esc, SUBJ:SUBJ, earn:earn, earnedToday:earnedToday, tooQuick:tooQuick, COIN:COIN, READ_MS:READ_MS}); } catch(ex){ if (window.console) console.error(ex); }
 load(); if (window.SQE_PREVIEW_DEMO && !S.demoSeeded){ S.demoSeeded = 1; gameDemo(); } render(); startTick(); sandTick();
