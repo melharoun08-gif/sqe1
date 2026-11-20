@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120151626";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120152316";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -4150,7 +4150,7 @@ details.podsubj[open] .podchev{transform:rotate(-135deg);margin-top:6px}
 .jsv .jpair.jmoving :is(.jlw2,.jlw3,.jlwj,.jlw2F,.jlw3F,.jlw4){animation:none!important;opacity:0!important}
 @keyframes jl8-m1{0%{opacity:1}50%{opacity:0}100%{opacity:1}}@keyframes jl8-m2{0%{opacity:0}50%{opacity:1}100%{opacity:0}}
 /* 15:05 Monnie: walking up the map she is seen from the back (jback), legs swapping */
-.jsv .jpair :is(.jlwB1,.jlwB2){opacity:0!important;animation:none!important}
+.jsv .jpair :is(.jlwB1,.jlwB2){opacity:0;animation:none}
 .jsv .jpair.jmoving.jback :is(.jlw1,.jlw1F,.jlw2,.jlw3,.jlwj,.jlw2F,.jlw3F,.jlw4){animation:none!important;opacity:0!important}
 .jsv .jpair.jmoving.jback .jlwB1{animation:jl8-m1 .36s step-end infinite!important}.jsv .jpair.jmoving.jback .jlwB2{animation:jl8-m2 .36s step-end infinite!important}
 @media (prefers-reduced-motion:reduce){.jsv .jpair :is(.jlw1F,.jlw2,.jlw3,.jlwj,.jlw2F,.jlw3F,.jlw4){animation:none!important;opacity:0!important}.jsv .jpair .jlw1{animation:none!important;opacity:1!important}}
@@ -4211,6 +4211,9 @@ details.cardsubj > summary{position:relative;padding-right:40px!important}
 details.cardsubj > summary::after{content:"";position:absolute;right:14px;top:50%;width:0;height:0;margin-top:-6px;border-left:10px solid currentColor;border-top:7px solid transparent;border-bottom:7px solid transparent;transition:transform .15s}
 details.cardsubj[open] > summary::after{transform:rotate(90deg)}
 details.cardsubj > ul.cardtopics{margin-top:6px!important}
+
+/* 15:15 covered label on subject pages */
+.revd .covok{color:#2E7D32;margin-right:6px}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -110723,7 +110726,7 @@ window.SQE_JOURNEY = function (A) {
                 var dir_1 = s1_1 > s0_1 ? 1 : -1, d1_1 = Math.abs(s1_1 - s0_1), hopLen_1 = mode_1 === 'phone' ? 46 : 36, hopH_1 = mode_1 === 'phone' ? 9 : 7;
                 var spot_1 = walkAtS(G_1, s1_1), door_1 = stopDoor(box, m[1]) || { x: spot_1.x, y: spot_1.y }, d2_1 = Math.hypot(door_1.x - spot_1.x, door_1.y - spot_1.y);
                 /* one brisk walk: along the path, then up the grass to the entrance (14:58 Monnie: all the way, quickly; seen from the back going up) */
-                var total_1 = d1_1 + d2_1, dur_1 = Math.min(2200, Math.max(700, total_1 / 1.7));
+                var total_1 = d1_1 + d2_1, dur_1 = Math.min(2600, Math.max(1000, total_1 / (mode_1 === "phone" ? 1.1 : 1.5)));
                 var t0_2 = 0, lx_1 = null, ly_1 = null;
                 var face_1 = function (vx, vy) { var up = vy < -Math.abs(vx) * .7; g_2.classList.toggle('jback', up); };
                 var done_1 = function () { g_2.classList.remove('jmoving'); setTimeout(function () { if (!me_1.stop && /^#\/palace/.test(location.hash)) {
@@ -148435,7 +148438,7 @@ var CSS = [
 '.scn-hs.next{z-index:3;border:6px solid #FFF200;border-radius:18px;background:transparent;animation:scnGlow 1.1s ease-in-out infinite}',
 '.scn-hs.next .scn-lab{background:#FFF200;border-color:#1b1b1b;box-shadow:0 0 0 3px #FF2D8A,2px 2px 0 3px #1b1b1b}',
 '.scn-hs.next .scn-pin{background:#FFF200;box-shadow:0 0 0 3px #FF2D8A,0 0 14px 4px #FFF200;transform:scale(1.15)}',
-'@keyframes scnGlow{0%,100%{box-shadow:0 0 0 3px #FF2D8A,0 0 18px 6px rgba(255,242,0,.95),0 0 34px 12px rgba(255,45,138,.65)}50%{box-shadow:0 0 0 5px #FF2D8A,0 0 30px 14px rgba(255,242,0,1),0 0 60px 26px rgba(255,45,138,.8)}}',
+'@keyframes scnGlow{0%,100%{box-shadow:0 0 0 3px #FF2D8A,0 0 8px 3px rgba(255,242,0,.8)}50%{box-shadow:0 0 0 5px #FF2D8A,0 0 14px 6px rgba(255,242,0,.9)}}',
 '.scn-nexttag{position:absolute;left:50%;top:0;z-index:4;transform:translate(-50%,-120%);padding:3px 11px 4px;border:3px solid #1b1b1b;border-radius:99px;background:#FF2D8A;color:#fff;font:900 15px/1.1 var(--font);white-space:nowrap;box-shadow:2px 2px 0 #1b1b1b;pointer-events:none;animation:scnTag .8s ease-in-out infinite}',
 '.scn-nexttag .m{display:none}',
 '@keyframes scnTag{0%,100%{transform:translate(-50%,-125%)}50%{transform:translate(-50%,-100%)}}',
@@ -149246,7 +149249,7 @@ window.SQE_SCENE = function(A){
       '.stsk .scn-confetti i svg,.scn-confetti.sk i svg{width:30px;height:30px}' +
       '.stsk .scn-hook.speech{height:auto!important;white-space:nowrap;line-height:1.15;transform:translateY(-100%) rotate(var(--rot,0deg));background:#fff;color:#1b1b1b;border:.2cqw solid #1b1b1b;border-radius:1.4cqw;box-shadow:.2cqw .25cqw 0 #1b1b1b;text-shadow:none;padding:.25cqw .8cqw;font-family:"Gochi Hand","Sour Gummy",cursive;font-weight:400;font-size:max(1.25cqw,13px)!important;width:auto!important;min-width:0;z-index:3}.stsk .scn-hook.speech::after{background:#fff;border-right:.2cqw solid #1b1b1b;border-bottom:.2cqw solid #1b1b1b;box-shadow:none}' +
       '.stsk .scn-board{padding:calc(var(--bpy,1cqw) * 1.5) calc(var(--bpx,1cqw) * 2);color:#1D3557;text-shadow:none;font-family:"Gochi Hand","Delius",cursive}.stsk .scn-board[data-scn-board$="dr-case-management"],.stsk .scn-board[data-scn-board$="dr-costs"]{color:#fff;text-shadow:0 1px 2px #1b1b1b}' +
-      '.stsk .scn-hook.tag{transform:translate(-50%,-100%) rotate(var(--rot,0deg));height:auto!important;width:auto!important;padding:.08cqw .3cqw;line-height:1.05;background:rgba(255,253,242,.86);border-width:.12cqw;box-shadow:.12cqw .12cqw 0 #1b1b1b}' +
+      '.stsk .scn-hook.tag{z-index:5;transform:translate(-50%,-100%) rotate(var(--rot,0deg));height:auto!important;width:auto!important;padding:.08cqw .3cqw;line-height:1.05;background:rgba(255,253,242,.86);border-width:.12cqw;box-shadow:.12cqw .12cqw 0 #1b1b1b}' +
       '.stsk .bk-on .bu-wr{display:block}.stsk .bk-on .bu-body{border-radius:14px}.stsk .bk-on .bu-body::before{display:none}' +
       '.stsk .bk-popcorn .bu-body{border-radius:44% 56% 40% 60%/58% 42% 58% 42%;background:radial-gradient(circle at 12% 30%,#FFE27A 0 7px,transparent 8px),radial-gradient(circle at 88% 72%,#FFD24A 0 6px,transparent 7px),radial-gradient(circle at 70% 14%,#FFE9A0 0 6px,transparent 7px),#FFFBEF}' +
       '.stsk .bk-popcorn .gm-pc{border-radius:50%;width:20%!important;height:17%;margin-left:12%;background:radial-gradient(circle at 60% 40%,#FFD34D 0 22%,transparent 26%),#FFFBEF!important}.stsk .bk-coin .gm-pc{border-radius:50%;width:22%!important;margin-left:10%;background:#FFC300!important}.stsk .bk-coconut .gm-pc{border-radius:50%;width:22%!important;margin-left:10%;background:#8D5A3B!important}' +
@@ -149466,6 +149469,8 @@ window.SQE_SCENE = function(A){
     if (!art || art.classList.contains('zoom')) return; var W = art.clientWidth, H = art.clientHeight; if (W < 50 || H < 50) return;
     var hss = [].slice.call(art.querySelectorAll('.scn-hs')), obst = [], jobs = [];
     var HUB = art.classList.contains('hub-art');
+    (function(){ var hk = [].slice.call(art.querySelectorAll('.scn-hook.tag')); hk.forEach(function(e){ e.style.marginTop = ''; }); /* Monnie 20 Nov: bigger tags must never sit on each other: nudge the lower one down (or up at the bottom edge) */
+      for (var pass = 0; pass < 3; pass++) for (var i = 0; i < hk.length; i++) for (var j = 0; j < hk.length; j++){ if (i === j) continue; var a = hk[i].getBoundingClientRect(), b = hk[j].getBoundingClientRect(); var ox = Math.min(a.right, b.right) - Math.max(a.left, b.left), oy = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top); if (ox > 1 && oy > 1 && (b.top > a.top || (b.top === a.top && j > i))){ var A = art.getBoundingClientRect(), d = oy + 3, mt = parseFloat(hk[j].style.marginTop) || 0; if (b.bottom + d > A.bottom - 2) { var mi = parseFloat(hk[i].style.marginTop) || 0; hk[i].style.marginTop = (mi - d) + 'px'; } else hk[j].style.marginTop = (mt + d) + 'px'; } } })();
     var bdo = art.querySelector('.scn-board'); if (bdo) obst.push(labRect(bdo, art)); [].forEach.call(art.querySelectorAll('.scn-hook'), function(hk){ obst.push(labRect(hk, art)); }); /* nor the words drawn on objects (Monnie 20 Nov: hover text must never sit over a picture's words) */ /* labels never cover the chalkboard text */
     if (HUB) hss.forEach(function(hs){ var pin = hs.querySelector('.scn-pin'); hs.style.minWidth = hs.style.marginLeft = ''; if (pin) pin.style.top = '';
       var w = hs.offsetWidth; if (w < 28){ hs.style.minWidth = '28px'; hs.style.marginLeft = -Math.round((28 - w) / 2) + 'px'; } /* thin doors (phone): a tappable width, centred on the door */
@@ -149488,7 +149493,7 @@ window.SQE_SCENE = function(A){
           cands.forEach(function(c, ci){ var r = {x: Math.max(4, Math.min(W - 4 - tw, c.x)), y: Math.max(4, Math.min(H - 4 - th, c.y)), w: tw, h: th}, ov = 0; obst.forEach(function(o){ ov += labOver(r, o); }); var sc = ov * 40 + ci * 30 + Math.abs(r.x - c.x) + Math.abs(r.y - c.y) * 2; if (!best || sc < best.sc){ best = r; best.sc = sc; best.up = !!c.up; } });
           tr = best; up = best.up; }
         else if (ROOMS_ON && !HUB){ var ccx = hr.x + hr.w / 2, bst = null; /* rooms: straight under the object pointing up at it, or above it pointing down if there's no room below */
-          [{x: ccx - tw / 2, y: hr.y - th - 6}, {x: ccx - tw / 2, y: hr.y + hr.h + 4, up: true}].forEach(function(c, ci){ var fits = c.y >= 2 && c.y + th <= H - 2, r = {x: Math.max(4, Math.min(W - 4 - tw, c.x)), y: Math.max(2, Math.min(H - 2 - th, c.y)), w: tw, h: th}, ov = 0; obst.forEach(function(o){ ov += labOver(r, o); }); var sc = (fits ? 0 : 1e6) + ov * 4 + ci * 200; if (!bst || sc < bst.sc){ bst = r; bst.sc = sc; bst.up = !!c.up; } });
+          [{x: ccx - tw / 2, y: hr.y - th - 6}, {x: ccx - tw / 2, y: hr.y + hr.h + 4, up: true}, {x: hr.x - tw - 6, y: hr.y + (hr.h - th) / 2}, {x: hr.x + hr.w + 6, y: hr.y + (hr.h - th) / 2}].forEach(function(c, ci){ var fits = c.y >= 2 && c.y + th <= H - 2, r = {x: Math.max(4, Math.min(W - 4 - tw, c.x)), y: Math.max(2, Math.min(H - 2 - th, c.y)), w: tw, h: th}, ov = 0; obst.forEach(function(o){ ov += labOver(r, o); }); var sc = (fits ? 0 : 1e6) + ov * 60 + ci * 200; if (!bst || sc < bst.sc){ bst = r; bst.sc = sc; bst.up = !!c.up; } });
           tr = bst; up = bst.up; lr = 1; }
         else tr = labBest({x: tp.x, y: tp.y, w: tw, h: th}, tw, th, W, H, obst);
         if (lr) j.tag.classList.add(up ? 'up' : 'dn');
@@ -150407,7 +150412,7 @@ var PEOPLE = [
 ];
 /* hens and Jiminey: [id, x, b, height %, name] */
 var HENS = [
-  ['friend', 65.3, 49, 11, 'Bolu'], ['bianca', 62, 48, 10.5, 'Bianca'], ['beefy', 88.5, 44, 11, 'Beefy'], ['brucey', 33, 49, 11, 'Brucey'], ['bonnie', 90, 26, 9, 'Jiminey']   /* all standing on the lawn, never on a bush or in a tree (QA 14:36) */
+  ['friend', 65.3, 49, 11, 'Bolu'], ['bianca', 62.8, 48, 10.5, 'Bianca'], ['beefy', 88.5, 44, 11, 'Beefy'], ['brucey', 31, 49.5, 11, 'Brucey'], ['bonnie', 90, 26, 9, 'Jiminey']   /* all standing on the lawn, never on a bush or in a tree (QA 14:36) */
 ];
 var SHED = {x: 58, b: 50, h: 18};   /* the shed (img/mount/shed.webp); click opens the shelves */
 var SHED_ROOF = [56.5, 67];
@@ -150423,7 +150428,7 @@ var GARDEN_ITEMS = {
 };
 var SWING = {x: 80.4, top: 68.2, seat: 52.2, w: 6};   /* the swing hangs on two ropes from the left branch of the tree by the coop (Monnie 09:44); Beefy rides it */
 var SWING_HEN_H = 8.5;
-var BRUCEY_COOP = [33, 49], BEEFY_COOP = [93.5, 37];   /* with a coop there, Brucey perches on the bank behind it */   /* Beefy sits on the swing when Layla has both */
+var BRUCEY_COOP = [31, 49.5], BEEFY_COOP = [93.5, 37];   /* with a coop there, Brucey perches on the bank behind it */   /* Beefy sits on the swing when Layla has both */
 function coopTop(o){ return o.palace ? [91.1, 36 + 20] : o.coop ? [91.1, 36 + 19] : null; }
 /* Layla's walk: [x, b, pause ms, pose while paused ('a' stand, 't' wave)]; stays inside x 37..54 so she never meets the people */
 var LAYLA_LAP = [[41, 11, 1200, 'a'], [48, 11, 0, 'a'], [53, 12, 900, 'a'], [49, 18, 0, 'a'], [40.5, 22, 1400, 't'], [47, 27, 900, 'a'], [53.5, 24, 900, 'a'], [51, 17, 0, 'a'], [43, 14, 600, 'a']];   /* Monnie 13:22: one big loop over the whole open lawn, on the grass, mostly side to side (never zig-zagging up towards the trees) */   /* Monnie 10:00: no moonwalking, every leg goes more sideways than up/down */
@@ -150873,7 +150878,7 @@ window.SQE_MOUNT = function(A){
   /* ===== feeding scene ===== */
   /* ----- feeding goes through the shed (Monnie 10:03): Layla walks into the shed; inside, the feed bag is tapped; she walks out
      carrying it, scatters it by Britney, Britney pecks it all up and says three things. Tapping the shed alone just takes her in. ----- */
-  var SHED_DOOR = [55.9, 51.7], SHED_LANE = [55.9, 31], FADE = 450;   /* the shed's open doorway, and the spot on the lawn straight in front of it */
+  var SHED_DOOR = [55.9, 51.7], SHED_LANE = [54.6, 31], FADE = 450;   /* the shed's open doorway, and the spot on the lawn straight in front of it */
   /* to the shed: along the lawn to the spot in front of it, then straight up the grass to the door, getting smaller (Monnie 14:47); out is the reverse */
   function walkPath(pts, u){
     var t = 0, face = null;
@@ -153405,7 +153410,9 @@ function revDots(k){
   var rs = (buildPlan().revs || {})[k]; if (!rs || !rs.length) return '';
   var t = ymd(), nx = null, n = 0, lab = {1:"revision cards", 3:"Quick fire", 6:"framework self-test", 10:"Model Q&A questions"};
   var dots = rs.map(function(r){ var dn = !!(S.todo && S.todo[r.k]); if (dn) n++; if (!dn && !nx && r.d >= t) nx = r; return '<i class="rd' + (dn ? ' on' : (r.d < t ? ' miss' : '')) + '" title="Review ' + (rs.indexOf(r) + 1) + ' (' + lab[r.gap] + '), ' + esc(fmtDate(r.d)) + (dn ? ': done' : '') + '"></i>'; }).join("");
-  return '<span class="revd"><span class="rdots" aria-hidden="true">' + dots + '</span><span class="small"><b>Reviews: ' + n + ' of ' + rs.length + ' done</b>' + (nx ? ' · next ' + esc(fmtDate(nx.d).replace(/ \d{4}$/, "")) : n < rs.length ? ' · catch up' : ' ✓') + '</span></span>';
+  /* 15:15 (Monnie): say plainly whether the topic is covered, and that the later reviews are the Job Centre's spaced repetition */
+  if (!S.done[k]) return '<span class="revd"><span class="small muted">Not covered yet</span></span>';
+  return '<span class="revd"><span class="small"><b class="covok">✓ Covered</b></span><span class="rdots" aria-hidden="true">' + dots + '</span><span class="small">Job Centre reviews: ' + n + ' of ' + rs.length + (nx ? ' · next ' + esc(fmtDate(nx.d).replace(/ \d{4}$/, "")) : n < rs.length ? ' · catch up' : ' ✓') + '</span></span>';
 }
 VIEW.subject = function(r){
   var s = BYID[r[1]]; if (!s) return VIEW.syllabus();
@@ -156070,8 +156077,17 @@ function cardFit(){
   if (bb.bottom > window.innerHeight - 8){ if (bb.bottom - ft + 24 <= window.innerHeight) fl.scrollIntoView({block:"start"}); else rb.parentNode.scrollIntoView({block:"end"}); if (rb.parentNode.getBoundingClientRect().bottom > window.innerHeight - 8) window.scrollBy(0, rb.parentNode.getBoundingClientRect().bottom - window.innerHeight + 16); }
 }
 window.__cardFit = cardFit; window.addEventListener("resize", function(){ try { cardFit(); } catch(e){} });
+/* 15:15 (Monnie): one "covered" record. Opening everything in a topic's room in Peckham (Today's notes step) or reading/rating it in the Syllabus
+   marks it covered in both places; later reviews happen at the Job Centre (spaced repetition). Only adds marks, never removes them. */
+function syncCovered(){
+  var ch = false; S.todo = S.todo || {}; S.done = S.done || {};
+  TOPICS.forEach(function(x){ var k = x.key, tn = S.todo[k + "|notes"];
+    if (tn && !S.done[k]){ S.done[k] = {n:1, conf:null, at:+tn || Date.now()}; ch = true; } }); /* the other way round needs nothing: the map and Syllabus both read S.done */
+  if (ch) save();
+}
 function render(){
   try { gameSync(); } catch(eg){ if (window.console) console.error(eg); }
+  try { syncCovered(); } catch(esc0){ if (window.console) console.error(esc0); }
   var r = route();
   if (!VIEW[r[0]]) r = ["home"];
   var curKey = r[0] === "topic" ? r[1] + "/" + r[2] : (r[0] === "subject" ? r[1] + "/" : null);
