@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120171825";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120173516";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -4327,6 +4327,15 @@ details.cardsubj > ul.cardtopics{margin-top:6px!important}
 .jcclock{top:5.89cqw}
 .jchands{top:9.78cqw}
 .jcrblink{top:19.45cqw}
+
+/* QA 17:26: notes sit inside the cork, clear of Layla; red/green answer fill in Bert's subject test and the rescue too; the door hides Bert as he tumbles in */
+@media (min-width:561px){.jcboard{left:14%;width:28.5%}}
+.jcnote.more{font:inherit;cursor:pointer;background:#fff!important;transform:rotate(1.5deg)}
+.cbag.town .opt.wrong,.bossg .opt.wrong{background:#FDE0DE!important;border-color:#E2231A!important;border-width:2px}
+.cbag.town .opt.right,.bossg .opt.right{background:#E2F5DC!important;border-color:#2E9B3E!important;border-width:2px}
+.cbag.town .opt.wrong .L,.bossg .opt.wrong .L{background:#E2231A;color:#fff}
+.cbag.town .opt.right .L,.bossg .opt.right .L{background:#2E9B3E;color:#fff}
+.bhandback .bdoor{z-index:5}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -176184,7 +176193,8 @@ window.SQE_TOWN = function(A){
     /* rule 20 Nov 13:58: the new inside-the-Job-Centre scene stays Monnie-only (?monnie=1) until QA passes it; Layla keeps the desk card */
     if (!document.documentElement.classList.contains('monnie')) return '<div class="bcard town-desk jcdesk"><div class="jcp2" aria-hidden="true"><span class="box"><b>jobcentre</b><span>pluck</span></span><span class="end">Part of the Department for Hens</span></div><div><h2>Job Centre</h2><div class="bspeech">"' + esc(line) + '"</div></div></div>' + jobNav(off);
     /* Monnie 20 Nov 16:15: every spaced review due that day is its own sticky note: what to do, which topic, and a drawn coin with the pay under it (never "Job 1") */
-    var notes = L.map(function(j){ return '<a class="jcnote' + (j.done ? ' done' : '') + '" href="' + j.h + '" title="' + esc(A.tnum(j.x) + ': ' + j.x.t.title + ' (' + jobWhy(j) + ')') + '"><b>' + esc(jobKind(j)) + '</b><span class="jctop">' + esc(jobShort(j.x.t.title)) + '</span>' + (j.done ? '<i class="jcdone">Done</i>' : '<span class="jcoin">' + COIN() + '<em>' + j.pay + '</em></span>') + '</a>'; }).join('');
+    var MAXN = 6, shownL = L.length > MAXN ? L.slice(0, MAXN - 1) : L; /* QA 17:26: the board holds 6 notes; on busy days the last one says "+N more" and jumps to the full list below */
+    var notes = shownL.map(function(j){ return '<a class="jcnote' + (j.done ? ' done' : '') + '" href="' + j.h + '" title="' + esc(A.tnum(j.x) + ': ' + j.x.t.title + ' (' + jobWhy(j) + ')') + '"><b>' + esc(jobKind(j)) + '</b><span class="jctop">' + esc(jobShort(j.x.t.title)) + '</span>' + (j.done ? '<i class="jcdone">Done</i>' : '<span class="jcoin">' + COIN() + '<em>' + j.pay + '</em></span>') + '</a>'; }).join('') + (L.length > MAXN ? '<button type="button" class="jcnote more" onclick="var t=document.querySelector(\'.town-jobs\');if(t)t.scrollIntoView({behavior:\'smooth\',block:\'start\'})"><b>+' + (L.length - MAXN + 1) + ' more</b><span class="jctop">See them all below</span></button>' : '');
     /* QA 20 Nov 14:36: never an empty board. With no jobs that day, starter jobs (active recall) are pinned up so there is always something to tap */
     if (!L.length){ /* QA 15:45: real starter tasks on today's topic (fresh profiles too), each with a Back to the Job Centre button */
       var pdS = A.planDay(A.ymd()), it0 = pdS && (pdS.items || []).filter(function(i){ return i.x; })[0], sx = it0 ? it0.x.s : (window.SQE_SUBJECTS || [])[0], tx = it0 ? it0.x.t : sx && sx.topics[0];
@@ -176198,7 +176208,7 @@ window.SQE_TOWN = function(A){
       '<span class="jclayw" role="img" aria-label="Layla"><img class="st" src="img/layla-step0.webp" alt=""><img class="bl" src="img/jc/layla-blink.webp" alt=""><img class="wa" src="img/layla-walk-1.webp" alt=""><img class="wb" src="img/layla-walk-2.webp" alt=""></span>' +
       (away ? '' : '<span class="jcbrit" role="img" aria-label="Britney"><img class="n" src="img/britney/set/neutral.webp" alt=""><img class="hp" src="img/britney/set/happy.webp" alt=""></span>');
     return '<div class="jcscene" role="group" aria-label="Inside the Job Centre"><img class="jcbg" src="img/jobcentre-in.webp" alt="" width="1800" height="1004">' + live +
-      '<div class="jcboard' + (L.length > 6 ? ' many' : '') + '">' + jobNav(off) + '<div class="jcnotes">' + notes + '</div></div><div class="bspeech jcsay">"' + esc(line) + '"</div></div>';
+      '<div class="jcboard">' + jobNav(off) + '<div class="jcnotes">' + notes + '</div></div><div class="bspeech jcsay">"' + esc(line) + '"</div></div>';
   }
   function jobKind(j){ return {1: 'Revision cards', 3: 'Quick fire', 6: 'Frameworks', 10: 'Model Q&A'}[j.g] || 'Quick fire'; }
   function jobFull(t){ return String(t || '').split(/[:(]/)[0].trim(); }
@@ -180330,7 +180340,7 @@ function qaAll(s){
   });
   return h;
 }
-function qaWell(c, n){ var r = n ? c / n : 0; return '<p class="exq-well"><b>' + (r >= 0.7 ? 'Well done, that\'s a strong score!' : r >= 0.5 ? 'Good effort! The ones you missed will come back to you.' : 'Round over. The ones you missed will come back sooner, so you\'ll get them next time.') + '</b></p>'; } /* 16:20 (QA): a well-done line like Quick fire */
+function qaWell(c, n){ var r = n ? c / n : 0; if (!n) return '<p class="exq-well"><b>You skipped all ' + (QZ ? QZ.items.length : '') + '. Have a go? Press "Try this set again".</b></p>'; return '<p class="exq-well"><b>' + (r >= 0.7 ? 'Well done, that\'s a strong score!' : r >= 0.5 ? 'Good effort! The ones you missed will come back to you.' : 'Round over. The ones you missed will come back sooner, so you\'ll get them next time.') + '</b></p>'; } /* 16:20 (QA): a well-done line like Quick fire */
 /* QA 20 Nov: keep the open question set in sessionStorage, so a refresh on the notes page (or on the question) does not lose it and "Back to your question" still works */
 function qzSave(){ try { if (QZ && QZ.items && QZ.items.length) sessionStorage.setItem("sqe_qz", JSON.stringify(QZ)); } catch(e){} }
 function qzLoad(src){ try { var z = JSON.parse(sessionStorage.getItem("sqe_qz") || "null"); if (z && z.items && z.items.length && z.items.every(function(it){ return qById(it.id); }) && (src === undefined || z.src === src)) return z; } catch(e){} return null; }
@@ -182517,7 +182527,7 @@ document.addEventListener("click", function(e){
     case "bossransom": if (bossRansom()) location.hash = "#/palace"; else render(); break;
     case "bossgetback": if (BOSS && !BOSS.done && BOSS.ans !== null) bossEnd(); RESQ = null; location.hash = "#/boss/rescue"; break;
     case "resqpick": resqPick(+el.getAttribute("data-o")); render(); break;
-    case "resqnext": if (RESQ && RESQ.ans != null) RESQPREV = {id:RESQ.id, ord:RESQ.ord, ans:RESQ.ans}; RESQ = null; RESQV = 0; render(); window.scrollTo(0, 0); break;
+    case "resqnext": if (RESQ && RESQ.ans != null) RESQPREV = {id:RESQ.id, ord:RESQ.ord, ans:RESQ.ans}; RESQ = null; RESQV = 0; render(); sceneFocus(".bintro.bdone, .bossg .cbatop"); break; /* QA 17:26: "You did it!" and each next rescue question open in view */
     case "resqprev": RESQV = 1; render(); break;
     case "resqback": RESQV = 0; render(); break;
     case "bhreplay": render(); break;
@@ -182641,13 +182651,15 @@ window.addEventListener("hashchange", function(){
   delId = null; resetAsk = false;
   render();
   if (r[0] === "cba" && r[2]) cbaFocus();
-  if (r[0] === "town" && r[1] === "jobs") sceneFocus(".jcscene, .jcdesk"); /* Monnie 20 Nov 16:15: the Job Centre opens on the scene (and the day arrows stay there), never the top banner */
+  if (r[0] === "town" && r[1] === "jobs") sceneFocus(".jcscene, .jcdesk");
+  if (r[0] === "boss" && r[1] === "rescue") sceneFocus(".bintro.bdone"); /* Monnie 20 Nov 16:15: the Job Centre opens on the scene (and the day arrows stay there), never the top banner */
   /* Monnie 20 Nov: Face the Butcher / subject test links (Today, topics, Bert's list) open scrolled straight to that test, not the banner */
   if (((r[0] === "boss" && r[1] && r[2]) || (r[0] === "town" && r[1] === "butcher" && r[2])) && !(window.SQE_QBACK_T && Date.now() - window.SQE_QBACK_T < 3000)) cbaFocus(); /* not when coming back from the notes: that lands on the exact question */
 });
 /* bring the game card into view on CBA level pages (the banner can fill a laptop screen) */
 function sceneFocus(sel){ [30, 300].forEach(function(ms){ setTimeout(function(){ var g = document.querySelector(sel); if (!g) return; var t = g.getBoundingClientRect().top; if (t > 8 || t < 0) window.scrollTo({top: window.scrollY + t - 8}); }, ms); }); }
 window.SQE_SCENE_FOCUS = sceneFocus;
+setTimeout(function(){ if (/^#\/town\/jobs/.test(location.hash)) sceneFocus(".jcscene, .jcdesk"); else if (/^#\/boss\/rescue/.test(location.hash)) sceneFocus(".bintro.bdone"); }, 500); /* QA 17:26: opening these links directly lands on the scene too */
 function cbaFocus(){ setTimeout(function(){ var g = document.querySelector(".cbag .cbatop") || document.querySelector(".cbag"); if (!g) return; var t = g.getBoundingClientRect().top; if (t > 8 || t < 0) window.scrollTo({top: window.scrollY + t - 8}); }, 30); }
 window.addEventListener("storage", function(e){ if (e.key === KEY){ load(); if (!podPlaying()) render(); } });
 window.addEventListener("pagehide", save);
@@ -182689,7 +182701,7 @@ function stopTheme(r){
 var JPIC = null, JMAP = null; /* Journey to Cluckington Palace (top of the palace tab; #/map/<subj> opens a stop's panel there): journey.js defines window.SQE_JOURNEY; it adds VIEW.map and makes the palace scene's backdrop follow Britney along the path */
 if (window.SQE_JOURNEY) try { var JX = window.SQE_JOURNEY({S:function(){ return S; }, VIEW:VIEW, buildPlan:buildPlan, parseYmd:parseYmd, ymd:ymd, fmtDate:fmtDate, SUBJ:SUBJ, route:route, todoHTML:todoHTML}); if (JX && JX.scene) cbaScene = JX.scene(cbaScene); if (JX && JX.map) JMAP = JX.map; if (JX && JX.theme) JTHEME = JX.theme; if (JX && JX.pic) JPIC = JX.pic; } catch(ej){ if (window.console) console.error(ej); }
 /* immersive topic scenes (#/scene/<subj>/<topic>, e.g. the Sweet Shop for Business Law 1): scene.js defines window.SQE_SCENE */
-if (window.SQE_SCENE) try { window.SQE_SCENE({S:function(){ return S; }, VIEW:VIEW, save:save, earn:earn, render:render, route:route, esc:esc, inl:inl, md:md, tnum:tnum, TBYKEY:TBYKEY, NOTECHECK:NOTECHECK, learnDeck:learnDeck, learnCard:learnCard, bigIdeaHTML:bigIdeaHTML, learnBigLines:learnBigLines, nckS:nckS, topicQs:topicQs, qById:qById, record:record, qfRecord:qfRecord, nck:function(k, head){ var p = NCK; NCK = k; try { return nckHTML(head); } finally { NCK = p; } }}); } catch(es){ if (window.console) console.error(es); }
+if (window.SQE_SCENE) try { window.SQE_SCENE({seenToday:seenToday, S:function(){ return S; }, VIEW:VIEW, save:save, earn:earn, render:render, route:route, esc:esc, inl:inl, md:md, tnum:tnum, TBYKEY:TBYKEY, NOTECHECK:NOTECHECK, learnDeck:learnDeck, learnCard:learnCard, bigIdeaHTML:bigIdeaHTML, learnBigLines:learnBigLines, nckS:nckS, topicQs:topicQs, qById:qById, record:record, qfRecord:qfRecord, nck:function(k, head){ var p = NCK; NCK = k; try { return nckHTML(head); } finally { NCK = p; } }}); } catch(es){ if (window.console) console.error(es); }
 /* the town beside the palace (#/town/jobs, #/town/butcher, #/town/shop): town.js defines window.SQE_TOWN; preview only (?town=1), otherwise #/town goes back to #/palace */
 var TOWNHOOK = TOWNHOOK || {}; /* set by town.js (preview only): plan(days), todo(pd), tasks(pd) */
 if (window.SQE_TOWN) try { window.SQE_TOWN({hooks:function(h){ TOWNHOOK = h || {}; PLAN = null; }, S:function(){ return S; }, VIEW:VIEW, save:save, earn:earn, render:render, route:route, esc:esc, inl:inl, md:md, ymd:ymd, planDay:planDay, tnum:tnum, fmtM:fmtM, topicCards:topicCards, topicQs:topicQs, topicRes:topicRes, qById:qById, shuffle:shuffle, TBYKEY:TBYKEY, SUBJ:SUBJ, cbaS:cbaS, cbaCoin:cbaCoin, cbaItem:cbaItem, cbaItemPic:cbaItemPic, cbaAte:cbaAte, cbaBuy:cbaBuy, broodS:broodS, broodReady:broodReady, CBA_SHOP:function(){ return CBA_SHOP; }}); } catch(et){ if (window.console) console.error(et); }
@@ -182829,8 +182841,11 @@ document.addEventListener("click", function(e){
   function where(){
     var app = document.getElementById("app"), main = app && (app.querySelector(".wrap") || app);
     var head = main ? txt(main.querySelector("h1, h2")) || txt(main.querySelector(".qmeta, .qzcard .pill, .tag, .scn h3, h3")) : "";
-    if (!head){ var r0 = (location.hash.split("/")[1] || "home"); head = ({play:"Model Q&A", questions:"Model Q&A", quick:"Quick fire", cards:"Revision cards", topic:"Topic notes", scene:"Peckham stop", town:"Peckham", mount:"The Mount", palace:"Peckham map", today:"Today", boss:"Bert's fight", mock:"Mock exam"})[r0] || r0; } /* 17:05 (QA): never show a bare "#/play" */
-    var q = main ? txt(main.querySelector(".qtext, .qstem, .stem, .qq, .qf, .cbaq, .bq, .bossq, .q, .fcq, .fc .face, .front, .scn-pop h3, .hlpara")) : "";
+    var r0 = (location.hash.split("/")[1] || "home"), pn = ({play:"Model Q&A", questions:"Model Q&A", quick:"Quick fire", cards:"Revision cards", topic:"Topic notes", scene:"Peckham stop", town:"Peckham", mount:"The Mount", palace:"Peckham map", today:"Today", boss:"Bert's fight", mock:"Mock exam"})[r0] || "";
+    head = head.replace(/[·|,]?\s*score\s*\d+/i, "").replace(/^[^A-Za-z0-9]+/, "").trim();
+    if (r0 === "cards"){ var dk = main && txt(main.querySelector(".cstop-tx, .inner .subj, h2")); if (dk && head.indexOf(dk) < 0) head = dk + " · " + head; }
+    if (pn && head.indexOf(pn) !== 0) head = pn + (head ? " · " + head : ""); if (!head) head = r0; /* 17:30 (QA): lead with the page name, deck name for cards, no "score 0" */
+    var q = main ? txt(main.querySelector(".qtext, .qstem, .stem, .qq, .qf, .cbaq, .bq, .bossq, .q, .fcq, .cardq, .fc .face, .front, .scn-pop h3, .hlpara")) : "";
     return { page: location.hash || "#/home", heading: head.slice(0, 140), item: q.slice(0, 300) };
   }
   function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
