@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120021022";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120021140";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -2740,17 +2740,17 @@ html.dfv-on{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.jsv .jrf,.jsv .jflag{animation:none!important}}
 .head.nb .mbag .mbn::after{content:none}
 
-/* map-britney: three Britney frames take turns (pecking walk / happy head-tilt / excited flappy hop), 9s loop */
+/* map-britney: three Britney frames take turns gently (pecking walk / happy head-tilt / excited little hop), 7s each like Layla's glances; subtle on purpose (Monnie 20 Nov: "more subtle") */
 .jsv .jbm1,.jsv .jbm2,.jsv .jbm3{transform-box:fill-box}
-.jsv .jbf{opacity:0;animation:jb-show 9s steps(1,end) infinite}
-.jsv .jbf1{animation-delay:0s}.jsv .jbf2{animation-delay:-6s}.jsv .jbf3{animation-delay:-3s}
-@keyframes jb-show{0%{opacity:1}33.33%,100%{opacity:0}}
-.jsv .jbm1{transform-origin:60% 100%;animation:jb-peck 1s ease-in-out infinite}
-@keyframes jb-peck{0%,55%,100%{transform:rotate(0) translateY(0)}70%{transform:rotate(9deg) translateY(1px)}80%{transform:rotate(3deg)}}
-.jsv .jbm2{transform-origin:50% 100%;animation:jb-tilt 1.5s ease-in-out infinite alternate}
-@keyframes jb-tilt{0%{transform:rotate(-6deg) scale(1,1)}100%{transform:rotate(6deg) scale(1.03,.97)}}
-.jsv .jbm3{transform-origin:50% 100%;animation:jb-hop .5s ease-in-out infinite alternate}
-@keyframes jb-hop{0%{transform:translateY(0) scale(1.04,.95)}100%{transform:translateY(-14px) scale(.97,1.04)}}
+.jsv .jbf{opacity:0;animation:jb-show 21s ease-in-out infinite}
+.jsv .jbf1{animation-delay:0s}.jsv .jbf2{animation-delay:-14s}.jsv .jbf3{animation-delay:-7s}
+@keyframes jb-show{0%{opacity:1}30%{opacity:1}34%{opacity:0}96%{opacity:0}100%{opacity:1}}
+.jsv .jbm1{transform-origin:60% 100%;animation:jb-peck 3.2s ease-in-out infinite}
+@keyframes jb-peck{0%,60%,100%{transform:rotate(0)}75%{transform:rotate(4deg)}85%{transform:rotate(1.5deg)}}
+.jsv .jbm2{transform-origin:50% 100%;animation:jb-tilt 3.5s ease-in-out infinite alternate}
+@keyframes jb-tilt{0%{transform:rotate(-2.5deg)}100%{transform:rotate(2.5deg)}}
+.jsv .jbm3{transform-origin:50% 100%;animation:jb-hop 2.4s ease-in-out infinite}
+@keyframes jb-hop{0%,55%,100%{transform:translateY(0)}70%{transform:translateY(-5px)}85%{transform:translateY(0)}}
 @media (prefers-reduced-motion:reduce){.jsv .jbf,.jsv .jbm1,.jsv .jbm2,.jsv .jbm3{animation:none!important}.jsv .jbf1{opacity:1}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
@@ -83437,7 +83437,7 @@ window.SQE_JOURNEY = function (A) {
         var lx = -lw / 2 - bh * .3 * f, bx = f > 0 ? lx + lw - 8 : lx - bh + 8, x0 = Math.min(lx, bx + bh * (f > 0 ? .07 : .24)), x1 = Math.max(lx + lw, bx + bh * (f > 0 ? .76 : .93));
         return "<ellipse cx=\"".concat(f1((x0 + x1) / 2), "\" cy=\"2\" rx=\"").concat(f1((x1 - x0) / 2 + 4), "\" ry=\"6\" fill=\"#111\" opacity=\".2\"/><g class=\"jhop\">")
             + (BAG ? "<image href=\"img/souvenir/layla-front-bag.webp\" x=\"".concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/>") : "<image class=\"jlw1\" href=\"".concat(LAYLA_IMG, "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/><image class=\"jmo jlw2\" href=\"").concat(LAYLA_IMG2, "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/>"))
-            + "<g transform=\"translate(".concat(f1(bx + bh / 2), ",0) scale(").concat(f, ",1)\">").concat(BRIT_FR.map(function (u, k) { var h2 = bh * .86, w2 = h2 * 1.348; return "<g class=\"jbf jbf".concat(k + 1, "\"><g class=\"jbm").concat(k + 1, "\"><image href=\"").concat(u, "\" x=\"").concat(f1(-w2 * .42), "\" y=\"").concat(f1(-h2 * .97), "\" width=\"").concat(f1(w2), "\" height=\"").concat(f1(h2), "\"/></g></g>"); }).join('')).concat(BAG ? "<g transform=\"translate(".concat(f1(bh * .02), ",").concat(f1(-bh * .42), ")\"><path d=\"M").concat(f1(-bh * .09), ",").concat(f1(-bh * .16), " q").concat(f1(bh * .09), ",").concat(f1(-bh * .13), " ").concat(f1(bh * .18), ",0\" fill=\"none\" stroke=\"#D62828\" stroke-width=\"3\"/><rect x=\"").concat(f1(-bh * .13), "\" y=\"").concat(f1(-bh * .16), "\" width=\"").concat(f1(bh * .26), "\" height=\"").concat(f1(bh * .26), "\" rx=\"3\" fill=\"#7EC8F2\" stroke=\"#111\" stroke-width=\"2.5\"/></g>") : '', "</g></g>");
+            + "<g transform=\"translate(".concat(f1(bx + bh / 2), ",0) scale(").concat(f, ",1)\">").concat(BRIT_FR.map(function (u, k) { var h2 = bh * .86, w2 = h2 * 1.348; return "<g class=\"jbf jbf".concat(k + 1, "\"><g class=\"jbm").concat(k + 1, "\"><image href=\"").concat(u, "\" x=\"").concat(f1(-w2 * .42), "\" y=\"").concat(f1(-h2 * .97), "\" width=\"").concat(f1(w2), "\" height=\"").concat(f1(h2), "\"/></g></g>"); }).join(''), "</g></g>");
     }
     function pair(Hn, mode) {
         return "<g class=\"jhen jpair\" transform=\"translate(".concat(Hn.x, ",").concat(Hn.y, ")\" data-f=\"").concat(Hn.m === false ? -1 : 1, "\" aria-hidden=\"true\">").concat(pairInner(mode, Hn.m === false ? -1 : 1), "</g>");
@@ -90774,7 +90774,7 @@ window.SQE_SCENE = function(A){
     if (a === 'gr'){ gMatch(k, 'r', +b.getAttribute('data-r')); return; }
     if (a === 'gagain'){ gameStart(k); return; }
     if (a === 'gdone' && SC.game){ var o4 = state(k), G3 = SC.game; o4.game = {at: Date.now(), score: G3.right, n: G3.total}; earnC(Math.min(5, G3.right), 'room|' + k + '|game'); SC.game = null; stopTimer(); try { A.save(); } catch(er){} A.render(); showNext(); if (roomDone(k)) setTimeout(function(){ var el = document.getElementById('scn-end'); if (el) try { el.scrollIntoView({block: 'start'}); } catch(er){} }, 150); return; }
-    if (a === 'door'){ if (gateOK(k) || state(k).door) enter(k); else { SC.gate = true; paint(); } }
+    if (a === 'door'){ if (gateOK(k) || state(k).door || (ROOMS_FREE && rk(k))) enter(k); else { SC.gate = true; paint(); } }
     else if (a === 'enter') enter(k);
     else if (a === 'obj') openObj(k, b.getAttribute('data-id'));
     else if (a === 'next') go(k, 1);
