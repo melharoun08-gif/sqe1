@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120002313";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120002757";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -80939,6 +80939,33 @@ function streakHTML(){
     : '<div class="stline stgoal">' + rib + flame + '<b>Complete a ' + PRESENT_STEPS + '-day streak</b><span>to win a present</span><small>' + n + ' of ' + PRESENT_STEPS + ' days done · ' + got + ' of ' + PRESENT_TOTAL + ' won</small></div>';
   return '<div class="streak" data-bl="streak" title="Hit your full study time ' + PRESENT_STEPS + ' days in a row to win a real present">' + svg + line + '</div>';
 }
+/* newbanner: PREVIEW ONLY (?newbanner=1). Big cloud staircase top-left, title in the centre, everything else arranged round it. Live banner unchanged until approved. */
+var NB = /[?&]newbanner=1/.test(location.search);
+function nbStreakHTML(){
+  if (!STREAK_LIVE && streakDemo() === null) return "";
+  var p = presS(), got = p.claimed.length, n = presentStreak(), ready = n >= PRESENT_STEPS && got < PRESENT_TOTAL, done = got >= PRESENT_TOTAL;
+  var svg = '<svg viewBox="0 -34 600 364" class="nbsvg" aria-hidden="true">', pos = [[44, 300]];
+  svg += stCloud(44, 300, 56, '#fff');
+  for (var i = 0; i < PRESENT_STEPS; i++){
+    var cx = 128 + i * 80, cy = 282 - i * 44, on = i < n;
+    pos.push([cx, cy]);
+    svg += stCloud(cx, cy, 68, on ? '#FFD93B' : '#fff');
+    svg += '<text x="' + cx + '" y="' + (cy + 8) + '" text-anchor="middle" font-size="' + (on ? 24 : 21) + '" font-weight="800" fill="#10294A">' + (on ? '✓' : (i + 1)) + '</text>';
+  }
+  var lp = pos[Math.min(n, PRESENT_STEPS)], LH = 150, LW = LH * 284 / 600;
+  svg += '<image class="nblayla" href="img/layla-cloud-love.webp" x="' + (lp[0] - LW / 2).toFixed(1) + '" y="' + (lp[1] - LH * 0.9).toFixed(1) + '" width="' + LW.toFixed(1) + '" height="' + LH + '"/>';
+  var rx = 542, ry = 92;
+  ["#E0457B","#F59F2A","#F7D038","#4CB963","#3B8FE0","#8A5CD6"].forEach(function(c, j){ var r = 50 - j * 5.4; svg += '<path d="M' + (rx - r) + ' ' + ry + 'a' + r + ' ' + r + ' 0 0 1 ' + (2 * r) + ' 0" fill="none" stroke="' + c + '" stroke-width="5.8"/>'; });
+  svg += '<path d="M' + (rx - 53) + ' ' + ry + 'a53 53 0 0 1 106 0" fill="none" stroke="#10294A" stroke-width="2.4"/><path d="M' + (rx - 20) + ' ' + ry + 'a20 20 0 0 1 40 0" fill="none" stroke="#10294A" stroke-width="2"/>';
+  svg += stCloud(rx - 40, ry + 10, 46, '#fff') + stCloud(rx + 40, ry + 10, 46, '#fff');
+  svg += '<g class="' + (ready ? 'stgift wob' : 'stgift') + '"><rect x="' + (rx - 15) + '" y="' + (ry - 19) + '" width="30" height="23" rx="2.5" fill="#E0457B" stroke="#10294A" stroke-width="2.6"/><rect x="' + (rx - 18) + '" y="' + (ry - 27) + '" width="36" height="9" rx="2.5" fill="#F25C94" stroke="#10294A" stroke-width="2.6"/><path d="M' + rx + ' ' + (ry - 26) + 'v29" stroke="#FFD93B" stroke-width="5.5"/><path d="M' + rx + ' ' + (ry - 27) + 'c-12-12-19 1-5 1.5M' + rx + ' ' + (ry - 27) + 'c12-12 19 1 5 1.5" fill="none" stroke="#10294A" stroke-width="2.6" stroke-linecap="round"/></g>';
+  svg += '</svg>';
+  var flame = '<span class="nbflame" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.5c1 3.6 5.8 6 5.8 11.2A5.8 5.8 0 0 1 6.2 13.7c0-2.6 1.5-4.4 2.8-5.6.2 1.8 1 3 2.2 3.6-.6-3.4.2-6.4.8-9.2z" fill="#F25A1F" stroke="#10294A" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 12.2c.9 1.4 2.6 2.4 2.6 4.4a2.6 2.6 0 0 1-5.2 0c0-1.5.9-2.6 2.6-4.4z" fill="#FFD93B" stroke="#10294A" stroke-width="1.2" stroke-linejoin="round"/></svg></span>';
+  var line = done ? '<div class="nbrib">' + flame + '<b>All ' + PRESENT_TOTAL + ' presents won!</b></div>'
+    : ready ? '<div class="nbrib nbready"><button class="stbtn" data-act="present">🎁 Open present ' + (got + 1) + ' of ' + PRESENT_TOTAL + '</button></div>'
+    : '<div class="nbrib">' + flame + '<b>Complete a ' + PRESENT_STEPS + '-day streak</b><span>to win a present</span><small>' + n + ' of ' + PRESENT_STEPS + ' days done · ' + got + ' of ' + PRESENT_TOTAL + ' won</small></div>';
+  return '<div class="nbsteps" title="Hit your full study time ' + PRESENT_STEPS + ' days in a row to win a real present">' + svg + line + '</div>';
+}
 function presentVoucher(){
   var p = presS(), n = p.claimed.length;
   if (streakDemo() === null){ if (presentStreak() < PRESENT_STEPS || n >= PRESENT_TOTAL) return; p.claimed.push({d:ymd()}); p.from = ymd(); save(); n = p.claimed.length; }
@@ -80967,6 +80994,7 @@ function header(route){
   else if (d2 > 0) countdown = '<div class="stat"><b>' + (d1 === 0 ? "Today" : "Done") + '</b><span>FLK1</span></div><div class="stat"><b>' + d2 + '</b><span>days to FLK2</span></div>';
   else if (d2 === 0) countdown = '<div class="stat"><b>Today</b><span>FLK2 starts</span></div>';
   else countdown = '<div class="stat"><b>Done</b><span>exams sat. Well done!</span></div>';
+  if (NB) return nbHeader(route, cur, tabs, countdown, pct, C, done, tgt, todayDone, todayGoal, name);
   return '' +
   '<div class="head' + (route[0] === "home" ? '' : ' compact') + '"><img class="hscene" src="img/banner-wide.webp" alt="Layla and Yasmin in the field with the hens and the rabbit"><div class="row1">' +
     '<div data-bl="title"><h1>' + name + 'SQE1 Revision</h1><div class="sub">FLK1 ' + esc(fmtDate(S.settings.exam1)) + ' · FLK2 ' + esc(fmtDate(S.settings.exam2)) + '</div></div>' +
@@ -80981,6 +81009,21 @@ function header(route){
       '<div class="in">' + Math.round(pct) + '%</div></div>' +
     '<div class="ringtxt"><b>' + fmtH(done) + ' of ' + fmtH(tgt) + '</b><br>' + (done >= tgt ? "Whole plan done! 🎉" : "of the whole revision plan") + '</div></div>' + bagHTML().replace('<a class="mbag', '<a data-bl="bag" class="mbag') +
     kwHTML() + streakHTML() +
+  '</div>' +
+  '<nav class="tabs">' + tabs.map(function(t){ return '<a href="#/' + t[0] + '" data-tab="' + t[0] + '" draggable="false" style="--tc:var(' + t[2] + ')" class="' + (cur === t[0] ? "on" : "") + " two" + '">' + (t[1].indexOf("<span") >= 0 ? t[1] : t[1].split("|").map(function(x){ return "<span>" + x + "</span>"; }).join("")) + '</a>'; }).join("") + '</nav>' +
+  '</div>';
+}
+/* newbanner preview header: [steps | title, numbers, Remember | ring, coin bag]; tabs exactly as the normal header */
+function nbHeader(route, cur, tabs, countdown, pct, C, done, tgt, todayDone, todayGoal, name){
+  return '<div class="head nb' + (route[0] === "home" ? '' : ' compact') + '"><div class="nbstage">' +
+    '<div class="nbl">' + nbStreakHTML() + '</div>' +
+    '<div class="nbc"><div class="nbtitle"><h1>' + name + 'SQE1 Revision</h1><div class="sub"><span>FLK1 ' + esc(fmtDate(S.settings.exam1)) + '</span><span>FLK2 ' + esc(fmtDate(S.settings.exam2)) + '</span></div></div>' +
+      '<div class="nbstats">' + countdown + '<div class="stat"><b>' + fmtH(todayDone) + (todayGoal ? ' <small>of ' + fmtH(todayGoal) + '</small>' : '') + '</b><span>' + (todayGoal && todayDone >= todayGoal ? "today ✓ goal met" : "studied today") + '</span></div></div>' +
+      kwHTML().replace(' data-bl="kw"', '') + '</div>' +
+    '<div class="nbr"><div class="nbring"><div class="ring" aria-label="' + Math.round(pct) + '% of the whole revision plan"><svg width="74" height="74"><circle cx="37" cy="37" r="31" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="8"/>' +
+      '<circle cx="37" cy="37" r="31" fill="none" stroke="#7CCB9C" stroke-width="8" stroke-linecap="round" stroke-dasharray="' + C.toFixed(1) + '" stroke-dashoffset="' + (C * (1 - pct / 100)).toFixed(1) + '"/></svg><div class="in">' + Math.round(pct) + '%</div></div>' +
+      '<div class="ringtxt"><b>' + fmtH(done) + ' of ' + fmtH(tgt) + '</b><br>' + (done >= tgt ? "Whole plan done! 🎉" : "of the whole revision plan") + '</div></div>' + bagHTML() + '</div>' +
+    '<button class="homebtn" data-go="#/home">Home</button>' +
   '</div>' +
   '<nav class="tabs">' + tabs.map(function(t){ return '<a href="#/' + t[0] + '" data-tab="' + t[0] + '" draggable="false" style="--tc:var(' + t[2] + ')" class="' + (cur === t[0] ? "on" : "") + " two" + '">' + (t[1].indexOf("<span") >= 0 ? t[1] : t[1].split("|").map(function(x){ return "<span>" + x + "</span>"; }).join("")) + '</a>'; }).join("") + '</nav>' +
   '</div>';
@@ -81121,6 +81164,7 @@ function blApply(){
     if (!BL){ blOpen(); return; }
   }
   var h = document.querySelector(".head"); if (!h) return;
+  if (h.classList.contains("nb")){ blOff(h); return; } /* newbanner preview has its own fixed arrangement */
   var home = !h.classList.contains("compact"), m = blMode(), edit = !!BL && home, lay = home ? blCur(m) : null;
   blOff(h); h.classList.toggle("bl-edit", edit);
   if (!lay && !edit) return;
@@ -81877,7 +81921,7 @@ function topicQs(s, tid){ return (s.qs || []).map(function(q, i){ var k = s.id +
 function notesHref(x){ return (window.SQE_SCENES || {})[x.key] ? "#/scene/" + x.key : "#/topic/" + x.s.id + "/" + x.t.id; }
 function topicSteps(x){
   var s = x.s, t = x.t, base = "#/topic/" + s.id + "/" + t.id, nq = (s.qq || []).filter(function(q){ return q.t === t.id; }).length, nc = topicCards(s, t.id).length, nm = topicQs(s, t.id).length;
-  var st = [{k:"notes", l:"📝 Read the notes and cartoons", h:notesHref(x), alt:(window.SQE_SCENES || {})[x.key] && DFPH[x.key] && DFPH[x.key].length ? ' <a class="tdalt" href="' + base + '/cartoon">🖼️ Cartoon (' + DFPH[x.key].length + ' pages)</a>' : ''}, {k:"fw", l:"🗺️ Go over the framework", h:base + "/framework"}];
+  var st = [{k:"notes", l:"📝 Read the notes and cartoons", h:notesHref(x), alt:(window.SQE_SCENES || {})[x.key] && DFPH[x.key] && DFPH[x.key].length ? ' <a class="tdalt" href="' + base + '/cartoon">🖼️ Cartoon (' + DFPH[x.key].length + ' pages)</a>' : ''}]; /* 20 Nov Monnie: framework only in the day-6 review, not on the learning day */
   if (nq) st.push({k:"quick", l:"⚡ Test yourself: quick-fire (" + nq + ")", h:"#/quick/" + s.id + "/" + t.id});
   if (nm) st.push({k:"qa", l:"✍️ Test yourself: exam-style questions (" + nm + ")", h:"#/questions/" + s.id + "/" + t.id});
   st.push({k:"rate", l:"🚦 Rate it red, amber or green", h:base + "/rate", auto:true});
@@ -81889,7 +81933,7 @@ var PACE = {fw:8, card:1, quick:0.5, qa:2.5}  /* card 1 min (Monnie, 19 Nov 19:4
 function practiceMins(x){
   if (PMC[x.key]) return PMC[x.key];
   var s = x.s, t = x.t, nq = (s.qq || []).filter(function(q){ return q.t === t.id; }).length, nc = topicCards(s, t.id).length, nm = topicQs(s, t.id).length;
-  var r = {fw:PACE.fw, cards:nc * PACE.card, quick:nq * PACE.quick, qa:nm * PACE.qa};
+  var r = {fw:0 /* framework moved to day-6 review */, cards:nc * PACE.card, quick:nq * PACE.quick, qa:nm * PACE.qa};
   r.sum = r.fw + r.quick + r.qa; PMC[x.key] = r; return r;
 }
 function stepMins(x, total){
