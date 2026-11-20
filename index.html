@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120093728";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120094155";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -3799,6 +3799,11 @@ a.pkback:hover .pksign{transform:rotate(-3deg) scale(1.05)}
 @media (max-width:640px){.land-real .ftop .fnm b{font-size:16px}.land-real .ftop .fnm span{font-size:10px}.land-real .ftop .fico{width:24px;height:24px}.land-real.land-aquarium .flash .face{padding:96px 118px 76px 62px}.land-real.land-pier .flash .face{padding:70px 128px 30px 24px}.land-real.land-botanic-garden .flash .face{padding:78px 96px 34px 22px}.land-real.land-balloon-field .flash .face{padding:110px 52px 60px 52px}.land-real.land-balloon-field .ftop{left:70px}.land-real.land-amazon-forest .flash .face{padding:96px 76px 70px 76px}.land-real.land-amazon-forest .ftop{left:80px}.land-real.land-airport .flash .face{padding:104px 22px 54px 70px}.land-real.land-airport .ftop{left:72px}.land-real .lbc .bcode{width:90px}}
 .land-real:not(.land-tkt) .flash .back{font-size:16px;line-height:1.4}.land-real:not(.land-tkt) .flash .back .cardq{font-size:14px;margin-bottom:6px}
 @media (max-width:640px){.land-real:not(.land-tkt) .flash .back{font-size:14.5px}.land-real:not(.land-tkt) .flash .face{font-size:19px}}
+.land-real:not(.land-tkt) .flash .back{justify-content:flex-start}
+.land-real:not(.land-tkt) .flash .inner{min-height:360px}
+.land-real.land-aquarium .flash .face{padding-top:116px}
+.land-real.land-aquarium .flash .back,.land-real.land-balloon-field .flash .back{font-size:14.5px}
+@media (max-width:640px){.land-real:not(.land-tkt) .flash .inner{min-height:460px}.land-real:not(.land-tkt) .flash .back{font-size:14px}.land-real:not(.land-tkt) .flash .back .cardq{font-size:13px}.land-real.land-aquarium .flash .face{padding:112px 112px 82px 58px}.land-real.land-museum .flash .face{padding:96px 40px 46px 40px}.land-real.land-pier .flash .face{padding:74px 112px 30px 22px}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -125152,6 +125157,8 @@ var CSS = [
 '.scn-hook.ink{background:none}',
 '.scn-hook.white{background:none;color:#fff;text-shadow:0 0 .2cqw #1b1b1b}',
 '.scn-hook.chalk{background:none;color:#fff;font-family:"Sour Gummy","Gochi Hand",cursive;opacity:.95}',
+'.scn-board.plain{background:#2f4b3d;border:.45cqw solid #a8743f;border-radius:.6cqw;box-shadow:0 .3cqw .8cqw rgba(0,0,0,.25),inset 0 0 1.2cqw rgba(0,0,0,.35)}',
+'.scn-bt,.scn-bt .ln{overflow-wrap:normal;word-break:normal;hyphens:none}',
 '.scn-board{position:absolute;z-index:1;display:flex;align-items:center;justify-content:center;padding:var(--bpy,1cqw) var(--bpx,1cqw);box-sizing:border-box;background:none;border:0;border-radius:6px;cursor:zoom-in;color:#fff;font:400 1em/1.12 "Delius","Gochi Hand",cursive;letter-spacing:.01em;text-align:center;text-shadow:0 0 1px rgba(255,255,255,.9),0 0 3px rgba(255,255,255,.45),0 0 8px rgba(255,255,255,.18);overflow:hidden}',
 '.scn-board.tight{padding:calc(var(--bpy,1cqw) * .3) calc(var(--bpx,1cqw) * .3);overflow:visible}.scn-board.tight .scn-bt{line-height:1}.scn-board.tight .ln+.ln{margin-top:.05em}',
 '.scn-board.more .scn-bt::after{content:"tap to read ›";display:block;font-size:.6em;opacity:.95;text-decoration:underline;text-underline-offset:2px}',
@@ -125995,8 +126002,10 @@ window.SQE_SCENE = function(A){
     return H.map(function(o){ var t = String(o.text || ''), n = t.split('\n').length, fs = Math.min(o.h * 0.62 / n / r, o.w * 1.6 / Math.max(4, Math.max.apply(null, t.split('\n').map(function(l){ return l.length; }))));
       return '<span class="scn-hook ' + esc(o.style || 'tag') + '" aria-hidden="true" style="left:' + o.x + '%;top:' + o.y + '%;width:' + o.w + '%;height:' + o.h + '%;font-size:' + fs.toFixed(2) + 'cqw;--rot:' + (+o.rot || 0) + 'deg">' + esc(t).replace(/\n/g, '<br>') + '</span>'; }).join(''); }
   function boardLines(k){ return (k && BOARD_HOOKS[k.split('/')[1]]) || null; }
+  /* 20 Nov: rooms whose new picture has no drawn chalkboard get a painted board behind the words so they stay readable */
+  var BOARD_PLAIN = {'shareholders-minority':1, 'partnerships':1, 'corporate-insolvency':1, 'insolvency-clawback-priority':1, 'personal-insolvency':1, 'income-tax':1};
   function boardHTML(view, k){ var b = view && view.board, L = boardLines(k); if (!ROOMS_ON || !b || !L || !view.img) return '';
-    return '<button type="button" class="scn-board" data-scn-board="' + esc(k) + '" style="left:' + b.x + '%;top:' + b.y + '%;width:' + b.w + '%;height:' + b.h + '%;--bpx:' + (b.w * 0.03).toFixed(2) + 'cqw;--bpy:' + (b.h * 0.035 / (view.ratio || 16 / 9)).toFixed(2) + 'cqw" aria-label="Chalkboard: ' + esc(L.join(' ')) + '. Tap to read it big."><span class="scn-bt">' + L.map(function(l){ return '<span class="ln">' + esc(l) + '</span>'; }).join('') + '</span></button>'; }
+    return '<button type="button" class="scn-board' + (BOARD_PLAIN[String(k).split('/')[1]] ? ' plain' : '') + '" data-scn-board="' + esc(k) + '" style="left:' + b.x + '%;top:' + b.y + '%;width:' + b.w + '%;height:' + b.h + '%;--bpx:' + (b.w * 0.03).toFixed(2) + 'cqw;--bpy:' + (b.h * 0.035 / (view.ratio || 16 / 9)).toFixed(2) + 'cqw" aria-label="Chalkboard: ' + esc(L.join(' ')) + '. Tap to read it big."><span class="scn-bt">' + L.map(function(l){ return '<span class="ln">' + esc(l) + '</span>'; }).join('') + '</span></button>'; }
   function fitBoards(){ var els = document.querySelectorAll('.scn-board .scn-bt:not([data-fit]), .scn-boardov .scn-bt:not([data-fit])');
     for (var i = 0; i < els.length; i++){ var t = els[i], box = t.parentNode, lo = 0.5, hi = box.classList.contains('scn-board') ? 12 : 80, unit = box.classList.contains('scn-board') ? 'cqw' : 'px';
       if (box.clientWidth < 8 || box.clientHeight < 8) continue; /* picture not loaded yet: the image load listener refits */
