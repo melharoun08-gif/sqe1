@@ -154,5 +154,16 @@
    <itunes:episodeType>full</itunes:episodeType>
    <description>Business Law 14: Capital gains tax and business reliefs. SQE1 revision episode.</description>
   </item>
+  <item>
+   <title>Business Law 16: VAT and inheritance tax business property relief</title>
+   <guid isPermaLink="false">sqe1-blp/vat-iht-bpr</guid>
+   <pubDate>Sun, 01 Nov 2026 19:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/blp-16-vat-iht-bpr.m4a" length="17763623" type="audio/x-m4a"/>
+   <itunes:duration>00:24:17</itunes:duration>
+   <itunes:season>1</itunes:season>
+   <itunes:episode>16</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Business Law 16: VAT and inheritance tax business property relief. SQE1 revision episode.</description>
+  </item>
  </channel>
 </rss>
