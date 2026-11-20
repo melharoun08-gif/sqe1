@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120051143";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120052108";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -3114,6 +3114,30 @@ details.bsubj summary{cursor:pointer;font-family:var(--hand);font-size:19px}
 .jsv .jlw3F{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl7-jlw3F 28s step-end infinite,jl4-move 28s ease-in-out infinite}
 @keyframes jl7-jlw3F{0.000%{opacity:0}7.143%{opacity:0}14.286%{opacity:0}21.429%{opacity:0}28.571%{opacity:0}35.714%{opacity:0}42.857%{opacity:0}50.000%{opacity:0}57.143%{opacity:1}64.286%{opacity:0}71.429%{opacity:0}78.571%{opacity:0}85.714%{opacity:0}92.857%{opacity:0}100%{opacity:0}}
 @media (prefers-reduced-motion:reduce){.jsv .jlw1F,.jsv .jlw2F,.jsv .jlw3F{animation:none!important;opacity:0}}
+/* girls-anim (20 Nov 05:14, Monnie approved): Yasmin + Layla in the picture sway from their feet, blink, Layla's head tilts to Yasmin, hen bobs; cloud Layla swings on her cloud and blinks */
+.head.nb .nbfx .fx-yas{position:absolute;left:83.0417%;top:33.6364%;width:8.4167%;aspect-ratio:202/504}
+.head.nb .nbfx .fx-lay{position:absolute;left:90.6667%;top:51.2987%;width:9.0833%;aspect-ratio:218/375}
+.head.nb .nbfx .fxgap{height:auto;aspect-ratio:auto}
+.head.nb .nbfx .fxgirl img,.head.nb .nbfx .fxgirl svg{position:absolute;display:block;max-width:none}
+.head.nb .nbfx .fxgirl .fxgi,.head.nb .nbfx .fxgirl svg{left:0;top:0;width:100%;height:100%}
+.head.nb .nbfx .fx-yas.fxgirl{transform-origin:50% 99%;animation:nbg-swY 5s ease-in-out infinite}
+.head.nb .nbfx .fx-lay.fxgirl{transform-origin:50% 100%;animation:nbg-swL 4.4s ease-in-out -1.6s infinite}
+.head.nb .nbfx .fxlb{left:2.752%;top:61.6%;width:96.33%;height:38.4%}
+.head.nb .nbfx .fxlh{position:absolute;left:0;top:0;width:100%;height:100%;transform-origin:51% 63%;animation:nbg-tilt 6s ease-in-out infinite}
+.head.nb .nbfx .fxlhh{left:0;top:0;width:100%;height:64.27%}
+.head.nb .nbfx .fxlhen{left:19.27%;top:.27%;width:63.3%;height:25.6%;transform-origin:50% 95%;animation:nbg-hen 1.8s ease-in-out infinite}
+@keyframes nbg-swY{0%,100%{transform:rotate(0)}30%{transform:rotate(3deg)}70%{transform:rotate(-2.5deg)}}
+@keyframes nbg-swL{0%,100%{transform:rotate(0)}30%{transform:rotate(-3deg)}70%{transform:rotate(2.5deg)}}
+@keyframes nbg-tilt{0%,15%,85%,100%{transform:rotate(0)}35%,65%{transform:rotate(-5deg)}}
+@keyframes nbg-hen{0%,100%{transform:translateY(0) rotate(0)}25%{transform:translateY(-5%) rotate(-4deg)}50%{transform:translateY(0) rotate(0)}75%{transform:translateY(-3%) rotate(3deg)}}
+.head.nb .nbfx .gblink,.head.nb .gblink{opacity:0;animation:nbfx-blink 4.6s linear infinite}
+.head.nb .nbfx .glL{animation-duration:5.4s;animation-delay:-2s}
+.head.nb .glS{animation-duration:3.8s;animation-delay:-1s}
+.head.nb .nbfx .glY ellipse{fill:#FAAF6D}.head.nb .nbfx .glL ellipse{fill:#FDBB66}
+.head.nb.nbnight .nbfx .glY ellipse{fill:#996F54}.head.nb.nbnight .nbfx .glL ellipse{fill:#9B7650}
+.head.nb .nblayg{transform-box:fill-box;transform-origin:50% 100%;animation:nbg-swing 3.2s ease-in-out 1s infinite}
+@keyframes nbg-swing{0%,100%{transform:rotate(0) translateY(0)}25%{transform:rotate(-4deg) translateY(-2%)}50%{transform:rotate(0) translateY(0)}75%{transform:rotate(4deg) translateY(-2%)}}
+@media (prefers-reduced-motion:reduce){.head.nb .nbfx .fxgirl,.head.nb .nbfx .fxlh,.head.nb .nbfx .fxlhen,.head.nb .gblink,.head.nb .nblayg{animation:none!important}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -102199,7 +102223,7 @@ window.SQE_JOURNEY = function (A) {
             return null;
         var T = THEMES[i - 1], land = LANDS[i - 1];
         var style = "--sta:".concat(T.a, ";--stad:").concat(T.ad, ";--stp:").concat(T.p, ";--stpd:").concat(T.pd, ";--stl:").concat(T.l, ";--stld:").concat(T.ld, ";--stbar:linear-gradient(90deg,").concat(T.c.slice(0, 3).join(','), ");--stbunt:").concat(bunting(T.c), ";--stm1:'").concat(T.m[0], "';--stm2:'").concat(T.m[1], "'");
-        var strip = "<a class=\"ststrip\" href=\"#/map/".concat(sid, "\" aria-label=\"Stop ").concat(i, ": ").concat(esc(land), ". See it on the map\"><span class=\"stpic\" aria-hidden=\"true\"><svg viewBox=\"-100 -150 200 156\"><g ").concat(INK, ">").concat(DRAW[i - 1](), "</g></svg></span><b class=\"sttx\">\uD83D\uDCCD Stop ").concat(i, ": ").concat(esc(land), " \u00B7 ").concat(esc(label), "</b><span class=\"stmap\">\uD83D\uDDFA\uFE0F<span> Map</span></span></a>");
+        var strip = "<a class=\"ststrip\" href=\"#/map/".concat(sid, "\" aria-label=\"Stop ").concat(i, ": ").concat(esc(land), ". See it on the map\"><span class=\"stpic\" aria-hidden=\"true\"><svg viewBox=\"-100 -150 200 156\"><g ").concat(INK, ">").concat(DRAW[i - 1](), "</g></svg></span><b class=\"sttx\">\uD83D\uDCCD Stop ").concat(i, ": ").concat(esc(land), " \u00B7 ").concat(esc(label), "</b><span class=\"stmap\">\uD83D\uDDFA\uFE0F<span> Peckham</span></span></a>");
         return { i: i, land: land, style: style, strip: strip };
     }
     /* ---------- the palace scene's backdrop follows Britney along the path (a gate at the start) ---------- */
@@ -102407,9 +102431,9 @@ SCENES["blp/business-structures"] = {
 var ROOMS_ON = (function(){
   try {
     var m = /[?&]rooms=([01])\b/.exec(location.search);
-    if (m){ try { if (m[1] === '1') localStorage.setItem('sqe_rooms', '1'); else localStorage.removeItem('sqe_rooms'); } catch(e1){} return m[1] === '1'; }
-    return localStorage.getItem('sqe_rooms') === '1';
-  } catch(e){ return false; }
+    if (m){ try { localStorage.setItem('sqe_rooms', m[1]); } catch(e1){} return m[1] === '1'; }
+    return localStorage.getItem('sqe_rooms') !== '0'; /* 20 Nov: the hall and rooms are ON for everyone (Monnie approved the hall); ?rooms=0 turns them off */
+  } catch(e){ return true; }
 })();
 window.SQE_ROOMS_ON = ROOMS_ON;
 /* Free-roam: while the rooms flag (or ?monnie=1, remembered in localStorage sqe_monnie) is on, every hall door is open: no padlocks, no "finish X first". */
@@ -108371,6 +108395,13 @@ ROOMDATA["vat-iht-bpr"] = {
 };
 /* ROOMDATA-GEN END */
 
+/* ROOMV3-GEN START: the rooms v3 pictures (previews/rooms-v3, cleaned in code) with their board and spot boxes, from proposals/rooms/v3/room-NN.json via proposals/rooms/v3/apply-v3.py. Rooms flag only. */
+var ROOMV3 = {};
+/* ROOMV3-GEN END */
+function v3inside(tid, hs, alt){ var v = ROOMV3[tid], L = v.labels || {};
+  return { img: 'img/scene/v3/' + ROOMS[tid].slug + '.webp', ratio: 2752 / 1536, alt: alt, board: v.board,
+    hotspots: hs.map(function(h){ var b = v.spots[h.id], o = Object.assign({}, h); if (b){ o.x = b[0]; o.y = b[1]; o.w = b[2]; o.h = b[3]; } if (L[h.id]){ o.icon = L[h.id][0]; o.label = L[h.id][1]; } return o; }) }; }
+
 /* build the room chain: SCENES["blp/<topicid>"] for rooms 2-16, in content/blp.js topic order */
 var ROOM_KEYS = [], ROOM_IDX = {};
 (function(){
@@ -108380,8 +108411,9 @@ var ROOM_KEYS = [], ROOM_IDX = {};
   ids.forEach(function(tid, i){
     var k = 'blp/' + tid, m = ROOMS[tid] || {name: 'Room ' + (i + 1), icon: '🍬', slug: 'room-' + tid, bg: '#FFF1C9'};
     ROOM_KEYS.push(k); ROOM_IDX[k] = i;
-    if (i === 0){ if (SCENES[k]) SCENES[k].room = 1; return; }
+    if (i === 0){ if (SCENES[k]){ SCENES[k].room = 1; if (ROOMV3[tid]) SCENES[k] = Object.assign({}, SCENES[k], {inside: v3inside(tid, SCENES[k].inside.hotspots, SCENES[k].inside.alt)}); } return; }
     var d = ROOMDATA[tid] || {}, ins = d.inside || {};
+    if (ROOMV3[tid]){ ins = v3inside(tid, ins.hotspots || [], ins.alt || m.name); d = Object.assign({}, d); ['scenario', 'game'].forEach(function(x){ var b = ROOMV3[tid].spots[x]; if (d[x] && b){ d[x] = Object.assign({}, d[x], {x: b[0], y: b[1], w: b[2], h: b[3]}); } }); }
     var hs = ins.hotspots;
     if (!hs){ var dk = (window.SQE_LEARN || {})[k] || (window.SQE_ROOM_LEARN || {})[k]; hs = dk && dk.sections ? dk.sections.map(function(sec, si){ return {id: 's' + si, icon: '🍬', label: sec.h, cards: [[si]]}; }) : []; }
     var spots = hs.slice(); if (d.scenario) spots.push(d.scenario); if (d.game) spots.push(d.game);
@@ -108398,7 +108430,7 @@ var HUBS = window.SQE_HUBS = window.SQE_HUBS || {};
 if (ROOMS_ON && ROOM_KEYS.length) HUBS["blp/hall"] = { title: "The Entrance Hall", place: "the sweet shop", img: "img/scene/shop-hall2.webp", ratio: 2752 / 1536, bg: "#FFE9F3",
   alt: "The sweet shop's entrance hall, with doors to sixteen rooms", rooms: ROOM_KEYS.slice(),
   doors: [[21.2, 21.8, 6.3, 21.7], [31.1, 21.8, 6.4, 21.7], [41.4, 21.8, 6.5, 21.7], [52.0, 21.8, 6.5, 21.7], [62.0, 21.8, 6.5, 21.7], [72.1, 21.8, 6.2, 21.7], [1.6, 51.2, 10.0, 43.0], [14.4, 51.8, 6.3, 31.1], [22.7, 52.1, 4.5, 25.6], [31.1, 52.0, 6.4, 21.0], [41.5, 52.0, 6.4, 21.0], [52.4, 52.0, 6.4, 21.0], [62.0, 52.0, 6.4, 21.0], [73.4, 52.1, 4.4, 25.6], [79.3, 51.8, 6.3, 31.1], [87.1, 50.9, 11.4, 43.4]], exitDoor: null, outside: "blp/business-structures",
-  thumb: function(k){ var m = ROOMS[k.split('/')[1]]; return m && m.art ? 'img/scene/' + m.slug + '.webp' : ''; } };
+  thumb: function(k){ var t = k.split('/')[1], m = ROOMS[t]; return ROOMV3[t] ? 'img/scene/v3/' + m.slug + '.webp' : m && m.art ? 'img/scene/' + m.slug + '.webp' : ''; } };
 
 var CSS = [
 '.scn{max-width:1000px;margin:0 auto 18px}',
@@ -108464,10 +108496,10 @@ var CSS = [
 '.scn-revisit .t{flex:1;font-weight:700}.scn-revisit .t small{display:block;font-weight:400;color:var(--muted)}',
 '.scn-gate .nck-again{display:none}',
 '.scn-hs.door{perspective:900px;padding:0;align-items:stretch;border:0}',
-'.scn-hs.door .scn-leaf{position:absolute;inset:0;transform-origin:0 50%;transition:transform 1.1s cubic-bezier(.3,1.4,.5,1)}',
+'.scn-hs.door .scn-leaf{position:absolute;inset:0;transform-origin:100% 50%;transition:transform 1.1s cubic-bezier(.3,1.4,.5,1)}',
 '.scn-hs.door .scn-leaf svg{display:block;width:100%;height:100%}',
 '.scn-hs.door .scn-lab{position:absolute;left:50%;bottom:44%;transform:translateX(-50%);width:max-content;max-width:150%;font-size:15px;animation:scnBob 1.2s ease-in-out infinite}',
-'.scn-hs.door.open .scn-leaf{transform:rotateY(-108deg)}',
+'.scn-hs.door.open .scn-leaf{transform:rotateY(108deg)}',
 '.scn-hs.door.open .scn-lab{display:none}',
 '@keyframes scnBob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,-6px)}}',
 '.scn-art.zoom>svg,.scn-art.zoom>img,.scn-art.zoom>.scn-hs{transform-origin:77% 60%;animation:scnZoom .9s ease-in .75s forwards}',
@@ -109164,7 +109196,7 @@ window.SQE_SCENE = function(A){
     var nx = mode === 'inside' ? nextId(k) : null;
     var hs = view.hotspots.map(function(h, i){
       var dn = done && done[h.id], pos = 'left:' + h.x + '%;top:' + h.y + '%;width:' + h.w + '%;height:' + h.h + '%';
-      if (h.leaf) return '<button type="button" class="scn-hs door' + (SC.entering ? ' open' : '') + '" style="' + pos + (view.img ? ';background:#FFE08A' : '') + '" data-scn="door" aria-label="' + esc(h.label) + '"><span class="scn-leaf"' + (view.img ? ' style="background:url(' + esc(view.img) + ') ' + (h.x / (100 - h.w) * 100).toFixed(2) + '% ' + (h.y / (100 - h.h) * 100).toFixed(2) + '%/' + (10000 / h.w).toFixed(2) + '% ' + (10000 / h.h).toFixed(2) + '% no-repeat">' : '>' + h.leaf()) + '</span><span class="scn-lab">' + esc(h.label) + '</span></button>';
+      if (h.leaf) return '<button type="button" class="scn-hs door' + (SC.entering ? ' open' : '') + '" style="' + pos + (view.img ? ';background:#FFE9F3 url(img/scene/shop-hall2.webp) 50% 70%/auto 100% no-repeat' : '') + '" data-scn="door" aria-label="' + esc(h.label) + '"><span class="scn-leaf"' + (view.img ? ' style="background:url(' + esc(view.img) + ') ' + (h.x / (100 - h.w) * 100).toFixed(2) + '% ' + (h.y / (100 - h.h) * 100).toFixed(2) + '%/' + (10000 / h.w).toFixed(2) + '% ' + (10000 / h.h).toFixed(2) + '% no-repeat">' : '>' + h.leaf()) + '</span><span class="scn-lab">' + esc(h.label) + '</span></button>';
       return '<button type="button" class="scn-hs' + (dn ? ' done' : '') + (h.id === nx ? ' next' : '') + '" style="' + pos + '" data-scn="obj" data-id="' + esc(h.id) + '" aria-label="' + (i + 1) + '. ' + esc(h.label) + (dn ? ' (opened)' : '') + '"><span class="scn-pin" aria-hidden="true">' + (i + 1) + '</span>' + (lt ? '<span class="scn-ico" aria-hidden="true">' + esc(h.icon || '🍬') + '</span>' : '') + '<span class="scn-lab">' + esc(h.label) + '</span>' + (dn ? '<span class="scn-tick" aria-hidden="true">✓</span>' : '') + (h.id === nx ? '<span class="scn-nexttag" aria-hidden="true"><span class="d">Next ↓</span><span class="m">↑ Next</span></span>' : '') + '</button>';
     }).join('');
     if (lt){ var n0 = view.hotspots.length; hs += extras(k).map(function(e, j){ var h = e.h, dn = exDone(k, e), pos = 'left:' + h.x + '%;top:' + h.y + '%;width:' + h.w + '%;height:' + h.h + '%';
@@ -109614,12 +109646,18 @@ window.SQE_TOWN = function(A){
     var rec = bertS()[s.id], back = '<a class="btn" href="#/town/butcher">Back to the shop</a>';
     var n = bertSize(s);
     if (!n) return '<div class="bcard"><h2>' + esc(s.title) + ' test</h2><p>Bert is still writing this test. Check back soon.</p><div class="btns">' + back + '</div></div>';
-    return '<div class="bcard town-bert"><img src="img/boss/bert-run.webp" alt="Bert the butcher" width="612" height="800"><div><h2>' + esc(s.title) + ': Bert\'s test</h2><div class="bspeech">"' + n + ' questions on ' + esc(s.title) + '. Get ' + Math.ceil(n * BERT_PASS) + ' right to pass. Take your time."</div>' +
+    return '<div class="bcard town-bert"><img src="img/boss/bert-run.webp" alt="Bert the butcher" width="612" height="800"><div><h2>' + esc(s.title) + ': Bert\'s test</h2><div class="bspeech">"' + n + ' questions on ' + esc(s.title) + '. Get ' + Math.ceil(n * BERT_PASS) + ' right to pass, or that hen of yours is coming back to my shop!"</div>' +
       (rec ? '<p class="small">Your best so far: <b>' + rec.best + '%</b>' + (rec.passed ? ' (passed)' : '') + '.</p>' : '') + '<div class="btns"><button type="button" class="btn primary" data-town="btstart" data-s="' + s.id + '">Start the test</button>' + back + '</div></div></div>';
   }
   function bertItem(q){ return {text: '<div class="town-q notes">' + md(q.q) + '</div>', opts: q.o.map(function(o){ return inl(o); }), a: q.a, why: md(q.e || ''), lab: ''}; }
   function bertRun(s){
     var b = BT;
+    if (!b.chased && b.i === 0 && b.pick == null && window.SQE_BERT_CHASE){ /* Monnie 20 Nov: the chase plays before Bert's subject test too */
+      var ms = window.SQE_BERT_CHASE_MS || 5200, left = Math.max(0, (b.chaseAt || (b.chaseAt = Date.now())) + ms - Date.now());
+      if (left){ setTimeout(function(){ if (BT === b && !b.chased){ b.chased = 1; A.render(); } }, left + 50);
+        return '<div class="bcard bossg">' + window.SQE_BERT_CHASE() + '<p style="text-align:center;margin:10px 0 0">Uh oh! Bert wants Britney! ' + b.items.length + ' questions on ' + esc(s.title) + ' to keep him away.</p><div class="btns" style="justify-content:center"><button type="button" class="btn primary" data-town="btchase">Skip ›</button></div></div>'; }
+      b.chased = 1;
+    }
     if (b.i >= b.items.length){
       var pct = Math.round(b.right / b.items.length * 100), pass = b.right >= Math.ceil(b.items.length * BERT_PASS);
       return '<div class="bcard" style="text-align:center"><img src="img/boss/bert-run.webp" alt="" width="612" height="800" style="width:90px;height:auto;margin:0 auto"><h2>' + (pass ? 'You passed Bert\'s test!' : 'Not this time') + '</h2><p style="font-size:19px">' + b.right + ' of ' + b.items.length + ' right (' + pct + '%). Pass mark ' + Math.round(BERT_PASS * 100) + '%.' + (b.paid ? ' <b>+' + b.paid + ' coins</b>.' : '') + '</p><p>' + (pass ? '"Hmph. Fair enough. You know your ' + esc(s.title) + '."' : '"Back to the notes with you. Look again at the ones you got wrong, then come and try again."') + '</p><div class="btns" style="justify-content:center"><button type="button" class="btn' + (pass ? '' : ' primary') + '" data-town="btstart" data-s="' + s.id + '">' + (pass ? 'Practise again' : 'Try again') + '</button><button type="button" class="btn' + (pass ? ' primary' : '') + '" data-town="btquit">Back to the shop</button></div></div>';
@@ -109736,6 +109774,7 @@ window.SQE_TOWN = function(A){
     var b = e.target.closest && e.target.closest('[data-town]'); if (!b) return;
     var a = b.getAttribute('data-town'), g = gam();
     if (a === 'btstart'){ var s = subj(b.getAttribute('data-s')); if (!s) return; var items = bertDraw(s); if (!items.length) return; BT = {sid: s.id, items: items, i: 0, right: 0, paid: 0}; btOrd(); A.render(); scrollTop('.town'); }
+    else if (a === 'btchase' && BT){ BT.chased = 1; A.render(); scrollTop('.town'); }
     else if (a === 'btquit'){ BT = null; location.hash = '#/town/butcher'; }
     else if (a === 'btpick' && BT && BT.pick == null){ BT.pick = +b.getAttribute('data-o'); if (BT.pick === BT.items[BT.i].a) BT.right++; A.render(); }
     else if (a === 'btnext' && BT && BT.pick != null){ BT.i++; if (BT.i >= BT.items.length) btFinish(); else btOrd(); A.render(); scrollTop('#town-q'); }
@@ -110530,6 +110569,7 @@ var NB = !/[?&]oldbanner=1/.test(location.search); var NB_FLY = true; /* set tru
 /* Layla's picture per streak step (0 = on the grass). Drawn expressions img/layla-step0..5.webp are used when present, else this clean cutout. */
 var STEP_IMG = window.STEP_IMG = {0:"img/layla-stand.webp", 1:"img/layla-stand.webp", 2:"img/layla-stand.webp", 3:"img/layla-stand.webp", 4:"img/layla-stand.webp", 5:"img/layla-stand.webp"}, NB_STEPMISS = window.NB_STEPMISS = {};
 /* per pose: [height in viewBox units so her head/body match across poses, image px width at 600 tall, hover above the cloud] */
+var NB_STEP_EYES = {"0":[[213,600],[[108.0,77.5,4.5,6.0],[139.5,75.0,4.0,6.5]],"#FCB365"],"1":[[265,600],[[108.5,78.0,4.0,6.5],[139.5,75.0,4.0,6.5]],"#FCB565"],"2":[[227,600],[[110.5,74.0,4.0,6.5],[141.0,66.5,4.5,6.0]],"#FCB363"],"3":[[254,600],[[107.5,104.5,4.0,6.0],[136.5,98.0,4.0,5.5]],"#FDB363"],"4":[[411,918],[[190.0,115.0,5.5,9.5],[238.0,110.5,5.5,10.0]],"#FAB16A"],"5":[[651,755],[[293.0,152.0,5.5,9.5],[341.5,152.0,6.0,9.5]],"#FAAD67"]}; /* per pose: [picture size, eyes [x,y,rx,ry] in picture px, skin colour] for the blink lids */
 var STEP_POSE = {0:[294,213,0], 1:[294,265,0], 2:[294,227,0], 3:[294,254,0], 4:[294,268,-4], 5:[229,518,9]}; /* 20 Nov r3: 40% bigger again (Monnie) */
 /* TEMP M button: display-only preview step (sessionStorage), never touches the saved streak, presents or coins */
 function nbPrev(){ try { var v = window.sessionStorage.getItem("nbPrevStep"); return v === null ? null : Math.max(0, Math.min(5, +v || 0)); } catch(e){ return null; } }
@@ -110555,9 +110595,13 @@ function nbStreakHTML(){
   /* r3: Britney on the open side with a clear gap (right on grass/1/2, left on 3/4/5), drawn after Layla so she is never covered; fly1 on the grass, flyN on step N */
   var brit = ''; if (NB_FLY){ var BH = STEP_POSE[0][0] * 0.33, /* QA 20 Nov: Britney stays the same size on every step */ rt = st <= 2, bx = rt ? lp[0] + LW / 2 + 14 : lp[0] - LW / 2 - 14 - BH, by = Math.max(14, lp[1] - pz[2] - LH * (rt ? 0.76 : 0.62) - BH / 2); brit += '<g class="nbbrit"><image href="img/britney/fly' + ([1, 1, 2, 3, 4, 5][st]) + '.webp" onerror="if(this.dataset.fb){this.parentNode.style.display=\'none\'}else{this.dataset.fb=1;this.setAttribute(\'href\',\'img/britney/fly.webp\')}" x="' + bx.toFixed(1) + '" y="' + by.toFixed(1) + '" width="' + BH.toFixed(1) + '" height="' + BH.toFixed(1) + '"/></g>'; }
   var lgeo = '" x="' + (lp[0] - LW / 2).toFixed(1) + '" y="' + (lp[1] - LH - pz[2]).toFixed(1) + '" width="' + LW.toFixed(1) + '" height="' + LH + '" preserveAspectRatio="xMidYMax meet"/>';
+  svg += '<g class="nblayg nbst' + st + '">'; /* girls-anim: she swings and bounces on her cloud and blinks (lids drawn over her own eyes) */
   svg += '<image class="nblayla nbst' + st + ' nbday" href="' + lsrc + '" onerror="NB_STEPMISS[' + st + ']=1;this.setAttribute(\'href\',STEP_IMG[' + st + '])' + lgeo;
   /* night copy without the white paper showing between her outer curls (layla-stepN-n.webp); CSS shows one or the other by .nbnight */
   if (!NB_STEPMISS[st]) svg += '<image class="nblayla nbst' + st + ' nbngt" href="img/layla-step' + st + '-n.webp" onerror="this.setAttribute(\'href\',\'' + lsrc + '\')' + lgeo;
+  var LE = NB_STEP_EYES[st]; if (LE && !NB_STEPMISS[st]){ var lx = lp[0] - LW / 2, ly = lp[1] - LH - pz[2], kx = LW / LE[0][0], ky = LH / LE[0][1];
+    svg += '<g class="gblink glS" fill="' + LE[2] + '">' + LE[1].map(function(q){ var cx = lx + q[0] * kx, cy = ly + q[1] * ky, rx = q[2] * kx, ry = q[3] * ky; return '<ellipse cx="' + cx.toFixed(1) + '" cy="' + cy.toFixed(1) + '" rx="' + rx.toFixed(1) + '" ry="' + ry.toFixed(1) + '"/><path d="M' + (cx - rx).toFixed(1) + ',' + (cy + ry * 0.15).toFixed(1) + 'q' + rx.toFixed(1) + ',' + (ry * 0.7).toFixed(1) + ' ' + (2 * rx).toFixed(1) + ',0" fill="none" stroke="#1d1a24" stroke-width="' + (1.2 * kx).toFixed(2) + '" stroke-linecap="round"/>'; }).join("") + '</g>'; }
+  svg += '</g>';
   svg += brit;
   var rx = 735, ry = 56; svg += '<g transform="translate(' + rx + ' ' + ry + ') scale(1.45) translate(' + (-rx) + ' ' + (-ry) + ')"><g class="nbrain">'; /* nbrain: the rainbow, clouds and present float together */
   ["#E0457B","#F59F2A","#F7D038","#4CB963","#3B8FE0","#8A5CD6"].forEach(function(c, j){ var r = 46 - j * 5; svg += '<path d="M' + (rx - r) + ' ' + ry + 'a' + r + ' ' + r + ' 0 0 1 ' + (2 * r) + ' 0" fill="none" stroke="' + c + '" stroke-width="5.8"/>'; });
@@ -110636,7 +110680,14 @@ function nbFxHTML(night){
   var face = '<svg class="fxsunf" viewBox="1825 1 275 261"><g class="nbblink">' + lid(1935.5, 100) + lid(1994.5, 118) + '</g>' +
     '<path class="nbgrin" d="' + C + '" fill="#7A2E24" stroke="#23202E" stroke-width="2.6" stroke-linejoin="round" fill-opacity="0" stroke-opacity="0"><animate attributeName="d" values="' + [C, C, O, O, C, C].join(";") + '"' + KT + '/><animate attributeName="fill-opacity" values="0;0;1;1;0;0"' + KT + '/><animate attributeName="stroke-opacity" values="0;0;1;1;0;0"' + KT + '/></path></svg>';
   var parts = kids.map(function(n){ return img(n, true); }).join("") + kids.map(function(n){ return n === "sun" ? '<div class="fx-sun fxsun"><img src="img/banner-anim/sun.webp" alt="" draggable="false">' + face + '</div>' : img(n, false); }).join("");
-  return '<div class="nbfx" aria-hidden="true"><div class="nbfxb">' + sky + (night ? '' : '<img class="fxleg" src="img/banner-anim/legpatch.webp" alt="" draggable="false">') + parts + '</div></div>';
+  /* girls-anim (Monnie approved 20 Nov 05:14): Yasmin and Layla in the picture are cut-outs of the drawing that sway from their feet and blink; Layla's head (with the hen) tilts towards Yasmin and the hen bobs. A still -gap picture of sky/grass sits under each. Picture units. */
+  var gi = function(f, c){ return '<img class="' + c + '" src="img/banner-anim/' + f + '.webp" alt="" draggable="false">'; };
+  var lids = function(e){ return e.map(function(q){ return '<ellipse cx="' + q[0] + '" cy="' + q[1] + '" rx="' + q[2] + '" ry="' + q[3] + '"/><path d="M' + (q[0] - q[2]) + ',' + (q[1] + 1) + 'q' + q[2] + ',' + (q[3] * 0.7) + ' ' + (2 * q[2]) + ',0" fill="none" stroke="#23202E" stroke-width="2" stroke-linecap="round"/>'; }).join(""); };
+  var girls = gi('yas-gap' + sfx, 'fx-yas fxgap') + gi('lay-gap' + sfx, 'fx-lay fxgap') +
+    '<div class="fx-yas fxgirl">' + gi('yas' + sfx, 'fxgi') + '<svg viewBox="1993 259 202 504"><g class="gblink glY">' + lids([[2076.5, 326.5, 8, 7], [2102.5, 319, 9, 7.5]]) + '</g></svg></div>' +
+    '<div class="fx-lay fxgirl">' + gi('layb' + sfx, 'fxlb') + '<div class="fxlh">' + gi('layh' + sfx, 'fxlhh') + gi('layhen' + sfx, 'fxlhen') +
+    '<svg viewBox="2176 395 218 375"><g class="gblink glL">' + lids([[2264, 538.5, 5, 7], [2299, 544.5, 5, 7]]) + '</g></svg></div></div>';
+  return '<div class="nbfx" aria-hidden="true"><div class="nbfxb">' + sky + (night ? '' : '<img class="fxleg" src="img/banner-anim/legpatch.webp" alt="" draggable="false">') + parts + girls + '</div></div>';
 }
 /* N button: switch day/night instantly, no page reload (Monnie 20 Nov) */
 function nbSkyToggle(){ try { var h = document.querySelector(".head.nb"), n = !(h && h.classList.contains("nbnight")); try { localStorage.setItem("sqe_sky", n ? "night" : "day"); } catch(e){} if (!h) return; h.classList.toggle("nbnight", n); var f = h.querySelector(".nbfx"); if (f) f.outerHTML = nbFxHTML(n); if (document.querySelector(".jmap")) render(); } catch(e){} }
@@ -113617,15 +113668,20 @@ function bossSay(B, z){
 }
 /* the chase before the first question (Monnie 20 Nov): Bert runs after Layla and Britney shaking his spoon */
 var BOSS_CHASE_MS = 5200;
-function bossChase(B){
-  var x = TBYKEY[B.key], c = cbaS(), started = B.chaseAt || (B.chaseAt = Date.now()), left = Math.max(0, started + BOSS_CHASE_MS - Date.now());
-  var h = '<div class="cbag bossg"><div class="cbatop"><a class="cbaback" href="' + (B.mode === "rescue" ? "#/boss" : "#/topic/" + x.s.id + "/" + x.t.id) + '">‹ ' + (B.mode === "rescue" ? "Bert's page" : "Topic") + '</a><span class="cbattl">' + (B.mode === "rescue" ? "🗝️ Rescue mission: " : "🥊 Bert the butcher: ") + esc(x.t.title) + '</span><span class="spill coin">' + cbaCoin() + ' <b>' + c.coins + '</b></span></div>';
-  h += '<div class="arena bchasearena" role="img" aria-label="Bert the butcher chases Layla and Britney round and round, shaking his wooden spoon">' +
-    '<div class="bchase" style="--o:-' + (BOSS_CHASE_MS - left) + 'ms">' +
+/* the chase scene on its own (also used by Bert's subject tests in town.js via window.SQE_BERT_CHASE) */
+function bertChaseHTML(){
+  return '<div class="arena bchasearena" role="img" aria-label="Bert the butcher chases Layla and Britney round and round, shaking his wooden spoon">' +
+    '<div class="bchase">' +
       '<span class="bcrun bc-lay"><img class="lw1" src="img/layla-walk-1.webp" alt=""><img class="lw2" src="img/layla-walk-2.webp" alt=""></span>' +
       '<span class="bcrun bc-brit"><img class="bw1" src="img/britney/fly1.webp" alt=""><img class="bw2" src="img/britney/fly3.webp" alt=""></span>' +
       '<span class="bcrun bc-bert"><img src="' + BERT_RUN + '" alt=""><b class="bshout">Oi! Come back here!</b></span>' +
     '</div></div>';
+}
+window.SQE_BERT_CHASE = bertChaseHTML; window.SQE_BERT_CHASE_MS = BOSS_CHASE_MS;
+function bossChase(B){
+  var x = TBYKEY[B.key], c = cbaS(), started = B.chaseAt || (B.chaseAt = Date.now()), left = Math.max(0, started + BOSS_CHASE_MS - Date.now());
+  var h = '<div class="cbag bossg"><div class="cbatop"><a class="cbaback" href="' + (B.mode === "rescue" ? "#/boss" : "#/topic/" + x.s.id + "/" + x.t.id) + '">‹ ' + (B.mode === "rescue" ? "Bert's page" : "Topic") + '</a><span class="cbattl">' + (B.mode === "rescue" ? "🗝️ Rescue mission: " : "🥊 Bert the butcher: ") + esc(x.t.title) + '</span><span class="spill coin">' + cbaCoin() + ' <b>' + c.coins + '</b></span></div>';
+  h += bertChaseHTML();
   h += '<div class="bsay"><p>' + (B.mode === "rescue" ? "Bert's not giving Britney back without a fight!" : "Uh oh! Bert wants Britney! Answer his " + B.qs.length + " questions to keep him away.") + '</p></div>';
   h += '<div class="btns cbac"><button class="btn primary big" data-act="bosschase">' + (left ? "Skip ›" : "Start the questions ›") + '</button></div></div>';
   if (left){ var B0 = B; setTimeout(function(){ if (BOSS === B0 && !B0.chased && location.hash === "#/boss/fight"){ B0.chased = 1; render(); } }, left + 50); }
