@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120025228";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120025504";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -2755,15 +2755,15 @@ html.dfv-on{overflow:hidden}
 
 /* map-layla3 + town night (20 Nov): Layla takes turns between 3 poses (ahead / glancing at Britney / waving), 7s each; Bert's shop shuts at night */
 /* Layla: 4 walking poses in turn (ahead, glance at Britney, wave, skip) and, once every 6 poses, the rare jokey front pose (peace sign, hand on hip: Monnie asked for this one) */
-.jsv .jlw1{opacity:0;animation:jl-jlw1 19.6s step-end infinite}
+.jsv .jlw1{opacity:0;animation:jl-jlw1 9.8s step-end infinite}
 @keyframes jl-jlw1{0%{opacity:1}14.286%{opacity:0}28.571%{opacity:0}42.857%{opacity:0}57.143%{opacity:1}71.429%{opacity:0}85.714%{opacity:0}100%{opacity:1}}
-.jsv .jlw2{opacity:0;animation:jl-jlw2 19.6s step-end infinite}
+.jsv .jlw2{opacity:0;animation:jl-jlw2 9.8s step-end infinite}
 @keyframes jl-jlw2{0%{opacity:0}14.286%{opacity:1}28.571%{opacity:0}42.857%{opacity:0}57.143%{opacity:0}71.429%{opacity:1}85.714%{opacity:0}100%{opacity:0}}
-.jsv .jlw3{opacity:0;animation:jl-jlw3 19.6s step-end infinite}
+.jsv .jlw3{opacity:0;animation:jl-jlw3 9.8s step-end infinite}
 @keyframes jl-jlw3{0%{opacity:0}14.286%{opacity:0}28.571%{opacity:1}42.857%{opacity:0}57.143%{opacity:0}71.429%{opacity:0}85.714%{opacity:0}100%{opacity:0}}
-.jsv .jlw4{opacity:0;animation:jl-jlw4 19.6s step-end infinite}
+.jsv .jlw4{opacity:0;animation:jl-jlw4 9.8s step-end infinite}
 @keyframes jl-jlw4{0%{opacity:0}14.286%{opacity:0}28.571%{opacity:0}42.857%{opacity:1}57.143%{opacity:0}71.429%{opacity:0}85.714%{opacity:0}100%{opacity:0}}
-.jsv .jlwj{opacity:0;animation:jl-jlwj 19.6s step-end infinite}
+.jsv .jlwj{opacity:0;animation:jl-jlwj 9.8s step-end infinite}
 @keyframes jl-jlwj{0%{opacity:0}14.286%{opacity:0}28.571%{opacity:0}42.857%{opacity:0}57.143%{opacity:0}71.429%{opacity:0}85.714%{opacity:1}100%{opacity:0}}
 .jsv .jtnight{opacity:0}
 @media (prefers-reduced-motion:reduce){.jsv .jlw1{animation:none!important;opacity:1}.jsv .jlw2,.jsv .jlw3,.jsv .jlw4,.jsv .jlwj{animation:none!important;opacity:0}}
@@ -2825,6 +2825,9 @@ html.dfv-on{overflow:hidden}
 .head.nb .stgift:not(.wob){transform-box:fill-box;transform-origin:50% 100%;animation:nbgift 3.4s ease-in-out infinite}
 @keyframes nbgift{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
 @media (prefers-reduced-motion:reduce){.head.nb .nbbrit,.head.nb .nbbrit image,.head.nb .nblayla,.head.nb .nbcl,.head.nb .stgift,.head.nb .stgift.wob{animation:none!important}}
+/* TEMP N button: under the M button */
+.head.nb .nbnbtn{top:87px}
+@media (max-width:720px){.head.nb .nbnbtn{top:calc(min(100cqw - 28px,400px) * 1.0267 + 12px)}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -92186,6 +92189,7 @@ function nbHeader(route, cur, tabs, countdown, pct, C, done, tgt, todayDone, tod
       kwHTML().replace(' data-bl="kw"', '') + '</div>' +
   '</div><button class="homebtn" data-go="#/home">Home</button>' +
   '<button class="nbmbtn" data-act="nbprev" aria-label="Preview streak step" title="Preview streak step">M</button>' + /* TEMP M button */
+  '<button class="nbmbtn nbnbtn" aria-label="Switch day or night" title="Switch day or night" onclick="try{localStorage.setItem(\'sqe_sky\',localStorage.getItem(\'sqe_sky\')===\'night\'?\'day\':\'night\')}catch(e){}location.reload()">N</button>' + /* TEMP N button (map night test) */
   '<nav class="tabs">' + tabs.map(function(t){ return '<a href="#/' + t[0] + '" data-tab="' + t[0] + '" draggable="false" style="--tc:var(' + t[2] + ')" class="' + (cur === t[0] ? "on" : "") + " two" + '">' + (t[1].indexOf("<span") >= 0 ? t[1] : t[1].split("|").map(function(x){ return "<span>" + x + "</span>"; }).join("")) + '</a>'; }).join("") + '</nav>' +
   '</div>';
 }
