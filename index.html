@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120052350";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120052706";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -3138,6 +3138,55 @@ details.bsubj summary{cursor:pointer;font-family:var(--hand);font-size:19px}
 .head.nb .nblayg{transform-box:fill-box;transform-origin:50% 100%;animation:nbg-swing 3.2s ease-in-out 1s infinite}
 @keyframes nbg-swing{0%,100%{transform:rotate(0) translateY(0)}25%{transform:rotate(-4deg) translateY(-2%)}50%{transform:rotate(0) translateY(0)}75%{transform:rotate(4deg) translateY(-2%)}}
 @media (prefers-reduced-motion:reduce){.head.nb .nbfx .fxgirl,.head.nb .nbfx .fxlh,.head.nb .nbfx .fxlhen,.head.nb .gblink,.head.nb .nblayg{animation:none!important}}
+/* The Mount garden in motion (Monnie 20 Nov): Layla walks round the garden and hops up on both benches; Britney potters about,
+   flies up into the trees, over to the pine, down onto a bench and back. Positions are % of the garden picture. */
+.mount-garden .mount-layla{animation:mlwalk 26s linear infinite}
+.mount-garden .mount-layla>img{animation:mlstep .5s steps(1) infinite}
+@keyframes mlstep{0%{content:url(img/layla-walk-1.webp)}50%{content:url(img/layla-walk-2.webp)}}
+@keyframes mlwalk{
+  0%{left:47.5%;bottom:30%;transform:translateX(-50%) scaleX(-1)}
+  14%{left:23%;bottom:27%;transform:translateX(-50%) scaleX(-1)}
+  16%{left:21.5%;bottom:40%;transform:translateX(-50%) scaleX(-1)}
+  18%{left:21%;bottom:35%;transform:translateX(-50%) scaleX(1)}
+  21%{left:21%;bottom:37.5%;transform:translateX(-50%) scaleX(1)}
+  23%{left:21%;bottom:35%;transform:translateX(-50%) scaleX(1)}
+  26%{left:24%;bottom:38%;transform:translateX(-50%) scaleX(1)}
+  28%{left:26%;bottom:26%;transform:translateX(-50%) scaleX(1)}
+  44%{left:47.5%;bottom:30%;transform:translateX(-50%) scaleX(1)}
+  60%{left:68%;bottom:25%;transform:translateX(-50%) scaleX(1)}
+  62%{left:70%;bottom:38%;transform:translateX(-50%) scaleX(1)}
+  64%{left:71%;bottom:33%;transform:translateX(-50%) scaleX(-1)}
+  67%{left:71%;bottom:35.5%;transform:translateX(-50%) scaleX(-1)}
+  69%{left:71%;bottom:33%;transform:translateX(-50%) scaleX(-1)}
+  72%{left:68%;bottom:36%;transform:translateX(-50%) scaleX(-1)}
+  74%{left:66%;bottom:24%;transform:translateX(-50%) scaleX(-1)}
+  96%{left:47.5%;bottom:30%;transform:translateX(-50%) scaleX(-1)}
+  100%{left:47.5%;bottom:30%;transform:translateX(-50%) scaleX(-1)}}
+.mount-garden .mount-brit{animation:mbfly 30s ease-in-out infinite}
+.mount-garden .mount-brit .henimg img{animation:mbimg 30s steps(1) infinite}
+@keyframes mbfly{
+  0%{left:58%;bottom:9%;width:16%;transform:none}
+  12%{left:40%;bottom:12%;width:16%;transform:none}
+  20%{left:27%;bottom:64%;width:10%;transform:rotate(-6deg)}
+  30%{left:27%;bottom:64%;width:10%;transform:none}
+  38%{left:52%;bottom:66%;width:9%;transform:rotate(6deg)}
+  46%{left:52%;bottom:66%;width:9%;transform:none}
+  55%{left:68%;bottom:36%;width:12%;transform:rotate(-4deg)}
+  66%{left:68%;bottom:36%;width:12%;transform:none}
+  76%{left:76%;bottom:62%;width:9%;transform:rotate(5deg)}
+  84%{left:76%;bottom:62%;width:9%;transform:none}
+  94%{left:58%;bottom:9%;width:16%;transform:none}
+  100%{left:58%;bottom:9%;width:16%;transform:none}}
+/* flying frames while she is in the air (same moments as mbfly) */
+@keyframes mbimg{
+  0%{content:normal}12%{content:url(img/britney/fly1.webp)}13%{content:url(img/britney/fly3.webp)}14%{content:url(img/britney/fly1.webp)}15%{content:url(img/britney/fly3.webp)}16%{content:url(img/britney/fly1.webp)}17%{content:url(img/britney/fly3.webp)}18%{content:url(img/britney/fly1.webp)}19%{content:url(img/britney/fly3.webp)}
+  20%{content:normal}30%{content:url(img/britney/fly1.webp)}32%{content:url(img/britney/fly3.webp)}34%{content:url(img/britney/fly1.webp)}36%{content:url(img/britney/fly3.webp)}
+  38%{content:normal}46%{content:url(img/britney/fly1.webp)}48%{content:url(img/britney/fly3.webp)}50%{content:url(img/britney/fly1.webp)}52%{content:url(img/britney/fly3.webp)}
+  55%{content:normal}66%{content:url(img/britney/fly1.webp)}68%{content:url(img/britney/fly3.webp)}70%{content:url(img/britney/fly1.webp)}72%{content:url(img/britney/fly3.webp)}74%{content:url(img/britney/fly1.webp)}
+  76%{content:normal}84%{content:url(img/britney/fly1.webp)}86%{content:url(img/britney/fly3.webp)}88%{content:url(img/britney/fly1.webp)}90%{content:url(img/britney/fly3.webp)}92%{content:url(img/britney/fly1.webp)}
+  94%{content:normal}}
+.mount-garden .mount-layla .mount-tag{display:none} /* would show mirrored when she walks left */
+@media (prefers-reduced-motion:reduce){.mount-garden .mount-layla,.mount-garden .mount-layla>img,.mount-garden .mount-brit,.mount-garden .mount-brit .henimg img{animation:none}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -100421,7 +100470,13 @@ window.SQE_PODCASTS = {
   "tort/economic-loss": {file: "podcasts/tort-03-economic-loss.m4a", mins: 25},
   "tort/psychiatric-harm": {file: "podcasts/tort-04-psychiatric-harm.m4a", mins: 20},
   "tort/employers-liability": {file: "podcasts/tort-05-employers-liability.m4a", mins: 16},
-  "tort/vicarious-liability": {file: "podcasts/tort-06-vicarious-liability.m4a", mins: 27}
+  "tort/vicarious-liability": {file: "podcasts/tort-06-vicarious-liability.m4a", mins: 27},
+  "dr/dr-evidence": {file: "podcasts/dr-11-evidence.m4a", mins: 25},
+  "dr/dr-disclosure": {file: "podcasts/dr-12-disclosure.m4a", mins: 22},
+  "dr/dr-trial": {file: "podcasts/dr-13-trial.m4a", mins: 23},
+  "dr/dr-costs": {file: "podcasts/dr-14-costs.m4a", mins: 23},
+  "dr/dr-appeals": {file: "podcasts/dr-15-appeals.m4a", mins: 24},
+  "dr/dr-enforcement": {file: "podcasts/dr-16-enforcement.m4a", mins: 26}
 };
 
 ;
@@ -109893,7 +109948,7 @@ window.SQE_MOUNT = function(A){
     '.mount-bubble{position:absolute;bottom:100%;right:auto;margin-bottom:6px;background:#fff;border:2px solid #3B2F1E;border-radius:14px;padding:4px 9px;font-weight:700;font-size:clamp(10px,1.25vw,16px);line-height:1.2;color:#3B2F1E;width:max-content;max-width:min(240px,32vw);text-align:left;box-shadow:0 2px 0 rgba(0,0,0,.12);transition:opacity .25s}' +
     '.mount-bubble:after{content:"";position:absolute;right:16px;bottom:-9px;border:8px solid transparent;border-top-color:#3B2F1E;border-bottom:0}' +
     '.mount-bubble.fade{opacity:0}' +
-    '.mount-bubble.mpb-baba{left:-30%}.mount-bubble.mpb-baba:after{right:auto;left:22%}.mount-bubble.mpb-mama{left:40%}.mount-bubble.mpb-mama:after{right:auto;left:22%}' +
+    '.mount-bubble.mpb-baba{left:-30%}.mount-bubble.mpb-baba:after{right:auto;left:22%}.mount-bubble.mpb-mama{left:auto;right:-6%}.mount-bubble.mpb-mama:after{right:18%;left:auto}' +
     /* the shelf */
     '.mount-shelf{position:absolute;left:22.5%;bottom:47%;z-index:2;display:flex;flex-direction:column;gap:0}' +
     '.mount-shelf .row{display:flex;align-items:flex-end;gap:.25vw;padding:0 .5vw;min-height:1em;border-bottom:clamp(3px,.55vw,8px) solid #A8743F;box-shadow:0 2px 0 #6B4A22}' +
@@ -109997,12 +110052,12 @@ window.SQE_MOUNT = function(A){
     else h += '<div class="mount-hen mount-brit nohen" title="' + esc(L.away ? 'Britney is at Bert\'s Butchers' : 'Britney') + '">' + A.henPic(L, m) + '</div>';
     h += '</div>';
     if (onShelf.length) h += '<div class="mount-shelflist">On Britney\'s shelf:' + shelfRows(onShelf, 99) + '</div>';
-    h += '<p class="mount-who">' + (who.length ? 'In the garden with ' + esc(nm) + ' and Layla: ' + esc(who.join(', ')) + '.' : (L.stage === 'none' || L.stage === 'egg' ? esc(nm) + ' hasn\'t hatched yet, so the garden is empty for now.' : 'Only ' + esc(nm) + ' lives here so far.') + ' Buy her some hen friends in <a href="' + shop + '">Hen Bargains</a>.') + '</p>';
+    h += '<p class="mount-who">' + (who.length ? 'In the garden with ' + esc(nm) + ' and Layla: ' + esc(who.join(', ')) + '.' : 'Only ' + esc(nm) + ' lives here so far.' + ' Buy her some hen friends in <a href="' + shop + '">Hen Bargains</a>.') + '</p>';
     h += '<div class="mount-panels">';
-    if (L.stage !== 'none' && L.stage !== 'egg') h += '<div class="cbasay mood-' + esc(m.cls) + '"><b>' + esc(L.away ? 'Palace butler' : L.ill ? 'Palace vet' : nm) + ':</b> ' + esc(m.t) + '</div>';
+    h += '<div class="cbasay mood-' + esc(m.cls) + '"><b>' + esc(L.away ? 'Palace butler' : L.ill ? 'Palace vet' : nm) + ':</b> ' + esc(m.t) + '</div>';
     if (L.away) h += A.bossCaptivePanel('palace');
     h += treatsCard(L) + A.feedPanel('palace') + A.broodCard();
-    h += '<a class="palcard" href="#/palace/old" style="display:block;text-decoration:none"><b>📖 ' + esc(nm) + '\'s records</b><span class="small" style="display:block">Egg and incubator, prizes, topic flock, feeds this week, how it works</span></a>'; /* the old palace page, kept (Monnie 20 Nov) */
+    h += '<a class="palcard" href="#/palace/old" style="display:block;text-decoration:none"><b>📖 ' + esc(nm) + '\'s records</b><span class="small" style="display:block">Prizes, topic flock, feeds this week, how it works</span></a>'; /* the old palace page, kept (Monnie 20 Nov) */
     return h + '</div></div>';
   };
 
@@ -111352,19 +111407,15 @@ function cbaScene(small){
       '<span class="srow">' + shelf.map(function(id){ return pic(id, "sthing"); }).join("") + '</span></span>' + (o.tote ? pic("tote", "stote") : '') + '</div>';
   }
   f.hens.slice(0, 4).forEach(function(k, i){ h += '<div class="sitem sminihen" style="right:' + (4 + i * 9) + '%" title="' + esc(tnum(TBYKEY[k])) + '">' + cbaHen("mini") + '</div>'; });
-  if (f.eggs.length) h += '<div class="sitem snest" title="Eggs waiting to hatch">' + cbaNest(f.eggs.slice(0, 3).map(function(){ return cbaEgg("wob"); }).join("")) + '</div>';
+  if (f.eggs.length) h += '<div class="sitem snest" title="Topic eggs waiting to hatch">' + cbaNest(f.eggs.slice(0, 3).map(function(){ return cbaEgg("wob"); }).join("")) + '</div>';
   f.chicks.slice(0, 5).forEach(function(k, i){ h += '<div class="sitem schick" style="left:' + (6 + i * 7) + '%;animation-delay:-' + i * 0.7 + 's" title="' + esc(tnum(TBYKEY[k])) + '">' + cbaChick() + '</div>'; });
   if (cbaAte("corn")) h += '<div class="sitem scorn' + nw("corn") + '"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>';
   if (o.cushion) h += '<div class="sitem scush' + nw("cushion") + '">' + cbaItemPic("cushion") + '</div>';
   var bl = britneyLook().has; var acc = (o.cup && bl.indexOf("cup") < 0 ? pic("cup", "scup") : '') + (o.pens && bl.indexOf("pens") < 0 ? pic("pens", "spens") : '') + (cbaAte("latte") ? pic("latte", "streat") : cbaAte("pandan") ? pic("pandan", "streat") : '');
-  if (L.stage === "none") h += '<div class="sitem stracy snone">' + cbaNest('') + '</div>';
-  else if (L.away) h += '<a class="sitem stracy saway" href="#/boss" aria-label="Britney is at Bert\'s Butchers">' + cbaNest('') + '</a>';
-  else if (L.stage === "egg" && L.incub) h += '<div class="sitem stracy segg sincubb' + (CBNEW === "incubator" ? " new" : "") + '">' + needPic("incubator") + '</div>';
-  else if (L.stage === "egg") h += '<div class="sitem stracy segg' + (CBNEW === "egg" ? " new" : "") + '">' + cbaNest(cbaEgg("wob big")) + '</div>';
+  if (L.away) h += '<a class="sitem stracy saway" href="#/boss" aria-label="Britney is at Bert\'s Butchers">' + cbaNest('') + '</a>';
   else {
     if (m.m === "sad2" || m.m === "door" || m.m === "ill") h += '<span class="srain" aria-hidden="true"><i></i><i></i><i></i></span>';
-    if (L.stage === "chick") h += '<button class="sitem stracy schickb' + (CBNEW === "incubator" ? " new" : "") + '" data-act="cbapet" aria-label="Pat Baby Britney">' + cbaChick("big " + m.cls) + '</button>';
-    else h += '<button class="sitem stracy' + (m.m === "ill" ? " sill" : "") + '" data-act="cbapet" aria-label="Pat Britney">' + (m.m === "ill" ? '<span class="sblanket"></span>' : '') + britneyImg(m.cls + (CBNEW && m.m !== "ill" ? " jump" : "")) + acc + '</button>';
+    h += '<button class="sitem stracy' + (m.m === "ill" ? " sill" : "") + '" data-act="cbapet" aria-label="Pat Britney">' + (m.m === "ill" ? '<span class="sblanket"></span>' : '') + britneyImg(m.cls + (CBNEW && m.m !== "ill" ? " jump" : "")) + acc + '</button>';
   }
   if (o.friend) h += '<div class="sitem slouise' + nw("friend") + '">' + cbaItemPic("friend") + '</div>';
   ["bianca", "beefy", "brucey"].forEach(function(id){ if (o[id]) h += '<div class="sitem shen3 s' + id + nw(id) + '">' + cbaItemPic(id) + '</div>'; });
@@ -111376,11 +111427,8 @@ function cbaScene(small){
   if (o.ball) h += '<div class="sitem sball">' + cbaItemPic("ball") + '</div>';
   h += '</div>';
   /* plain row under the picture: coins, how she is, who is in the picture */
-  var who = L.stage === "none" ? "Britney isn't here yet: she's still an egg you can buy in the shop. The empty nest is waiting for her."
-    : L.stage === "egg" && L.incub ? "Britney is an egg, warm in her incubator. She hatches in " + plural(L.left, "study day") + "."
-    : L.stage === "egg" ? "Britney is still an egg in her nest. Next, buy the incubator and heat lamp (" + INCUB.p + " coins)."
-    : L.away ? "Britney isn't here: Bert the butcher has taken her to his shop."
-    : "In the picture: " + listAnd([L.stage === "chick" ? "Baby Britney (the yellow chick)" : "Britney (the white hen)"].concat(o.friend ? ["her best friend Bolu (the brown hen)"] : [], o.bianca ? ["Bianca (the speckled hen)"] : [], o.beefy ? ["Beefy (the stripy hen)"] : [], o.brucey ? ["Brucey (the grey-blue hen)"] : [], o.bonnie ? ["Jiminey the rabbit"] : [], broodWho(), (f.eggs.length || f.chicks.length || f.hens.length) ? ["your topic " + listAnd([].concat(f.eggs.length ? ["eggs (in the nest)"] : [], f.chicks.length ? ["chicks"] : [], f.hens.length ? ["hens (by the fence)"] : []))] : [])) + ".";
+  var who = L.away ? "Britney isn't here: Bert the butcher has taken her to his shop."
+    : "In the picture: " + listAnd(["Britney (the white hen)"].concat(o.friend ? ["her best friend Bolu (the brown hen)"] : [], o.bianca ? ["Bianca (the speckled hen)"] : [], o.beefy ? ["Beefy (the stripy hen)"] : [], o.brucey ? ["Brucey (the grey-blue hen)"] : [], o.bonnie ? ["Jiminey the rabbit"] : [], broodWho(), (f.eggs.length || f.chicks.length || f.hens.length) ? ["your topic " + listAnd([].concat(f.eggs.length ? ["eggs (in the nest)"] : [], f.chicks.length ? ["chicks"] : [], f.hens.length ? ["hens (by the fence)"] : []))] : [])) + ".";
   h += '<div class="sbar"><span class="spill">' + cbaCoin() + ' <b>' + c.coins + '</b> coins</span><span class="spill">' + m.e + ' ' + esc(henName(L)) + ': ' + esc(m.l) + '</span>' + (small ? '' : '<a class="spill shop" href="#/palace/shop">🛒 Shop</a>') + '</div>' +
     '<p class="swho">' + esc(who) + (L.away ? ' <a href="#/boss">See Bert\'s shop ›</a>' : '') + '</p>' + (small ? '' : '<p class="swx">' + esc(wx.why) + '</p>');
   return h;
@@ -112886,7 +112934,7 @@ VIEW.settings = function(){
     '<p class="small muted" style="margin:0">Pick the exact day on your booking confirmation. FLK1 runs 11 to 15 January and FLK2 runs 18 to 22 January 2027.</p>' +
     '<label class="f"><span>Colours</span><select id="stheme"><option value="auto"' + (S.settings.theme === "auto" ? " selected" : "") + '>Match my device</option><option value="light"' + (S.settings.theme === "light" ? " selected" : "") + '>Light</option><option value="dark"' + (S.settings.theme === "dark" ? " selected" : "") + '>Dark</option></select></label>' +
     '<div class="btns"><button class="btn primary" data-act="ssave">Save settings</button><span id="smsg" class="small" style="align-self:center"></span></div></div>' +
-    '<div class="card montool"><h3>Game test buttons (only on Monnie\'s devices)</h3><p class="small">For trying out Cluckington Palace. Reset puts coins, Britney and prizes back to the start (your revision progress is kept).</p><div class="btns"><button class="btn" data-act="gdemo">Give me 100 coins and unlock the egg</button><button class="btn" data-act="greset">Reset the game</button><span id="gmsg" class="small" style="align-self:center"></span></div></div>';
+    '<div class="card montool"><h3>Game test buttons (only on Monnie\'s devices)</h3><p class="small">For trying out Cluckington Palace. Reset puts coins, Britney and prizes back to the start (your revision progress is kept).</p><div class="btns"><button class="btn" data-act="gdemo">Give me 100 coins</button><button class="btn" data-act="greset">Reset the game</button><span id="gmsg" class="small" style="align-self:center"></span></div></div>';
   if (window.SQESync) h += window.SQESync.settingsHTML();
   h += '<div class="card"><h3>Saving</h3><p class="small" style="margin:0 0 6px">' + (storageOK ? '✓ Everything saves automatically on this device as you go. Nothing to press.' : '<b style="color:var(--bad)">⚠ This browser is blocking saving.</b> Open the file in Chrome, Edge or Safari (not a private window).') + '</p>' +
     '<p class="small muted" style="margin:0">Space used: ' + (used / 1024).toFixed(1) + ' KB of about 5,000 KB. That\'s room for years of study logs.</p>' +
@@ -112914,9 +112962,14 @@ function gameS(){
   ["fed", "unl", "full", "paid"].forEach(function(k){ if (!g[k] || typeof g[k] !== "object") g[k] = {}; });
   if (!g.day || typeof g.day !== "object" || !g.day.k) g.day = {d:"", k:{}};
   if (typeof g.lives !== "number") g.lives = 1;
-  if (!g.phase){ /* old saves that already played with Britney keep her as the adult hen; new saves start with no hen */
-    var c0 = S.cba || {}, had = !!(c0.last || c0.fed || (c0.own && Object.keys(c0.own).length) || (+c0.xp || 0) > 0 || (c0.days && Object.keys(c0.days).length));
-    if (had){ g.phase = "hen"; g.adult = g.start; g.born = g.start; } else g.phase = "none";
+  /* Monnie 20 Nov: Britney is ALWAYS here, already a grown hen (just as on the Peckham map): no egg, incubator or chick stage for her.
+     New saves: hunger counts from the game start. A save still at the old "no hen"/egg stage becomes the grown hen, counting from that day. */
+  if (g.phase !== "hen" || !g.adult){
+    var t0 = ymd(), wasHen = g.phase === "hen";
+    g.phase = "hen"; g.adult = g.adult || g.start;
+    if (!g.born) g.born = g.hatched = (wasHen || g.start === t0) ? g.start : t0;
+    if (!g.hatched) g.hatched = g.start;
+    delete g.egg; delete g.incub; GDIRTY = 1;
   }
   return g;
 }
@@ -113005,48 +113058,17 @@ function dayCount(ds){
 function dayFedOK(ds){ var g = gameS(); return !!(g.fed[ds] || g.unl[ds]) || dayCount(ds).n === 0; }
 
 /* ---------- Britney's life: worked out from the dates every time ---------- */
-/* Start: no hen. Finish a whole day's list once -> she can buy Britney's egg; then an incubator hatches it into baby Britney,
-   who grows into the adult hen after GROW_FED fed days. Hunger only counts once she has hatched:
+/* Britney is always here as the grown hen (Monnie 20 Nov: never an egg, never "not here yet"). Hunger counts from the game start:
    0 days missed = fine, 1 = sad, 2 = really sad, 3 = on death's door, 4+ = very ill until she buys medicine (Britney never dies).
    A day counts as fed if she was fed, if feed was unlocked that day (Britney helps herself), or if it had no tasks. */
-var GROW_FED = 5, EGG = {id:"egg", n:"Britney's egg", d:"A real chicken egg. Britney is inside, waiting to meet you!", p:50},
-  INCUB = {id:"incubator", n:"Incubator and heat lamp", d:"Keeps the egg warm and cosy so Britney can hatch.", p:100},
-  MED = {id:"medicine", n:"Medicine", d:"Chicken medicine to make Britney well again."};
-function anyFullDay(){ var g = gameS(); return Object.keys(g.full).length > 0; }
+var MED = {id:"medicine", n:"Medicine", d:"Chicken medicine to make Britney well again."};
 /* medicine: a fixed price (20 Nov: was "one full day of revision", which changed daily). See proposals/shop-prices.md */
 var MED_PRICE = 150;
 function medPrice(){ return {p:MED_PRICE, d:""}; }
-/* INCUBATOR POLICY: after buying the incubator, Britney's egg hatches once INCUB_DAYS study days (days with tasks where at
-   least half were done) have been completed, counting the day it was bought. Old saves that already hatched are left alone. */
-var INCUB_DAYS = 3;
-function incubDone(){
-  var g = gameS(), t = ymd(), n = 0, guard = 0;
-  if (!g.incub) return 0;
-  for (var ds = g.incub; ds <= t && guard++ < 400; ds = addDays(ds, 1)){ var dc = dayCount(ds); if (dc.n && (g.unl[ds] || dc.d >= dc.need)) n++; }
-  return n;
-}
-function incubBar(L){
-  var c = dayCount(ymd()), pct = Math.round(L.done / INCUB_DAYS * 100);
-  return '<div class="incbar" role="progressbar" aria-valuemin="0" aria-valuemax="' + INCUB_DAYS + '" aria-valuenow="' + L.done + '"><i style="width:' + pct + '%"></i></div>' +
-    '<p class="incleft"><b>Hatches in ' + plural(L.left, "study day") + '</b> (' + L.done + ' of ' + INCUB_DAYS + ' done)</p>' +
-    '<p class="small" style="margin:0">She hatches after ' + INCUB_DAYS + ' days where you do at least half that day\'s tasks.' + (c.n ? ' Today: ' + Math.min(c.d, c.need) + ' of ' + c.need + ' needed.' : '') + '</p>';
-}
-function incubCard(L){
-  if (!L.incub) return "";
-  return '<div class="palcard needcard incubcard"><span class="npic">' + needPic("incubator") + '</span><div class="nbody"><h3>🥚 Britney is warming up in the incubator</h3>' + incubBar(L) + '</div></div>';
-}
 function henLife(){
   var g = gameS(), t = ymd(), free = dayCount(t).n === 0;
-  if (g.phase === "none") return {stage:"none", canEgg:anyFullDay(), free:free, missed:0};
-  if (g.phase === "egg"){
-    if (!g.incub) return {stage:"egg", free:free, missed:0};
-    var idone = incubDone();
-    if (idone < INCUB_DAYS) return {stage:"egg", incub:true, done:idone, left:INCUB_DAYS - idone, free:free, missed:0};
-    g.phase = "hen"; g.hatched = g.born = t; g.adult = null; GDIRTY = 1; CBNEW = "incubator";
-  }
-  var adult = !!g.adult;
   var away = bossCaptive();
-  if (g.ill) return {stage:adult ? "hen" : "chick", ill:true, missed:4, fed:!!g.fed[t], free:free, away:away};
+  if (g.ill) return {stage:"hen", ill:true, missed:4, fed:!!g.fed[t], free:free, away:away};
   var missed = 0, ds = g.born || g.start, guard = 0;
   while (ds < t && guard++ < 3000){
     if (ds === g.born || g.fed[ds]) missed = 0;
@@ -113055,19 +113077,11 @@ function henLife(){
     if (missed >= 4){ g.ill = addDays(ds, 1); GDIRTY = 1; return henLife(); }
     ds = addDays(ds, 1);
   }
-  var fedDays = 0;
-  if (!adult && g.hatched){
-    for (ds = g.hatched, guard = 0; ds < t && guard++ < 3000; ds = addDays(ds, 1)) if (g.fed[ds] || (dayFedOK(ds) && !bossAway(ds))) fedDays++;
-    if (g.fed[t]) fedDays++;
-    if (fedDays >= GROW_FED){ g.adult = t; adult = true; GDIRTY = 1; }
-  }
-  return {stage:adult ? "hen" : "chick", grow:GROW_FED - fedDays, missed:missed, fed:!!g.fed[t], free:free, away:away};
+  return {stage:"hen", missed:missed, fed:!!g.fed[t], free:free, away:away};
 }
-/* the essential thing she can buy next (egg, incubator or medicine), or null */
+/* the essential thing she must buy next (medicine when she is very ill), or null */
 function henNeed(){
   var g = gameS(), L = henLife();
-  if (L.stage === "none") return {it:EGG, p:EGG.p, ok:L.canEgg, why:L.canEgg ? "" : "Locked: first tick off every task on one day's to-do list."};
-  if (L.stage === "egg") return L.incub ? null : {it:INCUB, p:INCUB.p, ok:true, why:""};
   if (L.away) return null;
   if (L.ill){ var mp = medPrice(); return {it:MED, p:mp.p, ok:true, why:""}; }
   return null;
@@ -113078,12 +113092,10 @@ function buyNeed(id){
   var n = henNeed(), c = cbaS(), g = gameS(), t = ymd();
   if (!n || n.it.id !== id || !n.ok || c.coins < n.p) return;
   c.coins -= n.p;
-  if (id === "egg"){ g.phase = "egg"; g.egg = t; }
-  else if (id === "incubator"){ g.incub = t; }
-  else if (id === "medicine"){ henRevive(); FEDNOW = 1; }
+  if (id === "medicine"){ henRevive(); FEDNOW = 1; }
   CBNEW = id; save();
 }
-function henName(L){ return L.stage === "chick" ? "Baby Britney" : "Britney"; }
+function henName(L){ return "Britney"; }
 /* ---------- chicks: Britney's own babies ----------
    Once she is a grown hen, each day she is fed she may lay a special egg (one roll per day, at most one egg in the incubator).
    Chance: BROOD_P.base %, or .box % with the nesting box, or .gold % while golden corn is working (it lasts boost fed days).
@@ -113181,27 +113193,14 @@ function broodCard(){
     : 'Chance of a special egg each fed day: <b>' + broodChance() + '%</b>' + (b.gold ? ' (golden corn: ' + plural(b.gold, "day") + ' left)' : cbaS().own.nestbox ? ' (nesting box)' : '. The nesting box or golden corn in the shop make it more likely.');
   return '<div class="palcard broodcard"><h3>🐣 Britney\'s chicks' + (hens ? ' (' + hens + ' grown)' : '') + '</h3>' + (rows.length ? '<ul class="broodlist">' + rows.join("") + '</ul>' : '') + '<p class="small muted" style="margin:0">' + tip + '</p></div>';
 }
-/* the egg rule as numbered steps (ticks the ones already done) */
-function eggSteps(){
-  var L = henLife(), c = dayCount(ymd()), s1 = L.stage !== "none" || L.canEgg, s2 = L.stage !== "none", s3 = L.stage === "chick" || L.stage === "hen" || !!L.incub, s4 = L.stage === "chick" || L.stage === "hen";
-  var li = function(done, t){ return '<li' + (done ? ' class="done"' : '') + '>' + t + (done ? ' <span class="stepok">✓ done</span>' : '') + '</li>'; };
-  return '<ol class="eggsteps">' +
-    li(s1, 'Tick off every task on one day\'s to-do list.' + (!s1 && c.n ? ' Today: <b>' + c.d + ' of ' + c.n + '</b> done.' : '')) +
-    li(s2, 'Britney\'s egg then appears in the shop: buy it for <b>' + EGG.p + ' coins</b>.') +
-    li(s3, 'Buy the incubator and heat lamp for <b>' + INCUB.p + ' coins</b>.') +
-    li(s4, 'Do at least half your tasks on <b>' + INCUB_DAYS + ' study days</b>. Then she hatches.' + (L.incub ? ' <b>' + L.done + ' of ' + INCUB_DAYS + '</b> done.' : '')) + '</ol>';
-}
 function henMood(L){
   var t = ymd(), c = dayCount(t), more = Math.max(0, c.need - c.d), nm = henName(L), cc = cbaS();
   var tasks = more ? "Do " + plural(more, "more task") + " on today's list and you can feed me." : "My feed is unlocked! Tap Feed " + nm + ".";
-  if (L.stage === "none") return {m:"none", cls:"ok", e:"🥚", l:"not hatched yet", t:L.canEgg ? "You unlocked Britney's egg! Buy it below for " + EGG.p + " coins, then buy the incubator (" + INCUB.p + " coins) and she hatches." : "Britney isn't here yet. To get her: tick off every task on one day's to-do list, then buy her egg (" + EGG.p + " coins) and the incubator (" + INCUB.p + " coins)."};
-  if (L.stage === "egg" && L.incub) return {m:"egg", cls:"ok", e:"🥚", l:"in the incubator", t:"Britney's egg is warm in the incubator. She hatches in " + plural(L.left, "study day") + ": days where you do at least half your tasks."};
-  if (L.stage === "egg") return {m:"egg", cls:"ok", e:"🥚", l:"still an egg", t:"Britney's egg is here! It needs to be kept warm. Buy the incubator and heat lamp (" + INCUB.p + " coins) and she hatches."};
   if (L.away) return {m:"away", cls:"ok", e:"🏪", l:"At Bert's Butchers", t:bossS().cap.ransom ? "Bert has Britney in his shop window and wants a " + BOSS_RANSOM + "-coin ransom to give her back. Keep earning coins!" : "Bert the butcher has taken Britney to his shop! Win a rescue round to bring her home. Her feeding is paused while she's away."};
   if (L.ill) return {m:"ill", cls:"ill", e:"🤒", l:"Very ill", t:"Britney is very sick and won't make it without medicine. Food alone can't fix this. Medicine costs " + medPrice().p + " coins."};
   if (L.fed){
     var tr = ({cookies:"Chicken cookies! Crunch crunch. ", pandan:"That pandan roll was sooo good! ", latte:"A strawberry matcha latte from LIV Cafe! I feel so fancy. ", corn:"Mmm, corn! My favourite. "})[cbaAte(cc.lastAte) ? cc.lastAte : ""] || "";
-    return {m:"happy", cls:"happy", e:"😊", l:"Happy and full", t:tr + (L.stage === "chick" ? "Cheep cheep! Thank you for my breakfast. " + plural(Math.max(1, L.grow), "more fed day") + " and I'll be a big hen!" : "Thank you for my breakfast! I'm full and very happy. Shall we learn something?")};
+    return {m:"happy", cls:"happy", e:"😊", l:"Happy and full", t:tr + "Thank you for my breakfast! I'm full and very happy. Shall we learn something?"};
   }
   if (L.missed >= 3) return {m:"door", cls:"door", e:"😵", l:"On death's door", t:"I'm so weak I can hardly stand... Please feed me today, or I'll get very ill. " + (L.free ? "Tap Feed " + nm + "." : tasks)};
   if (L.missed === 2) return {m:"sad2", cls:"sad2", e:"😢", l:"Really sad", t:"Two days without my feed... my tummy really hurts. " + (L.free ? "Tap Feed " + nm + "." : tasks)};
@@ -113211,7 +113210,7 @@ function henMood(L){
 }
 function feedHen(){
   var g = gameS(), t = ymd(), c = dayCount(t), L = henLife();
-  if (L.stage === "none" || L.stage === "egg" || L.away || g.fed[t] || (c.n && c.d < c.need)) return;
+  if (L.away || g.fed[t] || (c.n && c.d < c.need)) return;
   g.fed[t] = Date.now(); FEDNOW = 1; save();
 }
 /* runs at the start of every render: pays for today's ticked steps, unlocks feed at half, day bonus, life updates */
@@ -113259,7 +113258,7 @@ function nbBagSVG(f){
 function bagHTML(){
   var c = cbaS(), it = nextPrize(), f = it ? Math.min(1, c.coins / it.p) : 1;
   var nd0 = henNeed(), lockd = nd0 && it && nd0.it.id === it.id && nd0.ok === false;
-  var sub = it ? (lockd ? (c.coins >= it.p ? 'Egg unlocks when a day\'s list is all ticked' : (it.p - c.coins) + ' more for ' + esc(it.n)) : c.coins >= it.p ? esc(it.n) + ' ready to buy!' : (it.p - c.coins) + ' more for ' + esc(it.n)) : 'Every prize won! 👑';
+  var sub = it ? (c.coins >= it.p ? esc(it.n) + ' ready to buy!' : (it.p - c.coins) + ' more for ' + esc(it.n)) : 'Every prize won! 👑';
   if (lockd) f = Math.min(f, 0.999);
   return '<a class="mbag' + (f >= 1 ? ' full' : '') + '" id="mbag" href="#/palace" data-fill="' + f.toFixed(3) + '" title="Your coins: tap to visit Cluckington Palace">' + (NB ? nbBagSVG(f) : bagSVG(f)) +
     '<span class="mbt"><span class="mbn"><b>' + c.coins + '</b>' + (NB ? '' : ' coin' + (c.coins === 1 ? '' : 's')) + '</span>' + (NB ? '' : '<small>' + sub + '</small>') + '</span></a>'; /* 20 Nov: new banner shows just the number (Monnie) */
@@ -113274,9 +113273,7 @@ var NEED_PICS = {
 };
 function needPic(id){ var src = (id === "medicine" && /[?&]med2=1/.test(location.search)) ? "img/kit/medicine2.webp" : SHOPIMG[id]; /* new medicine pic awaiting Monnie OK */ if (src) return '<img class="prizeimg" src="' + esc(src) + '" alt="" loading="lazy">'; return NEED_PICS[id] || ""; }
 function henPic(L, m, extra){
-  if (L.stage === "none" || L.away) return cbaNest('');
-  if (L.stage === "egg") return cbaNest(cbaEgg("wob"));
-  if (L.stage === "chick") return cbaChick("big " + m.cls);
+  if (L.away) return cbaNest('');
   return britneyImg(m.cls + (extra || ""));
 }
 /* ---------- feed panel (Today and the Palace) ---------- */
@@ -113286,12 +113283,7 @@ function feedPanel(where){
   if (c.n) line = '<b>' + c.d + ' of ' + c.n + ' tasks done</b>, ' + (more ? more + ' more needed to unlock feed' : '0 more needed: feed unlocked ✓');
   else line = '<b>No tasks today.</b> Britney counts as fed automatically.';
   var status = m.e + ' ' + esc(nm) + ': ' + esc(m.l) + (!L.ill && L.missed && !L.fed ? ' (missed ' + plural(L.missed, "feed") + ')' : '');
-  if (L.stage === "none" || L.stage === "egg"){
-    status = L.stage === "none" ? '🥚 Britney isn\'t here yet. How to get her:' : L.incub ? '🥚 Britney is warming up in the incubator' : '🥚 Britney is still an egg. Next step:';
-    half = false;
-    line = L.incub ? incubBar(L) : L.stage === "egg" ? 'Buy the incubator and heat lamp for <b>' + INCUB.p + ' coins</b> in the Palace shop. Then she hatches after ' + INCUB_DAYS + ' good study days.' : eggSteps();
-    btn = '<a class="btn primary" href="#/palace">Go to the Palace</a>';
-  } else if (L.away){
+  if (L.away){
     var bc = bossS().cap, brs = bossRescueState();
     status = '🏪 ' + esc(nm) + ' is at Bert\'s Butchers'; half = false;
     line = (bc.ransom ? '<b>Ransom: ' + BOSS_RANSOM + ' coins</b> to bring her home. ' : brs.can ? '<b>Today\'s rescue is ready.</b> ' : '<b>Next rescue tomorrow</b> (' + plural(brs.left, "chance") + ' left). ') + 'Feeding is paused while she\'s away, so these days don\'t count as missed.';
@@ -113306,7 +113298,7 @@ function feedPanel(where){
   else btn = '<button class="btn feedbtn" disabled title="Do at least half of today\'s tasks first">🔒 Feed unlocks at ' + c.need + ' of ' + c.n + '</button>';
   if (where === "palace") btn = btn.replace(/<a class="btn[^"]*" href="#\/palace">[^<]*<\/a>/, "");
   return '<div class="feedp mood-' + m.cls + (where === "home" ? ' onhome' : '') + '"><a class="fpic" href="#/palace" aria-label="Visit Cluckington Palace">' + henPic(L, m) + '</a><div class="fbody"><div class="fstat">' + status + '</div><div class="fline">' + line + '</div>' +
-    (c.n && (half || (L.stage === "none" && !L.canEgg)) ? '<div class="fbar" aria-hidden="true"><i style="width:' + pct.toFixed(1) + '%"></i>' + (half ? '<span class="fhalf" style="left:' + (c.need / c.n * 100).toFixed(1) + '%" title="Feed unlocks here"></span>' : '') + '</div>' : '') +
+    (c.n && half ? '<div class="fbar" aria-hidden="true"><i style="width:' + pct.toFixed(1) + '%"></i>' + (half ? '<span class="fhalf" style="left:' + (c.need / c.n * 100).toFixed(1) + '%" title="Feed unlocks here"></span>' : '') + '</div>' : '') +
     (where === "home" && !L.ill && L.missed >= 3 && !L.fed ? '<div class="fwarn">Last chance: feed ' + esc(nm) + ' today or she\'ll get very ill.</div>' : '') + '</div><div class="fbtn">' + btn + '</div></div>';
 }
 function hungerStrip(){
@@ -113330,7 +113322,7 @@ function needCard(){
   if (!nd.ok) btn = '<span class="sneed">🔒 ' + esc(nd.why) + '</span>';
   else if (c.coins < nd.p) btn = '<button class="btn" disabled>Need ' + (nd.p - c.coins) + ' more coins</button>';
   else btn = '<button class="btn primary" data-act="gbuy" data-i="' + it.id + '">Buy for ' + nd.p + ' coins</button>';
-  return '<div class="palcard needcard need-' + it.id + '"><span class="npic">' + needPic(it.id) + '</span><div class="nbody"><h3>' + esc(it.n) + ': ' + nd.p + ' ' + cbaCoin() + (nd.sub ? ' <small>(' + esc(nd.sub) + ')</small>' : '') + '</h3><p class="small" style="margin:0 0 8px">' + esc(it.d) + '</p>' + (it.id === "egg" || it.id === "incubator" ? '<p class="small" style="margin:0"><b>How to get Britney:</b></p>' + eggSteps() : '') + btn + '</div></div>';
+  return '<div class="palcard needcard need-' + it.id + '"><span class="npic">' + needPic(it.id) + '</span><div class="nbody"><h3>' + esc(it.n) + ': ' + nd.p + ' ' + cbaCoin() + (nd.sub ? ' <small>(' + esc(nd.sub) + ')</small>' : '') + '</h3><p class="small" style="margin:0 0 8px">' + esc(it.d) + '</p>' + btn + '</div></div>';
 }
 /* ---------- Cluckington Palace ---------- */
 /* ---------- weather: follows how revision has gone on the last 3 study days ----------
@@ -113373,7 +113365,7 @@ function palaceShop(){
     if (have) btn = '<span class="sown">✓ Owned</span>';
     else if (it.eat && cbaAte(it.id)) btn = '<span class="sown">Yum! More tomorrow</span>';
     else if (gold) btn = '<span class="sown">Working: ' + plural(gold, "fed day") + ' left</span>';
-    else if (it.eat && !(function(){ var L = henLife(); return (L.stage === "hen" || L.stage === "chick") && !L.away; })()) btn = '<span class="sneed">Britney needs to hatch first</span>';
+    else if (it.eat && henLife().away) btn = '<span class="sneed">Britney is at Bert\'s Butchers</span>';
     else if (it.boost && !broodReady()) btn = '<span class="sneed">Britney needs to be a grown hen first</span>';
     else if (need) btn = '<span class="sneed">Buy the ' + esc(cbaItem(it.need).n) + ' first</span>';
     else if (c.coins < it.p) btn = '<button class="btn" disabled>Need ' + (it.p - c.coins) + ' more</button>';
@@ -113410,8 +113402,7 @@ function howItWorks(){
     li('🪙 <b>Coins:</b> everything you revise earns coins. Spend them in the shop.') +
     li('🌾 <b>Feeding:</b> do half of today\'s tasks' + (c.n ? ' (' + c.need + ' of ' + c.n + ')' : '') + ', then tap Feed Britney.') +
     li('🤒 <b>Hunger:</b> 4 days without feed and she gets very ill. Medicine (' + medPrice().p + ' coins) makes her well. She never dies.') +
-    li('🥚 <b>Getting Britney:</b> finish one whole day\'s tasks, then buy her egg and the incubator. She hatches after ' + INCUB_DAYS + ' good study days.') +
-    li('🐣 <b>Chicks:</b> once she\'s grown, she may lay a special egg on fed days (more likely with the nesting box or golden corn). Up to ' + BROOD_MAX + ' chicks.') +
+    li('🐣 <b>Chicks:</b> Britney may lay a special egg on fed days (more likely with the nesting box or golden corn). It hatches into a new baby chick for her flock (Britney herself is always here). Up to ' + BROOD_MAX + ' chicks.') +
     li('🥊 <b>Bert:</b> get ' + BOSS_WIN + ' of ' + BOSS_N + ' right to win ' + BOSS_CHEST + ' coins. Lose on a new topic and he takes Britney until you rescue her (or pay ' + BOSS_RANSOM + ').') +
     li('🥚 <b>Topic eggs:</b> revise a topic for an egg, pass its quick-fire to hatch it, rate it green 🟢 to grow it.') +
     '</ul><details class="hiwmore"><summary>Exact coin amounts</summary>' + earnList() + '</details></details>';
@@ -113429,12 +113420,12 @@ function viewPalace(r){
   h += cbaScene();
   CBNEW = "";
   if (FEDNOW){ FEDNOW = 0; setTimeout(function(){ var hn = document.querySelector(".scene .stracy .hen, .scene .stracy .chick"); if (hn) hn.classList.add("jump"); }, 30); }
-  if (L.stage !== "none" && L.stage !== "egg") h += '<div class="cbasay mood-' + m.cls + '"><b>' + esc(L.away ? "Palace butler" : L.ill ? "Palace vet" : nm) + ':</b> ' + esc(m.t) + '</div>';
+  h += '<div class="cbasay mood-' + m.cls + '"><b>' + esc(L.away ? "Palace butler" : L.ill ? "Palace vet" : nm) + ':</b> ' + esc(m.t) + '</div>';
   h += bossChestCard() + (L.away ? bossCaptivePanel("palace") : '');
-  h += needCard() + incubCard(L) + (L.stage === "none" || L.stage === "egg" ? '' : feedPanel("palace")) + broodCard();
+  h += needCard() + feedPanel("palace") + broodCard();
   if (!L.away) h += '<a class="palcard bpalcard" href="#/boss"><img class="bert" src="img/boss/bert-run.webp" alt="" width="612" height="800" loading="lazy"><span><b>🥊 Face the Butcher</b><span class="small">Bert quizzes you at the end of each topic. You\'ve beaten him on ' + plural(Object.keys(bossS().won).length, "topic") + '. Rules are in How it works below.</span></span></a>';
   h += howItWorks();
-  if (L.stage !== "none" && L.stage !== "egg") h += '<div class="palcard"><h3>' + esc(nm) + '\'s feeds this week</h3>' + hungerStrip() + '</div>';
+  h += '<div class="palcard"><h3>' + esc(nm) + '\'s feeds this week</h3>' + hungerStrip() + '</div>';
   h += '<div class="palcard"><h3>Your topic flock</h3><div class="cbaflock"><span>' + cbaEgg("ico") + ' <b>' + f.eggs.length + '</b> egg' + (f.eggs.length === 1 ? '' : 's') + '</span><span>' + cbaChick("ico") + ' <b>' + f.chicks.length + '</b> chick' + (f.chicks.length === 1 ? '' : 's') + '</span><span>' + cbaHen("ico") + ' <b>' + f.hens.length + '</b> grown</span></div><p class="small muted" style="margin:6px 0 0">Every topic you revise lays a topic egg: Today\'s steps, cards, quick-fire, Model Q&amp;A, podcasts and <a href="#/cba">CBA levels</a> all count. Pass the topic\'s quick-fire and it hatches; rate the topic green 🟢 and it grows up.</p></div>';
   var owned = CBA_SHOP.filter(function(it){ return !it.eat && c.own[it.id]; }), ate = CBA_SHOP.filter(function(it){ return it.eat && cbaAte(it.id); });
   h += '<div class="palcard"><h3>Britney\'s prizes (' + owned.length + ' of ' + CBA_SHOP.filter(function(it){ return !it.eat && !it.boost; }).length + ')</h3>' + (owned.length || ate.length ? '<div class="owned">' + owned.concat(ate).map(function(it){ return '<span class="own1" title="' + esc(it.d) + '"><span class="spic">' + prizePic(it.id) + '</span>' + esc(it.n) + (it.eat ? ' <small>(today\'s treat)</small>' : '') + '</span>'; }).join("") + '</div>' : '<p class="small muted" style="margin:0">Nothing yet. Your first prize is ' + (nextPrize() ? esc(nextPrize().n) + ' for ' + nextPrize().p + ' coins' : 'waiting') + '.</p>') + '</div>';
@@ -113449,7 +113440,7 @@ function g_lives(){ return gameS().lives || 1; }
    each right answer he's pushed a step back (scowling). All 10 are played unless he gets her first.
    More than half wrong (6+ of 10) = he grabs Britney and runs off. 5+ right = she beats Bert and opens a coin chest
    (+50, once per topic; replays are practice for a few coins). Losing on a topic she hasn't beaten yet, with Britney
-   hatched and at home = Bert takes Britney to his shop.
+   at home = Bert takes Britney to his shop.
    Then: 3 rescue attempts, one a day (from the day after), each a fresh 10 questions; a win frees her (+30).
    After 3 failed rescues she pays a 300-coin ransom. While Britney is away her feeding pauses: those days count as neither fed nor missed.
    Saved state: S.game.boss = {v, won:{key:date}, cap:null|{key, from, tries:[{d, r}], ransom}, log:[{from, to, how}], chest:null|{n, why}} */
@@ -113484,7 +113475,7 @@ function bossAway(ds){
 }
 function bossCaptive(){ return !!bossS().cap; }
 function bossHatched(){ return true; } /* Monnie 20 Nov: in the Bert game Britney is always there (she is on the Peckham path), so there is always someone to steal */
-/* a loss can only cost Britney if she has hatched, is at home, and this topic hasn't been beaten yet */
+/* a loss can only cost Britney if she is at home and this topic hasn't been beaten yet */
 function bossStake(key){ var b = bossS(); return bossHatched() && !b.cap && !b.won[key]; }
 function bossRescueState(){
   var b = bossS(), c = b.cap, t = ymd();
@@ -113568,7 +113559,7 @@ function bossEnd(){
     else { d.kind = "practice"; d.coins = earn(BOSS_PRACTICE, "bossprac|" + k); }
   } else if (BOSS.stake && bossStake(k)){
     b.cap = {key:k, from:t, tries:[], ransom:false}; d.kind = "captured";
-  } else d.kind = bossHatched() ? (b.cap ? "lostaway" : "lostpractice") : "lostnohen";
+  } else d.kind = b.cap ? "lostaway" : "lostpractice";
   b.last = {key:k, d:t, r:BOSS.right, n:d.n, win:win, mode:BOSS.mode};
   BOSS.done = d; save();
 }
@@ -113705,7 +113696,7 @@ function bossDuel(){
   var hits = B.right, miss = B.wrong;
   var h = '<div class="cbag bossg"><div class="cbatop"><a class="cbaback" href="' + (B.mode === "rescue" ? "#/boss" : "#/topic/" + x.s.id + "/" + x.t.id) + '">‹ ' + (B.mode === "rescue" ? "Bert's page" : "Topic") + '</a><span class="cbattl">' + (B.mode === "rescue" ? "🗝️ Rescue mission: " : "🥊 Bert the butcher: ") + esc(x.t.title) + '</span><span class="spill coin">' + cbaCoin() + ' <b>' + c.coins + '</b></span></div>';
   h += bossScene(B) + bossSay(B, z);
-  if (!B.stake && B.mode === "fight") h += '<p class="small muted bnostake">' + (!bossHatched() ? 'Britney hasn\'t hatched yet, so Bert can\'t take anyone: this one is just for coins.' : bossS().cap ? 'Britney is already at Bert\'s shop, so this round is just for coins.' : 'You\'ve already beaten Bert on this topic, so this is a practice round: nothing to lose.') + '</p>';
+  if (!B.stake && B.mode === "fight") h += '<p class="small muted bnostake">' + (bossS().cap ? 'Britney is already at Bert\'s shop, so this round is just for coins.' : 'You\'ve already beaten Bert on this topic, so this is a practice round: nothing to lose.') + '</p>';
   h += '<div class="cbacard ask bq"><div class="bqmeta"><span>Question ' + (B.i + 1) + ' of ' + B.qs.length + '</span><span>' + hits + ' right · ' + miss + ' wrong</span></div>';
   h += '<div class="cbaq bqtext">' + (z.kind === "qa" ? esc(z.q).replace(/\n\s*\n/g, "<br><br>").replace(/\n/g, "<br>") : inl(z.q)) + '</div>';
   h += '<div class="opts">';
@@ -113728,7 +113719,7 @@ function bossNextBtn(label, start){
   return '<button id="bnext" class="btn primary big cbalock" data-act="bossnext"' + (left ? " disabled" : "") + ' style="--d:' + dur + 'ms;--o:-' + (dur - left) + 'ms"><i class="fill"></i><span>' + label + '</span></button>';
 }
 function bossResult(){
-  var B = BOSS, d = B.done, x = TBYKEY[B.key], b = bossS(), L = henLife(), happyHen = L.stage === "chick" ? cbaChick("big happy jump") : cbaHen("happy jump", cbaWear());
+  var B = BOSS, d = B.done, x = TBYKEY[B.key], b = bossS(), L = henLife(), happyHen = cbaHen("happy jump", cbaWear());
   var score = '<p class="bscore">' + d.right + ' right out of ' + d.n + ' asked</p>', back = '<a class="btn big" href="#/topic/' + x.s.id + '/' + x.t.id + '">Back to the topic</a>', h = '<div class="cbag bossg"><div class="cbacard win bres">';
   if (d.kind === "won" || d.kind === "freed"){
     h += '<h2>' + (d.kind === "freed" ? "Britney is FREE! 🐔💨" : "You beat Bert the butcher! 🏆") + '</h2>' + score + '<p>' + (d.kind === "freed" ? "She's flapping all the way home to Cluckington Palace." : bossHatched() ? "He's off sulking behind his counter. Britney is safe at home." : "He's off sulking behind his counter.") + '</p>';
@@ -113744,7 +113735,7 @@ function bossResult(){
   } else if (d.kind === "ransom"){
     h += bertImg("bsmall", "laugh") + '<h2>Ransom time 📜</h2>' + score + '<p>That was the last rescue. Bert wants <b>' + BOSS_RANSOM + ' coins</b> to give Britney back.</p><div class="btns cbac"><a class="btn primary big" href="#/boss">See the ransom note</a></div>';
   } else {
-    var why = d.kind === "lostnohen" ? "Britney hasn't hatched yet, so there was nobody for him to take." : d.kind === "lostaway" ? "Britney is already at his shop, so he couldn't take her twice." : d.kind === "gone" ? "Britney was already home." : "This was a practice round, so nothing is lost.";
+    var why = d.kind === "lostaway" ? "Britney is already at his shop, so he couldn't take her twice." : d.kind === "gone" ? "Britney was already home." : "This was a practice round, so nothing is lost.";
     h += bertImg("bsmall", "laugh") + '<h2>Bert wins this round</h2>' + score + '<p>' + why + ' Have another look at the notes and try again.</p><div class="btns cbac">' + back + '<button class="btn primary big" data-act="bossgo" data-k="' + B.key + '">Try again</button></div>';
   }
   return h + '</div></div>';
@@ -113757,7 +113748,6 @@ function bossIntro(x){
   h += '<div class="bcard bintro">' + bertImg("bbig") + '<div><h2>🥊 Bert the butcher challenges you!</h2><div class="bspeech">"' + (b.won[k] ? "You again? Fine, let's see if you still remember " + esc(x.t.title) + "…" : stake ? "Oi! I've got my eye on that lovely hen of yours. Answer my " + BOSS_N + " questions on " + esc(x.t.title) + ". Get more than half wrong and Britney comes back to my shop! Mwahaha!" : "Answer my " + BOSS_N + " questions on " + esc(x.t.title) + ". Get " + BOSS_WIN + " right and you can have my chest of coins!") + '"</div>';
   h += '<p>' + (qs.length ? 'Every wrong answer, Bert steps closer to Britney. Every right answer pushes him back. More than half wrong and he grabs her. <b>' + bossNeed(qs.length) + ' right</b> wins' + (b.won[k] ? ' (practice: +' + BOSS_PRACTICE + ' coins once a day).' : ' and opens a <b>coin chest (+' + BOSS_CHEST + ')</b>.') : 'There are no questions for this topic yet.') + '</p>';
   if (stake) h += '<p class="small bwarn">⚠️ Lose (5 or fewer right) and Bert takes Britney to his shop. You\'d then get 3 rescue attempts, one a day.</p>';
-  else if (!bossHatched()) h += '<p class="small muted">Britney hasn\'t hatched yet, so nothing can be taken: this one is just for coins.</p>';
   else if (b.cap) h += '<p class="small muted">Britney is already at Bert\'s shop, so this round is just for coins. Rescue her from <a href="#/boss">Bert\'s page</a>.</p>';
   if (!ready && !b.won[k]) h += '<p class="small muted">Tip: Bert is easiest once you\'ve done this topic\'s steps on Today (' + st[0] + ' of ' + st[1] + ' done).</p>';
   h += '<div class="btns">' + (qs.length ? '<button class="btn primary big" data-act="bossgo" data-k="' + k + '">' + (b.won[k] ? "Practice round 🥊" : "Face the Butcher! 🥊") + '</button>' : '') + '<a class="btn big" href="#/topic/' + x.s.id + '/' + x.t.id + '">Revise first</a></div></div></div>';
@@ -113768,7 +113758,7 @@ function bossHub(){
   var b = bossS(), h = '<div class="cbag bossg"><div class="cbatop"><a class="cbaback" href="#/palace">‹ Peckham</a><span class="cbattl">🥊 Bert the butcher</span><span class="spill coin">' + cbaCoin() + ' <b>' + cbaS().coins + '</b></span></div>';
   h += bossChestCard();
   if (b.cap) h += bossCaptivePanel("boss");
-  else h += '<div class="bcard bintro">' + bertShopHTML("") + '<div><h2>Bert\'s Butchers</h2><div class="bspeech">"Finish a topic and I\'ll be waiting with ' + BOSS_N + ' questions. Get ' + BOSS_WIN + ' right and you win my coin chest. Get more than half wrong and that hen of yours is mine!"</div><p class="small">' + (bossHatched() ? 'Britney is safe at home.' : 'Britney hasn\'t hatched yet, so Bert can\'t take anyone. Fights still win coin chests.') + ' Bert beaten on <b>' + plural(Object.keys(b.won).length, "topic") + '</b>.</p></div></div>';
+  else h += '<div class="bcard bintro">' + bertShopHTML("") + '<div><h2>Bert\'s Butchers</h2><div class="bspeech">"Finish a topic and I\'ll be waiting with ' + BOSS_N + ' questions. Get ' + BOSS_WIN + ' right and you win my coin chest. Get more than half wrong and that hen of yours is mine!"</div><p class="small">' + (bossS().cap ? 'Britney is at his shop right now.' : 'Britney is safe at home.') + ' Bert beaten on <b>' + plural(Object.keys(b.won).length, "topic") + '</b>.</p></div></div>';
   /* every topic is open (Monnie 20 Nov: nothing locked); topics she has finished come first */
   var ready = planSeq().filter(function(x){ return !b.won[x.key] && bossTopicReady(x); }).slice(0, 8);
   var row = function(x){ return '<li><a href="#/boss/' + x.s.id + '/' + x.t.id + '"><b>' + esc(tnum(x)) + '</b> ' + esc(x.t.title) + '</a><a class="btn sm primary" href="#/boss/' + x.s.id + '/' + x.t.id + '">Face him 🥊</a></li>'; };
@@ -114174,7 +114164,7 @@ document.addEventListener("click", function(e){
     case "hdel": delId = el.getAttribute("data-id"); render(); break;
     case "hdel0": delId = null; render(); break;
     case "hdel2": { var id = el.getAttribute("data-id"); S.logs = S.logs.filter(function(l){ return l.id !== id; }); delId = null; save(); render(); break; }
-    case "gdemo": { gameDemo(); render(); var gm = document.getElementById("gmsg"); if (gm) gm.textContent = "Done: 100 coins, and the egg is in the shop."; break; }
+    case "gdemo": { gameDemo(); render(); var gm = document.getElementById("gmsg"); if (gm) gm.textContent = "Done: 100 coins."; break; }
     case "greset": { gameReset(); render(); var gm2 = document.getElementById("gmsg"); if (gm2) gm2.textContent = "Game reset."; break; }
     case "ssave": {
       var wd = Math.round(+$("#swd").value * 2) / 2, we = Math.round(+$("#swe").value * 2) / 2;
