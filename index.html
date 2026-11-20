@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120035646";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120040213";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -2908,8 +2908,8 @@ html.dfv-on{overflow:hidden}
 .head.nb.nbnight .nbtitle .sub,.head.nb.nbnight .nbtitle .sub span{color:#DCE6FF!important}
 .head.nb .nbsky{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .head.nb .nbsky .nbstar{transform-box:fill-box;transform-origin:50% 50%;animation:nbfx-tw 3.2s ease-in-out infinite}
-.head.nb .nbsky .nbstar:nth-child(3n+1){animation-duration:4.1s;animation-delay:-1.3s}
-.head.nb .nbsky .nbstar:nth-child(3n+2){animation-duration:2.7s;animation-delay:-2.1s}
+.head.nb .nbsky g:nth-child(4n+1)>.nbstar{animation-duration:4.1s;animation-delay:-1.3s}
+.head.nb .nbsky g:nth-child(4n+2)>.nbstar{animation-duration:2.7s;animation-delay:-2.1s}
 .head.nb .nbsky .nbmoon{transform-box:fill-box;transform-origin:50% 50%;animation:nbfx-moon 8s ease-in-out infinite}
 @keyframes nbfx-tw{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.8)}}
 @keyframes nbfx-moon{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
@@ -2927,6 +2927,11 @@ html.dfv-on{overflow:hidden}
 @keyframes rainbowdrift{to{filter:hue-rotate(360deg)}}
 @keyframes sparkletw{0%,100%{opacity:0;transform:scale(.3) rotate(0)}45%{opacity:1;transform:scale(1) rotate(45deg)}70%{opacity:0;transform:scale(.4) rotate(90deg)}}
 @media (prefers-reduced-motion:reduce){.glass.run .gsandg,.glass .gstream{animation:none}.glass .gsparks{display:none}}
+/* 04:00 Monnie: the flying parrot looked flat (no wing flaps, hard flip). It now stays on its branch: a head bob, a little ruffle and an occasional hop. */
+.jsv .jnparrot{transform-box:fill-box;transform-origin:50% 100%;animation:jn-parrot2 9s ease-in-out infinite;animation-delay:0s}
+@keyframes jn-parrot2{0%,18%{transform:rotate(0) scale(1,1)}22%{transform:rotate(-7deg) scale(1,1)}26%{transform:rotate(3deg) scale(1,1)}30%,48%{transform:rotate(0) scale(1,1)}
+ 52%{transform:scale(1.05,.94)}56%{transform:translateY(-10%) scale(.97,1.04)}61%{transform:translateY(0) scale(1.04,.96)}65%,80%{transform:scale(1,1)}
+ 84%{transform:rotate(5deg) scale(1.02,.98)}88%{transform:rotate(-3deg)}92%,100%{transform:rotate(0) scale(1,1)}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -82974,7 +82979,7 @@ window.SQE_JOURNEY = function (A) {
         return "<g transform=\"translate(".concat(x, ",").concat(y, ") scale(").concat(k, ")\"><ellipse cx=\"0\" cy=\"").concat(h / 2 + 70, "\" rx=\"120\" ry=\"9\" fill=\"#111\" opacity=\".15\"/>")
             + [-95, 95].map(function (px) { return "<rect x=\"".concat(px - 7, "\" y=\"0\" width=\"14\" height=\"").concat(h / 2 + 70, "\" fill=\"#9AA0A6\" stroke=\"#111\" stroke-width=\"3.5\"/>"); }).join('')
             + "<rect x=\"".concat(-w / 2, "\" y=\"").concat(-h / 2, "\" width=\"").concat(w, "\" height=\"").concat(h, "\" rx=\"14\" fill=\"#fff\" stroke=\"#111\" stroke-width=\"4\"/><rect x=\"").concat(-w / 2 + 9, "\" y=\"").concat(-h / 2 + 9, "\" width=\"").concat(w - 18, "\" height=\"").concat(h - 18, "\" rx=\"9\" fill=\"none\" stroke=\"#111\" stroke-width=\"3\"/>")
-            + "<text class=\"jpl\" x=\"0\" y=\"".concat(-h / 2 + 38, "\" font-size=\"20\">Welcome to</text><text class=\"jpl\" x=\"0\" y=\"").concat(-h / 2 + 86, "\" font-size=\"50\" stroke=\"#111\" stroke-width=\"2.4\" paint-order=\"stroke\" style=\"letter-spacing:1px\">").concat('PECKHAM'.split('').map(function (c, i) { return "<tspan fill=\"".concat(['#E63946', '#FF9F1C', '#2EC4B6', '#3A86FF', '#FF4FA3', '#8AC926', '#9B5DE5'][i], "\" dy=\"").concat(i ? [5, -7, 6, -5, 7, -6][i - 1] : 0, "\">").concat(c, "</tspan>"); }).join(''), "</text>")
+            + "<text class=\"jpl\" x=\"0\" y=\"".concat(-h / 2 + 38, "\" font-size=\"20\">Welcome to</text><text class=\"jpl\" x=\"0\" y=\"").concat(-h / 2 + 86, "\" font-size=\"50\" stroke=\"#111\" stroke-width=\"6\" stroke-linejoin=\"round\" paint-order=\"stroke\" style=\"letter-spacing:1px\">").concat('PECKHAM'.split('').map(function (c, i) { return "<tspan fill=\"".concat(['#E63946', '#FF9F1C', '#2EC4B6', '#3A86FF', '#FF4FA3', '#8AC926', '#9B5DE5'][i], "\" dy=\"").concat(i ? [5, -7, 6, -5, 7, -6][i - 1] : 0, "\">").concat(c, "</tspan>"); }).join(''), "</text>")
             + "<line x1=\"".concat(-w / 2 + 30, "\" y1=\"").concat(-h / 2 + 100, "\" x2=\"").concat(w / 2 - 30, "\" y2=\"").concat(-h / 2 + 100, "\" stroke=\"#111\" stroke-width=\"2\"/><text class=\"jpl\" x=\"0\" y=\"").concat(-h / 2 + 126, "\" font-size=\"18\">Twinned with Hamsterdam</text>")
             + [-140, 140].map(function (px) { return "<path d=\"M".concat(px - 10, ",").concat(h / 2 + 72, " q4,-14 8,0 q4,-12 8,0 q4,-14 8,0\" fill=\"#5DBB63\" stroke=\"#111\" stroke-width=\"2\"/>"); }).join('') + "</g>";
     };
@@ -83064,7 +83069,7 @@ window.SQE_JOURNEY = function (A) {
        through the FLK1 meadow and the FLK2 autumn fields to revision camp and Cluckington Palace (with both exam flags) in the palace grounds at the bottom.
        reg = the top edge of each ground band, top to bottom: spring meadow (stops 1-7), autumn fields (8-14), palace grounds. */
     function layoutDesktop() {
-        var rows = TOWN ? [812, 1312, 2883, 3373] : [660, 1100, 1800, 2230], /* +130 at the top for the Welcome to Peckham sign (Monnie 20 Nov) */ cols = [200, 445, 690, 935], PB = rows[3] + 625, /* 20 Nov: +140 at the top for the FLK1 signpost, +160 between the meadow and the fields for the FLK2 signpost */ D = PB - 2145, W = 1100, H = 2300 + D; /* 03:27 Monnie: path starts higher, less empty field, flowers at the bottom no longer cut off */ /* landmarks 1.6x bigger, cards smaller (Monnie 21:29): rows spaced out */
+        var rows = TOWN ? [812, 1312, 3005, 3495] : [660, 1100, 1800, 2230], /* +130 at the top for the Welcome to Peckham sign (Monnie 20 Nov) */ cols = [200, 445, 690, 935], PB = rows[3] + 625, /* 20 Nov: +140 at the top for the FLK1 signpost, +160 between the meadow and the fields for the FLK2 signpost */ D = PB - 2145, W = 1100, H = 2300 + D; /* 03:27 Monnie: path starts higher, less empty field, flowers at the bottom no longer cut off */ /* landmarks 1.6x bigger, cards smaller (Monnie 21:29): rows spaced out */
         var ty = function (x) { return -(x - 570) * .09; }; /* each row of the path tilts gently upward to the right (Monnie 20 Nov: a path in perspective, not flat) */
         var st = [{ x: 200, y: rows[0] + ty(200) }];
         [1, 2, 3].forEach(function (s, k) { return st[s] = { x: cols[k + 1], y: rows[0] + ty(cols[k + 1]) }; });
@@ -83076,8 +83081,9 @@ window.SQE_JOURNEY = function (A) {
         return { mode: 'desk', W: W, H: H, stops: st,
             route: "M150,".concat(rows[0] + ty(150), " L960,").concat(rows[0] + R, " A110,").concat((rows[1] - rows[0]) / 2, " 0 0 1 960,").concat(rows[1] + R, " L140,").concat(rows[1] + Lf, " A110,").concat((rows[2] - rows[1]) / 2, " 0 0 0 140,").concat(rows[2] + Lf, " L960,").concat(rows[2] + R, " A110,").concat((rows[3] - rows[2]) / 2, " 0 0 1 960,").concat(rows[3] + R, " L140,").concat(rows[3] + Lf, " C20,").concat(rows[3] + Lf, " 20,").concat(PB, " 170,").concat(PB, " H570 Q600,").concat(PB, " 600,").concat(PB - 24),
             art: { x: -125, y: -262, w: 250, h: 268, gx: -115, gy: -200, gw: 220, gh: 206 },
-            lm: function (i) { return TOWN ? (function () { var X = { 1: 21, 3: -5, 4: 25, 5: -3, 6: -32, 7: -60, 8: 72, 9: 205, 10: 70, 11: 35, 12: 25, 13: -3, 14: -32, 15: -60 }, Y = { 2: 360, 9: 372, 11: 372 }, S = { 0: .95, 1: 1.3, 2: 1.35, 3: 1.3, 8: 1.35, 9: 1.5, 10: 1.35, 11: .95, 15: .95 }; return { x: st[i].x + (X[i] || 0), y: st[i].y - 34 - (Y[i] || 0), s: S[i] || 1.05 }; })() : { x: st[i].x, y: st[i].y - 34 - (i === 2 ? 45 : 0), s: .9 }; }, /* 03:46 Monnie: NO overlaps. Rows 2 and 4 spread evenly; the fairground sits right back behind the sweet shop and library; the allotment and balloons sit up in the harvest field beside the FLK2 sign */
-            label: function (i) { return ({ cx: st[i].x, top: st[i].y + 44 }); },
+            lm: function (i) { return TOWN ? (function () { var X = { 1: 21, 2: -50, 3: -5, 4: 25, 5: -3, 6: -32, 7: -60, 8: 72, 9: -135, 10: 70, 11: -15, 12: 25, 13: -3, 14: -32, 15: -60 }, Y = { 2: 360, 9: 510, 11: 510 }, S = { 0: .95, 1: 1.3, 2: 1.35, 3: 1.3, 8: 1.35, 9: 1.2, 10: 1.35, 11: 1.35, 15: .95 }; return { x: st[i].x + (X[i] || 0), y: st[i].y - 34 - (Y[i] || 0), s: S[i] || 1.05 }; })() : { x: st[i].x, y: st[i].y - 34 - (i === 2 ? 45 : 0), s: .9 }; }, /* 03:46 Monnie: NO overlaps. Rows 2 and 4 spread evenly; the fairground sits right back behind the sweet shop and library; the allotment and balloons sit up in the harvest field beside the FLK2 sign */
+            label: function (i) { return TOWN && i === 2 ? { cx: 697, top: st[2].y - 34 - 360 + 10 } : TOWN && (i === 9 || i === 11) ? { cx: st[i].x + (i === 9 ? -135 : -15), top: st[i].y - 34 - 510 + 12 } : { cx: st[i].x, top: st[i].y + 44 }; }, /* 04:00 Monnie: the box sits under its drawing for the set-back stops (2, 9, 11) */
+            cw: function (i) { return TOWN && i === 2 ? 136 : 0; },
             F: { w: 166, fs: 16, lh: 17, sfs: 12, max: 18, bar: 7 }, /* 03:38 Monnie: smaller stop boxes */
             hen: function (i) { return i === 0 ? { x: st[0].x + 66, y: st[0].y + 22, s: .85, m: true } : left(i) ? { x: st[i].x + 88, y: st[i].y + 24, s: .85, m: false } : { x: st[i].x - 88, y: st[i].y + 24, s: .85, m: true }; }, /* just before the stop, clear of its number */
             palace: { x: 600, y: 2115 + D, s: 1 },
@@ -83085,8 +83091,8 @@ window.SQE_JOURNEY = function (A) {
             reg: { spring: 160, autumn: TOWN ? 2095 : 1320, grounds: 1750 + D },
             town: TOWN ? { y: 1550, b: [['mount', 370, 'The Mount', '#/mount', 2075, 285], ['jobcentre2', 805, 'Job Centre', '#/town/jobs', 1762, 245], ['giftshop2', 825, 'Hen Bargains', '#/town/shop', 2060, 245], ['butchers3', 340, "Bert's Butchers", '#/town/butcher', 1777, 255]], w: 235, h: 175, /* Monnie 20 Nov: bigger, staggered over the grass; Mount low and big, Bert's up near Contract Law */ name: [560, 1365] } : null,
             sun: { x0: 80, x1: 1020, y: 150, rise: 82, s: 1 },
-            deco: function () { return cloud(330, 78, .8) + cloud(1010, 92, 1) + cloud(720, 48, .55) + (TOWN ? sign(950, 300, 'FLK1 Meadow', 'Stops 1–7', 30, 40) + welcome(190, 330, .7) : sign(185, 300, 'FLK1 Meadow', 'Stops 1–7', 30, 110) + welcome(950, 228, .64))
-                + sign(TOWN ? 320 : 560, TOWN ? 2130 : 1395, 'FLK2 Harvest Fields', 'Stops 8–14', 30, TOWN ? 40 : 72)
+            deco: function () { return cloud(330, 78, .8) + cloud(1010, 92, 1) + cloud(720, 48, .55) + (TOWN ? sign(970, 300, 'FLK1 Meadow', 'Stops 1–7', 30, 40) + welcome(190, 330, .7) : sign(185, 300, 'FLK1 Meadow', 'Stops 1–7', 30, 110) + welcome(950, 228, .64))
+                + sign(TOWN ? 600 : 560, TOWN ? 2130 : 1395, 'FLK2 Harvest Fields', 'Stops 8–14', 30, TOWN ? 40 : 72)
                 + topiary(1000, 2147 + D) + topiary(1060, 2133 + D) + topiary(228, 1855 + D) + flower(330, 1840 + D, '#fff') + flower(925, 1840 + D, '#FF9EC4')
                 + [60, 330, 575, 820].map(function (x, k) { return flower(x, 2250 + D, ['#FF9EC4', '#fff', '#FFB3D9', '#fff'][k]); }).join(''); },
         };
@@ -83122,7 +83128,7 @@ window.SQE_JOURNEY = function (A) {
     }
     /* ---------- pieces ---------- */
     function plate(L, i, name, date, sub, st, frac) {
-        var F = L.F, w = F.w, lines = wrap(name, F.max);
+        var F = L.F, w = (L.cw && L.cw(i)) || F.w, lines = wrap(name, w < F.w ? Math.round(F.max * w / F.w) : F.max);
         var first = 12 + F.fs * .9, dateY = first + (lines.length - 1) * F.lh + 7 + F.sfs, subY = date ? dateY + F.sfs + 5 : first + (lines.length - 1) * F.lh + 8 + F.sfs;
         var h = subY + (frac != null ? 10 + F.bar : 5) + 13;
         var pos = L.label(i), cx = pos.cx, top = pos.top != null ? pos.top : pos.cy - h / 2;
@@ -92389,16 +92395,19 @@ function header(route){
 /* banner-fx + banner-night (20 Nov, Monnie): moving sun/hens/chicks over the banner picture, and the night scene from 17:00 until 6am.
    Night follows ?sky=night|day, then ?hour=, then the N button (localStorage sqe_sky), then the clock. Styles: "banner-fx" / "banner-night" in styles.css. */
 function nbNight(){ var q = (location.search || "") + "&" + (location.hash || ""), m = /[?&]sky=(night|day)/.exec(q), h; if (m) return m[1] === "night"; m = /[?&]hour=(\d+(?:\.\d+)?)/.exec(q); if (m) h = (+m[1]) % 24; else { var fo = ""; try { fo = localStorage.getItem("sqe_sky") || ""; } catch(e){} if (fo === "night") return true; if (fo === "day") return false; var d = new Date(); h = d.getHours() + d.getMinutes() / 60; } return h >= 17 || h < 6; }
-var NB_STARS = [[1180,150,13],[1330,62,10],[1480,190,12],[1640,92,15],[1770,215,10],[2180,58,14],[2310,175,11],[2250,300,9],[1090,300,9],[1380,290,11],[860,80,12],[640,190,10],[420,70,13],[980,210,8],[2080,250,8]];
+var NB_STARS = [[1529,61,9],[1402,198,5],[1613,38,7],[1640,224,9],[1645,111,6],[1434,93,9],[1463,149,9],[1708,146,8],[1577,94,8],[1805,104,6],[2211,181,6],[2076,89,7],[2115,245,5],[2157,58,6],[2067,174,8],[2330,236,6],[2298,179,7],[2365,171,7],[1432,316,7],[1392,366,7],[1375,297,7],[1955,379,6],[1955,457,8],[2262,311,6],[2336,307,6],[2315,370,9],[438,229,9],[370,37,9],[415,109,7],[266,129,7],[143,39,6],[283,49,8],[444,157,6],[1845,40,7]]; /* picture units (2400x770), kept clear of the title, stats, Remember card, moon and buttons */
 function nbFxHTML(night){
   var all = ["sun","brown","grey","white","c1","c2"], kids = night ? all.slice(1) : all, sfx = night ? "-n" : "";
   var img = function(n, gap){ return '<img class="fx-' + n + (gap ? ' fxgap' : '') + '" src="img/banner-anim/' + n + (gap ? '-gap' : '') + (n === "sun" ? '' : sfx) + '.webp" alt="" draggable="false">'; };
   var sky = night ? '<svg class="nbsky" viewBox="0 0 2400 770" preserveAspectRatio="none">' +
-    NB_STARS.map(function(s){ var k = s[2] / 10; return '<path class="nbstar" transform="translate(' + s[0] + ' ' + s[1] + ') scale(' + k + ')" d="M0,-10Q1.6,-1.6 10,0Q1.6,1.6 0,10Q-1.6,1.6 -10,0Q-1.6,-1.6 0,-10Z" fill="#FFF3B0" stroke="#23202E" stroke-width="1.4" stroke-linejoin="round"/>'; }).join("") +
+    NB_STARS.map(function(s, i){ var k = s[2] / 10; return '<g transform="translate(' + s[0] + ' ' + s[1] + ') scale(' + k + ')"><path' + (i % 3 ? '' : ' class="nbstar"') + ' d="M0,-10Q1.6,-1.6 10,0Q1.6,1.6 0,10Q-1.6,1.6 -10,0Q-1.6,-1.6 0,-10Z" fill="#FFF3B0" stroke="#23202E" stroke-width="1.6" stroke-linejoin="round"/></g>'; }).join("") +
     '<g transform="translate(1882 52) scale(1.6)"><circle cx="50" cy="50" r="52" fill="#FFF6C8" opacity=".10"/><g class="nbmoon"><path d="M51.9,10.0A40,40 0 1,0 84.9,69.5A34,34 0 1,1 51.9,10.0Z" fill="#FFF0A0" stroke="#23202E" stroke-width="3.2" stroke-linejoin="round"/>' +
     '<path d="M15,38q5,4 10,0M18,57q6,6 13,0" fill="none" stroke="#23202E" stroke-width="2.6" stroke-linecap="round"/><circle cx="19" cy="47.5" r="3.2" fill="#F4A7A0" opacity=".7"/></g></g></svg>' : '';
   return '<div class="nbfx" aria-hidden="true"><div class="nbfxb">' + sky + kids.map(function(n){ return img(n, true); }).join("") + kids.map(function(n){ return img(n, false); }).join("") + '</div></div>';
 }
+/* N button: switch day/night instantly, no page reload (Monnie 20 Nov) */
+function nbSkyToggle(){ try { var h = document.querySelector(".head.nb"), n = !(h && h.classList.contains("nbnight")); try { localStorage.setItem("sqe_sky", n ? "night" : "day"); } catch(e){} if (!h) return; h.classList.toggle("nbnight", n); var f = h.querySelector(".nbfx"); if (f) f.outerHTML = nbFxHTML(n); if (document.querySelector(".jmap")) render(); } catch(e){} }
+window.nbSkyToggle = nbSkyToggle;
 /* if the page stays open past 17:00 (or 6am), switch the banner without a reload */
 setInterval(function(){ try { var h = document.querySelector(".head.nb"), n = nbNight(); if (!h || h.classList.contains("nbnight") === n) return; h.classList.toggle("nbnight", n); var f = h.querySelector(".nbfx"); if (f) f.outerHTML = nbFxHTML(n); } catch(e){} }, 60000);
 /* newbanner preview header: [fun: streak bubble, staircase + Layla, coin bag | serious: title, dates, numbers + hours ring, Remember]; tabs exactly as the normal header */
@@ -92414,7 +92423,7 @@ function nbHeader(route, cur, tabs, countdown, pct, C, done, tgt, todayDone, tod
       kwHTML().replace(' data-bl="kw"', '') + '</div>' +
   '</div><button class="homebtn" data-go="#/home">Home</button>' +
   '<button class="nbmbtn" data-act="nbprev" aria-label="Preview streak step" title="Preview streak step">M</button>' + /* TEMP M button */
-  '<button class="nbmbtn nbnbtn" aria-label="Switch day or night" title="Switch day or night" onclick="try{localStorage.setItem(\'sqe_sky\',localStorage.getItem(\'sqe_sky\')===\'night\'?\'day\':\'night\')}catch(e){}location.reload()">N</button>' + /* TEMP N button (map night test) */
+  '<button class="nbmbtn nbnbtn" aria-label="Switch day or night" title="Switch day or night" onclick="nbSkyToggle()">N</button>' + /* TEMP N button (map night test) */
   '<nav class="tabs">' + tabs.map(function(t){ return '<a href="#/' + t[0] + '" data-tab="' + t[0] + '" draggable="false" style="--tc:var(' + t[2] + ')" class="' + (cur === t[0] ? "on" : "") + " two" + '">' + (t[1].indexOf("<span") >= 0 ? t[1] : t[1].split("|").map(function(x){ return "<span>" + x + "</span>"; }).join("")) + '</a>'; }).join("") + '</nav>' +
   '</div>';
 }
