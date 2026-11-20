@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120022737";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120023039";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -2754,9 +2754,9 @@ html.dfv-on{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.jsv .jbf,.jsv .jbm1,.jsv .jbm2,.jsv .jbm3{animation:none!important}.jsv .jbf1{opacity:1}}
 
 /* map-layla3 + town night (20 Nov): Layla takes turns between 3 poses (ahead / glancing at Britney / waving), 7s each; Bert's shop shuts at night */
-.jsv .jlw1{animation:jm-l3 8.4s ease-in-out infinite}
-.jsv .jlw2{animation:jm-l3 8.4s ease-in-out infinite;animation-delay:-5.6s}
-.jsv .jlw3{opacity:0;animation:jm-l3 8.4s ease-in-out infinite;animation-delay:-2.8s}
+.jsv .jlw1{animation:jm-l3 10.5s ease-in-out infinite}
+.jsv .jlw2{animation:jm-l3 10.5s ease-in-out infinite;animation-delay:-7s}
+.jsv .jlw3{opacity:0;animation:jm-l3 10.5s ease-in-out infinite;animation-delay:-3.5s}
 @keyframes jm-l3{0%{opacity:1}30%{opacity:1}34%{opacity:0}96%{opacity:0}100%{opacity:1}}
 .jsv .jtnight{opacity:0}
 @media (prefers-reduced-motion:reduce){.jsv .jlw1{animation:none!important;opacity:1}.jsv .jlw2,.jsv .jlw3{animation:none!important;opacity:0}}
@@ -2772,8 +2772,7 @@ html.dfv-on{overflow:hidden}
 /* TEMP M button: display-only streak step preview, directly under Home */
 .head.nb .nbmbtn{position:absolute;right:38px;top:58px;z-index:3;width:36px;height:36px;padding:0;border-radius:50%;background:#fff;border:2.5px solid #10294A;box-shadow:0 2px 0 #10294A;color:#10294A;font-family:inherit;font-size:17px;font-weight:800;line-height:1;cursor:pointer;display:grid;place-items:center}
 @media (max-width:720px){
- .head.nb.compact{background-size:auto 210px,800px auto!important}
- .head.nb .nbmbtn{top:auto;bottom:calc(var(--tabh,50px) + 222px);right:14px}
+ .head.nb .nbmbtn{top:calc(min(100cqw - 28px,400px) * 1.0267 - 30px);right:14px}
 }
 /* banner-r3: when the Topics list narrows the banner on a big screen, size the left column from the banner width (not the window) and keep the stats on one row so the Remember card stays above the hens */
 @media (min-width:1061px){@container (max-width:1320px){
@@ -2789,13 +2788,23 @@ html.dfv-on{overflow:hidden}
    Layla's staircase stands on the drawn grass at the left, title + dates + 3 stats + ring + Remember sit above the empty sky, clear of the sun and the girls */
 @media (min-width:721px) and (max-width:1060px){
  .head.nb,.head.nb.compact{background-image:url(img/banner-bg4.webp),url(img/sky-tile.webp)!important;background-repeat:no-repeat,repeat!important;background-size:100% auto,800px auto!important;background-position:right bottom var(--tabh,50px),left top!important}
- .head.nb.nb .nbstage{--nbh:clamp(230px,33cqw,330px);--nbw:calc(var(--nbh) * 600 / 616);display:grid;width:100%;grid-template-columns:var(--nbw) minmax(0,1fr);column-gap:14px;row-gap:0;padding:0 0 19cqw;align-items:start}
- .head.nb.nb .nbl{grid-column:1;grid-row:1;align-self:end;margin-bottom:-15cqw}
+ .head.nb.nb .nbstage{--nbh:clamp(230px,33cqw,330px);--nbw:calc(var(--nbh) * 600 / 616);display:grid;width:100%;grid-template-columns:var(--nbw) minmax(0,1fr);column-gap:14px;row-gap:0;padding:0 0 21cqw;align-items:start}
+ .head.nb.nb .nbl{grid-column:1;grid-row:1;align-self:end;margin-bottom:-16cqw;position:static}
  .head.nb.nb .nbc{display:flex;grid-column:2;grid-row:1;width:auto;max-width:calc(74cqw - var(--nbw) - 30px);gap:8px}
  .head.nb.nb.nb.nb .kw{grid-column:auto;width:100%!important}
  .head.nb.nb .nbtitle h1{font-size:clamp(24px,3.4cqw,34px)}
  .head.nb.nb .nbtitle .sub{font-size:13px;gap:0 10px}
 }
+
+
+/* map-motion-wheel: the Ferris wheel turns once every 40s (rim, hub, cars and night bulbs together); each car turns back the same amount so it hangs upright.
+   Markup: life_wheel() in tools/journey-src.js. Each turning group's fill-box is centred on its pivot (invisible circle / centred image), so 50% 50% is the pivot. */
+.jsv .jwh{transform-box:fill-box;transform-origin:50% 50%;animation:jm-spin 40s linear infinite}
+.jsv .jwh-c{transform-box:fill-box;transform-origin:50% 50%;animation:jwh-back 40s linear infinite}
+.jsv .jwh-sw{transform-box:fill-box;transform-origin:50% 0;animation:jwh-rock 5s ease-in-out infinite alternate}
+@keyframes jwh-rock{0%{transform:rotate(-3deg)}100%{transform:rotate(3deg)}}
+@keyframes jwh-back{to{transform:rotate(-360deg)}}
+@media (prefers-reduced-motion:reduce){.jsv .jwh,.jsv .jwh-c,.jsv .jwh-sw{animation:none!important}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -82952,7 +82961,7 @@ window.SQE_JOURNEY = function (A) {
             palace: { x: 600, y: 2115 + D, s: 1 },
             flags: [{ x: 176, y: 2117 + D, s: 1, h: 110 }, { x: 812, y: 2117 + D, s: 1, h: 110 }],
             reg: { spring: 160, autumn: TOWN ? 1970 : 1320, grounds: 1750 + D },
-            town: TOWN ? { y: 1550, b: [['mount', 380, 'The Mount', '#/mount', 1925, 300], ['jobcentre2', 600, 'Job Centre', '#/town/jobs', 1590, 250], ['giftshop2', 850, 'Hen Bargains', '#/town/shop', 1890, 250], ['butchers3', 925, "Bert's Butchers", '#/town/butcher', 1530, 250]], w: 235, h: 175, /* Monnie 20 Nov: bigger, staggered over the grass; Mount low and big, Bert's up near Contract Law */ name: [560, 1365] } : null,
+            town: TOWN ? { y: 1550, b: [['mount', 380, 'The Mount', '#/mount', 1925, 300], ['jobcentre2', 830, 'Job Centre', '#/town/jobs', 1585, 250], ['giftshop2', 850, 'Hen Bargains', '#/town/shop', 1890, 250], ['butchers3', 370, "Bert's Butchers", '#/town/butcher', 1590, 260]], w: 235, h: 175, /* Monnie 20 Nov: bigger, staggered over the grass; Mount low and big, Bert's up near Contract Law */ name: [560, 1365] } : null,
             sun: { x0: 80, x1: 1020, y: 150, rise: 82, s: 1 },
             deco: function () { return cloud(330, 78, .8) + cloud(1010, 92, 1) + cloud(720, 48, .55) + sign(185, 300, 'FLK1 Meadow', 'Stops 1–7', 30, 110) + welcome(950, 228, .66)
                 + sign(560, TOWN ? 2010 : 1395, 'FLK2 Harvest Fields', 'Stops 8–14', 30, TOWN ? 40 : 72)
@@ -82981,7 +82990,7 @@ window.SQE_JOURNEY = function (A) {
             hen: function (i) { return (i === 0 ? { x: st[0].x + 81, y: st[0].y + 22, s: 1, m: true } : { x: st[i].x, y: st[i].y - 42, s: 1, m: !(i % 2) }); }, /* after each stop the path heads across: right from the left side, left from the right side */
             palace: { x: 280, y: Pb, s: 1 },
             flags: [{ x: 100, y: yc + 116, s: 1, h: 80 }, { x: 320, y: yc + 116, s: 1, h: 80 }], /* tidy: planted in front of the palace, below the path, so they no longer cover the palace steps */
-            town: TOWN ? { y: 0, b: [['mount', 300, 'The Mount', '#/mount', 960, 240], ['jobcentre2', 262, 'Job Centre', '#/town/jobs', 560, 200], ['giftshop2', 465, 'Hen Bargains', '#/town/shop', 710, 190], ['butchers3', 465, "Bert's Butchers", '#/town/butcher', 450, 220]], w: 250, h: 190, ph: 1 } : null,
+            town: TOWN ? { y: 0, b: [['mount', 300, 'The Mount', '#/mount', 960, 240], ['jobcentre2', 465, 'Job Centre', '#/town/jobs', 450, 200], ['giftshop2', 465, 'Hen Bargains', '#/town/shop', 710, 190], ['butchers3', 275, "Bert's Butchers", '#/town/butcher', 580, 220]], w: 250, h: 190, ph: 1 } : null,
             reg: { spring: 212, autumn: st[7].y + (TOWN ? 1040 : 250), grounds: sl.y + 150 },
             sun: { x0: 50, x1: 550, y: 205, rise: 130, s: .62 },
             deco: function () { return cloud(522, 150, .7) + cloud(150, 60, .5) + sign(215, 330, 'FLK1 Meadow', 'Stops 1–7', 32, 90) + welcome(478, 330, .6)
@@ -83199,8 +83208,16 @@ window.SQE_JOURNEY = function (A) {
             var q = wpt(L, sl, fx, fy), gr = Math.max(rx, ry) > .03 ? 1 : 1.8;
             s += glow(q.x, q.y, Math.max(5, rx * q.dw * gr), Math.max(5, ry * q.dw * gr), (k++ % 7) * .6);
         }); });
-        var wc = wpt(L, 'fairground', .33, .414);
-        SKY_WHEEL.forEach(function (a, j) { var r = .277 * wc.dw, t = a * Math.PI / 180; s += glow(wc.x + Math.cos(t) * r, wc.y + Math.sin(t) * r, .03 * wc.dw, .03 * wc.dw, j * .5); });
+        if (WHEEL_ON) {
+            var wc_1 = wpt(L, 'fairground', WHEEL_HUB[0] / 520, WHEEL_HUB[1] / 457), r_1 = .2808 * wc_1.dw;
+            var g_1 = ''; /* map-motion-wheel: the bulbs glow on the turning wheel */
+            WHEEL_SPOKES.forEach(function (a, j) { var t = a * Math.PI / 180; g_1 += glow(Math.cos(t) * r_1, Math.sin(t) * r_1, .03 * wc_1.dw, .03 * wc_1.dw, j * .5); });
+            s += "<g transform=\"translate(".concat(f1(wc_1.x), ",").concat(f1(wc_1.y), ")\"><g class=\"jmo jwh\"><circle r=\"").concat(f1(r_1 * 1.25), "\" fill=\"none\" stroke=\"none\"/>").concat(g_1, "</g></g>");
+        }
+        else {
+            var wc_2 = wpt(L, 'fairground', .33, .414);
+            SKY_WHEEL.forEach(function (a, j) { var r = .277 * wc_2.dw, t = a * Math.PI / 180; s += glow(wc_2.x + Math.cos(t) * r, wc_2.y + Math.sin(t) * r, .03 * wc_2.dw, .03 * wc_2.dw, j * .5); });
+        }
         var lh = wpt(L, 'lighthouse', .5, .19), bl = L.mode === 'phone' ? 150 : 190;
         s += "<g class=\"jmo jbeam\"><path d=\"M".concat(f1(lh.x), ",").concat(f1(lh.y), " l").concat(bl, ",-22 v44 Z M").concat(f1(lh.x), ",").concat(f1(lh.y), " l").concat(-bl, ",22 v-44 Z\" fill=\"url(#jbeam-").concat(L.mode, ")\"/></g>") + glow(lh.x, lh.y, .07 * lh.dw, .06 * lh.dw, 0);
         if (L.town) {
@@ -83279,7 +83296,8 @@ window.SQE_JOURNEY = function (A) {
             var a = k * Math.PI / 6;
             b += "<circle cx=\"".concat(f1(Math.cos(a) * r), "\" cy=\"").concat(f1(Math.sin(a) * r), "\" r=\"3.4\" fill=\"#FFF7B0\" stroke=\"#111\" stroke-width=\"1.2\"/>");
         }
-        s += "<g transform=\"translate(".concat(f1(w.x), ",").concat(f1(w.y), ")\"><g class=\"jmo jwheel\"><circle r=\"").concat(f1(r), "\" fill=\"none\" stroke=\"none\"/>").concat(b, "<path d=\"M").concat(f1(-r * .92), ",0 H").concat(f1(r * .92), " M0,").concat(f1(-r * .92), " V").concat(f1(r * .92), "\" stroke=\"#FFF7B0\" stroke-width=\"2.5\" opacity=\".75\"/></g></g>");
+        if (!WHEEL_ON)
+            s += "<g transform=\"translate(".concat(f1(w.x), ",").concat(f1(w.y), ")\"><g class=\"jmo jwheel\"><circle r=\"").concat(f1(r), "\" fill=\"none\" stroke=\"none\"/>").concat(b, "<path d=\"M").concat(f1(-r * .92), ",0 H").concat(f1(r * .92), " M0,").concat(f1(-r * .92), " V").concat(f1(r * .92), "\" stroke=\"#FFF7B0\" stroke-width=\"2.5\" opacity=\".75\"/></g></g>");
         var aq = apt(L, 'aquarium', .5, .42);
         s += "<g transform=\"translate(".concat(f1(aq.x - 12), ",").concat(f1(aq.y + aq.dh * .1), ")\"><g class=\"jmo jfish\">").concat(fish('#FF9F1C'), "</g></g><g transform=\"translate(").concat(f1(aq.x + 8), ",").concat(f1(aq.y - aq.dh * .12), ")\"><g class=\"jmo jfish jf2\">").concat(fish('#4CC9F0'), "</g></g>");
         var pw = apt(L, 'pier', .5, .93);
@@ -83380,6 +83398,20 @@ window.SQE_JOURNEY = function (A) {
     /* [image px x, image px y] of each skater's feet (lean pivot) and each flag's pole attachment (wave pivot), on the 520x487 / 1130x1140 / 520x510 / 520x457 pictures */
     var RF_LAYERS = { icerink: { nat: [520, 487], sk: [[140, 428], [372, 424]] }, 'icerink-family2': { nat: [520, 487], sk: [[148, 440], [372, 438]] }, 'icerink-family3': { nat: [520, 487], sk: [[148, 440], [372, 438]] },
         'palace-hen': { nat: [1130, 1140], fl: [[288, 88], [838, 88], [121, 292], [982, 296]] }, camp: { nat: [520, 510], fl: [[268, 44]] }, fairground: { nat: [520, 457], fl: [[412, 34]] } };
+    /* ---------- map-motion-wheel (20 Nov, Monnie): the Ferris wheel turns (40s a turn, day and night) and its seven cars stay hanging upright ----------
+       Cut from anim/fairground-still.webp: fairground-wheel.webp (rim, spokes, bulbs, a 328px square centred on the hub at picture px 172,188), fairground-hub.webp (the star hub, 88px square on the hub),
+       fairground-car-1..7.webp (each car, [x,y,w,h] in picture px below) and fairground-still2.webp (the picture with the wheel and cars lifted; legs, helter-skelter and flag kept).
+       Layers: wheel behind the picture (the legs stay in front of it), then hub and cars in front. Each car's group turns with the wheel and its inner group turns back, so it hangs level, and rocks a little on its hook.
+       The invisible circles make each turning group's fill-box centred on the hub / the car centre (CSS block map-motion-wheel in styles.css). WHEEL_ON=false puts the still picture back. */
+    var WHEEL_ON = true, WHEEL_HUB = [172, 188], WHEEL_CARS = [[136, 44, 74, 71], [226, 76, 75, 71], [263, 168, 74, 70], [231, 259, 74, 72], [38, 259, 78, 72], [4, 166, 77, 72], [46, 73, 78, 72]];
+    var WHEEL_SPOKES = [23, 55.5, 90, 125, 157.5, 196.5, 233, 270.5, 305, 344]; /* degrees: the spoke ends where the bulbs sit (fraction .2808 of the picture's width from the hub) */
+    function life_wheel(L, hr, x, y, w, h) {
+        var sc = Math.min(w / 520, h / 457), hx = x + (w - 520 * sc) / 2 + WHEEL_HUB[0] * sc, hy = y + h - 457 * sc + WHEEL_HUB[1] * sc, q = function (n) { return f1(n * sc); };
+        var turn = function (r, inner) { return "<g transform=\"translate(".concat(f1(hx), ",").concat(f1(hy), ")\"><g class=\"jmo jwh\"><circle r=\"").concat(q(r), "\" fill=\"none\" stroke=\"none\"/>").concat(inner, "</g></g>"); };
+        var sq = function (f, half) { return "<image href=\"img/map-new/anim/".concat(f, ".webp\" x=\"").concat(q(-half), "\" y=\"").concat(q(-half), "\" width=\"").concat(q(2 * half), "\" height=\"").concat(q(2 * half), "\"/>"); };
+        var cars = WHEEL_CARS.map(function (c, k) { return "<g transform=\"translate(".concat(q(c[0] + c[2] / 2 - WHEEL_HUB[0]), ",").concat(q(c[1] + c[3] / 2 - WHEEL_HUB[1]), ")\"><g class=\"jmo jwh-c\"><circle r=\"").concat(q(Math.hypot(c[2], c[3]) / 2 + 6), "\" fill=\"none\" stroke=\"none\"/><image class=\"jmo jwh-sw\" style=\"animation-delay:-").concat(f1(k * 1.7), "s\" href=\"img/map-new/anim/fairground-car-").concat(k + 1, ".webp\" x=\"").concat(q(-c[2] / 2), "\" y=\"").concat(q(-c[3] / 2), "\" width=\"").concat(q(c[2]), "\" height=\"").concat(q(c[3]), "\"/></g></g>"); }).join('');
+        return [turn(164, sq('fairground-wheel', 164)), turn(44, sq('fairground-hub', 44)) + turn(240, cars).replace('class="jmo jwh"', 'class="jmo jwh jwh-cars"')];
+    }
     function life_rinkflag(L, hr, s) {
         var lay = function (slug, file, x, y, w, h, pv, cls, k) {
             var n = RF_LAYERS[slug].nat, sc = Math.min(w / n[0], h / n[1]), ox = x + (w - n[0] * sc) / 2, oy = y + h - n[1] * sc, px = ox + pv[0] * sc, py = oy + pv[1] * sc;
@@ -83389,7 +83421,8 @@ window.SQE_JOURNEY = function (A) {
             var x = +xs, y = +ys, w = +ws, h = +hs, r = sl === 'icerink' ? RINK_ART : sl, R = RF_LAYERS[r];
             if (R.sk)
                 return artImg('anim/' + r + '-empty', x, y, w, h) + R.sk.map(function (p, k) { return lay(r, "".concat(r, "-skater-").concat('ab'[k]), x, y, w, h, p, 'jrf-sk', k); }).join('');
-            return artImg('anim/' + r + '-still', x, y, w, h) + R.fl.map(function (p, k) { return lay(r, "".concat(r, "-flag-").concat('abcd'[k]), x, y, w, h, p, 'jrf-fl', k + (sl === 'palace-hen' ? 0 : sl === 'camp' ? 1 : 2)); }).join('');
+            var wl = sl === 'fairground' && WHEEL_ON ? life_wheel(L, hr, x, y, w, h) : null; /* map-motion-wheel: the Ferris wheel turns */
+            return (wl ? wl[0] + artImg('anim/fairground-still2', x, y, w, h) : artImg('anim/' + r + '-still', x, y, w, h)) + R.fl.map(function (p, k) { return lay(r, "".concat(r, "-flag-").concat('abcd'[k]), x, y, w, h, p, 'jrf-fl', k + (sl === 'palace-hen' ? 0 : sl === 'camp' ? 1 : 2)); }).join('') + (wl ? wl[1] : '');
         })
             .replace(/class="jmo jflag"([\s\S]*?)class="jmo jflag"/, 'class="jmo jflag"$1class="jmo jflag jrf-ex2"'); /* the two exam flags wave out of step */
     }
