@@ -297,5 +297,137 @@
    <itunes:episodeType>full</itunes:episodeType>
    <description>Dispute Resolution 10: Case management, tracks and sanctions. SQE1 revision episode.</description>
   </item>
+  <item>
+   <title>Legal Services 1: The SRA, the Legal Services Act 2007 and reserved activities</title>
+   <guid isPermaLink="false">sqe1-ls/sra-regulatory-role</guid>
+   <pubDate>Mon, 02 Nov 2026 08:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/ls-01-sra-regulatory-role.m4a" length="15901805" type="audio/x-m4a"/>
+   <itunes:duration>00:21:44</itunes:duration>
+   <itunes:season>3</itunes:season>
+   <itunes:episode>1</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Legal Services 1: The SRA, the Legal Services Act 2007 and reserved activities. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Legal Services 2: Professional indemnity insurance and other regulated providers</title>
+   <guid isPermaLink="false">sqe1-ls/pii-other-providers</guid>
+   <pubDate>Mon, 02 Nov 2026 09:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/ls-02-pii-other-providers.m4a" length="18729273" type="audio/x-m4a"/>
+   <itunes:duration>00:25:36</itunes:duration>
+   <itunes:season>3</itunes:season>
+   <itunes:episode>2</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Legal Services 2: Professional indemnity insurance and other regulated providers. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Legal Services 3: Equality Act 2010 and law firms</title>
+   <guid isPermaLink="false">sqe1-ls/equality-act</guid>
+   <pubDate>Mon, 02 Nov 2026 10:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/ls-03-equality-act.m4a" length="17684644" type="audio/x-m4a"/>
+   <itunes:duration>00:24:10</itunes:duration>
+   <itunes:season>3</itunes:season>
+   <itunes:episode>3</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Legal Services 3: Equality Act 2010 and law firms. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Legal Services 4: Money laundering: purpose, scope and the MLR 2017 (due diligence)</title>
+   <guid isPermaLink="false">sqe1-ls/aml-framework-cdd</guid>
+   <pubDate>Mon, 02 Nov 2026 11:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/ls-04-aml-framework-cdd.m4a" length="13178432" type="audio/x-m4a"/>
+   <itunes:duration>00:18:00</itunes:duration>
+   <itunes:season>3</itunes:season>
+   <itunes:episode>4</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Legal Services 4: Money laundering: purpose, scope and the MLR 2017 (due diligence). SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Legal Services 5: Money laundering: POCA offences, defences and reporting</title>
+   <guid isPermaLink="false">sqe1-ls/poca-offences-reporting</guid>
+   <pubDate>Mon, 02 Nov 2026 12:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/ls-05-poca-offences-reporting.m4a" length="18607870" type="audio/x-m4a"/>
+   <itunes:duration>00:25:26</itunes:duration>
+   <itunes:season>3</itunes:season>
+   <itunes:episode>5</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Legal Services 5: Money laundering: POCA offences, defences and reporting. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Legal Services 6: Financial services: FSMA 2000 and the exempt regime</title>
+   <guid isPermaLink="false">sqe1-ls/financial-services</guid>
+   <pubDate>Mon, 02 Nov 2026 13:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/ls-06-financial-services.m4a" length="16932868" type="audio/x-m4a"/>
+   <itunes:duration>00:23:09</itunes:duration>
+   <itunes:season>3</itunes:season>
+   <itunes:episode>6</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Legal Services 6: Financial services: FSMA 2000 and the exempt regime. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Legal Services 7: Funding: private retainers, CFAs and DBAs</title>
+   <guid isPermaLink="false">sqe1-ls/funding-private-cfa-dba</guid>
+   <pubDate>Mon, 02 Nov 2026 14:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/ls-07-funding-private-cfa-dba.m4a" length="17463020" type="audio/x-m4a"/>
+   <itunes:duration>00:23:52</itunes:duration>
+   <itunes:season>3</itunes:season>
+   <itunes:episode>7</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Legal Services 7: Funding: private retainers, CFAs and DBAs. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Legal Services 8: Funding: legal aid, third-party funding and legal expenses insurance</title>
+   <guid isPermaLink="false">sqe1-ls/funding-legal-aid-tpf-lei</guid>
+   <pubDate>Mon, 02 Nov 2026 15:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/ls-08-funding-legal-aid-tpf-lei.m4a" length="18875453" type="audio/x-m4a"/>
+   <itunes:duration>00:25:48</itunes:duration>
+   <itunes:season>3</itunes:season>
+   <itunes:episode>8</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Legal Services 8: Funding: legal aid, third-party funding and legal expenses insurance. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Legal Services 9: Transparency Rules, client care and costs information</title>
+   <guid isPermaLink="false">sqe1-ls/transparency-client-care</guid>
+   <pubDate>Mon, 02 Nov 2026 16:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/ls-09-transparency-client-care.m4a" length="17591965" type="audio/x-m4a"/>
+   <itunes:duration>00:24:03</itunes:duration>
+   <itunes:season>3</itunes:season>
+   <itunes:episode>9</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Legal Services 9: Transparency Rules, client care and costs information. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Contract 1: Agreement: offer and acceptance</title>
+   <guid isPermaLink="false">sqe1-contract/offer-acceptance</guid>
+   <pubDate>Mon, 02 Nov 2026 17:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/contract-01-offer-acceptance.m4a" length="19929794" type="audio/x-m4a"/>
+   <itunes:duration>00:27:15</itunes:duration>
+   <itunes:season>4</itunes:season>
+   <itunes:episode>1</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Contract 1: Agreement: offer and acceptance. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Contract 2: Consideration and promissory estoppel</title>
+   <guid isPermaLink="false">sqe1-contract/consideration</guid>
+   <pubDate>Mon, 02 Nov 2026 18:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/contract-02-consideration.m4a" length="17045867" type="audio/x-m4a"/>
+   <itunes:duration>00:23:18</itunes:duration>
+   <itunes:season>4</itunes:season>
+   <itunes:episode>2</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Contract 2: Consideration and promissory estoppel. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Contract 3: Intention, certainty and capacity</title>
+   <guid isPermaLink="false">sqe1-contract/intention-certainty-capacity</guid>
+   <pubDate>Mon, 02 Nov 2026 19:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/contract-03-intention-certainty-capacity.m4a" length="18727205" type="audio/x-m4a"/>
+   <itunes:duration>00:25:36</itunes:duration>
+   <itunes:season>4</itunes:season>
+   <itunes:episode>3</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Contract 3: Intention, certainty and capacity. SQE1 revision episode.</description>
+  </item>
  </channel>
 </rss>
