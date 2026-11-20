@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120021226";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120021404";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -83159,11 +83159,21 @@ window.SQE_JOURNEY = function (A) {
         SKY_WHEEL.forEach(function (a, j) { var r = .277 * wc.dw, t = a * Math.PI / 180; s += glow(wc.x + Math.cos(t) * r, wc.y + Math.sin(t) * r, .03 * wc.dw, .03 * wc.dw, j * .5); });
         var lh = wpt(L, 'lighthouse', .5, .19), bl = L.mode === 'phone' ? 150 : 190;
         s += "<g class=\"jmo jbeam\"><path d=\"M".concat(f1(lh.x), ",").concat(f1(lh.y), " l").concat(bl, ",-22 v44 Z M").concat(f1(lh.x), ",").concat(f1(lh.y), " l").concat(-bl, ",22 v-44 Z\" fill=\"url(#jbeam-").concat(L.mode, ")\"/></g>") + glow(lh.x, lh.y, .07 * lh.dw, .06 * lh.dw, 0);
+        if (L.town) {
+            var b = L.town.b.find(function (z) { return z[0] === 'mount'; });
+            if (b) {
+                var h_1 = b[5] || L.town.h, y = L.mode === 'phone' ? L.stops[7].y + b[4] : (b[4] || L.town.y), aw_1 = h_1 * 520 / 380, x0_1 = b[1] - aw_1 / 2, y0_1 = y - h_1; /* The Mount's windows glow at night (Monnie 20 Nov) */
+                [[.37, .22, .022, .045], [.60, .40, .025, .06], [.71, .42, .014, .05], [.79, .45, .02, .05], [.62, .64, .04, .08], [.79, .65, .035, .07]].forEach(function (_a) {
+                    var fx = _a[0], fy = _a[1], rx = _a[2], ry = _a[3];
+                    s += glow(x0_1 + fx * aw_1, y0_1 + fy * h_1, Math.max(5, rx * aw_1 * 1.6), Math.max(5, ry * h_1 * 1.6), (k++ % 7) * .6);
+                });
+            }
+        }
         return s.replace(/GLOWID/g, L.mode);
     }
     /* the tint over the whole map (never over the stop numbers and plates, drawn after it) and the night layer, faded in by how dark it is */
     /* night dims the drawings too (Monnie 20 Nov: rink and water darker at night); window glows sit on top so they still shine */
-    function nightCss(n) { return n > 0 ? ".jsv image[href*=\"map-new/\"]{filter:brightness(".concat((1 - .38 * n).toFixed(3), ") saturate(").concat((1 - .22 * n).toFixed(3), ")}") : ''; }
+    function nightCss(n) { return n > 0 ? ".jsv image[href*=\"map-new/\"]{filter:brightness(".concat((1 - .38 * n).toFixed(3), ") saturate(").concat((1 - .22 * n).toFixed(3), ")}") + (n > .5 ? '.jsv .jrf-sk0,.jsv .jrf-sk1{opacity:0;transition:opacity 2s}' : '') : ''; } /* at night the skaters go home (Monnie 20 Nov) */
     function skyOver(L, h) {
         var S = skyState(h);
         return "<style class=\"jnst\">".concat(nightCss(S.n), "</style>") + "<rect class=\"jskytint\" width=\"".concat(L.W, "\" height=\"").concat(L.H, "\" fill=\"").concat(S.tc, "\" opacity=\"").concat(S.ta, "\" mask=\"url(#jtm-").concat(L.mode, ")\" pointer-events=\"none\"/>")
@@ -91239,7 +91249,7 @@ window.SQE_MOUNT = function(A){
     h += '<div class="mount-garden mood-' + esc(m.cls) + '"><img class="mount-bg" src="img/scene/mount-garden.webp" alt="The Mount: a garden with a lawn, a round stone patio, a path, two benches and a chicken coop" width="2752" height="1536">';
     var onShelf = SHELF.filter(function(id){ return o[id] && A.cbaItem(id) && (id.indexOf('rec_') !== 0 || o.player); });
     if (onShelf.length) h += '<div class="mount-shelf" aria-label="Britney\'s shelf">' + shelfRows(onShelf, 8) + '<div class="legs"><i></i><i></i></div></div>';
-    if (o.parents || o.mum || o.dad) h += '<div class="mount-parents" title="Mum and Dad"><img src="img/souvenir/parents.webp" alt="Mum and Dad" onerror="this.parentNode.style.display=\'none\'"><span class="mount-bubble" aria-live="polite">' + esc(parentLine()) + '</span></div>';
+    if (o.parents || o.mum || o.dad) h += '<div class="mount-parents" title="Mama and Baba"><img src="img/souvenir/parents.webp" alt="Mama and Baba" onerror="this.parentNode.style.display=\'none\'"><span class="mount-bubble" aria-live="polite">' + esc(parentLine()) + '</span></div>';
     h += '<div class="mount-layla" title="Layla"><img src="img/layla-walk-1.webp" alt="Layla" width="163" height="300">' +
       (o.crocs ? '<span class="mount-crocs l">' + CROC + '</span><span class="mount-crocs r">' + CROC + '</span>' : '') +
       (o.cup ? '<span class="mount-cup" title="Big lilac cup">' + A.prizePic('cup') + '</span>' : '') + '<span class="mount-tag">Layla</span></div>';
