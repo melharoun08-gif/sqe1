@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120102018";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120102600";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -3941,6 +3941,7 @@ a.pkback:hover .pksign{transform:rotate(-3deg) scale(1.05)}
 /* The Mount: everything under the fancy title is Calibri (Monnie 10:01); the title keeps its house-sign lettering, the town tabs keep theirs */
 :is(.mount,.mg-shedbox,#_#_#_) *:not(.mount-sign):not(.town-nav):not(.town-nav *):not(svg):not(svg *){font-family:Calibri,Carlito,"Segoe UI",Candara,Arial,sans-serif!important}
 .bossg .bspeech,.tb-red .bspeech{border-color:var(--bsp-line)!important;background:var(--bsp-bg)!important}
+.bthink .bt-main{font-size:clamp(10px,4.6cqw,26px);width:34%;padding:7% 3%}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -106706,7 +106707,10 @@ window.SQE_PODCASTS = {
   "ethics/confidentiality-disclosure": {file: "podcasts/ethics-08-confidentiality-disclosure.m4a", mins: 23},
   "ethics/cooperation-reporting": {file: "podcasts/ethics-09-cooperation-reporting.m4a", mins: 22},
   "ethics/complaints-legal-ombudsman": {file: "podcasts/ethics-10-complaints-legal-ombudsman.m4a", mins: 15},
-  "ethics/firms-compliance-protections": {file: "podcasts/ethics-11-firms-compliance-protections.m4a", mins: 20}
+  "ethics/firms-compliance-protections": {file: "podcasts/ethics-11-firms-compliance-protections.m4a", mins: 20},
+  "tort/occupiers-liability": {file: "podcasts/tort-09-occupiers-liability.m4a", mins: 17},
+  "tort/product-liability": {file: "podcasts/tort-10-product-liability.m4a", mins: 26},
+  "tort/nuisance-rylands": {file: "podcasts/tort-11-nuisance-rylands.m4a", mins: 27}
 };
 
 ;
@@ -116967,15 +116971,15 @@ var ROOMV3 = {
 },
 "spots": {
 "board": [
-14.4,
+14.0,
 25.2,
-7.1,
+8.0,
 16.9
 ],
 "booth": [
-23.7,
+23.4,
 37.0,
-6.3,
+7.0,
 10.7
 ],
 "bell": [
@@ -116997,10 +117001,10 @@ var ROOMV3 = {
 12.9
 ],
 "sundae": [
-75.0,
-44.4,
-6.0,
-10.8
+74.6,
+39.6,
+7.0,
+15.6
 ],
 "scooper": [
 86.0,
@@ -117030,35 +117034,35 @@ var ROOMV3 = {
 "labels": {
 "board": [
 "",
-"Two-scoop cone poster, BOARD over SHAREHOLDERS: who decides what"
+"Two-scoop poster: who decides what"
 ],
 "booth": [
 "",
-"Two cherries frame marked QUORUM 2: board meetings"
+"Two cherries, QUORUM 2: board meetings"
 ],
 "bell": [
 "",
-"Ringing cash register printing 14 CLEAR DAYS: calling a general meeting"
+"Till bell, 14 CLEAR DAYS: calling a general meeting"
 ],
 "hands": [
 "",
-"Shareholders' bench marked SHOW OF HANDS: quorum, proxies and votes"
+"SHOW OF HANDS bench: quorum, proxies and votes"
 ],
 "cone": [
 "",
-"Cone stack ballot box marked 28 DAYS: written resolutions"
+"Cone ballot box: written resolutions"
 ],
 "sundae": [
 "",
-"Two sundae glasses, >50% and 75%+: ordinary vs special resolutions"
+"Sundaes >50% and 75%+: ordinary vs special resolutions"
 ],
 "scooper": [
 "",
-"Rosa's scoop and shake mixer tagged LOAN: a director's own deals"
+"Rosa's LOAN mixer: a director's own deals"
 ],
 "freezer": [
 "",
-"Tub freezer over the minutes cupboard: big deals with directors + filing"
+"Freezer OVER £100,000: big deals with directors + filing"
 ],
 "scenario": [
 "",
@@ -117074,7 +117078,7 @@ var ROOMV3 = {
 "spot": "board",
 "x": 15.6,
 "y": 27.2,
-"w": 4.8,
+"w": 5.2,
 "h": 3.8,
 "text": "BOARD",
 "style": "tag",
@@ -117082,31 +117086,31 @@ var ROOMV3 = {
 },
 {
 "spot": "board",
-"x": 14.5,
-"y": 37.4,
-"w": 6.9,
-"h": 3.8,
-"text": "SHAREHOLDERS",
+"x": 14.6,
+"y": 36.3,
+"w": 6.8,
+"h": 5.75,
+"text": "SHARE-\nHOLDERS",
 "style": "tag",
 "rot": 2
 },
 {
 "spot": "booth",
-"x": 23.9,
+"x": 23.6,
 "y": 37.2,
-"w": 5.9,
-"h": 3.1,
+"w": 6.6,
+"h": 3.2,
 "text": "QUORUM 2",
 "style": "tag",
 "rot": -1
 },
 {
 "spot": "booth",
-"x": 24.4,
-"y": 44.5,
-"w": 4.9,
-"h": 3.0,
-"text": "ART.14",
+"x": 23.6,
+"y": 44.4,
+"w": 6.6,
+"h": 3.1,
+"text": "ARTICLE 14",
 "style": "tag",
 "rot": 1
 },
@@ -117152,8 +117156,18 @@ var ROOMV3 = {
 },
 {
 "spot": "cone",
+"x": 68.6,
+"y": 40.0,
+"w": 5.6,
+"h": 3.2,
+"text": "IN WRITING",
+"style": "tag",
+"rot": -2
+},
+{
+"spot": "cone",
 "x": 69.2,
-"y": 49.0,
+"y": 49.2,
 "w": 4.6,
 "h": 3.2,
 "text": "28 DAYS",
@@ -117162,20 +117176,20 @@ var ROOMV3 = {
 },
 {
 "spot": "sundae",
-"x": 75.1,
-"y": 44.6,
-"w": 2.7,
-"h": 3.2,
+"x": 74.4,
+"y": 40.2,
+"w": 3.4,
+"h": 4.2,
 "text": ">50%",
 "style": "tag",
 "rot": -4
 },
 {
 "spot": "sundae",
-"x": 78.2,
-"y": 44.6,
-"w": 2.7,
-"h": 3.2,
+"x": 78.1,
+"y": 40.2,
+"w": 3.4,
+"h": 4.2,
 "text": "75%+",
 "style": "tag",
 "rot": 4
@@ -117183,7 +117197,7 @@ var ROOMV3 = {
 {
 "spot": "scooper",
 "x": 86.3,
-"y": 45.3,
+"y": 44.6,
 "w": 3.6,
 "h": 3.2,
 "text": "ROSA",
@@ -117193,7 +117207,7 @@ var ROOMV3 = {
 {
 "spot": "scooper",
 "x": 90.4,
-"y": 44.0,
+"y": 43.6,
 "w": 4.3,
 "h": 3.2,
 "text": "LOAN",
@@ -117203,10 +117217,10 @@ var ROOMV3 = {
 {
 "spot": "freezer",
 "x": 64.3,
-"y": 58.6,
+"y": 58.2,
 "w": 5.6,
-"h": 3.2,
-"text": "SPT s.190",
+"h": 5.5,
+"text": "OVER\n£100,000",
 "style": "tag",
 "rot": -2
 },
@@ -117222,34 +117236,46 @@ var ROOMV3 = {
 },
 {
 "spot": "scenario",
-"x": 72.0,
-"y": 60.0,
-"w": 8.0,
-"h": 3.4,
-"text": "ROSA'S MUM",
-"style": "tag",
-"rot": -3
+"x": 71.3,
+"y": 62.0,
+"w": 6.3,
+"h": 7.0,
+"text": "It's only\n£35,000!",
+"style": "speech",
+"rot": 0
 },
 {
 "spot": "scenario",
-"x": 82.5,
-"y": 76.8,
-"w": 6.5,
+"x": 83.0,
+"y": 77.6,
+"w": 8.0,
 "h": 3.6,
-"text": "£35,000",
+"text": "ROSA'S MUM",
 "style": "tag",
-"rot": 3
+"rot": -2
 },
 {
 "spot": "game",
-"x": 92.0,
+"x": 92.1,
 "y": 68.6,
-"w": 5.6,
-"h": 3.4,
-"text": "SCOOP SORT",
+"w": 5.5,
+"h": 4.6,
+"text": "SCOOP\nSORT",
 "style": "tag",
 "rot": -3
 }
+],
+"order": [
+"board",
+"booth",
+"bell",
+"hands",
+"cone",
+"sundae",
+"scooper",
+"freezer",
+"scenario",
+"game"
 ]
 },
 "shareholders-minority": {
@@ -126456,6 +126482,7 @@ var CSS = [
 '.scn-st .k,.scn-mn,.scn-xq .qmeta{color:var(--ink)}',
 '.scn-revisit .t small{color:var(--ink);opacity:.8}',
 '.scn-nextup{margin:12px 0 4px}',
+'@media (min-width:641px){html.scn-rooms .scn-art:not(.hub-art) .scn-hs:not(.door) .scn-pin{width:22px;height:22px;font-size:12px;line-height:17px}}',
 '.qt-card{text-align:center}.qt-card .qt-s{font-size:clamp(19px,2.4vw,24px);line-height:1.35;font-weight:700;margin:10px auto 16px;max-width:30em}.qt-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}.qt-b{min-width:130px;font-size:20px!important;padding:12px 22px!important;border:3px solid #1b1b1b!important;box-shadow:3px 3px 0 #1b1b1b!important;border-radius:999px!important;color:#fff!important}.qt-t{background:#2E9E5B!important}.qt-f{background:#E8453C!important}.qt-r{font-size:18px;line-height:1.4;max-width:32em;margin:6px auto 0;padding:12px 14px;border-radius:14px;border:3px solid #1b1b1b}.qt-r.ok{background:#DDF6E4}.qt-r.no{background:#FFE3E0}',
 '.scn-xres{margin-top:12px}',
 /* britney-asks (19 Nov): Britney's speech bubble + big faces on the exit pass screen */
@@ -132959,7 +132986,7 @@ function bossResqView(){
   var b = bossS(), c = b.cap, top = '<div class="cbag bossg"><div class="cbatop"><a class="cbaback" href="#/town/butcher">‹ Bert\'s Butchers</a><span class="cbattl">Get Britney back</span><span class="spill coin">' + cbaCoin() + ' <b>' + cbaS().coins + '</b></span></div>';
   if (!c) return top + '<div class="bcard"><h2>Britney is safe at home</h2><div class="btns"><a class="btn primary" href="#/town/butcher">Bert\'s Butchers</a></div></div></div>';
   var all = bossResqQs(), left = bossResqLeft(), x = TBYKEY[c.key], L = "ABCDE";
-  var notes = x ? '<a class="btn sm" href="#/topic/' + x.s.id + '/' + x.t.id + '">📖 Look at the notes: ' + esc(x.t.title) + '</a>' : '';
+  var notes = x ? '<a class="btn sm" href="#/topic/' + x.s.id + '/' + x.t.id + '">Look at the notes: ' + esc(x.t.title) + '</a>' : '';
   var prog = '<div class="resqbar" aria-label="' + (all.length - left.length) + ' of ' + all.length + ' done">' + all.map(function(z){ return '<i class="' + (c.ok[z.id] ? "on" : "") + '"></i>'; }).join("") + '</div>';
   if (!left.length && !(RESQ && RESQ.ans != null)){
     return top + '<div class="bcard bintro">' + bossShopImg("") + '<div><h2>You did it!</h2>' + prog + '<p>Every question you missed is now right. Go and collect Britney from Bert.</p><div class="btns"><button type="button" class="btn primary big" data-act="resqcollect">Collect Britney from Bert</button></div></div></div></div>';
@@ -133095,18 +133122,18 @@ function bossResult(){
   var B = BOSS, d = B.done, x = TBYKEY[B.key], b = bossS(), L = henLife(), happyHen = cbaHen("happy jump", cbaWear());
   var score = '<p class="bscore">' + d.right + ' right out of ' + d.n + ' asked</p>', back = '<a class="btn big" href="#/topic/' + x.s.id + '/' + x.t.id + '">Back to the topic</a>', h = '<div class="cbag bossg"><div class="cbacard win bres">';
   if (d.kind === "won" || d.kind === "freed"){
-    h += '<h2>' + (d.kind === "freed" ? "Britney is FREE! 🐔💨" : "You beat Bert the butcher! 🏆") + '</h2>' + score + '<p>' + (d.kind === "freed" ? "She's flapping all the way home to Cluckington Palace." : bossHatched() ? "He's off sulking behind his counter. Britney is safe at home." : "He's off sulking behind his counter.") + '</p>';
+    h += '<h2>' + (d.kind === "freed" ? "Britney is FREE!" : "You beat Bert the butcher!") + '</h2>' + score + '<p>' + (d.kind === "freed" ? "She's flapping all the way home to Cluckington Palace." : bossHatched() ? "He's off sulking behind his counter. Britney is safe at home." : "He's off sulking behind his counter.") + '</p>';
     h += '<div class="bwinrow">' + (bossHatched() ? '<span class="bwhen">' + happyHen + '</span>' : '') + (b.chest ? '<button class="bchestbtn" data-act="bosschest" aria-label="Open the coin chest">' + bossChestSvg(false) + '</button>' : bossChestSvg(true)) + '</div>';
     h += b.chest ? '<p><b>Tap the chest to open it!</b></p>' : '<p><b>Chest opened: coins in the bag!</b></p>';
-    h += '<div class="btns cbac">' + (d.kind === "freed" ? '<a class="btn primary big" href="#/palace">Welcome her home 🏰</a>' : back + '<a class="btn primary big" href="#/home">Back to Today</a>') + '</div>';
+    h += '<div class="btns cbac">' + (d.kind === "freed" ? '<a class="btn primary big" href="#/palace">Welcome her home</a>' : back + '<a class="btn primary big" href="#/home">Back to Today</a>') + '</div>';
   } else if (d.kind === "practice"){
-    h += bertImg("bsmall", "scowl") + '<h2>You beat Bert again! 💪</h2>' + score + '<p>Practice round: ' + (d.coins ? '<b>+' + d.coins + ' ' + cbaCoin() + '</b>.' : 'practice coins are once a day per topic.') + ' The chest for this topic was opened on ' + esc(fmtDate(b.won[B.key])) + '.</p><div class="btns cbac">' + back + '<button class="btn primary big" data-act="bossgo" data-k="' + B.key + '">Fight again</button></div>';
+    h += bertImg("bsmall", "scowl") + '<h2>You beat Bert again!</h2>' + score + '<p>Practice round: ' + (d.coins ? '<b>+' + d.coins + ' ' + cbaCoin() + '</b>.' : 'practice coins are once a day per topic.') + ' The chest for this topic was opened on ' + esc(fmtDate(b.won[B.key])) + '.</p><div class="btns cbac">' + back + '<button class="btn primary big" data-act="bossgo" data-k="' + B.key + '">Fight again</button></div>';
   } else if (d.kind === "captured"){
-    h += '<h2>Oh no! Bert took Britney! 😱</h2>' + score + '<p>He\'s locked her in his shop window. To get her back, get the ' + plural(bossResqQs().length, "question") + ' you missed right.</p>' + bossShopImg("bres-shop") + '<div class="btns cbac"><a class="btn primary big" href="#/boss/rescue">Get Britney back</a>' + back + '</div>';
+    h += '<h2>Oh no! Bert took Britney!</h2>' + score + '<p>He\'s locked her in his shop window. To get her back, get the ' + plural(bossResqQs().length, "question") + ' you missed right.</p>' + bossShopImg("bres-shop") + '<div class="btns cbac"><a class="btn primary big" href="#/boss/rescue">Get Britney back</a>' + back + '</div>';
   } else if (d.kind === "stillcaught"){
-    h += bertImg("bsmall", "laugh") + '<h2>Not this time… 😢</h2>' + score + '<p>Bert slammed the door. Britney is still in his window. ' + plural(d.left, "rescue chance") + ' left: come back tomorrow for a fresh 10 questions.</p>' + bossKeys(d.left) + '<div class="btns cbac"><a class="btn primary big" href="#/town/butcher">Bert\'s shop</a><a class="btn big" href="#/topic/' + x.s.id + '/' + x.t.id + '">Revise this topic</a></div>';
+    h += bertImg("bsmall", "laugh") + '<h2>Not this time…</h2>' + score + '<p>Bert slammed the door. Britney is still in his window. ' + plural(d.left, "rescue chance") + ' left: come back tomorrow for a fresh 10 questions.</p>' + bossKeys(d.left) + '<div class="btns cbac"><a class="btn primary big" href="#/town/butcher">Bert\'s shop</a><a class="btn big" href="#/topic/' + x.s.id + '/' + x.t.id + '">Revise this topic</a></div>';
   } else if (d.kind === "ransom"){
-    h += bertImg("bsmall", "laugh") + '<h2>Ransom time 📜</h2>' + score + '<p>That was the last rescue. Bert wants <b>' + BOSS_RANSOM + ' coins</b> to give Britney back.</p><div class="btns cbac"><a class="btn primary big" href="#/town/butcher">See the ransom note</a></div>';
+    h += bertImg("bsmall", "laugh") + '<h2>Ransom time</h2>' + score + '<p>That was the last rescue. Bert wants <b>' + BOSS_RANSOM + ' coins</b> to give Britney back.</p><div class="btns cbac"><a class="btn primary big" href="#/town/butcher">See the ransom note</a></div>';
   } else {
     var why = d.kind === "lostaway" ? "Britney is already at his shop, so he couldn't take her twice." : d.kind === "gone" ? "Britney was already home." : "This was a practice round, so nothing is lost.";
     h += bertImg("bsmall", "laugh") + '<h2>Bert wins this round</h2>' + score + '<p>' + why + ' Have another look at the notes and try again.</p><div class="btns cbac">' + back + '<button class="btn primary big" data-act="bossgo" data-k="' + B.key + '">Try again</button></div>';
@@ -133123,7 +133150,7 @@ function bossIntro(x){
   if (b.cap) return h + '</div>'; /* Monnie 20 Nov: Bert already has her, so no new round until she is rescued */
   h += '<div class="bcard bintro">' + bertImg("bbig") + '<div><h2>Bert the butcher challenges you!</h2><div class="bspeech">"' + (b.won[k] ? "You again? Fine, let's see if you still remember " + esc(x.t.title) + "…" : stake ? "Oi! I've got my eye on that lovely hen of yours. Answer my " + BOSS_N + " questions on " + esc(x.t.title) + ". Get " + (BOSS_N - BOSS_WIN + 1) + " wrong and Britney is mine! Mwahaha!" : "Answer my " + BOSS_N + " questions on " + esc(x.t.title) + ". Get " + BOSS_WIN + " right and you win " + BOSS_CHEST + " coins!") + '"</div>';
   h += qs.length ? '<div class="bhow"><b>How to play</b><ol><li>Answer ' + qs.length + ' questions on this topic.</li><li>Every right answer pushes Bert back a step. Every wrong answer lets him creep closer to Britney.</li><li>Get <b>' + bossNeed(qs.length) + ' right</b> and you win' + (b.won[k] ? ' (practice round: +' + BOSS_PRACTICE + ' coins once a day).' : ' <b>' + BOSS_CHEST + ' coins</b>.') + '</li><li>Get <b>' + (qs.length - bossNeed(qs.length) + 1) + ' wrong</b> and he grabs Britney and runs off with her.</li></ol></div>' : '<p>There are no questions for this topic yet.</p>';
-  if (stake) h += '<p class="small bwarn">⚠️ If he grabs Britney, you get her back by getting the questions you missed right.</p>';
+  if (stake) h += '<p class="small bwarn">If he grabs Britney, you get her back by getting the questions you missed right.</p>';
   else if (b.cap) h += '<p class="small muted">Britney is already at Bert\'s shop, so this round is just for coins. Rescue her from <a href="#/town/butcher">Bert\'s page</a>.</p>';
   if (!ready && !b.won[k]) h += '<p class="small muted">Tip: Bert is easiest once you\'ve done this topic\'s steps on Today (' + st[0] + ' of ' + st[1] + ' done).</p>';
   h += '<div class="btns">' + (qs.length ? '<button class="btn primary big" data-act="bossgo" data-k="' + k + '">' + (b.won[k] ? "Practice round" : "Face the Butcher!") + '</button>' : '') + '<a class="btn big" href="#/topic/' + x.s.id + '/' + x.t.id + '">Revise first</a></div></div></div>';
@@ -133141,7 +133168,7 @@ function bossHub(){
   if (ready.length) h += '<div class="bcard"><h3>Topics you\'ve just finished</h3><ul class="blist">' + ready.map(row).join("") + '</ul></div>';
   h += '<div class="bcard"><h3>Pick any topic</h3><p class="small muted" style="margin:0 0 8px">Every topic is open. Tap a subject to see its topics.</p>' + SUBJ.map(function(s){ var xs = planSeq().filter(function(x){ return x.s.id === s.id && !b.won[x.key]; }); return xs.length ? '<details class="bsubj"><summary>' + esc(s.title) + ' <span class="small muted">(' + xs.length + ')</span></summary><ul class="blist">' + xs.map(row).join("") + '</ul></details>' : ''; }).join("") + '</div>';
   var won = planSeq().filter(function(x){ return b.won[x.key]; });
-  if (won.length) h += '<div class="bcard"><h3>Beaten 🏆</h3><ul class="blist">' + won.map(function(x){ return '<li><a href="#/boss/' + x.s.id + '/' + x.t.id + '"><b>' + esc(tnum(x)) + '</b> ' + esc(x.t.title) + '</a><span class="small muted">' + esc(fmtDate(b.won[x.key])) + '</span></li>'; }).join("") + '</ul></div>';
+  if (won.length) h += '<div class="bcard"><h3>Beaten</h3><ul class="blist">' + won.map(function(x){ return '<li><a href="#/boss/' + x.s.id + '/' + x.t.id + '"><b>' + esc(tnum(x)) + '</b> ' + esc(x.t.title) + '</a><span class="small muted">' + esc(fmtDate(b.won[x.key])) + '</span></li>'; }).join("") + '</ul></div>';
   return h + '</div>';
 }
 VIEW.boss = function(r){
@@ -133157,7 +133184,7 @@ VIEW.boss = function(r){
 function bossTopicCTA(x){
   var b = bossS(), won = b.won[x.key];
   if (b.cap) return '<div class="bosscta"><img class="bert" src="' + BERT_RUN + '" alt="" width="612" height="800" loading="lazy"><div><b>Bert has Britney!</b><span>Get the questions you missed right to set her free.</span></div><a class="btn primary" href="#/boss/rescue">Get her back</a></div>';
-  return '<div class="bosscta"><img class="bert" src="img/boss/bert-knife.webp" alt="" width="612" height="800" loading="lazy"><div><b>' + (won ? "🏆 You beat Bert on this topic" : "Bert the butcher is waiting") + '</b><span>' + (won ? 'Chest opened. Fancy a practice round?' : BOSS_N + ' Model Q&A questions on this topic. ' + BOSS_WIN + ' right wins ' + BOSS_CHEST + ' coins.' + (bossStake(x.key) ? ' ' + (BOSS_N - BOSS_WIN + 1) + ' wrong and he takes Britney!' : '')) + '</span></div><a class="btn ' + (won ? "" : "primary") + '" href="#/boss/' + x.s.id + '/' + x.t.id + '">' + (won ? "Practice" : "Face the Butcher") + '</a></div>';
+  return '<div class="bosscta"><img class="bert" src="img/boss/bert-knife.webp" alt="" width="612" height="800" loading="lazy"><div><b>' + (won ? "You beat Bert on this topic" : "Bert the butcher is waiting") + '</b><span>' + (won ? 'Chest opened. Fancy a practice round?' : BOSS_N + ' Model Q&A questions on this topic. ' + BOSS_WIN + ' right wins ' + BOSS_CHEST + ' coins.' + (bossStake(x.key) ? ' ' + (BOSS_N - BOSS_WIN + 1) + ' wrong and he takes Britney!' : '')) + '</span></div><a class="btn ' + (won ? "" : "primary") + '" href="#/boss/' + x.s.id + '/' + x.t.id + '">' + (won ? "Practice" : "Face the Butcher") + '</a></div>';
 }
 
 /* ============ PODCASTS: commute episodes for each topic ============ */
