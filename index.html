@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120091427";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120092312";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -3434,11 +3434,11 @@ details.bsubj summary{cursor:pointer;font-family:var(--hand);font-size:19px}
 .bhb-brit{position:absolute;width:90px;height:90px;left:calc(100% - var(--dw,70px) - 4% - 235px);bottom:40px;z-index:4;animation:bhbFly 1.6s .6s ease-in-out forwards,bhbHop .5s 4.3s ease-in-out 3 alternate}
 .bhb-brit .s{opacity:0;animation:bshow 0s 2.2s forwards}
 .bhb-brit .f{transform:scaleX(-1);animation:bgone 0s 2.2s forwards}
-@keyframes bhbFly{0%{left:calc(100% - var(--dw,70px) - 4% - 235px);bottom:40px}50%{bottom:190px}100%{left:calc(12% - 70px);bottom:10px}}
+@keyframes bhbFly{0%{left:calc(100% - var(--dw,70px) - 4% - 235px);bottom:40px}45%{left:calc(12% + 130px);bottom:236px}75%{left:calc(12% - 100px);bottom:236px}100%{left:calc(12% - 100px);bottom:10px}}
 @keyframes bhbHop{to{translate:0 -26px}}
 .bhandback .bdoor{bottom:40px}
-@media (max-width:560px){.bhandback{height:250px}.bhb-lay{left:16%;width:84px;height:155px}.bhb-lay img.k{width:145px}.bhb-say{width:104px;font-size:13px;left:14px}.bhb-bert{width:120px;height:156px;left:calc(100% - var(--dw,70px) - 2% - 120px)}@keyframes bhbStep{to{left:calc(16% + 112px)}}@keyframes bhbKicked{0%{left:calc(16% + 112px);bottom:10px;rotate:0deg;opacity:1}60%{bottom:150px;opacity:1}100%{left:calc(100% + 40px);bottom:90px;rotate:400deg;opacity:0}}.bhb-brit{width:60px;height:60px;left:calc(100% - var(--dw,70px) - 2% - 170px);bottom:28px}@keyframes bhbFly{0%{left:calc(100% - var(--dw,70px) - 2% - 170px);bottom:28px}50%{bottom:140px}100%{left:calc(16% - 56px);bottom:10px}}}
-@media (prefers-reduced-motion:reduce){.bhb-brit{animation:none;left:calc(12% - 70px);bottom:10px}.bhb-brit .s{opacity:1}.bhb-brit .f{display:none}.bhb-bert{animation:none;opacity:0}.bhb-lay img.k,.bhb-say{opacity:1;animation:none}.bhb-lay img.w{display:none}}
+@media (max-width:560px){.bhandback{height:250px}.bhb-lay{left:16%;width:84px;height:155px}.bhb-lay img.k{width:145px}.bhb-say{width:104px;font-size:13px;left:14px}.bhb-bert .bshout{animation:bgone 0s .95s forwards}.bhb-bert{width:120px;height:156px;left:calc(100% - var(--dw,70px) - 2% - 120px)}@keyframes bhbStep{to{left:calc(16% + 112px)}}@keyframes bhbKicked{0%{left:calc(16% + 112px);bottom:10px;rotate:0deg;opacity:1}60%{bottom:150px;opacity:1}100%{left:calc(100% + 40px);bottom:90px;rotate:400deg;opacity:0}}.bhb-brit{width:60px;height:60px;left:calc(100% - var(--dw,70px) - 2% - 170px);bottom:28px}@keyframes bhbFly{0%{left:calc(100% - var(--dw,70px) - 2% - 170px);bottom:28px}45%{left:calc(16% + 90px);bottom:172px}75%{left:calc(16% - 60px);bottom:172px}100%{left:calc(16% - 60px);bottom:10px}}}
+@media (prefers-reduced-motion:reduce){.bhb-brit{animation:none;left:calc(12% - 100px);bottom:10px}.bhb-brit .s{opacity:1}.bhb-brit .f{display:none}.bhb-bert{animation:none;opacity:0}.bhb-lay img.k,.bhb-say{opacity:1;animation:none}.bhb-lay img.w{display:none}}
 
 /* fw-steps (20 Nov) */
 .fwalk{max-width:760px;margin:6px auto 18px}
@@ -3727,6 +3727,16 @@ a.tlink::after{content:none}
 .head .kw .kwlab{font-size:15px!important}
 .head .kw b{font-size:23px!important}
 .head .kw .kwd{font-size:19px!important;line-height:1.25!important}
+/* Monnie's test-mode badge (20 Nov 09:18) */
+.monbadge{position:fixed;right:12px;bottom:12px;z-index:99999;display:flex;align-items:center;gap:10px;flex-wrap:wrap;max-width:340px;background:#7B1FA2;color:#fff;border:3px solid #222;border-radius:14px;padding:8px 12px;box-shadow:0 3px 0 #222;font-size:14px;line-height:1.25}
+.monbadge b{font-size:16px;width:100%}
+.monbadge span{flex:1 1 160px}
+.monbadge button{background:#fff;color:#222;border:2px solid #222;border-radius:999px;font-weight:700;padding:4px 12px;cursor:pointer}
+
+/* QA 20 Nov: TEMP M/N/B test buttons only on Monnie's devices (visit once with ?monnie=1), so Layla can't free Britney with B */
+html:not(.monnie) .head .nbmbtn{display:none!important}
+/* M/N/B test buttons only in Monnie's private test mode (20 Nov 09:18) */
+html:not(.monnie) .nbmbtn{display:none!important}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -108014,7 +108024,7 @@ window.SQE_JOURNEY = function (A) {
         bars += "<line x1=\"".concat(f1(wx), "\" y1=\"").concat(f1(wy + wh * .22), "\" x2=\"").concat(f1(wx + ww), "\" y2=\"").concat(f1(wy + wh * .22), "\"/>");
         o += "<g stroke=\"#3C4048\" stroke-width=\"".concat(f1(U(6)), "\" stroke-linecap=\"round\">").concat(bars, "</g><g stroke=\"#9AA0A8\" stroke-width=\"").concat(f1(U(2)), "\" stroke-linecap=\"round\" opacity=\".8\">").concat(bars, "</g>");
         /* thought bubble on free grass: desktop to the right of the shop, phone just below it (both checked clear of every drawing, card, label and the path) */
-        var ph = mode === 'phone', tw = ph ? 116 : 150, th = ph ? 56 : 62, tx = ph ? x - 140 : ix + iw + 10, ty = ph ? y + 6 : wy + wh / 2 - th / 2, fs = ph ? 13 : 16.5;
+        var ph = mode === 'phone', tw = ph ? 116 : 150, th = ph ? 56 : 62, tx = ph ? x - 148 : ix + iw + 10, ty = ph ? y + 11 : wy + wh / 2 - th / 2, fs = ph ? 13 : 16.5;
         var sx = ph ? bxx + bwid * .5 : wx + ww, sy = ph ? wy + wh : ey; /* trail from Britney to the bubble */
         var ex2 = ph ? tx + tw * .5 : tx, ey2 = ph ? ty : ty + th / 2;
         [.06, .34, .62, .86].forEach(function (t, k) { o += "<circle cx=\"".concat(f1(sx + (ex2 - sx) * t), "\" cy=\"").concat(f1(sy + (ey2 - sy) * t), "\" r=\"").concat(f1(2.6 + k * 1.9), "\" fill=\"#fff\" stroke=\"").concat(ink, "\" stroke-width=\"2.2\"/>"); });
@@ -110805,136 +110815,196 @@ ROOMDATA["partnerships"] = {
  "inside": {
   "hotspots": [
    {
-    "id": "h1",
-    "icon": "👯",
-    "label": "Dottie and Donny: does a partnership exist?",
+    "id": "twins",
+    "icon": "🍬",
+    "label": "Dottie and Donny Dunk at the fryer: the big idea",
     "cards": [
      [
-      0
-     ],
-     [
-      1
+      0,
+      0,
+      7
      ]
-    ],
-    "x": 12.4,
-    "y": 30.4,
-    "w": 24.3,
-    "h": 31.7
+    ]
    },
    {
-    "id": "h2",
-    "icon": "🍩",
-    "label": "Halved doughnut, part 1: the default rules",
+    "id": "door",
+    "icon": "🍬",
+    "label": "Green shop door, open for business: does a partnership exist?",
+    "cards": [
+     [
+      1,
+      0,
+      6
+     ]
+    ]
+   },
+   {
+    "id": "cottage",
+    "icon": "🍬",
+    "label": "Gingerbread cottage two cousins inherited: what is not enough on its own",
+    "cards": [
+     [
+      1,
+      6,
+      11
+     ]
+    ]
+   },
+   {
+    "id": "halves",
+    "icon": "🍬",
+    "label": "Doughnut cut exactly in half: capital, profits and losses shared equally",
     "cards": [
      [
       2,
       0,
-      "Partnership property"
+      4
      ]
-    ],
-    "x": 36.9,
-    "y": 34.2,
-    "w": 7.2,
-    "h": 16.1
+    ]
    },
    {
-    "id": "h3",
-    "icon": "🍩",
-    "label": "Halved doughnut, part 2: property and good faith",
+    "id": "half",
+    "icon": "🍬",
+    "label": "Other half of the doughnut: everyone manages, who has to agree, the books",
     "cards": [
      [
       2,
-      "Partnership property"
+      4,
+      9
      ]
-    ],
-    "x": 44.1,
-    "y": 34.2,
-    "w": 7.2,
-    "h": 16.1
+    ]
    },
    {
-    "id": "h4",
-    "icon": "🧑‍🔧",
-    "label": "Mr Sacks: binding the firm",
+    "id": "fryer",
+    "icon": "🍬",
+    "label": "The firm's double fryer: partnership property, shares and duties of good faith",
     "cards": [
      [
-      3
+      2,
+      9,
+      21
      ]
-    ],
-    "x": 54.5,
-    "y": 36.2,
-    "w": 25.8,
-    "h": 40.1
+    ]
    },
    {
-    "id": "h5",
-    "icon": "💥",
-    "label": "Slipped customer: liability to outsiders",
+    "id": "sacks",
+    "icon": "🍬",
+    "label": "Mr Sacks's wobbling tower of flour: partners' authority, binding the firm",
     "cards": [
      [
-      4
+      3,
+      0,
+      15
      ]
-    ],
-    "x": 36.3,
-    "y": 60.7,
-    "w": 21.4,
-    "h": 38.1
+    ]
    },
    {
-    "id": "h6",
-    "icon": "🧳",
-    "label": "Auntie Jam: holding out and retiring partners",
+    "id": "slip",
+    "icon": "🍬",
+    "label": "Customer slipping on pink glaze: debts and wrongs",
     "cards": [
      [
-      5
-     ]
-    ],
-    "x": 82.5,
-    "y": 27.8,
-    "w": 13.4,
-    "h": 40.1
-   },
-   {
-    "id": "h7",
-    "icon": "🗼",
-    "label": "Doughnut tower: dissolution and payout",
-    "cards": [
-     [
+      4,
+      0,
       6
      ]
-    ],
-    "x": 62.6,
-    "y": 17.4,
-    "w": 11.5,
-    "h": 19
+    ]
    },
    {
-    "id": "h8",
-    "icon": "📜",
-    "label": "Scroll: the partnership agreement",
+    "id": "puddle",
+    "icon": "🍬",
+    "label": "Glaze puddle spreading to the partners: contribution and enforcing",
     "cards": [
      [
-      7
+      4,
+      6,
+      10
      ]
-    ],
-    "x": 13.7,
-    "y": 14,
-    "w": 7.6,
-    "h": 9.3
+    ]
    },
    {
-    "id": "h9",
-    "icon": "🛡️",
-    "label": "Glass dome: limited partnerships and LLPs",
+    "id": "auntie",
+    "icon": "🍬",
+    "label": "Auntie Jam leaving with her suitcase: holding out and retiring partners",
     "cards": [
      [
+      5,
+      0,
       8
      ]
-    ],
-    "x": 1.1,
-    "y": 43.9,
-    "w": 10.9,
-    "h": 20.7
+    ]
+   },
+   {
+    "id": "postbox",
+    "icon": "🍬",
+    "label": "Red sugar postbox with the London Gazette: notice when a partner leaves",
+    "cards": [
+     [
+      5,
+      8,
+      16
+     ]
+    ]
+   },
+   {
+    "id": "clock",
+    "icon": "🍬",
+    "label": "Doughnut clock at closing time: dissolution",
+    "cards": [
+     [
+      6,
+      0,
+      8
+     ]
+    ]
+   },
+   {
+    "id": "tower",
+    "icon": "🍬",
+    "label": "Doughnut tower: who gets paid, in order",
+    "cards": [
+     [
+      6,
+      8,
+      14
+     ]
+    ]
+   },
+   {
+    "id": "scroll",
+    "icon": "🍬",
+    "label": "Ribboned scroll: the partnership agreement",
+    "cards": [
+     [
+      7,
+      0,
+      12
+     ]
+    ]
+   },
+   {
+    "id": "hen",
+    "icon": "🍬",
+    "label": "Britney the hen sitting tight on her nest: limited partnerships",
+    "cards": [
+     [
+      8,
+      0,
+      2
+     ]
+    ]
+   },
+   {
+    "id": "dome",
+    "icon": "🍬",
+    "label": "Glass dome over the gold doughnut: limited liability partnerships",
+    "cards": [
+     [
+      8,
+      2,
+      15
+     ]
+    ]
    }
   ]
  },
@@ -111540,122 +111610,184 @@ ROOMDATA["debt-security"] = {
  "inside": {
   "hotspots": [
    {
-    "id": "h1",
-    "icon": "👩‍🍳",
-    "label": "Mabel at her desk: before borrowing",
+    "id": "mabel",
+    "icon": "🍬",
+    "label": "Mabel, about to borrow for a new kettle: debt finance and security",
     "cards": [
      [
       0
-     ],
+     ]
+    ]
+   },
+   {
+    "id": "desk",
+    "icon": "🍬",
+    "label": "Mabel's desk with the articles and the board resolution: company law checks before borrowing",
+    "cards": [
      [
       1
      ]
-    ],
-    "x": 53.5,
-    "y": 47,
-    "w": 18,
-    "h": 53
+    ]
    },
    {
-    "id": "h2",
-    "icon": "🍳",
-    "label": "Copper pans: types of borrowing",
+    "id": "pans",
+    "icon": "🍬",
+    "label": "Pans on the front stove, each cooking a different way: types of borrowing",
     "cards": [
      [
       2
      ]
-    ],
-    "x": 0,
-    "y": 17,
-    "w": 28.5,
-    "h": 22
+    ]
    },
    {
-    "id": "h3",
-    "icon": "📋",
-    "label": "Recipe card: the loan agreement",
+    "id": "ovens",
+    "icon": "🍬",
+    "label": "Closed oven doors, ticked off before you cook: facility, conditions precedent and repayment terms",
     "cards": [
      [
+      3,
+      0,
       3
      ]
-    ],
-    "x": 7.5,
-    "y": 42,
-    "w": 14,
-    "h": 49
+    ]
    },
    {
-    "id": "h4",
-    "icon": "🔒",
-    "label": "Toffee cutter and Mr Okafor: fixed charges",
+    "id": "easel",
+    "icon": "🍬",
+    "label": "Recipe easel with steps to keep following: representations, covenants and the negative pledge",
+    "cards": [
+     [
+      3,
+      3,
+      10
+     ]
+    ]
+   },
+   {
+    "id": "alarm",
+    "icon": "🍬",
+    "label": "Burnt pan ringing the alarm bell: events of default and what the lender can do",
+    "cards": [
+     [
+      3,
+      10,
+      13
+     ]
+    ]
+   },
+   {
+    "id": "machine",
+    "icon": "🍬",
+    "label": "Toffee machine chained and padlocked: mortgage and fixed charge",
     "cards": [
      [
       4
-     ],
-     [
-      5
      ]
-    ],
-    "x": 21.5,
-    "y": 56,
-    "w": 29.5,
-    "h": 43
+    ]
    },
    {
-    "id": "h5",
-    "icon": "🎠",
-    "label": "Fudge carousel and Fergus: floating charges",
+    "id": "okafor",
+    "icon": "🍬",
+    "label": "Mr Okafor hugging the cog until he is paid: pledge and lien",
     "cards": [
      [
-      6
+      5,
+      0,
+      3
      ]
-    ],
-    "x": 28.5,
-    "y": 15,
-    "w": 25.5,
-    "h": 41
+    ]
    },
    {
-    "id": "h6",
-    "icon": "💎",
-    "label": "Cooling tray: crystallisation",
+    "id": "toolbox",
+    "icon": "🍬",
+    "label": "Mr Okafor's red toolbox, still his until paid: guarantees and retention of title",
+    "cards": [
+     [
+      5,
+      3,
+      9
+     ]
+    ]
+   },
+   {
+    "id": "carousel",
+    "icon": "🍬",
+    "label": "Fudge carousel, stock coming and going: floating charges",
+    "cards": [
+     [
+      6,
+      0,
+      5
+     ]
+    ]
+   },
+   {
+    "id": "balloon",
+    "icon": "🍬",
+    "label": "Leaky fudge hot-air balloon: the floating charge's weak spots and its strength",
+    "cards": [
+     [
+      6,
+      5,
+      9
+     ]
+    ]
+   },
+   {
+    "id": "tier",
+    "icon": "🍬",
+    "label": "Bottom tier of the carousel, called fixed but sold freely: fixed or floating?",
+    "cards": [
+     [
+      6,
+      9,
+      15
+     ]
+    ]
+   },
+   {
+    "id": "tray",
+    "icon": "🍬",
+    "label": "Cooling tray with the fudge set hard into crystals: crystallisation",
     "cards": [
      [
       7
      ]
-    ],
-    "x": 54,
-    "y": 32,
-    "w": 13,
-    "h": 10
+    ]
    },
    {
-    "id": "h7",
-    "icon": "🍎",
-    "label": "Toffee-apple rack: registering a charge",
+    "id": "apples",
+    "icon": "🍬",
+    "label": "Toffee-apple rack, one apple a day: registering a charge within 21 days",
     "cards": [
      [
+      8,
+      0,
       8
      ]
-    ],
-    "x": 72,
-    "y": 11,
-    "w": 25.5,
-    "h": 24
+    ]
    },
    {
-    "id": "h8",
-    "icon": "🎟️",
-    "label": "The queue: priority",
+    "id": "fallen",
+    "icon": "🍬",
+    "label": "Bottom row of the toffee-apple rack: missing the 21 days",
+    "cards": [
+     [
+      8,
+      8,
+      18
+     ]
+    ]
+   },
+   {
+    "id": "queue",
+    "icon": "🍬",
+    "label": "Mr Barnaby and Ruby queueing for the hatch: priority between charges",
     "cards": [
      [
       9
      ]
-    ],
-    "x": 74,
-    "y": 35.5,
-    "w": 26,
-    "h": 41.5
+    ]
    }
   ]
  },
@@ -112303,76 +112435,86 @@ ROOMDATA["corporate-insolvency"] = {
  "inside": {
   "hotspots": [
    {
-    "id": "wendy",
-    "icon": "🍮",
-    "label": "Wendy Wobble: the big idea",
+    "id": "castle",
+    "icon": "🍬",
+    "label": "Jelly castle keeping the shareholders safe: the big idea",
     "cards": [
      [
       0
      ]
-    ],
-    "x": 28.6,
-    "y": 22.2,
-    "w": 10.7,
-    "h": 46.9
+    ]
    },
    {
-    "id": "sid",
-    "icon": "⚖️",
-    "label": "Sid and the scale: unable to pay debts",
+    "id": "scale",
+    "icon": "🍬",
+    "label": "Wobbling jelly on the balance scale: the two tests",
     "cards": [
      [
-      1
-     ]
-    ],
-    "x": 1.5,
-    "y": 50.1,
-    "w": 26.2,
-    "h": 48.7
-   },
-   {
-    "id": "fridge",
-    "icon": "⏲️",
-    "label": "Setting fridge: first steps and the moratorium",
-    "cards": [
-     [
-      2
-     ]
-    ],
-    "x": 13.4,
-    "y": 5.2,
-    "w": 15,
-    "h": 44.6
-   },
-   {
-    "id": "patch",
-    "icon": "🩹",
-    "label": "Patched-up jelly: the CVA",
-    "cards": [
-     [
+      1,
+      0,
       3
      ]
-    ],
-    "x": 39.4,
-    "y": 27.8,
-    "w": 15,
-    "h": 20.7
+    ]
    },
    {
-    "id": "doctor",
-    "icon": "🩺",
-    "label": "Dr Jellicoe, part 1: administration",
+    "id": "dial",
+    "icon": "🍬",
+    "label": "Clock-faced scale dial ticking for 3 weeks: statutory demands, execution and disputed debts",
     "cards": [
      [
-      4,
-      0,
-      "The administration moratorium: no winding up"
+      1,
+      3,
+      11
      ]
-    ],
-    "x": 54.5,
-    "y": 23.9,
-    "w": 9.4,
-    "h": 55.6
+    ]
+   },
+   {
+    "id": "lights",
+    "icon": "🍬",
+    "label": "Traffic-light jelly: directors' first steps",
+    "cards": [
+     [
+      2,
+      0,
+      4
+     ]
+    ]
+   },
+   {
+    "id": "cloche",
+    "icon": "🍬",
+    "label": "Jelly setting safely under the glass cloche: the Part A1 moratorium",
+    "cards": [
+     [
+      2,
+      4,
+      14
+     ]
+    ]
+   },
+   {
+    "id": "cracked",
+    "icon": "🍬",
+    "label": "Cracked jelly held together with plasters: the CVA and its vote",
+    "cards": [
+     [
+      3,
+      0,
+      7
+     ]
+    ]
+   },
+   {
+    "id": "plasters",
+    "icon": "🍬",
+    "label": "Spare plasters on the table: who the CVA binds and its limits",
+    "cards": [
+     [
+      3,
+      7,
+      15
+     ]
+    ]
    },
    {
     "id": "trolley",
@@ -112381,13 +112523,58 @@ ROOMDATA["corporate-insolvency"] = {
     "cards": [
      [
       4,
-      "The administration moratorium: no winding up"
+      0,
+      5
      ]
     ],
     "x": 64.1,
     "y": 47.2,
     "w": 12.9,
     "h": 35.5
+   },
+   {
+    "id": "doors",
+    "icon": "🍬",
+    "label": "Three little doors for Dr Jellicoe: the routes into administration",
+    "cards": [
+     [
+      4,
+      5,
+      12
+     ]
+    ]
+   },
+   {
+    "id": "doctor",
+    "icon": "🩺",
+    "label": "Dr Jellicoe, part 1: administration",
+    "cards": [
+     [
+      4,
+      12,
+      17
+     ]
+    ],
+    "x": 54.5,
+    "y": 23.9,
+    "w": 9.4,
+    "h": 55.6
+   },
+   {
+    "id": "fridge",
+    "icon": "⏲️",
+    "label": "Setting fridge: first steps and the moratorium",
+    "cards": [
+     [
+      4,
+      17,
+      24
+     ]
+    ],
+    "x": 13.4,
+    "y": 5.2,
+    "w": 15,
+    "h": 44.6
    },
    {
     "id": "vault",
@@ -112404,49 +112591,62 @@ ROOMDATA["corporate-insolvency"] = {
     "h": 61.1
    },
    {
-    "id": "splat",
-    "icon": "🫠",
-    "label": "Jelly puddle, part 1: liquidation",
+    "id": "gift",
+    "icon": "🍬",
+    "label": "Perfect jelly neatly gift-wrapped: liquidation and the MVL",
     "cards": [
      [
       6,
       0,
-      "Compulsory liquidation: grounds"
+      8
      ]
-    ],
-    "x": 51.1,
-    "y": 83.3,
-    "w": 21.2,
-    "h": 15.5
+    ]
    },
    {
-    "id": "mould",
-    "icon": "🍮",
-    "label": "Tipped mould, part 2: liquidation",
+    "id": "freezer",
+    "icon": "🍬",
+    "label": "Deep freezer frozen at the petition: the CVL and compulsory liquidation",
     "cards": [
      [
       6,
-      "Compulsory liquidation: grounds"
+      8,
+      19
      ]
-    ],
-    "x": 44,
-    "y": 77.3,
-    "w": 7,
-    "h": 15.1
+    ]
    },
    {
-    "id": "till",
-    "icon": "🧾",
-    "label": "Grandad and granddaughter: choosing a procedure",
+    "id": "mop",
+    "icon": "🍬",
+    "label": "Liquidator's mop and bucket: effects of liquidation and the liquidator's powers",
+    "cards": [
+     [
+      6,
+      19,
+      23
+     ]
+    ]
+   },
+   {
+    "id": "puddle",
+    "icon": "🍬",
+    "label": "Jelly collapsed into a puddle: investigating the directors and dissolution",
+    "cards": [
+     [
+      6,
+      23,
+      25
+     ]
+    ]
+   },
+   {
+    "id": "shelf",
+    "icon": "🍬",
+    "label": "Shelf of jelly moulds to choose from: comparing and choosing a procedure",
     "cards": [
      [
       7
      ]
-    ],
-    "x": 64.3,
-    "y": 5.2,
-    "w": 29.8,
-    "h": 32
+    ]
    }
   ]
  },
@@ -112685,42 +112885,52 @@ ROOMDATA["insolvency-clawback-priority"] = {
  "inside": {
   "hotspots": [
    {
-    "id": "ivy",
-    "icon": "🍪",
-    "label": "Ivy Peel and the cookie jar: the big idea and onset",
-    "big": true,
+    "id": "jar",
+    "icon": "🍬",
+    "label": "Ivy Peel's giant cookie jar, the pot: the big idea",
     "cards": [
      [
-      0
-     ],
+      0,
+      0,
+      7
+     ]
+    ]
+   },
+   {
+    "id": "timer",
+    "icon": "🍬",
+    "label": "Giant sand timer counting back to the onset: time limits and insolvency at the time",
+    "cards": [
      [
       1,
       0,
-      "Connected persons"
+      5
      ]
-    ],
-    "x": 21.8,
-    "y": 13.6,
-    "w": 10.8,
-    "h": 36.8
+    ]
    },
    {
-    "id": "clive",
-    "icon": "🦹",
-    "label": "Clive the cookie thief: undervalue and defrauding creditors",
+    "id": "garland",
+    "icon": "🍬",
+    "label": "Gingerbread family holding hands: connected persons and associates",
     "cards": [
      [
       1,
-      "Connected persons"
-     ],
-     [
-      2
+      6,
+      9
      ]
-    ],
-    "x": 2.9,
-    "y": 3.9,
-    "w": 18.9,
-    "h": 47.8
+    ]
+   },
+   {
+    "id": "hen",
+    "icon": "🍬",
+    "label": "Britney the hen hiding cookies, leaving only crumbs: undervalue and defrauding creditors",
+    "cards": [
+     [
+      2,
+      0,
+      10
+     ]
+    ]
    },
    {
     "id": "heart",
@@ -112728,7 +112938,9 @@ ROOMDATA["insolvency-clawback-priority"] = {
     "label": "Golden heart plate: preferences",
     "cards": [
      [
-      3
+      3,
+      0,
+      9
      ]
     ],
     "x": 0,
@@ -112742,7 +112954,9 @@ ROOMDATA["insolvency-clawback-priority"] = {
     "label": "Bruno the bank manager: floating charges",
     "cards": [
      [
-      4
+      3,
+      10,
+      11
      ]
     ],
     "x": 32.7,
@@ -112751,12 +112965,38 @@ ROOMDATA["insolvency-clawback-priority"] = {
     "h": 49.1
    },
    {
+    "id": "milk",
+    "icon": "🍬",
+    "label": "Bruno's milk glass where only fresh cookies float: floating charges",
+    "cards": [
+     [
+      4,
+      0,
+      8
+     ]
+    ]
+   },
+   {
+    "id": "shark",
+    "icon": "🍬",
+    "label": "Grinning shark in the tank: extortionate credit and clawback time limits",
+    "cards": [
+     [
+      4,
+      9,
+      12
+     ]
+    ]
+   },
+   {
     "id": "dennis",
     "icon": "🔥",
     "label": "Dennis at the smoking oven: directors' liability",
     "cards": [
      [
-      5
+      5,
+      0,
+      6
      ]
     ],
     "x": 78.9,
@@ -112765,12 +113005,46 @@ ROOMDATA["insolvency-clawback-priority"] = {
     "h": 36.8
    },
    {
+    "id": "clive",
+    "icon": "🦹",
+    "label": "Clive the cookie thief: undervalue and defrauding creditors",
+    "cards": [
+     [
+      5,
+      7,
+      10
+     ]
+    ],
+    "x": 2.9,
+    "y": 3.9,
+    "w": 18.9,
+    "h": 47.8
+   },
+   {
+    "id": "ivy",
+    "icon": "🍪",
+    "label": "Ivy Peel and the cookie jar: the big idea and onset",
+    "cards": [
+     [
+      5,
+      11,
+      15
+     ]
+    ],
+    "x": 21.8,
+    "y": 13.6,
+    "w": 10.8,
+    "h": 36.8
+   },
+   {
     "id": "phoenix",
     "icon": "🐦‍🔥",
     "label": "Phoenix: phoenix companies and disqualification",
     "cards": [
      [
-      6
+      6,
+      0,
+      5
      ]
     ],
     "x": 82.5,
@@ -112779,32 +113053,56 @@ ROOMDATA["insolvency-clawback-priority"] = {
     "h": 20
    },
    {
+    "id": "oven",
+    "icon": "🍬",
+    "label": "Smoking oven with Ivy's report on the directors: disqualification",
+    "cards": [
+     [
+      6,
+      6,
+      10
+     ]
+    ]
+   },
+   {
+    "id": "stones",
+    "icon": "🍬",
+    "label": "First cookie stepping-stones of the queue: front of the order of priority",
+    "cards": [
+     [
+      7,
+      0,
+      8
+     ]
+    ]
+   },
+   {
+    "id": "dome",
+    "icon": "🍬",
+    "label": "Glass dome keeping a slice back: the prescribed part",
+    "cards": [
+     [
+      8,
+      0,
+      3
+     ]
+    ]
+   },
+   {
     "id": "queue",
     "icon": "🧍",
     "label": "The queue: front of the priority order",
     "cards": [
      [
-      7
+      8,
+      4,
+      13
      ]
     ],
     "x": 49.4,
     "y": 72.4,
     "w": 32.8,
     "h": 23
-   },
-   {
-    "id": "cloche",
-    "icon": "🔔",
-    "label": "Glass cloche: back of the priority order",
-    "cards": [
-     [
-      8
-     ]
-    ],
-    "x": 68,
-    "y": 31,
-    "w": 10.9,
-    "h": 24.3
    }
   ]
  },
@@ -116867,115 +117165,185 @@ var ROOMV3 = {
 },
 "partnerships": {
 "board": {
-"x": 59.4,
-"y": 26.7,
-"w": 13.9,
-"h": 18.6
+"x": 48.5,
+"y": 50.5,
+"w": 9.4,
+"h": 11.8
 },
 "spots": {
-"h1": [
-1.6,
-51.3,
-10.2,
-48.2
+"twins": [
+20.7,
+53.5,
+12.3,
+14.5
 ],
-"h2": [
-26.8,
-33.9,
-13.0,
-42.1
+"door": [
+14.2,
+51.5,
+6.0,
+9.5
 ],
-"h3": [
-40.3,
-33.9,
-15.0,
-42.1
-],
-"h4": [
-62.0,
-77.0,
-19.5,
-22.5
-],
-"h5": [
-82.0,
-86.2,
-12.0,
-13.4
-],
-"h6": [
-91.5,
-58.3,
-8.3,
-13.7
-],
-"h7": [
-79.0,
-55.3,
-11.0,
-11.3
-],
-"h8": [
-77.0,
-19.5,
-23.0,
-25.0
-],
-"h9": [
-44.5,
+"cottage": [
 0.5,
-11.5,
-29.0
+61.5,
+19.3,
+38.0
+],
+"halves": [
+21.0,
+81.0,
+9.0,
+17.0
+],
+"half": [
+30.5,
+81.0,
+9.5,
+17.0
+],
+"fryer": [
+21.0,
+68.5,
+16.0,
+12.0
+],
+"sacks": [
+40.0,
+45.0,
+7.8,
+12.5
+],
+"slip": [
+48.0,
+63.0,
+9.8,
+19.5
+],
+"puddle": [
+49.2,
+83.0,
+13.8,
+9.5
+],
+"auntie": [
+31.0,
+21.5,
+7.0,
+22.0
+],
+"postbox": [
+58.5,
+53.8,
+6.2,
+21.5
+],
+"clock": [
+61.5,
+20.0,
+8.0,
+13.5
+],
+"tower": [
+67.0,
+44.5,
+11.6,
+26.5
+],
+"scroll": [
+89.0,
+50.5,
+8.5,
+27.0
+],
+"hen": [
+84.5,
+78.0,
+13.0,
+21.0
+],
+"dome": [
+73.2,
+74.0,
+9.8,
+23.5
 ],
 "scenario": [
-60.5,
-63.4,
-18.0,
-13.1
+37.5,
+58.0,
+10.0,
+22.5
 ],
 "game": [
-60.8,
-52.6,
-6.2,
-10.2
+65.3,
+71.5,
+7.3,
+15.5
 ]
 },
 "labels": {
-"h1": [
+"twins": [
 "",
-"Teal shop door with both twins' names: does a partnership exist?"
+"Dottie and Donny Dunk at the fryer: the big idea"
 ],
-"h2": [
+"door": [
 "",
-"Pink doughnut rack, part 1: the default rules"
+"Green shop door, open for business: does a partnership exist?"
 ],
-"h3": [
+"cottage": [
 "",
-"Matching sprinkle doughnut rack, part 2: property and good faith"
+"Gingerbread cottage two cousins inherited: what is not enough on its own"
 ],
-"h4": [
+"halves": [
 "",
-"Shop counter where stock is ordered: binding the firm"
+"Doughnut cut exactly in half: capital, profits and losses shared equally"
 ],
-"h5": [
+"half": [
 "",
-"Wet floor by the counter: liability to outsiders"
+"Other half of the doughnut: everyone manages, who has to agree, the books"
 ],
-"h6": [
+"fryer": [
 "",
-"Auntie Jam's sweet jars still on show: holding out and retiring partners"
+"The firm's double fryer: partnership property, shares and duties of good faith"
 ],
-"h7": [
+"sacks": [
 "",
-"Stacked doughnut stands, paid out in order: dissolution and payout"
+"Mr Sacks's wobbling tower of flour: partners' authority, binding the firm"
 ],
-"h8": [
+"slip": [
 "",
-"Scrolled railing over the display: the partnership agreement"
+"Customer slipping on pink glaze: debts and wrongs"
 ],
-"h9": [
+"puddle": [
 "",
-"Glass lamp globes shielding the bulbs: limited partnerships and LLPs"
+"Glaze puddle spreading to the partners: contribution and enforcing"
+],
+"auntie": [
+"",
+"Auntie Jam leaving with her suitcase: holding out and retiring partners"
+],
+"postbox": [
+"",
+"Red sugar postbox with the London Gazette: notice when a partner leaves"
+],
+"clock": [
+"",
+"Doughnut clock at closing time: dissolution"
+],
+"tower": [
+"",
+"Doughnut tower: who gets paid, in order"
+],
+"scroll": [
+"",
+"Ribboned scroll: the partnership agreement"
+],
+"hen": [
+"",
+"Britney the hen sitting tight on her nest: limited partnerships"
+],
+"dome": [
+"",
+"Glass dome over the gold doughnut: limited liability partnerships"
 ],
 "scenario": [
 "",
@@ -116988,167 +117356,286 @@ var ROOMV3 = {
 },
 "hooks": [
 {
-"x": 2.9,
-"y": 53.6,
-"w": 7.9,
-"h": 8.0,
-"text": "DOTTIE &\nDONNY",
+"x": 20.9,
+"y": 64.2,
+"w": 5.2,
+"h": 3.2,
+"text": "DONNY",
 "style": "tag",
 "rot": -3
 },
 {
-"x": 2.6,
-"y": 88.0,
-"w": 8.4,
-"h": 4.2,
-"text": "IN COMMON",
+"x": 27.6,
+"y": 64.2,
+"w": 5.2,
+"h": 3.2,
+"text": "DOTTIE",
 "style": "tag",
-"rot": 2
+"rot": 3
 },
 {
-"x": 28.2,
-"y": 35.0,
-"w": 10.2,
-"h": 4.4,
+"x": 14.3,
+"y": 51.7,
+"w": 5.8,
+"h": 3.0,
+"text": "BUSINESS",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 1.5,
+"y": 67.0,
+"w": 9.0,
+"h": 3.6,
+"text": "NOT BY ITSELF",
+"style": "tag",
+"rot": -4
+},
+{
+"x": 21.5,
+"y": 81.6,
+"w": 8.0,
+"h": 3.4,
 "text": "EQUALLY",
 "style": "tag",
-"rot": -2
+"rot": -3
 },
 {
-"x": 27.8,
-"y": 66.6,
-"w": 11.0,
-"h": 4.4,
+"x": 21.1,
+"y": 92.2,
+"w": 8.8,
+"h": 5.8,
+"text": "5% ON\nADVANCES",
+"style": "tag",
+"rot": 1
+},
+{
+"x": 31.0,
+"y": 94.3,
+"w": 8.5,
+"h": 3.3,
 "text": "NO SALARY",
 "style": "tag",
-"rot": 2
+"rot": -2
 },
 {
-"x": 41.6,
-"y": 34.6,
-"w": 12.4,
-"h": 7.2,
-"text": "PARTNERSHIP\nPROPERTY",
+"x": 21.6,
+"y": 77.0,
+"w": 6.6,
+"h": 3.2,
+"text": "PROPERTY",
 "style": "tag",
 "rot": -2
 },
 {
-"x": 41.8,
-"y": 66.0,
-"w": 12.0,
-"h": 7.2,
-"text": "UTMOST\nGOOD FAITH",
+"x": 28.9,
+"y": 77.0,
+"w": 7.8,
+"h": 3.2,
+"text": "GOOD FAITH",
 "style": "tag",
-"rot": 2
+"rot": 1
 },
 {
-"x": 69.6,
-"y": 80.2,
-"w": 10.8,
-"h": 4.4,
-"text": "BINDS THE FIRM",
-"style": "tag",
-"rot": -2
-},
-{
-"x": 69.8,
-"y": 93.0,
-"w": 10.4,
-"h": 4.4,
+"x": 40.2,
+"y": 45.3,
+"w": 7.4,
+"h": 3.3,
 "text": "£5,000 LIMIT",
 "style": "tag",
-"rot": 2
-},
-{
-"x": 82.6,
-"y": 86.7,
-"w": 10.6,
-"h": 3.9,
-"text": "WET FLOOR",
-"style": "tag",
 "rot": -3
 },
 {
-"x": 82.4,
-"y": 95.0,
-"w": 11.2,
-"h": 3.9,
+"x": 40.2,
+"y": 53.9,
+"w": 7.4,
+"h": 3.3,
+"text": "BINDS THE FIRM",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 38.0,
+"y": 76.2,
+"w": 9.2,
+"h": 3.8,
+"text": "WHO'S PAYING?",
+"style": "speech",
+"rot": 0
+},
+{
+"x": 48.3,
+"y": 78.8,
+"w": 9.2,
+"h": 3.3,
 "text": "JOINT & SEVERAL",
-"style": "tag",
-"rot": 2
-},
-{
-"x": 91.8,
-"y": 58.7,
-"w": 7.7,
-"h": 3.9,
-"text": "AUNTIE JAM",
-"style": "tag",
-"rot": -3
-},
-{
-"x": 91.8,
-"y": 67.6,
-"w": 7.7,
-"h": 3.9,
-"text": "HOLDING OUT",
-"style": "tag",
-"rot": 2
-},
-{
-"x": 79.6,
-"y": 55.6,
-"w": 9.8,
-"h": 3.4,
-"text": "WHO GETS PAID",
 "style": "tag",
 "rot": -2
 },
 {
-"x": 85.6,
-"y": 20.4,
-"w": 12.6,
-"h": 6.6,
-"text": "PARTNERSHIP\nAGREEMENT",
+"x": 50.5,
+"y": 89.3,
+"w": 11.0,
+"h": 3.0,
+"text": "PERSONAL ASSETS",
 "style": "tag",
-"rot": -8
+"rot": 1
 },
 {
-"x": 84.8,
-"y": 37.6,
-"w": 12.6,
+"x": 31.1,
+"y": 21.8,
+"w": 6.8,
+"h": 3.1,
+"text": "AUNTIE JAM",
+"style": "tag",
+"rot": -1
+},
+{
+"x": 31.3,
+"y": 40.2,
+"w": 6.4,
+"h": 3.1,
+"text": "STILL LIABLE",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 58.7,
+"y": 68.4,
+"w": 5.8,
+"h": 6.0,
+"text": "LONDON\nGAZETTE",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 62.0,
+"y": 29.8,
+"w": 7.0,
+"h": 3.3,
+"text": "DISSOLUTION",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 69.0,
+"y": 44.8,
+"w": 7.6,
+"h": 3.3,
+"text": "SPRINKLES",
+"style": "tag",
+"rot": 0
+},
+{
+"x": 68.6,
+"y": 48.8,
+"w": 8.4,
+"h": 3.3,
+"text": "CHOCOLATE",
+"style": "tag",
+"rot": 0
+},
+{
+"x": 70.4,
+"y": 61.9,
+"w": 5.2,
+"h": 3.3,
+"text": "ADD",
+"style": "tag",
+"rot": 0
+},
+{
+"x": 70.2,
+"y": 65.7,
+"w": 5.6,
+"h": 3.3,
+"text": "ONLY",
+"style": "tag",
+"rot": 0
+},
+{
+"x": 65.6,
+"y": 83.3,
+"w": 6.6,
+"h": 3.3,
+"text": "STACK",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 89.3,
+"y": 51.2,
+"w": 7.9,
+"h": 6.4,
+"text": "PARTNERSHIP\nAGREEMENT",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 89.3,
+"y": 68.6,
+"w": 7.9,
 "h": 6.4,
 "text": "CONTINUATION\nCLAUSE",
 "style": "tag",
-"rot": -8
+"rot": 2
 },
 {
-"x": 47.4,
-"y": 23.6,
-"w": 5.4,
-"h": 4.4,
+"x": 89.6,
+"y": 78.2,
+"w": 7.6,
+"h": 6.0,
+"text": "LIMITED\nPARTNER",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 86.5,
+"y": 93.6,
+"w": 8.0,
+"h": 3.4,
+"text": "BRITNEY",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 76.4,
+"y": 74.3,
+"w": 3.6,
+"h": 3.4,
 "text": "LLP",
 "style": "tag",
 "rot": 0
 },
 {
-"x": 61.4,
-"y": 63.8,
-"w": 8.4,
-"h": 3.8,
-"text": "MR SACKS",
+"x": 74.1,
+"y": 91.0,
+"w": 8.0,
+"h": 6.0,
+"text": "SEPARATE\nPERSON",
 "style": "tag",
-"rot": -3
-},
-{
-"x": 61.1,
-"y": 52.8,
-"w": 5.6,
-"h": 3.0,
-"text": "TOWER",
-"style": "tag",
-"rot": 0
+"rot": -2
 }
+],
+"order": [
+"twins",
+"door",
+"cottage",
+"halves",
+"half",
+"fryer",
+"sacks",
+"slip",
+"puddle",
+"auntie",
+"postbox",
+"clock",
+"tower",
+"scroll",
+"hen",
+"dome",
+"scenario",
+"game"
 ]
 },
 "equity-finance": {
@@ -117429,105 +117916,185 @@ var ROOMV3 = {
 },
 "debt-security": {
 "board": {
-"x": 18.6,
-"y": 31.0,
-"w": 25.8,
-"h": 27.2
+"x": 90.3,
+"y": 79.3,
+"w": 8.5,
+"h": 12.8
 },
 "spots": {
-"h1": [
-52.2,
-38.4,
-8.8,
-36.8
+"mabel": [
+5,
+67.5,
+10,
+16.5
 ],
-"h2": [
-62.3,
-43.7,
-8.6,
-9.2
+"desk": [
+10.5,
+84.5,
+10.5,
+13.5
 ],
-"h3": [
-62.3,
-34.0,
-8.6,
-9.2
+"pans": [
+22.5,
+80,
+27.5,
+18
 ],
-"h4": [
-62.3,
-24.3,
-8.7,
-9.2
+"ovens": [
+15.5,
+67,
+13.5,
+12.5
 ],
-"h5": [
-71.5,
-24.2,
-13.4,
-9.3
+"easel": [
+1.8,
+49.5,
+11.2,
+17
 ],
-"h6": [
-86.0,
-15.2,
-13.8,
-17.5
+"alarm": [
+13.5,
+46,
+16,
+20.5
 ],
-"h7": [
-92.6,
-57.4,
-7.2,
-17.0
+"machine": [
+30,
+50,
+12.5,
+28
 ],
-"h8": [
-75.6,
-56.6,
-6.4,
-9.8
+"okafor": [
+43,
+50.5,
+8.3,
+19
+],
+"toolbox": [
+43,
+70,
+8.3,
+9.5
+],
+"carousel": [
+52,
+43.5,
+11,
+21
+],
+"balloon": [
+63.5,
+32,
+7.5,
+21.5
+],
+"tier": [
+52,
+65,
+11,
+15.5
+],
+"tray": [
+57.5,
+83,
+21.5,
+15.5
+],
+"apples": [
+80.3,
+70.5,
+8.9,
+10
+],
+"fallen": [
+80.3,
+81,
+8.9,
+13
+],
+"queue": [
+63.5,
+54,
+16.3,
+28.5
 ],
 "scenario": [
-76.2,
-67.6,
-6.0,
-16.4
+80.3,
+49.5,
+6.8,
+20.5
 ],
 "game": [
-82.7,
-72.2,
-6.2,
-19.4
+89.7,
+57.5,
+9.3,
+18
 ]
 },
 "labels": {
-"h1": [
+"mabel": [
 "",
-"Mabel's door with the BOARD RESOLUTION notice: before borrowing"
+"Mabel, about to borrow for a new kettle: debt finance and security"
 ],
-"h2": [
+"desk": [
 "",
-"Pick-and-mix of OVERDRAFT, TERM LOAN and RCF: types of borrowing"
+"Mabel's desk with the articles and the board resolution: company law checks before borrowing"
 ],
-"h3": [
+"pans": [
 "",
-"Brownie stack built on CPs, topped with COVENANTS: the loan agreement"
+"Pans on the front stove, each cooking a different way: types of borrowing"
 ],
-"h4": [
+"ovens": [
 "",
-"Toffee slabs stuck FIXED to the shelf: fixed charges"
+"Closed oven doors, ticked off before you cook: facility, conditions precedent and repayment terms"
 ],
-"h5": [
+"easel": [
 "",
-"Loose sweets coming and going, FREE TO DEAL: floating charges"
+"Recipe easel with steps to keep following: representations, covenants and the negative pledge"
 ],
-"h6": [
+"alarm": [
 "",
-"The same sweets sealed in jars, CRYSTALLISED: crystallisation"
+"Burnt pan ringing the alarm bell: events of default and what the lender can do"
 ],
-"h7": [
+"machine": [
 "",
-"Paper bags posted with the MR01 inside: registering a charge"
+"Toffee machine chained and padlocked: mortgage and fixed charge"
 ],
-"h8": [
+"okafor": [
 "",
-"Scales tipping towards FIXED: priority"
+"Mr Okafor hugging the cog until he is paid: pledge and lien"
+],
+"toolbox": [
+"",
+"Mr Okafor's red toolbox, still his until paid: guarantees and retention of title"
+],
+"carousel": [
+"",
+"Fudge carousel, stock coming and going: floating charges"
+],
+"balloon": [
+"",
+"Leaky fudge hot-air balloon: the floating charge's weak spots and its strength"
+],
+"tier": [
+"",
+"Bottom tier of the carousel, called fixed but sold freely: fixed or floating?"
+],
+"tray": [
+"",
+"Cooling tray with the fudge set hard into crystals: crystallisation"
+],
+"apples": [
+"",
+"Toffee-apple rack, one apple a day: registering a charge within 21 days"
+],
+"fallen": [
+"",
+"Bottom row of the toffee-apple rack: missing the 21 days"
+],
+"queue": [
+"",
+"Mr Barnaby and Ruby queueing for the hatch: priority between charges"
 ],
 "scenario": [
 "",
@@ -117540,167 +118107,313 @@ var ROOMV3 = {
 },
 "hooks": [
 {
-"x": 52.8,
-"y": 39.4,
-"w": 7.6,
-"h": 3.6,
-"text": "MABEL",
+"x": 5.3,
+"y": 78.3,
+"w": 9.4,
+"h": 5.6,
+"text": "MABEL: BORROW\n+ INTEREST",
 "style": "tag",
 "rot": -2
 },
 {
-"x": 52.7,
-"y": 66.6,
-"w": 7.8,
-"h": 7.0,
-"text": "BOARD\nRESOLUTION",
+"x": 13.2,
+"y": 86.3,
+"w": 7.6,
+"h": 2.9,
+"text": "ARTICLES: NO LIMIT",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 10.8,
+"y": 93.6,
+"w": 9.9,
+"h": 3.4,
+"text": "BOARD RESOLUTION",
 "style": "tag",
 "rot": 2
 },
 {
-"x": 62.8,
-"y": 44.0,
-"w": 7.6,
+"x": 23,
+"y": 85.6,
+"w": 8,
 "h": 3.2,
 "text": "OVERDRAFT",
 "style": "tag",
 "rot": -3
 },
 {
-"x": 62.6,
-"y": 49.6,
-"w": 8.0,
+"x": 41,
+"y": 83.4,
+"w": 8.6,
 "h": 3.2,
-"text": "TERM LOAN, RCF",
+"text": "TERM LOAN",
 "style": "tag",
 "rot": 2
 },
 {
-"x": 63.6,
-"y": 34.3,
-"w": 6.0,
-"h": 3.0,
-"text": "COVENANTS",
+"x": 34.5,
+"y": 94.6,
+"w": 15,
+"h": 3.2,
+"text": "RCF · DEBT SECURITIES",
+"style": "tag",
+"rot": -1
+},
+{
+"x": 15.8,
+"y": 76,
+"w": 12.9,
+"h": 3.2,
+"text": "CPs: BEFORE DRAWDOWN",
 "style": "tag",
 "rot": -2
 },
 {
-"x": 64.4,
-"y": 39.8,
-"w": 4.0,
-"h": 3.0,
-"text": "CPs",
+"x": 2.3,
+"y": 52,
+"w": 10.2,
+"h": 3.2,
+"text": "REPS = FACTS NOW",
+"style": "tag",
+"rot": -3
+},
+{
+"x": 2.3,
+"y": 62.6,
+"w": 10.2,
+"h": 3.4,
+"text": "COVENANTS = PROMISES",
 "style": "tag",
 "rot": 2
 },
 {
-"x": 63.2,
-"y": 29.9,
-"w": 6.9,
+"x": 13.8,
+"y": 61.2,
+"w": 9,
+"h": 3.2,
+"text": "EVENT OF DEFAULT",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 19.6,
+"y": 46.4,
+"w": 9.7,
+"h": 6.4,
+"text": "ACCELERATE,\nCANCEL, ENFORCE",
+"style": "tag",
+"rot": 3
+},
+{
+"x": 30.4,
+"y": 50.3,
+"w": 11.7,
+"h": 6,
+"text": "FIXED: NO DEALING\nWITHOUT CONSENT",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 30.4,
+"y": 74.4,
+"w": 11.7,
 "h": 3.3,
-"text": "FIXED",
+"text": "MORTGAGE · PAID FIRST",
 "style": "tag",
-"rot": -2
+"rot": 2
 },
 {
-"x": 73.5,
-"y": 24.5,
-"w": 9.4,
-"h": 3.0,
+"x": 43.3,
+"y": 50.8,
+"w": 7.7,
+"h": 3.1,
+"text": "MR OKAFOR",
+"style": "tag",
+"rot": -3
+},
+{
+"x": 43.3,
+"y": 63,
+"w": 7.7,
+"h": 6.3,
+"text": "LIEN: KEEP\nTILL PAID",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 43.3,
+"y": 76.2,
+"w": 7.7,
+"h": 3.1,
+"text": "GUARANTEE",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 52.3,
+"y": 43.8,
+"w": 5.2,
+"h": 3.2,
 "text": "FLOATING",
 "style": "tag",
+"rot": -3
+},
+{
+"x": 58.4,
+"y": 47.2,
+"w": 4.4,
+"h": 3,
+"text": "FERGUS",
+"style": "tag",
+"rot": 4
+},
+{
+"x": 52.5,
+"y": 61,
+"w": 10,
+"h": 3.2,
+"text": "FREE TO DEAL",
+"style": "tag",
 "rot": -2
 },
 {
-"x": 73.0,
-"y": 30.1,
+"x": 63.8,
+"y": 32.6,
+"w": 6.9,
+"h": 3.2,
+"text": "BEHIND OTHERS",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 63.8,
+"y": 46.4,
+"w": 6.9,
+"h": 3.1,
+"text": "s.245",
+"style": "tag",
+"rot": 3
+},
+{
+"x": 52.3,
+"y": 67.3,
 "w": 10.4,
-"h": 3.0,
-"text": "FREE TO DEAL",
+"h": 3,
+"text": "BLOCKED ACCOUNT",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 52.3,
+"y": 76.8,
+"w": 10.4,
+"h": 3.3,
+"text": "SUBSTANCE, NOT LABELS",
 "style": "tag",
 "rot": 2
 },
 {
-"x": 87.0,
-"y": 28.4,
-"w": 10.2,
-"h": 3.6,
+"x": 58,
+"y": 94.4,
+"w": 9.5,
+"h": 3.4,
 "text": "CRYSTALLISED",
 "style": "tag",
-"rot": -6
+"rot": -3
 },
 {
-"x": 93.0,
-"y": 57.8,
-"w": 6.6,
-"h": 3.6,
+"x": 80.6,
+"y": 77.1,
+"w": 8.3,
+"h": 3.2,
 "text": "21 DAYS",
 "style": "tag",
 "rot": -3
 },
 {
-"x": 93.2,
-"y": 69.6,
-"w": 3.4,
-"h": 3.4,
-"text": "MR01",
-"style": "tag",
-"rot": 3
-},
-{
-"x": 78.4,
-"y": 56.9,
-"w": 3.4,
-"h": 2.8,
-"text": "FIXED",
-"style": "tag",
-"rot": 8
-},
-{
-"x": 76.0,
-"y": 63.2,
-"w": 5.6,
-"h": 3.0,
-"text": "PRIORITY",
+"x": 80.6,
+"y": 90.5,
+"w": 8.3,
+"h": 3.2,
+"text": "LOST ALL CARAMEL",
 "style": "tag",
 "rot": -2
 },
 {
-"x": 76.6,
-"y": 68.0,
-"w": 5.2,
-"h": 5.6,
+"x": 63.7,
+"y": 75.8,
+"w": 7.4,
+"h": 6,
+"text": "BARNABY:\nNEGATIVE PLEDGE",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 71.6,
+"y": 75.8,
+"w": 7.9,
+"h": 6,
+"text": "RUBY:\nACTUAL NOTICE",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 80.6,
+"y": 49.8,
+"w": 6.2,
+"h": 6,
 "text": "MABEL'S\nKETTLE",
 "style": "tag",
 "rot": -3
 },
 {
-"x": 76.7,
-"y": 79.3,
-"w": 5.0,
-"h": 3.2,
-"text": "BARNABY",
-"style": "tag",
+"x": 80.6,
+"y": 63.6,
+"w": 6.2,
+"h": 6,
+"text": "IS THAT\nIN TIME?",
+"style": "speech",
 "rot": 2
 },
 {
-"x": 83.1,
-"y": 72.7,
-"w": 5.4,
+"x": 93.5,
+"y": 57.8,
+"w": 5.2,
+"h": 3,
+"text": "BRITNEY",
+"style": "tag",
+"rot": 4
+},
+{
+"x": 90,
+"y": 69.4,
+"w": 8.7,
 "h": 5.8,
-"text": "TOFFEE\nTIMER",
+"text": "BEAT THE\nTOFFEE TIMER",
 "style": "tag",
-"rot": -3
-},
-{
-"x": 83.1,
-"y": 86.0,
-"w": 5.4,
-"h": 3.4,
-"text": "21 DAYS",
-"style": "tag",
-"rot": 2
+"rot": -2
 }
+],
+"order": [
+"mabel",
+"desk",
+"pans",
+"ovens",
+"easel",
+"alarm",
+"machine",
+"okafor",
+"toolbox",
+"carousel",
+"balloon",
+"tier",
+"tray",
+"apples",
+"fallen",
+"queue",
+"scenario",
+"game"
 ]
 },
 "distributions-accounts": {
@@ -117990,549 +118703,1000 @@ var ROOMV3 = {
 },
 "corporate-insolvency": {
 "board": {
-"x": 5.1,
-"y": 33.0,
-"w": 17.2,
-"h": 20.3
+"x": 1,
+"y": 19,
+"w": 16,
+"h": 13
 },
 "spots": {
-"wendy": [
-0.4,
-64.0,
-15.2,
-16.0
+"castle": [
+20.5,
+17.5,
+24,
+44
 ],
-"sid": [
-0.4,
-82.5,
-15.4,
-17.3
+"scale": [
+3,
+33.5,
+14.5,
+19
 ],
-"fridge": [
-16.3,
-83.5,
-9.5,
-15.5
+"dial": [
+4.5,
+53,
+12,
+21.5
 ],
-"patch": [
-41.3,
-80.3,
+"lights": [
+45.7,
+33,
 8.6,
-19.4
+26.6
 ],
-"doctor": [
-43.6,
-63.6,
-7.0,
-14.7
+"cloche": [
+56,
+41.5,
+10.5,
+18.5
+],
+"cracked": [
+28.2,
+70.5,
+13.3,
+16
+],
+"plasters": [
+42,
+79,
+6,
+10
 ],
 "trolley": [
-51.2,
-66.8,
-7.6,
-12.4
+58,
+61.5,
+8.5,
+19
+],
+"doors": [
+44.8,
+63.5,
+12.7,
+10.5
+],
+"doctor": [
+67,
+48.5,
+6.5,
+30
+],
+"fridge": [
+75.5,
+20,
+13,
+29.5
 ],
 "vault": [
-89.5,
-51.0,
-10.3,
-24.5
+77,
+51.5,
+10,
+31.5
 ],
-"splat": [
-75.3,
-52.3,
-9.6,
-13.2
+"gift": [
+90.5,
+26.5,
+9,
+19
 ],
-"mould": [
-61.7,
-60.5,
-8.8,
-11.5
+"freezer": [
+89,
+47,
+10.5,
+25
 ],
-"till": [
-61.0,
-27.8,
-19.8,
-21.6
+"mop": [
+71,
+83.5,
+8.5,
+11
+],
+"puddle": [
+59.5,
+83.5,
+11,
+11
+],
+"shelf": [
+55,
+22.5,
+18,
+18.5
 ],
 "scenario": [
-47.4,
-24.8,
-9.8,
-34.5
+20.8,
+64.5,
+6.8,
+16
 ],
 "game": [
-25.3,
-50.5,
-17.8,
-12.4
+87.5,
+74,
+12,
+20.5
 ]
 },
 "labels": {
-"wendy": [
+"castle": [
 "",
-"Limited-liability castle and IA 1986 jelly: the big idea"
+"Jelly castle keeping the shareholders safe: the big idea"
 ],
-"sid": [
+"scale": [
 "",
-"Cash-flow and balance-sheet jellies: unable to pay debts"
+"Wobbling jelly on the balance scale: the two tests"
 ],
-"fridge": [
+"dial": [
 "",
-"Lime jelly left to set: first steps and the moratorium"
+"Clock-faced scale dial ticking for 3 weeks: statutory demands, execution and disputed debts"
 ],
-"patch": [
+"lights": [
 "",
-"Orange jelly priced 40p in the £: the CVA"
+"Traffic-light jelly: directors' first steps"
 ],
-"doctor": [
+"cloche": [
 "",
-"Dr Jellicoe's green patient on the table, part 1: administration"
+"Jelly setting safely under the glass cloche: the Part A1 moratorium"
+],
+"cracked": [
+"",
+"Cracked jelly held together with plasters: the CVA and its vote"
+],
+"plasters": [
+"",
+"Spare plasters on the table: who the CVA binds and its limits"
 ],
 "trolley": [
 "",
-"Red patient on the jelly-doctor's table, part 2: administration"
+"Three-tier trolley, top tier first: what administration is for"
+],
+"doors": [
+"",
+"Three little doors for Dr Jellicoe: the routes into administration"
+],
+"doctor": [
+"",
+"Dr Jellicoe taking charge: the administration moratorium and proposals"
+],
+"fridge": [
+"",
+"Fridge of ready-packed jellies with a timer on top: selling, employees, exits and pre-packs"
 ],
 "vault": [
 "",
-"Sweet jars with locked lids: receivership"
+"Mrs Vault carrying off one padlocked jelly: receivership"
 ],
-"splat": [
+"gift": [
 "",
-"Cash register selling off the stock, part 1: liquidation"
+"Perfect jelly neatly gift-wrapped: liquidation and the MVL"
 ],
-"mould": [
+"freezer": [
 "",
-"Empty moulds on the floor, part 2: liquidation"
+"Deep freezer frozen at the petition: the CVL and compulsory liquidation"
 ],
-"till": [
+"mop": [
 "",
-"Shelf of moulds to choose from: choosing a procedure"
+"Liquidator's mop and bucket: effects of liquidation and the liquidator's powers"
+],
+"puddle": [
+"",
+"Jelly collapsed into a puddle: investigating the directors and dissolution"
+],
+"shelf": [
+"",
+"Shelf of jelly moulds to choose from: comparing and choosing a procedure"
 ]
 },
 "hooks": [
 {
-"x": 0.7,
-"y": 70.0,
-"w": 4.6,
-"h": 6.4,
+"x": 21,
+"y": 47.5,
+"w": 8,
+"h": 6.6,
 "text": "LIMITED\nLIABILITY",
 "style": "tag",
 "rot": -3
 },
 {
-"x": 10.8,
-"y": 66.0,
-"w": 4.6,
-"h": 3.4,
-"text": "IA 1986",
-"style": "tag",
-"rot": 3
-},
-{
-"x": 0.6,
-"y": 83.0,
-"w": 4.3,
-"h": 6.4,
-"text": "CASH\nFLOW",
-"style": "tag",
-"rot": -4
-},
-{
-"x": 6.8,
-"y": 95.4,
+"x": 35.5,
+"y": 54.5,
 "w": 8.5,
-"h": 3.6,
-"text": "BALANCE SHEET",
+"h": 3.8,
+"text": "CREDITORS",
 "style": "tag",
 "rot": 2
 },
 {
-"x": 16.6,
-"y": 95.0,
-"w": 8.9,
+"x": 4.5,
+"y": 34,
+"w": 11.5,
 "h": 3.8,
-"text": "BREATHING SPACE",
+"text": "BALANCE SHEET",
 "style": "tag",
 "rot": -2
 },
 {
-"x": 41.6,
-"y": 80.8,
-"w": 8.0,
-"h": 4.0,
-"text": "40p IN THE £",
+"x": 3.4,
+"y": 47.6,
+"w": 6.4,
+"h": 3.6,
+"text": "CASH FLOW",
+"style": "tag",
+"rot": 3
+},
+{
+"x": 4.8,
+"y": 70.4,
+"w": 6.6,
+"h": 3.6,
+"text": "OVER £750",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 11.6,
+"y": 70.4,
+"w": 4.8,
+"h": 3.6,
+"text": "3 WEEKS",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 45.9,
+"y": 33.5,
+"w": 8.2,
+"h": 3.6,
+"text": "GET ADVICE",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 45.9,
+"y": 51.5,
+"w": 8.2,
+"h": 6.4,
+"text": "MINIMISE\nLOSS",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 56.2,
+"y": 53.8,
+"w": 10,
+"h": 6.1,
+"text": "BREATHING SPACE\n20 + 20 DAYS",
+"style": "tag",
+"rot": 0
+},
+{
+"x": 28.6,
+"y": 71,
+"w": 5,
+"h": 4,
+"text": "CVA",
 "style": "tag",
 "rot": -4
 },
 {
-"x": 43.8,
-"y": 63.8,
-"w": 6.6,
+"x": 30,
+"y": 82.4,
+"w": 9,
 "h": 3.6,
+"text": "40p IN THE £",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 42.3,
+"y": 79.2,
+"w": 5.4,
+"h": 3.2,
+"text": "28 DAYS",
+"style": "tag",
+"rot": -3
+},
+{
+"x": 58.3,
+"y": 61.8,
+"w": 7.9,
+"h": 6.2,
+"text": "REALLY BIG\nPUDDING",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 44.9,
+"y": 63.8,
+"w": 3.9,
+"h": 3.2,
+"text": "COURT",
+"style": "tag",
+"rot": -3
+},
+{
+"x": 49.3,
+"y": 70.6,
+"w": 3.9,
+"h": 3.2,
+"text": "QFCH",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 52.9,
+"y": 63.8,
+"w": 4.6,
+"h": 3.2,
+"text": "DIRECTORS",
+"style": "tag",
+"rot": 0
+},
+{
+"x": 67.2,
+"y": 69.5,
+"w": 6.1,
+"h": 3.4,
 "text": "DR JELLICOE",
 "style": "tag",
 "rot": -2
 },
 {
-"x": 43.9,
-"y": 74.6,
-"w": 6.4,
-"h": 3.6,
-"text": "(a) RESCUE",
+"x": 67.8,
+"y": 74.4,
+"w": 5.0,
+"h": 3.2,
+"text": "8 WEEKS",
 "style": "tag",
 "rot": 2
 },
 {
-"x": 51.8,
-"y": 67.0,
-"w": 6.4,
+"x": 76,
+"y": 21.3,
+"w": 4.6,
 "h": 3.4,
-"text": "8 WEEKS",
+"text": "1 YEAR",
 "style": "tag",
 "rot": -3
 },
 {
-"x": 92.5,
-"y": 51.3,
-"w": 7.0,
-"h": 6.4,
+"x": 77.3,
+"y": 43,
+"w": 8.5,
+"h": 3.6,
+"text": "PRE-PACK",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 82.8,
+"y": 52.2,
+"w": 4.1,
+"h": 6.2,
 "text": "FIXED\nCHARGE",
 "style": "tag",
 "rot": 3
 },
 {
-"x": 90.0,
-"y": 68.8,
-"w": 9.4,
-"h": 6.4,
-"text": "LPA\nRECEIVER",
-"style": "tag",
-"rot": -2
-},
-{
-"x": 75.6,
-"y": 52.6,
-"w": 9.0,
+"x": 77.8,
+"y": 75.8,
+"w": 6.8,
 "h": 3.4,
-"text": "MVL / CVL",
+"text": "MRS VAULT",
 "style": "tag",
 "rot": -2
 },
 {
-"x": 62.0,
-"y": 60.7,
-"w": 8.2,
-"h": 3.2,
-"text": "COURT ORDER",
+"x": 91,
+"y": 41.4,
+"w": 8,
+"h": 3.6,
+"text": "MVL: SOLVENT",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 89.6,
+"y": 49.6,
+"w": 9.4,
+"h": 3.4,
+"text": "CVL · COMPULSORY",
 "style": "tag",
 "rot": 2
 },
 {
-"x": 61.3,
-"y": 28.2,
+"x": 89.6,
+"y": 64.8,
+"w": 9.4,
+"h": 6.2,
+"text": "STARTS AT\nTHE PETITION",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 71.3,
+"y": 91,
+"w": 7.9,
+"h": 3.2,
+"text": "LIQUIDATOR",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 60,
+"y": 91,
+"w": 7.2,
+"h": 3.2,
+"text": "DISSOLVED",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 55.4,
+"y": 22.8,
+"w": 17.2,
+"h": 3.4,
+"text": "MANY CHEEKY ADMIRALS RAID",
+"style": "tag",
+"rot": -1
+},
+{
+"x": 55.4,
+"y": 37.2,
+"w": 17.2,
+"h": 3.4,
+"text": "MUM'S CHERRY CUSTARD",
+"style": "tag",
+"rot": 1
+},
+{
+"x": 21.0,
+"y": 66.4,
+"w": 6.4,
+"h": 3.6,
+"text": "JIGGLE LTD",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 21.6,
+"y": 76,
 "w": 5.4,
-"h": 6.4,
-"text": "IN\nCONTROL?",
+"h": 4.2,
+"text": "£1,500",
+"style": "speech",
+"rot": 0
+},
+{
+"x": 88,
+"y": 74.5,
+"w": 6,
+"h": 3.4,
+"text": "BRITNEY",
 "style": "tag",
 "rot": -3
 },
 {
-"x": 66.0,
-"y": 44.0,
-"w": 9.6,
-"h": 3.6,
-"text": "MORATORIUM?",
-"style": "tag",
-"rot": 2
-},
-{
-"x": 48.0,
-"y": 25.6,
-"w": 8.6,
-"h": 4.2,
-"text": "JIGGLE LTD",
-"style": "ink",
-"rot": 0
-},
-{
-"x": 27.8,
-"y": 59.2,
-"w": 13.0,
-"h": 3.4,
-"text": "WHO HOLDS THE SPOON?",
+"x": 88.6,
+"y": 88.2,
+"w": 10.4,
+"h": 6.2,
+"text": "WHO HOLDS\nTHE SPOON?",
 "style": "tag",
 "rot": -1
 }
+],
+"order": [
+"castle",
+"scale",
+"dial",
+"lights",
+"cloche",
+"cracked",
+"plasters",
+"trolley",
+"doors",
+"doctor",
+"fridge",
+"vault",
+"gift",
+"freezer",
+"mop",
+"puddle",
+"shelf",
+"scenario",
+"game"
 ]
 },
 "insolvency-clawback-priority": {
 "board": {
-"x": 78.9,
-"y": 24.1,
-"w": 16.2,
-"h": 21.7
+"x": 90.3,
+"y": 12.5,
+"w": 9.2,
+"h": 10.0
 },
 "spots": {
-"ivy": [
-0.3,
-59.8,
-17.3,
-34.2
+"jar": [
+76.8,
+20.0,
+13.0,
+34.0
 ],
-"clive": [
-13.3,
-30.8,
-7.3,
-15.5
+"timer": [
+90.3,
+23.0,
+9.2,
+34.5
+],
+"garland": [
+61.0,
+69.5,
+26.0,
+16.0
+],
+"hen": [
+87.5,
+77.0,
+11.0,
+17.0
 ],
 "heart": [
-10.4,
-46.8,
-7.6,
-12.4
+70.5,
+58.5,
+6.5,
+10.5
 ],
 "bruno": [
-30.0,
-26.0,
-9.5,
-40.0
+69.5,
+40.5,
+6.8,
+17.5
+],
+"milk": [
+62.0,
+49.0,
+6.8,
+17.5
+],
+"shark": [
+1.0,
+43.5,
+18.5,
+17.0
 ],
 "dennis": [
-54.3,
-32.0,
-16.1,
-38.5
+28.3,
+34.0,
+7.0,
+16.5
+],
+"clive": [
+10.0,
+71.0,
+8.0,
+24.0
+],
+"ivy": [
+35.8,
+39.5,
+8.7,
+34.5
 ],
 "phoenix": [
-61.0,
-8.6,
-6.4,
-22.8
+55.0,
+21.0,
+13.8,
+27.5
+],
+"oven": [
+45.0,
+31.0,
+9.5,
+17.0
+],
+"stones": [
+45.0,
+67.5,
+12.0,
+14.5
+],
+"dome": [
+20.0,
+51.0,
+11.5,
+16.5
 ],
 "queue": [
-71.0,
-59.2,
+38.0,
+82.5,
 22.5,
-10.3
-],
-"cloche": [
-70.9,
-44.6,
-6.1,
-14.1
+13.5
 ],
 "scenario": [
-46.4,
-74.8,
-27.5,
-17.5
+18.5,
+79.0,
+12.0,
+16.5
 ],
 "game": [
-21.2,
-74.8,
-24.7,
-17.5
+14.0,
+25.0,
+6.5,
+10.5
 ]
 },
 "labels": {
-"ivy": [
+"jar": [
 "",
-"Ivy Peel's giant cookie jars, the pot: the big idea and onset"
+"Ivy Peel's giant cookie jar, the pot: the big idea"
 ],
-"clive": [
+"timer": [
 "",
-"Clive's side door, sneaking cookies out: undervalue and defrauding creditors"
+"Giant sand timer counting back to the onset: time limits and insolvency at the time"
+],
+"garland": [
+"",
+"Gingerbread family holding hands: connected persons and associates"
+],
+"hen": [
+"",
+"Britney the hen hiding cookies, leaving only crumbs: undervalue and defrauding creditors"
 ],
 "heart": [
 "",
-"Cash register paying one favourite: preferences"
+"Golden heart cookie saved for a favourite: preferences and the desire to prefer"
 ],
 "bruno": [
 "",
-"Bruno's bank rack of ever-changing trays: floating charges"
+"Bruno the bank manager pressing for payment: pressure is not desire"
+],
+"milk": [
+"",
+"Bruno's milk glass where only fresh cookies float: floating charges"
+],
+"shark": [
+"",
+"Grinning shark in the tank: extortionate credit and clawback time limits"
 ],
 "dennis": [
 "",
-"Dennis's oven, still blazing: directors' liability"
+"Dennis Dough still cooking while the oven smokes: wrongful trading"
+],
+"clive": [
+"",
+"Clive the masked cookie thief: fraudulent trading"
+],
+"ivy": [
+"",
+"Ivy Peel's long peel scooping cookies back: misfeasance"
 ],
 "phoenix": [
 "",
-"Chimney with a phoenix rising from the ashes: phoenix companies and disqualification"
+"Fiery phoenix rising from the old oven: phoenix companies and the prohibited name"
+],
+"oven": [
+"",
+"Smoking oven with Ivy's report on the directors: disqualification"
+],
+"stones": [
+"",
+"First cookie stepping-stones of the queue: front of the order of priority"
+],
+"dome": [
+"",
+"Glass dome keeping a slice back: the prescribed part"
 ],
 "queue": [
 "",
-"Trays of cookies waiting in line: front of the priority order"
+"Last cookie stepping-stones to the end of the queue: back of the order of priority"
 ],
-"cloche": [
+"scenario": [
 "",
-"Glass jar ring-fencing the prescribed part: back of the priority order"
+"Clive's cookie van: Everyone back in the queue!"
+],
+"game": [
+"",
+"Framed timer picture: Tick-Tock Timers"
 ]
 },
 "hooks": [
 {
-"x": 0.8,
-"y": 62.6,
-"w": 7.4,
-"h": 4.6,
-"text": "IVY PEEL",
-"style": "white",
-"rot": -3
-},
-{
-"x": 2.6,
-"y": 82.8,
-"w": 6.8,
-"h": 3.8,
-"text": "THE POT",
-"style": "ink",
+"x": 77.8,
+"y": 21.5,
+"w": 11.0,
+"h": 4.0,
+"text": "IVY PEEL'S POT",
+"style": "tag",
 "rot": -2
 },
 {
-"x": 11.7,
-"y": 74.0,
-"w": 5.6,
-"h": 4.4,
-"text": "ONSET",
-"style": "ink",
-"rot": -4
+"x": 77.6,
+"y": 26.2,
+"w": 6.9,
+"h": 3.3,
+"text": "CLAWBACK",
+"style": "tag",
+"rot": -3
 },
 {
-"x": 13.9,
-"y": 31.6,
-"w": 6.1,
-"h": 3.6,
-"text": "CLIVE",
-"style": "white",
+"x": 82.3,
+"y": 44.0,
+"w": 7.4,
+"h": 6.6,
+"text": "PERSONAL\nLIABILITY",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 90.8,
+"y": 24.0,
+"w": 8.3,
+"h": 6.6,
+"text": "COUNTS BACK\nFROM ONSET",
+"style": "tag",
 "rot": 0
 },
 {
-"x": 13.5,
-"y": 42.2,
-"w": 7.0,
+"x": 61.5,
+"y": 77.5,
+"w": 8.0,
 "h": 3.6,
+"text": "CONNECTED",
+"style": "tag",
+"rot": -3
+},
+{
+"x": 88.2,
+"y": 77.4,
+"w": 9.8,
+"h": 3.4,
 "text": "UNDERVALUE",
 "style": "tag",
 "rot": -2
 },
 {
-"x": 11.0,
-"y": 55.2,
-"w": 6.4,
-"h": 3.6,
-"text": "DESIRE",
-"style": "tag",
-"rot": 3
-},
-{
-"x": 30.6,
-"y": 27.2,
-"w": 8.3,
-"h": 3.8,
-"text": "BRUNO'S BANK",
-"style": "tag",
-"rot": -2
-},
-{
-"x": 30.8,
-"y": 53.2,
-"w": 7.9,
-"h": 6.8,
-"text": "FLOATING\nCHARGE",
-"style": "tag",
-"rot": 2
-},
-{
-"x": 56.8,
-"y": 35.6,
-"w": 6.4,
-"h": 3.8,
-"text": "DENNIS",
-"style": "tag",
-"rot": -6
-},
-{
-"x": 55.2,
-"y": 63.8,
-"w": 14.0,
-"h": 4.0,
-"text": "WRONGFUL TRADING",
-"style": "tag",
-"rot": -1
-},
-{
-"x": 61.4,
-"y": 10.2,
-"w": 5.6,
-"h": 3.8,
-"text": "PHOENIX",
-"style": "tag",
-"rot": -3
-},
-{
-"x": 61.5,
-"y": 23.0,
-"w": 5.4,
-"h": 6.6,
-"text": "SAME\nNAME",
-"style": "tag",
-"rot": 2
-},
-{
-"x": 71.6,
-"y": 62.4,
-"w": 7.2,
-"h": 3.6,
-"text": "FIXED CHARGE",
-"style": "tag",
-"rot": -2
-},
-{
-"x": 85.6,
-"y": 63.6,
-"w": 7.7,
-"h": 3.8,
-"text": "WAGES £800",
+"x": 88.2,
+"y": 89.8,
+"w": 9.8,
+"h": 3.4,
+"text": "BEYOND REACH",
 "style": "tag",
 "rot": 1
 },
 {
-"x": 71.2,
+"x": 70.8,
+"y": 65.5,
+"w": 5.9,
+"h": 3.1,
+"text": "DESIRE",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 70.6,
+"y": 41.0,
+"w": 5.4,
+"h": 3.2,
+"text": "BRUNO",
+"style": "white",
+"rot": 0
+},
+{
+"x": 69.7,
 "y": 53.6,
-"w": 5.5,
-"h": 4.9,
-"text": "PRESCRIBED\nPART",
+"w": 6.4,
+"h": 3.2,
+"text": "PRESSURE",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 62.9,
+"y": 60.4,
+"w": 5.0,
+"h": 6.0,
+"text": "NEW\nMONEY",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 1.8,
+"y": 44.2,
+"w": 10.0,
+"h": 3.6,
+"text": "EXTORTIONATE",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 29.0,
+"y": 34.6,
+"w": 5.8,
+"h": 3.2,
+"text": "DENNIS",
+"style": "tag",
+"rot": -3
+},
+{
+"x": 28.5,
+"y": 46.6,
+"w": 6.6,
+"h": 3.2,
+"text": "WRONGFUL",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 11.3,
+"y": 71.6,
+"w": 5.6,
+"h": 3.2,
+"text": "CLIVE",
+"style": "white",
+"rot": -3
+},
+{
+"x": 10.1,
+"y": 88.5,
+"w": 7.8,
+"h": 3.4,
+"text": "FRAUDULENT",
 "style": "tag",
 "rot": 0
 },
 {
-"x": 48.6,
-"y": 85.2,
+"x": 36.8,
+"y": 47.0,
 "w": 6.6,
-"h": 3.6,
+"h": 3.2,
+"text": "IVY PEEL",
+"style": "tag",
+"rot": -3
+},
+{
+"x": 35.9,
+"y": 62.6,
+"w": 8.5,
+"h": 3.4,
+"text": "MISFEASANCE",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 55.3,
+"y": 22.0,
+"w": 6.0,
+"h": 3.4,
+"text": "PHOENIX",
+"style": "tag",
+"rot": -4
+},
+{
+"x": 61.8,
+"y": 22.0,
+"w": 7.0,
+"h": 3.4,
+"text": "SAME NAME",
+"style": "tag",
+"rot": 4
+},
+{
+"x": 45.5,
+"y": 31.6,
+"w": 6.0,
+"h": 3.2,
+"text": "REPORT",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 45.4,
+"y": 43.6,
+"w": 8.6,
+"h": 3.4,
+"text": "2-15 YEARS",
+"style": "tag",
+"rot": 0
+},
+{
+"x": 45.5,
+"y": 68.0,
+"w": 11.0,
+"h": 3.4,
+"text": "FRIENDLY ELVES",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 45.5,
+"y": 78.0,
+"w": 11.0,
+"h": 3.4,
+"text": "POLITELY SERVE",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 38.6,
+"y": 85.6,
+"w": 6.4,
+"h": 6.2,
+"text": "PIPING\nFRESH",
+"style": "tag",
+"rot": -3
+},
+{
+"x": 38.3,
+"y": 92.4,
+"w": 22.0,
+"h": 3.4,
+"text": "UNBELIEVABLY ICED SHORTBREAD",
+"style": "tag",
+"rot": -1
+},
+{
+"x": 20.6,
+"y": 63.6,
+"w": 10.4,
+"h": 3.3,
+"text": "PRESCRIBED PART",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 14.4,
+"y": 25.4,
+"w": 5.7,
+"h": 3.0,
+"text": "TICK-TOCK",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 19.0,
+"y": 90.6,
+"w": 8.6,
+"h": 3.3,
 "text": "CRUMBS LTD",
 "style": "tag",
 "rot": -2
 },
 {
-"x": 30.0,
-"y": 76.8,
-"w": 6.4,
-"h": 3.6,
-"text": "TICK-TOCK",
-"style": "tag",
-"rot": -3
-},
-{
-"x": 26.0,
-"y": 86.4,
-"w": 7.2,
-"h": 3.4,
-"text": "2 YEARS",
-"style": "tag",
+"x": 19.0,
+"y": 79.3,
+"w": 11.2,
+"h": 4.2,
+"text": "IT'S MINE NOW!",
+"style": "speech",
 "rot": -2
 }
+],
+"order": [
+"jar",
+"timer",
+"garland",
+"hen",
+"heart",
+"bruno",
+"milk",
+"shark",
+"dennis",
+"clive",
+"ivy",
+"phoenix",
+"oven",
+"stones",
+"dome",
+"queue",
+"scenario",
+"game"
 ]
 },
 "personal-insolvency": {
@@ -124999,7 +126163,7 @@ window.SQE_TOWN = function(A){
     var d = d0 || A.ymd(), fut = d > A.ymd(), pd = A.planDay(d), out = [];
     ((pd && pd.reviews) || []).forEach(function(rv){
       var x = rv.x, s = x.s, t = x.t, j;
-      if (rv.cards && !fut && !(S().done || {})[x.key]) return; /* cards only for topics she has done/rated (future days show what's planned) */
+      if (!fut && !(S().done || {})[x.key]) return; /* QA 20 Nov: no review jobs of any kind for topics she hasn't learned yet */ /* cards only for topics she has done/rated (future days show what's planned) */
       if (rv.cards) j = {k: 'revc|' + d + '|' + x.key, h: '#/cards/' + s.id + '/topic/' + t.id, what: 'Go through its ' + A.topicCards(s, t.id).length + ' core revision cards', m: (rv.cm || 0) + (rv.m || 0), g: 1};
       else if (rv.gap === 6 && A.topicRes(s, t).fw) j = {k: 'rev|' + d + '|' + x.key, h: '#/topic/' + s.id + '/' + t.id + '/fwtest', what: 'Frameworks self-test: hide the details, say them, then reveal', m: rv.m, g: 6};
       else if (rv.gap === 10 && A.topicQs(s, t.id).length) j = {k: 'rev|' + d + '|' + x.key, h: '#/questions/' + s.id + '/' + t.id, what: 'Model Q&A: redo its questions', m: rv.m, g: 10};
@@ -125384,13 +126548,13 @@ var GARDEN_ITEMS = {
   swing:   [80, 46.5, 12],
   player:  [37, 2.5, 8],
   rec_ss:  [31.5, 2.5, 4.6],
-  rec_mj:  [42.4, 2.5, 4.8]
+  rec_mj:  [26.8, 2.5, 4.8]
 };
 var SWING_SEAT = [80, 48.3, 8.5];
 var BRUCEY_COOP = [96.5, 56.5];   /* with a coop there, Brucey perches on the bank behind it */   /* Beefy sits on the swing when Layla has both */
 function coopTop(o){ return o.palace ? [90.8, 36 + 20] : o.coop ? [90.8, 36 + 19] : null; }
 /* Layla's walk: [x, b, pause ms, pose while paused ('a' stand, 't' wave)]; stays inside x 37..54 so she never meets the people */
-var LAYLA_LAP = [[47, 37, 1400, 'a'], [44, 28, 700, 'a'], [42, 13, 1600, 't'], [50, 8, 900, 'a'], [54, 20, 900, 'a'], [51, 34, 800, 'a'], [44, 38, 1100, 'a']];
+var LAYLA_LAP = [[47, 37, 1400, 'a'], [44.5, 28, 700, 'a'], [43.5, 13, 1600, 't'], [51, 8, 900, 'a'], [54, 20, 900, 'a'], [51, 34, 800, 'a'], [44, 38, 1100, 'a']];
 var LAYLA_WP = (function(){   /* three laps; only the first has the cartwheel, so it comes round about once a minute (Monnie 08:19) */
   var out = [];
   for (var lap = 0; lap < 3; lap++) LAYLA_LAP.forEach(function(w, i){ var c = w.slice(); if (lap === 0 && i === 3) c[4] = 'c'; if (lap === 1 && i === 0) c[2] = 6500; out.push(c); });
@@ -125463,7 +126627,7 @@ function buildBrit(top){   /* top = the coop roof [x, b] when there is a coop; o
   var key = top ? top.join(',') : 'none'; if (key === BSEG_KEY) return; BSEG_KEY = key; BSEG = []; RIDE = null;
   var pos = BRIT_SEQ[0][1], t = 0, face = 'r';
   BRIT_SEQ.forEach(function(st){
-    var kind = st[0], to = st[1] === 'COOP' ? (top || [88, 37]) : (st[1] || pos), ms = st[2];
+    var kind = st[0], to = st[1] === 'COOP' ? (top || [87, 50]) : (st[1] || pos), ms = st[2];
     if (kind === 'walk') ms = pxd(pos, to) / HEN_WALK_PX * 1000;
     if (to[0] - pos[0] > 0.4) face = 'r'; else if (to[0] - pos[0] < -0.4) face = 'l';
     BSEG.push({k: kind, a: pos, b: to, t: t, ms: ms, face: face}); t += ms; pos = to;
@@ -128854,7 +130018,7 @@ VIEW.quick = function(r){
   if (r[1] && BYID[r[1]] && r[2] === "go"){
     var sg = BYID[r[1]], start = Math.max(0, Math.min((sg.qq || []).length - 1, +r[3] || 0)), gkey = sg.id + "/go";
     if (!QF || QF.key !== gkey){ QF = {key:gkey, items:(sg.qq || []).map(function(x){ return {x:x, ord:shuffle([0, 1, 2, 3])}; }), i:start, score:0, ans:null, ansA:[], t0:Date.now(), title:sg.title}; }
-    else { QF.i = start; QF.ans = QF.ansA[QF.i] != null ? QF.ansA[QF.i] : null; }
+    else if (r[3] != null && r[3] !== ""){ QF.i = start; QF.ans = QF.ansA[QF.i] != null ? QF.ansA[QF.i] : null; } /* QA 20 Nov: only jump when the link names a question, or every answer snaps back to Q1 */
     setTimeout(function(){ history.replaceState(null, "", "#/quick/" + sg.id + "/go"); }, 0);
     r = ["quick", sg.id, "go"];
   }
@@ -130844,11 +132008,17 @@ window.addEventListener("hashchange", function(){
 function cbaFocus(){ setTimeout(function(){ var g = document.querySelector(".cbag .cbatop") || document.querySelector(".cbag"); if (!g) return; var t = g.getBoundingClientRect().top; if (t > 8 || t < 0) window.scrollTo({top: window.scrollY + t - 8}); }, 30); }
 window.addEventListener("storage", function(e){ if (e.key === KEY){ load(); if (!podPlaying()) render(); } });
 window.addEventListener("pagehide", save);
+window.addEventListener("beforeunload", function(e){ try { if (MK && !MK.finished && MK.items && MK.items.some(function(z){ return z.pick != null; })){ e.preventDefault(); e.returnValue = ""; } } catch(ex){} }); /* QA 20 Nov: warn before closing or reloading mid-mock (a mock in progress is not saved) */
 document.addEventListener("visibilitychange", function(){ if (document.visibilityState === "visible" && !podPlaying()) render(); });
 
 function gameDemo(){ var c = cbaS(); c.coins = Math.max(+c.coins || 0, 100); var g = gameS(); if (!Object.keys(g.full).length) g.full[ymd()] = Date.now(); save(); }
 function gameReset(){ delete S.game; if (S.cba){ S.cba.coins = 0; S.cba.own = {}; S.cba.ate = {}; } S.demoSeeded = 1; save(); }
 try { if (/[?&#]monnie=1/.test(location.href)) localStorage.setItem("sqe_monnie", "1"); if (/[?&#]monnie=0/.test(location.href)) localStorage.removeItem("sqe_monnie"); if (localStorage.getItem("sqe_monnie")) document.documentElement.classList.add("monnie"); } catch(e){}
+/* 20 Nov 09:18 (Monnie): a clear badge whenever Monnie's private test mode is on, with a Turn off button (so it can never stick on Layla's browser unnoticed) */
+(function(){ try { if (!document.documentElement.classList.contains("monnie")) return; var b = document.createElement("div"); b.className = "monbadge"; b.setAttribute("role", "status");
+  b.innerHTML = '<b>Monnie\'s test mode</b><span>Only on this browser. Layla never sees this.</span><button type="button">Turn off</button>';
+  b.querySelector("button").addEventListener("click", function(){ try { localStorage.removeItem("sqe_monnie"); } catch(e){} location.href = location.href.replace(/([?&])(monnie|try)=[^&#]*&?/g, "$1").replace(/[?&](#|$)/, "$1"); setTimeout(function(){ location.reload(); }, 50); });
+  (document.body || document.documentElement).appendChild(b); } catch(e){} })();
 /* Stop themes: a topic's pages (notes cards, cartoon, framework, CBA, Quick fire, Bert) take the look of its subject's stop on the Journey map:
    a header strip with the stop's drawing, the stop's colours and little motifs. Built by journey.js (THEMES there); switched on subject by subject here. */
 var THEMED_SUBJECTS = ["blp"], STOPSHORT = {blp:"Business Law"}, JTHEME = null;
