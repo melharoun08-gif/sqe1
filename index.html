@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120092522";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120093329";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -3737,6 +3737,66 @@ a.tlink::after{content:none}
 html:not(.monnie) .head .nbmbtn{display:none!important}
 /* M/N/B test buttons only in Monnie's private test mode (20 Nov 09:18) */
 html:not(.monnie) .nbmbtn{display:none!important}
+/* 20 Nov (Monnie): every "back to Peckham" link is the Welcome to Peckham sign from the map */
+a.pkback{display:inline-flex;align-items:center;padding:4px 0!important;line-height:0;background:none!important;border:0!important;box-shadow:none!important}
+a.pkback .pksign{height:46px;width:auto;display:block;transition:transform .15s}
+a.pkback:hover .pksign{transform:rotate(-3deg) scale(1.05)}
+@media (max-width:600px){a.pkback .pksign{height:38px}}
+/* 20 Nov (Monnie): the town tabs (Job Centre, Bert's Butchers, Hen Bargains, The Mount) in Calibri */
+:is(.town-nav,#_#_#_) a:is(.tn-jobs,.tn-butcher,.tn-shop,.tn-mount,a){font-family:Calibri,Carlito,'Segoe UI',Arial,sans-serif!important;font-weight:700!important;letter-spacing:0}
+/* ---- 20 Nov 09:35 (Monnie): every stop's card is drawn as its real object (shape and all), text on a clean panel. Fairground alone keeps the ticket. ---- */
+.land-real .swico{display:none}
+.land-real:not(.land-tkt) .flash{max-width:min(660px,calc(100% - 24px));transform:none}
+.land-real:not(.land-tkt) .flash .face{border:0!important;box-shadow:none!important;border-radius:0;filter:drop-shadow(0 4px 0 rgba(42,27,46,.85));align-items:flex-start;justify-content:center}
+.land-real:not(.land-tkt) .flash .face small{display:none}
+.land-real .ftop{position:absolute;display:flex;align-items:center;gap:10px;z-index:1;pointer-events:none;max-width:calc(100% - 60px)}
+.land-tkt .ftop{display:none}
+.land-real .ftop .fico{width:30px;height:30px;flex:0 0 auto}.land-real .ftop .fico svg{width:100%;height:100%;display:block}
+.land-real .ftop .fnm{display:flex;flex-direction:column;line-height:1.05;min-width:0}
+.land-real .ftop .fnm b{font-family:var(--sharratt,inherit);font-weight:400;font-size:20px;letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.land-real .ftop .fnm span{font-size:11.5px;font-weight:800;letter-spacing:.08em;opacity:.9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.land-real .lbc{position:absolute;right:24px;bottom:12px;display:flex;flex-direction:column;align-items:center;font-size:10px;font-weight:700;letter-spacing:.2em;color:#2A1B2E;pointer-events:none}
+.land-real .lbc .bcode{display:block;width:120px;height:22px;background:repeating-linear-gradient(90deg,#2A1B2E 0 2px,transparent 2px 4px,#2A1B2E 4px 5px,transparent 5px 8px,#2A1B2E 8px 11px,transparent 11px 13px)}
+.land-museum .ftop .fnm b{font-family:Georgia,"Times New Roman",serif;font-size:21px;letter-spacing:.14em}
+.land-botanic-garden .ftop .fnm span{font-style:italic;letter-spacing:.02em;font-size:13px;text-transform:none}
+.land-real.land-library .flash .face{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22 preserveAspectRatio=%22none%22%3E%3Crect x=%223%22 y=%223%22 width=%22594%22 height=%22334%22 rx=%2222%22 fill=%22#FFFFFF%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M3,25 Q3,3 25,3 H575 Q597,3 597,25 V74 H3 Z%22 fill=%22#1F4E8C%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Crect x=%223%22 y=%2274%22 width=%22594%22 height=%228%22 fill=%22#E9B949%22/%3E%3Crect x=%223%22 y=%223%22 width=%22594%22 height=%22334%22 rx=%2222%22 fill=%22none%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3C/svg%3E") 0 0/100% 100% no-repeat!important;padding:96px 34px 54px 34px}
+.land-real.land-library .flash .back{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22 preserveAspectRatio=%22none%22%3E%3Crect x=%223%22 y=%223%22 width=%22594%22 height=%22334%22 rx=%2222%22 fill=%22#FFFFFF%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M3,25 Q3,3 25,3 H575 Q597,3 597,25 V74 H3 Z%22 fill=%22#3A6FB0%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Crect x=%223%22 y=%2274%22 width=%22594%22 height=%228%22 fill=%22#E9B949%22/%3E%3Crect x=%223%22 y=%223%22 width=%22594%22 height=%22334%22 rx=%2222%22 fill=%22none%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3C/svg%3E") 0 0/100% 100% no-repeat!important}
+.land-real.land-library .flash .ftop{top:12px;left:18px;color:#fff}
+.land-real.land-airport .flash .face{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M80,3 H597 V337 H80 L3,262 V78 Z%22 fill=%22#FFFFFF%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M80,3 H597 V64 H80 L3,78 V78 Z%22 fill=%22#E63946%22 stroke=%22#2A1B2E%22 stroke-width=%220%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M80,3 H597 V337 H80 L3,262 V78 Z%22 fill=%22none%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M3,96 H597%22 stroke=%22#E63946%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Ccircle cx=%2244%22 cy=%22170%22 r=%2215%22 fill=%22#F3F3F3%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%2244%22 cy=%22170%22 r=%2222%22 fill=%22none%22 stroke=%22#9AA5B1%22 stroke-width=%224%22 vector-effect=%22non-scaling-stroke%22/%3E%3C/svg%3E") 0 0/100% 100% no-repeat!important;padding:110px 30px 56px 96px}
+.land-real.land-airport .flash .back{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M80,3 H597 V337 H80 L3,262 V78 Z%22 fill=%22#FFFFFF%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M80,3 H597 V64 H80 L3,78 V78 Z%22 fill=%22#F27C85%22 stroke=%22#2A1B2E%22 stroke-width=%220%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M80,3 H597 V337 H80 L3,262 V78 Z%22 fill=%22none%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M3,96 H597%22 stroke=%22#E63946%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Ccircle cx=%2244%22 cy=%22170%22 r=%2215%22 fill=%22#F3F3F3%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%2244%22 cy=%22170%22 r=%2222%22 fill=%22none%22 stroke=%22#9AA5B1%22 stroke-width=%224%22 vector-effect=%22non-scaling-stroke%22/%3E%3C/svg%3E") 0 0/100% 100% no-repeat!important}
+.land-real.land-airport .flash .ftop{top:10px;left:96px;color:#fff}
+.land-real.land-museum .flash .face{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22 preserveAspectRatio=%22none%22%3E%3Cdefs%3E%3ClinearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22%3E%3Cstop offset=%220%22 stop-color=%22#F3D27A%22/%3E%3Cstop offset=%22.5%22 stop-color=%22#C9973A%22/%3E%3Cstop offset=%221%22 stop-color=%22#9C6F22%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x=%223%22 y=%223%22 width=%22594%22 height=%22334%22 rx=%226%22 fill=%22url(#g)%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Crect x=%2236%22 y=%2234%22 width=%22528%22 height=%22272%22 rx=%224%22 fill=%22#FFF8E7%22 stroke=%22#8A6420%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Crect x=%2244%22 y=%2242%22 width=%22512%22 height=%22256%22 fill=%22none%22 stroke=%22#C9A54A%22 stroke-width=%221.5%22 vector-effect=%22non-scaling-stroke%22/%3E%3Ccircle cx=%2220%22 cy=%2220%22 r=%227%22 fill=%22#E7C46B%22 stroke=%22#2A1B2E%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M16,20 H24%22 stroke=%22#2A1B2E%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%22580%22 cy=%2220%22 r=%227%22 fill=%22#E7C46B%22 stroke=%22#2A1B2E%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M576,20 H584%22 stroke=%22#2A1B2E%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%2220%22 cy=%22320%22 r=%227%22 fill=%22#E7C46B%22 stroke=%22#2A1B2E%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M16,320 H24%22 stroke=%22#2A1B2E%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%22580%22 cy=%22320%22 r=%227%22 fill=%22#E7C46B%22 stroke=%22#2A1B2E%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M576,320 H584%22 stroke=%22#2A1B2E%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3C/svg%3E") 0 0/100% 100% no-repeat!important;padding:92px 58px 52px 58px}
+.land-real.land-museum .flash .back{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22 preserveAspectRatio=%22none%22%3E%3Cdefs%3E%3ClinearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22%3E%3Cstop offset=%220%22 stop-color=%22#F3D27A%22/%3E%3Cstop offset=%22.5%22 stop-color=%22#C9973A%22/%3E%3Cstop offset=%221%22 stop-color=%22#9C6F22%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x=%223%22 y=%223%22 width=%22594%22 height=%22334%22 rx=%226%22 fill=%22url(#g)%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Crect x=%2236%22 y=%2234%22 width=%22528%22 height=%22272%22 rx=%224%22 fill=%22#FFFDF6%22 stroke=%22#8A6420%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Crect x=%2244%22 y=%2242%22 width=%22512%22 height=%22256%22 fill=%22none%22 stroke=%22#C9A54A%22 stroke-width=%221.5%22 vector-effect=%22non-scaling-stroke%22/%3E%3Ccircle cx=%2220%22 cy=%2220%22 r=%227%22 fill=%22#E7C46B%22 stroke=%22#2A1B2E%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M16,20 H24%22 stroke=%22#2A1B2E%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%22580%22 cy=%2220%22 r=%227%22 fill=%22#E7C46B%22 stroke=%22#2A1B2E%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M576,20 H584%22 stroke=%22#2A1B2E%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%2220%22 cy=%22320%22 r=%227%22 fill=%22#E7C46B%22 stroke=%22#2A1B2E%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M16,320 H24%22 stroke=%22#2A1B2E%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%22580%22 cy=%22320%22 r=%227%22 fill=%22#E7C46B%22 stroke=%22#2A1B2E%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M576,320 H584%22 stroke=%22#2A1B2E%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3C/svg%3E") 0 0/100% 100% no-repeat!important}
+.land-real.land-museum .flash .ftop{top:44px;left:56px;color:#7A1F2B}
+.land-real.land-aquarium .flash .face{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22 preserveAspectRatio=%22none%22%3E%3Crect x=%224%22 y=%2240%22 width=%22470%22 height=%22260%22 rx=%2280%22 fill=%22#BFEAF5%22 fill-opacity=%22.75%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M470,118 H548 V222 H470%22 fill=%22#BFEAF5%22 fill-opacity=%22.75%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Crect x=%22546%22 y=%22122%22 width=%2248%22 height=%2296%22 rx=%2210%22 fill=%22#C68B59%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M560,140 v60 M578,140 v60%22 stroke=%22#9C6436%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3Crect x=%2262%22 y=%2274%22 width=%22386%22 height=%22192%22 rx=%226%22 fill=%22#FFF6DC%22 stroke=%22#C9A66B%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22/%3E%3Crect x=%2252%22 y=%2268%22 width=%2216%22 height=%22204%22 rx=%228%22 fill=%22#F2E3BC%22 stroke=%22#C9A66B%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22/%3E%3Crect x=%22442%22 y=%2268%22 width=%2216%22 height=%22204%22 rx=%228%22 fill=%22#F2E3BC%22 stroke=%22#C9A66B%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M30,90 Q36,70 60,60%22 stroke=%22#fff%22 stroke-width=%226%22 fill=%22none%22 vector-effect=%22non-scaling-stroke%22 stroke-linecap=%22round%22/%3E%3C/svg%3E") 0 0/100% 100% no-repeat!important;padding:104px 172px 86px 84px}
+.land-real.land-aquarium .flash .back{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22 preserveAspectRatio=%22none%22%3E%3Crect x=%224%22 y=%2240%22 width=%22470%22 height=%22260%22 rx=%2280%22 fill=%22#BFEAF5%22 fill-opacity=%22.75%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M470,118 H548 V222 H470%22 fill=%22#BFEAF5%22 fill-opacity=%22.75%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Crect x=%22546%22 y=%22122%22 width=%2248%22 height=%2296%22 rx=%2210%22 fill=%22#C68B59%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M560,140 v60 M578,140 v60%22 stroke=%22#9C6436%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3Crect x=%2262%22 y=%2274%22 width=%22386%22 height=%22192%22 rx=%226%22 fill=%22#FFFBEE%22 stroke=%22#C9A66B%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22/%3E%3Crect x=%2252%22 y=%2268%22 width=%2216%22 height=%22204%22 rx=%228%22 fill=%22#F2E3BC%22 stroke=%22#C9A66B%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22/%3E%3Crect x=%22442%22 y=%2268%22 width=%2216%22 height=%22204%22 rx=%228%22 fill=%22#F2E3BC%22 stroke=%22#C9A66B%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M30,90 Q36,70 60,60%22 stroke=%22#fff%22 stroke-width=%226%22 fill=%22none%22 vector-effect=%22non-scaling-stroke%22 stroke-linecap=%22round%22/%3E%3C/svg%3E") 0 0/100% 100% no-repeat!important}
+.land-real.land-aquarium .flash .ftop{top:78px;left:84px;color:#0B5E7A}
+.land-real.land-zoo .flash .face{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22 preserveAspectRatio=%22none%22%3E%3Crect x=%223%22 y=%2218%22 width=%22594%22 height=%22319%22 rx=%2222%22 fill=%22#B5835A%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Crect x=%2228%22 y=%2252%22 width=%22544%22 height=%22266%22 rx=%224%22 fill=%22#FFFFFF%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Crect x=%22210%22 y=%224%22 width=%22180%22 height=%2262%22 rx=%2214%22 fill=%22#AEB8C2%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Crect x=%22262%22 y=%2218%22 width=%2276%22 height=%2220%22 rx=%228%22 fill=%22#7E8A96%22 stroke=%22#2A1B2E%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3C/svg%3E") 0 0/100% 100% no-repeat!important;padding:112px 46px 48px 46px}
+.land-real.land-zoo .flash .back{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22 preserveAspectRatio=%22none%22%3E%3Crect x=%223%22 y=%2218%22 width=%22594%22 height=%22319%22 rx=%2222%22 fill=%22#B5835A%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Crect x=%2228%22 y=%2252%22 width=%22544%22 height=%22266%22 rx=%224%22 fill=%22#FFFFFF%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Crect x=%22210%22 y=%224%22 width=%22180%22 height=%2262%22 rx=%2214%22 fill=%22#AEB8C2%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Crect x=%22262%22 y=%2218%22 width=%2276%22 height=%2220%22 rx=%228%22 fill=%22#7E8A96%22 stroke=%22#2A1B2E%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3C/svg%3E") 0 0/100% 100% no-repeat!important}
+.land-real.land-zoo .flash .ftop{top:72px;left:44px;color:#2B6E3F}
+.land-real.land-farm .flash .face{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M20,40 Q67,-8 114,40%22 fill=%22#E2D2B3%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M115,40 Q162,-8 209,40%22 fill=%22#E2D2B3%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M210,40 Q257,-8 304,40%22 fill=%22#E2D2B3%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M305,40 Q352,-8 399,40%22 fill=%22#E2D2B3%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M400,40 Q447,-8 494,40%22 fill=%22#E2D2B3%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M495,40 Q542,-8 589,40%22 fill=%22#E2D2B3%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M20,300 Q67,348 114,300%22 fill=%22#E2D2B3%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M115,300 Q162,348 209,300%22 fill=%22#E2D2B3%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M210,300 Q257,348 304,300%22 fill=%22#E2D2B3%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M305,300 Q352,348 399,300%22 fill=%22#E2D2B3%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M400,300 Q447,348 494,300%22 fill=%22#E2D2B3%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M495,300 Q542,348 589,300%22 fill=%22#E2D2B3%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Crect x=%223%22 y=%2234%22 width=%22594%22 height=%22272%22 rx=%2218%22 fill=%22#D9C7A7%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Crect x=%2244%22 y=%2262%22 width=%22512%22 height=%22216%22 rx=%2212%22 fill=%22#FFFFFF%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M44,74 Q44,62 56,62 H544 Q556,62 556,74 V108 H44 Z%22 fill=%22#C8423C%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3C/svg%3E") 0 0/100% 100% no-repeat!important;padding:120px 62px 70px 62px}
+.land-real.land-farm .flash .back{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M20,40 Q67,-8 114,40%22 fill=%22#E2D2B3%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M115,40 Q162,-8 209,40%22 fill=%22#E2D2B3%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M210,40 Q257,-8 304,40%22 fill=%22#E2D2B3%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M305,40 Q352,-8 399,40%22 fill=%22#E2D2B3%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M400,40 Q447,-8 494,40%22 fill=%22#E2D2B3%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M495,40 Q542,-8 589,40%22 fill=%22#E2D2B3%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M20,300 Q67,348 114,300%22 fill=%22#E2D2B3%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M115,300 Q162,348 209,300%22 fill=%22#E2D2B3%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M210,300 Q257,348 304,300%22 fill=%22#E2D2B3%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M305,300 Q352,348 399,300%22 fill=%22#E2D2B3%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M400,300 Q447,348 494,300%22 fill=%22#E2D2B3%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M495,300 Q542,348 589,300%22 fill=%22#E2D2B3%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Crect x=%223%22 y=%2234%22 width=%22594%22 height=%22272%22 rx=%2218%22 fill=%22#D9C7A7%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Crect x=%2244%22 y=%2262%22 width=%22512%22 height=%22216%22 rx=%2212%22 fill=%22#FFFDF7%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M44,74 Q44,62 56,62 H544 Q556,62 556,74 V108 H44 Z%22 fill=%22#C8423C%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3C/svg%3E") 0 0/100% 100% no-repeat!important}
+.land-real.land-farm .flash .ftop{top:68px;left:60px;color:#fff}
+.land-real.land-botanic-garden .flash .face{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M3,30 Q3,6 27,6 H455 L597,170 L455,334 H27 Q3,334 3,310 Z%22 fill=%22#F4FBF1%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M3,30 Q3,6 27,6 H455 L497,54 H3 Z%22 fill=%22#2B6E3F%22 stroke=%22#2A1B2E%22 stroke-width=%220%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M3,30 Q3,6 27,6 H455 L597,170 L455,334 H27 Q3,334 3,310 Z%22 fill=%22none%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M500,170 C520,140 545,140 560,150 C548,172 525,182 500,170 Z%22 fill=%22#7ED9B0%22 stroke=%22#2A1B2E%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3C/svg%3E") 0 0/100% 100% no-repeat!important;padding:84px 150px 40px 30px}
+.land-real.land-botanic-garden .flash .back{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M3,30 Q3,6 27,6 H455 L597,170 L455,334 H27 Q3,334 3,310 Z%22 fill=%22#FBFEF9%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M3,30 Q3,6 27,6 H455 L497,54 H3 Z%22 fill=%22#2B6E3F%22 stroke=%22#2A1B2E%22 stroke-width=%220%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M3,30 Q3,6 27,6 H455 L597,170 L455,334 H27 Q3,334 3,310 Z%22 fill=%22none%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M500,170 C520,140 545,140 560,150 C548,172 525,182 500,170 Z%22 fill=%22#7ED9B0%22 stroke=%22#2A1B2E%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3C/svg%3E") 0 0/100% 100% no-repeat!important}
+.land-real.land-botanic-garden .flash .ftop{top:8px;left:26px;color:#fff}
+.land-real.land-pier .flash .face{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22 preserveAspectRatio=%22none%22%3E%3Crect x=%223%22 y=%223%22 width=%22594%22 height=%22334%22 rx=%226%22 fill=%22#FFFDF5%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Crect x=%22490%22 y=%2222%22 width=%2288%22 height=%22104%22 fill=%22#7FC8F8%22 stroke=%22#fff%22 stroke-width=%226%22 stroke-dasharray=%226 5%22 vector-effect=%22non-scaling-stroke%22/%3E%3Crect x=%22490%22 y=%2222%22 width=%2288%22 height=%22104%22 fill=%22none%22 stroke=%22#2A1B2E%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M506,98 q10-12 20 0 t20 0 t20 0%22 fill=%22none%22 stroke=%22#fff%22 stroke-width=%224%22 vector-effect=%22non-scaling-stroke%22/%3E%3Ccircle cx=%22534%22 cy=%2258%22 r=%2214%22 fill=%22#FFD43B%22/%3E%3Ccircle cx=%22452%22 cy=%2280%22 r=%2240%22 fill=%22none%22 stroke=%22#5B5B7A%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M380,64 q14-10 28 0 t28 0 t28 0 M380,96 q14-10 28 0 t28 0 t28 0%22 fill=%22none%22 stroke=%22#5B5B7A%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M430,150 V316%22 stroke=%22#B9AFA0%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M448,200 H578 M448,240 H578 M448,280 H578%22 stroke=%22#B9AFA0%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3C/svg%3E") 0 0/100% 100% no-repeat!important;padding:70px 190px 34px 30px}
+.land-real.land-pier .flash .back{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22 preserveAspectRatio=%22none%22%3E%3Crect x=%223%22 y=%223%22 width=%22594%22 height=%22334%22 rx=%226%22 fill=%22#FFFDF5%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Crect x=%22490%22 y=%2222%22 width=%2288%22 height=%22104%22 fill=%22#7FC8F8%22 stroke=%22#fff%22 stroke-width=%226%22 stroke-dasharray=%226 5%22 vector-effect=%22non-scaling-stroke%22/%3E%3Crect x=%22490%22 y=%2222%22 width=%2288%22 height=%22104%22 fill=%22none%22 stroke=%22#2A1B2E%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M506,98 q10-12 20 0 t20 0 t20 0%22 fill=%22none%22 stroke=%22#fff%22 stroke-width=%224%22 vector-effect=%22non-scaling-stroke%22/%3E%3Ccircle cx=%22534%22 cy=%2258%22 r=%2214%22 fill=%22#FFD43B%22/%3E%3Ccircle cx=%22452%22 cy=%2280%22 r=%2240%22 fill=%22none%22 stroke=%22#5B5B7A%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M380,64 q14-10 28 0 t28 0 t28 0 M380,96 q14-10 28 0 t28 0 t28 0%22 fill=%22none%22 stroke=%22#5B5B7A%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M430,150 V316%22 stroke=%22#B9AFA0%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M448,200 H578 M448,240 H578 M448,280 H578%22 stroke=%22#B9AFA0%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3C/svg%3E") 0 0/100% 100% no-repeat!important}
+.land-real.land-pier .flash .ftop{top:16px;left:26px;color:#0B5E7A}
+.land-real.land-balloon-field .flash .face{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M80,300 C30,300 6,262 18,228 C-6,200 10,150 54,146 C50,96 96,64 140,80 C160,30 230,14 270,52 C300,10 380,10 404,58 C440,30 510,46 516,98 C566,96 600,140 584,184 C606,214 590,272 540,280 C536,318 480,334 440,312 C410,338 340,338 310,312 C280,336 210,336 180,312 C150,330 100,326 80,300 Z%22 fill=%22#FFFFFF%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cg transform=%22translate(470,20)%22%3E%3Cpath d=%22M40,4 C18,4 6,20 6,36 C6,58 28,72 34,80 H46 C52,72 74,58 74,36 C74,20 62,4 40,4 Z%22 fill=%22#E63946%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M40,4 C30,20 30,60 36,80 M40,4 C50,20 50,60 44,80%22 fill=%22none%22 stroke=%22#FFD43B%22 stroke-width=%225%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M36,80 L34,92 M44,80 L46,92%22 stroke=%22#2A1B2E%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Crect x=%2231%22 y=%2292%22 width=%2218%22 height=%2214%22 rx=%222%22 fill=%22#B5743F%22 stroke=%22#2A1B2E%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3C/g%3E%3C/svg%3E") 0 0/100% 100% no-repeat!important;padding:118px 84px 64px 84px}
+.land-real.land-balloon-field .flash .back{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M80,300 C30,300 6,262 18,228 C-6,200 10,150 54,146 C50,96 96,64 140,80 C160,30 230,14 270,52 C300,10 380,10 404,58 C440,30 510,46 516,98 C566,96 600,140 584,184 C606,214 590,272 540,280 C536,318 480,334 440,312 C410,338 340,338 310,312 C280,336 210,336 180,312 C150,330 100,326 80,300 Z%22 fill=%22#F7FBFF%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cg transform=%22translate(470,20)%22%3E%3Cpath d=%22M40,4 C18,4 6,20 6,36 C6,58 28,72 34,80 H46 C52,72 74,58 74,36 C74,20 62,4 40,4 Z%22 fill=%22#E63946%22 stroke=%22#2A1B2E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M40,4 C30,20 30,60 36,80 M40,4 C50,20 50,60 44,80%22 fill=%22none%22 stroke=%22#FFD43B%22 stroke-width=%225%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M36,80 L34,92 M44,80 L46,92%22 stroke=%22#2A1B2E%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Crect x=%2231%22 y=%2292%22 width=%2218%22 height=%2214%22 rx=%222%22 fill=%22#B5743F%22 stroke=%22#2A1B2E%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3C/g%3E%3C/svg%3E") 0 0/100% 100% no-repeat!important}
+.land-real.land-balloon-field .flash .ftop{top:84px;left:120px;color:#4361EE}
+.land-real.land-amazon-forest .flash .face{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M4,170 C110,-6 470,-14 596,170 C470,354 110,346 4,170 Z%22 fill=%22#52B788%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M70,170 Q100,100 140,60%22 fill=%22none%22 stroke=%22#2B8A3E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M70,170 Q100,240 140,280%22 fill=%22none%22 stroke=%22#2B8A3E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M150,170 Q180,100 220,60%22 fill=%22none%22 stroke=%22#2B8A3E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M150,170 Q180,240 220,280%22 fill=%22none%22 stroke=%22#2B8A3E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M230,170 Q260,100 300,60%22 fill=%22none%22 stroke=%22#2B8A3E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M230,170 Q260,240 300,280%22 fill=%22none%22 stroke=%22#2B8A3E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M310,170 Q340,100 380,60%22 fill=%22none%22 stroke=%22#2B8A3E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M310,170 Q340,240 380,280%22 fill=%22none%22 stroke=%22#2B8A3E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M390,170 Q420,100 460,60%22 fill=%22none%22 stroke=%22#2B8A3E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M390,170 Q420,240 460,280%22 fill=%22none%22 stroke=%22#2B8A3E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M4,170 H596%22 stroke=%22#2B8A3E%22 stroke-width=%224%22 vector-effect=%22non-scaling-stroke%22/%3E%3Crect x=%2292%22 y=%2262%22 width=%22416%22 height=%22216%22 rx=%2226%22 fill=%22#F1FAEE%22 stroke=%22#2B8A3E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22/%3E%3C/svg%3E") 0 0/100% 100% no-repeat!important;padding:100px 108px 74px 108px}
+.land-real.land-amazon-forest .flash .back{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M4,170 C110,-6 470,-14 596,170 C470,354 110,346 4,170 Z%22 fill=%22#52B788%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M70,170 Q100,100 140,60%22 fill=%22none%22 stroke=%22#2B8A3E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M70,170 Q100,240 140,280%22 fill=%22none%22 stroke=%22#2B8A3E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M150,170 Q180,100 220,60%22 fill=%22none%22 stroke=%22#2B8A3E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M150,170 Q180,240 220,280%22 fill=%22none%22 stroke=%22#2B8A3E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M230,170 Q260,100 300,60%22 fill=%22none%22 stroke=%22#2B8A3E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M230,170 Q260,240 300,280%22 fill=%22none%22 stroke=%22#2B8A3E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M310,170 Q340,100 380,60%22 fill=%22none%22 stroke=%22#2B8A3E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M310,170 Q340,240 380,280%22 fill=%22none%22 stroke=%22#2B8A3E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M390,170 Q420,100 460,60%22 fill=%22none%22 stroke=%22#2B8A3E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M390,170 Q420,240 460,280%22 fill=%22none%22 stroke=%22#2B8A3E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M4,170 H596%22 stroke=%22#2B8A3E%22 stroke-width=%224%22 vector-effect=%22non-scaling-stroke%22/%3E%3Crect x=%2292%22 y=%2262%22 width=%22416%22 height=%22216%22 rx=%2226%22 fill=%22#F8FDF6%22 stroke=%22#2B8A3E%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22/%3E%3C/svg%3E") 0 0/100% 100% no-repeat!important}
+.land-real.land-amazon-forest .flash .ftop{top:68px;left:110px;color:#1F6B3A}
+.land-real.land-ice-rink .flash .face{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22 preserveAspectRatio=%22none%22%3E%3Crect x=%223%22 y=%223%22 width=%22594%22 height=%22334%22 rx=%2220%22 fill=%22#DDF3FF%22 stroke=%22#3A78B5%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M30,20 L44,58 L58,20 Z%22 fill=%22#BFE3F7%22 stroke=%22#5B9BD5%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M84,20 L98,72 L112,20 Z%22 fill=%22#BFE3F7%22 stroke=%22#5B9BD5%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M138,20 L152,86 L166,20 Z%22 fill=%22#BFE3F7%22 stroke=%22#5B9BD5%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M192,20 L206,58 L220,20 Z%22 fill=%22#BFE3F7%22 stroke=%22#5B9BD5%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M246,20 L260,72 L274,20 Z%22 fill=%22#BFE3F7%22 stroke=%22#5B9BD5%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M300,20 L314,86 L328,20 Z%22 fill=%22#BFE3F7%22 stroke=%22#5B9BD5%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M354,20 L368,58 L382,20 Z%22 fill=%22#BFE3F7%22 stroke=%22#5B9BD5%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M408,20 L422,72 L436,20 Z%22 fill=%22#BFE3F7%22 stroke=%22#5B9BD5%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M462,20 L476,86 L490,20 Z%22 fill=%22#BFE3F7%22 stroke=%22#5B9BD5%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M516,20 L530,58 L544,20 Z%22 fill=%22#BFE3F7%22 stroke=%22#5B9BD5%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M20,300 L80,240 M40,320 L120,240 M520,40 L580,100 M500,30 L590,120%22 stroke=%22#fff%22 stroke-width=%225%22 vector-effect=%22non-scaling-stroke%22 stroke-linecap=%22round%22/%3E%3Crect x=%2234%22 y=%2278%22 width=%22532%22 height=%22232%22 rx=%2214%22 fill=%22#FFFFFF%22 fill-opacity=%22.9%22 stroke=%22#8CC4EA%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3C/svg%3E") 0 0/100% 100% no-repeat!important;padding:118px 54px 48px 54px}
+.land-real.land-ice-rink .flash .back{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22 preserveAspectRatio=%22none%22%3E%3Crect x=%223%22 y=%223%22 width=%22594%22 height=%22334%22 rx=%2220%22 fill=%22#DDF3FF%22 stroke=%22#3A78B5%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M30,20 L44,58 L58,20 Z%22 fill=%22#BFE3F7%22 stroke=%22#5B9BD5%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M84,20 L98,72 L112,20 Z%22 fill=%22#BFE3F7%22 stroke=%22#5B9BD5%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M138,20 L152,86 L166,20 Z%22 fill=%22#BFE3F7%22 stroke=%22#5B9BD5%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M192,20 L206,58 L220,20 Z%22 fill=%22#BFE3F7%22 stroke=%22#5B9BD5%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M246,20 L260,72 L274,20 Z%22 fill=%22#BFE3F7%22 stroke=%22#5B9BD5%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M300,20 L314,86 L328,20 Z%22 fill=%22#BFE3F7%22 stroke=%22#5B9BD5%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M354,20 L368,58 L382,20 Z%22 fill=%22#BFE3F7%22 stroke=%22#5B9BD5%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M408,20 L422,72 L436,20 Z%22 fill=%22#BFE3F7%22 stroke=%22#5B9BD5%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M462,20 L476,86 L490,20 Z%22 fill=%22#BFE3F7%22 stroke=%22#5B9BD5%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M516,20 L530,58 L544,20 Z%22 fill=%22#BFE3F7%22 stroke=%22#5B9BD5%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M20,300 L80,240 M40,320 L120,240 M520,40 L580,100 M500,30 L590,120%22 stroke=%22#fff%22 stroke-width=%225%22 vector-effect=%22non-scaling-stroke%22 stroke-linecap=%22round%22/%3E%3Crect x=%2234%22 y=%2278%22 width=%22532%22 height=%22232%22 rx=%2214%22 fill=%22#FFFFFF%22 fill-opacity=%22.95%22 stroke=%22#8CC4EA%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3C/svg%3E") 0 0/100% 100% no-repeat!important}
+.land-real.land-ice-rink .flash .ftop{top:84px;left:52px;color:#1F5C8C}
+.land-real.land-lighthouse .flash .face{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22 preserveAspectRatio=%22none%22%3E%3Crect x=%223%22 y=%223%22 width=%22594%22 height=%22334%22 rx=%228%22 fill=%22#1F3A5F%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Crect x=%2234%22 y=%2214%22 width=%22552%22 height=%22312%22 rx=%224%22 fill=%22#FFFBF0%22 stroke=%22#2A1B2E%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M34,64 H586%22 stroke=%22#1F3A5F%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M34,72 H586%22 stroke=%22#C8423C%22 stroke-width=%221.5%22 vector-effect=%22non-scaling-stroke%22/%3E%3Ccircle cx=%2218%22 cy=%2260%22 r=%226%22 fill=%22#E9B949%22 stroke=%22#2A1B2E%22 stroke-width=%221.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%2218%22 cy=%22170%22 r=%226%22 fill=%22#E9B949%22 stroke=%22#2A1B2E%22 stroke-width=%221.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%2218%22 cy=%22280%22 r=%226%22 fill=%22#E9B949%22 stroke=%22#2A1B2E%22 stroke-width=%221.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3C/svg%3E") 0 0/100% 100% no-repeat!important;padding:96px 40px 40px 56px}
+.land-real.land-lighthouse .flash .back{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22 preserveAspectRatio=%22none%22%3E%3Crect x=%223%22 y=%223%22 width=%22594%22 height=%22334%22 rx=%228%22 fill=%22#1F3A5F%22 stroke=%22#2A1B2E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Crect x=%2234%22 y=%2214%22 width=%22552%22 height=%22312%22 rx=%224%22 fill=%22#FFFDF7%22 stroke=%22#2A1B2E%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M34,64 H586%22 stroke=%22#1F3A5F%22 stroke-width=%222.5%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M34,72 H586%22 stroke=%22#C8423C%22 stroke-width=%221.5%22 vector-effect=%22non-scaling-stroke%22/%3E%3Ccircle cx=%2218%22 cy=%2260%22 r=%226%22 fill=%22#E9B949%22 stroke=%22#2A1B2E%22 stroke-width=%221.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%2218%22 cy=%22170%22 r=%226%22 fill=%22#E9B949%22 stroke=%22#2A1B2E%22 stroke-width=%221.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%2218%22 cy=%22280%22 r=%226%22 fill=%22#E9B949%22 stroke=%22#2A1B2E%22 stroke-width=%221.5%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3C/svg%3E") 0 0/100% 100% no-repeat!important}
+.land-real.land-lighthouse .flash .ftop{top:20px;left:54px;color:#1F3A5F}
+.land-real:not(.land-tkt) .flash .back .cardq{border-bottom:2px dashed rgba(42,27,46,.25)}
+@media (max-width:640px){.land-real .ftop .fnm b{font-size:16px}.land-real .ftop .fnm span{font-size:10px}.land-real .ftop .fico{width:24px;height:24px}.land-real.land-aquarium .flash .face{padding:96px 118px 76px 62px}.land-real.land-pier .flash .face{padding:70px 128px 30px 24px}.land-real.land-botanic-garden .flash .face{padding:78px 96px 34px 22px}.land-real.land-balloon-field .flash .face{padding:110px 52px 60px 52px}.land-real.land-balloon-field .ftop{left:70px}.land-real.land-amazon-forest .flash .face{padding:96px 76px 70px 76px}.land-real.land-amazon-forest .ftop{left:80px}.land-real.land-airport .flash .face{padding:104px 22px 54px 70px}.land-real.land-airport .ftop{left:72px}.land-real .lbc .bcode{width:90px}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -113890,41 +113950,79 @@ ROOMDATA["income-tax"] = {
  "inside": {
   "hotspots": [
    {
-    "id": "chalk",
-    "icon": "🖍️",
-    "label": "Chalkboard: the big idea",
-    "big": true,
+    "id": "bouquet",
+    "icon": "🍬",
+    "label": "Lolly bouquet of five lollies tagged 5 CHARGEABLE PERSONS and 6 APRIL TO 5 APRIL: the big idea",
     "cards": [
      [
-      0
+      0,
+      0,
+      5
      ]
-    ],
-    "x": 42.4,
-    "y": 11.4,
-    "w": 14,
-    "h": 13.8
+    ]
    },
    {
-    "id": "wheel",
-    "icon": "🎡",
-    "label": "Spinning wheel: the 5-step calculation",
+    "id": "tub",
+    "icon": "🍬",
+    "label": "Swirling candy tub mixing every colour into one swirl, TOTAL INCOME: step 1 and the three types of income",
     "cards": [
      [
-      1
+      1,
+      0,
+      3
      ]
-    ],
-    "x": 29.1,
-    "y": 20.4,
-    "w": 15.3,
-    "h": 34.1
+    ]
+   },
+   {
+    "id": "sam",
+    "icon": "🍬",
+    "label": "Sam relaxing in a striped deckchair with his CAP £50,000 OR 25%: step 2, reliefs and qualifying loans",
+    "cards": [
+     [
+      1,
+      4,
+      8
+     ]
+    ]
+   },
+   {
+    "id": "lolly",
+    "icon": "🍬",
+    "label": "Free lolly bitten down from FREE £12,570 towards GONE AT £125,140: step 3, the personal allowance",
+    "cards": [
+     [
+      1,
+      9,
+      11
+     ]
+    ]
+   },
+   {
+    "id": "pole",
+    "icon": "🍬",
+    "label": "Candy measuring pole of colour bands, BASIC £37,700: steps 4 and 5, rates, bands and allowances",
+    "cards": [
+     [
+      1,
+      12,
+      13
+     ],
+     [
+      2,
+      0,
+      6
+     ]
+    ]
    },
    {
     "id": "priya",
-    "icon": "🧺",
-    "label": "Priya: rates, bands and allowances",
+    "icon": "🍬",
+    "label": "Priya's three-ring lolly, NOBODY STEALS DESSERT: Priya's worked example and the band trap",
     "cards": [
      [
-      2
+      2,
+      7,
+      11
      ]
     ],
     "x": 0,
@@ -113933,12 +114031,26 @@ ROOMDATA["income-tax"] = {
     "h": 72.4
    },
    {
-    "id": "pip",
-    "icon": "💼",
-    "label": "Kofi: employees and directors",
+    "id": "perks",
+    "icon": "🍬",
+    "label": "Pot of little perk lollies for Kofi, PERKS: earnings, benefits in kind and exempt benefits",
     "cards": [
      [
-      3
+      3,
+      0,
+      4
+     ]
+    ]
+   },
+   {
+    "id": "pip",
+    "icon": "🍬",
+    "label": "Kofi holding his big pay envelope marked PAYE: termination payments, expenses, PAYE and NICs",
+    "cards": [
+     [
+      3,
+      5,
+      14
      ]
     ],
     "x": 57.8,
@@ -113947,12 +114059,26 @@ ROOMDATA["income-tax"] = {
     "h": 36.4
    },
    {
-    "id": "press",
-    "icon": "🏗️",
-    "label": "Till and lolly press: sole traders' trading profit",
+    "id": "bow",
+    "icon": "🍬",
+    "label": "Prize bow on top of the lolly press, BADGES OF TRADE: is it a trade, and the trading profit formula",
     "cards": [
      [
-      4
+      4,
+      0,
+      2
+     ]
+    ]
+   },
+   {
+    "id": "press",
+    "icon": "🍬",
+    "label": "Shiny new lolly press, REVENUE, NOT CAPITAL: the expense tests and what is not deductible",
+    "cards": [
+     [
+      4,
+      3,
+      6
      ]
     ],
     "x": 67.6,
@@ -113961,12 +114087,26 @@ ROOMDATA["income-tax"] = {
     "h": 27.1
    },
    {
-    "id": "leo",
-    "icon": "🛒",
-    "label": "Leo: trading loss relief",
+    "id": "pool",
+    "icon": "🍬",
+    "label": "Swirling lolly pool in the floor, MAIN POOL 14%: capital allowances, tax year basis, cash basis and NICs",
     "cards": [
      [
-      5
+      4,
+      7,
+      15
+     ]
+    ]
+   },
+   {
+    "id": "leo",
+    "icon": "🍬",
+    "label": "Leo by his new lolly cart, wheels going SIDEWAYS, BACK, FORWARD: trading loss relief",
+    "cards": [
+     [
+      5,
+      0,
+      9
      ]
     ],
     "x": 60.7,
@@ -113976,11 +114116,13 @@ ROOMDATA["income-tax"] = {
    },
    {
     "id": "ann",
-    "icon": "🍭",
-    "label": "Ann: partners and LLP members",
+    "icon": "🍬",
+    "label": "Flat lolly snapped into a big piece for Ann and a small piece for Bo: partners and LLP members",
     "cards": [
      [
-      6
+      6,
+      0,
+      9
      ]
     ],
     "x": 19,
@@ -113990,14 +114132,13 @@ ROOMDATA["income-tax"] = {
    },
    {
     "id": "stan",
-    "icon": "🐷",
-    "label": "Stan and Daisy: shareholders, lenders and anti-avoidance",
+    "icon": "🍬",
+    "label": "Stan carrying Daisy, tagged DIVIDENDS AND INTEREST: shareholders and lenders",
     "cards": [
      [
-      7
-     ],
-     [
-      8
+      7,
+      0,
+      9
      ]
     ],
     "x": 85.6,
@@ -114006,11 +114147,25 @@ ROOMDATA["income-tax"] = {
     "h": 71.6
    },
    {
-    "id": "clock",
-    "icon": "🕰️",
-    "label": "Clock: self-assessment and deadlines",
+    "id": "daisy",
+    "icon": "🍬",
+    "label": "Daisy riding on Stan's shoulders: anti-avoidance and the settlements rules",
     "cards": [
      [
+      8,
+      0,
+      7
+     ]
+    ]
+   },
+   {
+    "id": "clock",
+    "icon": "🍬",
+    "label": "Swirl clock with ribbons for 31 JANUARY and 31 JULY: self-assessment and deadlines",
+    "cards": [
+     [
+      9,
+      0,
       9
      ]
     ],
@@ -120187,280 +120342,460 @@ var ROOMV3 = {
 },
 "income-tax": {
 "board": {
-"x": 39.6,
-"y": 37.35,
-"w": 20.9,
-"h": 21.85
+"x": 72,
+"y": 21,
+"w": 15.5,
+"h": 8.5
 },
 "spots": {
-"chalk": [
-0.3,
-32.3,
-13.4,
-67.2
+"bouquet": [
+9.8,
+32,
+9.6,
+18.5
 ],
-"wheel": [
-14.3,
-24.5,
-6.0,
-50.0
+"tub": [
+9.8,
+51,
+14.7,
+15
+],
+"sam": [
+29,
+61.5,
+17,
+35.5
+],
+"lolly": [
+19.5,
+66.5,
+9,
+33
+],
+"pole": [
+3.2,
+16,
+6.1,
+65
 ],
 "priya": [
-23.4,
-33.5,
-14.2,
-44.0
+20,
+16.5,
+11.5,
+24.5
+],
+"perks": [
+25.5,
+41.5,
+6,
+12.5
 ],
 "pip": [
-65.7,
-30.0,
-10.0,
-34.0
+32,
+26.5,
+9.5,
+34
+],
+"bow": [
+45.5,
+19.5,
+10.5,
+11
 ],
 "press": [
-76.4,
-64.8,
-10.4,
-11.8
+43,
+31,
+16.3,
+26
+],
+"pool": [
+46.5,
+57.5,
+19.5,
+21.5
 ],
 "leo": [
-80.6,
-77.2,
-7.5,
-18.3
+77.5,
+48.5,
+22.5,
+47.5
 ],
 "ann": [
-88.6,
-59.3,
-11.4,
-40.5
+56,
+79.5,
+21,
+17.5
 ],
 "stan": [
-80.8,
-43.2,
-10.2,
-12.0
+69,
+48,
+8,
+31
+],
+"daisy": [
+69,
+34.5,
+8,
+13
 ],
 "clock": [
-82.6,
-21.6,
-7.0,
-11.6
+88.5,
+17.5,
+9.5,
+25.5
 ],
 "scenario": [
-93.6,
-18.4,
-6.0,
-10.3
+77.5,
+30,
+10,
+18
 ],
 "game": [
-91.6,
-29.2,
-8.4,
-19.3
+59.8,
+21,
+8.6,
+34
 ]
 },
 "labels": {
-"chalk": [
+"bouquet": [
 "",
-"Giant lollipop bouquet tagged INDIVIDUALS and 6 APRIL TO 5 APRIL: the big idea"
+"Lolly bouquet of five lollies tagged 5 CHARGEABLE PERSONS and 6 APRIL TO 5 APRIL: the big idea"
 ],
-"wheel": [
+"tub": [
 "",
-"Spinning swirl poster marked 5 STEPS: the 5-step calculation"
+"Swirling candy tub mixing every colour into one swirl, TOTAL INCOME: step 1 and the three types of income"
+],
+"sam": [
+"",
+"Sam relaxing in a striped deckchair with his CAP £50,000 OR 25%: step 2, reliefs and qualifying loans"
+],
+"lolly": [
+"",
+"Free lolly bitten down from FREE £12,570 towards GONE AT £125,140: step 3, the personal allowance"
+],
+"pole": [
+"",
+"Candy measuring pole of colour bands, BASIC £37,700: steps 4 and 5, rates, bands and allowances"
 ],
 "priya": [
 "",
-"Priya's pot with the three-ring lolly: rates, bands and allowances"
+"Priya's three-ring lolly, NOBODY STEALS DESSERT: Priya's worked example and the band trap"
+],
+"perks": [
+"",
+"Pot of little perk lollies for Kofi, PERKS: earnings, benefits in kind and exempt benefits"
 ],
 "pip": [
 "",
-"Kofi's pair of lollies, EARNINGS and PERKS: employees and directors"
+"Kofi holding his big pay envelope marked PAYE: termination payments, expenses, PAYE and NICs"
+],
+"bow": [
+"",
+"Prize bow on top of the lolly press, BADGES OF TRADE: is it a trade, and the trading profit formula"
 ],
 "press": [
 "",
-"Counter takings tray marked RECEIPTS: sole traders' trading profit"
+"Shiny new lolly press, REVENUE, NOT CAPITAL: the expense tests and what is not deductible"
+],
+"pool": [
+"",
+"Swirling lolly pool in the floor, MAIN POOL 14%: capital allowances, tax year basis, cash basis and NICs"
 ],
 "leo": [
 "",
-"Leo's downward spiral on the counter: trading loss relief"
+"Leo by his new lolly cart, wheels going SIDEWAYS, BACK, FORWARD: trading loss relief"
 ],
 "ann": [
 "",
-"Ann and Bo's lollies sharing one pot: partners and LLP members"
+"Flat lolly snapped into a big piece for Ann and a small piece for Bo: partners and LLP members"
 ],
 "stan": [
 "",
-"Stan and Daisy's sweet jars of DIVIDENDS and INTEREST: shareholders, lenders and anti-avoidance"
+"Stan carrying Daisy, tagged DIVIDENDS AND INTEREST: shareholders and lenders"
+],
+"daisy": [
+"",
+"Daisy riding on Stan's shoulders: anti-avoidance and the settlements rules"
 ],
 "clock": [
 "",
-"Orange lolly clock showing 31 JANUARY and 31 JULY: self-assessment and deadlines"
+"Swirl clock with ribbons for 31 JANUARY and 31 JULY: self-assessment and deadlines"
 ]
 },
 "hooks": [
 {
-"x": 2.4,
-"y": 35.0,
-"w": 9.4,
-"h": 7.0,
-"text": "6 APRIL TO\n5 APRIL",
-"style": "tag",
-"rot": -3
-},
-{
-"x": 3.4,
-"y": 88.0,
-"w": 8.6,
-"h": 4.6,
-"text": "INDIVIDUALS",
-"style": "tag",
-"rot": 2
-},
-{
-"x": 14.7,
-"y": 26.0,
-"w": 5.2,
-"h": 4.4,
-"text": "5 STEPS",
-"style": "tag",
-"rot": -4
-},
-{
-"x": 25.0,
-"y": 35.0,
-"w": 8.0,
-"h": 9.6,
-"text": "NON-SAVINGS\nSAVINGS\nDIVIDENDS",
+"x": 10.1,
+"y": 32.3,
+"w": 9.1,
+"h": 6.0,
+"text": "5 CHARGEABLE\nPERSONS",
 "style": "tag",
 "rot": -2
 },
 {
-"x": 26.9,
-"y": 70.6,
-"w": 4.8,
-"h": 4.0,
-"text": "PRIYA",
+"x": 10.6,
+"y": 44.6,
+"w": 8.2,
+"h": 5.6,
+"text": "6 APRIL TO\n5 APRIL",
 "style": "tag",
-"rot": 3
+"rot": 2
 },
 {
-"x": 71.1,
-"y": 36.4,
-"w": 4.6,
-"h": 3.6,
-"text": "EARNINGS",
-"style": "tag",
-"rot": 3
-},
-{
-"x": 66.4,
-"y": 41.3,
-"w": 3.8,
-"h": 3.5,
-"text": "PERKS",
-"style": "tag",
-"rot": -4
-},
-{
-"x": 76.6,
-"y": 71.8,
-"w": 4.2,
+"x": 11.5,
+"y": 62.2,
+"w": 11.5,
 "h": 3.4,
-"text": "RECEIPTS",
+"text": "TOTAL INCOME",
+"style": "tag",
+"rot": -1
+},
+{
+"x": 29.4,
+"y": 92.6,
+"w": 5,
+"h": 3.4,
+"text": "SAM",
 "style": "tag",
 "rot": -3
 },
 {
-"x": 80.9,
-"y": 91.0,
-"w": 6.8,
-"h": 3.6,
+"x": 29.3,
+"y": 68.6,
+"w": 5.4,
+"h": 6.2,
+"text": "CAP £50,000\nOR 25%",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 20,
+"y": 67,
+"w": 8.5,
+"h": 3.4,
+"text": "FREE £12,570",
+"style": "tag",
+"rot": -3
+},
+{
+"x": 19.9,
+"y": 91.5,
+"w": 8.6,
+"h": 6.2,
+"text": "GONE AT\n£125,140",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 3.4,
+"y": 59,
+"w": 5.7,
+"h": 6.4,
+"text": "BASIC\n£37,700",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 20.4,
+"y": 17,
+"w": 4.6,
+"h": 3.4,
+"text": "PRIYA",
+"style": "tag",
+"rot": -4
+},
+{
+"x": 20.6,
+"y": 34.4,
+"w": 10.6,
+"h": 6.2,
+"text": "NOBODY STEALS\nDESSERT",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 25.9,
+"y": 50.2,
+"w": 5.2,
+"h": 3.3,
+"text": "PERKS",
+"style": "tag",
+"rot": 3
+},
+{
+"x": 32.4,
+"y": 56.5,
+"w": 4.6,
+"h": 3.4,
+"text": "KOFI",
+"style": "tag",
+"rot": -3
+},
+{
+"x": 37.5,
+"y": 48.9,
+"w": 3.9,
+"h": 3.2,
+"text": "PAYE",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 45.9,
+"y": 27.2,
+"w": 9.8,
+"h": 3.1,
+"text": "BADGES OF TRADE",
+"style": "tag",
+"rot": -1
+},
+{
+"x": 44,
+"y": 52.6,
+"w": 14.2,
+"h": 3.4,
+"text": "REVENUE, NOT CAPITAL",
+"style": "tag",
+"rot": 1
+},
+{
+"x": 47.2,
+"y": 58.2,
+"w": 9.5,
+"h": 3.4,
+"text": "MAIN POOL 14%",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 89,
+"y": 49.3,
+"w": 10.4,
+"h": 3.4,
 "text": "TRADING LOSS",
 "style": "tag",
 "rot": 2
 },
 {
-"x": 90.4,
-"y": 62.6,
-"w": 4.0,
-"h": 3.6,
+"x": 78,
+"y": 87.8,
+"w": 4.6,
+"h": 3.4,
+"text": "LEO",
+"style": "tag",
+"rot": -3
+},
+{
+"x": 88.6,
+"y": 84.2,
+"w": 10.8,
+"h": 6.4,
+"text": "SIDEWAYS\nBACK · FORWARD",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 71.4,
+"y": 92.4,
+"w": 5,
+"h": 3.4,
 "text": "ANN",
+"style": "tag",
+"rot": 3
+},
+{
+"x": 57,
+"y": 81,
+"w": 4.2,
+"h": 3.4,
+"text": "BO",
 "style": "tag",
 "rot": -4
 },
 {
-"x": 92.0,
-"y": 88.4,
-"w": 6.8,
-"h": 6.6,
-"text": "PROFIT\nSHARES",
+"x": 69.4,
+"y": 72.6,
+"w": 7.2,
+"h": 6.2,
+"text": "STAN\nDIVIDENDS",
 "style": "tag",
 "rot": -2
 },
 {
-"x": 81.4,
-"y": 43.5,
-"w": 6.4,
-"h": 3.3,
-"text": "STAN & DAISY",
+"x": 69.4,
+"y": 44,
+"w": 5.6,
+"h": 3.2,
+"text": "DAISY",
 "style": "tag",
-"rot": -2
+"rot": 3
 },
 {
-"x": 81.0,
-"y": 51.7,
-"w": 4.6,
-"h": 3.3,
-"text": "DIVIDENDS",
-"style": "tag",
-"rot": 0
-},
-{
-"x": 86.3,
-"y": 51.7,
-"w": 4.4,
-"h": 3.3,
-"text": "INTEREST",
-"style": "tag",
-"rot": 0
-},
-{
-"x": 82.9,
-"y": 21.8,
-"w": 6.4,
-"h": 3.4,
+"x": 88.9,
+"y": 36.2,
+"w": 8.6,
+"h": 3.2,
 "text": "31 JANUARY",
 "style": "tag",
 "rot": -2
 },
 {
-"x": 83.4,
-"y": 29.6,
-"w": 5.4,
-"h": 3.4,
+"x": 89.6,
+"y": 39.6,
+"w": 7,
+"h": 3.2,
 "text": "31 JULY",
 "style": "tag",
 "rot": 2
 },
 {
-"x": 94.1,
-"y": 25.4,
-"w": 5.2,
-"h": 3.2,
-"text": "PAYSLIP",
-"style": "tag",
-"rot": -3
+"x": 82.6,
+"y": 30.4,
+"w": 4.8,
+"h": 5.6,
+"text": "WHO'S\nRIGHT?",
+"style": "speech",
+"rot": 0
 },
 {
-"x": 92.4,
-"y": 41.4,
-"w": 6.8,
-"h": 6.6,
+"x": 78,
+"y": 44.6,
+"w": 9,
+"h": 3.2,
+"text": "KOFI'S PAYSLIP",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 60.2,
+"y": 48.3,
+"w": 8,
+"h": 6.2,
 "text": "WOBBLY\nSWIRLS",
 "style": "tag",
 "rot": -3
 }
+],
+"order": [
+"bouquet",
+"tub",
+"sam",
+"lolly",
+"pole",
+"priya",
+"perks",
+"pip",
+"bow",
+"press",
+"pool",
+"leo",
+"ann",
+"stan",
+"daisy",
+"clock",
+"scenario",
+"game"
 ]
 },
 "cgt": {
@@ -125872,7 +126207,7 @@ window.SQE_SCENE = function(A){
         (S().todo && S().todo[k + '|qa'] ? '<p class="small">✓ Model Q&amp;A and quick-fire for this topic are ticked off on Today.</p>' : '') +
         (window.SQE_RATE ? (/[?&]britask=1/.test(location.search) ? britAsk(k) : '<div class="scn-rateq"><p><b>You\'re out of the shop!</b> Before you set off on your next journey, rate this topic:</p>' + window.SQE_RATE(k) + '</div>') : '') + /* britney-asks held until master Britney approved; preview ?britask=1 */
         (function(){ var nx = (window.SQE_NEXT ? window.SQE_NEXT() : {h: '#/home', l: 'Back to Today'}); return '<p class="scn-nextup"><b>What next?</b> ' + (nx.h === '#/home' ? 'Back to Today\'s list.' : 'The next thing on today\'s list.') + '</p>' +
-        '<div class="btns scn-outbtns">' + (rk(k) ? '<a class="btn primary" href="#/scene/' + hubOf(k) + '">🚪 Back to the hall ›</a>' : '') + '<a class="btn' + (rk(k) ? '' : ' primary') + '" href="' + nx.h + '">Next: ' + esc(nx.l) + ' ›</a>'; })() + '<a class="btn scn-tomap" href="#/palace">🏰 Back to Peckham</a><button type="button" class="btn" data-scn="close">Stay in the shop</button></div></div>';
+        '<div class="btns scn-outbtns">' + (rk(k) ? '<a class="btn primary" href="#/scene/' + hubOf(k) + '">🚪 Back to the hall ›</a>' : '') + '<a class="btn' + (rk(k) ? '' : ' primary') + '" href="' + nx.h + '">Next: ' + esc(nx.l) + ' ›</a>'; })() + '<a class="scn-tomap pkback" href="#/palace" title="Back to Peckham"><img class="pksign" src="img/peckham-sign.webp" alt="Back to Peckham" width="300" height="152"></a><button type="button" class="btn" data-scn="close">Stay in the shop</button></div></div>';
       var seen = {}, rev = [];
       ex.items.forEach(function(it, i){ if (ex.ans[i] && ex.ans[i].ok) return; var h = objFor(k, it); if (!h) return; if (!seen[h.id]){ seen[h.id] = {h: h, n: 0}; rev.push(seen[h.id]); } seen[h.id].n++; });
       rev.sort(function(p, q){ return order(k).indexOf(p.h) - order(k).indexOf(q.h); });
@@ -126144,7 +126479,7 @@ window.SQE_TOWN = function(A){
   function subjDone(s){ return s.topics.length && s.topics.every(function(t){ return learned(s.id + '/' + t.id); }); }
   window.SQE_TOWN_NAV = function(here){ var t = top(here); return t.slice(t.indexOf('<nav')); }; /* the coloured shop tabs, also shown on The Mount (mount.js) */
   function top(here){
-    var h = '<div class="cbag town"><div class="cbatop"><a class="cbaback" href="#/palace">‹ Peckham</a><span class="cbattl">' + esc({jobs: 'Job Centre', butcher: 'Bert\'s Butchers', shop: 'Hen Bargains'}[here]) + '</span><span class="spill coin">' + COIN() + ' <b>' + A.cbaS().coins + '</b></span></div>';
+    var h = '<div class="cbag town"><div class="cbatop"><a class="cbaback pkback" href="#/palace" title="Back to Peckham"><img class="pksign" src="img/peckham-sign.webp" alt="Back to Peckham" width="300" height="152"></a><span class="cbattl" aria-hidden="true"></span><span class="spill coin">' + COIN() + ' <b>' + A.cbaS().coins + '</b></span></div>';
     return h + '<nav class="town-nav" aria-label="Town">' + [['jobs', 'Job Centre'], ['butcher', 'Bert\'s Butchers'], ['shop', 'Hen Bargains'], ['#/mount', 'The Mount']].map(function(b){ return '<a class="tn-' + (b[0] === '#/mount' ? 'mount' : b[0]) + (b[0] === here ? ' on' : '') + '" href="' + (b[0].charAt(0) === '#' ? b[0] : '#/town/' + b[0]) + '"' + (b[0] === here ? ' aria-current="page"' : '') + '>' + b[1] + '</a>'; }).join('') + '</nav>';
   }
   function scrollTop(sel){ setTimeout(function(){ var el = document.querySelector(sel); if (el && el.getBoundingClientRect().top < 0) try { el.scrollIntoView({block: 'start'}); } catch(e){} }, 20); }
@@ -126165,7 +126500,7 @@ window.SQE_TOWN = function(A){
       var x = rv.x, s = x.s, t = x.t, j;
       if (!fut && !(S().done || {})[x.key]) return; /* QA 20 Nov: no review jobs of any kind for topics she hasn't learned yet */ /* cards only for topics she has done/rated (future days show what's planned) */
       if (rv.cards) j = {k: 'revc|' + d + '|' + x.key, h: '#/cards/' + s.id + '/topic/' + t.id, what: 'Go through its ' + A.topicCards(s, t.id).length + ' core revision cards', m: (rv.cm || 0) + (rv.m || 0), g: 1};
-      else if (rv.gap === 6 && A.topicRes(s, t).fw) j = {k: 'rev|' + d + '|' + x.key, h: '#/topic/' + s.id + '/' + t.id + '/fwtest', what: 'Frameworks self-test: hide the details, say them, then reveal', m: rv.m, g: 6};
+      else if (rv.gap === 6 && A.topicRes(s, t).fw) j = {k: 'rev|' + d + '|' + x.key, h: '#/topic/' + s.id + '/' + t.id + '/fwtest', what: 'Frameworks: walk through it step by step', m: rv.m, g: 6};
       else if (rv.gap === 10 && A.topicQs(s, t.id).length) j = {k: 'rev|' + d + '|' + x.key, h: '#/questions/' + s.id + '/' + t.id, what: 'Model Q&A: redo its questions', m: rv.m, g: 10};
       else j = {k: 'rev|' + d + '|' + x.key, h: '#/quick/' + s.id + '/' + t.id, what: 'Quick fire refresh', m: rv.m, g: 3};
       j.x = x; j.pay = JOB_COINS[j.g] || 10; j.done = !!(S().todo && S().todo[j.k]); out.push(j);
@@ -126830,7 +127165,7 @@ window.SQE_MOUNT = function(A){
     if (r[1]) setTimeout(function(){ if (A.route()[0] === 'mount') location.replace('#/mount'); }, 0);
     var c = A.cbaS(), o = c.own, L = A.henLife(), m = A.henMood(L), nm = A.henName(L);
     var shop = '#/town/shop';
-    var h = '<div class="mount"><div class="mount-top"><a class="mount-back" href="#/palace">‹ Peckham</a><h2 class="mount-title"><span class="mount-sign">The Mount</span></h2>' +
+    var h = '<div class="mount"><div class="mount-top"><a class="mount-back pkback" href="#/palace" title="Back to Peckham"><img class="pksign" src="img/peckham-sign.webp" alt="Back to Peckham" width="300" height="152"></a><h2 class="mount-title"><span class="mount-sign">The Mount</span></h2>' +
       '<span class="spill coin">' + A.cbaCoin() + ' <b>' + c.coins + '</b></span><a class="spill shop mount-shop" href="' + shop + '">🛒 Hen Bargains</a></div>' + (window.SQE_TOWN_NAV ? window.SQE_TOWN_NAV('#/mount') : '');
     h += '<div class="mount-garden mood-' + esc(m.cls) + '"><img class="mount-bg" src="img/scene/mount-garden-nocoop.webp" alt="The Mount: a garden with a lawn, a round stone patio, a path, two benches and a shed" width="2752" height="1536">';
     /* the things Layla has bought that live in the garden (each has its own spot; gone again if she returns it) */
@@ -130157,10 +130492,33 @@ var WRAPEND = '<svg viewBox="0 0 34 66" aria-hidden="true"><path d="M33,24 L3,4 
 function cardTheme(sid){ var T = null; try { T = JTHEME ? JTHEME(sid, "") : null; } catch(e){} return T; }
 /* 20 Nov 08:25 (Monnie): each subject's cards look like its stop, not all sweets. land slug from the stop name (e.g. sweet-shop, fairground, library). */
 function cardLand(sid){ var T = cardTheme(sid); return T ? String(T.land).toLowerCase().replace(/[^a-z]+/g, "-") : ""; }
-function cardDeco(sid, n){ var L = cardLand(sid);
-  var LAB = {"fairground":"ADMIT ONE", "library":"LIBRARY CARD", "airport":"BOARDING PASS", "zoo":"ZOO TICKET", "museum":"EXHIBIT", "pier":"PIER PASS", "aquarium":"AQUARIUM", "farm":"FARM PASS", "botanic-garden":"SEED PACKET", "balloon-field":"FLIGHT TICKET", "amazon-forest":"EXPLORER PASS", "ice-rink":"SKATE PASS", "lighthouse":"KEEPER'S LOG"};
-  if (LAB[L]) return '<span class="tktstub" aria-hidden="true"><span class="tkt-t">' + LAB[L] + '</span><span class="tkt-n">No ' + ("00" + n).slice(-3) + '</span></span>';
-  return '<span class="wrapend wl">' + WRAPEND + '</span><span class="wrapend wr">' + WRAPEND + '</span>'; }
+/* 20 Nov 09:28 (Monnie): each stop's card is its own real-world thing (library card, boarding pass, zoo ticket...), with the text on a clean light panel; only the fairground keeps stripes */
+var CI = function(d){ return '<svg viewBox="0 0 32 32" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">' + d + '</g></svg>'; };
+var CARDX = {
+  "fairground": {n:"PECKHAM FAIR", s:"ADMIT ONE · ALL RIDES", st:"ADMIT ONE", i:CI('<circle cx="16" cy="13" r="10"/><path d="M16 3v20M6 13h20M9 6l14 14M23 6L9 20M10 29l6-6 6 6"/>')},
+  "library": {n:"PECKHAM PUBLIC LIBRARY", s:"BORROWER'S CARD", bc:1, i:CI('<path d="M4 7c4-2 8-2 12 1v18c-4-3-8-3-12-1zM28 7c-4-2-8-2-12 1v18c4-3 8-3 12-1z"/>')},
+  "airport": {n:"PECKHAM AIR", s:"LUGGAGE TAG · PKM → FLK", bc:1, i:CI('<path d="M3 18l26-9c1.5-.5 2 1.5.6 2.2L20 16l-4 10-3 1 1-9-6 2-2 3-2 .5 1-4z"/>')},
+  "zoo": {n:"ZOOKEEPER'S NOTES", s:"PECKHAM ZOO · FEEDING ROUND", i:CI('<circle cx="9" cy="10" r="3"/><circle cx="16" cy="7" r="3"/><circle cx="23" cy="10" r="3"/><path d="M9 22c0-5 3-8 7-8s7 3 7 8-4 4-7 4-7 1-7-4z"/>')},
+  "museum": {n:"PECKHAM MUSEUM", s:"EXHIBIT", i:CI('<path d="M4 12L16 4l12 8zM6 12v12M11 12v12M16 12v12M21 12v12M26 12v12M3 27h26"/>')},
+  "pier": {n:"GREETINGS FROM PECKHAM PIER", s:"WISH YOU WERE HERE", i:CI('<path d="M2 22c3 0 3-2 6-2s3 2 6 2 3-2 6-2 3 2 6 2 3-2 4-2M6 22V10M14 22V10M22 22V10M3 10h26"/>')},
+  "aquarium": {n:"MESSAGE IN A BOTTLE", s:"FOUND AT PECKHAM AQUARIUM", i:CI('<path d="M4 16c5-7 13-7 18 0-5 7-13 7-18 0zM22 16l7-5v10z"/><circle cx="10" cy="15" r="1"/>')},
+  "farm": {n:"PECKHAM FARM", s:"6 FREE-RANGE EGGS", i:CI('<path d="M16 4c-6 0-9 9-9 14a9 9 0 0 0 18 0c0-5-3-14-9-14z"/>')},
+  "botanic-garden": {n:"PECKHAM BOTANIC GARDEN", s:"Quaestio legalis", i:CI('<circle cx="16" cy="11" r="3"/><path d="M16 8c0-4 4-5 4-1M19 11c4 0 5 4 1 4M16 14c0 4-4 5-4 1M13 11c-4 0-5-4-1-4M16 14v15M16 23c-3-3-7-2-8 0 3 2 6 2 8 0z"/>')},
+  "balloon-field": {n:"UP IN THE CLOUDS", s:"PECKHAM BALLOON FIELD", i:CI('<path d="M16 3c-6 0-10 4-10 9 0 6 6 10 8 12h4c2-2 8-6 8-12 0-5-4-9-10-9zM14 24l-1 4h6l-1-4"/>')},
+  "amazon-forest": {n:"AMAZON FOREST", s:"FIELD NOTE", i:CI('<path d="M6 26C6 12 14 5 27 5c0 13-7 21-21 21zM6 26L20 12"/>')},
+  "ice-rink": {n:"PECKHAM ICE RINK", s:"FROZEN FACT", i:CI('<path d="M16 3v26M5 9.5l22 13M27 9.5l-22 13M12 5l4 3 4-3M12 27l4-3 4 3"/>')},
+  "lighthouse": {n:"KEEPER'S LOGBOOK", s:"PECKHAM LIGHTHOUSE", i:CI('<path d="M12 28l2-18h4l2 18zM13 6h6l-1-3h-4zM11 28h10M18 8l10-3M14 8L4 5"/>')}
+};
+function cardDeco(sid, n){ var L = cardLand(sid), X = CARDX[L], no = ("00" + n).slice(-3);
+  if (!X) return '<span class="wrapend wl">' + WRAPEND + '</span><span class="wrapend wr">' + WRAPEND + '</span>';
+  if (X.sr) return '<span class="tktstub stub-r" aria-hidden="true"><span class="tkt-t">SEAT ' + n + 'A</span><span class="bcode"></span></span>';
+  if (X.st) return '<span class="tktstub" aria-hidden="true"><span class="tkt-t">' + X.st + '</span><span class="tkt-n">No ' + no + '</span></span>';
+  return ''; }
+function cardTop(sid, n){ var L = cardLand(sid), X = CARDX[L], T = cardTheme(sid); if (!X) return '';
+  var h = '<div class="ftop" aria-hidden="true"><span class="fico">' + X.i + '</span><span class="fnm"><b>' + X.n + '</b><span>' + X.s + '</span></span></div>';
+  if (X.bp) h += '<div class="bpf" aria-hidden="true"><span><i>FROM</i><b>PKM</b></span><span class="bpa">' + CI('<path d="M4 16h22M20 10l6 6-6 6"/>') + '</span><span><i>TO</i><b>FLK</b></span><span><i>GATE</i><b>' + (T ? T.i : 1) + '</b></span><span><i>SEAT</i><b>' + n + 'A</b></span><span><i>BOARDING</i><b>NOW</b></span></div>';
+  if (X.bc) h += '<div class="lbc" aria-hidden="true"><span class="bcode"></span><span>2' + ("000000" + n).slice(-7) + '</span></div>';
+  return h; }
 function cardStyle(sid, extra){ var T = cardTheme(sid); return ' style="' + (T ? T.style.replace(/;--stm1:[^;]*;--stm2:.*$/, "") + ';' : '') + (extra || '') + '"'; }
 function cardHead(sid, sub){ var T = cardTheme(sid), b = BYID[sid], pic = ""; try { pic = JPIC ? JPIC(sid) : ""; } catch(e){}
   return '<div class="cstop">' + (pic ? '<span class="cstop-pic" aria-hidden="true">' + pic + '</span>' : '') + '<span class="cstop-tx"><b>' + (T ? 'Stop ' + T.i + ': ' + esc(T.land) : esc(b ? b.title : "")) + '</b><span>' + esc(b ? b.title : "") + (sub ? ' · ' + sub : '') + '</span></span></div>'; }
@@ -130183,10 +130541,10 @@ VIEW.cards = function(r){
     }
     var d = FC.deck[FC.i];
     if (FC.atI !== FC.i || FC.atD !== d.id){ FC.atI = FC.i; FC.atD = d.id; FC.at = Date.now(); }
-    return '<div class="card skin-sweet skin-stop land-' + cardLand(d.s.id) + (cardLand(d.s.id) !== "sweet-shop" ? ' land-tkt' : '') + '"' + cardStyle(d.s.id) + '>' + cardHead(d.s.id, onlyT && s && TBYKEY[s.id + "/" + onlyT] ? (TBYKEY[s.id + "/" + onlyT].i + 1) + ". " + esc(TBYKEY[s.id + "/" + onlyT].t.title) : "") + '<div class="qmeta"><span>' + esc(s ? s.title : "All subjects") + (onlyT && s && TBYKEY[s.id + "/" + onlyT] ? " · " + (TBYKEY[s.id + "/" + onlyT].i + 1) + ". " + esc(TBYKEY[s.id + "/" + onlyT].t.title) : "") + (learnOnly ? " · not yet 🟢" : "") + (extraOnly ? " · ⭐ extra cards" : "") + '</span><span>Card ' + (FC.i + 1) + ' of ' + FC.deck.length + '</span></div>' +
+    return '<div class="card skin-sweet skin-stop land-' + cardLand(d.s.id) + (CARDX[cardLand(d.s.id)] ? ' land-real' + (CARDX[cardLand(d.s.id)].st ? ' land-tkt' : '') + (CARDX[cardLand(d.s.id)].sr ? ' land-stubr' : '') : '') + '"' + cardStyle(d.s.id) + '>' + cardHead(d.s.id, onlyT && s && TBYKEY[s.id + "/" + onlyT] ? (TBYKEY[s.id + "/" + onlyT].i + 1) + ". " + esc(TBYKEY[s.id + "/" + onlyT].t.title) : "") + '<div class="qmeta"><span>' + esc(s ? s.title : "All subjects") + (onlyT && s && TBYKEY[s.id + "/" + onlyT] ? " · " + (TBYKEY[s.id + "/" + onlyT].i + 1) + ". " + esc(TBYKEY[s.id + "/" + onlyT].t.title) : "") + (learnOnly ? " · not yet 🟢" : "") + (extraOnly ? " · ⭐ extra cards" : "") + '</span><span>Card ' + (FC.i + 1) + ' of ' + FC.deck.length + '</span></div>' +
       '<div class="flash' + (FC.flip ? " flipped" : "") + '" data-act="fcflip" role="button" tabindex="0" aria-label="Flip card">' + cardDeco(d.s.id, FC.i + 1) + '<div class="inner">' +
-      '<div class="face"><small>' + esc(d.s.title) + '</small>' + '<span class="swico" aria-hidden="true">' + sweetIcon(d.s.id === "blp" ? d.c[0] : "", true) + '</span>' + inl(d.c[0]) + '<div class="kbd" style="margin-top:14px">Tap to flip</div></div>' +
-      '<div class="face back"><small>Answer</small><div class="cardq">' + inl(d.c[0]) + '</div><div class="notes">' + md(oneSentencePerLine(d.c[1])) + '</div></div></div></div>' +
+      '<div class="face">' + cardTop(d.s.id, FC.i + 1) + '<small>' + esc(d.s.title) + '</small>' + '<span class="swico" aria-hidden="true">' + sweetIcon(d.s.id === "blp" ? d.c[0] : "", true) + '</span>' + inl(d.c[0]) + '<div class="kbd" style="margin-top:14px">Tap to flip</div></div>' +
+      '<div class="face back">' + cardTop(d.s.id, FC.i + 1).replace(/<div class="lbc"[\s\S]*$/, "") + '<small>Answer</small><div class="cardq">' + inl(d.c[0]) + '</div><div class="notes">' + md(oneSentencePerLine(d.c[1])) + '</div></div></div></div>' +
       '<div class="btns" style="justify-content:center">' + (FC.flip ? '<span class="rate-lab">How well did you know it?</span><button class="rate" data-act="fcmark" data-v="0" aria-label="Didn\'t know it">🔴<span>Didn\'t know</span></button><button class="rate" data-act="fcmark" data-v="0.5" aria-label="Partly knew it">🟠<span>Sort of</span></button><button class="rate" data-act="fcmark" data-v="1" aria-label="Knew it">🟢<span>Knew it</span></button>' : '<button class="btn primary" data-act="fcflip">Show answer</button>') + '</div>' +
       '<div class="btns" style="justify-content:center"><button class="btn sm" data-act="fcprev"' + (FC.i ? '' : ' disabled') + '>‹ Previous card</button><button class="btn sm" data-act="fcskip">Next card ›</button></div>' + '<div class="kbd keyhint" style="text-align:center;margin-top:6px">Keys: Space = flip, then 1 🔴, 2 🟠, 3 🟢</div></div>';
   }
@@ -131412,7 +131770,7 @@ function bossIntro(x){
 }
 /* #/boss hub: Bert's shop, rescues and ransom, chests, topics ready for a fight */
 function bossHub(){
-  var b = bossS(), h = '<div class="cbag bossg"><div class="cbatop"><a class="cbaback" href="#/palace">‹ Peckham</a><span class="cbattl">🥊 Bert the butcher</span><span class="spill coin">' + cbaCoin() + ' <b>' + cbaS().coins + '</b></span></div>';
+  var b = bossS(), h = '<div class="cbag bossg"><div class="cbatop"><a class="cbaback pkback" href="#/palace" title="Back to Peckham"><img class="pksign" src="img/peckham-sign.webp" alt="Back to Peckham" width="300" height="152"></a><span class="cbattl">🥊 Bert the butcher</span><span class="spill coin">' + cbaCoin() + ' <b>' + cbaS().coins + '</b></span></div>';
   h += bossChestCard();
   if (b.cap) h += bossCaptivePanel("boss");
   else h += '<div class="bcard bintro">' + bertShopHTML("") + '<div><h2>Bert\'s Butchers</h2><div class="bspeech">"Finish a topic and I\'ll be waiting with ' + BOSS_N + ' questions. Get ' + BOSS_WIN + ' right and you win ' + BOSS_CHEST + ' coins. Get ' + (BOSS_N - BOSS_WIN + 1) + ' wrong and that hen of yours is mine!"</div><p class="small">' + (bossS().cap ? 'Britney is at his shop right now.' : 'Britney is safe at home.') + ' Bert beaten on <b>' + plural(Object.keys(b.won).length, "topic") + '</b>.</p></div></div>';
