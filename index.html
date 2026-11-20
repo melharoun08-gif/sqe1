@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120130353";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120132111";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -3955,6 +3955,10 @@ a.pkback:hover .pksign{transform:rotate(-3deg) scale(1.05)}
 .bcapshop .bthink .bt-main{left:-52%;width:47%;padding:11% 3%;top:4%}
 .bcapwrap .bclosed b{font-size:5.4cqw}
 .bcapwrap .bclosed b{font-size:5.6cqw!important}
+/* 20 Nov 13:15 luggage tag: barcode printed centred along the bottom of the white panel (panel spans 28.3%-95% wide, ends 92.4% down) */
+.land-real.land-airport .flash .face > .lbc{right:auto!important;left:61.67%!important;transform:translateX(-50%);bottom:calc(7.6% + 10px)!important;width:38%;align-items:stretch;text-align:center}
+.land-real.land-airport .flash .face > .lbc .bcode{width:100%!important;height:30px}
+.land-real.land-airport .flash .face{--pb:22%}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -110589,7 +110593,7 @@ window.SQE_JOURNEY = function (A) {
     }
     /* tapping a stop (picture, number, plate or today button) goes straight to that stop's own page: its scene if it has one, else the subject page (19 Nov, Monnie: no pop-up) */
     var STOP_PAGES = { blp: "#/scene/blp/business-structures" };
-    function stopHref(id) { return STOP_PAGES[id] || ("#/subject/" + id); }
+    function stopHref(id) { var H = window.SQE_STOP_HUB || {}; return STOP_PAGES[id] || (H[id] ? "#/scene/" + id : "#/subject/" + id); } /* Monnie 20 Nov 13:14: a stop with its own rooms opens its entrance, not the syllabus */
     /* the journey map sits at the top of the Cluckington Palace tab; sid = the stop whose panel is open (#/map/<sid>) */
     function mapBlock(sid) {
         var r = ['map', sid];
@@ -147932,7 +147936,7 @@ var STOPDATA = window.SQE_STOPDATA = window.SQE_STOPDATA || {}, STOP_KEYS = {}, 
       keys.push(k); STOP_IDX[k] = i; STOP_OF[k] = sid;
     });
     if (!keys.length) return;
-    STOP_KEYS[sid] = keys; STOP_HUB[sid] = D.hub.key;
+    STOP_KEYS[sid] = keys; STOP_HUB[sid] = D.hub.key; window.SQE_STOP_HUB = STOP_HUB; window.SQE_STOP_OF = STOP_OF; window.SQE_STOP_IDX = STOP_IDX; /* journey.js map + app.js Today link straight into the stop */
     HUBS[D.hub.key] = { stop: sid, title: D.hub.title, place: D.hub.place, img: D.hub.img, ratio: D.hub.ratio, bg: D.hub.bg, alt: D.hub.alt, rooms: keys.slice(), doors: D.hub.doors, exitDoor: null, outside: null, signs: D.hub.signs || null,
       thumb: function(x){ var m = ROOMS[x.split('/')[1]]; return m && m.pic ? m.pic : ''; } };
   });
@@ -149456,7 +149460,7 @@ window.SQE_TOWN = function(A){
       tdS.map(function(b){ var k = 'bert|' + pdT.d + '|' + b.s.id, dn = !!(S().todo && S().todo[k]); return '<li class="' + (dn ? 'pass' : '') + '"><span class="sn"><b>Subject test: ' + esc(b.s.title) + '</b><span>' + (dn ? '✓ Done today' : bertSize(b.s) + ' questions on the whole subject') + '</span></span>' + (away ? '<span class="small muted">Rescue Britney first</span>' : '<a class="btn primary" href="#/town/butcher/' + b.s.id + '">Sit the test</a>') + '</li>'; }).join('') + '</ul>'
       : '<p class="town-note" style="margin:0">Nothing from Bert on today\'s list.</p>') + '</div>';
     /* Monnie 20 Nov 08:10: one place that explains Bert's two games, so Today's "Face the Butcher" step and this page match */
-    h += '<div class="bcard tb-games"><h3>Bert\'s two games</h3><dl class="tb-gl"><dt>Face the Butcher</dt><dd>10 questions on one topic. It is the last step of every topic on Today, and it is at the bottom of each topic\'s notes.</dd><dt>Subject test</dt><dd>' + BERT_MAX + ' questions on a whole subject, once you\'ve learned all its topics. Pick one below.</dd></dl><p class="town-note" style="margin:6px 0 0">Lose either game and Bert grabs Britney. Get back the questions you missed to rescue her.</p></div>';
+    /* Monnie 20 Nov 13:15: the 'Bert's two games' explainer card removed (it added nothing for Layla) */
     h += '<div class="bcard"><h3>Subject tests</h3><p class="town-note" style="margin:0 0 10px">Every subject\'s test is open: best sat once you\'ve learned all its topics. About ' + BERT_PER_TOPIC + ' questions a topic, up to ' + BERT_MAX + '. Pass mark ' + Math.round(BERT_PASS * 100) + '%. First pass: +' + BERT_PASS_COINS + ' coins.</p><ul class="town-subj">' + A.SUBJ.map(function(s){
       var rec = B[s.id], ok = true /* Monnie 20 Nov: never locked */, fin = subjDone(s), dn = s.topics.filter(function(t){ return learned(s.id + '/' + t.id); }).length;
       return '<li class="' + (rec && rec.passed ? 'pass' : ok ? '' : 'locked') + '"><span class="sn"><b>' + esc(s.title) + '</b><span>' + (rec && rec.passed ? '✓ Passed · best ' + rec.best + '%' : rec ? 'Not passed yet · best ' + rec.best + '%' : bertSize(s) + ' questions' + (fin ? ' · all topics learned' : ' · ' + dn + ' of ' + s.topics.length + ' topics learned')) + '</span></span>' +
@@ -152397,8 +152401,8 @@ function topicQs(s, tid){ return (s.qs || []).map(function(q, i){ var k = s.id +
 function notesHref(x){ return (window.SQE_SCENES || {})[x.key] ? "#/scene/" + x.key : "#/topic/" + x.s.id + "/" + x.t.id; }
 function topicSteps(x){
   var s = x.s, t = x.t, base = "#/topic/" + s.id + "/" + t.id, nq = (s.qq || []).filter(function(q){ return q.t === t.id; }).length, nc = topicCards(s, t.id).length, nm = topicQs(s, t.id).length;
-  var rmS = (window.SQE_SCENES || {})[x.key], rmOn = rmS && window.SQE_ROOMS_ON && s.id === "blp"; /* Monnie 05:45: step 1 = visit the topic's room (the syllabus notes and cartoons stay in their own tabs) */
-  var st = [rmOn ? {k:"notes", l:"🍬 Visit Room " + (x.i + 1) + " in the Sweet Shop: " + esc(t.title), h:"#/scene/" + x.key + (x.i ? "/inside" : "")} : {k:"notes", l:"📝 Learn it: read the notes", h:notesHref(x), alt:(window.SQE_SCENES || {})[x.key] && DFPH[x.key] && DFPH[x.key].length ? ' <a class="tdalt" href="' + base + '/cartoon">🖼️ Cartoon (' + DFPH[x.key].length + ' pages)</a>' : ''}]; /* 20 Nov Monnie: framework only in the day-6 review, not on the learning day */
+  var rmS = (window.SQE_SCENES || {})[x.key], stO = (window.SQE_STOP_OF || {})[x.key], rmOn = rmS && window.SQE_ROOMS_ON && (s.id === "blp" || stO); /* Monnie 05:45: step 1 = visit the topic's room (the syllabus notes and cartoons stay in their own tabs) */
+  var st = [rmOn ? (stO ? {k:"notes", l:"Visit " + (stO === "dr" ? "Ride " : "Room ") + (((window.SQE_STOP_IDX || {})[x.key] || 0) + 1) + " at " + esc(String(((window.SQE_STOPDATA || {})[stO] || {hub: {}}).hub.title || "the stop").replace(/^The /, "the ")) + ": " + esc(t.title), h:"#/scene/" + x.key + "/inside"} : {k:"notes", l:"🍬 Visit Room " + (x.i + 1) + " in the Sweet Shop: " + esc(t.title), h:"#/scene/" + x.key + (x.i ? "/inside" : "")}) : {k:"notes", l:"📝 Learn it: read the notes", h:notesHref(x), alt:(window.SQE_SCENES || {})[x.key] && DFPH[x.key] && DFPH[x.key].length ? ' <a class="tdalt" href="' + base + '/cartoon">🖼️ Cartoon (' + DFPH[x.key].length + ' pages)</a>' : ''}]; /* 20 Nov Monnie: framework only in the day-6 review, not on the learning day */
   if (nq) st.push({k:"quick", l:"⚡ Quick fire (" + nq + ")", h:"#/quick/" + s.id + "/" + t.id});
   if (nm) st.push({k:"qa", l:"✍️ Model Q&A (" + nm + ")", h:"#/questions/" + s.id + "/" + t.id});
   /* Monnie 20 Nov 05:43: the topic's final boss step = Face Bert (10-question topic game); ticks itself when she beats him */
@@ -155362,7 +155366,7 @@ window.addEventListener("hashchange", function(){
   if (QF && (QF.key !== r.slice(1).join("/") || r[0] !== "quick") && (QF.i >= QF.items.length || !QF.items.length || r[0] === "quick")) QF = null;
   if (r[0] === "cards" && FC && FC.key !== r.slice(1).join("/")) FC = null;
   if (r[0] !== "mock" && MK && MK.finished) MK = null;
-  if (r[0] !== "boss" && BOSS) BOSS = null;
+  if (r[0] !== "boss" && BOSS){ var qbk = null; try { qbk = sessionStorage.getItem("sqe_qback"); } catch(e){} if (!(r[0] === "topic" && qbk && /^#\/boss\//.test(qbk))) BOSS = null; } /* 13:20 (Monnie): keep the duel alive while she reads the notes, so "Back to your question" lands on the same question */
   delId = null; resetAsk = false;
   render();
   if (r[0] === "cba" && r[2]) cbaFocus();
