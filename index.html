@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120043855";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120043954";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -109740,7 +109740,7 @@ window.SQE_MOUNT = function(A){
       else btn = '<button type="button" class="btn primary" data-mount="' + (plain ? 'corn' : 'give') + '" data-i="' + id + '">' + (plain ? 'Feed ' + esc(nm) : 'Give') + ' · ' + it.p + ' ' + A.cbaCoin() + '</button>';
       return '<li class="' + (gv ? 'ate' : '') + '"><span class="tp">' + A.prizePic(id) + '</span><span class="tn"><b>' + esc(it.n) + '</b><span>' + (plain ? 'A plain bowl of corn. Keeps her going.' : ate && !gv ? 'Bought today. Give it to her!' : 'She goes absolutely wild for this.') + '</span></span>' + btn + '</li>';
     }
-    return '<div class="palcard mount-treats"><h3>🍰 Treats for ' + esc(nm) + '</h3><p class="small muted" style="margin:0">One of each a day. Treats bought in the <a href="' + shop + '">shop</a> today can be given here.</p><ul>' + row('corn', true) + TREATS.map(function(id){ return row(id, false); }).join('') + '</ul></div>';
+    return '<div class="palcard mount-treats"><h3>🍰 Treats for ' + esc(nm) + '</h3><p class="small muted" style="margin:0">One of each a day. Treats bought in <a href="' + shop + '">Hen Bargs</a> today can be given here.</p><ul>' + row('corn', true) + TREATS.map(function(id){ return row(id, false); }).join('') + '</ul></div>';
   }
 
   VIEW.mount = function(r){
@@ -109749,7 +109749,7 @@ window.SQE_MOUNT = function(A){
     var shop = '#/town/shop';
     var hatched = L.stage === 'hen' || L.stage === 'chick';
     var h = '<div class="mount"><div class="mount-top"><a class="mount-back" href="#/palace">‹ Peckham</a><h2 class="mount-title">The Mount</h2>' +
-      '<span class="spill coin">' + A.cbaCoin() + ' <b>' + c.coins + '</b></span><a class="spill shop mount-shop" href="' + shop + '">🛒 Shop</a></div>';
+      '<span class="spill coin">' + A.cbaCoin() + ' <b>' + c.coins + '</b></span><a class="spill shop mount-shop" href="' + shop + '">🛒 Hen Bargs</a></div>';
     h += '<div class="mount-garden mood-' + esc(m.cls) + '"><img class="mount-bg" src="img/scene/mount-garden.webp" alt="The Mount: a garden with a lawn, a round stone patio, a path, two benches and a chicken coop" width="2752" height="1536">';
     var onShelf = SHELF.filter(function(id){ return o[id] && A.cbaItem(id) && (id.indexOf('rec_') !== 0 || o.player); });
     if (onShelf.length) h += '<div class="mount-shelf" aria-label="Britney\'s shelf">' + shelfRows(onShelf, 8) + '<div class="legs"><i></i><i></i></div></div>';
@@ -109776,7 +109776,7 @@ window.SQE_MOUNT = function(A){
     else h += '<div class="mount-hen mount-brit nohen" title="' + esc(L.away ? 'Britney is at Bert\'s Butchers' : 'Britney') + '">' + A.henPic(L, m) + '</div>';
     h += '</div>';
     if (onShelf.length) h += '<div class="mount-shelflist">On Britney\'s shelf:' + shelfRows(onShelf, 99) + '</div>';
-    h += '<p class="mount-who">' + (who.length ? 'In the garden with ' + esc(nm) + ' and Layla: ' + esc(who.join(', ')) + '.' : (L.stage === 'none' || L.stage === 'egg' ? esc(nm) + ' hasn\'t hatched yet, so the garden is empty for now.' : 'Only ' + esc(nm) + ' lives here so far.') + ' Buy her some hen friends in the <a href="' + shop + '">shop</a>.') + '</p>';
+    h += '<p class="mount-who">' + (who.length ? 'In the garden with ' + esc(nm) + ' and Layla: ' + esc(who.join(', ')) + '.' : (L.stage === 'none' || L.stage === 'egg' ? esc(nm) + ' hasn\'t hatched yet, so the garden is empty for now.' : 'Only ' + esc(nm) + ' lives here so far.') + ' Buy her some hen friends in <a href="' + shop + '">Hen Bargs</a>.') + '</p>';
     h += '<div class="mount-panels">';
     if (L.stage !== 'none' && L.stage !== 'egg') h += '<div class="cbasay mood-' + esc(m.cls) + '"><b>' + esc(L.away ? 'Palace butler' : L.ill ? 'Palace vet' : nm) + ':</b> ' + esc(m.t) + '</div>';
     if (L.away) h += A.bossCaptivePanel('palace');
@@ -111074,7 +111074,7 @@ var CBA_PICS = {
   rec_ss: '<circle cx="26" cy="20" r="11" fill="#2A2622"/><circle cx="26" cy="20" r="7.5" fill="none" stroke="#4A4540" stroke-width=".8"/><circle cx="29" cy="20" r="3.4" fill="#FF8FB1"/><rect x="4" y="8" width="24" height="24" rx="1.5" fill="#F7B9A5"/><circle cx="16" cy="17" r="5.5" fill="#FFE1D6"/><path d="M16 15.6c-1.5-1.7-4.2-.3-2.6 1.6l2.6 2.4 2.6-2.4c1.6-1.9-1.1-3.3-2.6-1.6z" fill="#E0457B"/><text x="16" y="29" text-anchor="middle" font-size="5" font-weight="800" font-family="Arial,sans-serif" fill="#8A3B2A">SIENNA</text>',
   rec_mj: '<circle cx="26" cy="20" r="11" fill="#2A2622"/><circle cx="26" cy="20" r="7.5" fill="none" stroke="#4A4540" stroke-width=".8"/><circle cx="29" cy="20" r="3.4" fill="#E9C46A"/><rect x="4" y="8" width="24" height="24" rx="1.5" fill="#2F2B3A"/><path d="M16 11.5l1.6 3.4 3.7.4-2.8 2.5.8 3.7-3.3-1.9-3.3 1.9.8-3.7-2.8-2.5 3.7-.4z" fill="#F2F2F2"/><text x="16" y="29" text-anchor="middle" font-size="6.5" font-weight="800" font-family="Arial,sans-serif" fill="#E9C46A">MJ</text>'
 };
-var KIT_DRAWN = {cup:1, pens:1, latte:1, pandan:1, player:1, tote:1, cushion:1, lamp:1, soap:1, sweets:1, clawsocks:1, rec_ss:1, rec_mj:1, skincare:1, toppers:1, calendar:1, colouring:1, crocs:1, charms:1, socks:1, plaque:1, corn:1};
+var KIT_DRAWN = {stickers:1, cup:1, pens:1, latte:1, pandan:1, player:1, tote:1, cushion:1, lamp:1, soap:1, sweets:1, clawsocks:1, rec_ss:1, rec_mj:1, skincare:1, toppers:1, calendar:1, colouring:1, crocs:1, charms:1, socks:1, plaque:1, corn:1};
 function cbaItemPic(id){
   /* Monnie 20 Nov: real gifts show the EXACT product photos she extracted (img/shop/, shop-images.json), never redraws */
   if (KIT_DRAWN[id] && (window.SQE_SHOPIMG || {})[id]) return '<img class="kitimg prizeimg" src="' + window.SQE_SHOPIMG[id] + '" alt="" width="600" height="600">';
