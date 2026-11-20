@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120134813";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120135522";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -4016,6 +4016,43 @@ a.pkback:hover .pksign{transform:rotate(-3deg) scale(1.05)}
 .land-real:not(.land-tkt) .flash .back .cardq{font-size:14.5px!important}
 .land-real:not(.land-tkt) .flash .face.back.blen-m .notes{font-size:1.12em}.land-real:not(.land-tkt) .flash .face.back.blen-s .notes{font-size:1.26em}.land-real:not(.land-tkt) .flash .face.back.blen-s .cardq{font-size:16px!important}
 @media (max-width:640px){.land-real.land-amazon-forest .flash .inner{min-height:700px}}
+/* Job Centre interior (Monnie 20 Nov 13:25): Layla inside, receptionist's bubble, jobs pinned on the board. Art: art-src/jobcentre-inside-gemini.jpeg */
+.jcscene{position:relative;container-type:inline-size;margin:0 0 14px;border-radius:18px;overflow:hidden;border:2px solid #CFE6C2;background:#fff}
+.jcscene .jcbg{display:block;width:100%;height:auto}
+.jcscene .jclay{position:absolute;left:1.5%;bottom:2%;height:60%;width:auto;z-index:2}
+.jcboard{position:absolute;left:11.2%;top:14.5%;width:31%;height:36.5%;display:flex;flex-direction:column;align-items:center;gap:3%;z-index:1}
+.jcboard .jcday{margin:0;gap:1.6cqw}
+.jcboard .jcday b{min-width:0;font-size:clamp(11px,1.9cqw,22px);background:#FFF8EC;border:2px solid #1d1d1b;border-radius:8px;padding:.3cqw 1.2cqw;box-shadow:1px 2px 0 rgba(0,0,0,.15)}
+.jcboard .jcarr{width:3.6cqw;height:3.6cqw;min-width:24px;min-height:24px;font-size:clamp(16px,2.6cqw,30px)}
+.jcnotes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1cqw;width:100%}
+.jcnote{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:.8cqw .3cqw;background:#FFF6A8;border:1.5px solid #1d1d1b;border-radius:3px;box-shadow:1px 2px 0 rgba(0,0,0,.2);color:#1d1d1b!important;text-decoration:none!important;line-height:1.1;transform:rotate(-2deg)}
+.jcnote:nth-child(2n){background:#CFEFFF;transform:rotate(2deg)}.jcnote:nth-child(3n){background:#FFD6E4;transform:rotate(-1deg)}
+.jcnote::before{content:"";position:absolute;top:-.6cqw;left:50%;width:1.2cqw;height:1.2cqw;margin-left:-.6cqw;border-radius:50%;background:#E23B3B;border:1px solid #1d1d1b}
+.jcnote b{font-size:clamp(11px,1.8cqw,22px)}.jcnote i{font-style:normal;font-size:clamp(10px,1.45cqw,17px)}
+.jcnote.done{opacity:.6}.jcnote:hover{transform:scale(1.06)}
+.jcempty{font-size:clamp(11px,1.7cqw,20px);background:#FFF8EC;border:1.5px dashed #8A6A45;border-radius:6px;padding:.6cqw 1.4cqw}
+.jcscene .jcsay{position:absolute;left:45.5%;top:2.5%;width:20.5%;max-width:none;margin:0;padding:1.1cqw 1.2cqw;font-size:clamp(11px,1.75cqw,21px);line-height:1.18;z-index:3;border-radius:2.2cqw}
+.jcscene .jcsay::before{left:auto;right:-18px;top:62%;border-width:9px 0 9px 18px;border-color:transparent transparent transparent var(--bsp-line,#1d1d1b)}
+.jcscene .jcsay::after{left:auto;right:-13px;top:calc(62% + 2px);border-width:7px 0 7px 14px;border-color:transparent transparent transparent var(--bsp-bg,#fff)}
+.jcscene .jcsay{--bsp-line:#1d1d1b;--bsp-bg:#fff;border-color:#1d1d1b!important;background:#fff!important}
+@media (max-width:560px){
+  .jcscene{overflow:visible;border:0;background:none}
+  .jcscene .jcbg{border-radius:14px;border:2px solid #CFE6C2}
+  .jcscene .jcsay{position:relative;left:auto;top:auto;width:auto;margin:16px 0 0;font-size:15px;padding:10px 12px;border-radius:16px}
+  .jcscene .jcsay::before{right:22%;top:-18px;border-width:0 9px 18px 9px;border-color:transparent transparent var(--bsp-line) transparent}
+  .jcscene .jcsay::after{right:calc(22% + 2px);top:-13px;border-width:0 7px 14px 7px;border-color:transparent transparent var(--bsp-bg) transparent}
+  .jcscene .jclay{height:auto;width:12%;bottom:auto;top:calc((100vw - 32px) * .558 * .38)}
+  .jcboard{position:relative;left:auto;top:auto;width:auto;height:auto;margin-top:12px;gap:10px}
+  .jcboard .jcday b{font-size:16px;padding:4px 10px}.jcboard .jcarr{width:40px;height:40px;font-size:26px}
+  .jcnotes{gap:10px}.jcnote{padding:8px 4px}.jcnote b{font-size:15px}.jcnote i{font-size:13px}.jcnote::before{top:-5px;width:9px;height:9px;margin-left:-4px}
+}
+
+/* 13:50 (Monnie): the coins bag in the banner corner was too tiny to read as a bag. Bigger, no white disc squeezing it */
+.head.nb.nb.nb .nbl .mbag .mbsvg{width:86px!important;height:86px!important;margin:-18px 0 -18px -8px!important;padding:0!important;background:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;filter:drop-shadow(0 2px 0 rgba(16,41,74,.35))}
+.head.nb.nb.nb .nbl .mbag{padding:2px 13px 2px 4px!important;gap:6px}
+.head.nb.nb.nb .nbl .mbag .mbn b{font-size:27px}
+.jcscene .jclay{left:1.5%;top:21.2cqw;bottom:auto;height:33.5cqw;width:auto}
+@media (max-width:560px){.jcscene .jclay{top:21.2cqw;height:33.5cqw;width:auto}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -148908,6 +148945,27 @@ window.SQE_SCENE = function(A){
   function skinFor(k){ var sid = k && (STOP_OF[k] || (HUBS[k] && HUBS[k].stop)), S = sid && STOPSKIN[sid] || null; SKIN = S;
     BICO = S ? '<span class="bu-ico" aria-hidden="true">' + STOPSHAPE(S.bul, S.a1).replace('<svg ', '<svg overflow="visible" ') + '</span>' : BICO0; BSWP = S ? '' : BSWP0; return S; }
   function SK(s){ if (!SKIN || typeof s !== 'string') return s; skWords(SKIN).forEach(function(p){ s = s.split(p[0]).join(p[1]); }); return s; }
+  /* Fairground burst items (Monnie 13:49: "the popcorns don't look like popcorns"): each ride's burst names its own thing, so every flying card wears two drawn ones */
+  var BKI = ' stroke="#1b1b1b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"';
+  var SKBK = {
+    popcorn: '<circle cx="13" cy="19" r="9" fill="#FFFDF2"' + BKI + '/><circle cx="20" cy="31" r="9" fill="#FFF6D6"' + BKI + '/><circle cx="10" cy="40" r="8.5" fill="#FFFDF2"' + BKI + '/><circle cx="19" cy="47" r="7" fill="#FFF6D6"' + BKI + '/><circle cx="15" cy="20" r="3" fill="#FFD34D"/><circle cx="21" cy="33" r="3.2" fill="#FFC21A"/><circle cx="11" cy="41" r="2.6" fill="#FFD34D"/>',
+    coin: '<circle cx="15" cy="30" r="12" fill="#FFC300"' + BKI + '/><circle cx="15" cy="30" r="6.5" fill="none" stroke="#B8860B" stroke-width="2.5"/>',
+    coconut: '<circle cx="15" cy="30" r="12" fill="#8D5A3B"' + BKI + '/><circle cx="11" cy="26" r="2.1" fill="#3B2414"/><circle cx="18.5" cy="26" r="2.1" fill="#3B2414"/><circle cx="14.7" cy="32.5" r="2.1" fill="#3B2414"/>',
+    star: '<path d="M15 16l3.6 8.3 9 .8-6.8 6 2 8.8L15 35.2 7.2 39.9l2-8.8-6.8-6 9-.8z" fill="#FFC300"' + BKI + '/>',
+    firework: '<path d="M15 30L15 15M15 30L27 22M15 30L27 38M15 30L15 45M15 30L3 38M15 30L3 22" stroke="#1b1b1b" stroke-width="5" stroke-linecap="round"/><path d="M15 30L15 15M15 30L27 22M15 30L27 38M15 30L15 45M15 30L3 38M15 30L3 22" stroke="#FFC300" stroke-width="2.5" stroke-linecap="round"/><circle cx="15" cy="30" r="4" fill="#E63946"' + BKI + '/>',
+    confetti: '<rect x="5" y="14" width="8" height="5" rx="1" fill="#E63946"' + BKI + ' transform="rotate(-20 9 16)"/><rect x="16" y="24" width="8" height="5" rx="1" fill="#4361EE"' + BKI + ' transform="rotate(25 20 26)"/><rect x="6" y="34" width="8" height="5" rx="1" fill="#FFC300"' + BKI + '/><rect x="15" y="44" width="8" height="5" rx="1" fill="#2EC4B6"' + BKI + ' transform="rotate(-30 19 46)"/>',
+    toffee: '<path d="M15 6v14" stroke="#B07A3B" stroke-width="4"' + ' stroke-linecap="round"/><path d="M15 6v14" fill="none"' + BKI + ' stroke-width="1.5"/><circle cx="15" cy="33" r="12" fill="#D62828"' + BKI + '/><path d="M3.5 30Q15 22 26.5 30L25 33Q15 27 5 33z" fill="#C9822B"' + BKI + '/>',
+    juggling: '<circle cx="15" cy="30" r="11" fill="#4361EE"' + BKI + '/><path d="M5 26Q15 33 25 26M5 34Q15 27 25 34" fill="none" stroke="#FFC300" stroke-width="3"/>',
+    hoop: '<circle cx="15" cy="30" r="10" fill="none" stroke="#1b1b1b" stroke-width="7"/><circle cx="15" cy="30" r="10" fill="none" stroke="#FF8C42" stroke-width="3.5"/>',
+    music: '<path d="M11 40V16l13-4v22" fill="none" stroke="#1b1b1b" stroke-width="3"/><ellipse cx="8" cy="40" rx="5" ry="4" fill="#9B5DE5"' + BKI + '/><ellipse cx="21" cy="35" rx="5" ry="4" fill="#9B5DE5"' + BKI + '/>',
+    mirror: '<circle cx="15" cy="30" r="12" fill="#C9D3DD"' + BKI + '/><path d="M3 30h24M15 18v24M6 22h18M6 38h18M9 19v22M21 19v22" stroke="#1b1b1b" stroke-width="1.2"/><path d="M9 24h4v4H9z" fill="#fff"/>',
+    ghost: '<path d="M5 44V24a10 10 0 0 1 20 0v20l-3.4-3-3.3 3-3.3-3-3.3 3-3.3-3z" fill="#F4FFF4"' + BKI + '/><circle cx="11.5" cy="25" r="1.8" fill="#1b1b1b"/><circle cx="18.5" cy="25" r="1.8" fill="#1b1b1b"/>',
+    pinwheel: '<path d="M15 30L15 17A7 7 0 0 1 22 24z" fill="#E63946"' + BKI + '/><path d="M15 30L28 30A7 7 0 0 1 21 37z" fill="#FFC300"' + BKI + '/><path d="M15 30L15 43A7 7 0 0 1 8 36z" fill="#4361EE"' + BKI + '/><path d="M15 30L2 30A7 7 0 0 1 9 23z" fill="#2EC4B6"' + BKI + '/>',
+    flag: '<path d="M6 12v38" stroke="#1b1b1b" stroke-width="3" stroke-linecap="round"/><rect x="7" y="13" width="18" height="13" fill="#fff"' + BKI + '/><path d="M7 13h4.5v4.3H7zM16 13h4.5v4.3H16zM11.5 17.3H16v4.3h-4.5zM20.5 17.3H25v4.3h-4.5zM7 21.6h4.5V26H7zM16 21.6h4.5V26H16z" fill="#1b1b1b"/>',
+    photo: '<rect x="3" y="16" width="24" height="27" rx="2" fill="#fff"' + BKI + '/><rect x="6" y="19" width="18" height="16" fill="#7FD8FF" stroke="#1b1b1b" stroke-width="1.5"/><circle cx="15" cy="27" r="4" fill="#FFC300"/>'
+  };
+  function bkOf(t){ t = String(t || '').toLowerCase(); var ks = ['popcorn', 'coin', 'coconut', 'firework', 'confetti', 'toffee', 'juggling', 'hoop', 'music', 'mirror', 'ghost', 'pinwheel', 'flag', 'photo', 'star'];
+    for (var i = 0; i < ks.length; i++) if (t.indexOf(ks[i]) >= 0) return ks[i]; return ''; }
   function skRoot(){ return SKIN ? ' stsk stsk-' + SKIN.id + '" style="--sk1:' + SKIN.a1 + ';--sk2:' + SKIN.a2 + ';--skp:' + SKIN.pale : ''; }
   /* stop-scoped copies of every scene style that uses the sweet shop's pinks, with the stop's own colours */
   function skHsl(hex){ var h = hex.slice(1); if (h.length === 3) h = h.replace(/./g, '$&$&'); var r = parseInt(h.substr(0, 2), 16) / 255, g = parseInt(h.substr(2, 2), 16) / 255, b = parseInt(h.substr(4, 2), 16) / 255;
@@ -148938,6 +148996,10 @@ window.SQE_SCENE = function(A){
       '.stsk .gm-bin.flash-ok{background:repeating-linear-gradient(90deg,var(--sk1) 0 16px,#fff 16px 32px) top/100% 17px no-repeat,#B8F2C9}.stsk .gm-bin.flash-no{background:repeating-linear-gradient(90deg,var(--sk1) 0 16px,#fff 16px 32px) top/100% 17px no-repeat,#FFD2C2}' +
       '.stsk .bu-how b{color:var(--sk2)}.stsk .scn-sheet.bul-on .lrn-fact{background:var(--skp);border-left-color:var(--sk1)}' +
       '.stsk .scn-confetti i svg,.scn-confetti.sk i svg{width:30px;height:30px}' +
+      '.stsk .scn-hook.speech{background:#fff;color:#1b1b1b;border:.2cqw solid #1b1b1b;border-radius:1.4cqw;box-shadow:.2cqw .25cqw 0 #1b1b1b;text-shadow:none;padding:.25cqw .8cqw;font-family:"Gochi Hand","Sour Gummy",cursive;font-weight:400;font-size:max(1.25cqw,13px)!important;width:auto!important;min-width:0;z-index:3}.stsk .scn-hook.speech::after{background:#fff;border-right:.2cqw solid #1b1b1b;border-bottom:.2cqw solid #1b1b1b;box-shadow:none}' +
+      '.stsk .bk-on .bu-wr{display:block}.stsk .bk-on .bu-body{border-radius:14px}.stsk .bk-on .bu-body::before{display:none}' +
+      '.stsk .bk-popcorn .bu-body{border-radius:44% 56% 40% 60%/58% 42% 58% 42%;background:radial-gradient(circle at 12% 30%,#FFE27A 0 7px,transparent 8px),radial-gradient(circle at 88% 72%,#FFD24A 0 6px,transparent 7px),radial-gradient(circle at 70% 14%,#FFE9A0 0 6px,transparent 7px),#FFFBEF}' +
+      '.stsk .bk-popcorn .gm-pc{border-radius:50%;width:20%!important;height:17%;margin-left:12%;background:radial-gradient(circle at 60% 40%,#FFD34D 0 22%,transparent 26%),#FFFBEF!important}.stsk .bk-coin .gm-pc{border-radius:50%;width:22%!important;margin-left:10%;background:#FFC300!important}.stsk .bk-coconut .gm-pc{border-radius:50%;width:22%!important;margin-left:10%;background:#8D5A3B!important}' +
       '.stsk-dr .bu-body{border-radius:6px}.stsk-dr .bu-body::before{inset:6px auto 6px 14px;width:0;border-left:3px dashed var(--sc1);border-radius:0;background:none;opacity:.85}';
     Object.keys(STOPSKIN).forEach(function(id){ var S = STOPSKIN[id], P = '.stsk-' + id;
       o += skScope(all, S);
@@ -148999,10 +149061,11 @@ window.SQE_SCENE = function(A){
     else bLater(bSpawn, 650); }
   function bFbHTML(fb){ return SK(fb ? '<span class="k">' + esc(fb.k) + '</span>' + inl(fb.t || '') : '<span class="k">Ready…</span>Tap a sweet to catch it. True ones go in the jar.'); }
   function burstPlayHTML(g, G){
+    var bk = SKIN ? bkOf(g.title) : ''; if (SKIN) BSWP = bk ? SKBK[bk] : '';
     var pot = potHTML({pot: SKIN ? SKIN.pot : 'jar'}, G, null).replace('</svg><span class="gm-pop"', '<text x="100" y="117" text-anchor="middle" font-family="Chewy, Bubblegum Sans, cursive" font-size="24" fill="#fff" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round" paint-order="stroke">TRUE</text></svg><span class="gm-pop"');
     return '<div class="gm-top"><span class="gm-time">' + GSECS + 's</span><span class="gm-score">' + G.right + ' right so far</span></div>' +
       '<p class="bu-how"><b>Catch only the true ones!</b> Tap a true sweet before its fuse runs out. Let the false ones fly away.</p>' +
-      '<div class="gm-lane gm-burst' + (G.boom ? ' boom' : '') + '" id="gm-lane"><span class="bu-bang" aria-hidden="true">' + BBANG + '</span>' + pot + '<span class="bu-lid" aria-hidden="true"></span></div>' +
+      '<div class="gm-lane gm-burst' + (bk ? ' bk-on bk-' + bk : '') + (G.boom ? ' boom' : '') + '" id="gm-lane"><span class="bu-bang" aria-hidden="true">' + BBANG + '</span>' + pot + '<span class="bu-lid" aria-hidden="true"></span></div>' +
       '<div class="bu-fb' + (G.fb ? ' ' + G.fb.c : '') + '" role="status">' + bFbHTML(G.fb) + '</div>';
   }
   function burstEndHTML(g, G){
@@ -149535,8 +149598,8 @@ window.SQE_TOWN = function(A){
     '.hb .bspeech{font-size:19px;line-height:1.35}.hb .bspeech b{font-family:var(--sharratt)!important;color:#E0457B;font-size:1.15em;font-weight:400}' +
     /* Monnie 13:27: walk-in Hen Bargains. The drawn inside of the shop (img/hb/interior.webp), real items stocked on the shelves, Layla (and Britney) walk down the aisle to whatever she taps */
     '.hbin{position:relative;overflow-x:auto;overflow-y:hidden;border:3px solid #1d1d1b;border-radius:16px;background:#f3f0e8;margin:0 0 14px;-webkit-overflow-scrolling:touch;scrollbar-width:thin}' +
-    '.hbin-w{position:relative;width:max(100%,1500px);max-width:1800px;margin:0 auto;aspect-ratio:1456/819}.hbin-bg{position:absolute;inset:0;width:100%;height:100%;display:block}' +
-    '.hbin-ctr{position:absolute;z-index:25;pointer-events:none}.hbin-sign{position:absolute;transform:skewY(25deg);transform-origin:0 0;padding:0 2%;box-sizing:border-box;display:flex;align-items:center;gap:4%;overflow:hidden}.hbin-sign .hb-logo{height:86%;width:auto;flex:none;border-radius:4px}.hbin-sign span{font-family:Calibri,Carlito,Arial,sans-serif;font-weight:700;color:#E2231A;font-size:clamp(18px,2.1vw,34px);line-height:1;white-space:nowrap}' +
+    '.hbin-w{position:relative;container-type:inline-size;width:max(100%,1150px);max-width:1750px;margin:0 auto;aspect-ratio:1456/819}.hbin-bg{position:absolute;inset:0;width:100%;height:100%;display:block}' +
+    '.hbin-ctr{position:absolute;z-index:25;pointer-events:none}.hbin-sign{position:absolute;transform:skewY(25deg);transform-origin:0 0;padding:0 2%;box-sizing:border-box;display:flex;align-items:center;gap:4%;overflow:hidden}.hbin-sign .hb-logo{height:86%;width:auto;flex:none;border-radius:4px}.hbin-sign span{font-family:Calibri,Carlito,Arial,sans-serif;font-weight:700;color:#E2231A;font-size:1.3cqw;line-height:1;white-space:nowrap}' +
     '.hbi{position:absolute;transform:translateX(-50%);display:flex;align-items:flex-end;justify-content:center;background:none;border:0;padding:0;margin:0;cursor:pointer;z-index:10}' +
     '.hbi img{height:100%;width:auto;display:block;filter:drop-shadow(0 2px 0 rgba(0,0,0,.18));transition:transform .15s}.hbi img+img{margin-left:-14%}.hbi:hover img,.hbi:focus-visible img,.hbi.on img{transform:translateY(-6%) scale(1.06)}' +
     '.hbi:focus-visible{outline:3px solid #E0457B;outline-offset:3px;border-radius:8px}.hbi.on{z-index:40}.hbi.locked img,.hbi.ate img{filter:grayscale(.75) opacity(.6)}' +
@@ -149642,18 +149705,24 @@ window.SQE_TOWN = function(A){
     L.forEach(function(j){ if (j.done) paid += A.earn(j.pay, 'job|' + d + '|' + j.k); });
     if (paid) setTimeout(function(){ try { A.save(); } catch(e){} }, 0);
     var left = L.filter(function(j){ return !j.done; }).length;
-    var h = top('jobs').replace('class="cbag town"', 'class="cbag town town-sh"') + '<div class="bcard town-desk jcdesk"><div class="jcp2" aria-hidden="true"><span class="box"><b>jobcentre</b><span>pluck</span></span><span class="end">Part of the Department for Hens</span></div><div><h2>Job Centre</h2><div class="bspeech">' +
-      (!L.length ? '"Hello love! No jobs today, I\'m afraid. Come back tomorrow and I\'ll have something for you."'
-        : left ? '"Hello love! I\'ve got ' + (L.length === 1 ? 'a job' : L.length + ' jobs') + ' for you today. Each one is a quick look back at a topic you\'ve already learned, so it sticks. Pick one and I\'ll pay you when it\'s done."'
-        : '"All done for today. Lovely work! Come back tomorrow for more."') + '</div></div></div>';
-    h += jobNav(0);
+    /* Monnie 20 Nov 13:25: Layla stands inside the Job Centre; the receptionist talks; the jobs are pinned on the board */
+    var h = top('jobs').replace('class="cbag town"', 'class="cbag town town-sh"') + jobScene(0, L,
+      !L.length ? "Hello love! No jobs today, I'm afraid. Come back tomorrow and I'll have some for you."
+        : left ? "Hello love! Here's what I've got for you today. Pick a job off the board and I'll pay you when it's done."
+        : "All done for today. Lovely work! Come back tomorrow for more.");
     if (!L.length) return h + '<div class="bcard"><h3>No jobs today</h3><p style="margin:0">Jobs are the spaced reviews from your timetable: they come back a few days after you learn a topic. ' + jobNext(0) + '</p></div>' + jobRecall() + '</div>';
-    h += '<div class="town-jobs">' + L.map(function(j){
-      return '<div class="town-job' + (j.done ? ' done' : '') + '"><div><div class="jt">' + esc(A.tnum(j.x)) + '</div><div class="jd">' + esc(j.x.t.title) + '</div><div>' + esc(j.what) + '</div><div class="jm">About ' + esc(A.fmtM(j.m || 5)) + '</div></div>' +
+    h += '<div class="town-jobs">' + L.map(function(j, ji){
+      return '<div class="town-job' + (j.done ? ' done' : '') + '"><div><div class="jt">Job ' + (ji + 1) + ' · ' + esc(A.tnum(j.x)) + '</div><div class="jd">' + esc(j.x.t.title) + '</div><div>' + esc(j.what) + '</div><div class="jm">About ' + esc(A.fmtM(j.m || 5)) + '</div></div>' +
         '<div class="jr">' + (j.done ? '<span class="town-pay">✓ Done, +' + j.pay + ' coins</span>'
           : '<span class="town-pay">' + COIN() + ' ' + j.pay + ' coins</span><a class="btn primary" href="' + j.h + '">Take the job</a><button type="button" class="town-tick" data-act="todo" data-k="' + esc(j.k) + '">I\'ve done it: tick it off</button>') + '</div></div>';
     }).join('') + '</div><p class="town-note">These are the same jobs as the spaced review on your Today list. Ticking one here ticks it there too.</p>' + jobRecall() + '</div>';
     return h;
+  }
+  function jobScene(off, L, line){
+    var n = 0, notes = L.slice(0, 6).map(function(j){ n++; return '<a class="jcnote' + (j.done ? ' done' : '') + '" href="' + j.h + '" title="' + esc(A.tnum(j.x) + ': ' + j.x.t.title) + '"><b>Job ' + n + '</b><i>' + (j.done ? 'Done' : j.pay + ' coins') + '</i></a>'; }).join('');
+    if (!L.length) notes = '<span class="jcempty">No jobs pinned up</span>';
+    return '<div class="jcscene" role="group" aria-label="Inside the Job Centre"><img class="jcbg" src="img/jobcentre-in.webp" alt="" width="1800" height="1004"><img class="jclay" src="img/layla-step0.webp" alt="Layla">' +
+      '<div class="jcboard">' + jobNav(off) + '<div class="jcnotes">' + notes + '</div></div><div class="bspeech jcsay">"' + esc(line) + '"</div></div>';
   }
   function jobNav(off){
     return '<div class="jcday" role="group" aria-label="Choose a day">' + (off > 0 ? '<a class="jcarr" href="#/town/jobs/' + (off - 1) + '" aria-label="Previous day">‹</a>' : '<span class="jcarr off" aria-hidden="true">‹</span>') +
@@ -149662,11 +149731,12 @@ window.SQE_TOWN = function(A){
   function jobNext(off){ for (var k = off + 1; k <= 60; k++) if (jobs(jobDay(k)).length) return 'The next jobs are on <a href="#/town/jobs/' + k + '">' + esc(jobDayName(k)) + ' ›</a>'; return 'Learn a few topics and they\'ll start appearing here.'; }
   function viewJobsAhead(off){
     var d = jobDay(off), L = jobs(d);
-    var h = top('jobs').replace('class="cbag town"', 'class="cbag town town-sh"') + '<div class="bcard town-desk jcdesk"><div class="jcp2" aria-hidden="true"><span class="box"><b>jobcentre</b><span>pluck</span></span><span class="end">Part of the Department for Hens</span></div><div><h2>Job Centre</h2><div class="bspeech">' +
-      (L.length ? '"Here\'s what I\'ve got lined up for ' + esc(jobDayName(off).toLowerCase() === 'tomorrow' ? 'tomorrow' : jobDayName(off)) + '. Learn the topics first and the jobs will be ready."' : '"Nothing booked for that day yet, love."') + '</div></div></div>' + jobNav(off);
+    var dn = jobDayName(off), dl = dn.toLowerCase() === 'tomorrow' ? 'tomorrow' : dn;
+    var h = top('jobs').replace('class="cbag town"', 'class="cbag town town-sh"') + jobScene(off, L,
+      L.length ? "Here's what I've got lined up for " + dl + ". Learn the topics first and the jobs will be ready." : "Nothing lined up for " + dl + " yet, love. Have a look at another day.");
     if (!L.length) return h + '<div class="bcard"><h3>No jobs on this day</h3><p style="margin:0">' + jobNext(off) + '</p></div>' + jobRecall() + '</div>';
-    h += '<div class="town-jobs">' + L.map(function(j){
-      return '<div class="town-job ahead"><div><div class="jt">' + esc(A.tnum(j.x)) + '</div><div class="jd">' + esc(j.x.t.title) + '</div><div>' + esc(j.what) + '</div><div class="jm">About ' + esc(A.fmtM(j.m || 5)) + '</div></div>' +
+    h += '<div class="town-jobs">' + L.map(function(j, ji){
+      return '<div class="town-job ahead"><div><div class="jt">Job ' + (ji + 1) + ' · ' + esc(A.tnum(j.x)) + '</div><div class="jd">' + esc(j.x.t.title) + '</div><div>' + esc(j.what) + '</div><div class="jm">About ' + esc(A.fmtM(j.m || 5)) + '</div></div>' +
         '<div class="jr"><span class="town-pay">' + COIN() + ' ' + j.pay + ' coins</span><span class="jcready">Ready ' + esc(off === 1 ? 'tomorrow' : 'on ' + jobDayName(off)) + '</span></div></div>';
     }).join('') + '</div>' + jobRecall() + '</div>';
     return h;
@@ -149874,7 +149944,6 @@ window.SQE_TOWN = function(A){
     Object.keys(spots).forEach(function(id){
       var it = items[id], sp = spots[id], st = canBuy(it), k = 1, src = 'img/hb/i/' + id + '.webp';
       if (sp[3] === 'shelf') k = Math.max(1, Math.min(3, Math.floor(sp[4] * 1.778 * .92 / (sp[2] * (HB_ASP[id] || 1) * .86))));
-      if (it.feed || it.eat) k = Math.max(k, 2);
       var imgs = ''; for (var j = 0; j < k; j++) imgs += '<img src="' + src + '" alt="' + (j ? '' : esc(it.n)) + '" loading="lazy">';
       var tag = st === 'own' ? '<span class="hbtag own">✓ Yours</span>' : st === 'ate' ? '<span class="hbtag">Yum!</span>' : '<span class="hbtag">' + (it.p > 0 ? it.p + ' ' + COIN() : 'FREE') + '</span>';
       h += '<button type="button" class="hbi ' + sp[3] + (st === 'need' || st === 'later' ? ' locked' : '') + (st === 'ate' ? ' ate' : '') + (HB_VIEW === id ? ' on' : '') + '" data-town="shelf" data-i="' + id + '" data-x="' + sp[0].toFixed(1) + '" style="left:' + sp[0].toFixed(2) + '%;bottom:' + sp[1] + '%;height:' + sp[2] + '%;' + (sp[3] === 'shelf' ? 'width:' + (sp[4] * .96).toFixed(2) + '%' : '') + (/till/.test(sp[3]) ? 'z-index:24' : sp[3] !== 'shelf' ? 'z-index:' + Math.round(22 - sp[1] / 5) : '') + '" aria-label="' + esc(it.n) + '">' + imgs + tag + '<span class="hbname">' + esc(it.n) + '</span></button>';
@@ -149888,7 +149957,7 @@ window.SQE_TOWN = function(A){
     if (HB_VIEW && items[HB_VIEW] && spots[HB_VIEW]){
       var px = Math.min(Math.max(spots[HB_VIEW][0], 17), 83);
       h += '<div class="hbin-pop" style="left:' + px.toFixed(1) + '%">' + cardHTML(items[HB_VIEW]) + '<button type="button" class="hbx" data-town="hbclose" aria-label="Close">×</button></div>';
-    } else h += '<div class="hbin-hint">Walk down the aisle: tap anything on the shelves.</div>';
+    } else h += '<div class="hbin-hint" style="left:' + Math.min(Math.max(HB_LX + 16, 18), 82).toFixed(1) + '%">Walk down the aisle: tap anything on the shelves.</div>';
     return h + '</div></div>';
   }
   function hbScroll(){
@@ -150401,7 +150470,7 @@ window.SQE_MOUNT = function(A){
     var ents = (bagH ? ['__bag'] : []).concat(ids);   /* the feed sits on the top shelf with everything else (Monnie 13:22) */
     if (!ids.length && !bags) h += '<div class="mg-empty">Nothing here yet. Everything Layla buys in <a href="#/town/shop">Hen Bargains</a> goes on these shelves.</div>';
     for (var r = 0; r < SHELVES.length; r++){
-      var row = ents.slice(r * per, r * per + per), sh = SHELVES[r]; if (!row.length) break;
+      var row = ents.slice(r * per, r * per + per), sh = SHELVES[SHELVES.length - 1 - r]; if (!row.length) break;   /* fills from the bottom shelf up */
       h += '<div class="mg-shelf" style="top:' + sh[0] + '%;left:' + sh[1] + '%;width:' + (sh[2] - sh[1]) + '%">' + row.map(function(id){ if (id === '__bag') return bagH; var it = A.cbaItem(id); var on = carrying() === id; return '<button type="button" class="it' + (on ? ' carried' : '') + '" data-mount="carry" data-i="' + id + '" title="' + esc(on ? 'Britney has this. Tap to put it back' : 'Give this to Britney to carry') + '">' + A.prizePic(id) + '<b>' + esc(on ? 'Britney has it!' : it.n) + '</b></button>'; }).join('') + '</div>';
     }
     if (ents.length > per * SHELVES.length) h += '<div class="mg-empty" style="top:auto;bottom:2%;transform:translateX(-50%)">+' + (ents.length - per * SHELVES.length) + ' more</div>';
@@ -151906,7 +151975,7 @@ function timerStrip(){
   return '<div class="tstrip">' + sandBtn() +
     '<span class="lab">Study timer</span><span class="clock" id="clock">' + fmtClock(runningMins() * 60000) + '</span>' +
     (running ? '<button class="btn sm" data-act="tpause">Pause</button>' : '<button class="btn sm primary" data-act="tstart">' + (has ? "Resume" : "▶ Start") + '</button>') +
-    (S.focus ? '' : '<span class="brkbtns wkbtns" role="group" aria-label="Study for a set time">' + [20, 25, 30, 40, 50].map(function(n){ return '<button class="btn sm brkbtn wkbtn" data-act="wkgo" data-m="focus" data-n="' + n + '" aria-label="Study for ' + n + ' minutes" title="Study for ' + n + ' minutes (counts down, then logs it)">' + ICO_BOOKS + '<span class="bl">' + n + ' min</span><span class="bs">' + n + 'm</span></button>'; }).join("") + '</span>' +
+    (S.focus ? '' : '<span class="brkbtns wkbtns" role="group" aria-label="Study for a set time">' + [20, 30, 40].map(function(n){ /* 13:53 (Monnie): just three study times, 20/30/40 */ return '<button class="btn sm brkbtn wkbtn" data-act="wkgo" data-m="focus" data-n="' + n + '" aria-label="Study for ' + n + ' minutes" title="Study for ' + n + ' minutes (counts down, then logs it)">' + ICO_BOOKS + '<span class="bl">' + n + ' min</span><span class="bs">' + n + 'm</span></button>'; }).join("") + '</span>' +
       '<span class="brkbtns" role="group" aria-label="Take a break">' + [5, 10, 15].map(function(n){ return '<button class="btn sm brkbtn" data-act="tbreak" data-n="' + n + '" aria-label="Take a ' + n + ' minute break" title="' + n + ' minute break">' + ICO_TEA + '<span class="bl">' + n + ' min</span><span class="bs">' + n + 'm</span></button>'; }).join("") + '</span>') +
     (has ? '<button class="btn sm good" data-act="tstop">Stop &amp; log</button><button class="btn sm" data-act="tdiscard" title="Throw this session away">Discard</button>' : '') +
 
@@ -152127,7 +152196,7 @@ var ICO_BOOKS = '<span class="sico semo" aria-hidden="true">📚</span>'; /* 13:
 var ICO_TEA = '<span class="sico semo" aria-hidden="true">☕</span>';
 /* ============ SAND TIMER (focus / breaks) ============ */
 var sandOpen = false, sandMsg = "", audioCtx = null;
-var SAND_OPTS = [["focus",20,"20 min study"],["focus",25,"25 min study"],["focus",30,"30 min study"],["focus",40,"40 min study"],["focus",50,"50 min study"],["break",5,"5 min break"],["break",10,"10 min break"],["break",15,"15 min break"]];
+var SAND_OPTS = [["focus",20,"20 min study"],["focus",30,"30 min study"],["focus",40,"40 min study"],["break",5,"5 min break"],["break",10,"10 min break"],["break",15,"15 min break"]];
 function focusLeft(){ return S.focus ? Math.max(0, S.focus.end - Date.now()) : 0; }
 function fmtMS(ms){ var s = Math.ceil(ms / 1000); return Math.floor(s / 60) + ":" + pad(s % 60); }
 function glass(frac, size, running, glit){
