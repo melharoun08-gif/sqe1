@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120035203";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120035320";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -83514,9 +83514,9 @@ window.SQE_JOURNEY = function (A) {
        Moving parts are cut out of the approved pictures (cutting and moving only, nobody is redrawn): img/map-new/anim/<art>-skater-a/-b.webp over <art>-empty.webp (skaters lifted, ice filled in),
        and <art>-flag-a..d.webp over <art>-still.webp (flag cloth lifted, poles kept). Each picture's <image> is swapped for its layers at the same box, so everything lines up exactly.
        RINK_ART picks the rink picture: 'icerink' now, 'icerink-family2' once Monnie OKs it (that one edit is all it takes). */
-    var RINK_ART = 'icerink-family3'; /* Monnie 20 Nov: Yasmin in her rabbit-photo outfit, long sleeves + skates */ // /* Yasmin in a coat + brother in grey hoodie/joggers (Monnie 20 Nov) */
+    var RINK_ART = 'icerink-family4'; /* 03:50 Monnie: taller, broader brother with faint beard; Yasmin medium wavy hair */ /* Monnie 20 Nov: Yasmin in her rabbit-photo outfit, long sleeves + skates */ // /* Yasmin in a coat + brother in grey hoodie/joggers (Monnie 20 Nov) */
     /* [image px x, image px y] of each skater's feet (lean pivot) and each flag's pole attachment (wave pivot), on the 520x487 / 1130x1140 / 520x510 / 520x457 pictures */
-    var RF_LAYERS = { icerink: { nat: [520, 487], sk: [[140, 428], [372, 424]] }, 'icerink-family2': { nat: [520, 487], sk: [[148, 440], [372, 438]] }, 'icerink-family3': { nat: [520, 487], sk: [[148, 440], [372, 438]] },
+    var RF_LAYERS = { icerink: { nat: [520, 487], sk: [[140, 428], [372, 424]] }, 'icerink-family2': { nat: [520, 487], sk: [[148, 440], [372, 438]] }, 'icerink-family3': { nat: [520, 487], sk: [[148, 440], [372, 438]] }, 'icerink-family4': { nat: [520, 487], sk: [[148, 440], [372, 435]] },
         'palace-hen': { nat: [1130, 1140], fl: [[288, 88], [838, 88], [121, 292], [982, 296]] }, camp: { nat: [520, 510], fl: [[268, 44]] }, fairground: { nat: [520, 457], fl: [[412, 34]] } };
     /* ---------- map-motion-wheel (20 Nov, Monnie): the Ferris wheel turns (40s a turn, day and night) and its seven cars stay hanging upright ----------
        Cut from anim/fairground-still.webp: fairground-wheel.webp (rim, spokes, bulbs, a 328px square centred on the hub at picture px 172,188), fairground-hub.webp (the star hub, 88px square on the hub),
