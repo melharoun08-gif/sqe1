@@ -763,8 +763,8 @@
    <title>Legal System 5: Parliamentary sovereignty, separation of powers, rule of law and conventions</title>
    <guid isPermaLink="false">sqe1-legalsys/sovereignty-rule-of-law</guid>
    <pubDate>Wed, 04 Nov 2026 02:00:00 GMT</pubDate>
-   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/legalsys-05-sovereignty-rule-of-law.m4a" length="16358455" type="audio/x-m4a"/>
-   <itunes:duration>00:22:22</itunes:duration>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/legalsys-05-sovereignty-rule-of-law.m4a" length="18661915" type="audio/x-m4a"/>
+   <itunes:duration>00:25:31</itunes:duration>
    <itunes:season>6</itunes:season>
    <itunes:episode>5</itunes:episode>
    <itunes:episodeType>full</itunes:episodeType>
@@ -1277,9 +1277,108 @@
    <description>Trusts 11: Liability for breach of trust and defences. SQE1 revision episode.</description>
   </item>
   <item>
+   <title>Land Law 1: The nature of land: estates and interests</title>
+   <guid isPermaLink="false">sqe1-land/nature-of-land</guid>
+   <pubDate>Fri, 06 Nov 2026 01:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/land-01-nature-of-land.m4a" length="13046903" type="audio/x-m4a"/>
+   <itunes:duration>00:17:50</itunes:duration>
+   <itunes:season>11</itunes:season>
+   <itunes:episode>1</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Land Law 1: The nature of land: estates and interests. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Land Law 2: Formalities: deeds, contracts and s.53</title>
+   <guid isPermaLink="false">sqe1-land/formalities</guid>
+   <pubDate>Fri, 06 Nov 2026 02:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/land-02-formalities.m4a" length="18476849" type="audio/x-m4a"/>
+   <itunes:duration>00:25:15</itunes:duration>
+   <itunes:season>11</itunes:season>
+   <itunes:episode>2</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Land Law 2: Formalities: deeds, contracts and s.53. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Land Law 3: Registered title (LRA 2002)</title>
+   <guid isPermaLink="false">sqe1-land/registered-land</guid>
+   <pubDate>Fri, 06 Nov 2026 03:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/land-03-registered-land.m4a" length="23281654" type="audio/x-m4a"/>
+   <itunes:duration>00:31:50</itunes:duration>
+   <itunes:season>11</itunes:season>
+   <itunes:episode>3</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Land Law 3: Registered title (LRA 2002). SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Land Law 4: Unregistered title</title>
+   <guid isPermaLink="false">sqe1-land/unregistered-land</guid>
+   <pubDate>Fri, 06 Nov 2026 04:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/land-04-unregistered-land.m4a" length="17047280" type="audio/x-m4a"/>
+   <itunes:duration>00:23:18</itunes:duration>
+   <itunes:season>11</itunes:season>
+   <itunes:episode>4</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Land Law 4: Unregistered title. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Land Law 5: Co-ownership and trusts of land</title>
+   <guid isPermaLink="false">sqe1-land/co-ownership</guid>
+   <pubDate>Fri, 06 Nov 2026 05:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/land-05-co-ownership.m4a" length="16753941" type="audio/x-m4a"/>
+   <itunes:duration>00:22:54</itunes:duration>
+   <itunes:season>11</itunes:season>
+   <itunes:episode>5</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Land Law 5: Co-ownership and trusts of land. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Land Law 6: Easements</title>
+   <guid isPermaLink="false">sqe1-land/easements</guid>
+   <pubDate>Fri, 06 Nov 2026 06:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/land-06-easements.m4a" length="17062790" type="audio/x-m4a"/>
+   <itunes:duration>00:23:19</itunes:duration>
+   <itunes:season>11</itunes:season>
+   <itunes:episode>6</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Land Law 6: Easements. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Land Law 7: Freehold covenants</title>
+   <guid isPermaLink="false">sqe1-land/covenants</guid>
+   <pubDate>Fri, 06 Nov 2026 07:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/land-07-covenants.m4a" length="19137079" type="audio/x-m4a"/>
+   <itunes:duration>00:26:10</itunes:duration>
+   <itunes:season>11</itunes:season>
+   <itunes:episode>7</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Land Law 7: Freehold covenants. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Land Law 8: Mortgages</title>
+   <guid isPermaLink="false">sqe1-land/mortgages</guid>
+   <pubDate>Fri, 06 Nov 2026 08:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/land-08-mortgages.m4a" length="18044761" type="audio/x-m4a"/>
+   <itunes:duration>00:24:40</itunes:duration>
+   <itunes:season>11</itunes:season>
+   <itunes:episode>8</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Land Law 8: Mortgages. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Land Law 9: Leases: essential characteristics and creation</title>
+   <guid isPermaLink="false">sqe1-land/leases-nature</guid>
+   <pubDate>Fri, 06 Nov 2026 09:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/land-09-leases-nature.m4a" length="19247097" type="audio/x-m4a"/>
+   <itunes:duration>00:26:19</itunes:duration>
+   <itunes:season>11</itunes:season>
+   <itunes:episode>9</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Land Law 9: Leases: essential characteristics and creation. SQE1 revision episode.</description>
+  </item>
+  <item>
    <title>Property Practice 2: Investigating and reporting on title</title>
    <guid isPermaLink="false">sqe1-property/title</guid>
-   <pubDate>Fri, 06 Nov 2026 01:00:00 GMT</pubDate>
+   <pubDate>Fri, 06 Nov 2026 10:00:00 GMT</pubDate>
    <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/property-02-title.m4a" length="11531531" type="audio/x-m4a"/>
    <itunes:duration>00:15:45</itunes:duration>
    <itunes:season>12</itunes:season>
@@ -1290,7 +1389,7 @@
   <item>
    <title>Property Practice 3: Pre-contract searches and enquiries</title>
    <guid isPermaLink="false">sqe1-property/searches</guid>
-   <pubDate>Fri, 06 Nov 2026 02:00:00 GMT</pubDate>
+   <pubDate>Fri, 06 Nov 2026 11:00:00 GMT</pubDate>
    <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/property-03-searches.m4a" length="23865953" type="audio/x-m4a"/>
    <itunes:duration>00:32:38</itunes:duration>
    <itunes:season>12</itunes:season>
@@ -1301,7 +1400,7 @@
   <item>
    <title>Property Practice 5: Drafting the contract: standard conditions</title>
    <guid isPermaLink="false">sqe1-property/contract</guid>
-   <pubDate>Fri, 06 Nov 2026 03:00:00 GMT</pubDate>
+   <pubDate>Fri, 06 Nov 2026 12:00:00 GMT</pubDate>
    <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/property-05-contract.m4a" length="15162728" type="audio/x-m4a"/>
    <itunes:duration>00:20:43</itunes:duration>
    <itunes:season>12</itunes:season>
@@ -1312,7 +1411,7 @@
   <item>
    <title>Property Practice 6: Exchange of contracts</title>
    <guid isPermaLink="false">sqe1-property/exchange</guid>
-   <pubDate>Fri, 06 Nov 2026 04:00:00 GMT</pubDate>
+   <pubDate>Fri, 06 Nov 2026 13:00:00 GMT</pubDate>
    <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/property-06-exchange.m4a" length="15869767" type="audio/x-m4a"/>
    <itunes:duration>00:21:41</itunes:duration>
    <itunes:season>12</itunes:season>
@@ -1323,7 +1422,7 @@
   <item>
    <title>Property Practice 7: Pre-completion steps</title>
    <guid isPermaLink="false">sqe1-property/pre-completion</guid>
-   <pubDate>Fri, 06 Nov 2026 05:00:00 GMT</pubDate>
+   <pubDate>Fri, 06 Nov 2026 14:00:00 GMT</pubDate>
    <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/property-07-pre-completion.m4a" length="18528974" type="audio/x-m4a"/>
    <itunes:duration>00:25:20</itunes:duration>
    <itunes:season>12</itunes:season>
@@ -1334,7 +1433,7 @@
   <item>
    <title>Property Practice 8: Completion and post-completion</title>
    <guid isPermaLink="false">sqe1-property/completion</guid>
-   <pubDate>Fri, 06 Nov 2026 06:00:00 GMT</pubDate>
+   <pubDate>Fri, 06 Nov 2026 15:00:00 GMT</pubDate>
    <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/property-08-completion.m4a" length="14998966" type="audio/x-m4a"/>
    <itunes:duration>00:20:30</itunes:duration>
    <itunes:season>12</itunes:season>
@@ -1345,7 +1444,7 @@
   <item>
    <title>Property Practice 9: Delayed completion and remedies</title>
    <guid isPermaLink="false">sqe1-property/delayed-completion</guid>
-   <pubDate>Fri, 06 Nov 2026 07:00:00 GMT</pubDate>
+   <pubDate>Fri, 06 Nov 2026 16:00:00 GMT</pubDate>
    <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/property-09-delayed-completion.m4a" length="15662694" type="audio/x-m4a"/>
    <itunes:duration>00:21:24</itunes:duration>
    <itunes:season>12</itunes:season>
@@ -1356,7 +1455,7 @@
   <item>
    <title>Property Practice 10: Commercial leases: key clauses and the Code</title>
    <guid isPermaLink="false">sqe1-property/lease-contents</guid>
-   <pubDate>Fri, 06 Nov 2026 08:00:00 GMT</pubDate>
+   <pubDate>Fri, 06 Nov 2026 17:00:00 GMT</pubDate>
    <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/property-10-lease-contents.m4a" length="17757722" type="audio/x-m4a"/>
    <itunes:duration>00:24:16</itunes:duration>
    <itunes:season>12</itunes:season>
@@ -1367,7 +1466,7 @@
   <item>
    <title>Property Practice 11: Grant, assignment and underletting of leases</title>
    <guid isPermaLink="false">sqe1-property/lease-dealings</guid>
-   <pubDate>Fri, 06 Nov 2026 09:00:00 GMT</pubDate>
+   <pubDate>Fri, 06 Nov 2026 18:00:00 GMT</pubDate>
    <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/property-11-lease-dealings.m4a" length="18244459" type="audio/x-m4a"/>
    <itunes:duration>00:24:56</itunes:duration>
    <itunes:season>12</itunes:season>
@@ -1378,7 +1477,7 @@
   <item>
    <title>Property Practice 12: Remedies for breach and ending a commercial lease</title>
    <guid isPermaLink="false">sqe1-property/lease-remedies</guid>
-   <pubDate>Fri, 06 Nov 2026 10:00:00 GMT</pubDate>
+   <pubDate>Fri, 06 Nov 2026 19:00:00 GMT</pubDate>
    <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/property-12-lease-remedies.m4a" length="20304009" type="audio/x-m4a"/>
    <itunes:duration>00:27:45</itunes:duration>
    <itunes:season>12</itunes:season>
