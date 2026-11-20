@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120050941";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120051143";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -101280,7 +101280,7 @@ window.SQE_JOURNEY = function (A) {
                 s += "<rect x=\"".concat(bx, "\" y=\"").concat(by, "\" width=\"").concat(Math.max(F.bar, bw * frac), "\" height=\"").concat(F.bar, "\" rx=\"").concat(F.bar / 2, "\" fill=\"").concat(st === 'done' ? '#3BB273' : '#FF7F11', "\" stroke=\"#111\" stroke-width=\"2.5\"/>");
         }
         if (L.cw && L.moved && L.moved(i))
-            s += "<circle class=\"jbadge\" cx=\"".concat(cx - w / 2 - 3, "\" cy=\"").concat(top - 3, "\" r=\"13\" fill=\"#fff\" stroke=\"#111\" stroke-width=\"3\"/><text class=\"jpl\" x=\"").concat(cx - w / 2 - 3, "\" y=\"").concat(top + 2.5, "\" font-size=\"15\">").concat(i, "</text>"); /* 04:59 Monnie rule: off-path numbers are small, sit ON the corner, never over any words */ /* QA 20 Nov: boxes moved under set-back drawings carry their stop number */
+            s += "<circle class=\"jbadge\" cx=\"".concat(cx - w / 2 - 9, "\" cy=\"").concat(top - 9, "\" r=\"12\" fill=\"#fff\" stroke=\"#111\" stroke-width=\"3\"/><text class=\"jpl\" x=\"").concat(cx - w / 2 - 9, "\" y=\"").concat(top - 4, "\" font-size=\"14\">").concat(i, "</text>"); /* 04:59 Monnie rule: off-path numbers are small, sit ON the corner, never over any words */ /* QA 20 Nov: boxes moved under set-back drawings carry their stop number */
         if (st === 'done')
             s += tick(cx + w / 2 - 4, top + 2, 14);
         if (st === 'today') {
