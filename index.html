@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120101300";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120101646";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -3729,10 +3729,14 @@ a.tlink::after{content:none}
 .head .kw b{font-size:23px!important}
 .head .kw .kwd{font-size:19px!important;line-height:1.25!important}
 /* Monnie's test-mode badge (20 Nov 09:18) */
-.monbadge{position:fixed;right:12px;bottom:12px;z-index:99999;display:flex;align-items:center;gap:10px;flex-wrap:wrap;max-width:340px;background:#7B1FA2;color:#fff;border:3px solid #222;border-radius:14px;padding:8px 12px;box-shadow:0 3px 0 #222;font-size:14px;line-height:1.25}
-.monbadge b{font-size:16px;width:100%}
-.monbadge span{flex:1 1 160px}
-.monbadge button{background:#fff;color:#222;border:2px solid #222;border-radius:999px;font-weight:700;padding:4px 12px;cursor:pointer}
+.monbadge{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:40;display:flex;align-items:center;font-size:14px;line-height:1.25}
+/* 20 Nov 10:15 (Monnie): collapsed to a small side tab so it never covers game or pop-up buttons; sits under overlays (z 40) */
+.monbadge .montab{writing-mode:vertical-rl;transform:rotate(180deg);background:#7B1FA2;color:#fff;border:2px solid #222;border-right:0;border-radius:10px 0 0 10px;padding:10px 5px;font:inherit;font-weight:700;font-size:12px;cursor:pointer;opacity:.85}
+.monbadge .montab:hover{opacity:1}
+.monbadge .monmore{display:none;flex-direction:column;gap:6px;max-width:220px;margin-left:6px;background:#7B1FA2;color:#fff;border:2px solid #222;border-radius:12px;padding:8px 10px;box-shadow:0 3px 0 #222}
+.monbadge.open .monmore{display:flex}
+.monbadge .monmore b{font-size:15px}
+.monbadge .monoff{align-self:flex-start;background:#fff;color:#222;border:2px solid #222;border-radius:999px;font-weight:700;padding:4px 12px;cursor:pointer}
 
 /* QA 20 Nov: TEMP M/N/B test buttons only on Monnie's devices (visit once with ?monnie=1), so Layla can't free Britney with B */
 html:not(.monnie) .head .nbmbtn{display:none!important}
@@ -133712,8 +133716,9 @@ try { if (/[?&#]monnie=1/.test(location.href)) localStorage.setItem("sqe_monnie"
   window.addEventListener("hashchange", function(){ setTimeout(sync, 0); }); setTimeout(sync, 0);
 })();
 (function(){ try { if (!document.documentElement.classList.contains("monnie")) return; var b = document.createElement("div"); b.className = "monbadge"; b.setAttribute("role", "status");
-  b.innerHTML = '<b>Monnie\'s test mode</b><span>Only on this browser. Layla never sees this.</span><button type="button">Turn off</button>';
-  b.querySelector("button").addEventListener("click", function(){ try { localStorage.removeItem("sqe_monnie"); } catch(e){} location.href = location.href.replace(/([?&])(monnie|try)=[^&#]*&?/g, "$1").replace(/[?&](#|$)/, "$1"); setTimeout(function(){ location.reload(); }, 50); });
+  b.innerHTML = '<button type="button" class="montab" aria-expanded="false">Test mode</button><div class="monmore"><b>Monnie\'s test mode</b><span>Only on this browser. Layla never sees this.</span><button type="button" class="monoff">Turn off</button></div>';
+  b.querySelector(".montab").addEventListener("click", function(){ var o = b.classList.toggle("open"); this.setAttribute("aria-expanded", o ? "true" : "false"); });
+  b.querySelector(".monoff").addEventListener("click", function(){ try { localStorage.removeItem("sqe_monnie"); } catch(e){} location.href = location.href.replace(/([?&])(monnie|try)=[^&#]*&?/g, "$1").replace(/[?&](#|$)/, "$1"); setTimeout(function(){ location.reload(); }, 50); });
   (document.body || document.documentElement).appendChild(b); } catch(e){} })();
 /* Stop themes: a topic's pages (notes cards, cartoon, framework, CBA, Quick fire, Bert) take the look of its subject's stop on the Journey map:
    a header strip with the stop's drawing, the stop's colours and little motifs. Built by journey.js (THEMES there); switched on subject by subject here. */
