@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120135522";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120140037";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -4053,6 +4053,28 @@ a.pkback:hover .pksign{transform:rotate(-3deg) scale(1.05)}
 .head.nb.nb.nb .nbl .mbag .mbn b{font-size:27px}
 .jcscene .jclay{left:1.5%;top:21.2cqw;bottom:auto;height:33.5cqw;width:auto}
 @media (max-width:560px){.jcscene .jclay{top:21.2cqw;height:33.5cqw;width:auto}}
+
+/* 13:58 podcasts: subjects fold open/shut */
+details.podsubj>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px}
+details.podsubj>summary::-webkit-details-marker{display:none}
+details.podsubj>summary h3{margin:0}
+details.podsubj[open]>summary{margin-bottom:10px}
+.podchev{flex:none;width:12px;height:12px;border-right:3px solid #10294A;border-bottom:3px solid #10294A;transform:rotate(45deg);margin:-6px 6px 0 0;transition:transform .2s}
+details.podsubj[open] .podchev{transform:rotate(-135deg);margin-top:6px}
+.jcscene .jcsay{left:44%;width:23.5%;font-size:clamp(12px,1.8cqw,21px)}
+@media (max-width:560px){.jcscene{display:flex;flex-direction:column}.jcscene .jcsay{order:1;width:auto;left:auto}.jcboard{order:2}}
+/* 20 Nov 14:10 answer appears under the question on the same card (no flip) */
+.flash.revealed .inner{transform:none!important}
+.flash.revealed .face:not(.back){visibility:hidden}
+.flash.revealed .face.back{transform:none!important;visibility:visible}
+.flash.revealed .face.back .notes{animation:ansIn .35s ease}
+@keyframes ansIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.flash .face.back .cardq{font-size:19px!important;font-weight:800!important;color:#1D2433!important;line-height:1.3}
+.land-real:not(.land-tkt) .flash .face.back .cardq,.land-real:not(.land-tkt) .flash .face.back.blen-s .cardq{font-size:19px!important;color:#1D2433!important;font-weight:800!important}
+.land-real:not(.land-tkt) .flash .face.back.blen-s .cardq{font-size:21px!important}
+@media (max-width:640px){.flash .face.back .cardq,.land-real:not(.land-tkt) .flash .face.back .cardq,.land-real:not(.land-tkt) .flash .face.back.blen-s .cardq{font-size:16.5px!important}}
+@media (prefers-reduced-motion:reduce){.flash.revealed .face.back .notes{animation:none}}
+.land-real.land-zoo .flash .face > .ftop{top:24%!important}.land-real.land-zoo .flash .face{--pt:39%}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -110748,7 +110770,14 @@ window.SQE_JOURNEY = function (A) {
     }
     /* tapping a stop (picture, number, plate or today button) goes straight to that stop's own page: its scene if it has one, else the subject page (19 Nov, Monnie: no pop-up) */
     var STOP_PAGES = { blp: "#/scene/blp/business-structures" };
-    function stopHref(id) { return STOP_PAGES[id] || ("#/subject/" + id); }
+    function stopHref(id) { try {
+        if (typeof window.SQE_STOP_HREF === "function") {
+            var h = window.SQE_STOP_HREF(id);
+            if (h)
+                return h;
+        }
+    }
+    catch (e) { } return STOP_PAGES[id] || ("#/subject/" + id); } /* 13:59 rule: the rooms thread can point a stop elsewhere (e.g. its syllabus view while a room is not QA-passed) via window.SQE_STOP_HREF(id) */
     /* the journey map sits at the top of the Cluckington Palace tab; sid = the stop whose panel is open (#/map/<sid>) */
     function mapBlock(sid) {
         var r = ['map', sid];
@@ -110872,7 +110901,7 @@ window.SQE_JOURNEY = function (A) {
         if (!i)
             return null;
         var T = THEMES[i - 1], land = LANDS[i - 1];
-        var style = "--sta:".concat(T.a, ";--stad:").concat(T.ad, ";--stp:").concat(T.p, ";--stpd:").concat(T.pd, ";--stl:").concat(T.l, ";--stld:").concat(T.ld, ";--stbar:linear-gradient(90deg,").concat(T.c.slice(0, 3).join(','), ");--stbunt:").concat((window.SQE_STOPDECO && window.SQE_STOPDECO(sid, T.c)) || bunting(T.c), ";--stm1:'").concat(T.m[0], "';--stm2:'").concat(T.m[1], "'");
+        var style = "--sta:".concat(T.a, ";--stad:").concat(T.ad, ";--stp:").concat(T.p, ";--stpd:").concat(T.pd, ";--stl:").concat(T.l, ";--stld:").concat(T.ld, ";--stbar:linear-gradient(90deg,").concat(T.c.slice(0, 3).join(','), ");--stbunt:").concat(bunting(T.c), ";--stm1:'").concat(T.m[0], "';--stm2:'").concat(T.m[1], "'");
         var strip = "<a class=\"ststrip\" href=\"#/map/".concat(sid, "\" aria-label=\"Stop ").concat(i, ": ").concat(esc(land), ". See it on the map\"><span class=\"stpic\" aria-hidden=\"true\"><svg viewBox=\"-100 -150 200 156\"><g ").concat(INK, ">").concat(DRAW[i - 1](), "</g></svg></span><b class=\"sttx\">Stop ").concat(i, ": ").concat(esc(land), " \u00B7 ").concat(esc(label), "</b><span class='stmap stsign' title='Back to Peckham'><svg viewBox='-158 -82 316 240' role='img' aria-label='Welcome to Peckham, twinned with Hamsterdam. Back to Peckham'>").concat(welcome(0, 0, 1), "</svg></span></a>");
         return { i: i, land: land, style: style, strip: strip };
     }
@@ -128299,7 +128328,7 @@ function v3inside(tid, hs, alt){ var v = ROOMV3[tid], L = v.labels || {};
 
 /* FAIRGROUND-GEN START: Dispute Resolution = the Fairground (stop 2). Generated by proposals/rooms/stops/fairground/build/wire-fairground.py from that folder (room md, room-NN.json or measured/room-NN.json, acts-NN.json). Re-run it rather than hand-editing. */
 var STOPDATA = window.SQE_STOPDATA = window.SQE_STOPDATA || {};
-var FAIR_ON = (function(){ try { var m = /[?&]fair=([01])\b/.exec(location.search); if (m){ try { localStorage.setItem('sqe_fair', m[1]); } catch(e1){} return m[1] === '1'; } var v = localStorage.getItem('sqe_fair'); return v == null ? true : v === '1'; } catch(e){ return true; } })(); /* preview: ?fair=1 turns the Fairground on (remembered), ?fair=0 off */
+var FAIR_ON = (function(){ try { var m = /[?&]fair=([01])\b/.exec(location.search); if (m){ try { localStorage.setItem('sqe_fair', m[1]); } catch(e1){} return m[1] === '1'; } var v = localStorage.getItem('sqe_fair'); if (v != null) return v === '1'; return !!localStorage.getItem('sqe_monnie') || /[?&#]monnie=1/.test(location.href); } catch(e){ return false; } })(); /* 20 Nov 13:58: hidden from Layla until QA passes; Monnie (?monnie=1) sees it */ /* preview: ?fair=1 turns the Fairground on (remembered), ?fair=0 off */
 if (FAIR_ON) try { var fgs = document.createElement('style'); fgs.id = 'scn-fair-css'; fgs.textContent = ".hub-art[aria-label^=\"The fairground's entrance plaza\"] .hub-hs:nth-of-type(even) .scn-pin{top:22%}@media (max-width:1300px){.hub-art[aria-label^=\"The fairground's entrance plaza\"] .hub-hs .scn-pin{width:20px;height:20px;font-size:10px;line-height:15px;border-width:2px}.hub-art[aria-label^=\"The fairground's entrance plaza\"] .hub-hs:nth-of-type(even) .scn-pin{top:-15px!important}}"; document.head.appendChild(fgs); } catch(e){} /* hub: the 16 gates are narrow, so every other number pin sits higher and the pins are smaller on narrow screens */
 if (FAIR_ON) try { (function(){ var css = document.createElement('style'); css.textContent = '.scn-art .scn-fgdeclut{opacity:0!important;transition:none!important}'; document.head.appendChild(css); function run(){ var a = document.querySelector('.scn-art'), i, j, h = a ? a.querySelectorAll('.scn-fgdeclut') : []; for (i = 0; i < h.length; i++) h[i].classList.remove('scn-fgdeclut'); if (!a || !/^#\/scene\/dr\//.test(location.hash)) return; var t = a.querySelectorAll('.scn-nexttag'), k = a.querySelectorAll('.scn-hook'); for (i = 0; i < t.length; i++){ var T = t[i].getBoundingClientRect(); if (!T.width) continue; for (j = 0; j < k.length; j++){ var R = k[j].getBoundingClientRect(); if (T.left - 8 < R.right && R.left < T.right + 8 && T.top - 8 < R.bottom && R.top < T.bottom + 8) k[j].classList.add('scn-fgdeclut'); } } } setInterval(run, 300); ['mouseover', 'mouseout', 'focusin'].forEach(function(ev){ document.addEventListener(ev, function(){ setTimeout(run, 90); }, true); }); window.addEventListener('hashchange', function(){ setTimeout(run, 60); }); window.addEventListener('resize', run); })(); } catch(e){}
 /* room 01: The Bumper Cars, dr-options (measured) */
@@ -128725,7 +128754,8 @@ ROOMDATA["dr-options"] = {
 "how": "Each round names one exit: litigation, arbitration or mediation. Cards float across the box, each with a client's wish. Tap a card ONLY if that route suits the wish; let the rest float past. 3 rounds of 6 cards.",
 "rounds": [
 {
-"prompt": "Gavel exit: LITIGATION",
+"prompt": "Round 1: who should take the LITIGATION exit (going to court)? Tap those wishes into the bucket.",
+"tag": "LITIGATION",
 "items": [
 {
 "t": "Needs an urgent injunction",
@@ -128760,7 +128790,8 @@ ROOMDATA["dr-options"] = {
 ]
 },
 {
-"prompt": "Whistle exit: ARBITRATION",
+"prompt": "Round 2: who should take the ARBITRATION exit (a private judge the parties choose)? Tap those wishes into the bucket.",
+"tag": "ARBITRATION",
 "items": [
 {
 "t": "Wants a specialist decision-maker",
@@ -128795,7 +128826,8 @@ ROOMDATA["dr-options"] = {
 ]
 },
 {
-"prompt": "Handshake exit: MEDIATION",
+"prompt": "Round 3: who should take the MEDIATION exit (a helper, and the parties decide)? Tap those wishes into the bucket.",
+"tag": "MEDIATION",
 "items": [
 {
 "t": "Cheap and quick, both willing to compromise",
@@ -148032,6 +148064,8 @@ BURST["dr-enforcement"] = [
 ];
 STOPDATA["dr"] = {on: function(){ return FAIR_ON; }, hub: {"title": "The Fairground", "place": "the fairground", "img": "img/scene/fairground-hub.webp", "ratio": 1.7916666666666667, "bg": "#E3F4FF", "alt": "The fairground's entrance plaza: a striped arch, a ticket kiosk, the big wheel and helter skelter, and sixteen little striped ride gates along the fence", "doors": [[50.0, 55.0, 3.6, 13.5], [53.7, 55.0, 3.9, 12.5], [57.8, 54.6, 4.0, 11.6], [61.9, 54.6, 3.4, 11.0], [65.4, 54.5, 3.3, 10.5], [68.8, 54.4, 3.2, 10.0], [72.1, 54.3, 2.9, 9.5], [75.1, 54.2, 2.9, 9.3], [78.1, 54.2, 2.8, 9.0], [81.0, 54.1, 2.7, 9.0], [83.8, 54.1, 2.6, 9.0], [86.4, 54.1, 2.5, 9.0], [89.0, 54.1, 2.4, 9.0], [91.5, 54.1, 2.3, 9.0], [94.0, 54.1, 2.3, 9.0], [96.4, 54.1, 2.2, 9.0]], "signs": [{"x": 8.6, "y": 46.0, "w": 14.2, "h": 15.0, "t": "The Fairground"}], "key": "dr/fairground"}, rooms: ["dr-options", "dr-limitation", "dr-pre-action", "dr-parties-law", "dr-where-to-start", "dr-issue-service", "dr-responding", "dr-statements-of-case", "dr-interim", "dr-case-management", "dr-evidence", "dr-disclosure", "dr-trial", "dr-costs", "dr-appeals", "dr-enforcement"], words: [["Back to the hall", "Back to the plaza"], ["back to the hall", "back to the plaza"], ["Leave the shop", "Leave the fairground"], ["leave the shop", "leave the fairground"], ["Stay in the shop", "Stay at the fair"], ["Back into the shop", "Back to the ride"], ["out of the shop", "out of the fairground"], ["Out of the shop", "Out of the fairground"], ["the shop", "the fairground"], ["🍬 Done! Eat it", "Done! Stamp it"], ["treats opened", "spots opened"], ["Yum! ", "Nice! "], [" eaten. ", " done. "]]};
 /* FAIRGROUND-GEN END */
+/* Fairground boards (Monnie 20 Nov 13:51: every drawn board shows the room's key points): lines from each room's own notes deck */
+Object.assign(BOARD_HOOKS, {"dr-options": ["Litigation: judge decides", "Arbitration: binding award", "Mediation: parties decide"], "dr-limitation": ["Contract: 6 years", "Deed: 12 years", "Tort: 6 years", "Personal injury: 3 years", "Longstop: 15 years", "Child: starts at 18"], "dr-pre-action": ["1. Letter before claim", "2. Response (14 days)", "3. Key documents", "4. Consider ADR", "5. Review positions", "Ignore it? Costs sanction"], "dr-parties-law": ["1. Good claim?", "2. Right defendant?", "3. Worth suing?", "4. Which courts?", "5. Which law?", "Courts and law: separate"], "dr-where-to-start": ["Claim of £100,000 or less:", "start in the County Court", "Injury under £50,000:", "start in the County Court", "Ignore interest and costs", "Court is not the track"], "dr-issue-service": ["Serve within 4 months", "Abroad: 6 months", "Deemed served on the", "second business day", "Email: agreed in writing"], "dr-responding": ["14 days to respond", "Acknowledged? 28 to defend", "Agree 28 more: 56 maximum", "Silence: default judgment", "Must set aside if wrong", "May set aside if strong"], "dr-statements-of-case": ["Plead facts, not evidence", "Defence: admit, deny or", "not admitted", "Silence: taken as admitted", "A reply is optional", "False statement: contempt"], "dr-interim": ["Summary judgment:", "no real prospect", "Interim payment:", "a reasonable proportion", "Injunction:", "American Cyanamid test"], "dr-case-management": ["The court runs the case", "Small claims: to £10,000", "Fast track: to £25,000", "Intermediate: to £100,000", "Multi-track: over £100,000", "Relief: Denton, 3 stages"], "dr-evidence": ["Balance of probabilities", "Hearsay is admissible", "Give a hearsay notice", "Experts need permission", "Expert duty: to the court", "Questions: once, 28 days"], "dr-disclosure": ["Disclose: it exists", "Inspect: see a copy", "Harmful documents too", "Privileged: list, not show", "Without prejudice:", "hidden from the judge"], "dr-trial": ["1. Opening speech", "2. Claimant's evidence", "3. Defendant's evidence", "4. Closing speeches", "5. Judgment", "Own witness: no leading"], "dr-costs": ["Loser pays the winner", "Part 36: 21 days or more", "Claimant beats own offer:", "interest, indemnity costs", "Security: defendant asks", "Standard basis is normal"], "dr-appeals": ["Ask the trial judge first", "Real prospect of success", "File within 21 days", "One level of judge up", "Review, not a rehearing", "No automatic stay"], "dr-enforcement": ["Bank: third party debt order", "Land: charging order", "Employed: attachment", "Goods: taking control"]});
 
 /* build the room chain: SCENES["blp/<topicid>"] for rooms 2-16, in content/blp.js topic order */
 var ROOM_KEYS = [], ROOM_IDX = {};
@@ -148777,8 +148811,8 @@ window.SQE_SCENE = function(A){
     for (var j = 0; j < Math.min(n, 9); j++){ var jx = P.tw ? (j * 37) % 9 - 4 : (j * 53) % 23 - 11, rot = P.tw ? (j * 29) % 7 - 3 : (j * 41) % 31 - 15;
       h += '<span class="gm-pc' + (fresh && j === n - 1 ? ' new' : '') + '" style="bottom:' + (P.b + j * P.s) + '%;left:' + ((P.tw ? 30 : 28) + jx) + '%;width:' + (P.tw ? 40 : 44) + '%;background:' + C[j % C.length] + ';transform:rotate(' + rot + 'deg)"></span>'; }
     return h; }
-  function potHTML(g, G, CR){ var t = G.pot = potType(g, CR), P = POTS[t], m = /\b[A-Z]{2,}\d+[A-Z]?\b/.exec(g.title || ''), sv = '<svg class="gm-pl ', vb = '" viewBox="0 0 200 150" aria-hidden="true" focusable="false">';
-    var lab = m ? '<text x="100" y="' + P.ly + '" text-anchor="middle" font-family="Caveat Brush, Gochi Hand, cursive" font-size="' + (P.lz || 28) + '" fill="#fff" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round" paint-order="stroke">' + esc(m[0]) + '</text>' : '';
+  function potHTML(g, G, CR){ var t = G.pot = potType(g, CR), P = POTS[t], m = CR && CR.tag ? [String(CR.tag)] : /\b[A-Z]{2,}\d+[A-Z]?\b/.exec(g.title || ''), sv = '<svg class="gm-pl ', vb = '" viewBox="0 0 200 150" aria-hidden="true" focusable="false">';
+    var lab = m ? '<text x="100" y="' + P.ly + '" text-anchor="middle" font-family="Caveat Brush, Gochi Hand, cursive" font-size="' + (m && m[0].length > 8 ? 21 : (P.lz || 28)) + '" fill="#fff" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round" paint-order="stroke">' + esc(m[0]) + '</text>' : '';
     return sv + 'bk' + vb + P.back + '</svg><div class="gm-pl gm-pile" aria-hidden="true">' + potPile(t, G.inPot || 0) + '</div>' + sv + 'ft' + vb + P.front + lab + '</svg><span class="gm-pop" aria-hidden="true"></span>'; }
   function potFx(lane, cls, txt){ if (!lane) return; lane.classList.remove('bump', 'nope'); void lane.offsetWidth; lane.classList.add(cls); setTimeout(function(){ lane.classList.remove(cls); }, 500);
     var p = lane.querySelector('.gm-pop'); if (p){ p.className = 'gm-pop'; void p.offsetWidth; p.textContent = SK(txt); p.className = 'gm-pop go ' + (cls === 'bump' ? 'ok' : 'no'); } }
@@ -148930,7 +148964,7 @@ window.SQE_SCENE = function(A){
     return S._w = [
       ['Sort onto the trays', S.sort], ['Drag each card onto the right tray, or tap a tray.', 'Drag each card onto the right ' + S.bin + ', or tap a ' + S.bin + '.'],
       ['The jar bursts and sweets fly out.', 'The ' + pn + ' bursts open and ' + its + ' fly out.'],
-      ['into the container', 'into the ' + pn], ['Tap a true sweet before', 'Tap a true ' + it + ' before'],
+      ['into the container', 'into the ' + pn], ['Cards float across the box, each', 'Cards float across, each'], ['Tap a card ONLY if', 'Tap a card into the ' + pn + ' ONLY if'], ['Tap a true sweet before', 'Tap a true ' + it + ' before'],
       ['Tap a sweet to catch it. True ones go in the jar.', 'Tap a ' + it + ' to catch it. True ones go in the ' + pn + '.'],
       ['True! Into the jar it goes.', 'True! Into the ' + pn + ' it goes.'], ['True! In the jar', 'True! In the ' + pn],
       ['Perfect jar!', 'Perfect catching!'], ['Sweet work!', 'Great work!'], [' true sweets in the jar', ' true ' + its + ' in the ' + pn],
@@ -149973,8 +150007,10 @@ window.SQE_TOWN = function(A){
     if (g) h += gamHTML();
     if (TRY && isMonnie()) h += tryOnHTML(TRY);
     if (LASTBUY && !g && A.cbaItem(LASTBUY)) h += '<div class="bcard town-walk"><b>You bought the ' + esc(A.cbaItem(LASTBUY).n) + '!</b> <button type="button" class="btn primary" data-town="walkhome">Walk it home to The Mount ›</button></div>';
-    h += hbStage(); hbScroll(); HB_FROM = HB_LX;
-    return h + '</div>';
+    /* walk-in shop: Monnie-only until QA passes it (coordinator rule 13:58); Layla keeps the shelf of cards meanwhile */
+    if (isMonnie()){ h += hbStage(); hbScroll(); HB_FROM = HB_LX; return h + '</div>'; }
+    h += '<div class="cbashop">'; A.CBA_SHOP().forEach(function(it){ h += cardHTML(it); });
+    return h + '</div></div>';
   }
   function cardHTML(it){
     var c = A.cbaS(), g = gam(), nQ = sraAll().length;
@@ -150116,7 +150152,7 @@ var PEOPLE = [
   ['mama',   26.5, 12, 1.0,  'img/souvenir/mama.webp',   'Mama'],
   ['yasmin', 64,   12, 0.97, 'img/souvenir/yasmin.webp', 'Yasmin'],
   ['mo',     72.5, 10, 1.12, 'img/souvenir/mo.webp',     'Mo'],
-  ['monnie', 81.5,  8, 1.0,  'img/souvenir/monnie.webp', 'Monnie']
+  ['monnie', 81.2, 9.5, 1.1, 'img/souvenir/monnie.webp', 'Monnie']   /* Monnie is taller than Yasmin (Monnie 13:56) */
 ];
 /* hens and Jiminey: [id, x, b, height %, name] */
 var HENS = [
@@ -150706,7 +150742,7 @@ window.SQE_MOUNT = function(A){
     try { frame(); } catch(e){ if (!tick.err){ tick.err = 1; try { console.error('Mount garden:', e); } catch(e2){} } }
   }
   /* Jiminey hops about his corner of the lawn: a few hops, a sniff, a few more (Monnie 13:27) */
-  var RAB = [[89, 26, 2600], [92.5, 22, 1800], [96, 24, 3200], [92.5, 26.5, 2200]], HOP_MS = 520, HOP_D = 1.4, RSEG = [], RT = 0;
+  var RAB = [[90, 26, 2600], [93, 22, 1800], [96.2, 24, 3200], [93, 26.5, 2200]], HOP_MS = 520, HOP_D = 1.4, RSEG = [], RT = 0;
   (function(){ for (var i = 0; i < RAB.length; i++){ var a = RAB[i], b = RAB[(i + 1) % RAB.length], hops = Math.max(1, Math.round(Math.sqrt(Math.pow(b[0] - a[0], 2) + Math.pow((b[1] - a[1]) * 0.56, 2)) / HOP_D)); RSEG.push({a: a, b: b, t: RT, hops: hops}); RT += hops * HOP_MS + b[2]; } })();
   function rabbitAt(n){
     var t = n % RT;
@@ -153972,8 +154008,8 @@ VIEW.cards = function(r){
     var d = FC.deck[FC.i];
     if (FC.atI !== FC.i || FC.atD !== d.id){ FC.atI = FC.i; FC.atD = d.id; FC.at = Date.now(); }
     return '<div class="card skin-sweet skin-stop land-' + cardLand(d.s.id) + (CARDX[cardLand(d.s.id)] ? ' land-real' + (CARDX[cardLand(d.s.id)].st ? ' land-tkt' : '') + (CARDX[cardLand(d.s.id)].sr ? ' land-stubr' : '') : '') + '"' + cardStyle(d.s.id) + '>' + cardHead(d.s.id, onlyT && s && TBYKEY[s.id + "/" + onlyT] ? (TBYKEY[s.id + "/" + onlyT].i + 1) + ". " + esc(TBYKEY[s.id + "/" + onlyT].t.title) : "") + '<div class="qmeta"><span>' + esc(s ? s.title : "All subjects") + (onlyT && s && TBYKEY[s.id + "/" + onlyT] ? " · " + (TBYKEY[s.id + "/" + onlyT].i + 1) + ". " + esc(TBYKEY[s.id + "/" + onlyT].t.title) : "") + (learnOnly ? " · not yet 🟢" : "") + (extraOnly ? " · ⭐ extra cards" : "") + '</span><span>Card ' + (FC.i + 1) + ' of ' + FC.deck.length + '</span></div>' +
-      '<div class="flash' + (FC.flip ? " flipped" : "") + '" data-act="fcflip" role="button" tabindex="0" aria-label="Flip card">' + cardDeco(d.s.id, FC.i + 1) + '<div class="inner">' +
-      '<div class="face">' + cardTop(d.s.id, FC.i + 1) + '<small>' + esc(d.s.title) + '</small>' + '<span class="swico" aria-hidden="true">' + sweetIcon(d.s.id === "blp" ? d.c[0] : "", true) + '</span>' + inl(d.c[0]) + '<div class="kbd" style="margin-top:14px">Tap to flip</div></div>' +
+      '<div class="flash' + (FC.flip ? " revealed" : "") + '" data-act="fcflip" role="button" tabindex="0" aria-label="' + (FC.flip ? 'Hide answer' : 'Show answer') + '">' + cardDeco(d.s.id, FC.i + 1) + '<div class="inner">' +
+      '<div class="face">' + cardTop(d.s.id, FC.i + 1) + '<small>' + esc(d.s.title) + '</small>' + '<span class="swico" aria-hidden="true">' + sweetIcon(d.s.id === "blp" ? d.c[0] : "", true) + '</span>' + inl(d.c[0]) + '<div class="kbd" style="margin-top:14px">Tap to see the answer</div></div>' +
       '<div class="face back' + (d.c[1].length < 170 ? ' blen-s' : d.c[1].length < 290 ? ' blen-m' : '') + '">' + cardTop(d.s.id, FC.i + 1).replace(/<div class="lbc"[\s\S]*$/, "") + '<small>Answer</small><div class="cardq">' + inl(d.c[0]) + '</div><div class="notes">' + md(oneSentencePerLine(d.c[1])) + '</div></div></div></div>' +
       '<div class="btns" style="justify-content:center">' + (FC.flip ? '<span class="rate-lab">How well did you know it?</span><button class="rate" data-act="fcmark" data-v="0" aria-label="Didn\'t know it">🔴<span>Didn\'t know</span></button><button class="rate" data-act="fcmark" data-v="0.5" aria-label="Partly knew it">🟠<span>Sort of</span></button><button class="rate" data-act="fcmark" data-v="1" aria-label="Knew it">🟢<span>Knew it</span></button>' : '<button class="btn primary" data-act="fcflip">Show answer</button>') + '</div>' +
       '<div class="btns" style="justify-content:center"><button class="btn sm" data-act="fcprev"' + (FC.i ? '' : ' disabled') + '>‹ Previous card</button><button class="btn sm" data-act="fcskip">Next card ›</button></div>' + '<div class="kbd keyhint" style="text-align:center;margin-top:6px">Keys: Space = flip, then 1 🔴, 2 🟠, 3 🟢</div></div>';
@@ -155301,10 +155337,18 @@ VIEW.podcasts = function(){
     '<p class="small" style="margin:8px 0 0">' + (n ? '<b>' + heard + ' of ' + n + '</b> episodes listened · ' + (seq.length - n) + ' topics coming soon' : 'Episodes are on their way: every topic is coming soon.') + '</p></div>' + podCarCard();
   groups.forEach(function(g){
     var have = g.items.filter(function(x){ return PODS[x.key]; }).length;
-    h += '<div class="card podsubj' + (have ? '' : ' off') + '"><h3>' + esc(g.s.title) + ' <span class="small muted">' + (have ? have + ' of ' + g.items.length + ' episodes' : 'coming soon') + '</span></h3><ul class="podlist">' + g.items.map(podRow).join("") + '</ul></div>';
+    /* 13:58 (Monnie): each subject folds open and shut; tap the subject name. Remembered while she stays on the page */
+    var po = {}; try { po = JSON.parse(sessionStorage.getItem("sqe_podopen") || "{}"); } catch(e){}
+    h += '<details class="card podsubj' + (have ? '' : ' off') + '" data-s="' + esc(g.s.id) + '"' + (po[g.s.id] ? ' open' : '') + '><summary><h3>' + esc(g.s.title) + ' <span class="small muted">' + (have ? have + ' of ' + g.items.length + ' episodes' : 'coming soon') + '</span></h3><span class="podchev" aria-hidden="true"></span></summary><ul class="podlist">' + g.items.map(podRow).join("") + '</ul></details>';
   });
   return h;
 };
+document.addEventListener("toggle", function(e){
+  var d = e.target; if (!d || !d.classList || !d.classList.contains("podsubj")) return;
+  var po = {}; try { po = JSON.parse(sessionStorage.getItem("sqe_podopen") || "{}"); } catch(x){}
+  if (d.open) po[d.getAttribute("data-s")] = 1; else delete po[d.getAttribute("data-s")];
+  try { sessionStorage.setItem("sqe_podopen", JSON.stringify(po)); } catch(x){}
+}, true);
 /* "listened" after the whole episode is played (timeupdate doesn't bubble, so listen in the capture phase) */
 document.addEventListener("timeupdate", function(e){
   var a = e.target; if (!a || a.tagName !== "AUDIO" || !a.getAttribute("data-pod")) return;
