@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120161951";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120163029";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -3877,6 +3877,7 @@ a.pkback:hover .pksign{transform:rotate(-3deg) scale(1.05)}
 /* 20 Nov 09:55: back to your question after a notes jump */
 .qbackbtn{position:fixed;left:50%;transform:translateX(-50%);bottom:max(18px,env(safe-area-inset-bottom,0px));z-index:9000;background:#E65100;color:#fff;border:3px solid #10294A;border-radius:999px;padding:12px 26px;font:inherit;font-weight:800;font-size:19px;box-shadow:0 5px 0 #10294A,0 8px 22px rgba(0,0,0,.25);cursor:pointer}
 .qbackbtn:hover{background:#F57C00}
+body.qback-on{padding-bottom:110px}
 .qbackbtn:active{transform:translateX(-50%) translateY(3px);box-shadow:0 2px 0 #10294A}
 .land-real.land-amazon-forest .flash .face{--pt:42%;--pb:20%}.land-real.land-amazon-forest .flash .face > .ftop{top:27%!important}
 /* 10:00 Monnie: The Mount always in its fancy lettering, the tab too */
@@ -4252,6 +4253,25 @@ details.cardsubj > ul.cardtopics{margin-top:6px!important}
 .jcnote i{font-size:clamp(11px,1.6cqw,18px)}
 
 .jcbackin{display:inline-flex;margin:12px 0 10px 18px;background:#3DAA35!important;color:#fff!important;border-color:#2B7F25!important;font-weight:700}
+
+/* 16:30 frameworks (Monnie + QA): every point sits in a card its arrow touches. "Hide it all and test myself" leaves each card BLANK:
+   the same card shape filled solid in its colour with a clear border, and nothing drawn over it (no pattern, wrapper, circle or line) until tapped */
+.mmtest .mindmap .mmpt:not(.show) .mmcard{fill-opacity:1!important;stroke-width:2.4}
+.mmtest .mindmap .mmpt:not(.show):hover .mmcard{filter:brightness(.95)}
+.mmtest .mindmap .mmpt .mmc{display:none!important}
+.mmtest .mindmap .mmpt.show .mmtx{animation:mmReveal .3s ease-out}
+.mmtest .mindmap .mmpt:focus{outline:none}
+.mmtest .mindmap .mmpt:focus-visible .mmcard{stroke:#10294A!important;stroke-width:4}
+.mmtest .mmlist .mmpt:not(.show){list-style:none;margin-left:-20px;min-height:26px;background:var(--mb);border:2px solid var(--mc);border-radius:10px}
+.mmtest .mmlist .mmpt:not(.show) .mmtx{visibility:hidden;text-shadow:none!important}
+.mmtest .mmlist .mmpt:not(.show) .mmc{display:none!important}
+.skin-sweet.mmtest .mmlist .mmpt:not(.show){border-color:var(--sw-ink,#2A1B2E)}
+.mmtest .mmlist .mmpt:focus-visible{outline:3px solid #10294A;outline-offset:2px}
+/* step-through: ‹ Previous step beside Next step */
+.fwk-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.fwk-nav:empty{display:none}
+.fwk-nav .fwk-next{margin-top:0}
+.fwk-prev[hidden]{display:none}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -110749,15 +110769,17 @@ window.SQE_JOURNEY = function (A) {
             if (hit(pts[i - 1], pts[i]))
                 return false; return true; }, len = function (pts) { var L = 0; for (var i = 1; i < pts.length; i++)
             L += Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]); return L; };
-        var c = [[P, D], [P, [D[0], P[1]], D], [P, [P[0], D[1]], D]];
-        bl.forEach(function (b) { var lo = b[3] + 2; [b[0] - 2, b[2] + 2].forEach(function (x) { c.push([P, [x, P[1]], [x, D[1]], D]); c.push([P, [x, lo], [x, D[1]], D]); c.push([P, [x, lo], D]); }); });
+        /* 16:12 Monnie: she walks INTO the door, so the last bit is always straight up to it from just in front (never sideways past it) */
+        var A = Math.max(18, half * 1.2), E = [D[0], D[1] + A], up = P[1] > E[1] + 2, T = up ? E : D, fin = function (r) { return up ? r.concat([D]) : r; };
+        var c = [[P, T], [P, [T[0], P[1]], T], [P, [P[0], T[1]], T]];
+        bl.forEach(function (b) { var lo = b[3] + 2; [b[0] - 2, b[2] + 2].forEach(function (x) { c.push([P, [x, P[1]], [x, T[1]], T]); c.push([P, [x, lo], [x, T[1]], T]); c.push([P, [x, lo], T]); }); });
         var best = null;
         c.forEach(function (r) { if (ok(r)) {
             var L = len(r);
             if (!best || L < best.L)
                 best = { r: r, L: L };
         } });
-        return best ? best.r : [P, D];
+        return fin(best ? best.r : [P, T]);
     }
     try {
         document.addEventListener('click', function (ev) {
@@ -128627,10 +128649,10 @@ function v3inside(tid, hs, alt){ var v = ROOMV3[tid], L = v.labels || {};
 /* FAIRGROUND-GEN START: Dispute Resolution = the Fairground (stop 2). Generated by proposals/rooms/stops/fairground/build/wire-fairground.py from that folder (room md, room-NN.json or measured/room-NN.json, acts-NN.json). Re-run it rather than hand-editing. */
 var STOPDATA = window.SQE_STOPDATA = window.SQE_STOPDATA || {};
 var FAIR_ON = (function(){ try { var m = /[?&]fair=([01])\b/.exec(location.search); if (m){ try { localStorage.setItem('sqe_fair', m[1]); } catch(e1){} return m[1] === '1'; } var v = localStorage.getItem('sqe_fair'); if (v != null) return v === '1'; return !!localStorage.getItem('sqe_monnie') || /[?&#]monnie=1/.test(location.href); } catch(e){ return false; } })(); /* 20 Nov 13:58: hidden from Layla until QA passes; Monnie (?monnie=1) sees it */ /* preview: ?fair=1 turns the Fairground on (remembered), ?fair=0 off */
-if (FAIR_ON) try { var fgs = document.createElement('style'); fgs.id = 'scn-fair-css'; fgs.textContent = ".hub-art[aria-label^=\"The fairground's entrance plaza\"] .hub-hs .scn-pin{width:30px;height:30px;font-size:14px;line-height:25px;box-shadow:0 3px 0 #1b1b1b}@media (max-width:1300px){.hub-art[aria-label^=\"The fairground's entrance plaza\"] .hub-hs .scn-pin{width:26px;height:26px;font-size:12px;line-height:21px}}.gm-burst .fg-pops{position:absolute;inset:0;pointer-events:none;z-index:0;container-type:size}.gm-burst .fg-pops i{position:absolute;left:50%;bottom:16%;width:34px;height:34px;margin-left:-17px;opacity:0}.gm-burst .fg-pops svg{width:100%;height:100%;overflow:visible}.gm-burst.boom .fg-pops i{animation:fgPop 1.3s cubic-bezier(.2,.8,.3,1) var(--d) forwards}@keyframes fgPop{0%{opacity:1;transform:translate(0,0) scale(.4) rotate(0)}55%{opacity:1;transform:translate(calc(var(--x) * .8),calc(var(--y) * 2.2)) scale(1.1) rotate(var(--r))}100%{opacity:.95;transform:translate(var(--x),var(--y)) scale(1) rotate(var(--r))}}@media (prefers-reduced-motion:reduce){.gm-burst.boom .fg-pops i{animation:none;opacity:.95;transform:translate(var(--x),var(--y))}}.scn-art .scn-hook.tag.fgwrite{background:none!important;border:0!important;box-shadow:none!important;font-family:\"Gochi Hand\",\"Delius\",cursive!important;font-weight:400;color:#1D3557;font-size:max(1.7cqw,15px)!important;line-height:1.1;white-space:normal!important;height:auto!important;text-align:center;letter-spacing:0;text-transform:none;display:flex;align-items:center;justify-content:center}.hub-art[aria-label^=\"The fairground's entrance plaza\"]{container-type:inline-size}.hub-art[aria-label^=\"The fairground's entrance plaza\"] .hub-hs.next{border:0;background:transparent;animation:none;box-shadow:none}.hub-art[aria-label^=\"The fairground's entrance plaza\"] .hub-hs.next .scn-pin{outline:4px solid #FFF200;animation:fgPinGlow 1.1s ease-in-out infinite}@keyframes fgPinGlow{0%,100%{box-shadow:0 0 0 3px #E63946,0 0 8px 3px rgba(255,242,0,.8)}50%{box-shadow:0 0 0 6px #E63946,0 0 18px 8px rgba(255,242,0,.9)}}.hub-art[aria-label^=\"The fairground's entrance plaza\"] .scn-nexttag.fgabove .d{display:inline!important}.hub-art[aria-label^=\"The fairground's entrance plaza\"] .scn-nexttag.fgabove .m{display:none!important}.hub-art[aria-label^=\"The fairground's entrance plaza\"] .scn-nexttag.fgbelow .d{display:none!important}.hub-art[aria-label^=\"The fairground's entrance plaza\"] .scn-nexttag.fgbelow .m{display:inline!important}"; document.head.appendChild(fgs); } catch(e){} /* hub (20 Nov, Fairground thread): the 16 ride pins stand in two even rows on the plaza (QA: they were crammed on the fence) */
+if (FAIR_ON) try { var fgs = document.createElement('style'); fgs.id = 'scn-fair-css'; fgs.textContent = ".hub-art[aria-label^=\"The fairground's entrance plaza\"] .hub-hs .scn-pin{width:30px;height:30px;font-size:14px;line-height:25px;box-shadow:0 3px 0 #1b1b1b}@media (max-width:1300px){.hub-art[aria-label^=\"The fairground's entrance plaza\"] .hub-hs .scn-pin{width:26px;height:26px;font-size:12px;line-height:21px}}.gm-burst .fg-pops{position:absolute;inset:0;pointer-events:none;z-index:0;container-type:size}.gm-burst .fg-pops i{position:absolute;left:50%;bottom:16%;width:34px;height:34px;margin-left:-17px;opacity:0}.gm-burst .fg-pops svg{width:100%;height:100%;overflow:visible}.gm-burst.boom .fg-pops i{animation:fgPop 1.3s cubic-bezier(.2,.8,.3,1) var(--d) forwards}@keyframes fgPop{0%{opacity:1;transform:translate(0,0) scale(.4) rotate(0)}55%{opacity:1;transform:translate(calc(var(--x) * .8),calc(var(--y) * 2.2)) scale(1.1) rotate(var(--r))}100%{opacity:.95;transform:translate(var(--x),var(--y)) scale(1) rotate(var(--r))}}@media (prefers-reduced-motion:reduce){.gm-burst.boom .fg-pops i{animation:none;opacity:.95;transform:translate(var(--x),var(--y))}}.scn-art .scn-hook.tag.fgwrite{background:none!important;border:0!important;box-shadow:none!important;font-family:\"Gochi Hand\",\"Delius\",cursive!important;font-weight:400;color:#1D3557;font-size:max(1.7cqw,15px)!important;line-height:1.1;white-space:normal!important;height:auto!important;text-align:center;letter-spacing:0;text-transform:none;display:flex;align-items:center;justify-content:center}.fg-wb.fg-wb2{left:5.3%;top:50%;width:7.4%;height:13%;font-size:1.05cqw;gap:.3cqw}.fg-wb.fg-wb2 b{font-size:.8cqw;text-decoration:none}.fg-wb.fg-wb2 .n{font-size:1.6cqw;color:#B3261E}.fg-anim .fghen.fgh2{animation-name:fgHen2}@keyframes fgHen2{0%,6%{transform:none}9%{transform:rotate(7deg)}12%{transform:none}15%{transform:rotate(7deg)}18%,24%{transform:scaleX(-1)}38%,48%{transform:translateX(60px) scaleX(-1)}51%{transform:translateX(60px) scaleX(-1) rotate(-7deg)}54%,60%{transform:translateX(60px) scaleX(-1)}62%,70%{transform:translateX(60px)}84%,88%{transform:none}90%,100%{transform:none}}.hub-art .hub-sign{z-index:2}.hub-art[aria-label^=\"The fairground's entrance plaza\"] .hub-hs{border-radius:14px}.hub-art[aria-label^=\"The fairground's entrance plaza\"] .hub-hs:not(.done):not(.locked) .scn-pin{display:none}.hub-art[aria-label^=\"The fairground's entrance plaza\"] .hub-hs.done .scn-pin,.hub-art[aria-label^=\"The fairground's entrance plaza\"] .hub-hs.locked .scn-pin{top:4px!important;left:auto!important;right:4px;transform:none!important;width:24px;height:24px;font-size:12px;line-height:19px}.hub-art[aria-label^=\"The fairground's entrance plaza\"] .hub-hs .scn-lab{top:100%!important;bottom:auto!important;margin-top:4px}.hub-art[aria-label^=\"The fairground's entrance plaza\"] .hub-hs:hover{outline:3px dashed #FFF200;outline-offset:-3px;background:rgba(255,255,255,.12)}.hub-art[aria-label^=\"The fairground's entrance plaza\"] .hub-hs.next{border:5px solid #FFF200!important;animation:fgPinGlow 1.1s ease-in-out infinite!important}.hub-art[aria-label^=\"The fairground's entrance plaza\"]{container-type:inline-size}@keyframes fgPinGlow{0%,100%{box-shadow:0 0 0 3px #E63946,0 0 8px 3px rgba(255,242,0,.8)}50%{box-shadow:0 0 0 6px #E63946,0 0 18px 8px rgba(255,242,0,.9)}}.hub-art[aria-label^=\"The fairground's entrance plaza\"] .scn-nexttag.fgabove .d{display:inline!important}.hub-art[aria-label^=\"The fairground's entrance plaza\"] .scn-nexttag.fgabove .m{display:none!important}.hub-art[aria-label^=\"The fairground's entrance plaza\"] .scn-nexttag.fgbelow .d{display:none!important}.hub-art[aria-label^=\"The fairground's entrance plaza\"] .scn-nexttag.fgbelow .m{display:inline!important}"; document.head.appendChild(fgs); } catch(e){} /* hub (20 Nov, Fairground thread): the 16 ride pins stand in two even rows on the plaza (QA: they were crammed on the fence) */
 /* 20 Nov (Fairground thread): Monnie wants labels UNDER their objects, never over them (heads, horses, moles). After each paint, every tag is moved to the best free spot just below its own object,
    avoiding other tags, other objects, the board and the picture edge; above the object only when nothing below fits. */
-var FG_WRITE = {'dr-responding/board': [18, 14, 24, 14], 'dr-pre-action/checklist': [9.5, 29.5, 13, 8], 'dr-disclosure/tickets': [58, 20.5, 17, 9]}; /* [x, y, w, h] % of the picture: the drawn sign's writing area */ /* blank drawn signs: their words are written ON the sign, not as a label under it */
+var FG_WRITE = {'dr-responding/board': [20, 14, 20, 12]}; /* [x, y, w, h] % of the picture: the drawn sign's writing area */ /* blank drawn signs: their words are written ON the sign, not as a label under it */
 function fgTags(a){ var m = /^#\/scene\/dr\/(dr-[a-z-]+)\//.exec(location.hash), v = m && ROOMV3[m[1]]; if (!v || !v.hooks) return;
   var W = a.clientWidth, H = a.clientHeight; if (!W || !H) return; var key = m[1] + ':' + W + 'x' + H + ':' + [].reduce.call(a.querySelectorAll('.scn-hook'), function(n, e){ return n + e.offsetWidth; }, 0) + ':' + (a.querySelector('.scn-hs.next') || {}).className; if (a.getAttribute('data-fgt') === key) return;
   /* Monnie 16:11: board writing must sit INSIDE the board with margins: extra side margin, then shrink until every line and word fits */
@@ -128646,7 +128668,7 @@ function fgTags(a){ var m = /^#\/scene\/dr\/(dr-[a-z-]+)\//.exec(location.hash),
   var ov = function(p, q){ var x = Math.min(p.r, q.r) - Math.max(p.l, q.l), y = Math.min(p.b, q.b) - Math.max(p.t, q.t); return x > 0 && y > 0 ? x * y : 0; };
   tags.forEach(function(e){ e.style.marginTop = ''; });
   tags.forEach(function(e){ var sid = byText[norm(e.textContent)], S = sid && spots[sid]; if (!S) return;
-    var WR = FG_WRITE[m[1] + '/' + sid]; if (WR){ e.classList.add('fgwrite'); var sw = WR[2] / 100 * W, sh = WR[3] / 100 * H, fs = Math.max(10, Math.round(sh / 2.4)); e.style.setProperty('width', Math.round(sw * .94) + 'px', 'important'); e.style.setProperty('max-width', 'none', 'important'); e.style.setProperty('padding', '0', 'important');
+    var WR = FG_WRITE[m[1] + '/' + sid]; if (WR){ e.classList.add('fgwrite'); var sw = WR[2] / 100 * W, sh = WR[3] / 100 * H, fs = Math.max(10, Math.min(22, Math.round(sh / 3.2))); e.style.setProperty('width', Math.round(sw * .94) + 'px', 'important'); e.style.setProperty('max-width', 'none', 'important'); e.style.setProperty('padding', '0', 'important');
       for (; fs > 8; fs--){ e.style.setProperty('font-size', fs + 'px', 'important'); if (e.scrollHeight <= sh * .92 && e.scrollWidth <= sw * .95) break; }
       e.style.left = ((WR[0] + WR[2] / 2)).toFixed(2) + '%'; e.style.top = (WR[1] + WR[3] / 2 + (e.offsetHeight / H * 100) / 2).toFixed(2) + '%'; placed.push(R(e)); return; }
     var r = R(e), tw = r.r - r.l, th = r.b - r.t, cx = (S.l + S.r) / 2, g = Math.max(3, H * .006), C = [];
@@ -148418,7 +148440,7 @@ BURST["dr-enforcement"] = [
 "fix": "**7 days** of service, and the creditor must pay a reasonable sum."
 }
 ];
-STOPDATA["dr"] = {on: function(){ return FAIR_ON; }, hub: {"title": "The Fairground", "place": "the fairground", "img": "img/scene/fairground-hub.webp", "ratio": 1.7916666666666667, "bg": "#E3F4FF", "alt": "The fairground's entrance plaza: a striped arch, a ticket kiosk, the big wheel and helter skelter, and sixteen little striped ride gates along the fence", "doors": [[43.5, 62, 5.0, 8.0], [48.5, 62, 5.0, 8.0], [53.5, 62, 5.0, 8.0], [58.5, 62, 5.0, 8.0], [63.5, 62, 5.0, 8.0], [68.5, 62, 5.0, 8.0], [73.5, 62, 5.0, 8.0], [78.5, 62, 5.0, 8.0], [27.5, 78, 5.0, 8.0], [33.5, 78, 5.0, 8.0], [39.5, 78, 5.0, 8.0], [45.5, 78, 5.0, 8.0], [51.5, 78, 5.0, 8.0], [57.5, 78, 5.0, 8.0], [63.5, 78, 5.0, 8.0], [69.5, 78, 5.0, 8.0]], "signs": [{"x": 8.6, "y": 46.0, "w": 14.2, "h": 15.0, "t": "The Fairground"}], "key": "dr/fairground"}, rooms: ["dr-options", "dr-limitation", "dr-pre-action", "dr-parties-law", "dr-where-to-start", "dr-issue-service", "dr-responding", "dr-statements-of-case", "dr-interim", "dr-case-management", "dr-evidence", "dr-disclosure", "dr-trial", "dr-costs", "dr-appeals", "dr-enforcement"], words: [["Each door leads to one topic. The glowing door is next", "Each ride is one topic. The glowing ride is next"], ["Back to the hall", "Back to the Fairground"], ["back to the hall", "back to the Fairground"], ["Leave the shop", "Leave the fairground"], ["leave the shop", "leave the fairground"], ["Stay in the shop", "Stay at the fair"], ["Back into the shop", "Back to the ride"], ["out of the shop", "out of the fairground"], ["Out of the shop", "Out of the fairground"], ["the shop", "the fairground"], ["🍬 Done! Eat it", "Done! Stamp it"], ["treats opened", "spots opened"], ["Yum! ", "Nice! "], [" eaten. ", " done. "]]};
+STOPDATA["dr"] = {on: function(){ return FAIR_ON; }, hub: {"title": "The Fairground", "place": "the fairground", "img": "img/scene/fairground-hub2.webp", "ratio": 1.7916666666666667, "bg": "#E3F4FF", "alt": "The fairground's entrance plaza: a striped arch, a ticket kiosk and all sixteen rides, each one a topic", "doors": [[1.5, 69, 26, 22], [60, 4, 16.4, 36], [19.5, 4, 25.5, 39], [45.2, 9, 14.4, 32], [51.5, 40, 4.8, 29], [29.8, 43.6, 10.4, 21], [40.8, 43.6, 10.4, 22], [76.7, 48.8, 5.4, 25], [27.6, 67, 16, 32], [56.6, 41, 24, 17], [44.2, 72, 10.7, 26], [82.1, 48.8, 5, 25], [84.5, 17, 15.3, 30], [58.2, 60.5, 20.6, 34], [76.5, 1, 8, 41], [87.6, 59.2, 10.6, 27]], "signs": [{"x": 4.9, "y": 42.6, "w": 8.3, "h": 6.5, "t": "The Fairground"}], "key": "dr/fairground"}, rooms: ["dr-options", "dr-limitation", "dr-pre-action", "dr-parties-law", "dr-where-to-start", "dr-issue-service", "dr-responding", "dr-statements-of-case", "dr-interim", "dr-case-management", "dr-evidence", "dr-disclosure", "dr-trial", "dr-costs", "dr-appeals", "dr-enforcement"], words: [["Each door leads to one topic. The glowing door is next", "Each ride is one topic. The glowing ride is next"], ["Back to the hall", "Back to the Fairground"], ["back to the hall", "back to the Fairground"], ["Leave the shop", "Leave the fairground"], ["leave the shop", "leave the fairground"], ["Stay in the shop", "Stay at the fair"], ["Back into the shop", "Back to the ride"], ["out of the shop", "out of the fairground"], ["Out of the shop", "Out of the fairground"], ["the shop", "the fairground"], ["🍬 Done! Eat it", "Done! Stamp it"], ["treats opened", "spots opened"], ["Yum! ", "Nice! "], [" eaten. ", " done. "]]};
 /* FAIRGROUND-GEN END */
 var FG_ANIM = {"star": [1956.9, 445.2, 70], "hen": [935, 1328, 220, 200], "arch": [[455.4, 207.6, 11.0], [1111.5, 214.3, 10.0], [1215.0, 252.0, 14.5], [387.1, 267.2, 11.5], [301.2, 274.7, 16.5], [1189.6, 283.4, 9.0], [332.5, 333.6, 12.0], [1245.4, 355.3, 9.5], [235.5, 389.2, 16.5], [289.8, 410.3, 11.5], [1288.7, 433.5, 8.5], [261.7, 491.2, 12.0], [193.6, 520.6, 17.0], [1321.9, 520.7, 9.0], [245.5, 575.7, 12.0], [1336.6, 592.8, 9.0], [240.7, 648.5, 12.0], [1342.6, 653.0, 8.5], [1345.1, 716.6, 9.0], [1346.7, 775.5, 8.0], [1346.6, 838.3, 9.0], [1346.8, 903.8, 8.0]], "wheel": [[1957.5, 144.2, 12.0], [1782.1, 205.5, 12.0], [2135.6, 207.4, 12.5], [1678.1, 361.7, 12.5], [2240.0, 365.8, 12.5], [1689.1, 560.0, 12.5], [2222.5, 562.2, 13.0], [1849.0, 703.5, 8.0], [2064.9, 704.4, 7.5], [1957.7, 730.5, 13.0], [2085.1, 752.3, 8.5], [1828.4, 751.8, 8.5]]}; /* Fairground hall animation positions, in the hub picture's 2752 x 1536 pixels */
 /* Fairground boards (Monnie 20 Nov 13:51: every drawn board shows the room's key points): lines from each room's own notes deck */
@@ -149515,20 +149537,21 @@ window.SQE_SCENE = function(A){
   /* the Fairground hall comes alive (Monnie 20 Nov 13:51): arch lights twinkle, the big wheel's lights chase round and its star spins, Britney pecks and strolls, a rider whizzes down the helter skelter, and the whiteboard shows where she is */
   /* 20 Nov (Fairground thread): the big wheel really turns. The drawn wheel is painted out of the sky (fg-hub-sky.webp), redrawn here in the same felt-tip colours,
      and the drawn bushes and fence sit back on top (fg-hub-front.webp). Cabins stay upright while the wheel turns. */
-  function fgWheel(cx, cy, R){ var K = ' stroke="#1b1b1b" stroke-linejoin="round" stroke-linecap="round"', RR = 292, P = '#D884DA', i, a, s = '';
+  function fgWheel(cx, cy, R, o){ o = o || {}; var K = ' stroke="#1b1b1b" stroke-linejoin="round" stroke-linecap="round"', RR = 292, P = '#D884DA', i, a, s = '';
     var ang = []; for (i = 0; i < 8; i++) ang.push(i * Math.PI / 4);
     var pt = function(t, r){ return [cx + Math.sin(t) * r, cy - Math.cos(t) * r]; }, f = function(n){ return n.toFixed(1); };
     var ghost = '<circle cx="' + f(cx) + '" cy="' + f(cy) + '" r="500" fill="none" stroke="none"/>';
-    s += '<image href="img/scene/fg-hub-sky.webp" x="1596" y="90" width="726" height="815"/>';
+    if (!o.noSky) s += '<image href="img/scene/fg-hub-sky.webp" x="1596" y="90" width="726" height="815"/>';
     s += '<g class="fgwheel">' + ghost;
     ang.forEach(function(t){ var e = pt(t, RR); s += '<path d="M' + f(cx) + ' ' + f(cy) + 'L' + f(e[0]) + ' ' + f(e[1]) + '" stroke-width="24"' + K + '/><path d="M' + f(cx) + ' ' + f(cy) + 'L' + f(e[0]) + ' ' + f(e[1]) + '" stroke="' + P + '" stroke-width="13" stroke-linecap="round"/>'; });
     s += '<circle cx="' + f(cx) + '" cy="' + f(cy) + '" r="' + RR + '" fill="none" stroke-width="32"' + K + '/><circle cx="' + f(cx) + '" cy="' + f(cy) + '" r="' + RR + '" fill="none" stroke="' + P + '" stroke-width="20"/>';
     ang.forEach(function(t, j){ var e = pt(t, RR); s += '<circle cx="' + f(e[0]) + '" cy="' + f(e[1]) + '" r="15" fill="#FFE600" stroke-width="6"' + K + '/><circle class="fgb" cx="' + f(e[0]) + '" cy="' + f(e[1]) + '" r="11" style="animation-delay:-' + (j / 8 * 1.6).toFixed(2) + 's"/>'; });
     s += '</g>';
     /* legs: static, in front of the rim, behind the cabins */
-    var leg = function(x1, x2, x3, x4){ return '<path d="M' + x1 + ' 452L' + x2 + ' 452L' + x3 + ' 800L' + x4 + ' 800Z" fill="' + P + '" stroke-width="7"' + K + '/>'; };
+    var LY = o.legY || 800, lk = (LY - 452) / 348, lx = function(t, b){ return f(t + (b - t) * lk); };
+    var leg = function(x1, x2, x3, x4){ return '<path d="M' + x1 + ' 452L' + x2 + ' 452L' + lx(x2, x3) + ' ' + LY + 'L' + lx(x1, x4) + ' ' + LY + 'Z" fill="' + P + '" stroke-width="7"' + K + '/>'; };
     s += leg(1906, 1952, 1852, 1800) + leg(1962, 2008, 2112, 2060);
-    for (i = 0; i < 5; i++){ var y = 540 + i * 55, k = (y - 452) / 348; s += '<circle cx="' + f(1929 + (1826 - 1929) * k) + '" cy="' + y + '" r="10" fill="#FFE600" stroke-width="5"' + K + '/><circle cx="' + f(1985 + (2086 - 1985) * k) + '" cy="' + y + '" r="10" fill="#FFE600" stroke-width="5"' + K + '/>'; }
+    for (i = 0; i < Math.floor(5 * lk); i++){ var y = 540 + i * 55, k = (y - 452) / 348; s += '<circle cx="' + f(1929 + (1826 - 1929) * k) + '" cy="' + y + '" r="10" fill="#FFE600" stroke-width="5"' + K + '/><circle cx="' + f(1985 + (2086 - 1985) * k) + '" cy="' + y + '" r="10" fill="#FFE600" stroke-width="5"' + K + '/>'; }
     s += '<circle cx="' + f(cx) + '" cy="' + f(cy) + '" r="' + (R + 4) + '" fill="#FA7AC5" stroke-width="8"' + K + '/>';
     s += '<image class="fgstar" href="img/scene/fg-hub-star.webp" x="' + f(cx - R) + '" y="' + f(cy - R) + '" width="' + 2 * R + '" height="' + 2 * R + '"/>';
     /* cabins */
@@ -149539,13 +149562,32 @@ window.SQE_SCENE = function(A){
       s += '<g transform="translate(' + f(e[0]) + ' ' + f(e[1]) + ')"><g class="fgcab">' +
         '<path d="M0 0V20" stroke-width="7"' + K + '/>' +
         '<path d="M-58 46Q-58 18 0 16Q58 18 58 46Z" fill="' + c + '" stroke-width="6"' + K + '/>' +
-        '<rect x="-55" y="56" width="110" height="34" fill="#A8DDF7" stroke-width="5"' + K + '/><path d="M-18 56V90M18 56V90" stroke-width="5"' + K + '/>' +
+        '<rect x="-55" y="56" width="110" height="34" fill="#A8DDF7" stroke-width="5"' + K + '/>' + (j % 3 === 2 ? '' : '<path d="M-14 90Q-14 80 0 80Q14 80 14 90Z" fill="' + ['#E63946', '#4361EE', '#2EC4B6', '#FFC300', '#9B5DE5'][j % 5] + '" stroke-width="3"' + K + '/><circle cx="0" cy="71" r="9.5" fill="' + ['#F1C27D', '#8D5524', '#E0AC69', '#C68642', '#FFDBAC'][j % 5] + '" stroke-width="3"' + K + '/><path d="M-10 69Q-9 59 0 60Q10 59 10 69Q5 64 0 65Q-5 64-10 69Z" fill="' + ['#2B1A12', '#1b1b1b', '#6B3E1E', '#B5651D', '#3B2414'][j % 5] + '" stroke-width="2.5"' + K + '/>') + '<path d="M-18 56V90M18 56V90" stroke-width="5"' + K + '/>' +
         '<path d="M62 42H-62V50' + sc.replace(/q-7.75 11 -15.5 0/g, '') + 'q7.75 11 15.5 0q7.75 11 15.5 0q7.75 11 15.5 0q7.75 11 15.5 0q7.75 11 15.5 0q7.75 11 15.5 0q7.75 11 15.5 0q7.75 11 15.5 0V42Z" fill="#fff" stroke-width="5"' + K + '/>' +
         '<path d="M-58 90H58V112Q58 140 30 140H-30Q-58 140-58 112Z" fill="' + c + '" stroke-width="6"' + K + '/>' +
         '</g></g>'; });
     s += '</g>';
     return s; }
+  /* 20 Nov (Fairground thread): the new entrance (fairground-hub2) draws all 16 rides; each ride is its own clickable shape (Monnie 16:11). */
+  function fgHub2Anim(k, hb){ var s = '<svg class="fg-anim" viewBox="0 0 2752 1536" preserveAspectRatio="none" aria-hidden="true" focusable="false">';
+    s += '<image href="img/scene/fg-hub2-sky.webp" x="1640" y="40" width="510" height="560"/>';
+    s += '<g transform="translate(1895 283) scale(.726) translate(-1956.9 -445.2)">' + fgWheel(1956.9, 445.2, 70, {noSky: 1, legY: 878}) + '</g>';
+    var K = ' stroke="#1b1b1b" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"';
+    s += '<g class="fgride"><g transform="scale(1.05)"><ellipse cx="0" cy="20" rx="36" ry="9" fill="#9C6B3F"' + K + '/><path d="M2 14 L30 12" fill="none"' + K + ' stroke-width="9"/><path d="M2 14 L30 12" fill="none" stroke="#1D3557" stroke-width="5" stroke-linecap="round"/>' +
+      '<path d="M-12 16 Q-14 -6 0 -9 Q14 -6 12 16 Z" fill="#E63946"' + K + '/><path d="M-8 -4 L-24 -28 M8 -4 L24 -28" fill="none"' + K + ' stroke-width="9"/><path d="M-8 -4 L-24 -28 M8 -4 L24 -28" fill="none" stroke="#C68B59" stroke-width="5" stroke-linecap="round"/>' +
+      '<circle cx="0" cy="-21" r="12" fill="#C68B59"' + K + '/><path d="M-13 -24 Q-14 -38 0 -36 Q14 -38 13 -24 Q8 -31 0 -30 Q-8 -31 -13 -24 Z" fill="#2B1A12"' + K + ' stroke-width="3"/><path d="M-5 -16 Q0 -12 5 -16" fill="none" stroke="#1b1b1b" stroke-width="2.5" stroke-linecap="round"/><circle cx="-4.5" cy="-22" r="1.6" fill="#1b1b1b"/><circle cx="4.5" cy="-22" r="1.6" fill="#1b1b1b"/></g>' +
+      '<animateMotion dur="9s" repeatCount="indefinite" calcMode="linear" keyPoints="0;1;1" keyTimes="0;0.6;1" path="M2150,232 C2230,258 2330,284 2372,342 C2388,388 2300,418 2200,452 C2140,472 2092,488 2080,520"/>' +
+      '<animate attributeName="opacity" dur="9s" repeatCount="indefinite" values="0;1;1;0;0;1;1;0;0" keyTimes="0;0.02;0.2;0.22;0.27;0.29;0.58;0.6;1"/></g>';
+    s += '<image class="fghen fgh2" href="img/scene/fg-hub-hen.webp" x="430" y="895" width="170" height="155"/>';
+    s += '</svg>';
+    var rooms = hb.rooms || [], done = rooms.filter(function(x){ return roomDone(x); }).length, nx = null;
+    for (var i = 0; i < rooms.length && !nx; i++) if (!roomDone(rooms[i])) nx = rooms[i];
+    var nm = nx && SCENES[nx] ? SCENES[nx].name : '';
+    s += '<div class="fg-wb fg-wb2" aria-hidden="true"><b>Dispute Resolution</b><span>Rides done:</span><span class="n">' + done + ' of ' + rooms.length + '</span></div>';
+    s += '<a class="scn-hs hub-hs fg-kiosk" href="#/subject/dr" style="left:15.3%;top:39%;width:8.7%;height:19.6%" aria-label="Ticket booth: all the Dispute Resolution notes in one place"><span class="scn-lab">Ticket booth: all the notes</span></a>';
+    return s; }
   function fgHubAnim(k){ var A = FG_ANIM, hb = HUBS[k], s = '<svg class="fg-anim" viewBox="0 0 2752 1536" preserveAspectRatio="none" aria-hidden="true" focusable="false">';
+    if (/hub2/.test(hb.img || '')) return fgHub2Anim(k, hb);
     A.arch.forEach(function(b, i){ s += '<circle class="fgb" cx="' + b[0].toFixed(1) + '" cy="' + b[1].toFixed(1) + '" r="' + (b[2] + 3).toFixed(1) + '" style="animation-delay:-' + ((i * 0.37) % 1.8).toFixed(2) + 's"/>'; });
     var cx = A.star[0], cy = A.star[1], R = A.star[2];
     s += fgWheel(cx, cy, R);
@@ -150317,17 +150359,18 @@ window.SQE_TOWN = function(A){
     }
     nav += (b.i > 0 ? '<button type="button" class="btn sm" data-town="btprev">‹ Previous question</button>' : '') + '</div>';
     var it = bertItem(b.items[b.i]); it.ord = b.ord; it.pick = b.pick; it.lab = s.title;
-    return nav + btStrip(b) + qCard(it, b.i + 1, b.items.length, 'btpick', 'btnext', b.grabbed ? 'Uh oh… ›' : b.i + 1 >= b.items.length ? 'See my score' : 'Next question ›', '<p class="town-note">' + b.right + ' right so far. ' + Math.ceil(b.items.length * BERT_PASS) + ' right to pass.</p>');
+    if (b.grabNow) return nav + btStrip(b) + '<div class="btns" style="justify-content:center;margin-top:14px"><button type="button" class="btn primary big" data-town="btnext">See what happened ›</button></div>';
+    return nav + btStrip(b) + qCard(it, b.i + 1, b.items.length, 'btpick', 'btnext', b.i + 1 >= b.items.length ? ((b.wrong || 0) >= m ? 'Uh-oh… ›' : 'See my score') : 'Next question ›', '<p class="town-note">' + b.right + ' right so far. ' + Math.ceil(b.items.length * BERT_PASS) + ' right to pass.</p>');
   }
   /* wrong answers that make Bert grab Britney: more than 40% wrong (9 of 20), so he steps 1/9 of the way per wrong answer */
   function btMax(b){ var n = b.items.length; return n - Math.ceil(n * BERT_PASS) + 1; }
   function btStrip(b, still){
-    var m = btMax(b), w = Math.min(b.wrong || 0, m), pw = still || b.shownW == null ? w : Math.min(b.shownW, m), grab = w >= m;
+    var m = btMax(b), grab = !!b.grabNow, w = grab ? m : Math.min(b.wrong || 0, m - 1), pw = still || b.shownW == null ? w : Math.min(b.shownW, m); /* Monnie 16:22: Bert waits beside Britney and only grabs her after the last question */
     var at = function(x){ return (1 - x / m).toFixed(3); }, near = w / m, left = m - w;
     var h = '<div class="btstrip' + (still && grab ? ' grab done' : '') + '" id="btstrip" style="--p:' + at(pw) + ';--ta:' + (1 + 5 * near).toFixed(1) + 'px;--tr:' + (1.5 + 8 * near).toFixed(1) + 'deg;--ts:' + (.5 - .38 * near).toFixed(2) + 's" role="img" aria-label="Bert is ' + left + ' steps from Britney">' +
       '<span class="bts-brit"><img src="img/britney/' + ['set/neutral', 'fear1', 'fear2', 'fear3', 'terrified'][w ? Math.min(4, Math.ceil(near * 4)) : 0] + '.webp" alt=""></span>' + /* Monnie 20 Nov 09:49: fear builds gradually */
       '<span class="bts-bert"><span class="bb"><span class="bkw"><img class="bk" src="img/boss/bert-knife.webp" alt=""><img class="bktd" src="img/boss/bert-td-body.webp" alt=""><img class="bka" src="img/boss/bert-td-arm.webp" alt=""></span><img class="bc" src="img/britney/terrified.webp" alt=""></span></span>' +
-      '<span class="bts-n">' + (grab ? 'Bert grabbed Britney!' : w + ' wrong · ' + left + ' more and Bert grabs Britney') + '</span></div>';
+      '<span class="bts-n">' + (grab ? 'Bert grabbed Britney!' : (b.wrong || 0) >= m ? 'Bert is right beside Britney, waiting for the end of the test…' : (b.wrong || 0) + ' wrong · ' + (m - (b.wrong || 0)) + ' more and Bert grabs Britney at the end') + '</span></div>';
     if (!still && pw !== w){ b.shownW = w; setTimeout(function(){ var e = document.getElementById('btstrip'); if (!e) return; e.style.setProperty('--p', at(w)); if (grab) setTimeout(function(){ e.classList.add('grab'); }, 700); }, 60); }
     else b.shownW = w;
     return h;
@@ -150545,8 +150588,8 @@ window.SQE_TOWN = function(A){
     else if (a === 'btquit'){ BT = null; location.hash = '#/town/butcher'; }
     else if (a === 'btprev' && BT){ BT.view = Math.max(0, (BT.view == null ? BT.i : BT.view) - 1); A.render(); scrollTop('.town'); }
     else if (a === 'btfwd' && BT){ BT.view = BT.view + 1 >= BT.i ? null : BT.view + 1; A.render(); scrollTop('.town'); }
-    else if (a === 'btpick' && BT && BT.pick == null){ BT.pick = +b.getAttribute('data-o'); BT.log = BT.log || []; BT.log[BT.i] = {ord: BT.ord, pick: BT.pick}; if (BT.pick === BT.items[BT.i].a) BT.right++; else { BT.wrong = (BT.wrong || 0) + 1; if (BT.wrong >= btMax(BT)) BT.grabbed = 1; } if (window.SQE_WS_LOG && BT.items[BT.i].id){ window.SQE_WS_LOG('qa', BT.items[BT.i].id, BT.pick === BT.items[BT.i].a); A.save(); } A.render(); } /* weak-spot drill (weakspot.js) */
-    else if (a === 'btnext' && BT && BT.pick != null){ BT.i++; if (BT.grabbed) BT.i = BT.items.length; if (BT.i >= BT.items.length) btFinish(); else btOrd(); A.render(); scrollTop('#town-q'); }
+    else if (a === 'btpick' && BT && BT.pick == null){ BT.pick = +b.getAttribute('data-o'); BT.log = BT.log || []; BT.log[BT.i] = {ord: BT.ord, pick: BT.pick}; if (BT.pick === BT.items[BT.i].a) BT.right++; else BT.wrong = (BT.wrong || 0) + 1; if (window.SQE_WS_LOG && BT.items[BT.i].id){ window.SQE_WS_LOG('qa', BT.items[BT.i].id, BT.pick === BT.items[BT.i].a); A.save(); } A.render(); } /* weak-spot drill (weakspot.js) */
+    else if (a === 'btnext' && BT && BT.pick != null){ if (!BT.grabNow && BT.i + 1 >= BT.items.length && (BT.wrong || 0) >= btMax(BT)){ BT.grabNow = 1; BT.grabbed = 1; A.render(); var sx = document.getElementById('btstrip'); if (sx) window.scrollTo(0, Math.max(0, window.scrollY + sx.getBoundingClientRect().top - 12)); return; } BT.i++; if (BT.i >= BT.items.length) btFinish(); else btOrd(); A.render(); scrollTop('#town-q'); }
     else if (a === 'pick' && !g){ SEL = b.getAttribute('data-i'); A.render(); }
     else if (a === 'unpick'){ SEL = null; HB_VIEW = null; A.render(); }
     else if (a === 'shelf'){ var sid = b.getAttribute('data-i'), sit = A.cbaItem(sid); if (!sit) return; HB_VIEW = sid; SEL = (!g && canBuy(sit) === 'ok') ? sid : null; HB_FROM = HB_LX; HB_LX = Math.min(Math.max(+b.getAttribute('data-x') + (+b.getAttribute('data-x') > HB_LX ? -8 : 8), 5), 95); A.render(); }
@@ -150708,7 +150751,7 @@ function laylaAt(t){
     var s = LSEG[i]; if (t >= s.t + s.w + s.p) continue;
     var u = t - s.t;
     if (u < s.w){ var k = u / s.w; if (s.cart){ var e = ease(k); return {x: lerp(s.a[0], s.b[0], e), b: lerp(s.a[1], s.b[1], e) + Math.sin(Math.PI * k) * 3, face: s.face, fr: 'c', spin: 360 * e, k: k}; }
-      return {x: lerp(s.a[0], s.b[0], k), b: lerp(s.a[1], s.b[1], k), face: s.face, fr: gait(s.a, s.b), dist: k * s.d}; }
+      return {x: lerp(s.a[0], s.b[0], k), b: lerp(s.a[1], s.b[1], k), face: s.face, fr: gait(s.a, s.b), vd: s.b[1] > s.a[1] ? 'b' : 'f', dist: k * s.d}; }
     return {x: s.b[0], b: s.b[1], face: s.face, fr: s.pose === 't' ? 't' : 'a'};
   }
   return {x: LAYLA_WP[0][0], b: LAYLA_WP[0][1], face: 'r', fr: 'a'};
@@ -150716,7 +150759,7 @@ function laylaAt(t){
 function walkTo(p, q, u, speed){
   var d = pxd(p, q), w = d / (speed || WALK_PX) * 1000, f = q[0] - p[0] > 0.4 ? 'r' : q[0] - p[0] < -0.4 ? 'l' : null;
   if (w < 1 || u >= w) return {x: q[0], b: q[1], fr: 'a', done: true, w: w, face: f};
-  var k = u / w; return {x: lerp(p[0], q[0], k), b: lerp(p[1], q[1], k), fr: gait(p, q), dist: k * d, w: w, face: f};
+  var k = u / w; return {x: lerp(p[0], q[0], k), b: lerp(p[1], q[1], k), fr: gait(p, q), vd: q[1] > p[1] ? 'b' : 'f', dist: k * d, w: w, face: f};
 }
 
 /* ----- Britney's loop ----- */
@@ -150803,13 +150846,13 @@ window.SQE_MOUNT = function(A){
     '.mg-act img{display:block;height:100%;width:auto;max-width:none;-webkit-user-drag:none;user-select:none}' +
     '.mg-layla>img{display:none}.mg-layla>img.on{display:block}.mg-layla>img.sp{display:block;visibility:hidden}.mg-layla>img.pose{position:absolute;left:0;top:0;width:100%;height:100%;transform-origin:50% 55%}' +
     '.mg-walker img.sp{visibility:hidden}.mg-walker img.up,.mg-walker img.lg1,.mg-walker img.lg2{position:absolute;left:0;top:0;height:100%;width:100%;transform-origin:50% 100%}' +
-    '.ml-rig{position:absolute;inset:0;display:none}.ml-rig.on{display:block}.ml-rig img,.ml-legs{position:absolute;left:0;top:0;width:100%;height:100%;transform-origin:0 0}.ml-legs{transform-origin:50% 50%}.ml-rig .far{filter:brightness(.72)}.ml-rig img.tl,.ml-rig img.tr,.ml-rig img.ttl,.ml-rig img.ttr{display:none}.ml-rig img.tl.on,.ml-rig img.tr.on,.ml-rig img.ttl.on,.ml-rig img.ttr.on{display:block}' +
+    '.ml-rig{position:absolute;inset:0;display:none}.ml-rig.on{display:block}.ml-rig img,.ml-legs{position:absolute;left:0;top:0;width:100%;height:100%;transform-origin:0 0}.ml-legs{transform-origin:50% 50%}.ml-rig .far{filter:brightness(.72)}.ml-rig img.tl,.ml-rig img.tr,.ml-rig img.ttl,.ml-rig img.ttr{display:none}.ml-rig img.tl.on,.ml-rig img.tr.on,.ml-rig img.ttl.on,.ml-rig img.ttr.on{display:block}.ml-rig img.vw{display:none;left:22.2%;top:1%;width:56.2%;height:98%;transform:none}.ml-rig img.vw.on{display:block}' +
     '.mg-brit{height:auto;cursor:pointer;pointer-events:auto}' +
     '.mg-shelf .it.mg-feedbag{background:none;border:0;padding:0;cursor:pointer}.mg-shelf .it.mg-feedbag img{opacity:1;filter:drop-shadow(0 2px 0 rgba(0,0,0,.22))}.mg-feedbag.off{cursor:default}.mg-shelf .it.mg-feedbag b{opacity:1}' +
     '.mg-feedbag .n{position:absolute;right:-6%;top:-4%;z-index:2;background:#E0115F;color:#fff;border-radius:999px;padding:1px 7px;font-weight:700;font-size:14px}' +
     '.mg-feedbag b{position:absolute;left:50%;top:100%;transform:translateX(-50%);margin-top:4px;background:#fff;border:2px solid #1d1d1b;border-radius:8px;padding:2px 8px;font-size:13px;white-space:nowrap}' +
     '.mg-feedbag:not(.off) img{animation:mbagpulse 1.6s ease-in-out infinite}@keyframes mbagpulse{0%,100%{transform:none}50%{transform:scale(1.06)}}' +
-    '.ml-rig .ml-bag{display:none;position:absolute;left:82%;top:40%;width:22%;height:auto;transform-origin:50% 0}.mg-layla.bag .ml-rig .ml-bag{display:block}.mg-layla.bag.fl .ml-rig .ml-bag{left:-4%}' +
+    '.ml-rig .ml-bag{display:none;position:absolute;left:82%;top:40%;width:22%;height:auto;transform-origin:50% 0}.mg-layla.bag .ml-rig .ml-bag{display:block}.mg-layla.bag.fl .ml-rig .ml-bag{left:-4%}.mg-layla.bag.vf .ml-rig .ml-bag{left:66%;top:50%}' +
     '.mg-carry{position:absolute;left:22%;top:30%;width:60%;z-index:2;pointer-events:none;transform:rotate(-8deg)}.mg-carry img,.mg-carry svg{display:block!important;width:100%;height:auto;opacity:1!important;filter:drop-shadow(0 0 1.5px #fff) drop-shadow(0 0 1.5px #fff) drop-shadow(0 1px 0 rgba(0,0,0,.35))!important}' +
     '.mg-shedtip{position:absolute;left:50%;bottom:3%;transform:translateX(-50%);z-index:2;background:#fff;border:2px solid #1d1d1b;border-radius:999px;padding:1px 12px;font-size:13px;white-space:nowrap}' +
     '.mg-shelf .it{background:none;border:0;padding:0;cursor:pointer;color:inherit;font:inherit}.mg-shelf .it.carried{outline:3px dashed #E0115F;outline-offset:3px;border-radius:8px}' +
@@ -151065,6 +151108,7 @@ window.SQE_MOUNT = function(A){
     /* Layla: a jointed cut-out of the approved drawing (torso + thigh + shin, both legs) for walking; whole poses for waving and cartwheels */
     h += '<div class="mg-act mg-layla" aria-label="Layla" role="img"><img class="sp" src="img/mount/lw-a-r.webp" alt="">' +
       '<span class="ml-rig on"><span class="ml-legs"><img class="far th" src="img/mount/lw-thigh.webp" alt=""><img class="far sh" src="img/mount/lw-shin.webp" alt=""><img class="near th" src="img/mount/lw-thigh.webp" alt=""><img class="near sh" src="img/mount/lw-shin.webp" alt=""></span>' +
+      '<img class="vw" data-v="back-a" src="img/mount/lv-back-a.webp" alt=""><img class="vw" data-v="back-b" src="img/mount/lv-back-b.webp" alt=""><img class="vw" data-v="front-a" src="img/mount/lv-front-a.webp" alt=""><img class="vw" data-v="front-b" src="img/mount/lv-front-b.webp" alt="">' +
       '<img class="ml-bag" src="img/mount/item-feed.webp" alt=""><img class="tr on" src="img/mount/lw-torso-r.webp" alt=""><img class="tl" src="img/mount/lw-torso-l.webp" alt=""><img class="ttr" src="img/mount/lw-torso-t-r.webp" alt=""><img class="ttl" src="img/mount/lw-torso-t-l.webp" alt=""></span>' +
       ['ar', 'al', 'tr', 'tl'].map(function(f){ return '<img class="pose" data-f="' + f + '" src="img/mount/lw-' + f.charAt(0) + '-' + f.charAt(1) + '.webp" alt="">'; }).join('') + '</div>';
     if (L.away) h += '<a class="mg-away" href="#/boss/rescue" style="left:' + SHED.x + '%;bottom:' + (SHED.b + SHED.h * 0.3) + '%;z-index:' + Math.round(2000 - SHED.b * 10 + 1) + '"><b>Britney is at Bert\'s!<br><u>Rescue her</u></b></a>';   /* sign hung on the shed while Bert has her (bossS().cap): clear of everyone's path */
@@ -151162,7 +151206,7 @@ window.SQE_MOUNT = function(A){
   }
   function tripState(n){   /* Layla while she goes to / into / out of the shed (outside the feeding itself) */
     var T = TRIP, u = n - T.t0;
-    if (T.tIn == null){ var w = walkPath(toShed(T.L0), u); if (!w.done) return {x: w.x, b: w.b, face: w.face || T.Lf, fr: w.fr, dist: w.dist}; T.tIn = n; }
+    if (T.tIn == null){ var w = walkPath(toShed(T.L0), u); if (!w.done) return {x: w.x, b: w.b, face: w.face || T.Lf, fr: w.fr, vd: w.vd, dist: w.dist}; T.tIn = n; }
     if (!T.out){
       var k = clamp((n - T.tIn) / FADE, 0, 1);
       if (k >= 1 && !T.opened){ T.opened = true; if (T.auto) setTimeout(function(){ tripOut(true); }, 700); else openShed(); }
@@ -151170,14 +151214,14 @@ window.SQE_MOUNT = function(A){
     }
     var v = n - T.out.t0, k2 = clamp(v / FADE, 0, 1), w2 = walkPath(fromShed(T.L0), Math.max(0, v - FADE));
     if (w2.done && v > FADE){ PAUSED += n - T.t0; TRIP = null; }
-    return {x: w2.x, b: w2.b, face: w2.face || 'l', fr: v < FADE || w2.done ? 'a' : w2.fr, dist: w2.dist, alpha: k2};
+    return {x: w2.x, b: w2.b, face: w2.face || 'l', fr: v < FADE || w2.done ? 'a' : w2.fr, vd: w2.vd, dist: w2.dist, alpha: k2};
   }
   function scene(n){
     var u = n - FEED.t0, F = FEED, out = {grains: [], say: null};
     var throws = [F.A + 200, F.A + 1100, F.A + 2000], peck0 = F.A + 2400;
     /* Layla walks over, scatters three handfuls, waits while Britney eats, then walks back */
     var PK = 470;   /* one pat */
-    if (u < F.A) { var w = walkPath(fromShed(FEED_SPOT), Math.max(0, u - FADE)); out.L = {x: w.x, b: w.b, face: w.face || F.Lf, fr: w.done || u < FADE ? 'a' : w.fr, dist: w.dist, alpha: clamp(u / FADE, 0, 1), bag: true}; }
+    if (u < F.A) { var w = walkPath(fromShed(FEED_SPOT), Math.max(0, u - FADE)); out.L = {x: w.x, b: w.b, face: w.face || F.Lf, fr: w.done || u < FADE ? 'a' : w.fr, vd: w.vd, dist: w.dist, alpha: clamp(u / FADE, 0, 1), bag: true}; }
     else if (u < peck0){   /* crouches and flings three handfuls low over the grass */
       var th = 0; throws.forEach(function(t0){ var q = (u - t0) / 620; if (q >= 0 && q < 1) th = Math.sin(Math.PI * q); });
       out.L = {x: FEED_SPOT[0], b: FEED_SPOT[1], face: 'r', fr: 'k', ck: clamp((u - F.A) / 250, 0, 1) * 0.45, lean: 12 + th * 22, bag: u < throws[2] + 520};
@@ -151186,7 +151230,7 @@ window.SQE_MOUNT = function(A){
     else if (u < F.pat){ var kp = (u - F.eat) / 700; out.L = {x: lerp(FEED_SPOT[0], PAT_SPOT[0], ease(kp)), b: lerp(FEED_SPOT[1], PAT_SPOT[1], ease(kp)), face: 'r', fr: 'k', ck: 0.55 - Math.sin(Math.PI * kp) * 0.3, lean: 8}; }   /* shuffles up beside her */
     else if (u < F.end - 900){ var pp = (u - F.pat) / PK; out.L = {x: PAT_SPOT[0], b: PAT_SPOT[1], face: 'r', fr: 'k', ck: 0.85, lean: 30 + Math.max(0, Math.sin(pp * Math.PI * 2)) * 9}; }   /* strokes and pats Britney */
     else if (u < F.end){ var kh = (u - (F.end - 900)) / 900; out.L = {x: PAT_SPOT[0], b: PAT_SPOT[1] + Math.max(0, Math.sin(Math.PI * clamp((kh - 0.15) / 0.55, 0, 1))) * 2.4, face: 'r', fr: 'k', ck: kh < 0.15 ? 0.85 * (1 - kh / 0.15) : 0, lean: 0, arm: true}; }   /* stands up, a happy little hop and a wave */
-    else { var w2 = walkTo(PAT_SPOT, F.Lback, u - F.end, TRIP_PX); out.L = {x: w2.x, b: w2.b, face: w2.face || 'l', fr: w2.done ? 'a' : w2.fr, dist: w2.dist}; }
+    else { var w2 = walkTo(PAT_SPOT, F.Lback, u - F.end, TRIP_PX); out.L = {x: w2.x, b: w2.b, face: w2.face || 'l', fr: w2.done ? 'a' : w2.fr, vd: w2.vd, dist: w2.dist}; }
     /* little hearts float up from Britney each time Layla pats her */
     out.hearts = [];
     if (u >= F.pat && u < F.end){ for (var hj = Math.max(0, Math.floor((u - F.pat) / PK) - 3); hj * PK + F.pat <= u && hj * PK + F.pat < F.end - 900; hj++){ var age = (u - F.pat - hj * PK) / 1300; if (age < 0 || age >= 1) continue; var lb = GRAINS[GRAINS.length - 1]; out.hearts.push([lb[0] - 3.6 + ((hj % 3) - 1) * 1.1 + Math.sin(age * 6) * 0.4, lb[1] + BRIT_W * 1.25 + age * 9, 1 - age * age, 0.7 + age * 0.4]); } }
@@ -151391,7 +151435,11 @@ window.SQE_MOUNT = function(A){
     for (var i = 0; i < poses.length; i++){ var on = poses[i].getAttribute('data-f') === pose; if (poses[i].classList.contains('on') !== on) poses[i].classList.toggle('on', on); }
     if (rig.classList.contains('on') !== useRig) rig.classList.toggle('on', useRig);
     if (!useRig) return;
-    var tq = ['tr', 'tl', 'ttr', 'ttl'], want = (cw || L.arm ? 'tt' : 't') + (L.face === 'l' ? 'l' : 'r');   /* cartwheel: the waving top half, arm up */
+    /* walking up to the shed she turns her back to us; coming out she faces us (Monnie 16:17): two stepping frames swap with each step */
+    var vv = L.fr === 'v' ? (L.vd === 'b' ? 'back-' : 'front-') + (Math.floor((L.dist || 0) / (STRIDE_PX * 0.5)) % 2 ? 'b' : 'a') : '';
+    [].forEach.call(rig.querySelectorAll('img.vw'), function(im){ var on = im.getAttribute('data-v') === vv; if (im.classList.contains('on') !== on) im.classList.toggle('on', on); });
+    legs.style.display = vv ? 'none' : ''; le.classList.toggle('vf', vv.indexOf('front') === 0);
+    var tq = ['tr', 'tl', 'ttr', 'ttl'], want = vv ? '' : (cw || L.arm ? 'tt' : 't') + (L.face === 'l' ? 'l' : 'r');   /* cartwheel: the waving top half, arm up */
     tq.forEach(function(c){ var im = rig.querySelector('img.' + c); if (im && im.classList.contains('on') !== (c === want)) im.classList.toggle('on', c === want); });
     var near, far;
     if (L.fr === 'w'){ var p = (L.dist || 0) / STRIDE_PX; near = legAngles(p); far = legAngles(p + 0.5); }
@@ -151404,6 +151452,7 @@ window.SQE_MOUNT = function(A){
     legs.style.transform = L.face === 'l' ? 'scaleX(-1)' : '';
     var dy = cw ? 277 - ankleY(5, 2) : 277 - Math.max(ankleY(near[0], near[1]), ankleY(far[0], far[1]));   /* keep the lowest foot on the ground: the body rises as the legs pass */
     rig.style.transformOrigin = (HIP[0] / BOX[0] * 100).toFixed(2) + '% ' + (HIP[1] / BOX[1] * 100).toFixed(2) + '%';
+    if (vv){ var ph = (L.dist || 0) / (STRIDE_PX * 0.5) % 1; rig.style.transformOrigin = '50% 100%'; rig.style.transform = 'translateY(' + (-Math.abs(Math.sin(ph * Math.PI)) * 1.2).toFixed(2) + '%)'; return; }
     var rot = cw ? L.spin : L.fr === 'v' ? Math.sin((L.dist || 0) / (STRIDE_PX * 0.5) * Math.PI * 2) * 1.6 : 0, lean = L.fr === 'k' ? (L.lean || 0) * (L.face === 'l' ? -1 : 1) : 0;
     rig.style.transform = 'translateY(' + (dy / BOX[1] * 100).toFixed(2) + '%)' + (rot ? ' rotate(' + (L.face === 'l' ? -rot : rot).toFixed(1) + 'deg)' : '');
     var hxp = (HIP[0] / BOX[0] * 100).toFixed(2) + '%', hyp = (HIP[1] / BOX[1] * 100).toFixed(2) + '%', ltf = lean ? 'translate(' + hxp + ',' + hyp + ') rotate(' + lean.toFixed(1) + 'deg) translate(-' + hxp + ',-' + hyp + ')' : '';
@@ -151419,7 +151468,7 @@ window.SQE_MOUNT = function(A){
     say.style.display = '';
     var bw = say.offsetWidth, cx = clamp(headX, bw / 2 + 6, gr.width - bw / 2 - 6), top = Math.max(say.offsetHeight + 4, headY - 18);
     var lay = who.classList.contains('mg-brit') && g.querySelector('.mg-layla');
-    if (lay){ var li = lay.querySelector('.ml-rig.on .tr.on,.ml-rig.on .tl.on,.ml-rig.on .ttr.on,.ml-rig.on .ttl.on,img.pose.on') || lay.querySelector('img.sp'), lr = li.getBoundingClientRect(); if (lr.right - gr.left > cx - bw / 2 - 4 && lr.left - gr.left < cx + bw / 2 + 4) top = Math.min(top, lr.top - gr.top - 8); }   /* Britney's bubble goes up above Layla's head, never sideways onto someone else (QA 14:24) */
+    if (lay){ var li = lay.querySelector('.ml-rig.on img.vw.on,.ml-rig.on .tr.on,.ml-rig.on .tl.on,.ml-rig.on .ttr.on,.ml-rig.on .ttl.on,img.pose.on') || lay.querySelector('img.sp'), lr = li.getBoundingClientRect(); if (lr.right - gr.left > cx - bw / 2 - 4 && lr.left - gr.left < cx + bw / 2 + 4) top = Math.min(top, lr.top - gr.top - 8); }   /* Britney's bubble goes up above Layla's head, never sideways onto someone else (QA 14:24) */
     /* never over anyone's head: lift the bubble above every person under it (Monnie 06:45) */
     var bottom = top;
     [].forEach.call(g.querySelectorAll('.mg-person'), function(pe){
@@ -152202,7 +152251,9 @@ function record(id, ok){
 }
 /* 16:20 Monnie: opening a scene lands on its picture, never the top banner (the Mount garden, Hen Bargains, the Job Centre); pages that scroll themselves (halls, rooms, Peckham) are left alone */
 var SCENE_JUMP = ".mount-garden, #hbin, .jc-scene, .jcscene, .town-scene";
-function sceneJump(){ setTimeout(function(){ if (window.scrollY > 40) return; var el = document.querySelector(".wrap " + SCENE_JUMP.split(", ").join(", .wrap ")); if (!el) return; var t = el.getBoundingClientRect().top + window.scrollY - 8; if (t > 40) window.scrollTo(0, t); }, 60); }
+function sceneJump(){ var rr = route(); if (!/^(town|mount|scene|palace|boss|bosschase)$/.test(rr[0] || "")) return; var go = function(){ if (window.scrollY > 40) return; var w = document.querySelector(".wrap"); if (!w) return; var el = w.querySelector(SCENE_JUMP);
+  if (!el) el = [].filter.call(w.querySelectorAll("img, svg, canvas, .scn-art, .bossg .arena"), function(e){ var r = e.getBoundingClientRect(); return r.width > 400 && r.height > 200; })[0] || w;
+  var t = el.getBoundingClientRect().top + window.scrollY - 8; if (t > 40) window.scrollTo(0, t); }; setTimeout(go, 60); setTimeout(go, 450); }
 function seenToday(id){ var r = S.qa[id], d = new Date(); d.setHours(0,0,0,0); return !!(r && r.at >= d.getTime()); } /* 16:05 (QA): games draw questions not seen today first */
 function wrongIds(){ return Object.keys(S.qa).filter(function(id){ return S.qa[id].last === -1 && qById(id); }); }
 
@@ -152755,8 +152806,8 @@ function logTimer(note){
   /* 15:50 (QA): log it to the topic she is on (or today's first topic) instead of "General", and say so */
   var sj = S.timer.subj || "", tn = "";
   try { var rr = route(), tx = (rr[0] === "topic" || rr[0] === "quick" || rr[0] === "boss" || rr[0] === "scene") && rr[1] && rr[2] ? TBYKEY[rr[1] + "/" + rr[2]] : null;
-    if (!tx){ var nt0 = nextTopic(); tx = nt0 || null; }
-    if (tx){ if (!sj) sj = tx.s.id; tn = tx.t.title; } } catch(e){}
+    var ps = !tx && /^(quick|questions|cards|subject|topic|scene|frameworks)$/.test(rr[0]) && BYID[rr[1]] ? BYID[rr[1]] : null; /* 16:20 (QA): a subject page logs to that subject */
+    if (tx){ sj = tx.s.id; tn = tx.t.title; } else if (ps){ sj = ps.id; tn = ps.title; } else { var nt0 = nextTopic(); if (nt0){ if (!sj) sj = nt0.s.id; tn = nt0.t.title; } } } catch(e){}
   if (m >= 1){ S.logs.push({id:uid(), d:ymd(), m:m, s:sj, note:note || (tn ? "Timer: " + tn : "Timer")});
     setTimeout(function(){ logToast("Logged " + fmtM(m) + (tn ? " to " + tn : sj && BYID[sj] ? " to " + BYID[sj].title : "") + " ✓"); }, 50);
     var g = gameS(), td = ymd(); if (!g.tday || g.tday.d !== td) g.tday = {d:td, n:0, r:0};
@@ -153402,7 +153453,7 @@ function topicQs(s, tid){ return (s.qs || []).map(function(q, i){ var k = s.id +
 function notesHref(x){ return (window.SQE_SCENES || {})[x.key] ? "#/scene/" + x.key : "#/topic/" + x.s.id + "/" + x.t.id; }
 /* the first step of this topic still to do after step k (then any earlier one), for "Next:" buttons */
 function stepLabel(z){ return z.k === "rate" ? "Rate this topic" : String(z.l).replace(/^Step \d+:\s*/, "").replace(/<[^>]+>/g, "").trim(); }
-function nextUndone(x, k){ var st = topicSteps(x), i = st.map(function(z){ return z.k; }).indexOf(k), rest = st.slice(i + 1).concat(st.slice(0, Math.max(0, i)));
+function nextUndone(x, k){ var rest = topicSteps(x); /* 16:20 (QA): the FIRST unticked step, so an unticked Room 1 comes before later steps */
   for (var j = 0; j < rest.length; j++) if (rest[j].k !== k && !stepDone(x, rest[j].k)) return rest[j]; return null; }
 function topicSteps(x){
   var s = x.s, t = x.t, base = "#/topic/" + s.id + "/" + t.id, nq = (s.qq || []).filter(function(q){ return q.t === t.id; }).length, nc = topicCards(s, t.id).length, nm = topicQs(s, t.id).length;
@@ -154141,8 +154192,8 @@ function mmTspans(line, x, dy, hl){
   return '<tspan x="' + x + '" dy="' + dy + '">' + out + '</tspan>';
 }
 function mindmap(m, skin, sid){
-  var PS = !skin && sid && PSKIN[sid] ? sid : null, COLS = skin || PS ? SWCOL : MMCOL; /* 14:55: place-themed frameworks */
-  var W = 640, body = "", LH = 22;
+  var PS = !skin && sid && PSKIN[sid] ? sid : null, COLS = skin ? SWCOL : PS ? (PSCOL[PS] || SWCOL) : MMCOL; /* 14:55: place-themed frameworks; 16:30 each stop has its own colours (PSCOL) */
+  var W = 640, body = "", LH = 22, MMX = 286; /* 16:30 (Monnie + QA): every point sits in a card starting at MMX; its arrow ends exactly on the card's edge */
   var tL0 = mmWrap(m.title || "", 515, 18, true), sL0 = m.sub ? mmWrap(m.sub, 520, 12.5) : [], y = 24 + (sL0.length ? 54 + tL0.length * 22 + (sL0.length - 1) * 17 : 34 + tL0.length * 22) + 34;
   (m.branches || []).forEach(function(b, bi){
     var c = COLS[bi % MMCOL.length], pts = [], top = y + 10;
@@ -154154,23 +154205,24 @@ function mindmap(m, skin, sid){
     body += '<text x="145" y="' + (mid - (hL.length - 1) * 10 + 5) + '" text-anchor="middle" font-size="15" font-weight="700" fill="#2C3A4A">' + hL.map(function(l, i){ return '<tspan x="145" dy="' + (i ? 20 : 0) + '">' + esc(l) + '</tspan>'; }).join("") + '</text></g>';
     body += '<g class="mmp" data-b="' + bi + '">';
     pts.forEach(function(p, pi){
-      var ty = p.y + 8;
-      body += '<g class="mmpt" data-b="' + bi + '" data-p="' + pi + '"><rect class="mmhit" x="280" y="' + (ty - 12) + '" width="330" height="' + (p.L.length * LH + 6) + '" fill="transparent"/>';
-      body += '<path d="M250,' + mid + ' C268,' + mid + ' 262,' + ty + ' 280,' + ty + '" fill="none" stroke="' + (skin ? c[2] : c[1]) + '" stroke-width="' + (skin ? 2.4 : 2) + '" stroke-dasharray="4 4" marker-end="url(#mma' + (bi % MMCOL.length) + ')"/>';
+      var ty = p.y + 8, sx = PS === "dr" ? 241 : PS === "property" ? 246 : 250; /* start on the branch box's own right edge (ticket notch / leaf tip) */
+      body += '<g class="mmpt" data-b="' + bi + '" data-p="' + pi + '"' + (FWTEST ? ' tabindex="0" role="button" aria-expanded="false" aria-label="' + esc(b.h) + ': hidden point ' + (pi + 1) + ' of ' + pts.length + '. Press Enter to reveal."' : '') + '>';
+      /* the card: in "Hide it all" it is simply left blank (solid colour + border, text hidden), no cover drawn over it */
+      body += '<rect class="mmhit mmcard" x="' + MMX + '" y="' + (ty - 12) + '" width="' + (610 - MMX) + '" height="' + ((p.L.length - 1) * LH + 26) + '" rx="' + (skin ? 9 : 8) + '" fill="' + c[0] + '" fill-opacity=".4" stroke="' + (skin ? '#2A1B2E' : c[1]) + '" stroke-width="' + (skin ? 1.8 : 1.6) + '"/>';
+      body += '<path class="mmar" d="M' + sx + ',' + mid + ' C' + (sx + 18) + ',' + mid + ' ' + (MMX - 18) + ',' + ty + ' ' + MMX + ',' + ty + '" fill="none" stroke="' + (skin ? c[2] : c[1]) + '" stroke-width="' + (skin ? 2.4 : 2) + '" stroke-dasharray="4 4" marker-end="url(#mma' + (bi % MMCOL.length) + ')"/>';
       mmTspans.bold = false;
-      body += '<text class="mmtx" xml:space="preserve" x="296" y="' + (ty + 5) + '" font-size="15" fill="#2C3A4A">' + p.L.map(function(l, i){ return mmTspans(l, 296, i ? LH : 0, c[2]); }).join("") + '</text>';
-      body += '<g class="mmc">' + (skin ? swWrapper(p.L, ty, LH, bi) + '</g></g>' : p.L.map(function(l, i){ var w = Math.max(i ? 60 : 150, Math.min(306, String(l).replace(/\*\*/g, "").length * 7.3)); var ry = ty - 7 + i * LH, cy = ry + 8; return skin ? '<path d="M294,' + cy + ' l-7,-6 v12 z M' + (294 + w).toFixed(0) + ',' + cy + ' l7,-6 v12 z" fill="' + c[1] + '" stroke="#2A1B2E" stroke-width="1.4" stroke-linejoin="round"/><rect x="294" y="' + ry + '" width="' + w.toFixed(0) + '" height="16" rx="5" fill="url(#mmw' + (bi % MMCOL.length) + ')" stroke="#2A1B2E" stroke-width="1.6"/>' : '<rect x="294" y="' + ry + '" width="' + w.toFixed(0) + '" height="16" rx="8" fill="' + c[0] + '" stroke="' + c[1] + '" stroke-width="1.5"/>'; }).join("") + '</g></g>');
+      body += '<text class="mmtx" xml:space="preserve" x="296" y="' + (ty + 5) + '" font-size="15" fill="#2C3A4A">' + p.L.map(function(l, i){ return mmTspans(l, 296, i ? LH : 0, c[2]); }).join("") + '</text></g>';
     });
     body += '</g><g class="mmq" data-b="' + bi + '"><rect x="280" y="' + (top + 2) + '" width="330" height="' + Math.max(40, bottom - top - 16) + '" rx="12" fill="#F1F4F9" stroke="' + c[1] + '" stroke-width="2" stroke-dasharray="6 5"/></g>';
     y = bottom + 34;
   });
-  var H = y + 10, defs = COLS.map(function(c, i){ return '<marker id="mma' + i + '" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="' + c[1] + '"' + (skin ? ' stroke="#2A1B2E" stroke-width="1.3"' : '') + '/></marker>' + (skin ? '<pattern id="mmw' + i + '" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#FFFFFF"/><rect width="5" height="10" fill="' + c[1] + '" opacity=".45"/></pattern>' : ''); }).join("");
+  var H = y + 10, defs = COLS.map(function(c, i){ return '<marker id="mma' + i + '" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="' + c[1] + '"' + (skin ? ' stroke="#2A1B2E" stroke-width="1.3" stroke-linejoin="round"' : '') + '/></marker>' + (skin ? '<pattern id="mmw' + i + '" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#FFFFFF"/><rect width="5" height="10" fill="' + c[1] + '" opacity=".45"/></pattern>' : ''); }).join("");
   var tL = mmWrap(m.title || "", 515, 18, true), sL = m.sub ? mmWrap(m.sub, 520, 12.5) : [];
   var head = (skin ? sweetBunt(30, 610, 4) : PS ? psTop(PS, 30, 610, 4) : '') + '<rect class="mmhead" x="30" y="24" width="580" height="' + (sL.length ? 54 + tL.length * 22 + (sL.length - 1) * 17 : 34 + tL.length * 22) + '" rx="16" fill="' + (skin ? '#FFE3EF' : '#E8EFF8') + '" stroke="' + (skin ? '#2A1B2E' : '#A9BCD8') + '" stroke-width="' + (skin ? 2.6 : 2) + '"/>' +
     '<text x="320" y="56" text-anchor="middle" font-size="18" font-weight="700" fill="#24364A">' + tL.map(function(l, i){ return '<tspan x="320" dy="' + (i ? 22 : 0) + '">' + esc(l) + '</tspan>'; }).join("") + '</text>' +
     (sL.length ? '<text x="320" y="' + (62 + tL.length * 22) + '" text-anchor="middle" font-size="12.5" fill="' + (skin ? '#5A3550' : '#5B6E86') + '">' + sL.map(function(l, i){ return '<tspan x="320" dy="' + (i ? 17 : 0) + '">' + esc(l) + '</tspan>'; }).join("") + '</text>' : '');
-  var list = '<div class="mmlist"><div class="mmlt">' + esc(m.title || "") + '</div>' + (m.branches || []).map(function(br, bi){ var c = COLS[bi % MMCOL.length]; return '<div class="mmli" style="--mc:' + c[1] + ';--mb:' + c[0] + ';--mh:' + c[2] + '"><div class="mmb" data-b="' + bi + '">' + esc(br.h) + '</div><ul class="mmp" data-b="' + bi + '">' + (br.pts || []).map(function(pt, pi){ return '<li class="mmpt" data-b="' + bi + '" data-p="' + pi + '"><span class="mmtx">' + esc(pt).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>') + '</span><span class="mmc" aria-hidden="true"></span></li>'; }).join("") + '</ul><div class="mmq" data-b="' + bi + '"></div></div>'; }).join("") + '</div>';
-  return list + '<div class="mmwrap"><svg class="mindmap' + (PS ? ' ps ps-' + PS : '') + '" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Framework mind map: ' + esc(m.title || "") + '"><defs>' + defs + (PS ? psPat(PS) : '') + '</defs><rect width="' + W + '" height="' + H + '" fill="' + (skin ? '#FFFDF6' : '#FBFCFE') + '" rx="12"/>' + head + body + '</svg></div>';
+  var list = '<div class="mmlist"><div class="mmlt">' + esc(m.title || "") + '</div>' + (m.branches || []).map(function(br, bi){ var c = COLS[bi % MMCOL.length]; return '<div class="mmli" style="--mc:' + c[1] + ';--mb:' + c[0] + ';--mh:' + c[2] + '"><div class="mmb" data-b="' + bi + '">' + esc(br.h) + '</div><ul class="mmp" data-b="' + bi + '">' + (br.pts || []).map(function(pt, pi){ return '<li class="mmpt" data-b="' + bi + '" data-p="' + pi + '"' + (FWTEST ? ' tabindex="0" role="button" aria-expanded="false" aria-label="' + esc(br.h) + ': hidden point ' + (pi + 1) + '. Press Enter to reveal."' : '') + '><span class="mmtx">' + esc(pt).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>') + '</span><span class="mmc" aria-hidden="true"></span></li>'; }).join("") + '</ul><div class="mmq" data-b="' + bi + '"></div></div>'; }).join("") + '</div>';
+  return list + '<div class="mmwrap"><svg class="mindmap' + (PS ? ' ps ps-' + PS : '') + '" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W + ' ' + H + '" role="' + (FWTEST ? 'group' : 'img') + '" aria-label="Framework mind map: ' + esc(m.title || "") + '"><defs>' + defs + (PS ? psPat(PS) : '') + '</defs><rect width="' + W + '" height="' + H + '" fill="' + (skin ? '#FFFDF6' : '#FBFCFE') + '" rx="12"/>' + head + body + '</svg></div>';
 }
 function framework(f){
   var h = '<p class="muted small">' + esc(f.intro || "") + '</p><div class="fw">';
@@ -154189,7 +154241,7 @@ function fwkHTML(title, sub, items, skin, id){
     '<ol class="fwk-list">' + items.map(function(it, i){ var did = 'fwk-' + esc(id).replace(/[^a-z0-9]+/gi, '-') + '-' + i, open = i === 0;
       return '<li class="fwk-step' + (open ? ' open' : '') + '"' + (it.c ? ' style="--mc:' + it.c[1] + ';--mb:' + it.c[0] + ';--mh:' + it.c[2] + '"' : '') + '>' +
         '<button type="button" class="fwk-h" aria-expanded="' + open + '" aria-controls="' + did + '"><span class="fwk-n">' + (i + 1) + '</span><span class="fwk-t">' + inl(it.h) + '</span><span class="fwk-ch" aria-hidden="true"></span></button>' +
-        '<div class="fwk-d" id="' + did + '"' + (open ? '' : ' hidden') + '>' + it.html + (i < n - 1 ? '<button type="button" class="btn sm primary fwk-next">Next step ›</button>' : '<div class="fwk-end"><b>Well done, that\'s every step!</b> <button type="button" class="linkbtn fwk-reset">Start again</button></div>') + '</div></li>'; }).join('') +
+        '<div class="fwk-d" id="' + did + '"' + (open ? '' : ' hidden') + '>' + it.html + '<div class="fwk-nav">' + (i ? '<button type="button" class="btn sm fwk-prev">‹ Previous step</button>' : '') + (i < n - 1 ? '<button type="button" class="btn sm primary fwk-next">Next step ›</button>' : '') + '</div>' + (i < n - 1 ? '' : '<div class="fwk-end"><b>Well done, that\'s every step!</b> <button type="button" class="linkbtn fwk-reset">Start again</button></div>') + '</div></li>'; }).join('') +
     '</ol></div>';
 }
 function fwkMind(m, skin, k){
@@ -154197,7 +154249,7 @@ function fwkMind(m, skin, k){
   return fwkHTML(m.title, m.sub, (m.branches || []).map(function(b, bi){ return {h:b.h, c:cols[bi % cols.length], html:'<ul class="fwk-pts">' + (b.pts || []).map(function(pt){ return '<li>' + inl(pt) + '</li>'; }).join('') + '</ul>'}; }), skin, k + '-m');
 }
 function fwkSteps(f, skin, k){
-  return (f.intro ? '<p class="muted small fwk-intro">' + esc(f.intro) + '</p>' : '') + fwkHTML('', '', (f.steps || []).map(function(st){ return {h:st.h, html:(st.ask ? '<div class="ask">' + esc(st.ask) + '</div>' : '') + '<div class="notes">' + md(st.body || '') + '</div>' +
+  return (f.intro ? '<p class="muted small fwk-intro">' + esc(f.intro) + '</p>' : '') + fwkHTML('', '', (f.steps || []).map(function(st, si){ var pc = !skin && PSCOL[String(k).split("/")[0]]; return {h:st.h, c:pc ? pc[si % pc.length] : null, html:(st.ask ? '<div class="ask">' + esc(st.ask) + '</div>' : '') + '<div class="notes">' + md(st.body || '') + '</div>' +
     (st.yes || st.no ? '<div class="fwflow">' + (st.yes ? '<span class="y">Yes → ' + esc(st.yes) + '</span>' : '') + (st.no ? '<span class="n">No → ' + esc(st.no) + '</span>' : '') + '</div>' : '')}; }), skin, k + '-s') + (f.outro ? '<div class="tip">' + inl(f.outro) + '</div>' : '');
 }
 
@@ -154229,7 +154281,9 @@ VIEW.questions = function(r){
   if (r[1] && BYID[r[1]] && r[2]){
     var s0 = BYID[r[1]], tq = topicQs(s0, r[2]), tt = TBYKEY[s0.id + "/" + r[2]];
     /* examqs (19 Nov): a topic's set (Today's exam-style step, the day-10 review, Quick fire's Next) plays right here, so the link stays #/questions/<subj>/<topic> instead of jumping to #/play; arriving fresh starts a new set */
-    if (!QZ || QZ.src !== location.hash || lastRoute !== r.join("/")){
+    var qzBack = !lastRoute || (window.SQE_QBACK_T && Date.now() - window.SQE_QBACK_T < 3000); /* page load (refresh) or "Back to your question": carry on with the same set */
+    if ((!QZ || QZ.src !== location.hash || lastRoute !== r.join("/")) && qzBack && !(QZ && QZ.src === location.hash)){ var qzr = qzLoad(location.hash); if (qzr) QZ = qzr; }
+    if (!QZ || QZ.src !== location.hash || (lastRoute !== r.join("/") && !qzBack)){
       QZ = {title:(tt ? tnum(tt) + " " + tt.t.title : s0.title), items:shuffle(tq.length ? tq : (s0.qs || []).map(function(q, i){ return s0.id + "#" + i; })).map(function(id){ return {id:id, order:shuffle([0,1,2,3,4])}; }), i:0, ans:[], back:"#/home", src:location.hash};
       if (tt) QZ.tkey = tt.key;
     }
@@ -154273,7 +154327,13 @@ function qaAll(s){
   });
   return h;
 }
+function qaWell(c, n){ var r = n ? c / n : 0; return '<p class="exq-well"><b>' + (r >= 0.7 ? 'Well done, that\'s a strong score!' : r >= 0.5 ? 'Good effort! The ones you missed will come back to you.' : 'Round over. The ones you missed will come back sooner, so you\'ll get them next time.') + '</b></p>'; } /* 16:20 (QA): a well-done line like Quick fire */
+/* QA 20 Nov: keep the open question set in sessionStorage, so a refresh on the notes page (or on the question) does not lose it and "Back to your question" still works */
+function qzSave(){ try { if (QZ && QZ.items && QZ.items.length) sessionStorage.setItem("sqe_qz", JSON.stringify(QZ)); } catch(e){} }
+function qzLoad(src){ try { var z = JSON.parse(sessionStorage.getItem("sqe_qz") || "null"); if (z && z.items && z.items.length && z.items.every(function(it){ return qById(it.id); }) && (src === undefined || z.src === src)) return z; } catch(e){} return null; }
 VIEW.play = function(){
+  if (!QZ || !QZ.items.length) QZ = qzLoad() || QZ;
+  qzSave();
   if (!QZ || !QZ.items.length) return '<div class="card"><h2>No question set open</h2><a class="btn" href="#/questions">Choose questions</a></div>';
   if (QZ.i >= QZ.items.length){
     var c = QZ.ans.filter(function(a){ return a && a.ok; }).length, n = QZ.ans.filter(Boolean).length;
@@ -154281,18 +154341,19 @@ VIEW.play = function(){
     /* examqs (19 Nov): a topic set on a themed subject (Business Law 1 = Sweet Shop) gets the sweet skin, ticks today's day-10 review for that topic, and points to the next step */
     var qtx = QZ.tkey && TBYKEY[QZ.tkey], qsk = qtx ? skinOf(qtx.s.id) : "", qrv = false;
     if (qtx && n >= QZ.items.length){ try { (buildPlan().revs || {})[QZ.tkey].forEach(function(rv){ if (rv.gap === 10 && rv.d === ymd()){ qrv = true; if (!S.todo[rv.k]){ S.todo[rv.k] = Date.now(); save(); } } }); } catch(eR){} }
-    if (qsk) return '<div class="card exq-end' + qsk + '" style="text-align:center"><div class="swend" aria-hidden="true">' + SWJAR + '</div><h2>' + esc(QZ.title) + ': finished</h2><p class="exq-score"><b>' + c + ' / ' + n + '</b> correct (' + (n ? Math.round(c / n * 100) : 0) + '%)</p>' +
+    if (qsk) return '<div class="card exq-end' + qsk + '" style="text-align:center"><div class="swend" aria-hidden="true">' + SWJAR + '</div><h2>' + esc(QZ.title) + ': finished</h2><p class="exq-score"><b>' + c + ' / ' + n + '</b> correct (' + (n ? Math.round(c / n * 100) : 0) + '%)</p>' + qaWell(c, n) +
       (n >= QZ.items.length ? '<p class="small exq-tick">✓ Exam-style questions ticked off' + (qrv ? ', and today\'s review for this topic too' : '') + '.</p>' : '') +
       '<div class="btns" style="justify-content:center">' + (function(){ var nz = nextUndone(qtx, "qa"); return nz ? '<a class="btn primary" href="' + nz.h + '">Next: ' + esc(stepLabel(nz)) + ' ›</a>' : '<a class="btn primary" href="#/home">All steps done. Back to Today ›</a>'; })() + /* 16:00 (QA): next = the next unticked step (Bert before rating) */ '<button class="btn" data-act="qagain">Try this set again</button>' + (wrongIds().length ? '<a class="btn bad" href="#/questions/wrong">Redo wrong answers</a>' : '') + '<a class="btn" href="#/home">Back to Today</a></div></div>';
     var nz2 = qtx ? nextUndone(qtx, "qa") : null;
-    return '<div class="card"><h2>' + (n && c / n >= 0.7 ? 'Well done! ' : '') + esc(QZ.title) + ': finished</h2><p style="font-size:22px;margin:6px 0"><b>' + c + ' / ' + n + '</b> correct (' + (n ? Math.round(c / n * 100) : 0) + '%)</p>' +
+    return '<div class="card"><h2>' + (n && c / n >= 0.7 ? 'Well done! ' : '') + esc(QZ.title) + ': finished</h2><p style="font-size:22px;margin:6px 0"><b>' + c + ' / ' + n + '</b> correct (' + (n ? Math.round(c / n * 100) : 0) + '%)</p>' + qaWell(c, n) +
       '<div class="btns">' + (nz2 ? '<a class="btn primary" href="' + nz2.h + '">Next: ' + esc(stepLabel(nz2)) + ' ›</a>' : '') + '<button class="btn' + (nz2 ? '' : ' primary') + '" data-act="qagain">Try this set again</button>' + (wrongIds().length ? '<a class="btn bad" href="#/questions/wrong">Redo wrong answers</a>' : '') + '<a class="btn" href="' + QZ.back + '">Back</a></div></div>';
   }
   var it = QZ.items[QZ.i], x = qById(it.id), a = QZ.ans[QZ.i];
   if (QZ.atI !== QZ.i || QZ.atId !== it.id){ QZ.atI = QZ.i; QZ.atId = it.id; QZ.at = Date.now(); }
   var strip = '<div class="qsq strip">' + QZ.items.map(function(q, n){ var aa = QZ.ans[n]; return '<button class="sq' + (aa ? (aa.ok ? " ok" : " bad") : "") + (n === QZ.i ? " cur" : "") + '" data-act="qgo" data-n="' + n + '" title="Question ' + (n + 1) + '">' + (n + 1) + '</button>'; }).join("") + '</div>';
   var qtk = QZ.tkey && TBYKEY[QZ.tkey], qsk2 = qtk ? skinOf(qtk.s.id) : ""; /* examqs: sweet skin for a Business Law 1 topic set */
-  var h = (qsk2 ? '<div class="exq-top"><a class="cbaback" href="' + notesHref(qtk) + '">‹ Notes</a><span class="exq-lab">✍️ Exam-style questions</span></div>' : '') + '<div class="card' + (qsk2 ? ' exq' + qsk2 : '') + '"><div class="qmeta"><span>' + esc(QZ.title) + ' · ' + esc(x.s.title) + '</span><span>Question ' + (QZ.i + 1) + ' of ' + QZ.items.length + '</span></div>' + strip +
+  var h = (qsk2 ? '<div class="exq-top"><a class="cbaback" href="' + notesHref(qtk) + '">‹ Notes</a><span class="exq-lab">✍️ Exam-style questions</span></div>' : '') + '<div class="card qzcard' + (qsk2 ? ' exq' + qsk2 : '') + '"><div class="qmeta"><span>' + esc(QZ.title) + (QZ.title === x.s.title ? '' : ' · ' + esc(x.s.title)) + '</span><span>Question ' + (QZ.i + 1) + ' of ' + QZ.items.length + '</span></div>' + strip + /* QA 20 Nov: subject once, not "Contract Law · Contract Law"; Previous / Next at the top as well as the bottom */
+    '<div class="btns qznavtop"><button class="btn sm" data-act="qprev"' + (QZ.i ? '' : ' disabled') + '>‹ Previous</button><button class="btn sm' + (a ? ' primary' : '') + '" data-act="' + (a ? 'qnext' : 'qskip') + '">' + (a && QZ.i + 1 >= QZ.items.length ? "See my score" : "Next ›") + '</button></div>' +
     '<div class="qtext">' + esc(x.q.q) + '</div><div class="opts">';
   it.order.forEach(function(oi, pos){
     var cls = "opt";
@@ -154304,7 +154365,7 @@ VIEW.play = function(){
     var letter = "ABCDE"[it.order.indexOf(x.q.a)];
     h += '<div class="explain"><h4 style="color:' + (a.ok ? "var(--good)" : "var(--bad)") + '">' + (a.ok ? "✓ Correct" : "✗ Not quite. The answer is " + letter) + '</h4><div class="notes">' + md(x.q.e) + '</div></div>' +
       '<div class="btns">' + '<button class="btn" data-act="qprev"' + (QZ.i ? '' : ' disabled') + '>‹ Previous</button>' + '<button class="btn primary" data-act="qnext">' + (QZ.i + 1 < QZ.items.length ? "Next question ›" : "See my score") + '</button>' + notesLink(x.s, x.q.t || null, x.q.q + " " + x.q.o[x.q.a] + " " + x.q.e) + '<a class="btn" href="' + QZ.back + '">Stop</a></div>';
-  } else h += '<div class="btns">' + '<button class="btn sm" data-act="qprev"' + (QZ.i ? '' : ' disabled') + '>‹ Previous</button>' + '<button class="btn sm" data-act="qskip">Skip</button><a class="btn sm" href="' + QZ.back + '">Stop</a></div><div class="kbd" style="margin-top:6px">Tip: press keys A to E to answer.</div>';
+  } else h += '<div class="btns">' + '<button class="btn sm" data-act="qprev"' + (QZ.i ? '' : ' disabled') + '>‹ Previous</button>' + '<button class="btn sm" data-act="qskip">Next ›</button><a class="btn sm" href="' + QZ.back + '">Stop</a></div><div class="kbd" style="margin-top:6px">Tip: press keys A to E to answer.</div>';
   return h + '</div>';
 };
 
@@ -154479,6 +154540,8 @@ function sweetJar(y, h, c, label){
    Same diagram layout; only the branch boxes, the covers, the row along the top and the frame change. Drawn shapes only, no emojis. */
 var PSK_INK = '#2A2433';
 var PSKIN = {dr:1, ls:1, contract:1, tort:1, legalsys:1, ethics:1, wills:1, accounts:1, trusts:1, land:1, property:1, crimlaw:1, crimprac:1};
+/* 16:30 (QA): each stop's own colours for branch boxes, cards, arrows and the step-by-step [light fill, line, dark text]; all text >= 4.5:1. dr fairground, ls library bindings, contract airport signs, tort zoo, legalsys museum stone/gold, ethics pier, wills aquarium, accounts farm, trusts botanic, land balloons, property amazon, crimlaw ice rink, crimprac lighthouse */
+var PSCOL = {"dr":[["#FFD6D6","#E63946","#9B111E"],["#FFF0B3","#E9B400","#6B4E00"],["#D6E9FF","#2B6CB0","#1A4480"],["#FFE0C2","#F07C1E","#8A3D00"],["#F3D9FF","#A44BD6","#6A1F94"],["#D8F5E1","#2E9E57","#17603A"],["#FFD9EC","#E0458E","#9C1458"],["#FCEFC4","#C9A227","#6B5200"]],"ls":[["#F5D5D0","#9E2B25","#7A1F1A"],["#D5E8D9","#2F6B45","#1F4D31"],["#D6DDF0","#2B3F7A","#1D2C5C"],["#F3E3C3","#A87A2E","#6B4A12"],["#EBD8E2","#7D2F55","#5C1F3E"],["#D7E6E6","#2F6E6E","#1F4E4E"],["#EFE0D3","#8D5A3B","#5E3A24"],["#E6E1F2","#4E3C8C","#35286A"]],"contract":[["#FFF1A8","#F2C200","#5E4A00"],["#D3E4FF","#1E5BC6","#143F8C"],["#E0E4EA","#4A5568","#2D3748"],["#FFE7A3","#E0A800","#5C4300"],["#CFE9FF","#0A84D6","#0B4F80"],["#DCE8F5","#335C8A","#1F3D60"],["#FFF4C7","#D1A000","#5E4800"],["#D6E2F2","#24477A","#172F52"]],"tort":[["#D4EDC9","#3E8E2F","#245A1A"],["#FFE0BF","#F07F13","#8A4300"],["#E9F2C2","#7DA324","#4A6411"],["#F5E3C8","#A86B2D","#6B3F12"],["#FFF0B8","#E0A800","#5E4500"],["#CDEBDD","#1F8A5B","#145C3C"],["#FFD8C2","#E2582B","#932F0E"],["#E2EBD0","#5B7A2E","#3B5219"]],"legalsys":[["#ECE6DA","#8C7B62","#4F4434"],["#F6E7B8","#C9A227","#5E4A0E"],["#E2E0DC","#6E6A64","#3E3B37"],["#F2DCC8","#A0623A","#663A1E"],["#E3E7EE","#5A6B85","#36435A"],["#F3EBD3","#B08D3C","#5C4818"],["#E8DED6","#7E5F4E","#4E3A2E"],["#E5E9DF","#6A7F5A","#3F4F33"]],"ethics":[["#D2EAFB","#1F78C1","#134E80"],["#FFD9D6","#E03A31","#981E17"],["#E6EEF7","#4A6A8A","#2C4560"],["#C9F0F5","#1A9FB5","#0E5E6B"],["#FFF0C2","#E8B11C","#5E4500"],["#DCE3F5","#2A3F8F","#1C2B66"],["#FFE3E0","#C7362E","#8A1F19"],["#E1F4FF","#3A8FD0","#1B5B8C"]],"wills":[["#C9F0EE","#159A93","#0B5F5A"],["#CFE6FA","#2A7BC4","#174E80"],["#D3EDF7","#1689B0","#0D5670"],["#D8F0E6","#2E9A77","#185C47"],["#DCE0F8","#4C5CC0","#2E3A86"],["#CBEFF7","#0FA3C4","#0A5F73"],["#E0F5F3","#3BA59D","#1C5F5A"],["#D5E3F2","#305F92","#1E3F63"]],"accounts":[["#F7D3CF","#B3261E","#7E1A14"],["#FBEBB5","#D9A520","#5E4500"],["#D8EDC9","#4C8C2B","#2E5A18"],["#EEDFCB","#8D5A3B","#5E3A24"],["#FFF3C9","#C49A1A","#5C4810"],["#E3F0D2","#6B9A35","#3F5E1C"],["#F9DCD0","#C4532E","#86321A"],["#E9E3D5","#7A6A4E","#4A3F2C"]],"trusts":[["#D3EFD9","#2F9E55","#1A6435"],["#FFD9EB","#E04A94","#9C1A5B"],["#E4F3C8","#6FA823","#436815"],["#F2DDFB","#A855D6","#6E2596"],["#CDEDE3","#2A9479","#175C4A"],["#FFE3E8","#E2556F","#9C2338"],["#FFF2BF","#E0B419","#5E4800"],["#DDEFD5","#4E8A3A","#2F5A22"]],"land":[["#FFD3D6","#E63946","#9B111E"],["#FFF0A8","#F2C200","#5E4A00"],["#D3DEFF","#4361EE","#1F35A6"],["#C9F3EE","#16B3A3","#0B6158"],["#FFD6EC","#F0559E","#A3125A"],["#FFE0C2","#FF8A1F","#8A3F00"],["#E8D6FF","#9B5DE5","#5E23A6"],["#D9F5C9","#5BBF2E","#2F6B14"]],"property":[["#CFE8D5","#1F7A44","#11502B"],["#DCEFC9","#4F9A2A","#2E5E16"],["#C8E8E0","#167A66","#0D5044"],["#E6EFC4","#7A9324","#4A5A12"],["#D4E4CC","#3F6B33","#28461F"],["#C9EBD9","#139060","#0C5A3B"],["#E9E3C8","#8A7A2E","#554A16"],["#D6EAD0","#2E6B3A","#1C4524"]],"crimlaw":[["#DDF0FF","#3A8FD6","#1C5A8F"],["#E8DEFF","#7C5CD6","#4A2FA0"],["#D6F4FA","#22A3C4","#0E5F73"],["#E3E6FF","#5566D6","#2E3A94"],["#F0E3FF","#A05CD6","#62269A"],["#D9ECF8","#4A7FB0","#284D70"],["#E2F4FD","#58B4E0","#1C5F80"],["#E5E0F5","#6A5A9E","#40346A"]],"crimprac":[["#FFD8D6","#D62828","#8F1515"],["#E3E9F3","#1D3557","#1D3557"],["#D9E2F0","#2B4C7E","#1C3358"],["#FFE6E3","#C0392B","#86241A"],["#FFF1C7","#E0A800","#5C4300"],["#DCEBF5","#457B9D","#25506B"],["#FBE0DE","#A4161A","#760F12"],["#E4E9F0","#4A5A72","#2C3848"]]};
 function psBox(sid, y, h, c){
   var x = 40, w = 210, r = x + w, b = y + h, m = y + h / 2, K = 'stroke="' + PSK_INK + '" stroke-width="2.6" stroke-linejoin="round"', f = 'fill="' + c[0] + '"';
   switch (sid){
@@ -155613,17 +155676,23 @@ function bossAnswer(o){
   BOSS.ans = o; BOSS.ansAt = Date.now(); BOSS.fx = ok ? "hit" : "near";
   if (ok) BOSS.right++; else { BOSS.wrong++; (BOSS.miss = BOSS.miss || []).push(z); }
   BOSS.pdist = BOSS.dist; BOSS.mv = ok ? "back" : "closer"; BOSS.shown = 0;
-  BOSS.dist = BOSS.wrong >= BOSS.maxMiss ? 0 : Math.max(1, Math.min(BOSS.maxD, BOSS.dist + (ok ? 1 : -1)));
+  BOSS.dist = Math.max(1, Math.min(BOSS.maxD, BOSS.dist + (ok ? 1 : -1))); /* Monnie 20 Nov 16:22: she answers every question; Bert waits right beside Britney and only grabs her at the end */
   if (z.kind === "qa") record(z.id, ok); else if (window.SQE_WS_LOG) window.SQE_WS_LOG(z.kind, z.id, ok); /* weak-spot drill (weakspot.js) */
   /* Monnie 20 Nov 08:10: the grab is saved the moment it happens, so leaving the page during the "Nooo!" still keeps Britney at Bert's */
-  if (!ok && BOSS.mode !== "rescue" && BOSS.wrong >= BOSS.maxMiss && BOSS.stake && bossStake(BOSS.key)){
-    var bb = bossS(); bb.cap = {key:BOSS.key, from:ymd(), tries:[], ransom:false, qs:BOSS.miss.map(function(q){ return {kind:q.kind, id:q.id, q:q.q, o:q.o, a:q.a, e:q.e}; }), ok:{}}; BOSS.capNow = 1;
+  save();
+}
+/* Monnie 20 Nov 16:22: after the LAST question, if she lost, "Uh-oh…" scrolls up to the picture and only then Bert runs in and grabs Britney (the capture is saved at that moment) */
+function bossGrab(){
+  var B = BOSS; if (!B || B.grabNow) return;
+  B.grabNow = 1; B.pdist = B.dist; B.dist = 0; B.mv = "closer"; B.shown = 0;
+  if (B.mode !== "rescue" && B.stake && bossStake(B.key)){
+    var bb = bossS(); bb.cap = {key:B.key, from:ymd(), tries:[], ransom:false, qs:(B.miss || []).map(function(q){ return {kind:q.kind, id:q.id, q:q.q, o:q.o, a:q.a, e:q.e}; }), ok:{}}; B.capNow = 1;
   }
   save();
 }
 function bossNext(){
   if (!BOSS || BOSS.ans === null || BOSS.done) return;
-  var over = BOSS.wrong >= BOSS.maxMiss || BOSS.i + 1 >= BOSS.qs.length;
+  var over = BOSS.i + 1 >= BOSS.qs.length;
   if (over){ bossEnd(); return; }
   BOSS.i++; BOSS.ans = null; BOSS.at = 0; BOSS.fx = "";
 }
@@ -155773,8 +155842,8 @@ var BOSS_CAGE = '<svg class="bcage" viewBox="0 0 100 110" aria-hidden="true"><pa
 /* what happens at the end of the round, for the scene: grab (he takes her), reach (nothing to take), flee (she won), or "" */
 function bossEndFx(B){
   if (B.ans === null) return "";
-  if (B.wrong >= B.maxMiss) return B.mode === "rescue" || (B.stake && (B.capNow || bossStake(B.key))) ? "grab" : "reach"; /* capNow: the capture is saved the moment the last wrong answer lands */
-  return B.i + 1 >= B.qs.length ? "flee" : "";
+  if (B.grabNow) return B.mode === "rescue" || (B.stake && (B.capNow || bossStake(B.key))) ? "grab" : "reach"; /* only once she presses "Uh-oh…" after the last question */
+  return B.i + 1 >= B.qs.length && B.wrong < B.maxMiss ? "flee" : "";
 }
 function bossScene(B){
   /* Monnie 20 Nov 14:51: Britney never vanishes. On the losing answer the capture is already saved (capNow), so she must stay in view until Bert actually grabs her; if she was already taken before this duel she shows in her cage */
@@ -155814,10 +155883,11 @@ function bossSay(B, z){
   else if (fx === "reach") msg = "Bert got all the way to " + who + ". Mwahaha!";
   else if (fx === "flee") msg = "Bert gives up and stomps off home in a huff." + (who === "Britney" ? " Britney is safe!" : "");
   else if (B.ans === null) msg = B.i === 0 ? "Bert wants Britney! Every wrong answer, he steps closer. Every right answer pushes him back." : "Bert is " + plural(B.dist, "step") + " from " + who + ".";
-  else if (B.ans === z.a) msg = "Right! Bert gets pushed back a step. He's furious.";
-  else msg = "Wrong! Bert creeps a step closer, grinning.";
+  else if (B.wrong >= B.maxMiss && B.ans !== null && B.i + 1 >= B.qs.length) msg = "That's the last question. Bert is licking his lips…";
+  else if (B.ans === z.a) msg = B.wrong >= B.maxMiss ? "Right! But Bert is still waiting right beside " + who + "…" : "Right! Bert gets pushed back a step. He's furious.";
+  else msg = B.wrong >= B.maxMiss ? "Wrong! Bert is right beside " + who + ", waiting for the end of the test…" : "Wrong! Bert creeps a step closer, grinning.";
   var dots = ''; for (var i = 0; i < B.maxMiss; i++) dots += '<i class="' + (i < B.wrong ? "x" : "") + '"></i>';
-  return '<div class="bsay" aria-live="polite"><p>' + esc(msg) + '</p>' + (fx ? '' : '<p class="bdanger"><span class="bdots" aria-hidden="true">' + dots + '</span><span>' + (left > 0 ? plural(left, "more wrong answer") + (B.mode === "rescue" || (B.stake && bossStake(B.key)) ? " and he grabs Britney." : " and he reaches " + who + ".") : "") + '</span></p>') + '</div>';
+  return '<div class="bsay" aria-live="polite"><p>' + esc(msg) + '</p>' + (fx ? '' : '<p class="bdanger"><span class="bdots" aria-hidden="true">' + dots + '</span><span>' + (left > 0 ? plural(left, "more wrong answer") + (B.mode === "rescue" || (B.stake && bossStake(B.key)) ? " and he grabs Britney at the end." : " and he reaches " + who + " at the end.") : "Keep going: answer every question.") + '</span></p>') + '</div>';
 }
 /* the chase before the first question (Monnie 20 Nov): Bert runs after Layla and Britney shaking his spoon */
 var BOSS_CHASE_MS = 5200;
@@ -155849,10 +155919,11 @@ function bossDuel(){
   var hits = B.right, miss = B.wrong;
   var h = '<div class="cbag bossg"><div class="cbatop"><a class="cbaback" href="' + (B.mode === "rescue" ? "#/boss" : "#/topic/" + x.s.id + "/" + x.t.id) + '">‹ ' + (B.mode === "rescue" ? "Bert's page" : "Topic") + '</a><span class="cbattl">' + (B.mode === "rescue" ? "Rescue mission: " : "Bert the butcher: ") + esc(x.t.title) + '</span><span class="spill coin">' + cbaCoin() + ' <b>' + c.coins + '</b></span></div>';
   h += bossScene(B) + bossSay(B, z);
+  if (B.grabNow){ var fxg = bossEndFx(B); return h + (fxg === "grab" && B.mode !== "rescue" ? '' : '<div class="btns cbac bgrabbtns">' + bossNextBtn(fxg === "grab" ? "See what happened ›" : "See your score ›", Date.now() + 1800) + '</div>') + '</div>'; }
   if (!B.stake && B.mode === "fight") h += '<p class="small muted bnostake">' + (bossS().cap ? 'Britney is already at Bert\'s shop, so this round is just for coins.' : 'You\'ve already beaten Bert on this topic, so this is a practice round: nothing to lose.') + '</p>';
   /* Monnie 20 Nov 13:15: Previous / Next also at the top, so a long question never needs scrolling; earlier questions open read-only */
   var vi = B.view != null ? B.view : B.i, nav = '<div class="btnav bqnav">' + (vi > 0 ? '<button type="button" class="btn sm" data-act="bossprev">‹ Previous question</button>' : '') +
-    (B.view != null ? '<button type="button" class="btn sm primary" data-act="bossfwd">' + (B.view + 1 >= B.i ? 'Back to question ' + (B.i + 1) + ' ›' : 'Next question ›') + '</button>' : B.ans !== null ? '<button type="button" class="btn sm primary" data-act="bossnext">' + (B.wrong >= B.maxMiss || B.i + 1 >= B.qs.length ? (B.wrong < B.maxMiss ? "See what you won ›" : "Uh oh… ›") : "Next question ›") + '</button>' : '') + '</div>';
+    (B.view != null ? '<button type="button" class="btn sm primary" data-act="bossfwd">' + (B.view + 1 >= B.i ? 'Back to question ' + (B.i + 1) + ' ›' : 'Next question ›') + '</button>' : B.ans !== null ? '<button type="button" class="btn sm primary" data-act="bossnext">' + (B.i + 1 >= B.qs.length ? (B.wrong < B.maxMiss ? "See what you won ›" : "Uh-oh… ›") : "Next question ›") + '</button>' : '') + '</div>';
   if (B.view != null){
     var zv = B.qs[B.view], av = (B.hist || [])[B.view];
     h += nav + '<div class="cbacard ask bq"><div class="bqmeta"><span>Question ' + (B.view + 1) + ' of ' + B.qs.length + ' (already answered)</span></div><div class="cbaq bqtext">' + (zv.kind === "qa" ? esc(zv.q).replace(/\n\s*\n/g, "<br><br>").replace(/\n/g, "<br>") : inl(zv.q)) + '</div><div class="opts">';
@@ -155870,9 +155941,9 @@ function bossDuel(){
   h += '</div>';
   if (left){ var at0 = B.at, iq = B.i; setTimeout(function(){ if (!BOSS || BOSS.at !== at0 || BOSS.i !== iq || BOSS.ans !== null) return; $all(".bopt").forEach(function(btn){ btn.disabled = false; }); var bl = document.getElementById("block"); if (bl) bl.parentNode.removeChild(bl); }, left + 40); }
   if (B.ans !== null){
-    var ok = B.ans === z.a, over = B.wrong >= B.maxMiss || B.i + 1 >= B.qs.length;
+    var ok = B.ans === z.a, over = B.i + 1 >= B.qs.length;
     h += '<div class="cbafb ' + (ok ? "ok" : "no") + '"><b class="' + (ok ? "cg" : "cb") + '">' + (ok ? "✓ Right! Bert gets pushed back." : "✗ Not quite. The answer is " + "ABCDE"[z.ord.indexOf(z.a)] + ".") + '</b><div class="cbawhy">' + (z.kind === "qa" ? '<div class="notes">' + md(z.e || "") + '</div>' : '<b>Why:</b> ' + inl(z.e || "")) + '</div>' + (ok ? '' : '<div class="btns">' + bossNotes(z, B.key) + '</div>') + '</div>';
-    h += '<div class="btns cbac">' + bossNextBtn(over ? (B.wrong < B.maxMiss ? "See what you won ›" : "Uh oh… ›") : "Next question ›", B.ansAt) + '</div>';
+    h += '<div class="btns cbac">' + bossNextBtn(over ? (B.wrong < B.maxMiss ? "See what you won ›" : "Uh-oh… ›") : "Next question ›", B.ansAt) + '</div>';
   }
   return h + '</div></div>';
 }
@@ -156436,7 +156507,8 @@ document.addEventListener("click", function(e){
     case "bosspick": if (BOSS && !BOSS.done && BOSS.ans === null){ bossAnswer(+el.getAttribute("data-o")); render(); bossShowFb(); } break; /* QA 15:41: no jump back up; Bert moves in view, then the explanation slides into view */
     case "bossprev": if (BOSS && !BOSS.done){ BOSS.view = Math.max(0, (BOSS.view != null ? BOSS.view : BOSS.i) - 1); render(); bossScroll(); } break;
     case "bossfwd": if (BOSS && BOSS.view != null){ BOSS.view++; if (BOSS.view >= BOSS.i) BOSS.view = null; render(); bossScroll(); } break;
-    case "bossnext": if (BOSS && BOSS.ans !== null && Date.now() >= BOSS.ansAt + 980){ bossNext(); if (BOSS.done){ location.hash = "#/boss/result"; bossChestView(); } else { render(); bossScroll(); } } break;
+    case "bossnext": if (BOSS && !BOSS.grabNow && BOSS.ans !== null && BOSS.i + 1 >= BOSS.qs.length && BOSS.wrong >= BOSS.maxMiss && Date.now() >= BOSS.ansAt + 980){ bossGrab(); render(); bossScroll(); break; }
+      if (BOSS && BOSS.ans !== null && Date.now() >= BOSS.ansAt + 980){ bossNext(); if (BOSS.done){ location.hash = "#/boss/result"; bossChestView(); } else { render(); bossScroll(); } } break;
     case "bosschest": { var bn = bossChest(); if (bn && BOSS) BOSS.chestN = bn; render(); if (bn){ var ch = document.querySelector(".bres .bchest"); if (ch) ch.classList.add("pop"); } bossChestView(); break; }
     case "bossransom": if (bossRansom()) location.hash = "#/palace"; else render(); break;
     case "bossgetback": if (BOSS && !BOSS.done && BOSS.ans !== null) bossEnd(); RESQ = null; location.hash = "#/boss/rescue"; break;
@@ -156585,8 +156657,8 @@ try { if (/[?&#]monnie=1/.test(location.href)) localStorage.setItem("sqe_monnie"
   function get(){ try { return sessionStorage.getItem("sqe_qback"); } catch(e){ return null; } }
   document.addEventListener("click", function(ev){ var a = ev.target && ev.target.closest && ev.target.closest('a[href^="#/topic/"]'); if (!a || !SRC.test(location.hash)) return; try { sessionStorage.setItem("sqe_qback", location.hash); sessionStorage.setItem("sqe_qback_y", String(Math.round(window.scrollY))); } catch(e){} }, true);
   function sync(){ var bk = get(), el = document.getElementById("qbackbtn");
-    if (/^#\/topic\//.test(location.hash) && bk){ if (!el){ el = document.createElement("button"); el.type = "button"; el.id = "qbackbtn"; el.className = "qbackbtn"; el.innerHTML = "&#8249; Back to your question"; el.addEventListener("click", function(){ window.SQE_QBACK_T = Date.now(); var h = get(), qy = 0; try { qy = +sessionStorage.getItem("sqe_qback_y") || 0; } catch(e){} /* 14:58 (Monnie): land back on the exact question, not the top of the page */ [60, 250, 600, 1100].forEach(function(ms){ setTimeout(function(){ var bq = document.querySelector(".bossg .bq"), q = document.querySelector(".bossg .qtext, .bossg, .qtext"); if (bq) window.scrollTo(0, Math.max(0, window.scrollY + bq.getBoundingClientRect().top - 12)); /* Bert duel and rescue: the question card itself at the top of the screen */ else if (qy > 0) window.scrollTo(0, qy); else if (q) q.scrollIntoView({block:"center"}); }, ms); }); try { sessionStorage.removeItem("sqe_qback"); } catch(e){} el.remove(); location.hash = h || "#/today"; }); document.body.appendChild(el); } }
-    else { if (el) el.remove(); if (!/^#\/topic\//.test(location.hash)) { try { sessionStorage.removeItem("sqe_qback"); } catch(e){} } } }
+    if (/^#\/topic\//.test(location.hash) && bk){ if (!el){ el = document.createElement("button"); el.type = "button"; el.id = "qbackbtn"; el.className = "qbackbtn"; el.innerHTML = "&#8249; Back to your question"; el.addEventListener("click", function(){ window.SQE_QBACK_T = Date.now(); var h = get(), qy = 0; try { qy = +sessionStorage.getItem("sqe_qback_y") || 0; } catch(e){} /* 14:58 (Monnie): land back on the exact question, not the top of the page */ [60, 250, 600, 1100].forEach(function(ms){ setTimeout(function(){ var bq = document.querySelector(".bossg .bq"), q = document.querySelector(".bossg .qtext, .bossg, .qtext"); var zq = document.querySelector(".qzcard .qtext"); if (bq) window.scrollTo(0, Math.max(0, window.scrollY + bq.getBoundingClientRect().top - 12)); /* Bert duel and rescue: the question card itself at the top of the screen */ else if (zq) window.scrollTo(0, Math.max(0, window.scrollY + zq.getBoundingClientRect().top - 70)); /* QA 20 Nov: Model Q&A lands on the start of the scenario, not the options below it */ else if (qy > 0) window.scrollTo(0, qy); else if (q) q.scrollIntoView({block:"center"}); }, ms); }); try { sessionStorage.removeItem("sqe_qback"); } catch(e){} el.remove(); document.body.classList.remove("qback-on"); location.hash = h || "#/today"; }); document.body.appendChild(el); } document.body.classList.add("qback-on"); /* QA 20 Nov: room at the bottom so the floating button never covers the last lines of the notes */ }
+    else { if (el) el.remove(); document.body.classList.remove("qback-on"); if (!/^#\/topic\//.test(location.hash)) { try { sessionStorage.removeItem("sqe_qback"); } catch(e){} } } }
   window.addEventListener("hashchange", function(){ setTimeout(sync, 0); }); setTimeout(sync, 0);
 })();
 (function(){ try { if (!document.documentElement.classList.contains("monnie")) return; var b = document.createElement("div"); b.className = "monbadge"; b.setAttribute("role", "status");
@@ -156631,13 +156703,21 @@ document.addEventListener("click", function(e){
   var t = e.target; if (!t || !t.closest) return;
   var w = t.closest(".mmtest"); if (!w) return;
   var pt = t.closest(".mmpt");
-  if (pt){ pt.classList.toggle("show"); return; }
+  if (pt){ pt.classList.toggle("show"); fwAria(pt); return; }
   var g = t.closest(".mmb,.mmq,.mmp");
   if (g){ var b = g.getAttribute("data-b"), svg = g.ownerSVGElement || g.closest("svg") || g.closest(".mmlist"), pts = svg.querySelectorAll('.mmpt[data-b="' + b + '"]'), all = pts.length && [].every.call(pts, function(n){ return n.classList.contains("show"); });
-    [].forEach.call(svg.querySelectorAll('[data-b="' + b + '"]'), function(n){ n.classList.toggle("show", !all); }); return; }
+    [].forEach.call(svg.querySelectorAll('[data-b="' + b + '"]'), function(n){ n.classList.toggle("show", !all); fwAria(n); }); return; }
   var h = t.closest(".fwh") || t.closest(".fwstep"); if (h){ var st = h.classList.contains("fwstep") ? h : h.parentNode; if (st) st.classList.toggle("show"); }
 });
 
+/* 16:30 (QA): hidden framework cards are keyboard buttons: aria-expanded follows the reveal; Enter or Space reveals */
+function fwAria(n){ if (!n || !n.getAttribute || n.getAttribute("role") !== "button" || !n.classList.contains("mmpt")) return; var on = n.classList.contains("show"); n.setAttribute("aria-expanded", on ? "true" : "false");
+  if (on){ if (n.hasAttribute("aria-label")){ n.setAttribute("data-al", n.getAttribute("aria-label")); n.removeAttribute("aria-label"); } } else if (n.hasAttribute("data-al")) n.setAttribute("aria-label", n.getAttribute("data-al")); }
+document.addEventListener("keydown", function(e){
+  if (e.key !== "Enter" && e.key !== " " && e.key !== "Spacebar") return;
+  var t = e.target; if (!t || !t.closest || !t.classList || !t.classList.contains("mmpt") || t.getAttribute("role") !== "button" || !t.closest(".mmtest")) return;
+  e.preventDefault(); t.dispatchEvent(new MouseEvent("click", {bubbles:true, cancelable:true}));
+});
 /* framework self-test counter (19 Nov): "3 of 38 revealed" next to the button, counting the version on screen (desktop map or phone list) */
 document.addEventListener("click", function(e){
   var t = e.target; if (!t || !t.closest || !t.closest(".mmtest")) return;
@@ -156685,7 +156765,7 @@ document.addEventListener("click", function(e){
 (function(){
   function setOpen(li, on){ li.classList.toggle("open", on); var b = li.querySelector(".fwk-h"), d = li.querySelector(".fwk-d"); if (b) b.setAttribute("aria-expanded", on ? "true" : "false"); if (d){ if (on) d.removeAttribute("hidden"); else d.setAttribute("hidden", ""); } }
   function sync(w){ var li = w.querySelectorAll(".fwk-step"), n = 0;
-    [].forEach.call(li, function(x, i){ if (x.classList.contains("open")) n++; var nx = x.querySelector(".fwk-next"); if (nx) nx.hidden = !!(li[i + 1] && li[i + 1].classList.contains("open")); });
+    [].forEach.call(li, function(x, i){ if (x.classList.contains("open")) n++; var nx = x.querySelector(".fwk-next"); if (nx) nx.hidden = !!(li[i + 1] && li[i + 1].classList.contains("open")); var pv = x.querySelector(".fwk-prev"); if (pv) pv.hidden = !!(li[i - 1] && li[i - 1].classList.contains("open")); });
     var c = w.querySelector(".fwk-count"); if (c) c.textContent = n >= li.length ? "All " + li.length + " steps open" : n + " of " + li.length + " steps open";
     var a = w.querySelector(".fwk-all"); if (a) a.disabled = n >= li.length; }
   document.addEventListener("click", function(e){
@@ -156694,6 +156774,7 @@ document.addEventListener("click", function(e){
     var steps = [].slice.call(w.querySelectorAll(".fwk-step"));
     if (t.closest(".fwk-h")){ var li = t.closest(".fwk-step"); setOpen(li, !li.classList.contains("open")); }
     else if (t.closest(".fwk-next")){ var cur = t.closest(".fwk-step"), nx = steps[steps.indexOf(cur) + 1]; if (nx){ setOpen(cur, false); /* 15:58 (QA): the finished step folds away */ setOpen(nx, true); var hb = nx.querySelector(".fwk-h"); if (hb) try { hb.focus({preventScroll:true}); } catch(ex){} var r = nx.getBoundingClientRect(); if (r.bottom > innerHeight) try { nx.scrollIntoView({block:"nearest", behavior:"smooth"}); } catch(ex){ nx.scrollIntoView(false); } } }
+    else if (t.closest(".fwk-prev")){ var cu = t.closest(".fwk-step"), pv = steps[steps.indexOf(cu) - 1]; if (pv){ setOpen(cu, false); setOpen(pv, true); var hp = pv.querySelector(".fwk-h"); if (hp) try { hp.focus({preventScroll:true}); } catch(ex){} var rp = pv.getBoundingClientRect(); if (rp.top < 0 || rp.bottom > innerHeight) try { pv.scrollIntoView({block:"nearest", behavior:"smooth"}); } catch(ex){ pv.scrollIntoView(true); } } } /* 16:30 (QA): ‹ Previous step */
     else if (t.closest(".fwk-all")) steps.forEach(function(x){ setOpen(x, true); });
     else if (t.closest(".fwk-reset")){ steps.forEach(function(x, i){ setOpen(x, i === 0); }); try { w.scrollIntoView({block:"nearest", behavior:"smooth"}); } catch(ex){} var h0 = steps[0] && steps[0].querySelector(".fwk-h"); if (h0) try { h0.focus({preventScroll:true}); } catch(ex){} }
     else return;
@@ -156760,7 +156841,7 @@ document.addEventListener("click", function(e){
     ".rpt-pan h3{margin:0 0 6px;font-size:15px}.rpt-pan textarea{width:100%;box-sizing:border-box;min-height:70px;margin-top:8px;display:block;font:inherit;padding:6px;border:1px solid #bbb;border-radius:6px}" +
     ".rpt-pan .rpt-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.rpt-pan button{font:600 13px system-ui,sans-serif;padding:6px 10px;border-radius:8px;border:1px solid #bbb;background:#f4f4f4;cursor:pointer}" +
     ".rpt-pan button.rpt-go{background:#4A3B6B;color:#fff;border-color:#4A3B6B}.rpt-pan .rpt-mut{color:#666;font-size:12px}.rpt-pan ol{padding-left:18px;margin:6px 0}.rpt-pan li{margin:4px 0;font-size:12px}" +
-    ".rpt-pan .rpt-x{float:right;border:0;background:none;font-size:16px;padding:0 4px}";
+    ".rpt-pan .rpt-x{float:right;border:0;background:none;font-size:16px;padding:0 4px}.rpt-pan.rpt-pan{left:50%;top:50%;bottom:auto;transform:translate(-50%,-50%);width:min(440px,calc(100vw - 32px));max-height:80vh;box-shadow:0 0 0 100vmax rgba(0,0,0,.35),0 10px 30px rgba(0,0,0,.3)}";
   var st = document.createElement("style"); st.textContent = css; document.head.appendChild(st);
   var btn = document.createElement("button"); btn.className = "rpt-btn"; btn.type = "button"; btn.textContent = "⚑ Report a mistake"; btn.title = "Spotted something wrong? Flag it here.";
   var pan = null, lastSel = "";
@@ -156778,7 +156859,6 @@ document.addEventListener("click", function(e){
       (a.length ? '<ol>' + a.map(function(x, i){ return '<li>' + esc(x.note) + ' <span class="rpt-mut">(' + esc(x.heading || x.page) + ')</span> <button data-r="del" data-i="' + i + '" style="padding:0 6px;font-size:11px">delete</button></li>'; }).join("") + '</ol>' +
         '<div class="rpt-row"><button data-r="mail">Email the list</button><button data-r="dl">Download the list</button><button data-r="copy">Copy</button></div>' : '<p class="rpt-mut">None yet.</p>');
     document.body.appendChild(pan);
-    try { /* 16:10 (QA): on wide screens sit in the empty left margin so the answers stay visible */ var m = (document.querySelector(".main .card") || document.querySelector(".main")), L = m ? m.getBoundingClientRect().left : 0; if (L - 44 >= 220) pan.style.width = Math.min(360, L - 44) + "px"; } catch(e){}
     var ta = pan.querySelector("#rpt-note"); if (ta) ta.focus();
   }
   btn.addEventListener("click", function(){ if (pan) close(); else open(); });
