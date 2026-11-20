@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120002757";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120003228";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -2600,6 +2600,42 @@ html.dfv-on{overflow:hidden}
 @keyframes jm-trunk{0%,29.9%{opacity:0}30%,44.9%{opacity:1}45%,100%{opacity:0}}
 @keyframes jm-trunk0{0%,30.1%{opacity:1}30.2%,44.7%{opacity:0}44.8%,100%{opacity:1}}
 @media (prefers-reduced-motion:reduce){.jsv .jmo{animation:none!important}}
+
+/* newbanner: PREVIEW ONLY. app.js adds .nb to .head when the URL has ?newbanner=1; every rule here is scoped to .head.nb so the live banner is untouched.
+   Layout: [cloud staircase + Layla | title, dates, numbers, Remember | ring, coin bag], kept left of the drawn coop/hens/girls. */
+.head.nb .nbstage{order:1;position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1fr) clamp(230px,17cqw,340px) auto;column-gap:clamp(14px,1.4cqw,30px);align-items:start;width:calc(60% - 16px);box-sizing:border-box;padding:0 0 14px;color:#10294A}
+.head.nb .nbsteps{position:relative;width:100%;max-width:440px;padding-bottom:12px}
+.head.nb .nbsvg{display:block;width:100%;height:auto;overflow:visible}
+.head.nb .nbrib{position:absolute;left:31%;right:0;top:80%;display:flex;flex-direction:column;background:#FFB0C8;border:2.5px solid #10294A;border-radius:12px;padding:5px 10px 6px 24px;box-shadow:0 3px 0 #10294A;font-size:12.5px;line-height:1.2;color:#10294A;box-sizing:border-box}
+.head.nb .nbrib b{font-size:13.5px;font-weight:800}
+.head.nb .nbrib span{font-weight:700}
+.head.nb .nbrib small{font-size:11.5px;font-weight:700;color:#10294A!important;margin-top:1px}
+.head.nb .nbrib.nbready{background:none;border:0;box-shadow:none;padding:0}
+.head.nb .nbflame{position:absolute;left:-15px;top:50%;width:30px;height:30px;margin-top:-15px;border-radius:50%;background:#FFD93B;border:2.5px solid #10294A;box-sizing:border-box;display:grid;place-items:center}
+.head.nb .nbflame svg{width:20px;height:20px;display:block}
+.head.nb .nbc{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;min-width:0}
+.head.nb .nbtitle h1{margin:0;font-size:clamp(26px,2.3vw,40px);line-height:1.05;font-weight:800;color:#0b2340!important}
+.head.nb .nbtitle .sub{display:flex;flex-wrap:wrap;justify-content:center;gap:0 14px;margin-top:5px;font-size:14px;font-weight:700;color:#10294A!important}
+.head.nb .nbstats{display:flex;justify-content:center;gap:8px;flex-wrap:nowrap}
+.head.nb .nbstats .stat{background:#fff;border:2.5px solid #10294A;border-radius:14px;padding:4px 10px 5px;box-shadow:0 3px 0 #10294A;min-width:64px}
+.head.nb .nbstats .stat b{font-size:23px;line-height:1.1;white-space:nowrap}
+.head.nb .nbstats .stat b small{font-size:13px;font-weight:700}
+.head.nb .nbstats .stat span{display:block;font-size:10.5px;font-weight:800;line-height:1.2}
+.head.nb.nb .kw{position:relative!important;left:auto!important;top:auto!important;width:100%!important;max-width:none!important;min-width:0;margin:0!important;flex:none;box-sizing:border-box;text-align:left}
+.head.nb .nbr{display:flex;flex-direction:column;align-items:center;gap:18px;padding-top:4px}
+.head.nb .nbring{display:flex;align-items:center;gap:10px;background:#fff;border:2.5px solid #10294A;border-radius:16px;padding:6px 14px 6px 6px;box-shadow:0 3px 0 #10294A}
+.head.nb.nb .ring{background:#fff;border-radius:50%;box-shadow:none}
+.head.nb.nb .ringtxt{background:none;border:0;padding:0;font-size:13.5px;line-height:1.3;max-width:112px}
+.head.nb .mbag{margin:0!important}
+.head.nb.nb .homebtn{position:absolute;right:18px;top:10px;margin:0;z-index:3}
+.head.nb.compact .nbstats,.head.nb.compact .nbring,.head.nb.compact .sub{display:none}
+@media (max-width:720px){
+ .head.nb.nb{padding-top:12px!important}
+ .head.nb .nbstage{display:flex;flex-direction:column;align-items:center;width:100%;gap:14px;padding-bottom:12px}
+ .head.nb .nbl{width:min(100%,420px)}
+ .head.nb .nbc{width:min(100%,420px)}
+ .head.nb .nbr{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:12px;padding:0}
+}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -79110,7 +79146,7 @@ window.SQE_JOURNEY = function (A) {
             lm: function (i) { return ({ x: st[i].x, y: st[i].y - 34, s: 1 }); },
             label: function (i) { return ({ cx: st[i].x, top: st[i].y + 44 }); },
             F: { w: 188, fs: 17, lh: 19, sfs: 13, max: 19, bar: 8 },
-            hen: function (i) { return i === 0 ? { x: st[0].x - 104, y: st[0].y + 22, s: .85, m: true } : left(i) ? { x: st[i].x + 74, y: st[i].y + 24, s: .85, m: false } : { x: st[i].x - 74, y: st[i].y + 24, s: .85, m: true }; },
+            hen: function (i) { return i === 0 ? { x: st[0].x - 104, y: st[0].y + 22, s: .85, m: true } : left(i) ? { x: st[i].x + 88, y: st[i].y + 24, s: .85, m: false } : { x: st[i].x - 88, y: st[i].y + 24, s: .85, m: true }; }, /* just before the stop, clear of its number */
             palace: { x: 600, y: 2115 + D, s: 1 },
             flags: [{ x: 176, y: 2117 + D, s: 1, h: 110 }, { x: 812, y: 2117 + D, s: 1, h: 110 }],
             reg: { spring: 160, autumn: 1190, grounds: 1750 + D },
@@ -79139,7 +79175,7 @@ window.SQE_JOURNEY = function (A) {
             label: function (i) { return ({ cx: i % 2 ? 390 : 210, cy: st[i].y }); },
             F: { w: 200, fs: 20, lh: 22, sfs: 15, max: 17, bar: 9 },
             art: { x: -130, y: -250, w: 260, h: 256, gx: -120, gy: -200, gw: 230, gh: 206 },
-            hen: function (i) { return ({ x: st[i].x, y: st[i].y - 32, s: 1, m: !(i % 2) }); }, /* after each stop the path heads across: right from the left side, left from the right side */
+            hen: function (i) { return ({ x: st[i].x, y: st[i].y - 42, s: 1, m: !(i % 2) }); }, /* after each stop the path heads across: right from the left side, left from the right side */
             palace: { x: 280, y: Pb, s: 1 },
             flags: [{ x: 100, y: yc + 116, s: 1, h: 80 }, { x: 320, y: yc + 116, s: 1, h: 80 }], /* tidy: planted in front of the palace, below the path, so they no longer cover the palace steps */
             reg: { spring: 212, autumn: st[7].y + 250, grounds: sl.y + 150 },
@@ -79487,14 +79523,179 @@ window.SQE_JOURNEY = function (A) {
         s += pair(Hn, L.mode); /* Layla with Britney by her side: at the gate, then at the stop she has reached (Monnie) */
         return s + '</svg>';
     }
-    /* Layla (full-body cutout) and Britney standing on the ground beside her; Britney walks ahead on the side the path goes next */
+    /* Layla (the approved LOVE IS drawing, cut out, no cloud) and Britney standing on the ground beside her feet; Britney walks ahead on the side the path goes next */
+    var LAYLA_IMG = 'img/layla-map.webp', LAYLA_AR = 124 / 300; /* cutout of layla/layla-approved-love-is.png, 124x300 */
+    var BRITNEY_IMG = 'img/britney/plain.webp'; /* the one Britney picture (lead swaps in the master file here) */
+    function pairInner(mode, f) {
+        var lh = mode === 'phone' ? 132 : 106, lw = lh * LAYLA_AR, bh = lh * .6;
+        var lx = -lw / 2 - bh * .3 * f, bx = f > 0 ? lx + lw - 8 : lx - bh + 8, x0 = Math.min(lx, bx + bh * (f > 0 ? .07 : .24)), x1 = Math.max(lx + lw, bx + bh * (f > 0 ? .76 : .93));
+        return "<ellipse cx=\"".concat(f1((x0 + x1) / 2), "\" cy=\"2\" rx=\"").concat(f1((x1 - x0) / 2 + 4), "\" ry=\"6\" fill=\"#111\" opacity=\".2\"/><g class=\"jhop\">")
+            + "<image href=\"".concat(LAYLA_IMG, "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/>")
+            + "<g transform=\"translate(".concat(f1(bx + bh / 2), ",0) scale(").concat(f, ",1)\"><g class=\"jmo jbob\"><image href=\"").concat(BRITNEY_IMG, "\" x=\"").concat(f1(-bh / 2), "\" y=\"").concat(f1(-bh * .93), "\" width=\"").concat(f1(bh), "\" height=\"").concat(f1(bh), "\"/></g></g></g>");
+    }
     function pair(Hn, mode) {
-        var lh = mode === 'phone' ? 118 : 100, lw = lh * 284 / 600, bh = lh * .62, f = Hn.m === false ? -1 : 1; /* f=1: path heads right */
-        var lx = -lw / 2 - bh * .28 * f, bx = lx + (f > 0 ? lw - 6 : -bh + 6);
-        return "<g class=\"jhen jpair\" transform=\"translate(".concat(Hn.x, ",").concat(Hn.y, ")\" aria-hidden=\"true\">")
-            + "<ellipse cx=\"0\" cy=\"2\" rx=\"".concat(lw * .5 + bh * .55, "\" ry=\"6\" fill=\"#111\" opacity=\".2\"/>")
-            + "<image href=\"img/layla-cloud-love.webp\" x=\"".concat(lx, "\" y=\"").concat(-lh, "\" width=\"").concat(lw, "\" height=\"").concat(lh, "\" preserveAspectRatio=\"xMidYMax meet\"/>")
-            + "<g transform=\"translate(".concat(bx + bh / 2, ",0) scale(").concat(f, ",1)\"><g class=\"jmo jbob\"><image href=\"img/britney/plain.webp\" x=\"").concat(-bh / 2, "\" y=\"").concat(-bh * .93, "\" width=\"").concat(bh, "\" height=\"").concat(bh, "\"/></g></g></g>");
+        return "<g class=\"jhen jpair\" transform=\"translate(".concat(Hn.x, ",").concat(Hn.y, ")\" data-f=\"").concat(Hn.m === false ? -1 : 1, "\" aria-hidden=\"true\">").concat(pairInner(mode, Hn.m === false ? -1 : 1), "</g>");
+    }
+    /* where the pair stands (Monnie's lead, 20 Nov): they move on as TOPICS are rated, not only whole stops.
+       0 = farm gate; at stop i with d of n topics rated they stand i + d/n of the way to stop i+1; a finished stop puts them at the next stop. */
+    function jPos(J) {
+        if (/[?&]henstop=\d+/.test(qs()) || J.at === 0 || J.at === 15)
+            return J.at;
+        var o = J.stops[J.at - 1];
+        return J.at + (o && o.n ? Math.min(o.d / o.n, .99) : 0);
+    }
+    var WALK_KEY = 'sqe_map_lastPos';
+    /* the path sampled every 4 units; where each stop's token spot (L.hen) sits along it (S, with the spot's offset D from the path);
+       and A = the first spot past stop i where the pair no longer covers that stop's number or card, so a part-done stop shows them clearly on their way */
+    function walkGeo(box) {
+        var path = box.querySelector('.jroute');
+        if (!path || !path.getTotalLength)
+            return null;
+        var Lt = 0;
+        try {
+            Lt = path.getTotalLength();
+        }
+        catch (e) {
+            return null;
+        }
+        if (!Lt)
+            return null;
+        var X = [], Y = [];
+        for (var t = 0; t <= Lt; t += 4) {
+            var q = path.getPointAtLength(t);
+            X.push(q.x);
+            Y.push(q.y);
+        }
+        var hens = [], obs = [];
+        try {
+            hens = JSON.parse(box.getAttribute('data-hens') || '[]');
+            obs = JSON.parse(box.getAttribute('data-obs') || '[]');
+        }
+        catch (e) {
+            return null;
+        }
+        if (hens.length < 2)
+            return null;
+        var near = function (x, y, k0) { var best = k0, bd = 1e12; for (var k = k0; k < X.length; k++) {
+            var d = Math.pow((X[k] - x), 2) + Math.pow((Y[k] - y), 2);
+            if (d < bd) {
+                bd = d;
+                best = k;
+            }
+        } return best; };
+        var S = [], D = [], M = [];
+        var k0 = 0;
+        hens.forEach(function (h) { var k = near(h[0], h[1], k0); k0 = k; S.push(k * 4); D.push([h[0] - X[k], h[1] - Y[k]]); M.push(h[2] ? 1 : -1); });
+        var pt = function (s) { s = Math.max(0, Math.min(s, (X.length - 1) * 4)); var k = Math.min(X.length - 2, Math.floor(s / 4)), u = s / 4 - k; return [X[k] + (X[k + 1] - X[k]) * u, Y[k] + (Y[k + 1] - Y[k]) * u]; };
+        var G = { S: S, D: D, M: M, pt: pt, n: hens.length - 1, A: [] };
+        var bx = box.classList.contains('jphone') ? [-56, 56, -136, 4] : [-44, 46, -110, 4];
+        for (var i = 0; i < G.n; i++) {
+            var o = obs[i];
+            var A_1 = -1;
+            if (o) {
+                var sc = near(o[0], o[1], 0) * 4, lo = Math.max(sc, S[i]);
+                for (var t = lo; t < S[i + 1]; t += 4) {
+                    var P = walkAtS(G, t), x0 = P.x + bx[0], x1 = P.x + bx[1], y0 = P.y + bx[2], y1 = P.y + bx[3];
+                    var cx = Math.max(x0, Math.min(o[0], x1)), cy = Math.max(y0, Math.min(o[1], y1));
+                    if (Math.pow((cx - o[0]), 2) + Math.pow((cy - o[1]), 2) < o[2] * o[2])
+                        continue; /* still over the stop number */
+                    if (x1 > o[3] && x0 < o[5] && y1 > o[4] && y0 < o[6])
+                        continue; /* still over the stop's card */
+                    A_1 = t;
+                    break;
+                }
+            }
+            G.A.push(A_1 < 0 ? (S[i] + S[i + 1]) / 2 : Math.min(A_1, S[i] + (S[i + 1] - S[i]) * .7));
+        }
+        return G;
+    }
+    /* position p (0 = gate, i + fraction) -> distance along the path */
+    function walkS(G, p) {
+        if (p <= 0)
+            return G.S[0];
+        if (p >= G.n)
+            return G.S[G.n];
+        var i = Math.floor(p), f = p - i;
+        return f < 1e-6 ? G.S[i] : G.A[i] + (G.S[i + 1] - G.A[i]) * f;
+    }
+    function walkAtS(G, s) {
+        var k = 0;
+        while (k < G.n - 1 && s > G.S[k + 1])
+            k++;
+        var u = G.S[k + 1] > G.S[k] ? Math.max(0, Math.min(1, (s - G.S[k]) / (G.S[k + 1] - G.S[k]))) : 0, q = G.pt(s), dx = G.pt(s + 10)[0] - G.pt(s - 10)[0];
+        return { x: q[0] + G.D[k][0] + (G.D[k + 1][0] - G.D[k][0]) * u, y: q[1] + G.D[k][1] + (G.D[k + 1][1] - G.D[k][1]) * u, s: s,
+            m: s <= G.S[k] + .5 ? G.M[k] : s >= G.S[k + 1] - .5 ? G.M[k + 1] : Math.abs(dx) > 4 ? (dx > 0 ? 1 : -1) : G.M[k] };
+    }
+    function placePair(g, mode, P, hop) {
+        g.setAttribute('transform', "translate(".concat(f1(P.x), ",").concat(f1(P.y), ")"));
+        if (P.m && +g.getAttribute('data-f') !== P.m) {
+            g.setAttribute('data-f', P.m);
+            g.innerHTML = pairInner(mode, P.m);
+        }
+        var h = g.querySelector('.jhop');
+        if (h)
+            h.setAttribute('transform', hop ? "translate(0,".concat(f1(-hop), ")") : '');
+    }
+    /* put the pair at its spot; when it has moved on since last time, walk it along the path from the old spot with little hops
+       (once, when it scrolls into view; not under reduced motion). Preview: ?walkfrom=N (start), ?henstop=N (end); previews never touch storage. */
+    function walkPair() {
+        var q = qs(), wf = /[?&]walkfrom=(\d+(?:\.\d+)?)/.exec(q), preview = !!wf || /[?&]henstop=\d+/.test(q);
+        var last = null;
+        if (wf)
+            last = +wf[1];
+        else if (!preview)
+            try {
+                var v = localStorage.getItem(WALK_KEY);
+                if (v != null && v !== '' && isFinite(+v))
+                    last = +v;
+            }
+            catch (e) { }
+        var save = function (v) { if (!preview)
+            try {
+                localStorage.setItem(WALK_KEY, String(v));
+            }
+            catch (e) { } };
+        var reduce = false;
+        try {
+            reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        }
+        catch (e) { }
+        var pending = false, to = 0;
+        [].forEach.call(document.querySelectorAll('.jmap .jsv'), function (box) {
+            var g = box.querySelector('.jpair'), G = walkGeo(box);
+            if (!g || !G)
+                return;
+            var mode = box.classList.contains('jphone') ? 'phone' : 'desk';
+            to = +box.getAttribute('data-pos') || 0;
+            var anim = !reduce && typeof IntersectionObserver !== 'undefined', from = anim && last != null && last < to ? Math.max(0, last) : to, P0 = walkAtS(G, walkS(G, from));
+            placePair(g, mode, P0, 0);
+            if (from >= to)
+                return;
+            pending = true;
+            var io = new IntersectionObserver(function (es) {
+                if (!es.some(function (e) { return e.isIntersecting; }))
+                    return;
+                io.disconnect();
+                save(to);
+                var dur = Math.min(4000, Math.max(700, 1500 * (to - from))), s0 = P0.s, s1 = walkS(G, to), hopLen = mode === 'phone' ? 46 : 36;
+                var t0 = 0;
+                var step = function (ts) {
+                    if (!g.isConnected)
+                        return;
+                    if (!t0)
+                        t0 = ts;
+                    var u = Math.min(1, (ts - t0) / dur), e = u < .5 ? 2 * u * u : 1 - 2 * (1 - u) * (1 - u);
+                    var P = walkAtS(G, s0 + (s1 - s0) * e);
+                    placePair(g, mode, P, u < 1 ? Math.abs(Math.sin(Math.PI * (P.s - s0) / hopLen)) * (mode === 'phone' ? 9 : 7) : 0);
+                    if (u < 1)
+                        requestAnimationFrame(step);
+                };
+                requestAnimationFrame(step);
+            }, { threshold: .6 });
+            io.observe(g);
+        });
+        if (!pending && document.querySelector('.jmap .jsv'))
+            save(to);
     }
     function stones() {
         [].forEach.call(document.querySelectorAll('.jmap .jsv'), function (box) {
@@ -79550,12 +79751,12 @@ window.SQE_JOURNEY = function (A) {
                 if (Lt - 3 - (t + len) < 12)
                     len = Lt - 3 - t;
                 var sk1 = t + len >= Lt - 4 ? 0 : (rnd() - .5) * 10; /* joints between rows run slightly askew */
-                var t1 = t + len, A_1 = fr(t + g), B = fr(t1 - g), walked = (t + t1) / 2 <= best, C = walked ? DONE : PAST;
+                var t1 = t + len, A_2 = fr(t + g), B = fr(t1 - g), walked = (t + t1) / 2 <= best, C = walked ? DONE : PAST;
                 var r = rnd(), cuts = r < .16 ? [] : r < .66 ? [(rnd() - .5) * 18] : [-9 + (rnd() - .5) * 6, 9 + (rnd() - .5) * 6];
                 var E = [-HW].concat(cuts, [HW]);
                 for (var j = 0; j < E.length - 1; j++) {
                     var o0 = E[j] + (j ? g : 0), o1 = E[j + 1] - (j < E.length - 2 ? g : 0), J = function () { return (rnd() - .5) * 2.6; }, Jo = function () { return (rnd() - .5) * 2; };
-                    var P = [at2(A_1, J() + sk0 * o0 / HW, o0 + Jo()), at2(B, J() + sk1 * o0 / HW, o0 + Jo()), at2(B, J() + sk1 * o1 / HW, o1 + Jo()), at2(A_1, J() + sk0 * o1 / HW, o1 + Jo())];
+                    var P = [at2(A_2, J() + sk0 * o0 / HW, o0 + Jo()), at2(B, J() + sk1 * o0 / HW, o0 + Jo()), at2(B, J() + sk1 * o1 / HW, o1 + Jo()), at2(A_2, J() + sk0 * o1 / HW, o1 + Jo())];
                     var d = quad(P);
                     sh += d;
                     var ci = Math.floor(rnd() * C.length);
@@ -79589,7 +79790,7 @@ window.SQE_JOURNEY = function (A) {
         return '<div class="jlegend">' + [
             [sv('-42 -42 84 84', "<circle r=\"29\" fill=\"#B8F2C9\" stroke=\"#111\" stroke-width=\"4\"/><text class=\"jpl\" y=\"10\" font-size=\"29\">1</text>".concat(tick(23, -23, 12))), '<b>Done</b>: every topic in the subject rated'],
             [sv('-48 -48 96 96', "<circle r=\"38\" fill=\"none\" stroke=\"#FF7F11\" stroke-width=\"5\" stroke-dasharray=\"7 7\"/><circle r=\"29\" fill=\"#FFD23F\" stroke=\"#111\" stroke-width=\"4\"/><text class=\"jpl\" y=\"10\" font-size=\"29\">2</text>"), "<b>Today</b>: on today's timetable. Tap it for today's topics"],
-            [sv('-52 -106 104 112', pair({ x: 0, y: 0, m: true }, 'desk')), '<b>Layla and Britney</b>: how far you have got'],
+            [sv('-50 -112 104 118', pair({ x: 0, y: 0, m: true }, 'desk')), '<b>Layla and Britney</b>: how far you have got'],
             [sv('-10 -136 170 142', flagArt({ x: 0, y: 0, s: 1 }, '', '')), '<b>Exams</b>: both at the palace, at the end'],
         ].map(function (_a) {
             var i = _a[0], t = _a[1];
@@ -79630,11 +79831,12 @@ window.SQE_JOURNEY = function (A) {
         else if (J.pd && J.pd.rev)
             h += "<div class=\"jtoday\"><a class=\"jtbtn\" href=\"#/home\"><b>Today: ".concat(esc(J.pd.rev.t), "</b><span>Open Today for the steps</span></a></div>");
         h += '</div>';
-        [D, Ph].forEach(function (L) { var c = L.stops[J.at]; h += "<div class=\"jsv j".concat(L.mode, "\" data-at=\"").concat(J.at, "\" data-c=\"[").concat(c.x, ",").concat(c.y, "]\">").concat(mapSVG(J, L), "</div>"); });
+        [D, Ph].forEach(function (L) { var c = L.stops[J.at]; h += "<div class=\"jsv j".concat(L.mode, "\" data-at=\"").concat(J.at, "\" data-c=\"[").concat(c.x, ",").concat(c.y, "]\" data-pos=\"").concat(jPos(J).toFixed(3), "\" data-hens=\"").concat(JSON.stringify(L.stops.map(function (p, i) { var n = L.hen(i); return [n.x, n.y, n.m === false ? 0 : 1]; })), "\" data-obs=\"").concat(JSON.stringify(L.stops.slice(0, 15).map(function (p, i) { var b = L.label(i), w = L.F.w / 2 + 10, h = L.mode === 'phone' ? 140 : 125, t = b.top != null ? b.top - 10 : b.cy - h / 2; return [p.x, p.y, 40, b.cx - w, t, b.cx + w, t + h]; })), "\">").concat(mapSVG(J, L), "</div>"); });
         h += legend() + "<p class=\"jrule\">Tap any stop to see its topics. Rate every topic in a subject to colour in its stones. Both exams are at the palace: FLK1 on ".concat(esc(fmtDate(J.ex1)), ", FLK2 on ").concat(esc(fmtDate(J.ex2)), ".</p>");
         if (r[1])
             h += panel(J, r[1]);
         setTimeout(stones, 0);
+        setTimeout(walkPair, 0);
         if (r[1])
             setTimeout(function () { var c = document.querySelector('.jov .jclose'); if (c && c.focus)
                 try {
@@ -80944,20 +81146,20 @@ var NB = /[?&]newbanner=1/.test(location.search);
 function nbStreakHTML(){
   if (!STREAK_LIVE && streakDemo() === null) return "";
   var p = presS(), got = p.claimed.length, n = presentStreak(), ready = n >= PRESENT_STEPS && got < PRESENT_TOTAL, done = got >= PRESENT_TOTAL;
-  var svg = '<svg viewBox="0 -34 600 364" class="nbsvg" aria-hidden="true">', pos = [[44, 300]];
-  svg += stCloud(44, 300, 56, '#fff');
+  var svg = '<svg viewBox="0 -34 496 404" class="nbsvg" aria-hidden="true">', pos = [[38, 342]];
+  svg += stCloud(38, 342, 52, '#fff');
   for (var i = 0; i < PRESENT_STEPS; i++){
-    var cx = 128 + i * 80, cy = 282 - i * 44, on = i < n;
+    var cx = 104 + i * 66, cy = 322 - i * 54, on = i < n;
     pos.push([cx, cy]);
-    svg += stCloud(cx, cy, 68, on ? '#FFD93B' : '#fff');
+    svg += stCloud(cx, cy, 64, on ? '#FFD93B' : '#fff');
     svg += '<text x="' + cx + '" y="' + (cy + 8) + '" text-anchor="middle" font-size="' + (on ? 24 : 21) + '" font-weight="800" fill="#10294A">' + (on ? '✓' : (i + 1)) + '</text>';
   }
   var lp = pos[Math.min(n, PRESENT_STEPS)], LH = 150, LW = LH * 284 / 600;
   svg += '<image class="nblayla" href="img/layla-cloud-love.webp" x="' + (lp[0] - LW / 2).toFixed(1) + '" y="' + (lp[1] - LH * 0.9).toFixed(1) + '" width="' + LW.toFixed(1) + '" height="' + LH + '"/>';
-  var rx = 542, ry = 92;
-  ["#E0457B","#F59F2A","#F7D038","#4CB963","#3B8FE0","#8A5CD6"].forEach(function(c, j){ var r = 50 - j * 5.4; svg += '<path d="M' + (rx - r) + ' ' + ry + 'a' + r + ' ' + r + ' 0 0 1 ' + (2 * r) + ' 0" fill="none" stroke="' + c + '" stroke-width="5.8"/>'; });
-  svg += '<path d="M' + (rx - 53) + ' ' + ry + 'a53 53 0 0 1 106 0" fill="none" stroke="#10294A" stroke-width="2.4"/><path d="M' + (rx - 20) + ' ' + ry + 'a20 20 0 0 1 40 0" fill="none" stroke="#10294A" stroke-width="2"/>';
-  svg += stCloud(rx - 40, ry + 10, 46, '#fff') + stCloud(rx + 40, ry + 10, 46, '#fff');
+  var rx = 432, ry = 60;
+  ["#E0457B","#F59F2A","#F7D038","#4CB963","#3B8FE0","#8A5CD6"].forEach(function(c, j){ var r = 46 - j * 5; svg += '<path d="M' + (rx - r) + ' ' + ry + 'a' + r + ' ' + r + ' 0 0 1 ' + (2 * r) + ' 0" fill="none" stroke="' + c + '" stroke-width="5.8"/>'; });
+  svg += '<path d="M' + (rx - 49) + ' ' + ry + 'a49 49 0 0 1 98 0" fill="none" stroke="#10294A" stroke-width="2.4"/><path d="M' + (rx - 18.5) + ' ' + ry + 'a18.5 18.5 0 0 1 37 0" fill="none" stroke="#10294A" stroke-width="2"/>';
+  svg += stCloud(rx - 37, ry + 10, 44, '#fff') + stCloud(rx + 37, ry + 10, 44, '#fff');
   svg += '<g class="' + (ready ? 'stgift wob' : 'stgift') + '"><rect x="' + (rx - 15) + '" y="' + (ry - 19) + '" width="30" height="23" rx="2.5" fill="#E0457B" stroke="#10294A" stroke-width="2.6"/><rect x="' + (rx - 18) + '" y="' + (ry - 27) + '" width="36" height="9" rx="2.5" fill="#F25C94" stroke="#10294A" stroke-width="2.6"/><path d="M' + rx + ' ' + (ry - 26) + 'v29" stroke="#FFD93B" stroke-width="5.5"/><path d="M' + rx + ' ' + (ry - 27) + 'c-12-12-19 1-5 1.5M' + rx + ' ' + (ry - 27) + 'c12-12 19 1 5 1.5" fill="none" stroke="#10294A" stroke-width="2.6" stroke-linecap="round"/></g>';
   svg += '</svg>';
   var flame = '<span class="nbflame" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.5c1 3.6 5.8 6 5.8 11.2A5.8 5.8 0 0 1 6.2 13.7c0-2.6 1.5-4.4 2.8-5.6.2 1.8 1 3 2.2 3.6-.6-3.4.2-6.4.8-9.2z" fill="#F25A1F" stroke="#10294A" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 12.2c.9 1.4 2.6 2.4 2.6 4.4a2.6 2.6 0 0 1-5.2 0c0-1.5.9-2.6 2.6-4.4z" fill="#FFD93B" stroke="#10294A" stroke-width="1.2" stroke-linejoin="round"/></svg></span>';
@@ -81023,8 +81225,7 @@ function nbHeader(route, cur, tabs, countdown, pct, C, done, tgt, todayDone, tod
     '<div class="nbr"><div class="nbring"><div class="ring" aria-label="' + Math.round(pct) + '% of the whole revision plan"><svg width="74" height="74"><circle cx="37" cy="37" r="31" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="8"/>' +
       '<circle cx="37" cy="37" r="31" fill="none" stroke="#7CCB9C" stroke-width="8" stroke-linecap="round" stroke-dasharray="' + C.toFixed(1) + '" stroke-dashoffset="' + (C * (1 - pct / 100)).toFixed(1) + '"/></svg><div class="in">' + Math.round(pct) + '%</div></div>' +
       '<div class="ringtxt"><b>' + fmtH(done) + ' of ' + fmtH(tgt) + '</b><br>' + (done >= tgt ? "Whole plan done! 🎉" : "of the whole revision plan") + '</div></div>' + bagHTML() + '</div>' +
-    '<button class="homebtn" data-go="#/home">Home</button>' +
-  '</div>' +
+  '</div><button class="homebtn" data-go="#/home">Home</button>' +
   '<nav class="tabs">' + tabs.map(function(t){ return '<a href="#/' + t[0] + '" data-tab="' + t[0] + '" draggable="false" style="--tc:var(' + t[2] + ')" class="' + (cur === t[0] ? "on" : "") + " two" + '">' + (t[1].indexOf("<span") >= 0 ? t[1] : t[1].split("|").map(function(x){ return "<span>" + x + "</span>"; }).join("")) + '</a>'; }).join("") + '</nav>' +
   '</div>';
 }
@@ -82394,6 +82595,8 @@ function learnCell(v){ var s = String(v == null ? "" : v), c = /^\s*✓/.test(s)
 /* newcards: PREVIEW ONLY (?newcards=1 or #...newcards=1) - drawn pictures instead of emoji, one sentence per line, tap-to-reveal case examples, grey section refs. Live site unchanged until approved. */
 var NEWCARDS = true; /* 23:46 Monnie approved */
 var NCPIC = {"Sole trader: what it is":["st-alone","st-staff"], "Sole trader: business = person":["st-equals"], "Sole trader: unlimited liability":["st-bailiff"], "Sole trader: no formalities":["st-open"], "Sole trader: privacy and tax":["st-padlock"], "Sole trader: business name":["st-plaque"], "Example: Priya and Tom's candles":["candles"]};
+var NCPIC_NEW = {"Every business needs a vehicle": ["bl1-0"], "Five structures on the syllabus": ["bl1-1"], "Question 1: is it its own 'person'?": ["bl1-2"], "Which two structures are NOT separate legal persons?": ["bl1-3"], "Question 2: is the owners' liability limited?": ["bl1-4"], "Unlimited vs limited liability": ["bl1-5"], "What this topic covers (and what's elsewhere)": ["bl1-6"], "Exam tip: label the structure first": ["bl1-7"], "If a sole trader's business fails, can creditors take their house?": ["bl1-8"], "Does a sole trader file anything at Companies House?": ["bl1-9"], "Partnership: the definition": ["bl1-10"], "Partnership: it just happens": ["bl1-11"], "Partnership clues (s.2)": ["bl1-13"], "Partnership: 'the firm' is just a label": ["bl1-14"], "Two friends share takings from a stall with no paperwork. Partners?": ["bl1-15"], "Partnership: unlimited liability": ["bl1-16"], "One partner can be made to pay it all": ["bl1-17"], "Partnership: when it ends (default)": ["bl1-18"], "Partnership: tax": ["bl1-19"], "Partnership: business name": ["bl1-20"], "A partner dies and there's no agreement. What happens?": ["bl1-21"], "LLP: created by registration": ["bl1-22"], "LLP: a separate legal person": ["bl1-23"], "LLP: limited liability": ["bl1-24"], "LLP: minimum people": ["bl1-25"], "LLP: fewer than 2 designated?": ["bl1-26"], "Is an LLP member an agent of the other members?": ["bl1-27"], "LLP: flexible inside, public outside": ["bl1-28"], "LLP: tax transparent": ["bl1-29"], "Ltd: the everyday company": ["bl1-30"], "Ltd: owners vs managers": ["bl1-31"], "Ltd: limited liability": ["bl1-32"], "Can one person run a Ltd company alone?": ["bl1-33"], "Ltd: minimum people": ["bl1-34"], "Ltd: no minimum share capital": ["bl1-35"], "Ltd: no public share offers": ["bl1-36"], "Ltd: publicity": ["bl1-37"], "Ltd: tax": ["bl1-38"], "Who pays tax on a Ltd company's trading profits?": ["bl1-39"], "plc: may offer its shares to the public": ["bl1-40"], "plc: extra requirements": ["bl1-41"], "plc: paying up shares": ["bl1-42"], "plc: trading certificate": ["bl1-43"], "plc: unlisted only": ["bl1-44"], "What's the minimum allotted share capital for a plc?": ["bl1-45"], "How formed": ["bl1-46"], "Minimum people": ["bl1-47"], "Personality and liability": ["bl1-48"], "An LLP member's liability is limited to...?": ["bl1-49"], "Who manages": ["bl1-50"], "Filing and publicity": ["bl1-51"], "Tax": ["bl1-52"], "Which structures pay no tax themselves?": ["bl1-53"], "Who owns the profits": ["bl1-54"], "Raising money": ["bl1-55"], "If an owner dies or leaves": ["bl1-56"], "What's a floating charge?": ["bl1-57"], "Accounts deadlines": ["bl1-58"], "How long does a plc have to file its accounts?": ["bl1-59"], "Watch out: LLP vs limited partnership (LP)": ["bl1-60"], "LP trap": ["bl1-61"], "Salomon v A Salomon & Co Ltd (1897)": ["bl1-62"], "The Salomon rule": ["bl1-63"], "Unsecured creditors said the company was 'really just Mr Salomon'. Did that work?": ["bl1-64"], "Consequence 1: it owns its own property": ["bl1-65"], "Macaura v Northern Assurance (1925)": ["bl1-66"], "Consequence 2: it can contract with its own people": ["bl1-67"], "Lee v Lee's Air Farming (1961)": ["bl1-68"], "Why couldn't Macaura claim on the insurance?": ["bl1-69"], "Consequence 3: contracts, suing, liability": ["bl1-70"], "Consequence 4: perpetual succession": ["bl1-71"], "Consequence 5: groups": ["bl1-72"], "Example: Ben's Bikes Ltd": ["bl1-73"], "Is a parent company automatically liable for its subsidiary's debts?": ["bl1-74"], "It belongs to the members, not the company": ["bl1-75"], "Company limited by shares": ["bl1-76"], "Other company types": ["bl1-77"], "Does a company have limited liability?": ["bl1-78"], "Two different ideas": ["bl1-79"], "Example: Asha and Fern Ltd": ["bl1-80"], "Exam tip: spot the swap": ["bl1-81"], "Shares fully paid, company owes millions. What does the shareholder owe?": ["bl1-82"], "Limited liability is only a shareholder shield": ["bl1-83"], "This is NOT veil piercing": ["bl1-84"], "1. Personal guarantees (contract)": ["bl1-85"], "2. Contracting in their own name": ["bl1-86"], "A director signed a personal guarantee. Why must they pay?": ["bl1-87"], "3. Torts the individual commits": ["bl1-88"], "Williams v Natural Life Health Foods (1998)": ["bl1-89"], "4. Statute: the main examples": ["bl1-90"], "Fraudulent trading (IA 1986 s.213)": ["bl1-91"], "Wrongful trading (IA 1986 s.214)": ["bl1-92"], "Fraudulent vs wrongful trading: key difference?": ["bl1-93"], "Phoenix companies (IA 1986 ss.216-217)": ["bl1-94"], "Disqualified directors (CDDA 1986 s.15)": ["bl1-95"], "plc with no trading certificate (CA 2006 s.767)": ["bl1-96"], "One-member LLP (LLPA 2000 s.4A)": ["bl1-97"], "LLP withdrawals (IA 1986 s.214A)": ["bl1-98"], "Phoenix rule: how long is the ban, and who does it catch?": ["bl1-99"], "What 'piercing the veil' means": ["bl1-100"], "Prest v Petrodel Resources Ltd (2013)": ["bl1-101"], "Evasion principle (true piercing)": ["bl1-102"], "Concealment principle (not true piercing)": ["bl1-103"], "How did Mrs Prest get the properties if the veil wasn't pierced?": ["bl1-104"], "Gilford Motor Co v Horne (1933)": ["bl1-105"], "Jones v Lipman (1962)": ["bl1-106"], "Courts will NOT pierce just because...": ["bl1-107"], "Adams v Cape Industries (1990)": ["bl1-108"], "What's the one situation where true piercing is allowed?": ["bl1-109"], "Vedanta v Lungowe (2019), following Chandler v Cape (2012)": ["bl1-110"], "Example: Dev's café": ["bl1-111"], "Exam tip: try the ordinary route first": ["bl1-112"], "Watch out: insolvency claims aren't piercing": ["bl1-113"], "Director kept trading while insolvent. Veil piercing?": ["bl1-114"], "No single right answer": ["bl1-115"], "Step 1: Who is involved?": ["bl1-116"], "Step 2: How much risk is there?": ["bl1-117"], "Step 3: How important are privacy and low cost?": ["bl1-118"], "Two people start working together with no paperwork. What are they?": ["bl1-119"], "Step 4: How will the owners be taxed?": ["bl1-120"], "Does a company save tax?": ["bl1-121"], "Step 5: How will the business raise money?": ["bl1-122"], "Client wants to offer shares to the public. Structure?": ["bl1-123"], "Step 6: How do the owners want to run it and take profits?": ["bl1-124"], "Step 7: Does the business need to outlast its owners?": ["bl1-125"], "Common exam answers": ["bl1-126"], "Example: Kemi and Leon, architects": ["bl1-127"], "Exam tip: tax distractors": ["bl1-128"], "Does an LLP pay corporation tax?": ["bl1-129"], "Your 6-step route": ["bl1-130"]}; /* 20 Nov BL1 card pictures, preview ?pics=1 until Monnie OKs */
+if (/[?&]pics=1/.test(location.search)) for (var _k in NCPIC_NEW) NCPIC[_k] = NCPIC_NEW[_k];
 function ncLines(s){ return String(s || "").replace(/([.?!](?:\*\*)?)\s+(?=(?:\*\*)?[A-Z'(])/g, "$1\n"); }
 function ncRefs(h){ return String(h).replace(/\(CA 2006 Part \d+\)|\b(?:PA 1890 )?ss?\.\s?\d+[A-Z]?(?:\(\d+\))*(?:(?:,\s*|\s+and\s+|-)\d+[A-Z]?(?:\(\d+\))*)*/g, function(m){ return '<span class="nc-ref">' + m + '</span>'; }); }
 function ncImg(p){ return '<img class="nc-pic" src="img/learn/' + p + '.webp" alt="" loading="lazy" width="400" height="400">'; }
