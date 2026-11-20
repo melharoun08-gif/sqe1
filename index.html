@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120022045";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120022341";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -2754,9 +2754,9 @@ html.dfv-on{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.jsv .jbf,.jsv .jbm1,.jsv .jbm2,.jsv .jbm3{animation:none!important}.jsv .jbf1{opacity:1}}
 
 /* map-layla3 + town night (20 Nov): Layla takes turns between 3 poses (ahead / glancing at Britney / waving), 7s each; Bert's shop shuts at night */
-.jsv .jlw1{animation:jm-l3 21s ease-in-out infinite}
-.jsv .jlw2{animation:jm-l3 21s ease-in-out infinite;animation-delay:-14s}
-.jsv .jlw3{opacity:0;animation:jm-l3 21s ease-in-out infinite;animation-delay:-7s}
+.jsv .jlw1{animation:jm-l3 10.5s ease-in-out infinite}
+.jsv .jlw2{animation:jm-l3 10.5s ease-in-out infinite;animation-delay:-7s}
+.jsv .jlw3{opacity:0;animation:jm-l3 10.5s ease-in-out infinite;animation-delay:-3.5s}
 @keyframes jm-l3{0%{opacity:1}30%{opacity:1}34%{opacity:0}96%{opacity:0}100%{opacity:1}}
 .jsv .jtnight{opacity:0}
 @media (prefers-reduced-motion:reduce){.jsv .jlw1{animation:none!important;opacity:1}.jsv .jlw2,.jsv .jlw3{animation:none!important;opacity:0}}
@@ -89933,7 +89933,7 @@ var ROOM_KEYS = [], ROOM_IDX = {};
 var HUBS = window.SQE_HUBS = window.SQE_HUBS || {};
 if (ROOMS_ON && ROOM_KEYS.length) HUBS["blp/hall"] = { title: "The Entrance Hall", place: "the sweet shop", img: "img/scene/shop-hall.webp", ratio: 16 / 9, bg: "#FFE9F3",
   alt: "The sweet shop's entrance hall, with doors to sixteen rooms", rooms: ROOM_KEYS.slice(),
-  doors: [[44, 11, 12, 26], [1, 8, 10.5, 26], [12, 11, 10, 23], [22, 12, 8, 22], [30.5, 10, 8.5, 25], [61, 15, 9.5, 19], [71, 14, 7.5, 22], [79.5, 12, 8.5, 23], [89, 9, 10, 24], [2, 44, 9.5, 30], [12, 44, 8, 26], [20.5, 44, 7, 26], [27.5, 45, 6.5, 25], [66.5, 45, 6.5, 26], [73.5, 45, 7.5, 25], [82, 45, 7, 25]], exitDoor: [89.5, 45, 9, 29], outside: "blp/business-structures",
+  doors: [[50.9, 13.2, 8.2, 29.6], [67.5, 13.2, 8.2, 29.6], [59.2, 13.2, 8.2, 29.6], [42.5, 13.2, 8.2, 29.6], [75.6, 13.2, 8.2, 29.6], [34.2, 13.2, 8.2, 29.6], [51.1, 45.6, 8.0, 30.7], [67.8, 45.6, 8.0, 30.7], [25.8, 13.2, 8.2, 29.6], [17.5, 45.6, 8.0, 30.7], [25.6, 45.6, 8.0, 30.7], [33.8, 45.6, 8.0, 30.7], [17.5, 13.2, 8.2, 29.6], [59.5, 45.6, 8.0, 30.7], [42.5, 45.6, 8.0, 30.7], [76.1, 45.6, 8.0, 30.7]], exitDoor: [86.2, 48.5, 6.8, 33.1], outside: "blp/business-structures",
   thumb: function(k){ var m = ROOMS[k.split('/')[1]]; return m && m.art ? 'img/scene/' + m.slug + '.webp' : ''; } };
 
 var CSS = [
@@ -91864,16 +91864,19 @@ var NB = !/[?&]oldbanner=1/.test(location.search); var NB_FLY = true; /* set tru
 /* Layla's picture per streak step (0 = on the grass). Drawn expressions img/layla-step0..5.webp are used when present, else this clean cutout. */
 var STEP_IMG = window.STEP_IMG = {0:"img/layla-stand.webp", 1:"img/layla-stand.webp", 2:"img/layla-stand.webp", 3:"img/layla-stand.webp", 4:"img/layla-stand.webp", 5:"img/layla-stand.webp"}, NB_STEPMISS = window.NB_STEPMISS = {};
 /* per pose: [height in viewBox units so her head/body match across poses, image px width at 600 tall, hover above the cloud] */
-var STEP_POSE = {0:[210,213,0], 1:[210,265,0], 2:[210,227,0], 3:[210,254,0], 4:[195,332,-4], 5:[158,440,9]}; /* 20 Nov: 15% bigger (Monnie) */
+var STEP_POSE = {0:[294,213,0], 1:[294,265,0], 2:[294,227,0], 3:[294,254,0], 4:[273,332,-4], 5:[221,440,9]}; /* 20 Nov r3: 40% bigger again (Monnie) */
+/* TEMP M button: display-only preview step (sessionStorage), never touches the saved streak, presents or coins */
+function nbPrev(){ try { var v = window.sessionStorage.getItem("nbPrevStep"); return v === null ? null : Math.max(0, Math.min(5, +v || 0)); } catch(e){ return null; } }
 function nbStreakHTML(){
-  if (!STREAK_LIVE && streakDemo() === null) return "";
+  if (!STREAK_LIVE && streakDemo() === null && nbPrev() === null) return "";
   var p = presS(), got = p.claimed.length, n = presentStreak(), ready = n >= PRESENT_STEPS && got < PRESENT_TOTAL, done = got >= PRESENT_TOTAL;
+  var mp = nbPrev(); if (mp !== null){ n = mp; ready = false; done = false; } /* TEMP M button */
   /* step 0 = Layla on the grass; clouds 1..5 climb steeply so none touches the grass; her feet land exactly on the grass/cloud top */
   /* viewBox: top-left kept free for the streak bubble, bottom-right for the coin bag; the banner's drawn grass starts ~71% down, every cloud sits above it */
   var svg = '<svg viewBox="0 0 600 616" class="nbsvg" aria-hidden="true">', pos = [[85, 588]];
   /* 20 Nov: no mound, she stands on the plain grass (Monnie) */
   for (var i = 0; i < PRESENT_STEPS; i++){
-    var cx = 196 + i * 66, cy = 410 - i * 40, on = i < n; /* flatter climb so she fits under the banner top */
+    var cx = 182 + i * 79, cy = 446 - i * 29, on = i < n; /* r3: lower, flatter, wider climb so the bigger Layla fits under the banner top */
     pos.push([cx + 1, cy - 9]);
     svg += stCloud(cx, cy, 60, on ? '#FFD93B' : '#fff');
     svg += '<text x="' + cx + '" y="' + (cy + 8) + '" text-anchor="middle" font-size="' + (on ? 22 : 20) + '" font-weight="800" fill="#10294A">' + (on ? '✓' : (i + 1)) + '</text>';
@@ -91881,7 +91884,7 @@ function nbStreakHTML(){
   var st = Math.min(n, PRESENT_STEPS), lp = pos[st], pz = STEP_POSE[st], LH = pz[0], LW = LH * pz[1] / 600;
   var lsrc = NB_STEPMISS[st] ? STEP_IMG[st] : 'img/layla-step' + st + '.webp';
   /* Britney flies beside Layla's shoulder on clouds 1-5 (right side on 1-3, left on 4-5 to miss the rainbow); hidden if her picture is missing */
-  if (st > 0 && NB_FLY){ var BH = LH * 0.4, rt = st <= 3, bx = rt ? lp[0] + LW / 2 + 16 - BH / 2 + 4 : lp[0] - LW / 2 - 24 - BH / 2, by = Math.max(14, lp[1] - pz[2] - LH * (rt ? 0.76 : 0.62) - BH / 2); svg += '<g class="nbbrit"><image href="img/britney/fly' + st + '.webp" onerror="if(this.dataset.fb){this.parentNode.style.display=\'none\'}else{this.dataset.fb=1;this.setAttribute(\'href\',\'img/britney/fly.webp\')}" x="' + bx.toFixed(1) + '" y="' + by.toFixed(1) + '" width="' + BH.toFixed(1) + '" height="' + BH.toFixed(1) + '"/></g>'; }
+  if (NB_FLY){ var BH = LH * 0.33, rt = st <= 3, bx = rt ? lp[0] + LW / 2 + 6 - BH / 2 + (st ? 4 : 10) : lp[0] - LW / 2 - 16 - BH / 2, by = Math.max(14, lp[1] - pz[2] - LH * (rt ? 0.76 : 0.62) - BH / 2); svg += '<g class="nbbrit"><image href="img/britney/fly' + (st || 1) + '.webp" onerror="if(this.dataset.fb){this.parentNode.style.display=\'none\'}else{this.dataset.fb=1;this.setAttribute(\'href\',\'img/britney/fly.webp\')}" x="' + bx.toFixed(1) + '" y="' + by.toFixed(1) + '" width="' + BH.toFixed(1) + '" height="' + BH.toFixed(1) + '"/></g>'; }
   svg += '<image class="nblayla" href="' + lsrc + '" onerror="NB_STEPMISS[' + st + ']=1;this.setAttribute(\'href\',STEP_IMG[' + st + '])" x="' + (lp[0] - LW / 2).toFixed(1) + '" y="' + (lp[1] - LH - pz[2]).toFixed(1) + '" width="' + LW.toFixed(1) + '" height="' + LH + '" preserveAspectRatio="xMidYMax meet"/>';
   var rx = 551, ry = 60;
   ["#E0457B","#F59F2A","#F7D038","#4CB963","#3B8FE0","#8A5CD6"].forEach(function(c, j){ var r = 46 - j * 5; svg += '<path d="M' + (rx - r) + ' ' + ry + 'a' + r + ' ' + r + ' 0 0 1 ' + (2 * r) + ' 0" fill="none" stroke="' + c + '" stroke-width="5.8"/>'; });
@@ -91954,6 +91957,7 @@ function nbHeader(route, cur, tabs, countdown, pct, C, done, tgt, todayDone, tod
       '<div class="ringtxt"><b>' + fmtH(done) + ' of ' + fmtH(tgt) + '</b><br>' + (done >= tgt ? "Whole plan done! 🎉" : "of the whole revision plan") + '</div></div></div>' +
       kwHTML().replace(' data-bl="kw"', '') + '</div>' +
   '</div><button class="homebtn" data-go="#/home">Home</button>' +
+  '<button class="nbmbtn" data-act="nbprev" aria-label="Preview streak step" title="Preview streak step">M</button>' + /* TEMP M button */
   '<nav class="tabs">' + tabs.map(function(t){ return '<a href="#/' + t[0] + '" data-tab="' + t[0] + '" draggable="false" style="--tc:var(' + t[2] + ')" class="' + (cur === t[0] ? "on" : "") + " two" + '">' + (t[1].indexOf("<span") >= 0 ? t[1] : t[1].split("|").map(function(x){ return "<span>" + x + "</span>"; }).join("")) + '</a>'; }).join("") + '</nav>' +
   '</div>';
 }
@@ -92032,7 +92036,7 @@ function timerStrip(){
 
     '<span class="saved" id="savedIndicator"></span></div>';
 }
-function tabH(){ try { var h = document.querySelector(".head"), t = h && h.querySelector(".tabs"); if (!t) return; var v = Math.round(h.getBoundingClientRect().bottom - t.getBoundingClientRect().top) + "px"; if (h.style.getPropertyValue("--tabh") !== v) h.style.setProperty("--tabh", v); var mh = (window.innerWidth > 720 && !h.classList.contains("compact")) ? Math.round(Math.min(h.clientWidth / 4.03, 400) + 26 + parseInt(v, 10)) + "px" : ""; if (h.style.minHeight !== mh) h.style.minHeight = mh; layGuard(); } catch(e){} }
+function tabH(){ try { var h = document.querySelector(".head"), t = h && h.querySelector(".tabs"); if (!t) return; var v = Math.round(h.getBoundingClientRect().bottom - t.getBoundingClientRect().top) + "px"; if (h.style.getPropertyValue("--tabh") !== v) h.style.setProperty("--tabh", v); var mh = (window.innerWidth > 720 && (!h.classList.contains("compact") || h.classList.contains("nb"))) ? Math.round(Math.min(h.clientWidth / 4.03, 400) + 26 + parseInt(v, 10)) + "px" : ""; if (h.style.minHeight !== mh) h.style.minHeight = mh; layGuard(); } catch(e){} }
 /* 22:55 guard: whatever the fonts, browser or saved layout, push the present clouds (with cloud-Layla) down until Layla's head is clear of the numbers row, and grow the banner to fit */
 function layGuard(){ try { var h = document.querySelector(".head"), st = h && h.querySelector(".streak"), ly = st && st.querySelector(".stlayla"), hs = h && h.querySelector(".hstats"); if (!st) return;
   st.style.transform = ""; if (!ly || !hs || h.classList.contains("bl-edit")) return;
@@ -95230,6 +95234,7 @@ document.addEventListener("click", function(e){
     case "kwnext": kwI++; var kwel = document.getElementById("kw"); if (kwel){ kwel.outerHTML = kwHTML(); blApply(); } break;
     case "blopen": blOpen(); break;
     case "present": presentVoucher(); break;
+    case "nbprev": /* TEMP M button: display-only, cycles 0..5 */ var nbp = nbPrev(); nbp = nbp === null ? (Math.min(presentStreak(), PRESENT_STEPS) + 1) % 6 : (nbp + 1) % 6; try { window.sessionStorage.setItem("nbPrevStep", String(nbp)); } catch(e2){} var nbs = document.querySelector(".head.nb .nbsteps"), nbh = nbStreakHTML(); if (nbs) nbs.outerHTML = nbh; else render(); break;
     case "voucherclose": var vb = document.querySelector(".voucher-bg"); if (vb) vb.remove(); break;
     case "fwtest": FWTEST = !FWTEST; render(); break;
     case "sidetog": S.ui = S.ui && typeof S.ui === "object" ? S.ui : {}; S.ui.sideOff = !S.ui.sideOff; save(); render(); break;
