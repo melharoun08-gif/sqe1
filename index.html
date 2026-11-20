@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120150853";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120151626";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -4204,6 +4204,13 @@ details.podsubj[open] .podchev{transform:rotate(-135deg);margin-top:6px}
 /* room for her "Beaker" bubble when she stops by the shop */
 .bhandback{--stopw:255px}
 @media (max-width:560px){.bhandback{--stopw:150px}}
+/* 20 Nov 15:10 revision-card subjects fold open and shut (tap the row) */
+details.cardsubj > summary{list-style:none;cursor:pointer}
+details.cardsubj > summary::-webkit-details-marker{display:none}
+details.cardsubj > summary{position:relative;padding-right:40px!important}
+details.cardsubj > summary::after{content:"";position:absolute;right:14px;top:50%;width:0;height:0;margin-top:-6px;border-left:10px solid currentColor;border-top:7px solid transparent;border-bottom:7px solid transparent;transition:transform .15s}
+details.cardsubj[open] > summary::after{transform:rotate(90deg)}
+details.cardsubj > ul.cardtopics{margin-top:6px!important}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -149392,8 +149399,8 @@ window.SQE_SCENE = function(A){
   /* memory hooks: hand-lettered words drawn onto objects in the picture (rooms v3), e.g. "Alfie" on the door. Text lives in code, never in the drawing. */
   function hooksHTML(view){ var H = view && view.hooks; if (!ROOMS_ON || !H || !H.length || !view.img) return ''; var r = view.ratio || 16 / 9;
     return H.map(function(o){ var t = String(o.text || ''), n = t.split('\n').length, fs = Math.min(o.h * 0.62 / n / r, o.w * 1.6 / Math.max(4, Math.max.apply(null, t.split('\n').map(function(l){ return l.length; }))));
-      var sty = o.style || 'tag'; if (SKIN && sty === 'speech' && !SKSPEECH[SKROOM]) sty = 'tag'; var skt = SKIN && sty === 'tag'; if (skt) fs = Math.min(fs, 0.95);
-      return '<span class="scn-hook ' + esc(sty) + '" aria-hidden="true" style="left:' + (skt ? +o.x + o.w / 2 : o.x) + '%;top:' + (skt ? (/^BRITNEY/.test(t) ? +o.y - 1 : +o.y + +o.h) : o.y) + '%;width:' + o.w + '%;height:' + o.h + '%;font-size:' + (skt ? 'max(' + fs.toFixed(2) + 'cqw,9.5px)' : fs.toFixed(2) + 'cqw') + ';--rot:' + (+o.rot || 0) + 'deg">' + esc(t).replace(/\n/g, '<br>') + '</span>'; }).join(''); }
+      var sty = o.style || 'tag'; if (SKIN && sty === 'speech' && !SKSPEECH[SKROOM]) sty = 'tag'; var skt = SKIN && sty === 'tag'; if (skt) fs = Math.min(fs, 1.2);
+      return '<span class="scn-hook ' + esc(sty) + '" aria-hidden="true" style="left:' + (skt ? +o.x + o.w / 2 : o.x) + '%;top:' + (skt ? (/^BRITNEY/.test(t) ? +o.y - 1 : +o.y + +o.h) : o.y) + '%;width:' + o.w + '%;height:' + o.h + '%;font-size:' + (skt ? 'max(' + fs.toFixed(2) + 'cqw,12px)' : fs.toFixed(2) + 'cqw') + ';--rot:' + (+o.rot || 0) + 'deg">' + esc(t).replace(/\n/g, '<br>') + '</span>'; }).join(''); }
   function boardLines(k){ return (k && BOARD_HOOKS[k.split('/')[1]]) || null; }
   /* 20 Nov: rooms whose new picture has no drawn chalkboard get a painted board behind the words so they stay readable */
   var BOARD_PLAIN = {'shareholders-minority':1, 'partnerships':1, 'corporate-insolvency':1, 'insolvency-clawback-priority':1, 'personal-insolvency':1, 'income-tax':1, 'cgt':1, 'corporation-tax':1, 'vat-iht-bpr':1};
@@ -150392,8 +150399,8 @@ var LAYLA_H = 33;                 /* Layla's height (% of garden height) at b = 
 function DEPTH(b){ return 1 - 0.006 * (b - 20); }
 /* people: [id, x, b, height x Layla, picture, name] */
 var PEOPLE = [
-  ['baba',   18,   12, 1.2,  'img/souvenir/baba.webp',   'Baba'],
-  ['mama',   26.5, 12, 1.0,  'img/souvenir/mama.webp',   'Mama'],
+  ['baba',   18,   12, 1.2,  'img/mount/baba-talk.webp', 'Baba'],   /* turned towards Layla (Monnie 14:56) */
+  ['mama',   26.5, 12, 1.0,  'img/mount/mama-talk.webp', 'Mama'],
   ['yasmin', 64,   12, 0.97, 'img/souvenir/yasmin.webp', 'Yasmin'],
   ['mo',     72.5, 10, 1.12, 'img/souvenir/mo.webp',     'Mo'],
   ['monnie', 81.2, 9.5, 1.1, 'img/souvenir/monnie.webp', 'Monnie']   /* Monnie is taller than Yasmin (Monnie 13:56) */
@@ -150623,7 +150630,8 @@ window.SQE_MOUNT = function(A){
     '.mg-bthink i{position:absolute;width:1.3%;aspect-ratio:1;background:#fff;border:2px solid #1d1d1b;border-radius:50%;transform:translate(-50%,50%)}' +
     '.mg-hen.rt .mg-think{transform:translateX(-82%)}.mg-hen.rt .mg-think:before{left:auto;right:18%}.mg-hen.rt .mg-think:after{left:auto;right:12%}' +   /* hens near the right edge think to the left */
     /* speech bubbles with a tail that points at the speaker */
-    '.mg-say{position:absolute;z-index:3000;background:#fff;border:2.5px solid #1d1d1b;border-radius:16px;padding:5px 11px;font-weight:700;font-size:clamp(10px,1.3vw,16px);line-height:1.2;color:#1d1d1b;width:max-content;max-width:13%;text-align:center;box-shadow:0 2px 0 rgba(0,0,0,.12);transition:opacity .25s;pointer-events:none;transform:translate(-50%,-100%)}' +
+    '.mg-ppush{position:absolute;pointer-events:none;transform-origin:50% 100%}.mg-ppush img{display:block;height:100%;width:auto}' +
+    '.mg-say{position:absolute;z-index:3000;background:#fff;border:2.5px solid #1d1d1b;border-radius:18px;padding:9px 15px;font-weight:700;font-size:clamp(10px,1.3vw,16px);line-height:1.2;color:#1d1d1b;width:max-content;max-width:15%;text-align:center;box-shadow:0 2px 0 rgba(0,0,0,.12);transition:opacity .25s;pointer-events:none;transform:translate(-50%,-100%)}' +
     '.mg-say i{position:absolute;top:100%;margin-top:-3px;width:18px;height:14px;margin-left:-9px}.mg-say i svg{display:block;width:100%;height:100%;overflow:visible}' +
     '.mg-say.fade{opacity:0}' +
     '.mg-heart{position:absolute;width:1.5%;aspect-ratio:24/22;z-index:2950;pointer-events:none}.mg-heart svg{display:block;width:100%;height:100%}' +
@@ -150698,6 +150706,17 @@ window.SQE_MOUNT = function(A){
   }
   function bump(u, t0, d){ if (u < t0 || u > t0 + d) return 0; return Math.sin(Math.PI * (u - t0) / d); }
   function knock(u, t0, d){ if (u < t0 || u > t0 + d) return 0; var k = (u - t0) / d; return Math.sin(Math.PI * Math.min(1, k * 1.6)) * (1 - k) + Math.sin(k * Math.PI * 5) * 0.12 * (1 - k); }
+  /* the Chuckle Brothers push uses real pushing drawings: arms out at chest height, palms forward (Monnie 14:56/14:57) */
+  var PUSH_ART = {baba: {src: 'img/mount/baba-push.webp', x: 17.2, hk: 882 / 932}, mama: {src: 'img/mount/mama-push.webp', x: 27.3, hk: 872 / 896}};
+  function parentPush(who, t){
+    var cyc = 2 * PARENT_MS + PUSH_MS, u = t % cyc - 2 * PARENT_MS, isB = who === 'baba';
+    if (u < 0 || u > PUSH_MS - 250) return null;
+    var dx = 0, rz = 0;
+    var bS = bump(u, 400, 900), bK = knock(u, 650, 1100), mS = bump(u, 2600, 900), mK = knock(u, 2850, 1100);
+    if (isB){ dx = 1.3 * bS - 2.4 * mK; rz = 3 * bS - 9 * mK; }   /* Baba shoves, then gets shoved back */
+    else { dx = -1.3 * mS + 2.4 * bK; rz = -3 * mS + 9 * bK; }
+    return {dx: dx, rz: rz};
+  }
   function parentPose(who, t){
     var cyc = 2 * PARENT_MS + PUSH_MS, u = t % cyc - 2 * PARENT_MS, isB = who === 'baba';
     var breathe = 1 + Math.sin(t / 900 + (isB ? 0 : 2)) * 0.006, ry = 16, dx = 0, rz = 0;   /* facing Layla, who is on their right */
@@ -150797,6 +150816,7 @@ window.SQE_MOUNT = function(A){
       if (p[0] !== 'mama' && p[0] !== 'baba') who.push(p[5]);
       var walker = false, im = '<img src="' + p[4] + '" alt="' + esc(p[5]) + '" onerror="this.parentNode.style.display=\'none\'">';
       h += '<div class="mg-act mg-person mg-' + p[0] + (walker ? ' mg-walker' : '') + '" data-who="' + p[0] + '" data-g="' + p[1] + ',' + p[2] + ',' + (LAYLA_H * DEPTH(p[2]) * p[3]).toFixed(2) + '" title="' + esc(p[5]) + '">' + im + '</div>';
+      if (PUSH_ART[p[0]]) h += '<div class="mg-ppush" data-who="' + p[0] + '" style="display:none" aria-hidden="true"><img src="' + PUSH_ART[p[0]].src + '" alt=""></div>';
     });
     if (KID) h += '<div class="mg-act mg-bert" aria-hidden="true"><img src="img/boss/bert-run.webp" alt=""></div>';
     if (owned('baba') || owned('mama')){ var pp = parentPair(); h += '<span class="mg-say" data-say="' + pp[0] + '" aria-live="polite">' + esc(pp[1]) + '<i></i></span>'; }
@@ -151043,7 +151063,14 @@ window.SQE_MOUNT = function(A){
       if (s.el.getAttribute('data-hen') === 'bonnie' && s.img){ var rb = rabbitAt(n); place(s.el, rb.x, rb.b, s.h, s.img); s.img.style.transform = (rb.face === 'r' ? 'scaleX(-1) ' : '') + 'translateY(' + (-rb.lift).toFixed(2) + '%) scale(' + rb.sq[0].toFixed(3) + ',' + rb.sq[1].toFixed(3) + ')'; return; }
       var walker = false, who = s.el.getAttribute('data-who'), par = who === 'mama' || who === 'baba';
       place(s.el, s.x + (kid && par ? kid[who].dx : 0), s.b, s.h, s.img);
-      if (par && s.img) s.img.style.transform = kid ? kid[who].tf : parentPose(who, n);
+      if (par && s.img){
+        var pu = kid ? null : parentPush(who, n), pe = g.querySelector('.mg-ppush[data-who="' + who + '"]');
+        if (pe){
+          pe.style.display = pu ? '' : 'none'; s.el.style.opacity = pu ? '0' : '';
+          if (pu){ var ph = LAYLA_H * DEPTH(s.b) * (who === 'baba' ? 1.2 : 1) * PUSH_ART[who].hk; pe.style.height = ph.toFixed(2) + '%'; pe.style.left = (PUSH_ART[who].x + pu.dx).toFixed(2) + '%'; pe.style.bottom = s.b + '%'; pe.style.zIndex = s.el.style.zIndex; pe.style.transform = 'translateX(-50%) rotate(' + pu.rz.toFixed(1) + 'deg)'; }
+        }
+        s.img.style.transform = kid ? kid[who].tf : 'scaleY(' + (1 + Math.sin(n / 900 + (who === 'baba' ? 0 : 2)) * 0.006).toFixed(4) + ')';   /* the drawing already faces Layla: just breathing */
+      }
       if (s.el.classList.contains('front') || s.el.classList.contains('onswing')) s.el.style.zIndex = String(Math.round(2000 - s.b * 10) + 60);   /* the sign on the coop, Beefy on the swing seat */
     });
     /* Layla */
@@ -154405,7 +154432,7 @@ VIEW.cards = function(r){
           : '<li style="display:flex;gap:8px;align-items:baseline;padding:3px 0;opacity:.45" title="Unlocks once you\'ve done and rated this topic"><span style="flex:1">🔒 ' + (ti + 1) + '. ' + esc(t.title) + '</span><span class="small">' + ids.length + ' cards</span></li>'; });
       var CT = cardTheme(s.id), cpic = ""; try { cpic = JPIC ? JPIC(s.id) : ""; } catch(e){}
       var co = {}; try { co = JSON.parse(sessionStorage.getItem("sqe_cardopen") || "{}"); } catch(e){}
-      h += '<details class="cardsubj" data-s="' + esc(s.id) + '"' + (co[s.id] ? ' open' : '') + '><summary class="subjrow cardrow crstop"' + (CT ? ' style="' + CT.style.replace(/;--stm1:[^;]*;--stm2:.*$/, "") + '"' : '') + '><span class="cs-chev" aria-hidden="true"></span><span class="cr-t">' + (cpic ? '<span class="cr-pic" aria-hidden="true">' + cpic + '</span>' : '') + '<a href="#/cards/' + s.id + '">' + esc(s.title) + '</a>' + (CT ? '<span class="cr-land">Stop ' + CT.i + ': ' + esc(CT.land) + '</span>' : '') + '</span><span class="cr-ring">' + mring(kn, nk, "var(--good)", kn + " of " + nk + " cards known") + '</span><span class="cr-x small muted">' + nk + ' cards' + '</span></summary><ul class="cardtopics" style="list-style:none;margin:0 0 10px;padding:0 0 0 14px">' + rows + '</ul></details>'; });
+      h += '<details class="cardsubj" data-s="' + esc(s.id) + '"' + (co[s.id] ? ' open' : '') + '><summary class="subjrow cardrow crstop"' + (CT ? ' style="' + CT.style.replace(/;--stm1:[^;]*;--stm2:.*$/, "") + '"' : '') + '><span class="cr-t">' + (cpic ? '<span class="cr-pic" aria-hidden="true">' + cpic + '</span>' : '') + '<a href="#/cards/' + s.id + '">' + esc(s.title) + '</a>' + (CT ? '<span class="cr-land">Stop ' + CT.i + ': ' + esc(CT.land) + '</span>' : '') + '</span><span class="cr-ring">' + mring(kn, nk, "var(--good)", kn + " of " + nk + " cards known") + '</span><span class="cr-x small muted">' + nk + ' cards' + '</span></summary><ul class="cardtopics" style="list-style:none;margin:0 0 10px;padding:0 0 0 14px">' + rows + '</ul></details>'; });
   });
   return h + '</div>';
 };
@@ -156061,7 +156088,7 @@ function render(){
     (false ? '<button class="startnext" data-go="#/topic/' + nt.s.id + '/' + nt.t.id + '"><b>▶ Start next: ' + esc(nt.t.title) + '</b><span>' + esc(nt.s.title) + ' · ' + TOPICS.filter(function(x){ return S.done[x.key]; }).length + ' of ' + TOPICS.length + ' done</span></button>' : '');
   app.insertAdjacentHTML("beforeend", sandPanel());
   paintSaved();
-  try { cardFit(); } catch(eCF){}
+  try { cardFit(); setTimeout(function(){ try { cardFit(); } catch(e2){} }, 150); } catch(eCF){}
   try { tabH(); } catch(eTH){} /* QA 20 Nov: size the banner zoom and tab columns before the first paint, so the tabs don't jump on every page change */
   var rs = r.join("/");
   if (rs !== lastRoute){ window.scrollTo(0, 0); if (lastRoute) rotateBanner(); kwT = 0; lastRoute = rs; }
@@ -156293,7 +156320,7 @@ try { if (/[?&#]monnie=1/.test(location.href)) localStorage.setItem("sqe_monnie"
   function get(){ try { return sessionStorage.getItem("sqe_qback"); } catch(e){ return null; } }
   document.addEventListener("click", function(ev){ var a = ev.target && ev.target.closest && ev.target.closest('a[href^="#/topic/"]'); if (!a || !SRC.test(location.hash)) return; try { sessionStorage.setItem("sqe_qback", location.hash); sessionStorage.setItem("sqe_qback_y", String(Math.round(window.scrollY))); } catch(e){} }, true);
   function sync(){ var bk = get(), el = document.getElementById("qbackbtn");
-    if (/^#\/topic\//.test(location.hash) && bk){ if (!el){ el = document.createElement("button"); el.type = "button"; el.id = "qbackbtn"; el.className = "qbackbtn"; el.innerHTML = "&#8249; Back to your question"; el.addEventListener("click", function(){ window.SQE_QBACK_T = Date.now(); var h = get(), qy = 0; try { qy = +sessionStorage.getItem("sqe_qback_y") || 0; } catch(e){} /* 14:58 (Monnie): land back on the exact question, not the top of the page */ [60, 250, 600, 1100].forEach(function(ms){ setTimeout(function(){ var q = document.querySelector(".bossg .bq, .bossg .qtext, .bossg, .qtext"); if (qy > 0) window.scrollTo(0, qy); else if (q) q.scrollIntoView({block:"center"}); }, ms); }); try { sessionStorage.removeItem("sqe_qback"); } catch(e){} el.remove(); location.hash = h || "#/today"; }); document.body.appendChild(el); } }
+    if (/^#\/topic\//.test(location.hash) && bk){ if (!el){ el = document.createElement("button"); el.type = "button"; el.id = "qbackbtn"; el.className = "qbackbtn"; el.innerHTML = "&#8249; Back to your question"; el.addEventListener("click", function(){ window.SQE_QBACK_T = Date.now(); var h = get(), qy = 0; try { qy = +sessionStorage.getItem("sqe_qback_y") || 0; } catch(e){} /* 14:58 (Monnie): land back on the exact question, not the top of the page */ [60, 250, 600, 1100].forEach(function(ms){ setTimeout(function(){ var bq = document.querySelector(".bossg .bq"), q = document.querySelector(".bossg .qtext, .bossg, .qtext"); if (bq) window.scrollTo(0, Math.max(0, window.scrollY + bq.getBoundingClientRect().top - 12)); /* Bert duel and rescue: the question card itself at the top of the screen */ else if (qy > 0) window.scrollTo(0, qy); else if (q) q.scrollIntoView({block:"center"}); }, ms); }); try { sessionStorage.removeItem("sqe_qback"); } catch(e){} el.remove(); location.hash = h || "#/today"; }); document.body.appendChild(el); } }
     else { if (el) el.remove(); if (!/^#\/topic\//.test(location.hash)) { try { sessionStorage.removeItem("sqe_qback"); } catch(e){} } } }
   window.addEventListener("hashchange", function(){ setTimeout(sync, 0); }); setTimeout(sync, 0);
 })();
