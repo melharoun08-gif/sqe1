@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120090642";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120091021";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -3419,19 +3419,26 @@ details.bsubj summary{cursor:pointer;font-family:var(--hand);font-size:19px}
 .grab .bgetback{animation:bshow .3s 3.3s forwards;pointer-events:auto}
 @media (prefers-reduced-motion:reduce){.grab .bgetback{opacity:1;animation:none}}
 .resqbar{display:flex;gap:6px;margin:0 0 10px}.resqbar i{flex:1;height:10px;border-radius:6px;background:#F4D2CE}.resqbar i.on{background:#3DAA35}
-.bhandback{height:300px}
-.bhb-lay{position:absolute;left:6%;bottom:10px;width:120px;height:221px}
+.bhandback{height:320px;overflow:hidden}
+.bhb-lay{position:absolute;left:12%;bottom:10px;width:120px;height:221px;z-index:3}
 .bhb-lay img,.bhb-bert img,.bhb-brit img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:50% 100%}
-.bhb-bert{position:absolute;right:calc(var(--dw,70px) + 4%);bottom:10px;width:170px;height:221px}
-.bhb-bert img{transform:scaleX(-1)}
-.bhb-bert .bshout{position:absolute;left:50%;bottom:104%;transform:translateX(-50%);white-space:nowrap;background:#fff;border:2.5px solid #1d1d1b;border-radius:12px;padding:1px 8px;font-family:var(--sharratt);font-size:16px}
-.bhb-brit{position:absolute;width:90px;height:90px;right:calc(var(--dw,70px) + 4% + 50px);bottom:110px;animation:bhbFly 2.2s .8s ease-in-out forwards}
-.bhb-brit .s{opacity:0;animation:bshow 0s 3s forwards}
-.bhb-brit .f{transform:scaleX(-1);animation:bgone 0s 3s forwards}
-@keyframes bhbFly{0%{right:calc(var(--dw,70px) + 4% + 50px);bottom:110px}50%{bottom:180px}100%{right:calc(100% - 6% - 120px - 80px);bottom:10px}}
+.bhb-lay img.k{width:207px;inset:auto;left:0;bottom:0;height:100%;object-position:0 100%;opacity:0;animation:bshow 0s 3s forwards}
+.bhb-lay img.w{animation:bgone 0s 3s forwards}
+.bhb-say{position:absolute;left:30px;bottom:calc(100% + 6px);width:130px;background:#fff;border:2.5px solid #1d1d1b;border-radius:14px;padding:6px 8px;text-align:center;font-family:var(--sharratt);font-weight:400;font-size:17px;line-height:1.15;opacity:0;animation:bshow .2s 3.05s forwards}
+.bhb-say::after{content:"";position:absolute;left:22px;top:100%;border:9px solid transparent;border-top-color:#1d1d1b;border-bottom:0}
+.bhb-bert{position:absolute;left:calc(100% - var(--dw,70px) - 4% - 170px);bottom:10px;width:170px;height:221px;z-index:2;animation:bhbStep .6s 2.4s ease-in forwards,bhbKicked 1.1s 3.05s cubic-bezier(.3,.6,.5,1) forwards}
+.bhb-bert .bb{position:absolute;inset:0;display:block;transform:scaleX(-1)}
+.bhb-bert .bshout{position:absolute;left:50%;bottom:104%;transform:translateX(-50%);white-space:nowrap;background:#fff;border:2.5px solid #1d1d1b;border-radius:12px;padding:1px 8px;font-family:var(--sharratt);font-size:16px;animation:bgone 0s 2.4s forwards}
+@keyframes bhbStep{to{left:calc(12% + 165px)}}
+@keyframes bhbKicked{0%{left:calc(12% + 165px);bottom:10px;rotate:0deg;opacity:1}60%{bottom:200px;opacity:1}100%{left:calc(100% + 40px);bottom:120px;rotate:400deg;opacity:0}}
+.bhb-brit{position:absolute;width:90px;height:90px;left:calc(100% - var(--dw,70px) - 4% - 150px);bottom:110px;z-index:4;animation:bhbFly 1.6s .6s ease-in-out forwards,bhbHop .5s 4.3s ease-in-out 3 alternate}
+.bhb-brit .s{opacity:0;animation:bshow 0s 2.2s forwards}
+.bhb-brit .f{transform:scaleX(-1);animation:bgone 0s 2.2s forwards}
+@keyframes bhbFly{0%{left:calc(100% - var(--dw,70px) - 4% - 150px);bottom:110px}50%{bottom:190px}100%{left:calc(12% - 70px);bottom:10px}}
+@keyframes bhbHop{to{translate:0 -26px}}
 .bhandback .bdoor{bottom:40px}
-@media (max-width:560px){.bhandback{height:230px}.bhb-lay{width:84px;height:155px}.bhb-bert{width:120px;height:156px}.bhb-brit{width:64px;height:64px}}
-@media (prefers-reduced-motion:reduce){.bhb-brit{animation:none;right:auto;left:calc(6% + 120px);bottom:10px}.bhb-brit .s{opacity:1}.bhb-brit .f{display:none}}
+@media (max-width:560px){.bhandback{height:250px}.bhb-lay{left:16%;width:84px;height:155px}.bhb-lay img.k{width:145px}.bhb-say{width:104px;font-size:13px;left:14px}.bhb-bert{width:120px;height:156px;left:calc(100% - var(--dw,70px) - 2% - 120px)}@keyframes bhbStep{to{left:calc(16% + 112px)}}@keyframes bhbKicked{0%{left:calc(16% + 112px);bottom:10px;rotate:0deg;opacity:1}60%{bottom:150px;opacity:1}100%{left:calc(100% + 40px);bottom:90px;rotate:400deg;opacity:0}}.bhb-brit{width:60px;height:60px;left:calc(100% - var(--dw,70px) - 2% - 110px)}@keyframes bhbFly{0%{left:calc(100% - var(--dw,70px) - 2% - 110px);bottom:80px}50%{bottom:140px}100%{left:calc(16% - 56px);bottom:10px}}}
+@media (prefers-reduced-motion:reduce){.bhb-brit{animation:none;left:calc(12% - 70px);bottom:10px}.bhb-brit .s{opacity:1}.bhb-brit .f{display:none}.bhb-bert{animation:none;opacity:0}.bhb-lay img.k,.bhb-say{opacity:1;animation:none}.bhb-lay img.w{display:none}}
 
 /* fw-steps (20 Nov) */
 .fwalk{max-width:760px;margin:6px auto 18px}
@@ -3717,6 +3724,9 @@ a.tlink::after{content:none}
 .jcr b{color:#1E5C38}.jcr span{font-size:14px;opacity:.85}
 .jcr:hover{background:#E3F4E8}
 .town-job.ahead{opacity:.92}.jcready{font-size:14px;font-weight:600;color:#5A4E44}
+.head .kw .kwlab{font-size:15px!important}
+.head .kw b{font-size:23px!important}
+.head .kw .kwd{font-size:19px!important;line-height:1.25!important}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -108004,7 +108014,7 @@ window.SQE_JOURNEY = function (A) {
         bars += "<line x1=\"".concat(f1(wx), "\" y1=\"").concat(f1(wy + wh * .22), "\" x2=\"").concat(f1(wx + ww), "\" y2=\"").concat(f1(wy + wh * .22), "\"/>");
         o += "<g stroke=\"#3C4048\" stroke-width=\"".concat(f1(U(6)), "\" stroke-linecap=\"round\">").concat(bars, "</g><g stroke=\"#9AA0A8\" stroke-width=\"").concat(f1(U(2)), "\" stroke-linecap=\"round\" opacity=\".8\">").concat(bars, "</g>");
         /* thought bubble on free grass: desktop to the right of the shop, phone just below it (both checked clear of every drawing, card, label and the path) */
-        var ph = mode === 'phone', tw = ph ? 130 : 150, th = ph ? 58 : 62, tx = ph ? x - 93 : ix + iw + 10, ty = ph ? y + 2 : wy + wh / 2 - th / 2, fs = ph ? 14 : 16.5;
+        var ph = mode === 'phone', tw = ph ? 116 : 150, th = ph ? 56 : 62, tx = ph ? x - 130 : ix + iw + 10, ty = ph ? y + 6 : wy + wh / 2 - th / 2, fs = ph ? 13 : 16.5;
         var sx = ph ? bxx + bwid * .5 : wx + ww, sy = ph ? wy + wh : ey; /* trail from Britney to the bubble */
         var ex2 = ph ? tx + tw * .5 : tx, ey2 = ph ? ty : ty + th / 2;
         [.06, .34, .62, .86].forEach(function (t, k) { o += "<circle cx=\"".concat(f1(sx + (ex2 - sx) * t), "\" cy=\"").concat(f1(sy + (ey2 - sy) * t), "\" r=\"").concat(f1(2.6 + k * 1.9), "\" fill=\"#fff\" stroke=\"").concat(ink, "\" stroke-width=\"2.2\"/>"); });
@@ -108660,7 +108670,6 @@ window.SQE_JOURNEY = function (A) {
             return h.replace('<span class="sfence"></span>', '<span class="sfence"></span>' + pic);
         }; } };
 };
-
 ;
 /* Immersive topic scenes (#/scene/<subj>/<topic>): walk into a place and open its objects to learn the topic.
    First one: the Sweet Shop for Business Law 1 (blp/business-structures).
@@ -125370,7 +125379,7 @@ var GARDEN_ITEMS = {
   coop:    [90.8, 36, 19],
   palace:  [90.8, 36, 20],          /* the luxury makeover replaces the coop in the same spot */
   plaque:  [90.8, 46.5, 3.4],           /* on the coop (lower on the palace) */
-  nestbox: [97.9, 31, 7],
+  nestbox: [98.3, 30, 6.5],
   swing:   [80, 46.5, 12],
   player:  [37, 2.5, 8],
   rec_ss:  [31.5, 2.5, 4.6],
@@ -129304,7 +129313,7 @@ VIEW.settings = function(){
     '<p class="small muted" style="margin:0">Pick the exact day on your booking confirmation. FLK1 runs 11 to 15 January and FLK2 runs 18 to 22 January 2027.</p>' +
     '<label class="f"><span>Colours</span><select id="stheme"><option value="auto"' + (S.settings.theme === "auto" ? " selected" : "") + '>Match my device</option><option value="light"' + (S.settings.theme === "light" ? " selected" : "") + '>Light</option><option value="dark"' + (S.settings.theme === "dark" ? " selected" : "") + '>Dark</option></select></label>' +
     '<div class="btns"><button class="btn primary" data-act="ssave">Save settings</button><span id="smsg" class="small" style="align-self:center"></span></div></div>' +
-    '<div class="card montool"><h3>Game test buttons (only on Monnie\'s devices)</h3><p class="small">For trying out Cluckington Palace. Reset puts coins, Britney and prizes back to the start (your revision progress is kept).</p><div class="btns"><button class="btn" data-act="gdemo">Give me 100 coins</button><button class="btn" data-act="greset">Reset the game</button><span id="gmsg" class="small" style="align-self:center"></span></div></div>';
+    '<div class="card montool"><h3>Game test buttons (only on Monnie\'s devices)</h3><p class="small">For trying out Cluckington Palace. Reset puts coins, Britney and prizes back to the start (your revision progress is kept).</p><div class="btns"><a class="btn" href="#/boss/home">Watch the rescue ending</a><button class="btn" data-act="gdemo">Give me 100 coins</button><button class="btn" data-act="greset">Reset the game</button><span id="gmsg" class="small" style="align-self:center"></span></div></div>';
   if (window.SQESync) h += window.SQESync.settingsHTML();
   h += '<div class="card"><h3>Saving</h3><p class="small" style="margin:0 0 6px">' + (storageOK ? '✓ Everything saves automatically on this device as you go. Nothing to press.' : '<b style="color:var(--bad)">⚠ This browser is blocking saving.</b> Open the file in Chrome, Edge or Safari (not a private window).') + '</p>' +
     '<p class="small muted" style="margin:0">Space used: ' + (used / 1024).toFixed(1) + ' KB of about 5,000 KB. That\'s room for years of study logs.</p>' +
@@ -130084,14 +130093,16 @@ function bossResqView(){
   return h + '</div></div>';
 }
 /* after the rescue: Bert grumpily hands Britney back to Layla */
+/* Monnie 20 Nov 08:59: Bert has to hand Britney back, she flies to Layla, Bert steps in grumbling and Layla kicks him away: "Smell me, Krell me!" */
+var BOSS_KICK_LINE = "Smell me, Krell me!";
 function bossHomeView(){
-  return '<div class="cbag bossg"><div class="cbatop"><a class="cbaback" href="#/town/butcher">‹ Bert\'s Butchers</a><span class="cbattl">🐔 Britney is coming home</span><span class="spill coin">' + cbaCoin() + ' <b>' + cbaS().coins + '</b></span></div>' +
-    '<div class="arena bhandback" role="img" aria-label="Bert hands Britney back and she flies to Layla"><span class="bdoor" aria-hidden="true"></span>' +
-    '<span class="bhb-lay"><img src="img/layla-walk-1.webp" alt=""></span>' +
-    '<span class="bhb-bert"><img src="' + BERT_RUN + '" alt=""><b class="bshout">Fine! Take your hen!</b></span>' +
+  return '<div class="cbag bossg"><div class="cbatop"><a class="cbaback" href="#/town/butcher">‹ Bert\'s Butchers</a><span class="cbattl">Britney is coming home</span><span class="spill coin">' + cbaCoin() + ' <b>' + cbaS().coins + '</b></span></div>' +
+    '<div class="arena bhandback" role="img" aria-label="Bert hands Britney back, she flies to Layla, and Layla kicks Bert away"><span class="bdoor" aria-hidden="true"></span>' +
+    '<span class="bhb-lay"><img class="w" src="img/layla-walk-1.webp" alt=""><img class="k" src="img/layla-kick.webp" alt=""><b class="bhb-say">' + esc(BOSS_KICK_LINE) + '</b></span>' +
+    '<span class="bhb-bert"><span class="bb"><img src="' + BERT_RUN + '" alt=""></span><b class="bshout">Fine! Take your hen!</b></span>' +
     '<span class="bhb-brit"><img class="f" src="img/britney/fly1.webp" alt=""><img class="s" src="img/britney/set/happy.webp" alt=""></span></div>' +
-    '<div class="bsay"><p>Bert grumbles and hands Britney back. She flaps straight into Layla\'s arms. Britney is safe!</p></div>' +
-    '<div class="btns cbac"><a class="btn primary big" href="#/mount">Take her home to The Mount</a><a class="btn big" href="#/town/butcher">Bert\'s Butchers</a></div></div>';
+    '<div class="bsay"><p>Bert has to hand Britney back. She flaps straight to Layla, and when Bert comes any closer, Layla kicks him out of the way. Britney is safe!</p></div>' +
+    '<div class="btns cbac"><a class="btn primary big" href="#/mount">Take her home to The Mount</a><button type="button" class="btn big" data-act="bhreplay">Watch again</button><a class="btn big" href="#/town/butcher">Bert\'s Butchers</a></div></div>';
 }
 /* ---------- the duel: a chase. Britney in her nest on the left, Bert creeping in from the right ---------- */
 /* Bert in layers: three faces (grin, gleeful laugh, angry scowl) stacked, plus a fist-and-spoon arm that shakes */
@@ -130706,6 +130717,7 @@ document.addEventListener("click", function(e){
     case "bossgetback": if (BOSS && !BOSS.done && BOSS.ans !== null) bossEnd(); RESQ = null; location.hash = "#/boss/rescue"; break;
     case "resqpick": resqPick(+el.getAttribute("data-o")); render(); break;
     case "resqnext": RESQ = null; render(); window.scrollTo(0, 0); break;
+    case "bhreplay": render(); break;
     case "resqcollect": if (bossResqLeft().length === 0 && bossS().cap){ bossFree("rescue"); save(); location.hash = "#/boss/home"; } break;
     case "podtick": { var pk = el.getAttribute("data-k"), pr = podS()[pk] || {}; if (pr.at) delete pr.at; else { pr.at = Date.now(); if (!pr.paid){ pr.paid = Date.now(); earn(POD_COINS, "pod|" + pk, true); } layEgg(pk); } podS()[pk] = pr; save(); var pli = el.closest(".podrow"); el.classList.toggle("on", !!pr.at); el.textContent = pr.at ? "✓" : ""; if (pli){ pli.classList.toggle("done", !!pr.at); var peb = pli.querySelector(".podearn b"); if (peb && pr.paid) peb.textContent = "✓ " + POD_COINS; } podRowPaint(pk); break; }
     case "cbapet": { var hn = el.querySelector(".hen"); if (hn){ hn.classList.remove("jump"); void hn.getBoundingClientRect(); hn.classList.add("jump"); } var hp = document.createElement("span"); hp.className = "heart"; hp.textContent = "❤️"; el.appendChild(hp); setTimeout(function(){ if (hp.parentNode) hp.parentNode.removeChild(hp); }, 1200); break; }
