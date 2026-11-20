@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120094155";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120094639";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -107861,9 +107861,9 @@ window.SQE_JOURNEY = function (A) {
        Moving parts are cut out of the approved pictures (cutting and moving only, nobody is redrawn): img/map-new/anim/<art>-skater-a/-b.webp over <art>-empty.webp (skaters lifted, ice filled in),
        and <art>-flag-a..d.webp over <art>-still.webp (flag cloth lifted, poles kept). Each picture's <image> is swapped for its layers at the same box, so everything lines up exactly.
        RINK_ART picks the rink picture: 'icerink' now, 'icerink-family2' once Monnie OKs it (that one edit is all it takes). */
-    var RINK_ART = 'icerink-family4'; /* 03:50 Monnie: taller, broader brother with faint beard; Yasmin medium wavy hair */ /* Monnie 20 Nov: Yasmin in her rabbit-photo outfit, long sleeves + skates */ // /* Yasmin in a coat + brother in grey hoodie/joggers (Monnie 20 Nov) */
+    var RINK_ART = 'icerink-family5'; /* 20 Nov 09:50: the new approved Mo (souvenir/mo.webp) skating, faint beard; Yasmin untouched (family4 layers kept as backup) */ /* 03:50 Monnie: taller, broader brother with faint beard; Yasmin medium wavy hair */ /* Monnie 20 Nov: Yasmin in her rabbit-photo outfit, long sleeves + skates */ // /* Yasmin in a coat + brother in grey hoodie/joggers (Monnie 20 Nov) */
     /* [image px x, image px y] of each skater's feet (lean pivot) and each flag's pole attachment (wave pivot), on the 520x487 / 1130x1140 / 520x510 / 520x457 pictures */
-    var RF_LAYERS = { icerink: { nat: [520, 487], sk: [[140, 428], [372, 424]] }, 'icerink-family2': { nat: [520, 487], sk: [[148, 440], [372, 438]] }, 'icerink-family3': { nat: [520, 487], sk: [[148, 440], [372, 438]] }, 'icerink-family4': { nat: [520, 487], sk: [[148, 440], [372, 435]] },
+    var RF_LAYERS = { icerink: { nat: [520, 487], sk: [[140, 428], [372, 424]] }, 'icerink-family2': { nat: [520, 487], sk: [[148, 440], [372, 438]] }, 'icerink-family3': { nat: [520, 487], sk: [[148, 440], [372, 438]] }, 'icerink-family4': { nat: [520, 487], sk: [[148, 440], [372, 435]] }, 'icerink-family5': { nat: [520, 487], sk: [[148, 440], [372, 435]] },
         'palace-hen': { nat: [1130, 1140], fl: [[288, 88], [838, 88], [121, 292], [982, 296]] }, camp: { nat: [520, 510], fl: [[268, 44]] }, fairground: { nat: [520, 457], fl: [[412, 34]] } };
     /* ---------- map-motion-wheel (20 Nov, Monnie): the Ferris wheel turns (40s a turn, day and night) and its seven cars stay hanging upright ----------
        Cut from anim/fairground-still.webp: fairground-wheel.webp (rim, spokes, bulbs, a 328px square centred on the hub at picture px 172,188), fairground-hub.webp (the star hub, 88px square on the hub),
@@ -114465,41 +114465,62 @@ ROOMDATA["cgt"] = {
  "inside": {
   "hotspots": [
    {
-    "id": "chalk",
-    "icon": "🖍️",
-    "label": "Chalkboard: the big idea",
-    "big": true,
+    "id": "bubble",
+    "icon": "🍬",
+    "label": "Great Gain Bubble on its stand: the big idea",
     "cards": [
      [
-      0
+      0,
+      0,
+      7
      ]
-    ],
-    "x": 51.2,
-    "y": 9,
-    "w": 14.2,
-    "h": 14.9
+    ]
    },
    {
-    "id": "gumball",
-    "icon": "🎰",
-    "label": "Gumball machine: when does CGT apply?",
+    "id": "machine",
+    "icon": "🍬",
+    "label": "Red gumball machine with coin, crank and gumball: when does CGT apply?",
     "cards": [
      [
-      1
+      1,
+      0,
+      5
      ]
-    ],
-    "x": 0,
-    "y": 3.9,
-    "w": 17.1,
-    "h": 52.6
+    ]
+   },
+   {
+    "id": "houses",
+    "icon": "🍬",
+    "label": "Family houses, Gran's left in her will: death, spouses and civil partners",
+    "cards": [
+     [
+      1,
+      5,
+      9
+     ]
+    ]
+   },
+   {
+    "id": "farmer",
+    "icon": "🍬",
+    "label": "Farmer holding his tray of land: chargeable and exempt assets",
+    "cards": [
+     [
+      1,
+      9,
+      13
+     ]
+    ]
    },
    {
     "id": "twins",
-    "icon": "🫧",
-    "label": "Mia and Milo: calculating the gain",
+    "icon": "🍬",
+    "label": "Twins Mia and Milo blowing bubbles: date, proceeds and connected persons",
     "cards": [
      [
-      2
+      2,
+      0,
+      4
      ]
     ],
     "x": 17.2,
@@ -114508,12 +114529,50 @@ ROOMDATA["cgt"] = {
     "h": 23.5
    },
    {
-    "id": "podium",
-    "icon": "🏅",
-    "label": "Mr Pop's podium: losses, allowance and rates",
+    "id": "press",
+    "icon": "🍬",
+    "label": "Gum press slicing the costs off: deductions and the gain in one line",
     "cards": [
      [
-      3
+      2,
+      4,
+      10
+     ]
+    ]
+   },
+   {
+    "id": "belt",
+    "icon": "🍬",
+    "label": "Gum belt in strict order: share matching and anti-avoidance",
+    "cards": [
+     [
+      2,
+      10,
+      14
+     ]
+    ]
+   },
+   {
+    "id": "stand",
+    "icon": "🍬",
+    "label": "Bubble's tall stand: losses and the £3,000 annual exempt amount",
+    "cards": [
+     [
+      3,
+      0,
+      7
+     ]
+    ]
+   },
+   {
+    "id": "podium",
+    "icon": "🍬",
+    "label": "Mr Pop's winners' podium, low step and tall step: rates and payment",
+    "cards": [
+     [
+      3,
+      7,
+      14
      ]
     ],
     "x": 45.6,
@@ -114523,11 +114582,13 @@ ROOMDATA["cgt"] = {
    },
    {
     "id": "bea",
-    "icon": "🏆",
-    "label": "Bea's trophy: business asset disposal relief",
+    "icon": "🍬",
+    "label": "Bea's gold gumball trophy: business asset disposal relief",
     "cards": [
      [
-      4
+      4,
+      0,
+      9
      ]
     ],
     "x": 60.3,
@@ -114536,49 +114597,104 @@ ROOMDATA["cgt"] = {
     "h": 23.8
    },
    {
-    "id": "window",
-    "icon": "🔄",
-    "label": "Window display: rollover relief",
+    "id": "nina",
+    "icon": "🍬",
+    "label": "Nina with her 5% share: BADR for shareholders and associated disposals",
     "cards": [
      [
-      5
+      4,
+      9,
+      19
      ]
-    ],
-    "x": 76.7,
-    "y": 7.1,
-    "w": 23,
-    "h": 23.6
+    ]
    },
    {
-    "id": "key",
-    "icon": "🗝️",
-    "label": "Grandad and Poppy: gift relief",
+    "id": "ramp",
+    "icon": "🍬",
+    "label": "Gumball ramp down to the new workshops: rollover relief",
     "cards": [
      [
+      5,
+      0,
       6
      ]
-    ],
-    "x": 10.9,
-    "y": 56.8,
-    "w": 24,
-    "h": 43.2
+    ]
+   },
+   {
+    "id": "workshop",
+    "icon": "🍬",
+    "label": "Kate's new workshop: partial reinvestment, depreciating assets and the claim",
+    "cards": [
+     [
+      5,
+      6,
+      13
+     ]
+    ]
+   },
+   {
+    "id": "gordon",
+    "icon": "🍬",
+    "label": "Grandad Gordon handing over the giant key: gift relief and the joint election",
+    "cards": [
+     [
+      6,
+      0,
+      6
+     ]
+    ]
+   },
+   {
+    "id": "poppy",
+    "icon": "🍬",
+    "label": "Poppy taking the key: undervalue sales, restrictions and who pays later",
+    "cards": [
+     [
+      6,
+      6,
+      11
+     ]
+    ]
    },
    {
     "id": "suki",
-    "icon": "🛒",
-    "label": "Suki's stall: incorporation relief",
+    "icon": "🍬",
+    "label": "Suki wheeling her whole stall away for shares: incorporation relief",
     "cards": [
      [
-      7
-     ],
-     [
-      8
+      7,
+      0,
+      6
      ]
     ],
     "x": 65.4,
     "y": 49.1,
     "w": 34.3,
     "h": 45.9
+   },
+   {
+    "id": "stall",
+    "icon": "🍬",
+    "label": "Suki's stall without its premises: keeping the premises and the checklist",
+    "cards": [
+     [
+      7,
+      6,
+      10
+     ]
+    ]
+   },
+   {
+    "id": "spiral",
+    "icon": "🍬",
+    "label": "Spiral gumball machine, Clever Chewers Don't Burst Loudly: all the reliefs side by side",
+    "cards": [
+     [
+      8,
+      0,
+      7
+     ]
+    ]
    }
   ]
  },
@@ -114801,128 +114917,205 @@ ROOMDATA["corporation-tax"] = {
  "inside": {
   "hotspots": [
    {
-    "id": "h1",
-    "icon": "🌀",
-    "label": "Blender: one tax on all profits",
+    "id": "blender",
+    "icon": "🍬",
+    "label": "Giant blender of INCOME + GAINS making ONE TAX: what corporation tax is",
     "cards": [
      [
-      0
+      0,
+      0,
+      2
+     ]
+    ]
+   },
+   {
+    "id": "jug",
+    "icon": "🍬",
+    "label": "Little blender kept out of the big one, TAX TRANSPARENT: partnerships and LLPs",
+    "cards": [
+     [
+      0,
+      2,
+      4
+     ]
+    ]
+   },
+   {
+    "id": "timer",
+    "icon": "🍬",
+    "label": "Blender timer that stops at 12, MAX 12 MONTHS: the statutes, what SQE1 tests and accounting periods",
+    "cards": [
+     [
+      0,
+      4,
+      6
      ],
      [
       1
-     ],
+     ]
+    ]
+   },
+   {
+    "id": "jugs",
+    "icon": "🍬",
+    "label": "Four jugs pouring in order, I GULP RICH RIPPLES: the calculation in four steps",
+    "cards": [
      [
       2
      ]
-    ],
-    "x": 0.5,
-    "y": 4,
-    "w": 15,
-    "h": 43
+    ]
    },
    {
-    "id": "h2",
-    "icon": "🎁",
-    "label": "New machine: trading profits",
+    "id": "shake",
+    "icon": "🍬",
+    "label": "Giant shake marked REVENUE ONLY, WHOLLY AND EXCLUSIVELY: trading profits and what is deductible",
     "cards": [
      [
-      3
-     ]
-    ],
-    "x": 29,
-    "y": 12,
-    "w": 18,
-    "h": 28
-   },
-   {
-    "id": "h3",
-    "icon": "📻",
-    "label": "Jukebox: company gains",
-    "cards": [
-     [
-      4
-     ]
-    ],
-    "x": 1,
-    "y": 49,
-    "w": 25,
-    "h": 49
-   },
-   {
-    "id": "h4",
-    "icon": "💦",
-    "label": "Spilt shake: losses",
-    "cards": [
-     [
+      3,
+      0,
       5
      ]
-    ],
-    "x": 25.5,
-    "y": 42,
-    "w": 22.5,
-    "h": 53
+    ]
    },
    {
-    "id": "h5",
-    "icon": "🪑",
-    "label": "Stools: the rates",
+    "id": "machine",
+    "icon": "🍬",
+    "label": "Brand-new shake machine wearing a gift bow, FULL EXPENSING: capital allowances and the AIA",
+    "cards": [
+     [
+      3,
+      5,
+      9
+     ]
+    ]
+   },
+   {
+    "id": "pool",
+    "icon": "🍬",
+    "label": "Huge bowl of melted shake slowly draining, MAIN POOL 14%: writing down allowances and dividends received",
+    "cards": [
+     [
+      3,
+      9,
+      13
+     ]
+    ]
+   },
+   {
+    "id": "jukebox",
+    "icon": "🍬",
+    "label": "Old jukebox sold at a CHARGEABLE GAIN, indexation frozen at DEC 2017: company gains",
+    "cards": [
+     [
+      4,
+      0,
+      6
+     ]
+    ]
+   },
+   {
+    "id": "collector",
+    "icon": "🍬",
+    "label": "The jukebox collector with his coin, ROLLOVER and SSE 10%: capital losses, rollover relief and the SSE",
+    "cards": [
+     [
+      4,
+      6,
+      11
+     ]
+    ]
+   },
+   {
+    "id": "spill",
+    "icon": "🍬",
+    "label": "Twin with the spilt shake, CURRENT AP FIRST: trading loss relief now, then back 12 months",
+    "cards": [
+     [
+      5,
+      0,
+      3
+     ]
+    ]
+   },
+   {
+    "id": "twin",
+    "icon": "🍬",
+    "label": "His twin saving shakes and sharing at 75%, CARRY FORWARD and GROUP RELIEF: later losses and groups",
+    "cards": [
+     [
+      5,
+      3,
+      11
+     ]
+    ]
+   },
+   {
+    "id": "stools",
+    "icon": "🍬",
+    "label": "Three stools, 19%, MARGINAL RELIEF, 25%: the rates",
     "cards": [
      [
       6
      ]
-    ],
-    "x": 48.3,
-    "y": 43,
-    "w": 16,
-    "h": 27
+    ]
    },
    {
-    "id": "h6",
-    "icon": "🛼",
-    "label": "Roxy: paying out profits",
+    "id": "counter",
+    "icon": "🍬",
+    "label": "Order counter with the payment ticket, 9 MONTHS + 1 DAY: payment and collection",
     "cards": [
      [
-      8
+      7
      ]
-    ],
-    "x": 64.5,
-    "y": 43,
-    "w": 22.5,
-    "h": 53
+    ]
    },
    {
-    "id": "h7",
-    "icon": "🧾",
-    "label": "Gus's IOU: close companies",
+    "id": "roxy",
+    "icon": "🍬",
+    "label": "Roxy on roller skates paying profits out, DIVIDENDS POST-TAX: distributions",
+    "cards": [
+     [
+      8,
+      0,
+      5
+     ]
+    ]
+   },
+   {
+    "id": "tray",
+    "icon": "🍬",
+    "label": "Roxy's tray of five shakes, EXTRACT PROFIT: the five ways to take profit out",
+    "cards": [
+     [
+      8,
+      5,
+      8
+     ]
+    ]
+   },
+   {
+    "id": "gus",
+    "icon": "🍬",
+    "label": "Gus at the till leaving GUS'S IOU, CLOSE COMPANY: close companies and loans to participators",
     "cards": [
      [
       9,
       0,
-      "Transfer pricing"
+      11
      ]
-    ],
-    "x": 63,
-    "y": 13,
-    "w": 20,
-    "h": 29
+    ]
    },
    {
-    "id": "h8",
-    "icon": "⏱️",
-    "label": "Mr Penny: deadlines and anti-avoidance",
+    "id": "penny",
+    "icon": "🍬",
+    "label": "Mr Penny with his clipboard, ARM'S LENGTH: transfer pricing and anti-avoidance",
     "cards": [
      [
-      7
-     ],
-     [
       9,
-      "Transfer pricing"
+      11,
+      16
      ]
-    ],
-    "x": 87.5,
-    "y": 21,
-    "w": 12,
-    "h": 47
+    ]
    }
   ]
  },
@@ -115167,13 +115360,50 @@ ROOMDATA["vat-iht-bpr"] = {
  "inside": {
   "hotspots": [
    {
-    "id": "gwen",
-    "icon": "✂️",
-    "label": "Gwen at the wrapping table: the big idea",
-    "big": true,
+    "id": "door",
+    "icon": "🍬",
+    "label": "Shop door with a SOLD tag and a GIVEN tag: the big idea, two separate taxes",
     "cards": [
      [
-      0
+      0,
+      0,
+      5
+     ]
+    ]
+   },
+   {
+    "id": "shop",
+    "icon": "🍬",
+    "label": "Gingerbread shop on wheels selling sweets: the s.4 test, when VAT is charged",
+    "cards": [
+     [
+      1,
+      0,
+      5
+     ]
+    ]
+   },
+   {
+    "id": "reels",
+    "icon": "🍬",
+    "label": "Candy ribbon reels tagged 20%, 5%, 0% and EXEMPT: the rates and exempt supplies",
+    "cards": [
+     [
+      1,
+      6,
+      12
+     ]
+    ]
+   },
+   {
+    "id": "gwen",
+    "icon": "🍬",
+    "label": "Gwen cutting her paper into sixths: opting to tax, going concern and the 1/6 fraction",
+    "cards": [
+     [
+      1,
+      13,
+      16
      ]
     ],
     "x": 4,
@@ -115182,40 +115412,50 @@ ROOMDATA["vat-iht-bpr"] = {
     "h": 52
    },
    {
-    "id": "ribbons",
-    "icon": "🎀",
-    "label": "Ribbon reels: when VAT is charged",
+    "id": "spools",
+    "icon": "🍬",
+    "label": "Ribbon spools stacked a layer at a time: output tax, input tax and the value added",
     "cards": [
      [
-      1
+      2,
+      0,
+      4
      ]
-    ],
-    "x": 0.7,
-    "y": 7,
-    "w": 27,
-    "h": 22
+    ]
    },
    {
-    "id": "parcel",
-    "icon": "📦",
-    "label": "Pass-the-parcel row: output and input tax",
+    "id": "box",
+    "icon": "🍬",
+    "label": "Sealed box under the wrapping table: recovering input tax and blocked input tax",
     "cards": [
      [
-      2
+      2,
+      5,
+      9
      ]
-    ],
-    "x": 1.3,
-    "y": 29,
-    "w": 36.3,
-    "h": 10
+    ]
+   },
+   {
+    "id": "tower",
+    "icon": "🍬",
+    "label": "Jo's parcel tower climbing to the £90,000 line: VAT registration tests",
+    "cards": [
+     [
+      3,
+      0,
+      8
+     ]
+    ]
    },
    {
     "id": "jo",
-    "icon": "☕",
-    "label": "Jo's parcel tower: VAT registration",
+    "icon": "🍬",
+    "label": "Jo adding a box to her tower by choice: voluntary registration, deregistration and late registration",
     "cards": [
      [
-      3
+      3,
+      9,
+      14
      ]
     ],
     "x": 37.6,
@@ -115225,11 +115465,13 @@ ROOMDATA["vat-iht-bpr"] = {
    },
    {
     "id": "val",
-    "icon": "🧾",
-    "label": "Val at the till: tax point, invoices, returns",
+    "icon": "🍬",
+    "label": "Val with her giant date stamp: tax point and VAT invoices",
     "cards": [
      [
-      4
+      4,
+      0,
+      8
      ]
     ],
     "x": 60.5,
@@ -115238,12 +115480,54 @@ ROOMDATA["vat-iht-bpr"] = {
     "h": 45.5
    },
    {
-    "id": "bernard",
-    "icon": "🧓",
-    "label": "Grandad Bernard and Kai: IHT and what BPR covers",
+    "id": "records",
+    "icon": "🍬",
+    "label": "Labelled boxes kept for records: VAT returns, Making Tax Digital, penalties and records",
     "cards": [
      [
-      5
+      4,
+      9,
+      15
+     ]
+    ]
+   },
+   {
+    "id": "bigparcel",
+    "icon": "🍬",
+    "label": "Big gift parcel with its ribbon trailing: what inheritance tax is charged on, PETs and the nil-rate band",
+    "cards": [
+     [
+      5,
+      0,
+      7
+     ]
+    ],
+    "x": 84,
+    "y": 18,
+    "w": 16,
+    "h": 41.5
+   },
+   {
+    "id": "hampers",
+    "icon": "🍬",
+    "label": "Three hampers, full, half full and empty: the rates of business property relief",
+    "cards": [
+     [
+      5,
+      8,
+      16
+     ]
+    ]
+   },
+   {
+    "id": "bernard",
+    "icon": "🍬",
+    "label": "Grandad Bernard giving away his puffing sweet factory: 2 years, trading and binding contracts",
+    "cards": [
+     [
+      6,
+      0,
+      8
      ]
     ],
     "x": 30.5,
@@ -115252,32 +115536,40 @@ ROOMDATA["vat-iht-bpr"] = {
     "h": 41.5
    },
    {
-    "id": "hourglass",
-    "icon": "⌛",
-    "label": "Hourglass: BPR conditions",
+    "id": "kai",
+    "icon": "🍬",
+    "label": "Kai holding his gifted factory: still owned at Grandad's death (s.113A)",
     "cards": [
      [
-      6
+      6,
+      9,
+      11
      ]
-    ],
-    "x": 84.5,
-    "y": 60,
-    "w": 15.5,
-    "h": 39
+    ]
    },
    {
-    "id": "bigparcel",
-    "icon": "🎁",
-    "label": "Giant parcel: the £2.5m allowance",
+    "id": "claw",
+    "icon": "🍬",
+    "label": "Claw machine full of chocolate coins: the £2.5m allowance and 10 instalments",
     "cards": [
      [
-      7
+      7,
+      0,
+      6
      ]
-    ],
-    "x": 84,
-    "y": 18,
-    "w": 16,
-    "h": 41.5
+    ]
+   },
+   {
+    "id": "hen",
+    "icon": "🍬",
+    "label": "Britney the hen on her golden nest egg: Ana's example and the BPR route",
+    "cards": [
+     [
+      7,
+      7,
+      9
+     ]
+    ]
    }
   ]
  },
@@ -120807,852 +121099,1573 @@ var ROOMV3 = {
 },
 "cgt": {
 "board": {
-"x": 55.3,
-"y": 27.0,
-"w": 19.7,
-"h": 22.3
+"x": 31.2,
+"y": 20.5,
+"w": 9.1,
+"h": 18.5
 },
 "spots": {
-"chalk": [
-11.3,
-22.4,
-8.0,
-18.6
-],
-"gumball": [
-2.0,
-52.5,
-9.8,
-45.5
-],
-"twins": [
-12.8,
-49.8,
-12.0,
-27.0
-],
-"podium": [
-26.3,
-52.2,
-6.0,
-24.0
-],
-"bea": [
-32.8,
-43.5,
-8.2,
+"bubble": [
+41.0,
+11.0,
+16.0,
 30.5
 ],
-"window": [
-90.9,
-54.0,
-7.6,
-45.5
+"machine": [
+21.0,
+17.0,
+9.5,
+38.0
 ],
-"key": [
-84.3,
-54.4,
+"houses": [
+0.5,
+31.0,
+13.5,
+25.0
+],
+"farmer": [
+4.5,
+61.0,
+12.5,
+38.5
+],
+"twins": [
+34.0,
+44.0,
+10.5,
+20.5
+],
+"press": [
+25.0,
+56.0,
+8.5,
+25.5
+],
+"belt": [
+34.0,
+65.0,
+11.5,
+19.0
+],
+"stand": [
+46.0,
+42.0,
+9.5,
+22.5
+],
+"podium": [
+57.5,
+51.0,
+11.5,
+13.5
+],
+"bea": [
+61.0,
+16.0,
+11.0,
+23.0
+],
+"nina": [
+69.5,
+39.5,
 6.0,
-33.4
+17.0
+],
+"ramp": [
+76.0,
+22.0,
+12.5,
+28.5
+],
+"workshop": [
+89.0,
+31.0,
+10.5,
+22.5
+],
+"gordon": [
+51.0,
+65.0,
+9.5,
+33.5
+],
+"poppy": [
+61.0,
+74.0,
+6.5,
+24.5
 ],
 "suki": [
-52.4,
-54.0,
-31.4,
-30.0
+69.5,
+57.0,
+6.0,
+27.5
+],
+"stall": [
+76.0,
+51.0,
+9.5,
+35.0
+],
+"spiral": [
+89.5,
+56.0,
+9.0,
+24.5
 ],
 "scenario": [
-43.2,
-44.2,
-6.8,
-32.0
+86.0,
+81.0,
+12.0,
+18.5
 ],
 "game": [
-34.6,
-24.0,
-7.2,
-12.5
+17.5,
+55.5,
+7.0,
+24.5
 ]
 },
 "labels": {
-"chalk": [
+"bubble": [
 "",
-"Big pink bubble on a stand marked CGT: the big idea"
+"Great Gain Bubble on its stand: the big idea"
 ],
-"gumball": [
+"machine": [
 "",
-"Big red gumball machine marked person, asset, disposal: when does CGT apply?"
+"Red gumball machine with coin, crank and gumball: when does CGT apply?"
+],
+"houses": [
+"",
+"Family houses, Gran's left in her will: death, spouses and civil partners"
+],
+"farmer": [
+"",
+"Farmer holding his tray of land: chargeable and exempt assets"
 ],
 "twins": [
 "",
-"Growing wall bubbles marked proceeds minus cost equals gain: calculating the gain"
+"Twins Mia and Milo blowing bubbles: date, proceeds and connected persons"
+],
+"press": [
+"",
+"Gum press slicing the costs off: deductions and the gain in one line"
+],
+"belt": [
+"",
+"Gum belt in strict order: share matching and anti-avoidance"
+],
+"stand": [
+"",
+"Bubble's tall stand: losses and the £3,000 annual exempt amount"
 ],
 "podium": [
 "",
-"Coin-in pink gumball machine marked £3,000 and 18% 24%: losses, allowance and rates"
+"Mr Pop's winners' podium, low step and tall step: rates and payment"
 ],
 "bea": [
 "",
-"Bea's exit door marked BADR 18%: business asset disposal relief"
+"Bea's gold gumball trophy: business asset disposal relief"
 ],
-"window": [
+"nina": [
 "",
-"Spiral gumball machine rolling the gain into a new asset: rollover relief"
+"Nina with her 5% share: BADR for shareholders and associated disposals"
 ],
-"key": [
+"ramp": [
 "",
-"Giant gift-wrapped sweet marked joint election: gift relief"
+"Gumball ramp down to the new workshops: rollover relief"
+],
+"workshop": [
+"",
+"Kate's new workshop: partial reinvestment, depreciating assets and the claim"
+],
+"gordon": [
+"",
+"Grandad Gordon handing over the giant key: gift relief and the joint election"
+],
+"poppy": [
+"",
+"Poppy taking the key: undervalue sales, restrictions and who pays later"
 ],
 "suki": [
 "",
-"Whole sweet counter handed over for shares: incorporation relief"
+"Suki wheeling her whole stall away for shares: incorporation relief"
+],
+"stall": [
+"",
+"Suki's stall without its premises: keeping the premises and the checklist"
+],
+"spiral": [
+"",
+"Spiral gumball machine, Clever Chewers Don't Burst Loudly: all the reliefs side by side"
 ]
 },
 "hooks": [
 {
-"x": 12.4,
-"y": 23.0,
-"w": 5.8,
+"x": 46.0,
+"y": 12.5,
+"w": 6.0,
 "h": 5.0,
 "text": "CGT",
 "style": "tag",
 "rot": -3
 },
 {
-"x": 3.0,
-"y": 53.6,
-"w": 7.8,
-"h": 4.0,
-"text": "PERSON",
-"style": "tag",
-"rot": -2
-},
-{
-"x": 3.2,
-"y": 60.6,
-"w": 7.4,
-"h": 4.0,
-"text": "ASSET",
+"x": 44.5,
+"y": 35.5,
+"w": 9.0,
+"h": 4.6,
+"text": "TCGA 1992",
 "style": "tag",
 "rot": 2
 },
 {
-"x": 2.8,
-"y": 87.0,
-"w": 8.2,
-"h": 4.2,
+"x": 22.5,
+"y": 19.5,
+"w": 6.5,
+"h": 4.0,
+"text": "PERSON",
+"style": "tag",
+"rot": -3
+},
+{
+"x": 22.0,
+"y": 43.0,
+"w": 7.5,
+"h": 4.0,
 "text": "DISPOSAL",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 23.0,
+"y": 49.5,
+"w": 5.5,
+"h": 4.0,
+"text": "ASSET",
 "style": "tag",
 "rot": -2
 },
 {
-"x": 13.6,
-"y": 50.8,
-"w": 5.0,
-"h": 4.0,
-"text": "GAIN",
+"x": 1.0,
+"y": 32.0,
+"w": 6.0,
+"h": 6.6,
+"text": "DEATH:\nNO CGT",
+"style": "tag",
+"rot": -3
+},
+{
+"x": 7.2,
+"y": 48.8,
+"w": 6.6,
+"h": 6.6,
+"text": "NO GAIN /\nNO LOSS",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 5.5,
+"y": 89.5,
+"w": 10.5,
+"h": 8.6,
+"text": "CHARGEABLE\nOR EXEMPT?",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 34.4,
+"y": 44.4,
+"w": 4.0,
+"h": 3.6,
+"text": "MIA",
 "style": "tag",
 "rot": -4
 },
 {
-"x": 16.6,
-"y": 68.4,
-"w": 7.8,
-"h": 7.6,
-"text": "PROCEEDS\n- COST",
+"x": 40.2,
+"y": 44.4,
+"w": 4.0,
+"h": 3.6,
+"text": "MILO",
+"style": "tag",
+"rot": 4
+},
+{
+"x": 34.6,
+"y": 59.8,
+"w": 9.4,
+"h": 4.0,
+"text": "CONNECTED",
+"style": "tag",
+"rot": -1
+},
+{
+"x": 25.4,
+"y": 58.3,
+"w": 7.6,
+"h": 5.3,
+"text": "PROCEEDS\n− COSTS",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 25.4,
+"y": 74.5,
+"w": 7.6,
+"h": 6.6,
+"text": "NO\nINDEXATION",
 "style": "tag",
 "rot": 2
 },
 {
-"x": 26.6,
-"y": 52.8,
-"w": 5.4,
-"h": 6.6,
+"x": 34.6,
+"y": 77.6,
+"w": 10.4,
+"h": 6.3,
+"text": "SAME DAY\n30 DAYS · POOL",
+"style": "tag",
+"rot": -1
+},
+{
+"x": 47.0,
+"y": 45.0,
+"w": 7.5,
+"h": 3.5,
+"text": "LOSSES",
+"style": "tag",
+"rot": -3
+},
+{
+"x": 47.5,
+"y": 58.0,
+"w": 6.5,
+"h": 6.2,
 "text": "£3,000\nAEA",
 "style": "tag",
-"rot": -3
-},
-{
-"x": 26.5,
-"y": 69.2,
-"w": 5.6,
-"h": 4.2,
-"text": "18% 24%",
-"style": "tag",
 "rot": 2
 },
 {
-"x": 34.2,
-"y": 44.6,
-"w": 5.4,
-"h": 4.4,
-"text": "BEA",
+"x": 57.9,
+"y": 60.4,
+"w": 3.6,
+"h": 3.8,
+"text": "18%",
 "style": "tag",
 "rot": -3
 },
 {
-"x": 33.4,
-"y": 64.6,
-"w": 7.0,
-"h": 5.0,
+"x": 65.3,
+"y": 51.6,
+"w": 3.4,
+"h": 3.6,
+"text": "24%",
+"style": "tag",
+"rot": 3
+},
+{
+"x": 61.8,
+"y": 16.5,
+"w": 4.6,
+"h": 3.8,
+"text": "BEA",
+"style": "tag",
+"rot": -4
+},
+{
+"x": 62.0,
+"y": 34.5,
+"w": 8.0,
+"h": 4.2,
 "text": "BADR 18%",
 "style": "tag",
 "rot": 2
 },
 {
-"x": 91.4,
-"y": 55.4,
-"w": 6.6,
-"h": 4.4,
-"text": "ROLLOVER",
-"style": "tag",
-"rot": -3
-},
-{
-"x": 91.6,
-"y": 92.6,
-"w": 6.4,
-"h": 4.4,
-"text": "NEW ASSET",
-"style": "tag",
-"rot": 0
-},
-{
-"x": 84.6,
-"y": 55.4,
-"w": 5.4,
-"h": 4.2,
-"text": "GIFT",
-"style": "tag",
-"rot": -4
-},
-{
-"x": 84.6,
-"y": 77.6,
-"w": 5.4,
-"h": 7.2,
-"text": "JOINT\nELECTION",
-"style": "tag",
-"rot": 3
-},
-{
-"x": 53.6,
-"y": 68.6,
-"w": 6.6,
-"h": 7.4,
-"text": "GOING\nCONCERN",
+"x": 70.0,
+"y": 52.4,
+"w": 5.0,
+"h": 3.6,
+"text": "NINA",
 "style": "tag",
 "rot": -3
 },
 {
 "x": 77.0,
-"y": 69.0,
-"w": 6.0,
-"h": 4.4,
-"text": "SHARES",
+"y": 23.0,
+"w": 8.0,
+"h": 4.0,
+"text": "ROLLOVER",
+"style": "tag",
+"rot": -3
+},
+{
+"x": 77.5,
+"y": 45.8,
+"w": 9.0,
+"h": 4.0,
+"text": "3 YEARS AFTER",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 89.5,
+"y": 31.5,
+"w": 5.0,
+"h": 3.6,
+"text": "KATE",
+"style": "tag",
+"rot": -3
+},
+{
+"x": 89.6,
+"y": 49.0,
+"w": 9.4,
+"h": 4.2,
+"text": "CLAIM: 4 YEARS",
+"style": "tag",
+"rot": 1
+},
+{
+"x": 51.8,
+"y": 87.0,
+"w": 6.6,
+"h": 3.6,
+"text": "GORDON",
+"style": "tag",
+"rot": -3
+},
+{
+"x": 51.6,
+"y": 91.0,
+"w": 8.2,
+"h": 7.0,
+"text": "JOINT\nELECTION",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 61.4,
+"y": 74.4,
+"w": 5.6,
+"h": 3.6,
+"text": "POPPY",
 "style": "tag",
 "rot": 3
 },
 {
-"x": 61.2,
-"y": 79.4,
-"w": 15.0,
-"h": 4.0,
-"text": "ALL ITS ASSETS",
-"style": "tag",
-"rot": -1
-},
-{
-"x": 43.5,
-"y": 68.6,
-"w": 6.2,
-"h": 7.0,
-"text": "BEA'S\nBIG EXIT",
+"x": 61.5,
+"y": 91.6,
+"w": 5.6,
+"h": 6.4,
+"text": "HELD\nOVER",
 "style": "tag",
 "rot": -2
 },
 {
-"x": 34.9,
-"y": 32.4,
-"w": 6.6,
-"h": 3.8,
-"text": "GAIN BUBBLE",
+"x": 70.0,
+"y": 61.3,
+"w": 5.0,
+"h": 3.6,
+"text": "SUKI",
+"style": "tag",
+"rot": -3
+},
+{
+"x": 70.0,
+"y": 79.8,
+"w": 5.0,
+"h": 4.0,
+"text": "SHARES",
 "style": "tag",
 "rot": 2
+},
+{
+"x": 77.0,
+"y": 54.2,
+"w": 7.5,
+"h": 6.2,
+"text": "GOING\nCONCERN",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 77.5,
+"y": 77.0,
+"w": 7.0,
+"h": 6.6,
+"text": "KEPT?\nNO s.162",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 90.2,
+"y": 57.0,
+"w": 7.6,
+"h": 6.2,
+"text": "CLEVER\nCHEWERS",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 90.4,
+"y": 73.6,
+"w": 7.6,
+"h": 6.4,
+"text": "DON'T BURST\nLOUDLY",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 86.2,
+"y": 81.2,
+"w": 6.6,
+"h": 5.2,
+"text": "BEA'S\nBIG EXIT",
+"style": "speech",
+"rot": 0
+},
+{
+"x": 92.0,
+"y": 95.2,
+"w": 5.6,
+"h": 3.8,
+"text": "BRITNEY",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 18.0,
+"y": 75.6,
+"w": 6.0,
+"h": 3.8,
+"text": "MR POP",
+"style": "tag",
+"rot": -3
 }
+],
+"order": [
+"bubble",
+"machine",
+"houses",
+"farmer",
+"twins",
+"press",
+"belt",
+"stand",
+"podium",
+"bea",
+"nina",
+"ramp",
+"workshop",
+"gordon",
+"poppy",
+"suki",
+"stall",
+"spiral",
+"scenario",
+"game"
 ]
 },
 "corporation-tax": {
 "board": {
-"x": 78.0,
-"y": 32.9,
-"w": 16.0,
-"h": 18.1
+"x": 15.5,
+"y": 24.5,
+"w": 14,
+"h": 13
 },
 "spots": {
-"h1": [
-0.5,
-49.6,
-13.3,
-12.4
+"blender": [
+4.5,
+22,
+9,
+20.5
 ],
-"h2": [
-14.3,
-44.2,
-9.1,
-10.6
+"jug": [
+0.3,
+44,
+6.2,
+14
 ],
-"h3": [
-10.6,
-23.4,
-12.0,
-19.6
+"timer": [
+7,
+43.5,
+6.5,
+12.5
 ],
-"h4": [
-23.9,
-50.0,
-10.9,
-13.6
+"jugs": [
+14,
+40,
+15.8,
+16.5
 ],
-"h5": [
-43.8,
-45.3,
-6.4,
-9.7
+"shake": [
+30.5,
+20,
+10,
+34.5
 ],
-"h6": [
-63.1,
-36.4,
-7.0,
-13.8
+"machine": [
+52.5,
+21.5,
+11,
+27.5
 ],
-"h7": [
-63.0,
-51.6,
-6.4,
-22.0
+"pool": [
+67.5,
+32.5,
+26,
+12
 ],
-"h8": [
-69.9,
-50.7,
-6.0,
-24.3
+"jukebox": [
+94,
+15.5,
+6,
+35
+],
+"collector": [
+80.5,
+45,
+11,
+15
+],
+"spill": [
+22.5,
+72.5,
+9.5,
+24
+],
+"twin": [
+32.5,
+72.5,
+6.3,
+21
+],
+"stools": [
+6.8,
+64.5,
+15.2,
+34.5
+],
+"counter": [
+0.3,
+61,
+6,
+13
+],
+"roxy": [
+37,
+55,
+10,
+17
+],
+"tray": [
+44.5,
+43,
+7.5,
+11
+],
+"gus": [
+54.5,
+49.5,
+15,
+22
+],
+"penny": [
+72.5,
+61,
+8.8,
+37
 ],
 "scenario": [
-76.4,
-60.6,
-19.5,
-35.0
+82.5,
+80.5,
+9.5,
+15
 ],
 "game": [
-22.3,
-64.1,
-19.5,
-30.7
+84,
+62,
+15.5,
+16
 ]
 },
 "labels": {
-"h1": [
+"blender": [
 "",
-"Sprinkle jars of INCOME + GAINS mixed into ONE TAX: one tax on all profits"
+"Giant blender of INCOME + GAINS making ONE TAX: what corporation tax is"
 ],
-"h2": [
+"jug": [
 "",
-"Brand-new mixers marked FULL EXPENSING: trading profits"
+"Little blender kept out of the big one, TAX TRANSPARENT: partnerships and LLPs"
 ],
-"h3": [
+"timer": [
 "",
-"Paintings sold at a CHARGEABLE GAIN: company gains"
+"Blender timer that stops at 12, MAX 12 MONTHS: the statutes, what SQE1 tests and accounting periods"
 ],
-"h4": [
+"jugs": [
 "",
-"Row of shakes, front one first, then back: losses"
+"Four jugs pouring in order, I GULP RICH RIPPLES: the calculation in four steps"
 ],
-"h5": [
+"shake": [
 "",
-"Three syrup tanks, 19%, MARGINAL, 25%: the rates"
+"Giant shake marked REVENUE ONLY, WHOLLY AND EXCLUSIVELY: trading profits and what is deductible"
 ],
-"h6": [
+"machine": [
 "",
-"Picture of two shakes, TAXED TWICE: paying out profits"
+"Brand-new shake machine wearing a gift bow, FULL EXPENSING: capital allowances and the AIA"
 ],
-"h7": [
+"pool": [
 "",
-"Closed glass case with Gus's IOU: close companies"
+"Huge bowl of melted shake slowly draining, MAIN POOL 14%: writing down allowances and dividends received"
 ],
-"h8": [
+"jukebox": [
 "",
-"Till marked 9 MONTHS + 1 DAY: deadlines and anti-avoidance"
+"Old jukebox sold at a CHARGEABLE GAIN, indexation frozen at DEC 2017: company gains"
+],
+"collector": [
+"",
+"The jukebox collector with his coin, ROLLOVER and SSE 10%: capital losses, rollover relief and the SSE"
+],
+"spill": [
+"",
+"Twin with the spilt shake, CURRENT AP FIRST: trading loss relief now, then back 12 months"
+],
+"twin": [
+"",
+"His twin saving shakes and sharing at 75%, CARRY FORWARD and GROUP RELIEF: later losses and groups"
+],
+"stools": [
+"",
+"Three stools, 19%, MARGINAL RELIEF, 25%: the rates"
+],
+"counter": [
+"",
+"Order counter with the payment ticket, 9 MONTHS + 1 DAY: payment and collection"
+],
+"roxy": [
+"",
+"Roxy on roller skates paying profits out, DIVIDENDS POST-TAX: distributions"
+],
+"tray": [
+"",
+"Roxy's tray of five shakes, EXTRACT PROFIT: the five ways to take profit out"
+],
+"gus": [
+"",
+"Gus at the till leaving GUS'S IOU, CLOSE COMPANY: close companies and loans to participators"
+],
+"penny": [
+"",
+"Mr Penny with his clipboard, ARM'S LENGTH: transfer pricing and anti-avoidance"
+],
+"scenario": [
+"",
+"Britney the white hen: Mr Penny's visit"
+],
+"game": [
+"",
+"Empty booth table: the Stool Stack game"
 ]
 },
 "hooks": [
 {
-"spot": "h1",
-"x": 3.2,
-"y": 50.0,
-"w": 7.8,
+"spot": "blender",
+"x": 5,
+"y": 22.5,
+"w": 8,
 "h": 3.5,
 "text": "ONE TAX",
 "style": "tag",
 "rot": -2
 },
 {
-"spot": "h1",
-"x": 1.0,
-"y": 58.0,
-"w": 12.4,
-"h": 3.6,
+"spot": "blender",
+"x": 4.8,
+"y": 37.8,
+"w": 8.4,
+"h": 3.5,
 "text": "INCOME + GAINS",
 "style": "tag",
 "rot": 0
 },
 {
-"spot": "h2",
-"x": 14.6,
-"y": 51.3,
-"w": 8.5,
+"spot": "jug",
+"x": 0.5,
+"y": 53.4,
+"w": 5.8,
+"h": 4.4,
+"text": "TAX\nTRANSPARENT",
+"style": "tag",
+"rot": 0
+},
+{
+"spot": "timer",
+"x": 7.3,
+"y": 52,
+"w": 5.9,
 "h": 3.2,
+"text": "12 MONTHS",
+"style": "tag",
+"rot": 0
+},
+{
+"spot": "jugs",
+"x": 14.4,
+"y": 40.4,
+"w": 15,
+"h": 3.4,
+"text": "I GULP RICH RIPPLES",
+"style": "tag",
+"rot": -1
+},
+{
+"spot": "shake",
+"x": 31,
+"y": 49.5,
+"w": 9,
+"h": 3.5,
+"text": "REVENUE ONLY",
+"style": "tag",
+"rot": 1
+},
+{
+"spot": "machine",
+"x": 52.8,
+"y": 22,
+"w": 10.4,
+"h": 3.4,
 "text": "FULL EXPENSING",
 "style": "tag",
 "rot": -2
 },
 {
-"spot": "h3",
-"x": 10.9,
-"y": 23.8,
-"w": 11.4,
-"h": 3.4,
-"text": "CHARGEABLE GAIN",
+"spot": "pool",
+"x": 67.9,
+"y": 36.5,
+"w": 8.2,
+"h": 3.6,
+"text": "MAIN POOL 14%",
 "style": "tag",
 "rot": -2
 },
 {
-"spot": "h3",
-"x": 10.9,
-"y": 36.9,
-"w": 11.4,
-"h": 6.0,
-"text": "INDEXATION TO\nDECEMBER 2017",
-"style": "tag",
-"rot": 1
-},
-{
-"spot": "h4",
-"x": 24.3,
-"y": 50.2,
-"w": 10.2,
+"spot": "pool",
+"x": 84.8,
+"y": 36.5,
+"w": 8.4,
 "h": 3.6,
-"text": "THEN BACK 12 MONTHS",
-"style": "tag",
-"rot": -2
-},
-{
-"spot": "h4",
-"x": 24.2,
-"y": 59.6,
-"w": 10.4,
-"h": 3.6,
-"text": "CURRENT AP FIRST",
+"text": "SPECIAL RATE 6%",
 "style": "tag",
 "rot": 2
 },
 {
-"spot": "h5",
-"x": 43.85,
-"y": 45.35,
-"w": 2.9,
-"h": 3.25,
+"spot": "jukebox",
+"x": 94.2,
+"y": 16,
+"w": 5.6,
+"h": 6,
+"text": "CHARGEABLE\nGAIN",
+"style": "tag",
+"rot": 0
+},
+{
+"spot": "jukebox",
+"x": 94.4,
+"y": 44,
+"w": 5.2,
+"h": 6,
+"text": "DEC\n2017",
+"style": "tag",
+"rot": 0
+},
+{
+"spot": "collector",
+"x": 83.5,
+"y": 56.2,
+"w": 5.6,
+"h": 3.2,
+"text": "ROLLOVER",
+"style": "tag",
+"rot": 2
+},
+{
+"spot": "spill",
+"x": 22.8,
+"y": 92.6,
+"w": 8.9,
+"h": 3.5,
+"text": "CURRENT AP FIRST",
+"style": "tag",
+"rot": 0
+},
+{
+"spot": "twin",
+"x": 32.7,
+"y": 73,
+"w": 5.9,
+"h": 5.6,
+"text": "CARRY\nFORWARD",
+"style": "tag",
+"rot": -2
+},
+{
+"spot": "twin",
+"x": 32.7,
+"y": 88.8,
+"w": 5.9,
+"h": 4.4,
+"text": "GROUP\nRELIEF",
+"style": "tag",
+"rot": 2
+},
+{
+"spot": "stools",
+"x": 17.6,
+"y": 65.2,
+"w": 4,
+"h": 3.2,
+"text": "25%",
+"style": "tag",
+"rot": -3
+},
+{
+"spot": "stools",
+"x": 11.1,
+"y": 69.2,
+"w": 5.8,
+"h": 5.4,
+"text": "MARGINAL\nRELIEF",
+"style": "tag",
+"rot": 0
+},
+{
+"spot": "stools",
+"x": 7.1,
+"y": 81,
+"w": 3.6,
+"h": 3.2,
 "text": "19%",
 "style": "tag",
 "rot": -3
 },
 {
-"spot": "h5",
-"x": 47.25,
-"y": 45.35,
-"w": 2.9,
-"h": 3.25,
-"text": "25%",
+"spot": "counter",
+"x": 0.5,
+"y": 61.3,
+"w": 5.6,
+"h": 4.2,
+"text": "9 MONTHS\n+ 1 DAY",
 "style": "tag",
-"rot": 3
+"rot": -2
 },
 {
-"spot": "h5",
-"x": 44.1,
-"y": 51.8,
-"w": 5.8,
-"h": 3.0,
-"text": "MARGINAL",
-"style": "tag",
-"rot": 0
-},
-{
-"spot": "h6",
-"x": 63.4,
-"y": 37.0,
-"w": 6.6,
+"spot": "counter",
+"x": 0.6,
+"y": 70,
+"w": 5.4,
 "h": 3.4,
-"text": "TAXED TWICE",
+"text": "CT600",
+"style": "tag",
+"rot": 2
+},
+{
+"spot": "roxy",
+"x": 37.3,
+"y": 55.4,
+"w": 4.4,
+"h": 3.2,
+"text": "ROXY",
 "style": "tag",
 "rot": -3
 },
 {
-"spot": "h7",
-"x": 63.3,
-"y": 52.1,
-"w": 5.8,
-"h": 6.2,
+"spot": "roxy",
+"x": 37.3,
+"y": 68.2,
+"w": 9.4,
+"h": 3.4,
+"text": "DIVIDENDS: POST-TAX",
+"style": "tag",
+"rot": 0
+},
+{
+"spot": "tray",
+"x": 44.7,
+"y": 43.3,
+"w": 7.1,
+"h": 3.3,
+"text": "EXTRACT PROFIT",
+"style": "tag",
+"rot": -2
+},
+{
+"spot": "gus",
+"x": 54.9,
+"y": 50,
+"w": 6.6,
+"h": 5.6,
 "text": "CLOSE\nCOMPANY",
 "style": "tag",
 "rot": -2
 },
 {
-"spot": "h7",
-"x": 63.5,
+"spot": "gus",
+"x": 55,
 "y": 66.8,
-"w": 5.6,
-"h": 3.4,
+"w": 7.4,
+"h": 3.5,
 "text": "GUS'S IOU",
-"style": "tag",
-"rot": 3
-},
-{
-"spot": "h8",
-"x": 70.1,
-"y": 52.8,
-"w": 5.6,
-"h": 6.2,
-"text": "9 MONTHS\n+ 1 DAY",
-"style": "tag",
-"rot": 0
-},
-{
-"spot": "h8",
-"x": 70.2,
-"y": 67.0,
-"w": 5.4,
-"h": 6.6,
-"text": "CT600\n12 MONTHS",
-"style": "ink",
-"rot": 0
-},
-{
-"spot": "scenario",
-"x": 76.8,
-"y": 84.6,
-"w": 7.0,
-"h": 6.0,
-"text": "MR PENNY'S\nVISIT",
-"style": "tag",
-"rot": -3
-},
-{
-"spot": "game",
-"x": 22.7,
-"y": 72.6,
-"w": 6.4,
-"h": 3.4,
-"text": "TALL: 25%",
-"style": "tag",
-"rot": -3
-},
-{
-"spot": "game",
-"x": 28.8,
-"y": 67.8,
-"w": 5.4,
-"h": 3.2,
-"text": "MEDIUM",
-"style": "tag",
-"rot": -2
-},
-{
-"spot": "game",
-"x": 34.6,
-"y": 67.8,
-"w": 5.8,
-"h": 3.2,
-"text": "SHORT: 19%",
-"style": "tag",
-"rot": -2
-}
-]
-},
-"vat-iht-bpr": {
-"board": {
-"x": 76.9,
-"y": 28.6,
-"w": 18.0,
-"h": 25.4
-},
-"spots": {
-"gwen": [
-0.3,
-62.5,
-35.8,
-37.0
-],
-"ribbons": [
-1.0,
-37.5,
-18.2,
-21.5
-],
-"parcel": [
-19.7,
-21.0,
-11.4,
-18.0
-],
-"jo": [
-32.0,
-24.0,
-14.3,
-27.5
-],
-"val": [
-47.3,
-30.0,
-8.6,
-22.5
-],
-"bernard": [
-36.7,
-54.2,
-9.0,
-34.0
-],
-"hourglass": [
-57.4,
-27.0,
-12.4,
-47.0
-],
-"bigparcel": [
-78.3,
-62.5,
-21.5,
-37.0
-],
-"scenario": [
-70.3,
-50.0,
-6.1,
-31.0
-],
-"game": [
-46.2,
-53.0,
-10.0,
-28.0
-]
-},
-"labels": {
-"gwen": [
-"",
-"Wrapping table with a VAT parcel and a BPR roll: the big idea"
-],
-"ribbons": [
-"",
-"Ribbon reels tagged 20% 5% 0% and EXEMPT: when VAT is charged"
-],
-"parcel": [
-"",
-"Shelf boxes tagged OUTPUT TAX and INPUT TAX: output and input tax"
-],
-"jo": [
-"",
-"Jo's café bags stacked up to the £90,000 shelf: VAT registration"
-],
-"val": [
-"",
-"Tag board of tax point and VAT invoice tags: tax point, invoices, returns"
-],
-"bernard": [
-"",
-"Grandad Bernard's gift pile tagged PET and 100% / 50%: IHT basics and what BPR covers"
-],
-"hourglass": [
-"",
-"Door to relief marked 2 years and no binding contract: BPR conditions"
-],
-"bigparcel": [
-"",
-"Giant gold-bow box, £2.5m at 100% then 50%: the £2.5m allowance"
-]
-},
-"hooks": [
-{
-"x": 17.5,
-"y": 65.5,
-"w": 7.5,
-"h": 5.0,
-"text": "VAT",
-"style": "tag",
-"rot": -3
-},
-{
-"x": 3.0,
-"y": 75.0,
-"w": 8.0,
-"h": 5.0,
-"text": "BPR",
 "style": "tag",
 "rot": 2
 },
 {
-"x": 2.2,
-"y": 40.8,
-"w": 14.5,
-"h": 4.2,
-"text": "20% 5% 0%",
+"spot": "penny",
+"x": 72.6,
+"y": 61.3,
+"w": 8.6,
+"h": 3.2,
+"text": "ANTI-AVOIDANCE",
+"style": "tag",
+"rot": 0
+},
+{
+"spot": "penny",
+"x": 73,
+"y": 93.6,
+"w": 7.8,
+"h": 3.3,
+"text": "ARM'S LENGTH",
+"style": "tag",
+"rot": 0
+},
+{
+"spot": "scenario",
+"x": 82.7,
+"y": 80.8,
+"w": 9.1,
+"h": 3.8,
+"text": "MR PENNY'S VISIT",
+"style": "speech",
+"rot": 0
+},
+{
+"spot": "scenario",
+"x": 84.2,
+"y": 91.6,
+"w": 6,
+"h": 3.2,
+"text": "BRITNEY",
 "style": "tag",
 "rot": -2
 },
 {
-"x": 4.0,
-"y": 53.0,
-"w": 9.0,
-"h": 4.8,
+"spot": "game",
+"x": 85.2,
+"y": 62.5,
+"w": 9,
+"h": 3.4,
+"text": "STOOL STACK",
+"style": "tag",
+"rot": -2
+}
+],
+"order": [
+"blender",
+"jug",
+"timer",
+"jugs",
+"shake",
+"machine",
+"pool",
+"jukebox",
+"collector",
+"spill",
+"twin",
+"stools",
+"counter",
+"roxy",
+"tray",
+"gus",
+"penny",
+"scenario",
+"game"
+]
+},
+"vat-iht-bpr": {
+"board": {
+"x": 62,
+"y": 36.5,
+"w": 16,
+"h": 10
+},
+"spots": {
+"door": [
+79,
+47,
+6.5,
+14.5
+],
+"shop": [
+48,
+46,
+12.5,
+33
+],
+"reels": [
+28.5,
+39.5,
+18,
+11
+],
+"gwen": [
+31,
+51,
+9,
+12.5
+],
+"spools": [
+40.5,
+63.5,
+6.5,
+16
+],
+"box": [
+25.5,
+68,
+7.5,
+12
+],
+"tower": [
+12.5,
+24,
+8.5,
+22
+],
+"jo": [
+13,
+46.5,
+12,
+13
+],
+"val": [
+0.5,
+47,
+10.5,
+19
+],
+"records": [
+11.5,
+60,
+9,
+12.5
+],
+"bigparcel": [
+0.5,
+73,
+20,
+25.5
+],
+"hampers": [
+40,
+80,
+24.5,
+19.5
+],
+"bernard": [
+72.5,
+62,
+8,
+37.5
+],
+"kai": [
+90,
+72,
+7,
+27.5
+],
+"claw": [
+86,
+44,
+13,
+25.5
+],
+"hen": [
+80,
+26,
+19,
+17
+],
+"scenario": [
+81,
+70,
+8.5,
+22
+],
+"game": [
+61,
+47,
+11,
+31
+]
+},
+"labels": {
+"door": [
+"",
+"Shop door with a SOLD tag and a GIVEN tag: the big idea, two separate taxes"
+],
+"shop": [
+"",
+"Gingerbread shop on wheels selling sweets: the s.4 test, when VAT is charged"
+],
+"reels": [
+"",
+"Candy ribbon reels tagged 20%, 5%, 0% and EXEMPT: the rates and exempt supplies"
+],
+"gwen": [
+"",
+"Gwen cutting her paper into sixths: opting to tax, going concern and the 1/6 fraction"
+],
+"spools": [
+"",
+"Ribbon spools stacked a layer at a time: output tax, input tax and the value added"
+],
+"box": [
+"",
+"Sealed box under the wrapping table: recovering input tax and blocked input tax"
+],
+"tower": [
+"",
+"Jo's parcel tower climbing to the £90,000 line: VAT registration tests"
+],
+"jo": [
+"",
+"Jo adding a box to her tower by choice: voluntary registration, deregistration and late registration"
+],
+"val": [
+"",
+"Val with her giant date stamp: tax point and VAT invoices"
+],
+"records": [
+"",
+"Labelled boxes kept for records: VAT returns, Making Tax Digital, penalties and records"
+],
+"bigparcel": [
+"",
+"Big gift parcel with its ribbon trailing: what inheritance tax is charged on, PETs and the nil-rate band"
+],
+"hampers": [
+"",
+"Three hampers, full, half full and empty: the rates of business property relief"
+],
+"bernard": [
+"",
+"Grandad Bernard giving away his puffing sweet factory: 2 years, trading and binding contracts"
+],
+"kai": [
+"",
+"Kai holding his gifted factory: still owned at Grandad's death (s.113A)"
+],
+"claw": [
+"",
+"Claw machine full of chocolate coins: the £2.5m allowance and 10 instalments"
+],
+"hen": [
+"",
+"Britney the hen on her golden nest egg: Ana's example and the BPR route"
+]
+},
+"hooks": [
+{
+"x": 79.2,
+"y": 47.3,
+"w": 6.1,
+"h": 3.3,
+"text": "SOLD = VAT",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 79.2,
+"y": 57.9,
+"w": 6.1,
+"h": 3.3,
+"text": "GIVEN = BPR",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 49,
+"y": 46.4,
+"w": 10.5,
+"h": 10.6,
+"text": "SWEETS UNDER\nTISSUE TASTE\nBETTER",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 49.5,
+"y": 74.6,
+"w": 9.5,
+"h": 3.4,
+"text": "PRIVATE = OUTSIDE",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 29.5,
+"y": 39.8,
+"w": 8.5,
+"h": 3.2,
+"text": "20% · 5% · 0%",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 40.2,
+"y": 47.1,
+"w": 6,
+"h": 3.2,
 "text": "EXEMPT",
 "style": "tag",
 "rot": 2
 },
 {
-"x": 19.9,
-"y": 21.3,
-"w": 7.2,
-"h": 4.4,
-"text": "OUTPUT TAX",
+"x": 31.3,
+"y": 59.8,
+"w": 8.4,
+"h": 3.4,
+"text": "1/6 · £120 → £20",
 "style": "tag",
-"rot": -3
+"rot": -2
 },
 {
-"x": 24.2,
-"y": 34.3,
-"w": 6.8,
-"h": 4.4,
+"x": 40.7,
+"y": 63.8,
+"w": 6.1,
+"h": 3.2,
+"text": "OUTPUT TAX",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 40.7,
+"y": 76,
+"w": 6.1,
+"h": 3.2,
 "text": "INPUT TAX",
 "style": "tag",
 "rot": 2
 },
 {
-"x": 32.6,
-"y": 28.6,
-"w": 6.0,
-"h": 4.6,
-"text": "JO'S CAFE",
+"x": 25.9,
+"y": 76.5,
+"w": 6.7,
+"h": 3.2,
+"text": "BLOCKED",
 "style": "tag",
-"rot": -2
+"rot": 2
 },
 {
-"x": 41.0,
-"y": 24.5,
-"w": 5.0,
-"h": 4.6,
+"x": 13,
+"y": 39.5,
+"w": 7.5,
+"h": 3.6,
 "text": "£90,000",
 "style": "tag",
-"rot": 3
+"rot": 2
 },
 {
-"x": 47.8,
-"y": 31.0,
-"w": 7.6,
-"h": 4.8,
-"text": "TAX POINT",
+"x": 13.3,
+"y": 56.1,
+"w": 7.5,
+"h": 3.2,
+"text": "IN BY CHOICE",
 "style": "tag",
 "rot": -2
 },
 {
-"x": 47.8,
-"y": 46.8,
-"w": 7.6,
-"h": 4.8,
-"text": "VAT INVOICE",
-"style": "tag",
-"rot": 2
-},
-{
-"x": 37.3,
-"y": 55.0,
-"w": 7.8,
-"h": 6.8,
-"text": "PET\n7 YEARS",
-"style": "tag",
-"rot": -2
-},
-{
-"x": 37.2,
-"y": 81.5,
-"w": 7.8,
-"h": 4.8,
-"text": "100% / 50%",
-"style": "tag",
-"rot": 2
-},
-{
-"x": 59.0,
-"y": 31.0,
-"w": 9.2,
-"h": 5.0,
-"text": "2 YEARS",
-"style": "tag",
-"rot": -2
-},
-{
-"x": 59.0,
-"y": 61.0,
-"w": 9.2,
-"h": 8.0,
-"text": "NO BINDING\nCONTRACT",
-"style": "tag",
-"rot": 2
-},
-{
-"x": 92.6,
-"y": 66.5,
-"w": 6.4,
-"h": 7.4,
-"text": "£2.5m\n100%",
+"x": 1,
+"y": 47.4,
+"w": 4.5,
+"h": 3.4,
+"text": "VAL",
 "style": "tag",
 "rot": -3
 },
 {
-"x": 92.8,
-"y": 87.3,
-"w": 6.2,
-"h": 4.8,
-"text": "THEN 50%",
+"x": 1,
+"y": 61.8,
+"w": 9.5,
+"h": 3.6,
+"text": "TAX POINT",
 "style": "tag",
 "rot": 2
 },
 {
-"x": 70.6,
-"y": 55.0,
-"w": 5.7,
-"h": 3.8,
+"x": 11.9,
+"y": 60.3,
+"w": 8.2,
+"h": 3.3,
+"text": "6 YEARS",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 1.2,
+"y": 90.4,
+"w": 12,
+"h": 3.6,
+"text": "PET · 7 YEARS",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 1.2,
+"y": 94.4,
+"w": 12,
+"h": 3.6,
+"text": "£325,000 · 40%",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 41,
+"y": 87,
+"w": 6,
+"h": 3.5,
+"text": "100%",
+"style": "tag",
+"rot": -3
+},
+{
+"x": 49.4,
+"y": 95.4,
+"w": 6,
+"h": 3.6,
+"text": "50%",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 57.8,
+"y": 86,
+"w": 6,
+"h": 3.5,
+"text": "NONE",
+"style": "tag",
+"rot": 3
+},
+{
+"x": 72.8,
+"y": 87.4,
+"w": 7.4,
+"h": 3.4,
 "text": "BERNARD",
 "style": "tag",
 "rot": -2
 },
 {
-"x": 71.4,
-"y": 75.6,
-"w": 4.2,
-"h": 4.6,
+"x": 72.8,
+"y": 92.4,
+"w": 7.4,
+"h": 3.4,
+"text": "2 YEARS",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 90.3,
+"y": 90.6,
+"w": 6.4,
+"h": 3.4,
+"text": "STILL OWN IT?",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 91.2,
+"y": 95.4,
+"w": 4.5,
+"h": 3.6,
 "text": "KAI",
 "style": "tag",
 "rot": 2
 },
 {
-"x": 46.6,
-"y": 53.6,
+"x": 86.6,
+"y": 44.4,
+"w": 11.8,
+"h": 3.4,
+"text": "FIRST £2.5m = 100%",
+"style": "tag",
+"rot": -1
+},
+{
+"x": 87.2,
+"y": 61.8,
+"w": 10.6,
+"h": 3.4,
+"text": "10 INSTALMENTS",
+"style": "tag",
+"rot": 2
+},
+{
+"x": 80.5,
+"y": 26.4,
 "w": 6.6,
-"h": 4.6,
-"text": "JO'S TOWER",
+"h": 3.4,
+"text": "ANA £3.5m",
+"style": "tag",
+"rot": -2
+},
+{
+"x": 80.6,
+"y": 39.1,
+"w": 17.8,
+"h": 3.6,
+"text": "KAI TIES TINSEL EVERY APRIL",
+"style": "tag",
+"rot": 1
+},
+{
+"x": 81.3,
+"y": 70.4,
+"w": 7.9,
+"h": 3.6,
+"text": "NO STRINGS!",
+"style": "speech",
+"rot": -2
+},
+{
+"x": 61.4,
+"y": 72.6,
+"w": 7.4,
+"h": 3.4,
+"text": "JO'S CAFE",
 "style": "tag",
 "rot": -2
 }
+],
+"order": [
+"door",
+"shop",
+"reels",
+"gwen",
+"spools",
+"box",
+"tower",
+"jo",
+"val",
+"records",
+"bigparcel",
+"hampers",
+"bernard",
+"kai",
+"claw",
+"hen",
+"scenario",
+"game"
 ]
 }
 };
@@ -126003,7 +127016,7 @@ window.SQE_SCENE = function(A){
       return '<span class="scn-hook ' + esc(o.style || 'tag') + '" aria-hidden="true" style="left:' + o.x + '%;top:' + o.y + '%;width:' + o.w + '%;height:' + o.h + '%;font-size:' + fs.toFixed(2) + 'cqw;--rot:' + (+o.rot || 0) + 'deg">' + esc(t).replace(/\n/g, '<br>') + '</span>'; }).join(''); }
   function boardLines(k){ return (k && BOARD_HOOKS[k.split('/')[1]]) || null; }
   /* 20 Nov: rooms whose new picture has no drawn chalkboard get a painted board behind the words so they stay readable */
-  var BOARD_PLAIN = {'shareholders-minority':1, 'partnerships':1, 'corporate-insolvency':1, 'insolvency-clawback-priority':1, 'personal-insolvency':1, 'income-tax':1};
+  var BOARD_PLAIN = {'shareholders-minority':1, 'partnerships':1, 'corporate-insolvency':1, 'insolvency-clawback-priority':1, 'personal-insolvency':1, 'income-tax':1, 'cgt':1, 'corporation-tax':1, 'vat-iht-bpr':1};
   function boardHTML(view, k){ var b = view && view.board, L = boardLines(k); if (!ROOMS_ON || !b || !L || !view.img) return '';
     return '<button type="button" class="scn-board' + (BOARD_PLAIN[String(k).split('/')[1]] ? ' plain' : '') + '" data-scn-board="' + esc(k) + '" style="left:' + b.x + '%;top:' + b.y + '%;width:' + b.w + '%;height:' + b.h + '%;--bpx:' + (b.w * 0.03).toFixed(2) + 'cqw;--bpy:' + (b.h * 0.035 / (view.ratio || 16 / 9)).toFixed(2) + 'cqw" aria-label="Chalkboard: ' + esc(L.join(' ')) + '. Tap to read it big."><span class="scn-bt">' + L.map(function(l){ return '<span class="ln">' + esc(l) + '</span>'; }).join('') + '</span></button>'; }
   function fitBoards(){ var els = document.querySelectorAll('.scn-board .scn-bt:not([data-fit]), .scn-boardov .scn-bt:not([data-fit])');
@@ -126446,7 +127459,7 @@ window.SQE_TOWN = function(A){
     /* Monnie 05:59: gamble questions and answers in a clean readable font; felt-tip only for the heading */
     '.hb #town-gamble *:not(h3):not(text){font-family:var(--font)!important;letter-spacing:0!important}.hb #town-gamble .btn{font-family:var(--sharratt)!important}.hb #town-gamble .qtext{font-size:17px;line-height:1.45}' +
     '.hb .bspeech{font-size:19px;line-height:1.35}.hb .bspeech b{font-family:var(--sharratt)!important;color:#E0457B;font-size:1.15em;font-weight:400}' +
-    '.town-try{display:flex;gap:18px;align-items:center;flex-wrap:wrap}.tryst{position:relative;width:260px;aspect-ratio:487/500;flex:none;margin-bottom:64px}.tryst img{position:absolute;height:auto}.trybrit{inset:0;width:100%}.tryit.held{width:42%;left:54%;top:36%;transform-origin:30% 90%}.tryit.feet{width:40%;left:24%;top:78%}.tryit.sip{animation:trysip 4s ease-in-out infinite}@keyframes trysip{0%,70%,100%{transform:rotate(0)}80%,90%{transform:rotate(-22deg) translate(-6%,-8%)}}.trybtn{margin-top:6px}' +
+    '.town-try{display:flex;gap:18px;align-items:center;flex-wrap:wrap}.tryst{position:relative;width:min(440px,100%);flex:none}.tryst img{display:block;width:100%;height:auto}.tryst.wear{width:min(380px,100%)}.tryst.scene img{border-radius:14px;border:3px solid #1d1d1b}.tryst .sipf{position:absolute;inset:0;opacity:0;animation:trysipf 4.4s steps(1,end) infinite}@keyframes trysipf{0%{opacity:0}55%{opacity:1}90%{opacity:0}}.trybtn{margin-top:6px}' +
     '.hb h2,.hb .cbattl,.hb .sitm>b,.hb .sprice,.hb .btn,.hb .town-nav a{font-weight:400!important}.hb h2{font-size:32px;margin:0}.hb .sitm>b{font-size:18px;line-height:1.15}.hb .sdesc{font-size:16px}.hb .town-risk{font-size:15px}' +
     '.town-jobs{display:grid;gap:10px}' +
     '.town-job{display:grid;grid-template-columns:1fr auto;gap:6px 14px;align-items:center;border:2px solid #F3E3CC;border-radius:16px;padding:12px 14px;background:#fff}' +
@@ -126719,17 +127732,24 @@ window.SQE_TOWN = function(A){
   /* Monnie-only "Try it on" (20 Nov): shows the path/Mount Britney (britney/master2-cgpt) with the item cut-out layered at a fixed spot.
      Nothing is bought or saved. Only on Monnie's devices (html.monnie, set by ?monnie=1); Layla never sees it, because the fun is earning the item. */
   var TRY = null;
-  var TRY_HELD = {cup:1, latte:1, pandan:1, cookies:1, goldcorn:1, sweets:1, pens:1, skincare:1, soap:1, tote:1, toppers:1, stickers:1, colouring:1, calendar:1, plaque:1, player:1, rec_ss:1, rec_mj:1, lamp:1};
-  var TRY_FEET = {crocs:1, socks:1, clawsocks:1, charms:1};
+  /* where each thing previews (Monnie 20 Nov 09:40: common sense): worn or held by Britney / in the Mount garden at its real spot and scale / on the shed shelves.
+     Pictures are pre-made (img/britney/try/): <id>.webp = the Peckham-path Britney (set/neutral) wearing or holding it; <id>_sip.webp = drink raised to her beak;
+     g-<id>.webp = Mount garden crop with the thing in its spot; s-<id>.webp = shed shelves. */
+  var TRY_WEAR = {crocs:1, charms:1, socks:1, clawsocks:1, tote:1, cup:1, latte:1, pandan:1, cookies:1, goldcorn:1};
   var TRY_SIP = {cup:1, latte:1};
+  var TRY_GARDEN = {coop:1, palace:1, plaque:1, nestbox:1, swing:1, player:1, rec_ss:1, rec_mj:1, friend:1, bianca:1, beefy:1, brucey:1, bonnie:1};
+  var TRY_SHED = {sweets:1, pens:1, skincare:1, soap:1, toppers:1, stickers:1, colouring:1, calendar:1, lamp:1};
   function isMonnie(){ return document.documentElement.classList.contains('monnie'); }
-  function canTry(it){ return !!(TRY_HELD[it.id] || TRY_FEET[it.id]); }
+  function canTry(it){ return !!(TRY_WEAR[it.id] || TRY_GARDEN[it.id] || TRY_SHED[it.id]); }
+  function tryLabel(it){ return TRY_GARDEN[it.id] ? 'See it at The Mount' : TRY_SHED[it.id] ? 'See it in the shed' : 'Try it on'; }
   function tryOnHTML(id){
-    var it = A.cbaItem(id); if (!it) return '';
-    var pic = (window.SQE_SHOPIMG || {})[id] || ('img/shop/' + id + '.webp');
-    var cls = TRY_FEET[id] ? 'feet' : 'held' + (TRY_SIP[id] ? ' sip' : '');
-    return '<div class="bcard town-try montool"><div class="tryst"><img class="trybrit" src="img/britney/master2-cgpt.webp" alt="Britney" width="487" height="500"><img class="tryit ' + cls + '" src="' + pic + '" alt="' + esc(it.n) + '" width="600" height="600"></div>' +
-      '<div><b>Preview: Britney with the ' + esc(it.n) + '</b><p class="town-note">Only you can see this. Nothing is bought or saved.</p><button type="button" class="btn" data-town="tryoff">Close preview</button></div></div>';
+    var it = A.cbaItem(id); if (!it || !canTry(it)) return '';
+    var d = 'img/britney/try/', pic, cls, ttl;
+    if (TRY_WEAR[id]){ cls = 'wear'; pic = '<img src="' + d + id + '.webp" alt="Britney with the ' + esc(it.n) + '">' + (TRY_SIP[id] ? '<img class="sipf" src="' + d + id + '_sip.webp" alt="">' : ''); ttl = (/^(pandan|cookies|goldcorn)$/.test(id) ? 'Britney with the ' : 'Britney trying on the ') + esc(it.n); }
+    else if (TRY_GARDEN[id]){ cls = 'scene'; pic = '<img src="' + d + 'g-' + id + '.webp" alt="The ' + esc(it.n) + ' in The Mount garden">'; ttl = 'The ' + esc(it.n) + ' at The Mount'; }
+    else { cls = 'scene'; pic = '<img src="' + d + 's-' + id + '.webp" alt="The ' + esc(it.n) + ' on the shed shelf">'; ttl = 'The ' + esc(it.n) + ' on the shed shelf'; }
+    return '<div class="bcard town-try montool"><div class="tryst ' + cls + '">' + pic + '</div>' +
+      '<div><b>Preview: ' + ttl + '</b><p class="town-note">Only you can see this. Nothing is bought or saved.</p><button type="button" class="btn" data-town="tryoff">Close preview</button></div></div>';
   }
   var LASTBUY = null; /* after a real purchase: offer the walk home to The Mount (map thread plays it when sqe_shopwalk is set) */
   var SEL = null; /* Monnie 06:00: nothing to buy or gamble shows until she taps an item */
@@ -126751,7 +127771,7 @@ window.SQE_TOWN = function(A){
       else btn = '<span class="town-pickq">' + (it.p > 0 ? 'Buy it for ' + it.p + ' coins' + (nQ >= GAMBLE_N && c.coins >= pr.hi && !it.feed ? ', or gamble?' : '?') : 'Take them home?') + '</span>' + '<div class="btns"><button type="button" class="btn primary" data-town="buy" data-i="' + it.id + '"' + (g ? ' disabled' : '') + '>' + (it.p > 0 ? 'Buy for ' + it.p : 'Take them!') + '</button>' +
         (nQ >= GAMBLE_N && it.p > 0 && !g && c.coins >= pr.hi ? '<button type="button" class="btn" data-town="gamble" data-i="' + it.id + '">Gamble</button>' : '') + '</div>' +
         (nQ >= GAMBLE_N && it.p > 0 ? '<span class="town-risk">' + (c.coins >= pr.hi ? 'Gamble: answer ' + GAMBLE_N + ' questions. ' + GAMBLE_PASS + '+ right = pay ' + pr.lo + '. Fewer = pay DOUBLE (' + pr.hi + ').' : 'No gamble yet: you need ' + pr.hi + ' coins (double the price) and you have ' + c.coins + '.') + '</span>' : '') + '<button type="button" class="btn town-cancel" data-town="unpick">Cancel</button>';
-      h += '<div class="sitm' + (st === 'own' ? ' have' : '') + (st === 'need' ? ' locked' : '') + (st === 'ok' ? ' tappable' + (SEL === it.id ? ' picked' : '') : '') + '"' + (st === 'ok' && SEL !== it.id ? ' data-town="pick" data-i="' + it.id + '" role="button" tabindex="0"' : '') + '><span class="spic">' + A.cbaItemPic(it.id) + '</span><b>' + esc(it.n) + '</b><span class="sdesc">' + esc(it.d) + '</span>' + (st === 'own' ? '' : '<span class="sprice">' + (it.p > 0 ? it.p + ' ' + COIN() : 'FREE') + '</span>') + btn + (it.feed ? '<span class="sfeedn">You have ' + (+c.feed || 0) + ' bag' + ((+c.feed || 0) === 1 ? '' : 's') + '</span>' : '') + (isMonnie() && canTry(it) ? '<button type="button" class="btn sm montool trybtn" data-town="try" data-i="' + it.id + '">Try it on</button>' : '') + '</div>';
+      h += '<div class="sitm' + (st === 'own' ? ' have' : '') + (st === 'need' ? ' locked' : '') + (st === 'ok' ? ' tappable' + (SEL === it.id ? ' picked' : '') : '') + '"' + (st === 'ok' && SEL !== it.id ? ' data-town="pick" data-i="' + it.id + '" role="button" tabindex="0"' : '') + '><span class="spic">' + A.cbaItemPic(it.id) + '</span><b>' + esc(it.n) + '</b><span class="sdesc">' + esc(it.d) + '</span>' + (st === 'own' ? '' : '<span class="sprice">' + (it.p > 0 ? it.p + ' ' + COIN() : 'FREE') + '</span>') + btn + (it.feed ? '<span class="sfeedn">You have ' + (+c.feed || 0) + ' bag' + ((+c.feed || 0) === 1 ? '' : 's') + '</span>' : '') + (isMonnie() && canTry(it) ? '<button type="button" class="btn sm montool trybtn" data-town="try" data-i="' + it.id + '">' + tryLabel(it) + '</button>' : '') + '</div>';
     });
     return h + '</div></div>';
   }
@@ -126890,13 +127910,13 @@ var GARDEN_ITEMS = {
   coop:    [90.8, 36, 19],
   palace:  [90.8, 36, 20],          /* the luxury makeover replaces the coop in the same spot */
   plaque:  [90.8, 46.5, 3.4],           /* on the coop (lower on the palace) */
-  nestbox: [98.3, 30, 6.5],
-  swing:   [80, 46.5, 12],
+  nestbox: [95.6, 33.2, 6.5],        /* on the grass right up against the coop */
   player:  [37, 2.5, 8],
   rec_ss:  [31.5, 2.5, 4.6],
   rec_mj:  [26.8, 2.5, 4.8]
 };
-var SWING_SEAT = [80, 48.3, 8.5];
+var SWING = {x: 79.6, top: 68.2, seat: 48.6, w: 4.2};   /* the swing hangs on two ropes from the left branch of the tree by the coop (Monnie 09:44); Beefy rides it */
+var SWING_HEN_H = 8.5;
 var BRUCEY_COOP = [96.5, 56.5];   /* with a coop there, Brucey perches on the bank behind it */   /* Beefy sits on the swing when Layla has both */
 function coopTop(o){ return o.palace ? [90.8, 36 + 20] : o.coop ? [90.8, 36 + 19] : null; }
 /* Layla's walk: [x, b, pause ms, pose while paused ('a' stand, 't' wave)]; stays inside x 37..54 so she never meets the people */
@@ -126909,7 +127929,7 @@ var LAYLA_WP = (function(){   /* three laps; only the first has the cartwheel, s
 var RIDE_WP = 7;   /* Britney rides on Layla's head from the start of lap 2 (waypoint 7: Layla stands still a while, then walks on) */
 var RIDE_MS = 9000, RIDE_FLY = 1600;
 var LAYLA_X = [40, 54];
-var WALK_PX = 140;   /* Layla's speed, picture pixels per second (calm) */
+var WALK_PX = 115;   /* Layla's speed, picture pixels per second (calm) */
 var STRIDE_PX = 234; /* one full walk cycle (two steps) in picture pixels, matched to her leg swing so her feet don't slide */
 var CART_MS = 1300;  /* one proper cartwheel: arm up, legs wide, a full turn over her hands (Monnie 08:19) */
 /* Britney's day: walk / peck / fly / sit. Positions are where her feet are. */
@@ -127061,8 +128081,19 @@ window.SQE_MOUNT = function(A){
     '@keyframes mjoy{0%{transform:none}8%{transform:translateY(-55%) rotate(-8deg)}16%{transform:translateY(-70%)}28%{transform:translateY(-70%) rotate(360deg)}36%{transform:translateY(-20%) rotate(360deg)}40%{transform:rotate(360deg)}62%{transform:translateY(-35%) rotate(360deg) scale(1.08)}68%{transform:rotate(360deg)}80%{transform:translateY(-12%) rotate(375deg)}100%{transform:rotate(360deg)}}' +
     '.mg-tag{position:absolute;left:50%;bottom:100%;margin-bottom:2px;transform:translateX(-50%);background:rgba(255,255,255,.88);border-radius:999px;padding:1px 8px;font-size:13px;font-weight:700;color:#3B2F1E;white-space:nowrap;pointer-events:none}' +
     '.mg-hen .boluimg,.mg-hen .bonnieimg,.mg-hen img{height:100%;width:auto}' +
-    '.mg-item img{height:100%;width:auto;display:block}.mg-hen.onswing img{transform-origin:50% -60%;animation:mswing 3.2s ease-in-out infinite}' +
-    '@keyframes mswing{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}' +
+    '.mg-item img{height:100%;width:auto;display:block}' +
+    '.mg-swing{position:absolute;transform:translateX(-50%) rotate(0);transform-origin:50% 0;animation:mswing 3.6s ease-in-out infinite;pointer-events:none}.mg-swing svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}' +
+    '.mg-swing .seat{position:absolute;left:-6%;right:-6%;bottom:0;height:5%;background:#B07A3B;border:2px solid #3B2A12;border-radius:3px}' +
+    '.mg-swing .mg-hen{left:50%;bottom:4%;transform:translateX(-50%)}' +
+    '@keyframes mswing{0%,100%{transform:translateX(-50%) rotate(-7deg)}50%{transform:translateX(-50%) rotate(7deg)}}' +
+    /* gentle idle life (Monnie 09:44): hens breathe and peck now and then, Jiminey hops, people breathe and shift their weight; staggered so nobody moves in step */
+    '.mg-hen img{transform-origin:55% 92%;animation:mhidle 7.5s ease-in-out infinite}.mh-friend img{animation-delay:-1.3s}.mh-bianca img{animation-delay:-3.1s}.mh-beefy img{animation-delay:-5.2s}.mh-brucey img{animation-delay:-2.2s}' +
+    '@keyframes mhidle{0%,100%{transform:none}25%{transform:scale(1.012,.988)}50%{transform:none}70%{transform:translateY(5%) rotate(9deg)}74%{transform:none}78%{transform:translateY(5%) rotate(9deg)}82%{transform:none}}' +
+    '.mh-bonnie img{transform-origin:50% 100%;animation:mrhop 6.5s ease-in-out infinite}' +
+    '@keyframes mrhop{0%,80%,100%{transform:none}84%{transform:translateY(-16%) scale(.97,1.04)}88%{transform:scale(1.04,.96)}91%{transform:translateY(-9%)}95%{transform:none}}' +
+    '.mg-person:not(.mg-walker) img{transform-origin:50% 100%;animation:mpidle 5.5s ease-in-out infinite}.mg-yasmin img{animation-delay:-1.8s}.mg-mo img{animation-delay:-3.6s}' +
+    '@keyframes mpidle{0%,100%{transform:none}50%{transform:rotate(.8deg) scaleY(1.008)}}' +
+    '@media (prefers-reduced-motion:reduce){.mg-hen img,.mg-person img,.mg-swing{animation:none!important}}' +
     '.mg-hen.peck img{transform-origin:55% 90%;animation:mgpeck .62s ease-in-out infinite}' +
     '@keyframes mgpeck{0%,45%,100%{transform:none}22%{transform:rotate(18deg)}}' +
     '.mg-shed{cursor:pointer;pointer-events:auto;border-radius:6px}.mg-shed:hover img,.mg-shed:focus-visible img{filter:drop-shadow(0 0 6px #fff) drop-shadow(0 0 3px #FFD43B)}' +
@@ -127200,14 +128231,22 @@ window.SQE_MOUNT = function(A){
       h += '<div class="mg-act mg-person mg-' + p[0] + (walker ? ' mg-walker' : '') + '" data-who="' + p[0] + '" data-g="' + p[1] + ',' + p[2] + ',' + (LAYLA_H * DEPTH(p[2]) * p[3]).toFixed(2) + '" title="' + esc(p[5]) + '">' + im + '</div>';
     });
     if (owned('baba') || owned('mama')){ var pp = parentPair(); h += '<span class="mg-say" data-say="' + pp[0] + '" aria-live="polite">' + esc(pp[1]) + '<i></i></span>'; }
+    var swingHen = '';
     HENS.forEach(function(p){
       if (!o[p[0]] && !TRY) return; who.push(p[4]);
-      if (p[0] === 'beefy' && go.swing) p = ['beefy', SWING_SEAT[0], SWING_SEAT[1], SWING_SEAT[2], p[4], 1];
+      var onSwing = p[0] === 'beefy' && go.swing;
       if (p[0] === 'brucey' && (go.coop || go.palace)) p = ['brucey', BRUCEY_COOP[0], BRUCEY_COOP[1], p[3], p[4]];
       var hg = p[0] !== 'bonnie' && hungry(p[0]);
-      h += '<div class="mg-act mg-hen mh-' + p[0] + (hg ? ' hungry' : '') + (p[5] ? ' onswing' : '') + (p[1] > 75 ? ' rt' : '') + '" data-hen="' + p[0] + '" data-g="' + p[1] + ',' + p[2] + ',' + p[3] + '" title="' + esc(p[4]) + '">' + A.cbaItemPic(p[0]) +
-        (hg ? '<span class="mg-tears" aria-hidden="true"><i></i><i></i></span><span class="mg-think">Layla, I\'m hungry!</span>' : '') + '</div>';   /* no name labels on the hens (they overlapped); names are in the line under the garden */
+      var hen = '<div class="mg-act mg-hen mh-' + p[0] + (hg ? ' hungry' : '') + (onSwing ? ' onswing' : '') + (p[1] > 75 ? ' rt' : '') + '" data-hen="' + p[0] + '"' + (onSwing ? '' : ' data-g="' + p[1] + ',' + p[2] + ',' + p[3] + '"') + ' title="' + esc(p[4]) + '">' + A.cbaItemPic(p[0]) +
+        (hg ? '<span class="mg-tears" aria-hidden="true"><i></i><i></i></span><span class="mg-think">Layla, I\'m hungry!</span>' : '') + '</div>';
+      if (onSwing) swingHen = hen; else h += hen;   /* no name labels on the hens (they overlapped); names are in the line under the garden */
     });
+    if (go.swing){
+      var sh = SWING.top - SWING.seat;
+      h += '<div class="mg-swing" style="left:' + SWING.x + '%;bottom:' + SWING.seat + '%;height:' + sh + '%;width:' + SWING.w + '%;z-index:' + Math.round(2000 - SWING.seat * 10 + 60) + '" aria-hidden="true">' +
+        '<svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M18 0L12 97M82 0L88 97" stroke="#6B4A1E" stroke-width="3.2" vector-effect="non-scaling-stroke" fill="none" stroke-linecap="round"/></svg>' +
+        '<i class="seat"></i>' + swingHen.replace('class="mg-act mg-hen', 'style="height:' + (SWING_HEN_H / sh * 100).toFixed(1) + '%" class="mg-act mg-hen') + '</div>';
+    }
     h += A.broodScene();
     /* Layla: a jointed cut-out of the approved drawing (torso + thigh + shin, both legs) for walking; whole poses for waving and cartwheels */
     h += '<div class="mg-act mg-layla" aria-label="Layla" role="img"><img class="sp" src="img/mount/lw-a-r.webp" alt="">' +
