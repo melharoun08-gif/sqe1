@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120033615";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120033935";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -2865,6 +2865,55 @@ html.dfv-on{overflow:hidden}
 .head.nb.nbz .nbbub{font-size:11.5px}
 .head.nb.nbz .nbtitle h1{font-size:40px}
 .head.nb.nbz .nbstats{zoom:1!important}
+/* 20 Nov (Monnie): 561-720px windows also use the evenly-scaled banner (.nbz); undo the old phone-layout rules for it */
+@media (max-width:720px){
+ .head.nb.nb.nbz{padding:16px 16px 0!important;display:flex!important;flex-direction:column;background-image:url(img/banner-bg4.webp),url(img/banner-ext.webp)!important;background-repeat:no-repeat,repeat-x!important;background-size:auto calc(100% - var(--tabh,50px)),auto calc(100% - var(--tabh,50px))!important;background-position:right bottom var(--tabh,50px),right bottom var(--tabh,50px)!important}
+ .head.nb.nb.nbz .tabs{display:grid!important;position:static!important;grid-template-columns:repeat(auto-fit,minmax(62px,1fr))!important;margin-top:21px;padding-right:0}
+ .head.nb.nb.nbz .tabs a,.head.nb.nb.nbz .tabs a.two{flex-basis:auto;width:auto}
+ .head.nb.nb.nbz .nbstats{flex-wrap:nowrap!important}
+}
+@media (max-width:720px){.head.nb.nb.nbz .homebtn{display:inline-flex!important}}
+
+/* banner-fx (20 Nov, Monnie): the sun, the 3 hens and the 2 chicks are cut-out pictures laid exactly over their spots on banner-bg4.webp, so they can move gently; under each one is a still -gap picture of the grass/sky behind it. .nbfxb is the background picture's own box. */
+.head.nb .nbfx{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
+.head.nb .nbfxb{position:absolute;right:0;bottom:var(--tabh,50px);height:calc(100% - var(--tabh,50px));aspect-ratio:2400/770}
+/* the same box for the two layouts that do not use the evenly-scaled banner: phones (picture 210px tall at the very bottom) and the ?nbz=0 middle band (picture full width) */
+@media (max-width:720px){.head.nb:not(.nbz) .nbfxb{bottom:0;height:210px}}
+.head.nb.nbmid:not(.nbz) .nbfxb{left:0;width:100%;height:auto}
+.head.nb .nbfx img{position:absolute;display:block;height:auto;max-width:none;margin:0;border:0;border-radius:0;box-shadow:none}
+.head.nb .nbfx .fx-sun{left:76.1250%;top:0.3896%;width:11.2917%;transform-origin:49.8% 50.2%}
+.head.nb .nbfx .fx-brown{left:52.6667%;top:73.3766%;width:6.4167%;transform-origin:60.4% 100.0%}
+.head.nb .nbfx .fx-grey{left:64.2500%;top:72.3377%;width:7.1250%;transform-origin:45.6% 100.0%}
+.head.nb .nbfx .fx-white{left:76.4583%;top:76.1039%;width:7.2083%;transform-origin:64.2% 100.0%}
+.head.nb .nbfx .fx-c1{left:46.2500%;top:88.9610%;width:2.1667%;transform-origin:50.0% 100.0%}
+.head.nb .nbfx .fx-c2{left:72.2917%;top:91.1688%;width:2.2500%;transform-origin:50.0% 100.0%}
+.head.nb .nbfx .fx-sun{animation:nbfx-sun 7s ease-in-out infinite}
+.head.nb .nbfx .fx-brown{animation:nbfx-peckl 5.5s ease-in-out .8s infinite}
+.head.nb .nbfx .fx-grey{animation:nbfx-peckr 6.5s ease-in-out 2.6s infinite}
+.head.nb .nbfx .fx-white{animation:nbfx-peckl 6s ease-in-out 4.1s infinite}
+.head.nb .nbfx .fx-c1{animation:nbfx-bob 2.6s ease-in-out infinite}
+.head.nb .nbfx .fx-c2{animation:nbfx-bob 3s ease-in-out 1.2s infinite}
+@keyframes nbfx-sun{0%,100%{transform:none}25%{transform:rotate(4deg) scale(1.03)}75%{transform:rotate(-4deg) scale(1.015)}}
+@keyframes nbfx-peckl{0%,55%,100%{transform:none}64%{transform:rotate(-6deg)}70%{transform:rotate(-2deg)}76%{transform:rotate(-6deg)}86%{transform:none}}
+@keyframes nbfx-peckr{0%,55%,100%{transform:none}64%{transform:rotate(6deg)}70%{transform:rotate(2deg)}76%{transform:rotate(6deg)}86%{transform:none}}
+@keyframes nbfx-bob{0%,100%{transform:none}50%{transform:translateY(-2.5px)}}
+/* the gap pictures (grass/sky painted in) sit under each cut-out and never move, so a moving hen shows grass, not a second hen */
+.head.nb .nbfx .fxgap{animation:none!important;transform:none!important}
+@media (prefers-reduced-motion:reduce){.head.nb .nbfx img{animation:none!important}}
+/* banner-night (20 Nov, Monnie): from 17:00 until 6am (or the N button / ?sky=night) the banner is a night scene: dark sky picture, moon instead of the sun, a few twinkling stars. app.js nbNight() decides; the hens and chicks swap to their -n pictures. */
+.head.nb.nb.nb.nbnight{background-image:url(img/banner-bg4-night.webp),url(img/banner-ext-night.webp)!important;background-color:#101a40!important}
+@media (max-width:720px){.head.nb.nb.nb.nbnight:not(.nbz){background-image:url(img/banner-bg4-night.webp),url(img/sky-tile-night.webp)!important}}
+.head.nb.nb.nb.nbmid.nbnight:not(.nbz){background-image:url(img/banner-bg4-night.webp),url(img/sky-tile-night.webp)!important}
+.head.nb.nbnight .nbtitle h1{color:#FFF7D6!important}
+.head.nb.nbnight .nbtitle .sub,.head.nb.nbnight .nbtitle .sub span{color:#DCE6FF!important}
+.head.nb .nbsky{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.head.nb .nbsky .nbstar{transform-box:fill-box;transform-origin:50% 50%;animation:nbfx-tw 3.2s ease-in-out infinite}
+.head.nb .nbsky .nbstar:nth-child(3n+1){animation-duration:4.1s;animation-delay:-1.3s}
+.head.nb .nbsky .nbstar:nth-child(3n+2){animation-duration:2.7s;animation-delay:-2.1s}
+.head.nb .nbsky .nbmoon{transform-box:fill-box;transform-origin:50% 50%;animation:nbfx-moon 8s ease-in-out infinite}
+@keyframes nbfx-tw{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.8)}}
+@keyframes nbfx-moon{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@media (prefers-reduced-motion:reduce){.head.nb .nbsky .nbstar,.head.nb .nbsky .nbmoon{animation:none!important}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -83002,7 +83051,7 @@ window.SQE_JOURNEY = function (A) {
        through the FLK1 meadow and the FLK2 autumn fields to revision camp and Cluckington Palace (with both exam flags) in the palace grounds at the bottom.
        reg = the top edge of each ground band, top to bottom: spring meadow (stops 1-7), autumn fields (8-14), palace grounds. */
     function layoutDesktop() {
-        var rows = TOWN ? [640, 1110, 2440, 2900] : [660, 1100, 1800, 2230], /* +130 at the top for the Welcome to Peckham sign (Monnie 20 Nov) */ cols = [200, 445, 690, 935], PB = rows[3] + 625, /* 20 Nov: +140 at the top for the FLK1 signpost, +160 between the meadow and the fields for the FLK2 signpost */ D = PB - 2145, W = 1100, H = 2275 + D; /* 03:27 Monnie: path starts higher, less empty field, flowers at the bottom no longer cut off */ /* landmarks 1.6x bigger, cards smaller (Monnie 21:29): rows spaced out */
+        var rows = TOWN ? [680, 1290, 2710, 3320] : [660, 1100, 1800, 2230], /* +130 at the top for the Welcome to Peckham sign (Monnie 20 Nov) */ cols = [200, 445, 690, 935], PB = rows[3] + 625, /* 20 Nov: +140 at the top for the FLK1 signpost, +160 between the meadow and the fields for the FLK2 signpost */ D = PB - 2145, W = 1100, H = 2275 + D; /* 03:27 Monnie: path starts higher, less empty field, flowers at the bottom no longer cut off */ /* landmarks 1.6x bigger, cards smaller (Monnie 21:29): rows spaced out */
         var ty = function (x) { return -(x - 570) * .09; }; /* each row of the path tilts gently upward to the right (Monnie 20 Nov: a path in perspective, not flat) */
         var st = [{ x: 200, y: rows[0] + ty(200) }];
         [1, 2, 3].forEach(function (s, k) { return st[s] = { x: cols[k + 1], y: rows[0] + ty(cols[k + 1]) }; });
@@ -83014,17 +83063,17 @@ window.SQE_JOURNEY = function (A) {
         return { mode: 'desk', W: W, H: H, stops: st,
             route: "M150,".concat(rows[0] + ty(150), " L960,").concat(rows[0] + R, " A110,").concat((rows[1] - rows[0]) / 2, " 0 0 1 960,").concat(rows[1] + R, " L140,").concat(rows[1] + Lf, " A110,").concat((rows[2] - rows[1]) / 2, " 0 0 0 140,").concat(rows[2] + Lf, " L960,").concat(rows[2] + R, " A110,").concat((rows[3] - rows[2]) / 2, " 0 0 1 960,").concat(rows[3] + R, " L140,").concat(rows[3] + Lf, " C20,").concat(rows[3] + Lf, " 20,").concat(PB, " 170,").concat(PB, " H570 Q600,").concat(PB, " 600,").concat(PB - 24),
             art: { x: -125, y: -262, w: 250, h: 268, gx: -115, gy: -200, gw: 220, gh: 206 },
-            lm: function (i) { return ({ x: st[i].x, y: st[i].y - 34 - (TOWN && i === 9 ? 135 : TOWN && i === 11 ? 95 : i === 2 ? 45 : 0), s: TOWN ? 1.05 : .9 }); } /* 03:33 Monnie: stop drawings nearer the town buildings' size, using the spare grass */, /* 02:50 Monnie: less crammed: drawings 10% smaller, fairground set back */ /* Monnie 20 Nov: stagger 8-11 (farm a bit up, balloons float higher) */
+            lm: function (i) { return TOWN ? { x: st[i].x, y: st[i].y - 34 - ({ 2: 130, 5: 90, 7: 90, 9: 90, 11: 90, 13: 90 }[i] || 0), s: i === 0 || i === 15 ? .95 : 1.2 } : { x: st[i].x, y: st[i].y - 34 - (i === 2 ? 45 : 0), s: .9 }; } /* 03:33 Monnie: stop drawings nearer the town buildings' size, using the spare grass */, /* 02:50 Monnie: less crammed: drawings 10% smaller, fairground set back */ /* Monnie 20 Nov: stagger 8-11 (farm a bit up, balloons float higher) */
             label: function (i) { return ({ cx: st[i].x, top: st[i].y + 44 }); },
             F: { w: 188, fs: 17, lh: 19, sfs: 13, max: 19, bar: 8 },
             hen: function (i) { return i === 0 ? { x: st[0].x + 66, y: st[0].y + 22, s: .85, m: true } : left(i) ? { x: st[i].x + 88, y: st[i].y + 24, s: .85, m: false } : { x: st[i].x - 88, y: st[i].y + 24, s: .85, m: true }; }, /* just before the stop, clear of its number */
             palace: { x: 600, y: 2115 + D, s: 1 },
             flags: [{ x: 176, y: 2117 + D, s: 1, h: 110 }, { x: 812, y: 2117 + D, s: 1, h: 110 }],
-            reg: { spring: 160, autumn: TOWN ? 1965 : 1320, grounds: 1750 + D },
-            town: TOWN ? { y: 1550, b: [['mount', 370, 'The Mount', '#/mount', 1930, 330], ['jobcentre2', 805, 'Job Centre', '#/town/jobs', 1585, 290], ['giftshop2', 825, 'Hen Bargains', '#/town/shop', 1915, 290], ['butchers3', 340, "Bert's Butchers", '#/town/butcher', 1595, 300]], w: 235, h: 175, /* Monnie 20 Nov: bigger, staggered over the grass; Mount low and big, Bert's up near Contract Law */ name: [560, 1365] } : null,
+            reg: { spring: 160, autumn: TOWN ? 2145 : 1320, grounds: 1750 + D },
+            town: TOWN ? { y: 1550, b: [['mount', 370, 'The Mount', '#/mount', 2110, 330], ['jobcentre2', 805, 'Job Centre', '#/town/jobs', 1765, 290], ['giftshop2', 825, 'Hen Bargains', '#/town/shop', 2095, 290], ['butchers3', 340, "Bert's Butchers", '#/town/butcher', 1775, 300]], w: 235, h: 175, /* Monnie 20 Nov: bigger, staggered over the grass; Mount low and big, Bert's up near Contract Law */ name: [560, 1365] } : null,
             sun: { x0: 80, x1: 1020, y: 150, rise: 82, s: 1 },
-            deco: function () { return cloud(330, 78, .8) + cloud(1010, 92, 1) + cloud(720, 48, .55) + sign(185, 300, 'FLK1 Meadow', 'Stops 1–7', 30, 110) + welcome(950, 228, .66)
-                + sign(TOWN ? 650 : 560, TOWN ? 2000 : 1395, 'FLK2 Harvest Fields', 'Stops 8–14', 30, TOWN ? 40 : 72)
+            deco: function () { return cloud(330, 78, .8) + cloud(1010, 92, 1) + cloud(720, 48, .55) + sign(185, 300, 'FLK1 Meadow', 'Stops 1–7', 30, 110) + welcome(950, TOWN ? 200 : 228, .64)
+                + sign(TOWN ? 650 : 560, TOWN ? 2180 : 1395, 'FLK2 Harvest Fields', 'Stops 8–14', 30, TOWN ? 40 : 72)
                 + topiary(1000, 2147 + D) + topiary(1060, 2133 + D) + topiary(228, 1855 + D) + flower(330, 1840 + D, '#fff') + flower(925, 1840 + D, '#FF9EC4')
                 + [60, 330, 575, 820].map(function (x, k) { return flower(x, 2219 + D, ['#FF9EC4', '#fff', '#FFB3D9', '#fff'][k]); }).join(''); },
         };
@@ -83189,7 +83238,7 @@ window.SQE_JOURNEY = function (A) {
         var m = L.mode, S = skyState(skyHour());
         skyArm();
         /* the tint never dims the palace name plate or the exam flags, so their writing stays easy to read at night */
-        var P = L.palace, flag = function (f) { return "<path transform=\"translate(".concat(f.x, ",").concat(f.y, ") scale(").concat(f.s, ")\" d=\"M-4,").concat(-(f.h || 120) - 4, " H154 L140,").concat(-(f.h || 120) + 26, " L154,").concat(-(f.h || 120) + 56, " H-4 Z\" fill=\"#000\"/>"); };
+        var P = L.palace, flag = function (f) { return "<path transform=\"translate(".concat(f.x, ",").concat(f.y, ") scale(").concat(f.s, ")\" d=\"M0,").concat(-(f.h || 120), " H150 L136,").concat(-(f.h || 120) + 26, " L150,").concat(-(f.h || 120) + 52, " H0 Z\" fill=\"#000\"/>"); };
         return "<defs><radialGradient id=\"jglow-".concat(m, "\"><stop offset=\"0\" stop-color=\"#FFF4B0\" stop-opacity=\".95\"/><stop offset=\".5\" stop-color=\"#FFD25A\" stop-opacity=\".6\"/><stop offset=\"1\" stop-color=\"#FFB020\" stop-opacity=\"0\"/></radialGradient>")
             + "<radialGradient id=\"jglowc-".concat(m, "\"><stop offset=\"0\" stop-color=\"#B8FFF8\" stop-opacity=\".6\"/><stop offset=\".55\" stop-color=\"#4CC9F0\" stop-opacity=\".3\"/><stop offset=\"1\" stop-color=\"#4CC9F0\" stop-opacity=\"0\"/></radialGradient>")
             + "<linearGradient id=\"jbeam-".concat(m, "\" x1=\"0\" x2=\"1\"><stop offset=\"0\" stop-color=\"#FFF6B8\" stop-opacity=\".75\"/><stop offset=\"1\" stop-color=\"#FFF6B8\" stop-opacity=\"0\"/></linearGradient>")
@@ -83371,7 +83420,7 @@ window.SQE_JOURNEY = function (A) {
         var ap = apt(L, 'airport', .12, .97);
         s += "<g transform=\"translate(".concat(f1(ap.x), ",").concat(f1(ap.y), ")\"><g class=\"jmo jplane\" style=\"opacity:0\">").concat(plane, "</g></g>");
         var b1 = apt(L, 'balloons', .22, .82), b2 = apt(L, 'balloons', .78, .78);
-        s += "<g transform=\"translate(".concat(f1(b1.x), ",").concat(f1(b1.y), ")\"><g class=\"jmo jrise\">").concat(minib('#FF6FB5', '#FFC300'), "</g></g><g transform=\"translate(").concat(f1(b2.x), ",").concat(f1(b2.y), ") scale(.8)\"><g class=\"jmo jrise jr2\">").concat(minib('#4CC9F0', '#fff'), "</g></g>");
+        /* QA 20 Nov: the two little rising SVG balloons removed (they ghosted behind the drawn balloons) */
         var fa = apt(L, 'farm', .17, .33), fb = apt(L, 'farm', .17, .6);
         s += "<g transform=\"translate(".concat(f1(fa.x), ",").concat(f1(fa.y), ")\" style=\"--fall:").concat(f1(fb.y - fa.y), "px\"><circle class=\"jmo japple\" style=\"opacity:0\" r=\"6\" fill=\"#E63946\" stroke=\"#111\" stroke-width=\"2\"/></g>");
         return "<g class=\"jlife\" aria-hidden=\"true\" pointer-events=\"none\">".concat(s, "</g>");
@@ -92232,9 +92281,25 @@ function header(route){
   '<nav class="tabs">' + tabs.map(function(t){ return '<a href="#/' + t[0] + '" data-tab="' + t[0] + '" draggable="false" style="--tc:var(' + t[2] + ')" class="' + (cur === t[0] ? "on" : "") + " two" + '">' + (t[1].indexOf("<span") >= 0 ? t[1] : t[1].split("|").map(function(x){ return "<span>" + x + "</span>"; }).join("")) + '</a>'; }).join("") + '</nav>' +
   '</div>';
 }
+/* banner-fx + banner-night (20 Nov, Monnie): moving sun/hens/chicks over the banner picture, and the night scene from 17:00 until 6am.
+   Night follows ?sky=night|day, then ?hour=, then the N button (localStorage sqe_sky), then the clock. Styles: "banner-fx" / "banner-night" in styles.css. */
+function nbNight(){ var q = (location.search || "") + "&" + (location.hash || ""), m = /[?&]sky=(night|day)/.exec(q), h; if (m) return m[1] === "night"; m = /[?&]hour=(\d+(?:\.\d+)?)/.exec(q); if (m) h = (+m[1]) % 24; else { var fo = ""; try { fo = localStorage.getItem("sqe_sky") || ""; } catch(e){} if (fo === "night") return true; if (fo === "day") return false; var d = new Date(); h = d.getHours() + d.getMinutes() / 60; } return h >= 17 || h < 6; }
+var NB_STARS = [[1180,150,13],[1330,62,10],[1480,190,12],[1640,92,15],[1770,215,10],[2180,58,14],[2310,175,11],[2250,300,9],[1090,300,9],[1380,290,11],[860,80,12],[640,190,10],[420,70,13],[980,210,8],[2080,250,8]];
+function nbFxHTML(night){
+  var all = ["sun","brown","grey","white","c1","c2"], kids = night ? all.slice(1) : all, sfx = night ? "-n" : "";
+  var img = function(n, gap){ return '<img class="fx-' + n + (gap ? ' fxgap' : '') + '" src="img/banner-anim/' + n + (gap ? '-gap' : '') + (n === "sun" ? '' : sfx) + '.webp" alt="" draggable="false">'; };
+  var sky = night ? '<svg class="nbsky" viewBox="0 0 2400 770" preserveAspectRatio="none">' +
+    NB_STARS.map(function(s){ var k = s[2] / 10; return '<path class="nbstar" transform="translate(' + s[0] + ' ' + s[1] + ') scale(' + k + ')" d="M0,-10Q1.6,-1.6 10,0Q1.6,1.6 0,10Q-1.6,1.6 -10,0Q-1.6,-1.6 0,-10Z" fill="#FFF3B0" stroke="#23202E" stroke-width="1.4" stroke-linejoin="round"/>'; }).join("") +
+    '<g transform="translate(1882 52) scale(1.6)"><circle cx="50" cy="50" r="52" fill="#FFF6C8" opacity=".10"/><g class="nbmoon"><path d="M51.9,10.0A40,40 0 1,0 84.9,69.5A34,34 0 1,1 51.9,10.0Z" fill="#FFF0A0" stroke="#23202E" stroke-width="3.2" stroke-linejoin="round"/>' +
+    '<path d="M15,38q5,4 10,0M18,57q6,6 13,0" fill="none" stroke="#23202E" stroke-width="2.6" stroke-linecap="round"/><circle cx="19" cy="47.5" r="3.2" fill="#F4A7A0" opacity=".7"/></g></g></svg>' : '';
+  return '<div class="nbfx" aria-hidden="true"><div class="nbfxb">' + sky + kids.map(function(n){ return img(n, true); }).join("") + kids.map(function(n){ return img(n, false); }).join("") + '</div></div>';
+}
+/* if the page stays open past 17:00 (or 6am), switch the banner without a reload */
+setInterval(function(){ try { var h = document.querySelector(".head.nb"), n = nbNight(); if (!h || h.classList.contains("nbnight") === n) return; h.classList.toggle("nbnight", n); var f = h.querySelector(".nbfx"); if (f) f.outerHTML = nbFxHTML(n); } catch(e){} }, 60000);
 /* newbanner preview header: [fun: streak bubble, staircase + Layla, coin bag | serious: title, dates, numbers + hours ring, Remember]; tabs exactly as the normal header */
 function nbHeader(route, cur, tabs, countdown, pct, C, done, tgt, todayDone, todayGoal, name){
-  return '<div class="head nb' + (route[0] === "home" ? '' : ' compact') + (NB_MID ? ' nbmid' : '') + '"><div class="nbstage">' +
+  var night = nbNight();
+  return '<div class="head nb' + (route[0] === "home" ? '' : ' compact') + (NB_MID ? ' nbmid' : '') + (night ? ' nbnight' : '') + '">' + nbFxHTML(night) + '<div class="nbstage">' +
     '<div class="nbl">' + nbStreakHTML() + bagHTML() + '</div>' +
     '<div class="nbc"><div class="nbtitle"><h1>' + name + 'SQE1 Revision</h1><div class="sub"><span>FLK1 ' + esc(fmtDate(S.settings.exam1)) + '</span><span>FLK2 ' + esc(fmtDate(S.settings.exam2)) + '</span></div></div>' +
       '<div class="nbstats">' + countdown + '<div class="stat"><b>' + fmtH(todayDone) + (todayGoal ? ' <small>of ' + fmtH(todayGoal) + '</small>' : '') + '</b><span>' + (todayGoal && todayDone >= todayGoal ? "today ✓ goal met" : "studied today") + '</span></div>' +
