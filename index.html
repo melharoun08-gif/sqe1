@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120012208";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120012318";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -81462,7 +81462,7 @@ window.SQE_JOURNEY = function (A) {
             var m = marker(i, p, i === 0 ? '' : i === 15 ? 'rev' : jStatus(J, i)), o = i > 0 && i < 15 ? J.stops[i - 1] : null; /* the stop numbers are tappable too */
             s += o ? "<a class=\"jnum\" href=\"".concat(stopHref(o.s.id), "\" aria-label=\"Stop ").concat(i, ": ").concat(esc(o.s.title), "\">").concat(m, "</a>") : m;
         });
-        s += plate(L, 0, 'START: Farm gate', '', J.at === 0 ? 'Layla + Britney are here' : 'Where Layla + Britney start', 'gate', null);
+        /* no START label at the gate (Monnie 20 Nov) */
         J.stops.forEach(function (o) {
             var st = jStatus(J, o.i);
             s += "<a href=\"".concat(stopHref(o.s.id), "\" aria-label=\"Stop ").concat(o.i, ": ").concat(esc(o.s.title), ", ").concat(o.d, " of ").concat(o.n, " topics done").concat(o.today.length ? ', on today\'s timetable' : '', "\">").concat(plate(L, o.i, o.s.title, range(o.first, o.last), "".concat(o.d, " of ").concat(o.n, " topics done"), st, o.n ? o.d / o.n : 0), "</a>");
@@ -81799,7 +81799,7 @@ window.SQE_JOURNEY = function (A) {
             h += "<div class=\"jtoday\"><a class=\"jtbtn\" href=\"#/home\"><b>Today: ".concat(esc(J.pd.rev.t), "</b><span>Open Today for the steps</span></a></div>");
         h += '</div>';
         [D, Ph].forEach(function (L) { var c = L.stops[J.at]; h += "<div class=\"jsv j".concat(L.mode, "\" data-at=\"").concat(J.at, "\" data-c=\"[").concat(c.x, ",").concat(c.y, "]\" data-pos=\"").concat(jPos(J).toFixed(3), "\" data-hens=\"").concat(JSON.stringify(L.stops.map(function (p, i) { var n = L.hen(i); return [n.x, n.y, n.m === false ? 0 : 1]; })), "\" data-obs=\"").concat(JSON.stringify(L.stops.slice(0, 15).map(function (p, i) { var b = L.label(i), w = L.F.w / 2 + 10, h = L.mode === 'phone' ? 140 : 125, t = b.top != null ? b.top - 10 : b.cy - h / 2; return [p.x, p.y, 40, b.cx - w, t, b.cx + w, t + h]; })), "\">").concat(mapSVG(J, L), "</div>"); });
-        h += legend() + "<p class=\"jrule\">Tap any stop to see its topics. Rate every topic in a subject to colour in its stones. Both exams are at the palace: FLK1 on ".concat(esc(fmtDate(J.ex1)), ", FLK2 on ").concat(esc(fmtDate(J.ex2)), ".</p>");
+        /* key and explanation removed (Monnie 20 Nov: redundant) */
         if (r[1])
             h += panel(J, r[1]);
         setTimeout(stones, 0);
@@ -88429,7 +88429,7 @@ window.SQE_SCENE = function(A){
       lane.appendChild(el); CT = setTimeout(catchRun, 2100); }
   }
   function catchHit(i, tapped){
-    var G = SC.game, k = cur(); if (!G || G.type !== 'catch' || G.res[i] != null) return; var it = G.items[i], good = !!(it.ok || it.good), ok = tapped === good; G.res[i] = ok; G.done++; G.total++;
+    var G = SC.game, k = cur(); if (!G || G.type !== 'catch' || G.res[i] != null) return; var it = G.items[i], good = !!(it.ok || it.good || it.correct), ok = tapped === good; G.res[i] = ok; G.done++; G.total++;
     if (ok) G.right++; else G.wrong.push({t: it.t, a: good ? 'one to tap' : 'not one to tap', why: it.why});
     var fb = document.querySelector('.gm-fb'), sc = document.querySelector('.gm-score');
     if (tapped || !ok){ G.fb = {ok: ok, t: (ok ? 'Got it! ' : tapped ? 'Not that one. ' : 'Missed one: ' + it.t + '. ') + (it.why || '')}; if (fb){ fb.className = 'gm-fb ' + (ok ? 'ok' : 'no'); fb.innerHTML = (ok ? '✓ ' : '✗ ') + inl(G.fb.t); } }
@@ -88459,7 +88459,7 @@ window.SQE_SCENE = function(A){
     else if (g.type === 'order') G.rounds = (g.rounds || [{prompt: g.prompt, items: g.items}]).map(function(r){ return {prompt: r.prompt, items: r.items, pool: shuf(nums(r.items.length)), placed: []}; });
     else if (g.type === 'number') G.rounds = (g.rounds || [{q: g.q, opts: g.opts, a: g.a, why: g.why}]).map(function(r){ var a = typeof r.a === 'number' ? r.a : r.opts.map(String).indexOf(String(r.a != null ? r.a : r.answer)); return {q: r.q, opts: r.opts, a: a, why: r.why}; });
     else if (g.type === 'spot') G.rounds = (g.rounds || [{prompt: g.prompt, lines: g.lines}]).map(function(r){ return {prompt: r.prompt, lines: r.lines, sel: {}, shown: false}; });
-    else if (g.type === 'catch'){ G.rounds = (g.rounds || [{prompt: g.prompt, items: g.items}]).map(function(r){ return {prompt: r.prompt || g.prompt, items: g.rounds ? shuf(r.items.slice()) : deal(r.items, g.pick, function(it){ return !!(it.ok || it.good); })}; }); G.items = G.rounds[0].items; G.res = {}; G.spawned = 0; G.done = 0; }
+    else if (g.type === 'catch'){ G.rounds = (g.rounds || [{prompt: g.prompt, items: g.items}]).map(function(r){ return {prompt: r.prompt || g.prompt, items: g.rounds ? shuf(r.items.slice()) : deal(r.items, g.pick, function(it){ return !!(it.ok || it.good || it.correct); })}; }); G.items = G.rounds[0].items; G.res = {}; G.spawned = 0; G.done = 0; }
     else { G.lefts = shuf(nums(g.pairs.length)); G.rights = (g.rights || []).slice(); g.pairs.forEach(function(p){ if (G.rights.indexOf(p.r) < 0) G.rights.push(p.r); }); G.matched = {}; G.tried = {}; G.sel = null; }
     SC.game = G; SC.open = null; SC.exit = null; SC.scen = null; paint(); stopTimer(); GT = setInterval(tick, 500); if (G.type === 'catch') CT = setTimeout(catchRun, 600);
   }
