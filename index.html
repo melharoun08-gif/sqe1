@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120095653";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120100813";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -3629,7 +3629,8 @@ a.tlink::after{content:none}
 @media (max-width:560px){.bthink .bt-main{border-width:2.5px;font-size:11.5px;width:30%;left:3%;padding:8% 2%}.bthink .bt-d1{width:11px;height:11px}.bthink .bt-d2{width:8px;height:8px}.bthink .bt-d3{width:6px;height:6px}}
 @media (prefers-reduced-motion:reduce){.bmshop .bmwin img.bmwin-brit{animation:none}}
 /* The Mount keeps its own fancy house-sign lettering (Monnie 08:20), on top of the town fonts */
-:is(.mount,#_#_#_) .mount-sign{font-family:"Snell Roundhand","Apple Chancery","Brush Script MT","Segoe Script",cursive!important;font-weight:700!important;font-style:italic}
+:is(.mount,.cbag.town,body,#_#_#_) :is(.mount-sign,.town-nav a.tn-mount),a.tn-mount{font-family:"Snell Roundhand","Apple Chancery","Brush Script MT","Segoe Script",cursive!important;font-weight:700!important;font-style:italic}
+.town-nav a.tn-mount{font-size:1.12em;letter-spacing:.2px}
 
 /* speech-bubbles narrow+tall (Monnie 20 Nov 08:20, site-wide rule: narrower and taller = fewer overlaps) */
 .bspeech,.cbasay{max-width:300px;text-wrap:balance}
@@ -3739,9 +3740,9 @@ html:not(.monnie) .head .nbmbtn{display:none!important}
 html:not(.monnie) .nbmbtn{display:none!important}
 /* 20 Nov (Monnie): every "back to Peckham" link is the Welcome to Peckham sign from the map */
 a.pkback{display:inline-flex;align-items:center;padding:4px 0!important;line-height:0;background:none!important;border:0!important;box-shadow:none!important}
-a.pkback .pksign{height:46px;width:auto;display:block;transition:transform .15s}
+a.pkback .pksign{height:76px;width:auto;display:block;transition:transform .15s} /* 10:00 Monnie: bigger so it reads */
 a.pkback:hover .pksign{transform:rotate(-3deg) scale(1.05)}
-@media (max-width:600px){a.pkback .pksign{height:38px}}
+@media (max-width:600px){a.pkback .pksign{height:58px}}
 /* 20 Nov (Monnie): the town tabs (Job Centre, Bert's Butchers, Hen Bargains, The Mount) in Calibri */
 :is(.town-nav,#_#_#_) a:is(.tn-jobs,.tn-butcher,.tn-shop,.tn-mount,a){font-family:Calibri,Carlito,'Segoe UI',Arial,sans-serif!important;font-weight:700!important;letter-spacing:0}
 /* ---- 20 Nov 09:35 (Monnie): every stop's card is drawn as its real object (shape and all), text on a clean panel. Fairground alone keeps the ticket. ---- */
@@ -3823,8 +3824,8 @@ a.pkback:hover .pksign{transform:rotate(-3deg) scale(1.05)}
 .land-real.land-lighthouse .flash .face{--pt:24%;--pb:6%}.land-real.land-lighthouse .flash .face > .ftop{top:6%!important}
 
 /* Bert's Butchers in Calibri (Monnie 20 Nov 09:47); only speech bubbles and the drawn sign keep hand lettering */
-:is(.cbag.town.tb-red,#_#_#_) *:not(text):not(.bblogo):not(.bblogo *):not(.bspeech):not(.bspeech *):not(.bthink):not(.bthink *):not(.b3 .sh):not(.bhb-say){font-family:Calibri,Carlito,'Segoe UI',Arial,sans-serif!important;letter-spacing:0}
-:is(.cbag.town.tb-red,#_#_#_) :is(.bspeech,.bspeech *){font-family:var(--hand),'Patrick Hand',cursive!important}
+:is(.cbag.town:not(.hb),.cbag.bossg,#_#_#_) *:not(text):not(.jcp2):not(.jcp2 *):not(.bblogo):not(.bblogo *):not(.bspeech):not(.bspeech *):not(.bthink):not(.bthink *):not(.b3 .sh):not(.bhb-say){font-family:Calibri,Carlito,'Segoe UI',Arial,sans-serif!important;letter-spacing:0}
+:is(.cbag.town:not(.hb),.cbag.bossg,#_#_#_) :is(.bspeech,.bspeech *){font-family:var(--hand),'Patrick Hand',cursive!important}
 /* every Bert speech is a real speech bubble: rounded, narrow and tall, tail pointing left to the speaker (Monnie 20 Nov 09:48) */
 .bspeech{border-radius:22px;margin-left:16px;border-width:2.5px;padding:12px 16px}
 .bspeech::before,.bspeech::after{content:"";position:absolute;top:22px;width:0;height:0;border-style:solid}
@@ -3874,6 +3875,39 @@ a.pkback:hover .pksign{transform:rotate(-3deg) scale(1.05)}
 .qbackbtn:hover{background:#F57C00}
 .qbackbtn:active{transform:translateX(-50%) translateY(3px);box-shadow:0 2px 0 #10294A}
 .land-real.land-amazon-forest .flash .face{--pt:42%;--pb:20%}.land-real.land-amazon-forest .flash .face > .ftop{top:27%!important}
+/* 10:00 Monnie: The Mount always in its fancy lettering, the tab too */
+:is(.town-nav,#_#_#_#_) a.tn-mount{font-family:"Snell Roundhand","Apple Chancery","Brush Script MT","Segoe Script",cursive!important;font-style:italic;font-weight:700!important;font-size:19px!important;letter-spacing:.3px}
+
+/* 20 Nov 09:52-10:01 (Monnie): Bert's speech bubbles = comic bubbles (black felt-tip line, tail at Bert); on the topic page he stands below-left, so the tail points down-left */
+.bossg .bspeech,.tb-red .bspeech{--bsp-line:#1d1d1b;--bsp-bg:#fff;border-width:2.5px}
+.bintro .bspeech::before{top:auto;bottom:18px}.bintro .bspeech::after{top:auto;bottom:20px}
+/* thumbs-down Bert (art-src/bert-thumbsdown-gemini.jpeg): the arm shakes up and down from the elbow, very clearly */
+.btd-a{position:absolute;left:0;top:0;width:100%;height:auto;opacity:1;transform-origin:75.4% 32.8%;animation:btdShake .3s ease-in-out infinite alternate;z-index:1}
+.f-laugh .brunimg.btd-b{animation:none}
+@keyframes btdShake{from{transform:rotate(-13deg)}to{transform:rotate(11deg)}}
+.grab .btd-a,.flee .btd-a,.reach .btd-a{animation:none;transform:rotate(-4deg)}
+/* the grab: he lifts Britney up onto his outstretched arm, flapping, and runs off the screen with her */
+.grab .bcarry{left:56%;top:-2%;width:56%;z-index:2}
+.grab .bcarry .bbrit{animation:bcarryWig .22s ease-in-out infinite alternate;transform-origin:50% 90%}
+@keyframes bcarryWig{from{transform:rotate(-7deg) translateY(0)}to{transform:rotate(6deg) translateY(-6%)}}
+.arena .abert{overflow:visible}
+/* subject-test strip: same thumbs-down Bert */
+.bts-bert .bkw{position:relative;display:block;animation:bcbert .26s ease-in-out infinite alternate;transform-origin:50% 100%}
+.bts-bert .bkw .bk{animation:none}
+.bts-bert .bka{position:absolute;left:0;top:0;width:100%;height:auto;transform-origin:75.4% 32.8%;animation:btdShake .3s ease-in-out infinite alternate}
+.btstrip.grab .bka{animation:none}
+.btstrip.grab .bts-bert .bc{left:52%;top:-4%;width:56%}
+/* captive shop: door shut with a CLOSED sign (Monnie 09:51); bigger thought bubble whose circles run right to the window */
+.bcapwrap{container-type:inline-size;padding-left:38%}
+.bcapshop .bs-f1,.bcapshop .bs-f2,.bcapshop .bs-b{display:none!important}.bcapshop .bs-c{animation:none!important;opacity:1!important}
+.bclosed{position:absolute;z-index:4;left:58.5%;top:71%;width:23%;aspect-ratio:2.6/1;display:flex;align-items:center;justify-content:center;background:#FFF8EC;border:2px solid #1d1d1b;border-radius:4px;box-shadow:1px 2px 0 rgba(0,0,0,.18);transform:rotate(-4deg)}
+.bclosed b{font:900 3.1cqw/1 Calibri,Carlito,'Segoe UI',Arial,sans-serif!important;color:#C8102E;letter-spacing:.04em}
+.bclosed i{position:absolute;left:20%;right:20%;bottom:100%;height:60%;border:1.6px solid #1d1d1b;border-bottom:0;border-radius:50% 50% 0 0/100% 100% 0 0}
+.bthink .bt-main{left:0;top:3%;width:35%;padding:6% 2.5%;font-size:clamp(10px,3.5cqw,19px);line-height:1.15}
+.bthink .bt-d1{left:37%;top:41%;width:3cqw;height:3cqw;min-width:9px;min-height:9px}
+.bthink .bt-d2{left:41%;top:46.5%;width:2.2cqw;height:2.2cqw;min-width:7px;min-height:7px}
+.bthink .bt-d3{left:44.6%;top:51%;width:1.5cqw;height:1.5cqw;min-width:5px;min-height:5px}
+@media (max-width:560px){.bthink .bt-main{left:0;width:35%;font-size:clamp(10px,3.5cqw,15px);padding:6% 2%}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -108219,13 +108253,13 @@ window.SQE_JOURNEY = function (A) {
             + "<text class=\"jpl\" x=\"".concat(f1(bxc), "\" y=\"").concat(f1(ty + th * .67), "\" font-size=\"").concat(f1(th * .44), "\">Layla, I'm hungry!</text></g>");
     }
     function pairInner(mode, f) {
-        var BAG = shopToday() || /[?&]bag=1/.test(qs()), lh = mode === 'phone' ? 240 : 200, lw = lh * (BAG ? 385 / 600 : LAYLA_AR), bh = lh * .42;
+        var BAG = shopToday() || /[?&]bag=1/.test(qs()), MV = function (u) { return f < 0 ? u.replace(/\.webp$/, u.indexOf('layla-front-bag') >= 0 ? '-L.webp' : '-M.webp') : u; }, /* 10:00 Monnie (moonwalk): heading left she faces left (mirrored frames, jumper print put back the right way) */ lh = mode === 'phone' ? 240 : 200, lw = lh * (BAG ? 385 / 600 : LAYLA_AR), bh = lh * .42;
         var lx = -lw / 2 - bh * .3 * f, bx = f > 0 ? lx + lw - 8 : lx - bh + 8, x0 = Math.min(lx, bx + bh * (f > 0 ? .07 : .24)), x1 = Math.max(lx + lw, bx + bh * (f > 0 ? .76 : .93));
         return "<ellipse cx=\"".concat(f1((x0 + x1) / 2), "\" cy=\"2\" rx=\"").concat(f1((x1 - x0) / 2 + 4), "\" ry=\"6\" fill=\"#111\" opacity=\".2\"/><g class=\"jhop\">")
-            + (BAG ? "<image href=\"img/souvenir/layla-front-bag.webp\" x=\"".concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/>") : "<image class=\"jlw1\" href=\"".concat(LAYLA_IMG, "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/><image class=\"jmo jlw2\" href=\"").concat(LAYLA_IMG2, "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/><image class=\"jmo jlw3\" href=\"").concat(LAYLA_IMG3, "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/>") + [['img/layla-walk-4w.webp', 179, 'jlw4'], ['img/layla-joke.webp', 124, 'jlwj'], ['img/layla-walk-1-F.webp', 163, 'jlw1F'], ['img/layla-walk-2-F.webp', 161, 'jlw2F'], ['img/layla-walk-3-F.webp', 163, 'jlw3F']] /* 05:10 Monnie: her other leg comes forward too (-F = far leg in front) */.map(function (_a) {
+            + (BAG ? "<image href=\"".concat(MV('img/souvenir/layla-front-bag.webp'), "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/>") : "<image class=\"jlw1\" href=\"".concat(MV(LAYLA_IMG), "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/><image class=\"jmo jlw2\" href=\"").concat(MV(LAYLA_IMG2), "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/><image class=\"jmo jlw3\" href=\"").concat(MV(LAYLA_IMG3), "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/>") + [['img/layla-walk-4w.webp', 179, 'jlw4'], ['img/layla-joke.webp', 124, 'jlwj'], ['img/layla-walk-1-F.webp', 163, 'jlw1F'], ['img/layla-walk-2-F.webp', 161, 'jlw2F'], ['img/layla-walk-3-F.webp', 163, 'jlw3F']] /* 05:10 Monnie: her other leg comes forward too (-F = far leg in front) */.map(function (_a) {
                 var u = _a[0], wd = _a[1], c = _a[2];
                 var wi = lh * wd / 300;
-                return "<image class=\"jmo ".concat(c, "\" href=\"").concat(u, "\" x=\"").concat(f1(lx + (lw - wi) / 2), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(wi), "\" height=\"").concat(lh, "\"/>");
+                return "<image class=\"jmo ".concat(c, "\" href=\"").concat(/joke/.test(u) ? u : MV(u), "\" x=\"").concat(f1(lx + (lw - wi) / 2), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(wi), "\" height=\"").concat(lh, "\"/>");
             }).join(''))
             + (britCaught() ? '' : "<g transform=\"translate(".concat(f1(bx + bh / 2), ",0) scale(").concat(f, ",1)\">").concat(BRIT_FR.map(function (u, k) { var h2 = bh * .86, w2 = h2 * 1.348; return "<g class=\"jbf jbf".concat(k + 1, "\"><g class=\"jbm").concat(k + 1, "\"><image href=\"").concat(u, "\" x=\"").concat(f1(-w2 * .42), "\" y=\"").concat(f1(-h2 * .97), "\" width=\"").concat(f1(w2), "\" height=\"").concat(f1(h2), "\"/></g></g>"); }).join(''), "</g>") + britHungry(bx, bh, f)) + "</g>";
     }
@@ -127576,6 +127610,8 @@ window.SQE_TOWN = function(A){
     '.jcp .t{font-family:var(--sharratt)!important;font-size:14px;color:#00843D;margin-top:3px;letter-spacing:.06em}' +
     '.town-desk.jcdesk{align-items:center}' +
     '@media (max-width:560px){.jcp .w{font-size:24px}}' +
+    /* Monnie 20 Nov 10:01: everything in Hen Bargains in Calibri (Carlito is the metric-identical free version for Macs without Office); the drawn hb logo keeps its own lettering */
+    ':is(.cbag.hb,#_#_#_),:is(.cbag.hb,#_#_#_) *:not(.hb-logo):not(.hb-logo *){font-family:Calibri,Carlito,"Segoe UI",Arial,sans-serif!important;letter-spacing:0!important}' +
     '@media (max-width:560px){.hb-logo{margin:4px auto;width:110px;height:110px}.town-job{grid-template-columns:1fr}.town-job .jr{align-items:flex-start;flex-direction:row;flex-wrap:wrap}.town-desk{flex-direction:column}.town-sign{width:auto;height:auto;padding:6px 12px}.town-bert img{width:70px}}';
   document.head.appendChild(css);
 
@@ -127912,7 +127948,7 @@ window.SQE_TOWN = function(A){
     else if (a === 'unpick'){ SEL = null; A.render(); }
     else if (a === 'try'){ TRY = b.getAttribute('data-i'); A.render(); scrollTop('.town-try'); }
     else if (a === 'tryoff'){ TRY = null; A.render(); }
-    else if (a === 'return' && !g){ SEL = null; var rid = b.getAttribute('data-i'); returnItem(rid); if (LASTBUY === rid) LASTBUY = null; A.render(); }
+    else if (a === 'return' && !g){ SEL = null; var rid = b.getAttribute('data-i'); returnItem(rid); if (LASTBUY === rid) LASTBUY = null; if (rid === 'parents'){ try { sessionStorage.setItem('sqe_parentsReturned', '1'); } catch(e){} location.hash = '#/mount'; return; } A.render(); }
     else if (a === 'buy' && !g){ SEL = null; var bid = b.getAttribute('data-i'), cb = A.cbaS().coins; A.cbaBuy(bid); (function(c){ if (c.own[bid] && c.coins !== cb){ c.paid = c.paid || {}; c.paid[bid] = cb - c.coins; A.save(); } })(A.cbaS()); if (A.cbaS().coins !== cb && !/^(parents|corn)$/.test(bid)) LASTBUY = bid; A.render(); if (LASTBUY) scrollTop('.town'); }
     else if (a === 'walkhome'){ LASTBUY = null; try { sessionStorage.setItem('sqe_shopwalk', '1'); } catch(er){} location.hash = '#/palace'; }
     else if (a === 'gamble' && !g){
@@ -128004,10 +128040,10 @@ var SWING_HEN_H = 8.5;
 var BRUCEY_COOP = [96.6, 57.6];   /* with a coop there, Brucey perches on the bank behind it */   /* Beefy sits on the swing when Layla has both */
 function coopTop(o){ return o.palace ? [91.1, 36 + 20] : o.coop ? [91.1, 36 + 19] : null; }
 /* Layla's walk: [x, b, pause ms, pose while paused ('a' stand, 't' wave)]; stays inside x 37..54 so she never meets the people */
-var LAYLA_LAP = [[47, 37, 1400, 'a'], [44.5, 28, 700, 'a'], [43.5, 13, 1600, 't'], [51, 8, 900, 'a'], [54, 20, 900, 'a'], [51, 34, 800, 'a'], [44, 38, 1100, 'a']];
+var LAYLA_LAP = [[42.5, 36, 1400, 'a'], [54.5, 31, 900, 'a'], [43.5, 24, 900, 'a'], [52.5, 15, 1600, 't'], [44.5, 12, 1100, 'a'], [54.5, 20, 900, 'a'], [48, 30, 900, 'a']];   /* Monnie 10:00: no moonwalking, every leg goes more sideways than up/down */
 var LAYLA_WP = (function(){   /* three laps; only the first has the cartwheel, so it comes round about once a minute (Monnie 08:19) */
   var out = [];
-  for (var lap = 0; lap < 3; lap++) LAYLA_LAP.forEach(function(w, i){ var c = w.slice(); if (lap === 0 && i === 3) c[4] = 'c'; if (lap === 1 && i === 0) c[2] = 6500; out.push(c); });
+  for (var lap = 0; lap < 3; lap++) LAYLA_LAP.forEach(function(w, i){ var c = w.slice(); if (lap === 0 && i === 4) c[4] = 'c'; if (lap === 1 && i === 0) c[2] = 6500; out.push(c); });
   return out;
 })();
 var RIDE_WP = 7;   /* Britney rides on Layla's head from the start of lap 2 (waypoint 7: Layla stands still a while, then walks on) */
@@ -128038,9 +128074,10 @@ function clamp(v, a, b){ return v < a ? a : v > b ? b : v; }
 function lerp(a, b, t){ return a + (b - a) * t; }
 function pxd(a, b){ var dx = (b[0] - a[0]) * 27.52, dy = (b[1] - a[1]) * 15.36; return Math.sqrt(dx * dx + dy * dy); }
 function ease(t){ return 0.5 - Math.cos(Math.PI * clamp(t, 0, 1)) / 2; }
-var CLOCK0 = Date.now(), PAUSED = 0, FEED = null;
+var CLOCK0 = Date.now(), PAUSED = 0, BPAUSED = 0, FEED = null, TRIP = null, KID = null;
 function now(){ return typeof window.__mountClock === 'number' ? window.__mountClock : Date.now(); }
-function loopT(){ var n = now(); return n - CLOCK0 - PAUSED - (FEED ? n - FEED.t0 : 0); }
+function loopT(){ var n = now(); return n - CLOCK0 - PAUSED - (TRIP ? n - TRIP.t0 : 0); }
+function britT(){ var n = now(); return n - CLOCK0 - BPAUSED - (FEED ? n - FEED.t0 : 0); }
 
 /* ----- Layla's loop ----- */
 var LSEG = [], LT = 0;
@@ -128113,12 +128150,12 @@ function rideWin(){
   if (RIDE) return RIDE;
   var s = LSEG[RIDE_WP - 1], t0 = s.t + s.w + 200; RIDE = {t0: t0, t1: t0 + RIDE_FLY, t2: t0 + RIDE_FLY + RIDE_MS, t3: t0 + 2 * RIDE_FLY + RIDE_MS}; return RIDE;
 }
-function rideState(t, n){
+function rideState(t, n, tb){
   var W = rideWin(), tl = ((t % LT) + LT) % LT; if (tl < W.t0 || tl >= W.t3) return null;
   var base = t - tl, L, h;
-  if (tl < W.t1){ var a = britAt(base + W.t0, n); L = laylaAt(base + W.t1); h = laylaHead(L); var p = flyPos([a.x, a.b], h, (tl - W.t0) / RIDE_FLY); return {x: p[0], b: p[1], face: h[0] > a.x ? 'r' : 'l', air: true, fr: Math.floor(n / 140) % 2, top: true}; }
+  if (tl < W.t1){ var a = britAt(tb - (tl - W.t0), n); L = laylaAt(base + W.t1); h = laylaHead(L); var p = flyPos([a.x, a.b], h, (tl - W.t0) / RIDE_FLY); return {x: p[0], b: p[1], face: h[0] > a.x ? 'r' : 'l', air: true, fr: Math.floor(n / 140) % 2, top: true}; }
   if (tl < W.t2){ L = laylaAt(t); h = laylaHead(L); return {x: h[0], b: h[1], face: L.face, top: true, bob: L.fr === 'w' ? Math.abs(Math.sin((L.dist || 0) / STRIDE_PX * Math.PI * 2)) * 3 : 0}; }
-  L = laylaAt(base + W.t2); h = laylaHead(L); var z = britAt(base + W.t3, n), q = flyPos(h, [z.x, z.b], (tl - W.t2) / RIDE_FLY);
+  L = laylaAt(base + W.t2); h = laylaHead(L); var z = britAt(tb + (W.t3 - tl), n), q = flyPos(h, [z.x, z.b], (tl - W.t2) / RIDE_FLY);
   return {x: q[0], b: q[1], face: z.x > h[0] ? 'r' : 'l', air: true, fr: Math.floor(n / 140) % 2, top: true};
 }
 function hungryBrit(n){
@@ -128282,7 +128319,7 @@ window.SQE_MOUNT = function(A){
   }
   function openShed(){ closeShed(); var d = document.createElement('div'); d.innerHTML = shedHTML(); document.body.appendChild(d.firstChild); var x = document.querySelector('.mg-shedx'); if (x) try { x.focus(); } catch(e){} }
   function closeShed(){ var b = document.querySelector('.mg-shedbox'); if (b) b.parentNode.removeChild(b); }
-  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeShed(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && document.querySelector('.mg-shedbox')){ closeShed(); if (TRIP && !TRIP.out) tripOut(false); } });
   window.addEventListener('hashchange', closeShed);
 
   /* ===== page ===== */
@@ -128363,28 +128400,68 @@ window.SQE_MOUNT = function(A){
   };
 
   /* ===== feeding scene ===== */
-  function startFeed(){
-    if (A.route()[0] !== 'mount' || FEED) return;
+  /* ----- feeding goes through the shed (Monnie 10:03): Layla walks into the shed; inside, the feed bag is tapped; she walks out
+     carrying it, scatters it by Britney, Britney pecks it all up and says three things. Tapping the shed alone just takes her in. ----- */
+  var SHED_DOOR = [55.6, 49.6], FADE = 450;
+  function feedable(){ var hens = has('mountHens') ? A.mountHens() : ['britney']; return hens.filter(function(id){ return !(has('henFedToday') && A.henFedToday(id)); }); }
+  function startTrip(auto, test){
+    if (A.route()[0] !== 'mount' || TRIP) return;
+    var n = now(), lp = laylaAt(loopT());
+    if (lp.fr === 'c') return;   /* never mid-cartwheel */
+    TRIP = {t0: n, L0: [lp.x, lp.b], Lf: lp.face, auto: !!auto, test: !!test, walk: walkTo([lp.x, lp.b], SHED_DOOR, 0).w, tIn: null, opened: false, out: null};
+    closeShed();
+    var g = document.querySelector('.mount-garden'); if (g && auto) try { g.scrollIntoView({block: 'center', behavior: 'smooth'}); } catch(e){}
+  }
+  function startFeed(test){   /* the Feed button / Today's "Feed Britney": the whole trip, no shed view */
     var L = A.henLife(); if (L.away) return;
-    var hens = has('mountHens') ? A.mountHens() : ['britney'], fed = [];
-    if (has('feedOne')) hens.forEach(function(id){ if (!(has('henFedToday') && A.henFedToday(id)) && A.feedOne(id)) fed.push(id); });
-    if (has('feedOne') && !fed.length) return;
-    var n = now(), t = loopT(), lp = laylaAt(t), bp = britState(t, n, true);
-    var lw = walkTo([lp.x, lp.b], FEED_SPOT, 0).w, bw = pxd([bp.x, bp.b], FEED_BRIT) / 140 * 1000;
+    if (!test && (!has('feedLeft') || !A.feedLeft() || !feedable().length)) return;
+    if (TRIP){ if (TRIP.tIn != null && !TRIP.out) tripOut(true, test); return; }
+    startTrip(true, test);
+  }
+  function tripOut(withFeed, test){
+    if (!TRIP || TRIP.out) return;
+    var n = now(); closeShed();
+    if (!withFeed){ TRIP.out = {t0: n, w: walkTo(SHED_DOOR, TRIP.L0, 0).w}; return; }
+    test = test || TRIP.test;
+    var fed = [];
+    if (!test && has('feedOne')) feedable().forEach(function(id){ if (A.feedOne(id)) fed.push(id); });
+    if (!test && !fed.length){ TRIP.out = {t0: n, w: walkTo(SHED_DOOR, TRIP.L0, 0).w}; return; }
+    if (test) fed = feedable().length ? feedable() : ['britney'];
+    var bp = britState(loopT(), n, true);
+    var lw = walkTo(SHED_DOOR, FEED_SPOT, 0).w + FADE, bw = pxd([bp.x, bp.b], FEED_BRIT) / 140 * 1000;
     var A0 = Math.max(lw, bw, 600) + 300;
-    FEED = {t0: n, L0: [lp.x, lp.b], Lf: lp.face, B0: [bp.x, bp.b], Bf: bp.face, A: A0, others: fed.filter(function(id){ return id !== 'britney'; })};
-    FEED.end = A0 + 2400 + GRAINS.length * 820 + 1600;
-    FEED.back = Math.max(walkTo(FEED_SPOT, FEED.L0, 0).w, pxd(FEED_BRIT, FEED.B0) / 140 * 1000) + 200;
+    FEED = {t0: n, L0: SHED_DOOR, Lback: TRIP.L0, Lf: 'l', B0: [bp.x, bp.b], Bf: bp.face, A: A0, test: test, others: fed.filter(function(id){ return id !== 'britney'; }), lines: britLines()};
+    FEED.eat = A0 + 2400 + GRAINS.length * 820;
+    FEED.end = FEED.eat + 3 * 2500 + 300;   /* three bubbles, then she stops (Monnie 10:05) */
+    FEED.back = Math.max(walkTo(FEED_SPOT, FEED.Lback, 0).w, pxd(FEED_BRIT, FEED.B0) / 140 * 1000) + 200;
+    TRIP.out = {t0: n, feed: true};
     setTimeout(function(){ if (A.route()[0] === 'mount') A.render(); }, 20);   /* tears and the hungry card go */
-    var g = document.querySelector('.mount-garden'); if (g) try { g.scrollIntoView({block: 'center', behavior: 'smooth'}); } catch(e){}
+  }
+  function britLines(){
+    var a = "I love you, Layla!", b = "You're doing so well with your revision!", c;
+    var d = Math.round((Date.UTC(2027, 0, 11) - Date.UTC(new Date().getFullYear(), new Date().getMonth(), new Date().getDate())) / 864e5);
+    c = d > 1 ? 'Only ' + d + ' days to FLK1. You\'ve got this!' : d === 1 ? 'FLK1 is tomorrow. You\'re ready!' : 'Keep going, I\'m so proud of you!';
+    return [a, b, c];
+  }
+  function tripState(n){   /* Layla while she goes to / into / out of the shed (outside the feeding itself) */
+    var T = TRIP, u = n - T.t0;
+    if (T.tIn == null){ var w = walkTo(T.L0, SHED_DOOR, u); if (!w.done) return {x: w.x, b: w.b, face: w.face || T.Lf, fr: w.fr, dist: w.dist}; T.tIn = n; }
+    if (!T.out){
+      var k = clamp((n - T.tIn) / FADE, 0, 1);
+      if (k >= 1 && !T.opened){ T.opened = true; if (T.auto) setTimeout(function(){ tripOut(true); }, 700); else openShed(); }
+      return {x: SHED_DOOR[0], b: SHED_DOOR[1], face: 'r', fr: 'a', alpha: 1 - k};
+    }
+    var v = n - T.out.t0, k2 = clamp(v / FADE, 0, 1), w2 = walkTo(SHED_DOOR, T.L0, Math.max(0, v - FADE));
+    if (w2.done && v > FADE){ PAUSED += n - T.t0; TRIP = null; }
+    return {x: w2.x, b: w2.b, face: w2.face || 'l', fr: v < FADE || w2.done ? 'a' : w2.fr, dist: w2.dist, alpha: k2};
   }
   function scene(n){
     var u = n - FEED.t0, F = FEED, out = {grains: [], say: null};
     var throws = [F.A + 200, F.A + 1100, F.A + 2000], peck0 = F.A + 2400;
     /* Layla walks over, scatters three handfuls, waits while Britney eats, then walks back */
-    if (u < F.A) { var w = walkTo(F.L0, FEED_SPOT, u); out.L = {x: w.x, b: w.b, face: w.face || F.Lf, fr: w.done ? 'a' : w.fr, dist: w.dist}; }
-    else if (u < F.end){ var tossing = throws.some(function(t0){ return u >= t0 && u < t0 + 520; }); out.L = {x: FEED_SPOT[0], b: FEED_SPOT[1], face: 'r', fr: tossing ? 't' : 'a'}; }
-    else { var w2 = walkTo(FEED_SPOT, F.L0, u - F.end); out.L = {x: w2.x, b: w2.b, face: w2.face || 'l', fr: w2.done ? 'a' : w2.fr, dist: w2.dist}; }
+    if (u < F.A) { var w = walkTo(F.L0, FEED_SPOT, Math.max(0, u - FADE)); out.L = {x: w.x, b: w.b, face: w.face || F.Lf, fr: w.done || u < FADE ? 'a' : w.fr, dist: w.dist, alpha: clamp(u / FADE, 0, 1), bag: true}; }
+    else if (u < F.end){ var tossing = throws.some(function(t0){ return u >= t0 && u < t0 + 520; }); out.L = {x: FEED_SPOT[0], b: FEED_SPOT[1], face: 'r', fr: tossing ? 't' : 'a', bag: u < throws[2] + 520}; }
+    else { var w2 = walkTo(FEED_SPOT, F.Lback, u - F.end); out.L = {x: w2.x, b: w2.b, face: w2.face || 'l', fr: w2.done ? 'a' : w2.fr, dist: w2.dist}; }
     /* grains fly from her hand to the lawn, then wait until Britney pecks each one */
     var hand = [FEED_SPOT[0] + 3.2, FEED_SPOT[1] + LAYLA_H * DEPTH(FEED_SPOT[1]) * 0.78];
     GRAINS.forEach(function(gp, i){
@@ -128399,12 +128476,12 @@ window.SQE_MOUNT = function(A){
       if (d > 300){ var p = flyPos(F.B0, FEED_BRIT, k2); out.B = {x: p[0], b: p[1], face: FEED_BRIT[0] > F.B0[0] ? 'r' : 'l', air: k2 < 1, fr: Math.floor(n / 140) % 2}; }
       else out.B = {x: lerp(F.B0[0], FEED_BRIT[0], ease(k2)), b: lerp(F.B0[1], FEED_BRIT[1], ease(k2)), face: FEED_BRIT[0] >= F.B0[0] ? 'r' : 'l', bob: k2 < 1 ? Math.abs(Math.sin(u / 150)) * 2.5 : 0};
     } else if (u < peck0){ out.B = {x: FEED_BRIT[0], b: FEED_BRIT[1], face: 'l'}; }
-    else if (u < F.end - 1600){
+    else if (u < F.eat){
       var i = Math.min(GRAINS.length - 1, Math.floor((u - peck0) / 820)), v = (u - peck0) - i * 820, to = GRAINS[i], kk = clamp(v / 320, 0, 1);
       var prev = i ? GRAINS[i - 1] : [FEED_BRIT[0] + 2.2, FEED_BRIT[1]], from = [prev[0] + (i ? (to[0] >= prev[0] ? -2.2 : 2.2) : -2.2), prev[1]];
       var face = to[0] >= from[0] ? 'r' : 'l', target = [to[0] + (face === 'r' ? -2.2 : 2.2), to[1]];
       out.B = {x: lerp(from[0], target[0], ease(kk)), b: lerp(from[1], target[1], ease(kk)), face: face, bob: kk < 1 ? Math.abs(Math.sin(v / 120)) * 2 : 0, peck: v > 320 ? Math.max(0, Math.sin((v - 320) / 500 * Math.PI)) * 30 : 0};
-    } else if (u < F.end){ var last = GRAINS[GRAINS.length - 1]; out.B = {x: last[0] - 2.2, b: last[1], face: 'l', bob: Math.abs(Math.sin(u / 160)) * 4}; out.say = 'Yum yum!'; }
+    } else if (u < F.end){ var last = GRAINS[GRAINS.length - 1], li = Math.floor((u - F.eat) / 2500), lv = (u - F.eat) % 2500; out.B = {x: last[0] - 2.2, b: last[1], face: 'l', bob: Math.abs(Math.sin(u / 160)) * 3}; if (li < 3 && lv < 2200) out.say = F.lines[li]; }
     else {
       var last2 = GRAINS[GRAINS.length - 1], st = [last2[0] - 2.2, last2[1]], k3 = clamp((u - F.end) / Math.max(400, F.back - 200), 0, 1);
       if (pxd(st, F.B0) > 300){ var q = flyPos(st, F.B0, k3); out.B = {x: q[0], b: q[1], face: F.B0[0] > st[0] ? 'r' : 'l', air: k3 < 1, fr: Math.floor(n / 140) % 2}; }
@@ -128446,8 +128523,9 @@ window.SQE_MOUNT = function(A){
   }
   function britState(t, n, raw){
     if (!raw && FEED && FEED.sc) return FEED.sc.B;
-    if (hungry('britney')) return hungryBrit(n);
-    return rideState(t, n) || britAt(t, n);
+    if (hungry('britney') && !(FEED && FEED.test)) return hungryBrit(n);
+    var tb = britT();
+    return (TRIP ? null : rideState(t, n, tb)) || britAt(tb, n);
   }
   function tick(){
     requestAnimationFrame(tick);
@@ -128457,8 +128535,8 @@ window.SQE_MOUNT = function(A){
     var g = document.querySelector('.mount-garden'); if (!g){ G = null; return; }
     if (g !== G) setup(g);
     var n = now();
-    if (FEED){ FEED.sc = scene(n); if (FEED.sc.done){ PAUSED += n - FEED.t0; FEED = null; } }
-    var t = loopT(), sc = FEED && FEED.sc;
+    if (FEED){ FEED.sc = scene(n); if (FEED.sc.done){ BPAUSED += n - FEED.t0; FEED = null; if (TRIP){ PAUSED += n - TRIP.t0; TRIP = null; } } }
+    var t = loopT(), sc = FEED && FEED.sc, trip = !FEED && TRIP ? tripState(n) : null;
     var pw = parentWalk(n);
     statics.forEach(function(s){
       if (s.el.style.display === 'none') return;
@@ -128470,8 +128548,9 @@ window.SQE_MOUNT = function(A){
     /* Layla */
     var le = g.querySelector('.mg-layla');
     if (le){
-      var L = sc ? sc.L : laylaAt(t);
+      var L = sc ? sc.L : trip || laylaAt(t);
       rigLayla(le, L);
+      var al = L.alpha == null ? 1 : L.alpha; le.style.opacity = al < 1 ? al.toFixed(2) : ''; le.classList.toggle('bag', !!L.bag);
       le.style.height = (LAYLA_H * DEPTH(L.b)).toFixed(3) + '%'; le.style.left = L.x.toFixed(3) + '%'; le.style.bottom = L.b.toFixed(3) + '%'; le.style.zIndex = String(Math.round(2000 - L.b * 10));
     }
     /* Britney */
@@ -128594,11 +128673,12 @@ window.SQE_MOUNT = function(A){
   document.addEventListener('click', function(e){
     var b = e.target && e.target.closest && e.target.closest('[data-mount]'); if (!b) return;
     var a = b.getAttribute('data-mount');
-    if (a === 'shedx' || (a === 'shedbg' && e.target === b)){ closeShed(); return; }
+    if (a === 'shedx' || (a === 'shedbg' && e.target === b)){ closeShed(); if (TRIP && !TRIP.out) tripOut(false); return; }
     if (A.route()[0] !== 'mount') return;
-    if (a === 'shed'){ openShed(); return; }
+    if (a === 'shed'){ if (A.henLife().away || FEED) openShed(); else if (!TRIP) startTrip(false); return; }
+    if (a === 'feedbag'){ tripOut(true, b.getAttribute('data-test') === '1'); return; }
     if (a === 'carry'){ var ci = b.getAttribute('data-i'); setCarry(carrying() === ci ? null : ci); closeShed(); A.render(); return; }
-    if (a === 'feed'){ startFeed(); return; }
+    if (a === 'feed'){ startFeed(b.getAttribute('data-test') === '1'); return; }
     var id = b.getAttribute('data-i'), it = A.cbaItem(id); if (!it || !it.eat) return;
     var L = A.henLife(); if (L.away) return;
     if (a === 'give'){
@@ -132692,14 +132772,14 @@ var BOSS_BARS = '<svg class="bmwin-bars" viewBox="0 0 100 100" preserveAspectRat
 var BOSS_WINDOW_ON = true; /* Monnie 20 Nov 08:40: pictures go straight in */
 function bossShopImg(cls){
   if (!BOSS_WINDOW_ON) return bertShopHTML("bshop " + (cls || ""), '<span class="bmcage">' + bossBrit("scared") + BOSS_CAGE + '</span>');
-  var win = '<span class="bmwin"><span class="bmwin-bg"></span><img class="bmwin-brit" src="img/britney/sad-set.webp" alt="">' + BOSS_BARS + '</span>';
+  var win = '<span class="bclosed" aria-hidden="true"><i></i><b>CLOSED</b></span><span class="bmwin"><span class="bmwin-bg"></span><img class="bmwin-brit" src="img/britney/sad-set.webp" alt="">' + BOSS_BARS + '</span>';
   return '<div class="bcapwrap">' + bertShopHTML("bshop bcapshop " + (cls || ""), win).replace('aria-label="Bert\'s Butchers, Bert at his shop door"', 'aria-label="Britney locked in Bert\'s shop window, sad"') +
     '<span class="bthink" aria-label="Britney thinks: Layla, please save me!"><span class="bt-main">Layla, please save me!</span><i class="bt-d1"></i><i class="bt-d2"></i><i class="bt-d3"></i></span></div>';
 }
 /* Britney in the Bert game: the map's Britney picture; happy when Bert is pushed back, scared when he comes closer */
-function bossBrit(mood){
+function bossBrit(mood, pic){
   /* Peckham Britney (img/britney/set/); terrified.webp from art-src/britney-terrified-set-gemini.jpeg */
-  var src = /scared|worried/.test(mood) ? "img/britney/terrified.webp" : /happy/.test(mood) ? "img/britney/set/happy.webp" : "img/britney/set/neutral.webp"; /* Monnie 20 Nov 08:10: the same Britney as Peckham (set/), terrified.webp drawn from it */
+  var src = pic ? "img/britney/" + pic + ".webp" : /scared|worried/.test(mood) ? "img/britney/terrified.webp" : /happy/.test(mood) ? "img/britney/set/happy.webp" : "img/britney/set/neutral.webp"; /* Monnie 20 Nov 08:10: the same Britney as Peckham (set/), terrified.webp drawn from it */
   return '<span class="hen henimg bbrit ' + mood + '"><img src="' + src + '" alt="" width="800" height="800">' + '' + '</span>';
 }
 function bossChestSvg(open){
@@ -132775,7 +132855,7 @@ function bossHomeView(){
 /* ---------- the duel: a chase. Britney in her nest on the left, Bert creeping in from the right ---------- */
 /* Bert in layers: three faces (grin, gleeful laugh, angry scowl) stacked, plus a fist-and-spoon arm that shakes */
 function bossBert(face, carry){
-  return '<span class="bwalk f-' + face + '"><span class="bbody"><img class="bf bf-grin brunimg" src="' + BERT_RUN + '" alt="" width="612" height="800">' + (carry ? '<span class="bcarry">' + carry + '</span>' : '') + '</span></span>';
+  return '<span class="bwalk f-' + face + '"><span class="bbody"><img class="bf bf-grin brunimg btd-b" src="img/boss/bert-td-body.webp" alt="" width="679" height="800"><img class="btd-a" src="img/boss/bert-td-arm.webp" alt="" width="679" height="800">' + (carry ? '<span class="bcarry">' + carry + '</span>' : '') + '</span></span>';
 }
 var BOSS_CAGE = '<svg class="bcage" viewBox="0 0 100 110" aria-hidden="true"><path d="M8 34Q50 -6 92 34" fill="none" stroke="#5B5249" stroke-width="5" stroke-linecap="round"/><path d="M8 34v70M27 18v86M50 12v92M73 18v86M92 34v70" stroke="#5B5249" stroke-width="4" stroke-linecap="round"/><path d="M4 104h92" stroke="#5B5249" stroke-width="7" stroke-linecap="round"/><circle cx="50" cy="8" r="5" fill="none" stroke="#5B5249" stroke-width="3"/></svg>';
 /* what happens at the end of the round, for the scene: grab (he takes her), reach (nothing to take), flee (she won), or "" */
@@ -132788,7 +132868,9 @@ function bossScene(B){
   var L = henLife(), home = B.mode === "rescue" || !bossS().cap, fx = bossEndFx(B), anim = !B.shown;
   var d = B.dist, pd = anim ? B.pdist : d, max = B.maxD, lvl = fx === "flee" ? 0 : fx ? 3 : Math.max(0, Math.min(3, B.maxMiss - d)), fear = fx === "flee" ? "happy jump" : fx ? "scared sweat" : B.mv === "back" ? "happy" : lvl >= 3 ? "scared sweat" : lvl >= 1 ? "scared" : "ok";
   var face = fx === "flee" ? "scowl" : fx ? "laugh" : B.mv === "closer" ? "laugh" : B.mv === "back" ? "scowl" : "grin";
-  var bird = !home ? '' : bossBrit("bnhen " + fear);
+  /* Monnie 20 Nov 09:49: her face builds up step by step: calm, a little worried, uneasy, scared, then terrified only right before the grab (fear1-3 drawn from set/neutral) */
+  var pic = fx === "flee" || B.mv === "back" ? "set/happy" : fx || d <= 1 ? "terrified" : ["set/neutral", "fear1", "fear2", "fear3"][lvl];
+  var bird = !home ? '' : bossBrit("bnhen " + fear, pic);
   var carry = fx === "grab" ? (B.mode === "rescue" ? '<span class="bcaged">' + bossBrit("scared") + BOSS_CAGE + '</span>' : bossBrit("scared")) : "";
   var at = function(n){ return (Math.max(0, n - 1) / (max - 1)).toFixed(3); }; /* 1 step away = right beside the nest */
   var steps = ''; for (var k = 1; k <= max; k++) steps += '<i style="--k:' + at(k) + '"></i>';
