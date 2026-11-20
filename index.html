@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120021404";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120021456";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -82910,7 +82910,7 @@ window.SQE_JOURNEY = function (A) {
             reg: { spring: 160, autumn: TOWN ? 1970 : 1320, grounds: 1750 + D },
             town: TOWN ? { y: 1550, b: [['mount', 380, 'The Mount', '#/mount', 1925, 300], ['jobcentre2', 600, 'Job Centre', '#/town/jobs', 1590, 250], ['giftshop2', 850, 'Hen Bargains', '#/town/shop', 1890, 250], ['butchers3', 925, "Bert's Butchers", '#/town/butcher', 1530, 250]], w: 235, h: 175, /* Monnie 20 Nov: bigger, staggered over the grass; Mount low and big, Bert's up near Contract Law */ name: [560, 1365] } : null,
             sun: { x0: 80, x1: 1020, y: 150, rise: 82, s: 1 },
-            deco: function () { return cloud(330, 78, .8) + cloud(1010, 92, 1) + cloud(720, 48, .55) + sign(185, 300, 'FLK1 Meadow', 'Stops 1–7', 30, 110) + welcome(640, 262, 1)
+            deco: function () { return cloud(330, 78, .8) + cloud(1010, 92, 1) + cloud(720, 48, .55) + sign(185, 300, 'FLK1 Meadow', 'Stops 1–7', 30, 110) + welcome(935, 262, .7)
                 + sign(560, TOWN ? 2010 : 1395, 'FLK2 Harvest Fields', 'Stops 8–14', 30, TOWN ? 40 : 72)
                 + topiary(1000, 2147 + D) + topiary(1060, 2133 + D) + topiary(228, 1855 + D) + flower(330, 1840 + D, '#fff') + flower(925, 1840 + D, '#FF9EC4')
                 + [60, 330, 575, 820].map(function (x, k) { return flower(x, 2219 + D, ['#FF9EC4', '#fff', '#FFB3D9', '#fff'][k]); }).join('') + flower(345, 2215 + D, '#FFD6A5'); },
@@ -82940,7 +82940,7 @@ window.SQE_JOURNEY = function (A) {
             town: TOWN ? { y: 0, b: [['mount', 300, 'The Mount', '#/mount', 960, 240], ['jobcentre2', 262, 'Job Centre', '#/town/jobs', 560, 200], ['giftshop2', 465, 'Hen Bargains', '#/town/shop', 710, 190], ['butchers3', 465, "Bert's Butchers", '#/town/butcher', 450, 220]], w: 250, h: 190, ph: 1 } : null,
             reg: { spring: 212, autumn: st[7].y + (TOWN ? 1040 : 250), grounds: sl.y + 150 },
             sun: { x0: 50, x1: 550, y: 205, rise: 130, s: .62 },
-            deco: function () { return cloud(522, 150, .7) + cloud(150, 60, .5) + sign(380, 330, 'FLK1 Meadow', 'Stops 1–7', 32, 90) + welcome(118, 318, .78)
+            deco: function () { return cloud(522, 150, .7) + cloud(150, 60, .5) + sign(215, 330, 'FLK1 Meadow', 'Stops 1–7', 32, 90) + welcome(478, 330, .6)
                 + sign(362, st[7].y + (TOWN ? 1110 : 332), 'FLK2 Harvest Fields', 'Stops 8–14', 32, TOWN ? 30 : 68)
                 + flower(28, H - 14, '#FF9EC4') + flower(580, H - 14, '#fff') + flower(40, sl.y + 250, '#fff') + flower(565, sl.y + 250, '#FF9EC4'); },
         };
