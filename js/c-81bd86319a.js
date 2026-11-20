@@ -1211,8 +1211,29 @@ window.SQE_JOURNEY = function (A) {
        forward, the body rises only enough to keep the lower foot on the ground (no hopping), and the step cycle follows the distance walked so
        the feet don't slide. Standing still: both feet down, breathing, a wave now and then. With the hb carrier bag it hangs from her front hand. */
     var RIG = { HIP: [90, 165], KNEE: [120, 220], ANG: 28.6, L: 62.6, STRIDE: 140, W: 179 };
+    function britWalk(bh) {
+        var h2 = bh * .86, w2 = h2 * 1.348, x = f1(-w2 * .42), y = f1(-h2 * .97), u = 'img/britney/set/neutral.webp';
+        var C = [['jbcf1', '0.38,0.874 0.51,0.874 0.51,1 0.38,1'], ['jbcf2', '0.535,0.874 0.66,0.874 0.66,1 0.535,1'], ['jbcbb', '0,0 0.6,0 0.6,0.12 0.656,0.19 0.85,0.58 1,0.58 1,0.874 0,0.874'], ['jbcbh', '0.57,0 1,0 1,0.625 0.825,0.625 0.623,0.216 0.568,0.134']];
+        return "<g class=\"jbwalk\"><defs>".concat(C.map(function (_a) {
+            var i = _a[0], p = _a[1];
+            return "<clipPath id=\"".concat(i, "\" clipPathUnits=\"objectBoundingBox\"><polygon points=\"").concat(p, "\"/></clipPath>");
+        }).join(''), "</defs>").concat(C.map(function (_a) {
+            var i = _a[0];
+            return "<g class=\"jbp\"><image clip-path=\"url(#".concat(i, ")\" href=\"").concat(u, "\" x=\"").concat(x, "\" y=\"").concat(y, "\" width=\"").concat(f1(w2), "\" height=\"").concat(f1(h2), "\"/></g>");
+        }).join(''), "</g>");
+    }
     function rigLeg(p) { p = ((p % 1) + 1) % 1; return [16 * Math.cos(2 * Math.PI * p), p > .5 ? 42 * Math.sin(Math.PI * (p - .5) / .5) : 3]; }
     function rigAnkle(a, b) { var r = Math.PI / 180; return RIG.HIP[1] + RIG.L * Math.cos(a * r) + RIG.L * Math.cos((a - b) * r); }
+    /* QA 21:07: walking towards us the legs lift in turn (the front drawing cut at the jumper hem, each leg its own layer behind it) */
+    function frontRig(cx, lh) {
+        var wi = lh * 232 / 689, x = cx - wi / 2, I = function (u, c) { return "<image class=\"".concat(c, "\" href=\"img/map-new/").concat(u, ".webp\" x=\"").concat(f1(x), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(wi), "\" height=\"").concat(f1(lh), "\"/>"); };
+        return "<g class=\"jmo jfrig\" data-x=\"".concat(f1(x), "\" data-w=\"").concat(f1(wi), "\">").concat(I('lvf-legL', 'jfl') + I('lvf-legR', 'jfr') + I('lvf-top', 'jft'), "</g>");
+    }
+    /* QA 21:07: the carrier bag stays in her hand seen from the front and the back too */
+    function viewBag(cx, lh, ar, c) {
+        var wi = lh * ar, hx = cx - wi / 2 + .89 * wi, hy = -lh + .575 * lh, bw = lh * 140 / 600, bh = lh * 191 / 600;
+        return "<image class=\"jmo ".concat(c, "\" href=\"img/map-new/hb-bag-hand.webp\" x=\"").concat(f1(hx - 42 / 600 * lh), "\" y=\"").concat(f1(hy - 12 / 600 * lh), "\" width=\"").concat(f1(bw), "\" height=\"").concat(f1(bh), "\"/>");
+    }
     function rigSVG(cx, lh, f, bag) {
         var k = lh / 300, w = RIG.W * k, x = cx - w / 2, y = -lh, im = function (u, c, X, Y, W, H) { return "<image class=\"".concat(c, "\" href=\"").concat(u, "\" x=\"").concat(f1(X), "\" y=\"").concat(f1(Y), "\" width=\"").concat(f1(W), "\" height=\"").concat(f1(H), "\"/>"); }, I = function (u, c) { return im(u, c, x, y, w, lh); };
         var legs = I('img/mount/lw-thigh.webp', 'jrt jrfar') + I('img/mount/lw-shin.webp', 'jrs jrfar') + I('img/mount/lw-thigh.webp', 'jrt') + I('img/mount/lw-shin.webp', 'jrs');
@@ -1239,13 +1260,26 @@ window.SQE_JOURNEY = function (A) {
         if (bg)
             bg.setAttribute('transform', moving ? "rotate(".concat((Math.sin(ph * 2 * Math.PI) * 4).toFixed(2), " ").concat(f1(+bg.getAttribute('x') + (g.getAttribute('data-f') === '-1' ? 48.5 : 21) * k), " ").concat(f1(+bg.getAttribute('y') + 6 * k), ")") : '');
         g.setAttribute('data-b', moving && Math.floor(ph * 2) % 2 ? '2' : '1');
-        var bk = g.querySelectorAll('.jlwB1,.jlwB2,.jlwF1,.jlwF2');
+        var fr = g.querySelector('.jfrig');
+        if (fr) {
+            var lh0 = 300 * k, sn = Math.sin(ph * Math.PI * 2), L = fr.querySelector('.jfl'), Rr = fr.querySelector('.jfr');
+            L.setAttribute('transform', moving ? "translate(0,".concat((-Math.max(0, sn) * .045 * lh0).toFixed(2), ")") : '');
+            Rr.setAttribute('transform', moving ? "translate(0,".concat((-Math.max(0, -sn) * .045 * lh0).toFixed(2), ")") : '');
+            var cxF = +fr.getAttribute('data-x') + (+fr.getAttribute('data-w')) / 2;
+            fr.setAttribute('transform', moving ? "translate(0,".concat((-Math.abs(sn) * .006 * lh0).toFixed(2), ") rotate(").concat((sn * 1.2).toFixed(2), " ").concat(f1(cxF), " 0)") : '');
+        }
+        var bk = g.querySelectorAll('.jlwB1,.jlwB2,.jbagF,.jbagB');
         bk.forEach(function (e) { var lift = moving ? -Math.abs(Math.sin(ph * Math.PI * 2)) * 1.2 * k * 3 : 0, rot = moving ? Math.sin(ph * Math.PI * 2) * 1.6 : 0, bb = +e.getAttribute('x') + (+e.getAttribute('width')) / 2; e.setAttribute('transform', moving ? "translate(0,".concat(lift.toFixed(2), ") rotate(").concat(rot.toFixed(2), " ").concat(f1(bb), " 0)") : ''); });
         /* Britney trots beside her: quick little steps (two to each of Layla's), a waddle from foot to foot and a nod of the head */
-        var bw = g.querySelector('.jbw');
+        /* QA 21:07: Britney walks with her own feet (the Hen Bargains code walk: two foot layers under the body, the head nodding from the throat) */
+        var bw = g.querySelector('.jbwalk');
         if (bw) {
-            var q = ph * 4;
-            bw.setAttribute('transform', moving ? "translate(".concat((Math.sin(q * Math.PI) * 1.5).toFixed(2), ",").concat((-Math.abs(Math.sin(q * Math.PI)) * 2.2).toFixed(2), ") rotate(").concat((Math.sin(q * Math.PI) * 5).toFixed(2), " 0 0)") : '');
+            var ims = bw.querySelectorAll('.jbp'), i0 = bw.querySelector('image'), w2 = +i0.getAttribute('width'), h2 = +i0.getAttribute('height'), x2 = +i0.getAttribute('x'), y2 = +i0.getAttribute('y');
+            var bp = ph * RIG.STRIDE / 52, bs = Math.sin(2 * Math.PI * bp), fq = ((bp * 2) % 1 + 1) % 1;
+            ims[0].setAttribute('transform', moving ? "translate(".concat((bs * .05 * w2).toFixed(2), ",").concat((-Math.max(0, bs) * .04 * h2).toFixed(2), ")") : '');
+            ims[1].setAttribute('transform', moving ? "translate(".concat((-bs * .05 * w2).toFixed(2), ",").concat((-Math.max(0, -bs) * .04 * h2).toFixed(2), ")") : '');
+            ims[3].setAttribute('transform', moving && fq < .5 ? "rotate(6 ".concat(f1(x2 + .85 * w2), " ").concat(f1(y2 + .58 * h2), ")") : '');
+            bw.setAttribute('transform', moving ? "rotate(".concat((bs * 2).toFixed(2), " ").concat(f1(x2 + .5 * w2), " ").concat(f1(y2 + h2), ")") : '');
         }
     }
     /* advance the step cycle by the distance just walked; at most ~2.6 steps a second so a fast walk never turns into spinning legs */
@@ -1256,7 +1290,7 @@ window.SQE_JOURNEY = function (A) {
         var ph = g.__ph || 0;
         if (moving && g.__lp) {
             var d = Math.hypot(P.x - g.__lp[0], P.y - g.__lp[1]), dt = Math.max(1, Math.min(80, now - g.__lp[2])) / 1000;
-            ph += Math.min(d / (RIG.STRIDE * k), 2.6 * dt);
+            ph += Math.min(d / (RIG.STRIDE * k), 3.1 * dt);
         }
         g.__lp = [P.x, P.y, now];
         g.__ph = ph;
@@ -1266,12 +1300,12 @@ window.SQE_JOURNEY = function (A) {
         var BAG = shopToday() || /[?&]bag=1/.test(qs()), MV = function (u) { return f < 0 ? u.replace(/\.webp$/, u.indexOf('layla-front-bag') >= 0 ? '-L.webp' : '-M.webp') : u; }, /* 10:00 Monnie (moonwalk): heading left she faces left (mirrored frames, jumper print put back the right way) */ lh = mode === 'phone' ? 240 : 200, lw = lh * LAYLA_AR, bh = lh * .42;
         var lx = -lw / 2 - bh * .3 * f, bx = f > 0 ? lx + lw - 8 : lx - bh + 8, x0 = Math.min(lx, bx + bh * (f > 0 ? .07 : .24)), x1 = Math.max(lx + lw, bx + bh * (f > 0 ? .76 : .93));
         return "<ellipse cx=\"".concat(f1((x0 + x1) / 2), "\" cy=\"2\" rx=\"").concat(f1((x1 - x0) / 2 + 4), "\" ry=\"6\" fill=\"#111\" opacity=\".2\"/><g class=\"jhop\">")
-            + rigSVG(lx + lw / 2, lh, f, BAG) + [['img/mount/lv-back-a.webp', 235 / 688, 'jlwB1'], ['img/mount/lv-back-b.webp', 235 / 688, 'jlwB2'], ['img/mount/lv-front-a.webp', 232 / 689, 'jlwF1'], ['img/mount/lv-front-b.webp', 232 / 689, 'jlwF2']] /* QA 20:14: the Mount's walking-away / towards-us steps (feet clearly alternate) */.map(function (_a) {
+            + rigSVG(lx + lw / 2, lh, f, BAG) + [['img/mount/lv-back-a.webp', 235 / 688, 'jlwB1'], ['img/mount/lv-back-b.webp', 235 / 688, 'jlwB2']] /* QA 20:14: the Mount's walking-away steps (feet clearly alternate) */.map(function (_a) {
             var u = _a[0], ar = _a[1], c = _a[2];
             var wi = lh * ar;
             return "<image class=\"jmo ".concat(c, "\" href=\"").concat(u, "\" x=\"").concat(f1(lx + (lw - wi) / 2), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(wi), "\" height=\"").concat(lh, "\"/>");
-        }).join('')
-            + (britCaught() ? '' : "<g transform=\"translate(".concat(f1(bx + bh / 2), ",0) scale(").concat(f, ",1)\"><g class=\"jbw\">").concat(BRIT_FR.map(function (u, k) { var h2 = bh * .86, w2 = h2 * 1.348; return "<g class=\"jbf jbf".concat(k + 1, "\"><g class=\"jbm").concat(k + 1, "\"><image href=\"").concat(u, "\" x=\"").concat(f1(-w2 * .42), "\" y=\"").concat(f1(-h2 * .97), "\" width=\"").concat(f1(w2), "\" height=\"").concat(f1(h2), "\"/></g></g>"); }).join(''), "</g></g>") + britHungry(bx, bh, f)) + "</g>";
+        }).join('') + frontRig(lx + lw / 2, lh) + (BAG ? viewBag(lx + lw / 2, lh, 232 / 689, 'jbagF') + viewBag(lx + lw / 2, lh, 235 / 688, 'jbagB') : '')
+            + (britCaught() ? '' : "<g transform=\"translate(".concat(f1(bx + bh / 2), ",0) scale(").concat(f, ",1)\">").concat(britWalk(bh), "<g class=\"jbw\">").concat(BRIT_FR.map(function (u, k) { var h2 = bh * .86, w2 = h2 * 1.348; return "<g class=\"jbf jbf".concat(k + 1, "\"><g class=\"jbm").concat(k + 1, "\"><image href=\"").concat(u, "\" x=\"").concat(f1(-w2 * .42), "\" y=\"").concat(f1(-h2 * .97), "\" width=\"").concat(f1(w2), "\" height=\"").concat(f1(h2), "\"/></g></g>"); }).join(''), "</g></g>") + britHungry(bx, bh, f)) + "</g>";
     }
     function pair(Hn, mode) {
         var dim = '';
@@ -1455,12 +1489,41 @@ window.SQE_JOURNEY = function (A) {
     }
     function placePair(g, mode, P, hop) {
         g.__s = P.s;
-        g.setAttribute('transform', "translate(".concat(f1(P.x), ",").concat(f1(P.y), ")"));
-        if (P.m && +g.getAttribute('data-f') !== P.m) {
+        var mv = g.classList.contains('jmoving'), now = (typeof performance !== 'undefined' ? performance.now() : Date.now());
+        /* QA 21:07: no flipping while seen from the front or back; a flip side-on keeps Layla where she is and she eases back onto the path */
+        if (P.m && +g.getAttribute('data-f') !== P.m && !(mv && (g.classList.contains('jback') || g.classList.contains('jfront')))) {
+            var o0 = laylaOX(g);
             g.setAttribute('data-f', P.m);
             g.innerHTML = pairInner(mode, P.m);
+            g.__bb = null;
+            if (mv)
+                g.__dx = (g.__dx || 0) + o0 - laylaOX(g);
         }
-        rigStep(g, P); /* 19:36 Monnie: natural walk, no hopping (hop is ignored) */
+        if (!mv)
+            g.__dx = 0;
+        else if (g.__dx) {
+            g.__dx *= Math.exp(-Math.max(0, Math.min(80, now - (g.__dt || now))) / 260);
+            if (Math.abs(g.__dx) < .3)
+                g.__dx = 0;
+        }
+        g.__dt = now;
+        var X = P.x + (g.__dx || 0);
+        /* QA 21:07: never half outside the map's border (the path hugs the right edge between stops 3 and 4) */
+        try {
+            var sv = g.ownerSVGElement, vb = sv && sv.viewBox.baseVal;
+            if (vb && vb.width) {
+                if (!g.__bb) {
+                    var b = g.getBBox();
+                    g.__bb = [b.x, b.x + b.width];
+                }
+                var lo = vb.x + 14 - g.__bb[0], hi = vb.x + vb.width - 14 - g.__bb[1];
+                if (hi > lo)
+                    X = Math.max(lo, Math.min(hi, X));
+            }
+        }
+        catch (e) { }
+        g.setAttribute('transform', "translate(".concat(f1(X), ",").concat(f1(P.y), ")"));
+        rigStep(g, { x: X, y: P.y }); /* 19:36 Monnie: natural walk, no hopping (hop is ignored) */
     }
     /* put the pair at its spot; when it has moved on since last time, walk it along the path from the old spot with little hops
        (once, when it scrolls into view; not under reduced motion). Preview: ?walkfrom=N (start), ?henstop=N (end); previews never touch storage. */
@@ -1727,9 +1790,9 @@ window.SQE_JOURNEY = function (A) {
                 g_2.__out = null;
                 var D1_1 = same ? 0 : d1;
                 /* one brisk walk: along the path, then up the grass to the entrance (14:58 Monnie: all the way, quickly; seen from the back going up) */
-                var total_1 = d0_1 + D1_1 + d2_1, dur_1 = Math.min(4200, Math.max(900, total_1 / (mode_1 === "phone" ? .27 : .23))); /* 19:36 Monnie: a brisk but natural walking pace, so her steps match the ground */
+                var total_1 = d0_1 + D1_1 + d2_1, dur_1 = Math.min(5500, Math.max(900, total_1 / (mode_1 === "phone" ? .27 : .23))); /* 19:36 Monnie: a brisk but natural walking pace, so her steps match the ground */
                 var t0_2 = 0, lx_1 = null, ly_1 = null;
-                var face_1 = function (vx, vy) { var up = vy < -Math.abs(vx) * .7, dn = vy > Math.abs(vx) * .7; g_2.classList.toggle('jback', up); g_2.classList.toggle('jfront', dn); };
+                var face_1 = function (vx, vy) { var a = Math.abs(vx), wb = g_2.classList.contains('jback'), wf = g_2.classList.contains('jfront'), up = vy < -a * (wb ? .25 : .35), dn = vy > a * (wf ? .25 : .35); g_2.classList.toggle('jback', up); g_2.classList.toggle('jfront', dn && !up); }; /* QA 21:07: on slopes she turns to the back or front view, so her feet don't skate */
                 var done_1 = function () { /* 16:12 Monnie: she must keep facing the door as she goes in, so the walking pose (from the back when going up) stays until the page opens */ setTimeout(function () { if (!me_1.stop && /^#\/palace/.test(location.hash)) {
                     me_1.stop = 1;
                     location.hash = href_1;
@@ -66659,13 +66722,15 @@ window.SQE_SCENE = function(A){
     if (bad) refit(); }, 1500);
 })();
 
-/* QA fault 13 (20 Nov, redone 21:00 for Monnie): Layla and Britney in the sweet shop, to scale (the door is 1.25 x her height).
+/* QA fault 13 (20 Nov, redone 21:00 for Monnie; walk re-check 23:00): Layla and Britney in the sweet shop, to scale (the door is 1.25 x her height).
    Shop front: she walks along the pavement with the jointed stride Hen Bargains uses (img/mount/lw-thigh/shin/torso, same hip/knee maths),
    turns her back to us at the door and waits; tapping the door, she walks through the doorway (back view, clipped by the door frame) and Britney follows.
    Entrance hall: every time it opens they walk in from the front (back view) and stop on the floor. Britney is hen-sized beside her.
+   The walk is a timeline kept outside the page (TL), so a re-render or resize picks it up where it was; a direct load or reload plays a short arrival.
+   She turns with a quick squash and crossfade (there is no three-quarter frame). In the hall she walks to the glowing Next door and stands facing it.
    Under the labels and pins, never in the way of a tap (pointer-events:none). Reduced motion: end poses only. */
 (function(){ if (typeof document === 'undefined' || !window.SQE_ROOMS_ON) return;
-  var RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches, seen = {}, goIn = 0, RAF = {};
+  var RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches, TL = {}, goIn = 0, nav = 0;
   var FIG = 277 / 300, HEN = 0.3; /* the rig's feet sit at 277 of its 300-high box; a hen is about 0.3 of Layla's height */
   var css = document.createElement('style'); css.id = 'scn-lbpair-css';
   css.textContent = [
@@ -66676,8 +66741,8 @@ window.SQE_SCENE = function(A){
     '.lb-rig .lb-bb{position:absolute;inset:0;transform-origin:50% 100%}.lb-pair.lb-mstand .lb-bb{animation:lbBreath 4.4s ease-in-out infinite}',
     '.lb-back{position:absolute;left:0;bottom:0;height:' + (FIG * 100).toFixed(2) + '%;width:0;display:none}',
     '.lb-back img{position:absolute;bottom:0;height:100%;width:auto;max-width:none;transform:translateX(-50%);opacity:0}',
-    '.lb-pair.lb-mside .lb-rig,.lb-pair.lb-mstand .lb-rig{display:block}.lb-pair.lb-mback .lb-back,.lb-pair.lb-mwait .lb-back{display:block}',
-    '.lb-back{transform-origin:50% 100%}.lb-pair.lb-mwait .lb-k1,.lb-pair.lb-mback .lb-k1{opacity:1}.lb-pair.lb-mback.lb-fb .lb-k1{opacity:0}.lb-pair.lb-mback.lb-fb .lb-k2{opacity:1}',
+    '.lb-pair.lb-mside .lb-rig,.lb-pair.lb-mstand .lb-rig,.lb-pair.lb-mturn .lb-rig{display:block}.lb-pair.lb-mback .lb-back,.lb-pair.lb-mwait .lb-back,.lb-pair.lb-mturn .lb-back{display:block}',
+    '.lb-back{transform-origin:50% 100%}.lb-pair.lb-mwait .lb-k1,.lb-pair.lb-mback .lb-k1,.lb-pair.lb-mturn .lb-k1{opacity:1}.lb-pair.lb-mback.lb-fb .lb-k1{opacity:0}.lb-pair.lb-mback.lb-fb .lb-k2{opacity:1}',
     '.lb-b{position:absolute;bottom:0;height:' + (FIG * HEN * 100).toFixed(2) + '%;width:0}',
     '.lb-b img{position:absolute;bottom:0;height:100%;width:auto;max-width:none;transform:translateX(-50%);opacity:0;transform-origin:50% 100%}.lb-b.flip img{transform:translateX(-50%) scaleX(-1)}',
     '.lb-b{transform-origin:50% 100%}.lb-b .lb-b1{opacity:1}',
@@ -66711,65 +66776,91 @@ window.SQE_SCENE = function(A){
   /* p = {x: Layla's centre, fy: her feet (from the top), fh: her height, all % of the box she is in; bx: Britney's centre offset in Layla heights; bf: Britney faces left} */
   function put(el, p){ var bh = p.fh / FIG; el.style.left = p.x.toFixed(3) + '%'; el.style.bottom = (100 - p.fy).toFixed(3) + '%'; el.style.height = bh.toFixed(3) + '%';
     var b = el.querySelector('.lb-b'), H = el.parentNode ? el.parentNode.clientHeight * bh / 100 * FIG : 100; b.style.left = (p.bx * H).toFixed(1) + 'px'; b.classList.toggle('flip', !!p.bf); }
-  function mode(el, m){ el.classList.remove('lb-mside', 'lb-mback', 'lb-mwait', 'lb-mstand', 'lb-fb'); el.classList.add(m); if (m === 'lb-mstand') legs(el, 0, false); if (m !== 'lb-mback' && m !== 'lb-mside') steps(el, 0, 0, false); }
+  function mode(el, m){ if (el.getAttribute('data-m') === m) return; el.setAttribute('data-m', m);
+    el.classList.remove('lb-mside', 'lb-mback', 'lb-mwait', 'lb-mstand', 'lb-mturn', 'lb-fb'); el.classList.add(m);
+    var rg = el.querySelector('.lb-rig'), bk = el.querySelector('.lb-back'); rg.style.opacity = rg.style.transform = bk.style.opacity = '';
+    if (m === 'lb-mstand' || m === 'lb-mturn') legs(el, 0, false); if (m !== 'lb-mback' && m !== 'lb-mside') steps(el, 0, 0, false); }
   function lerp(a, b, k){ var o = {}; for (var n in b) o[n] = typeof b[n] === 'number' && typeof a[n] === 'number' ? a[n] + (b[n] - a[n]) * k : b[n]; return o; }
-  /* move from a to b over ms; the side walk drives the legs from the distance walked, so her feet never slide */
-  /* QA walk audit: the back walk and Britney step from the distance walked, scaled to the current height (a step of 0.125 x her height up the floor
-     is about one real stride at that depth: 3-4 steps across the hall). Back view: the Mount's two stepping frames (lv-back-a/b), one per step,
-     with the rise and sway in between (contact, up, contact, up). Britney: two hen steps per Layla step, each a small arc with a head-bob tilt. */
+  /* back view: the Mount's two stepping frames (lv-back-a/b) swap every 275 ms, with the rise and sway in between (contact, up, contact, up).
+     Britney: two hen steps per Layla step, each a small arc with a head-bob tilt. */
+  var BSTEP = 275;
   function steps(el, ls, hs, moving){ var bk = el.querySelector('.lb-back'), hb = el.querySelector('.lb-b');
-    if (!moving){ bk.style.transform = ''; hb.style.transform = ''; return; }
+    if (!moving){ bk.style.transform = ''; hb.style.transform = ''; el.classList.remove('lb-fb'); return; }
     var sub = ls % 1; el.classList.toggle('lb-fb', Math.floor(ls) % 2 === 1);
     bk.style.transform = 'translateY(' + (-Math.sin(Math.PI * sub) * 1.4).toFixed(2) + '%) rotate(' + (Math.sin(Math.PI * ls) * 1.4).toFixed(2) + 'deg)';
     var hsub = hs % 1; hb.style.transform = 'translateY(' + (-Math.sin(Math.PI * hsub) * 9).toFixed(2) + '%) rotate(' + (Math.sin(2 * Math.PI * hsub) * (hb.classList.contains('flip') ? -5 : 5)).toFixed(2) + 'deg)'; }
-  function walk(el, key, a, b, ms, side, done){ cancelAnimationFrame(RAF[key]); var t0 = 0, box = el.parentNode, ls = 0, hs = 0, last = null;
-    function f(now){ if (!el.isConnected) return; if (!t0) t0 = now; var k = Math.min(1, (now - t0) / ms), p = lerp(a, b, k); put(el, p);
-      var hpx = box.clientHeight * p.fh / 100, x = p.x / 100 * box.clientWidth, y = p.fy / 100 * box.clientHeight;
-      if (last){ var dp = Math.sqrt((x - last[0]) * (x - last[0]) + (y - last[1]) * (y - last[1])); ls += dp / ((side ? 0.38 : 0.125) * hpx); hs += dp / ((side ? 0.19 : 0.0625) * hpx); } last = [x, y];
-      if (side) legs(el, Math.abs(p.x - a.x) / 100 * box.clientWidth / (hpx / FIG) * 300, k < 1);
-      steps(el, ls, hs, k < 1);
-      if (k < 1) RAF[key] = requestAnimationFrame(f); else if (done) done(); }
-    RAF[key] = requestAnimationFrame(f); }
+  /* side walk: the body moves exactly as far as the planted foot pushes it back (same hip/knee maths as legs()), so a foot on the pavement never skates;
+     her speed rises and falls with the stride. foot(u) is the planted ankle's distance ahead of the hip at stride phase u (0-0.5). */
+  function foot(u){ var r = Math.PI / 180, a = 16 * Math.cos(2 * Math.PI * u); return LEG * (Math.sin(a * r) + Math.sin((a - 3) * r)); }
+  var HALF = foot(0) - foot(0.5);
+  function gone(ph){ var n = Math.floor(ph / 0.5); return n * HALF + foot(0) - foot(ph - n * 0.5); } /* rig units walked by stride phase ph */
+  /* a timeline: segments {m: side | back | turn | hold, a, b, ms, to}; render(el, tl, t) draws the pose at that moment, whatever element it is given */
+  function total(tl){ return tl.segs.reduce(function(s, g){ return s + (g.ms || 0); }, 0); }
+  function render(el, tl, tnow){ var box = el.parentNode, t = tnow - tl.t0, i = 0, g;
+    if (!box || !box.clientHeight) return true;
+    for (; i < tl.segs.length; i++){ g = tl.segs[i]; if (g.m === 'hold' || t < g.ms) break; t -= g.ms; }
+    if (g.m === 'hold'){ mode(el, g.to); put(el, g.a); return false; }
+    var k = Math.max(0, Math.min(1, t / g.ms)), W = box.clientWidth, Hh = box.clientHeight;
+    if (g.m === 'side'){ mode(el, 'lb-mside');
+      var fh = (g.a.fh + g.b.fh) / 2, hpx = Hh * fh / 100, unit = hpx / FIG / 300, all = Math.abs(g.b.x - g.a.x) / 100 * W / (2 * HALF * unit), ph = all * k;
+      var p = lerp(g.a, g.b, k); p.x = g.a.x + (g.b.x - g.a.x) * gone(ph) / gone(all); put(el, p);
+      legs(el, ph * STRIDE, true); steps(el, 0, Math.abs(p.x - g.a.x) / 100 * W / (0.19 * hpx), true); return true; }
+    if (g.m === 'back'){ mode(el, 'lb-mback'); put(el, lerp(g.a, g.b, k)); steps(el, t / BSTEP, t / (BSTEP / 2), true); return true; }
+    /* turn: a quick squash to a sliver and back, crossfading from one view to the other at the narrowest point */
+    mode(el, 'lb-mturn'); put(el, g.a); var s = 0.18 + 0.82 * Math.abs(1 - 2 * k), o = Math.max(0, Math.min(1, (k - 0.4) / 0.2)), rg = el.querySelector('.lb-rig'), bk = el.querySelector('.lb-back');
+    var ob = g.to === 'back' ? o : 1 - o; bk.style.opacity = ob.toFixed(2); rg.style.opacity = (1 - ob).toFixed(2);
+    rg.style.transform = 'translateX(-50%) scaleX(' + s.toFixed(3) + ')'; bk.style.transform = 'scaleX(' + s.toFixed(3) + ')'; return true; }
+  function now(){ return (window.performance && performance.now) ? performance.now() : Date.now(); }
+  function start(segs){ var tl = {segs: segs, t0: now()}; if (RM) tl.t0 -= total(tl) + 1; return tl; }
   /* the shop front picture (1376 x 768): the door leaf runs x 70.3-84 %, y 32-88 %, the step at 89 %. Door 56 % high, so Layla is 56 / 1.25 = 44.8 % */
-  var D = {l: 70.3, t: 32, w: 13.7, b: 89}, LH = 44.8;
-  var OUT = {start: {x: 8, fy: 96, fh: LH * 1.04, bx: 0.33}, door: {x: 77.1, fy: 95, fh: LH * 1.03, bx: 0.33}, step: {x: 77.1, fy: 89, fh: LH, bx: 0.3}};
+  var D = {l: 70.3, t: 32, w: 13.7, b: 89}, LH = 44.8, TURN = 180;
+  var OUT = {start: {x: 8, fy: 96, fh: LH * 1.04, bx: 0.33}, near: {x: 50, fy: 95.4, fh: LH * 1.035, bx: 0.33}, door: {x: 77.1, fy: 95, fh: LH * 1.03, bx: 0.33}, step: {x: 77.1, fy: 89, fh: LH, bx: 0.3}};
+  function outTL(){ var a = nav ? OUT.start : OUT.near; /* a direct load or reload: a short arrival from mid-pavement */
+    return start([{m: 'side', a: a, b: OUT.door, ms: 4600 * (OUT.door.x - a.x) / (OUT.door.x - OUT.start.x)}, {m: 'turn', a: OUT.door, to: 'back', ms: TURN},
+      {m: 'back', a: OUT.door, b: OUT.step, ms: 900}, {m: 'hold', a: OUT.step, to: 'lb-mwait'}]); }
   /* inside the door box (coordinates of the .lb-clip): from the step into the hall behind */
   function inDoor(p){ return {x: (p.x - D.l) / D.w * 100, fy: (p.fy - D.t) / (D.b - D.t) * 100, fh: p.fh / (D.b - D.t) * 100, bx: p.bx, bf: p.bf}; }
   var IN0 = inDoor(OUT.step), IN1 = inDoor({x: 77.1, fy: 80, fh: LH * 0.62, bx: 0.3});
   /* the hall picture: back-wall doors are 21 % high at the floor line (73 %), the front side doors 48 % high at 99 %, so a door at feet height y is 21 + 1.04 (y - 73) and Layla is that / 1.25 */
   function hallH(fy){ return (21 + 1.04 * (fy - 73)) / 1.25; }
-  var HALL = {start: {x: 50, fy: 108, fh: hallH(108), bx: 0.34}, end: {x: 50, fy: 92, fh: hallH(92), bx: 0.36, bf: 1}};
+  function hallTL(art){ var a = {x: 50, fy: 108}, n = art.querySelector(':scope > .hub-hs.next'), segs;
+    if (n && n.offsetWidth){ var A = art.getBoundingClientRect(), R = n.getBoundingClientRect(), cx = (R.left + R.width / 2 - A.left) / A.width * 100, bot = (R.bottom - A.top) / A.height * 100;
+      /* the glowing door: walk up to it and stand facing it (back view). A door upstairs on the balcony: stop at the foot of the balcony below it */
+      var fy = bot < 50 ? 82 : Math.min(97, bot + 2), x = Math.max(10, Math.min(90, cx)), side = x > 70 ? -1 : 1;
+      var b = {x: x, fy: fy, fh: hallH(fy), bx: 0.36 * side, bf: side > 0 ? 1 : 0};
+      a.bx = 0.34 * side; a.bf = b.bf; a.fh = hallH(a.fy);
+      var d = Math.sqrt((b.x - a.x) * (b.x - a.x) + 2.6 * (b.fy - a.fy) * (b.fy - a.fy)), ms = Math.max(1500, Math.min(4200, d * 85));
+      if (!nav){ a = lerp(a, b, 0.55); a.bf = b.bf; ms = Math.max(1100, ms * 0.45); } /* a direct load or reload: a short arrival */
+      segs = [{m: 'back', a: a, b: b, ms: ms}, {m: 'hold', a: b, to: 'lb-mwait'}]; }
+    else { var e = {x: 50, fy: 92, fh: hallH(92), bx: 0.36, bf: 1}; a.fh = hallH(a.fy); a.bx = 0.34; if (!nav) a = lerp(a, e, 0.5);
+      /* every room done, no glowing door: walk in, turn to face us, stand */
+      segs = [{m: 'back', a: a, b: e, ms: nav ? 2100 : 1100}, {m: 'turn', a: e, to: 'front', ms: TURN}, {m: 'hold', a: e, to: 'lb-mstand'}]; }
+    return start(segs); }
   function view(){ var h = String(location.hash);
     if (/^#\/scene\/blp\/hall\b/.test(h)) { var a = document.querySelector('.scn-art.hub-art'); return a ? {k: 'hall', art: a} : null; }
     if (/^#\/scene\/blp\/business-structures(\/outside)?(\?|$)/.test(h)) { var b = document.querySelector('.scn-art:not(.hub-art)'); return b && b.querySelector('.scn-hs.door') ? {k: 'out', art: b} : null; }
     return null; }
   function make(){ var el = document.createElement('span'); el.className = 'lb-pair'; el.setAttribute('aria-hidden', 'true'); el.innerHTML = pairHTML(); return el; }
-  function mount(){ var v = view(); if (!v) return; var art = v.art, img = art.querySelector(':scope > img'); if (!img || !art.clientHeight) return;
-    var after = art.querySelector(':scope > .scn-amblayer') || img;
-    if (v.k === 'hall'){
-      var eh = art.querySelector(':scope > .lb-pair'); if (eh){ if (!RAF.hall && eh.classList.contains('lb-mstand')) put(eh, HALL.end); return; }
-      eh = make(); eh.style.zIndex = '0'; after.insertAdjacentElement('afterend', eh);
-      if (seen.hall || RM){ mode(eh, 'lb-mstand'); put(eh, HALL.end); seen.hall = 1; return; }
-      seen.hall = 1; mode(eh, 'lb-mback'); put(eh, HALL.start);
-      walk(eh, 'hall', HALL.start, HALL.end, 2100, false, function(){ RAF.hall = 0; mode(eh, 'lb-mstand'); put(eh, HALL.end); });
-      return; }
-    var entering = art.classList.contains('zoom') || Date.now() - goIn < 2500, clip = art.querySelector(':scope > .lb-clip'), el = art.querySelector(':scope > .lb-pair');
-    if (entering){ if (clip) return; if (el) el.parentNode.removeChild(el);
-      clip = document.createElement('span'); clip.className = 'lb-clip'; clip.style.cssText = 'left:' + D.l + '%;top:' + D.t + '%;width:' + D.w + '%;height:' + (D.b - D.t) + '%';
-      el = make(); clip.appendChild(el); art.appendChild(clip); mode(el, 'lb-mback'); put(el, IN0);
-      if (RM) return; walk(el, 'in', IN0, IN1, 1500, false, null); return; }
-    if (el){ if (!RAF.out && el.classList.contains('lb-mwait')) put(el, OUT.step); return; }
-    el = make(); after.insertAdjacentElement('afterend', el);
-    if (seen.out || RM){ mode(el, 'lb-mwait'); put(el, OUT.step); seen.out = 1; return; }
-    seen.out = 1; mode(el, 'lb-mside'); put(el, OUT.start);
-    walk(el, 'out', OUT.start, OUT.door, 4600, true, function(){ if (!el.isConnected) return; mode(el, 'lb-mback');
-      walk(el, 'out', OUT.door, OUT.step, 900, false, function(){ RAF.out = 0; if (el.isConnected) mode(el, 'lb-mwait'); }); });
-  }
-  var q = 0; function soon(){ if (q) return; q = 1; requestAnimationFrame(function(){ q = 0; try { mount(); } catch(e){} }); }
-  addEventListener('hashchange', function(){ var v = String(location.hash); if (!/^#\/scene\/blp\/hall\b/.test(v)) seen.hall = 0; else if (goIn) seen.hall = 0; /* through the door: the hall always opens with them walking in */
-    if (!/^#\/scene\/blp\/business-structures(\/outside)?(\?|$)/.test(v)) seen.out = 0; goIn = 0; soon(); });
-  document.addEventListener('click', function(e){ var d = e.target && e.target.closest && e.target.closest('[data-scn=door]'); if (d) { goIn = Date.now(); setTimeout(soon, 0); } }, true);
-  addEventListener('resize', function(){ [].forEach.call(document.querySelectorAll('.lb-pair'), function(p){ if (p.parentNode) p.parentNode.removeChild(p); }); soon(); });
+  /* find (or make again, after a re-render) the pair for this view and draw it at this moment of its timeline; true while it is still moving */
+  function mount(){ var v = view(); if (!v) return false; var art = v.art, img = art.querySelector(':scope > img'); if (!img || !art.clientHeight) return false;
+    var after = art.querySelector(':scope > .scn-amblayer') || img, el;
+    if (v.k === 'hall'){ el = art.querySelector(':scope > .lb-pair');
+      if (!el){ el = make(); el.style.zIndex = '0'; after.insertAdjacentElement('afterend', el); }
+      if (!TL.hall) TL.hall = hallTL(art); return render(el, TL.hall, now()); }
+    var entering = art.classList.contains('zoom') || Date.now() - goIn < 2500, clip = art.querySelector(':scope > .lb-clip');
+    el = art.querySelector(':scope > .lb-pair');
+    if (entering){ if (el) el.parentNode.removeChild(el);
+      if (!clip){ clip = document.createElement('span'); clip.className = 'lb-clip'; clip.style.cssText = 'left:' + D.l + '%;top:' + D.t + '%;width:' + D.w + '%;height:' + (D.b - D.t) + '%'; art.appendChild(clip); }
+      el = clip.querySelector('.lb-pair'); if (!el){ el = make(); clip.appendChild(el); }
+      if (!TL['in']) TL['in'] = start([{m: 'back', a: IN0, b: IN1, ms: 1500}, {m: 'hold', a: IN1, to: 'lb-mwait'}]); return render(el, TL['in'], now()); }
+    if (!el){ el = make(); after.insertAdjacentElement('afterend', el); }
+    if (!TL.out) TL.out = outTL(); return render(el, TL.out, now()); }
+  var q = 0; function soon(){ if (q) return; q = 1; requestAnimationFrame(function(){ q = 0; var busy = false; try { busy = mount(); } catch(e){} if (busy) soon(); }); }
+  addEventListener('hashchange', function(){ var v = String(location.hash); nav = 1;
+    if (!/^#\/scene\/blp\/hall\b/.test(v) || goIn) TL.hall = null; /* through the door (or back from a room): the hall always opens with them walking in */
+    if (!/^#\/scene\/blp\/business-structures(\/outside)?(\?|$)/.test(v)) TL.out = null; TL['in'] = null; goIn = 0; soon(); });
+  document.addEventListener('click', function(e){ var d = e.target && e.target.closest && e.target.closest('[data-scn=door]'); if (d) { goIn = Date.now(); nav = 1; TL['in'] = null; setTimeout(soon, 0); } }, true);
+  addEventListener('resize', soon);
   try { new MutationObserver(soon).observe(document.documentElement, {childList: true, subtree: true}); } catch(e){ setInterval(soon, 500); }
   soon();
 })();
@@ -66837,7 +66928,7 @@ window.SQE_TOWN = function(A){
     '.hbr,.hbr img,.hbr-legs,.hbr svg{position:absolute;left:0;top:0;width:100%;height:100%;transform-origin:0 0;max-width:none}.hbr-legs{transform-origin:50% 50%}.hbr .far{filter:brightness(.72)}.hbr .tl,.hbin-layla.fl .hbr .tr,.hbr .gl,.hbin-layla.fl .hbr .gr{display:none}.hbin-layla.fl .hbr .tl,.hbin-layla.fl .hbr .gl{display:block}' +
     '.hbin-layla .lbr{position:absolute;bottom:0;height:20%;aspect-ratio:694/500;left:-46%;z-index:2;transform-origin:50% 100%}.hbin-layla.fl .lbr{left:auto;right:-46%}' +
     /* Britney walks in code (QA 20:14, no new art): her own drawing cut into body, head and two feet; the feet step in turn and her head bobs, driven by the distance walked */
-    '.lbr img{position:absolute;left:0;top:0;width:100%;height:100%;max-width:none}.lbr .bb{clip-path:polygon(0 0,60% 0,60% 12%,65.6% 19%,85% 58%,100% 58%,100% 87.4%,0 87.4%)}.lbr .bh{clip-path:polygon(58% 0,100% 0,100% 62%,83% 62%,63.5% 21%,58% 13%);transform-origin:85% 58%}' +
+    '.lbr img{position:absolute;left:0;top:0;width:100%;height:100%;max-width:none}.lbr .bb{clip-path:polygon(0 0,60% 0,60% 12%,65.6% 19%,85% 58%,100% 58%,100% 87.4%,0 87.4%)}.lbr .bh{clip-path:polygon(57% 0,100% 0,100% 62.5%,82.5% 62.5%,62.3% 21.6%,56.8% 13.4%);transform-origin:85% 58%}' +
     '.lbr .f1{clip-path:inset(87.4% 49% 0 38%)}.lbr .f2{clip-path:inset(87.4% 34% 0 53.5%)}.lbr:not(.walk) .bh{animation:hbhpeck 4.2s steps(1,end) infinite}@keyframes hbhpeck{0%,70%,100%{transform:none}74%{transform:rotate(12deg)}80%{transform:none}86%{transform:rotate(-5deg)}}' +
     '.hblid{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;overflow:visible}.hblid g{opacity:0;animation:hbblink 4.6s linear infinite}@keyframes hbblink{0%,93.9%{opacity:0}94%,96.9%{opacity:1}97%,100%{opacity:0}}@keyframes hbbreath{0%,100%{transform:none}50%{transform:scaleY(1.008)}}' +
     '.hbi.ppl{transform:none;translate:-50% 0;animation:hbbreathp 4.8s ease-in-out infinite;transform-origin:50% 100%}.hbi.ppl img{transition:none}.hbi.ppl:hover img,.hbi.ppl:focus-visible img,.hbi.ppl.on img{transform:none}.hbi.ppl:hover{filter:drop-shadow(0 0 6px #fff)}@keyframes hbbreathp{0%,100%{scale:1 1}50%{scale:1 1.008}}' +
@@ -67356,7 +67447,7 @@ window.SQE_TOWN = function(A){
   /* Job Centre: Layla walks in from the left at the Hen Bargains pace and stops on both feet */
   function jcWalk(){
     var el = document.getElementById('jcLay'); if (!el || el.getAttribute('data-w')) return; el.setAttribute('data-w', '1');
-    var a = -12, b = 8.8, t0 = 0, sc = el.parentNode, dur;
+    var a = -12, b = 8.3, t0 = 0, sc = el.parentNode, dur;
     try { if (matchMedia('(prefers-reduced-motion: reduce)').matches){ el.style.left = b + '%'; rigPose(el, 0, false); return; } } catch(e){}
     function frame(now){
       if (!el.isConnected) return;
@@ -72841,7 +72932,7 @@ var BOSS_KICK_LINE = "Smell me, Krell me!";
 function bossHomeView(){
   return '<div class="cbag bossg"><div class="cbatop"><a class="cbaback" href="#/town/butcher">‹ Bert\'s Butchers</a><span class="cbattl">Britney is coming home</span><span class="spill coin">' + cbaCoin() + ' <b>' + cbaS().coins + '</b></span></div>' +
     '<div class="arena bhandback" role="img" aria-label="Bert hands Britney back, she flies to Layla, and Layla kicks Bert away"><span class="bdoor" aria-hidden="true"></span>' +
-    '<span class="bhb-lay"><img class="w" src="img/layla-walk-1.webp" alt=""><img class="k" src="img/layla-kick.webp" alt=""><img class="s0" src="img/layla-step3.webp" alt=""><img class="s3" src="img/layla-step3.webp" alt=""><img class="wa" src="img/layla-walk-1.webp" alt=""><img class="wb" src="img/layla-walk-2.webp" alt="">' + (window.SQE_RIG ? '<span class="bhrig">' + window.SQE_RIG.html() + '</span>' : '') + '<img class="hd" src="img/britney/set/happy.webp" alt=""><b class="bhb-say">' + esc(BOSS_KICK_LINE) + '</b><b class="bhb-say bhb-beak">You can\'t beat the Beaker!!!</b></span>' +
+    '<span class="bhb-lay"><img class="w" src="img/layla-walk-1.webp" alt=""><img class="k" src="img/layla-kick.webp" alt=""><img class="s0" src="img/layla-step3.webp" alt=""><img class="s3" src="img/layla-step3.webp" alt=""><img class="wa" src="img/layla-walk-1.webp" alt=""><img class="wb" src="img/layla-walk-2.webp" alt="">' + (window.SQE_RIG ? '<span class="bhrig">' + window.SQE_RIG.html() + '</span>' : '') + '<img class="hd" src="img/britney/set/happy.webp" alt=""><b class="bhb-say">' + esc(BOSS_KICK_LINE) + '</b><b class="bhb-say bhb-beak">You can\'t beat the Beaker!!!</b><b class="bhb-say bhb-beak bhb-beak2" aria-hidden="true">You can\'t beat the Beaker!!!</b></span>' +
     '<span class="bhb-bert"><span class="bb"><img src="' + BERT_RUN + '" alt=""></span><b class="bshout">Fine! Take your hen!</b></span>' +
     '<span class="bhb-brit"><img class="f" src="img/britney/fly1.webp" alt=""><img class="s" src="img/britney/set/happy.webp" alt=""></span></div>' +
     '<div class="bsay"><p>Bert has to hand Britney back. When he tries to come closer, Layla kicks him back into his shop, punches the air, and Britney flies up onto her head. Britney is safe!</p></div>' +
