@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120141853";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120143115";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -4096,6 +4096,37 @@ details.podsubj[open] .podchev{transform:rotate(-135deg);margin-top:6px}
 /* 20 Nov 14:25 cards sidebar: only the subject being studied is highlighted, in its own stop colours */
 .side details.swside.stopside{background:var(--stp,#FFF5FA)}
 .side details.swside.stopside > summary.subj{background:repeating-linear-gradient(90deg,var(--stl,#FFD6E6) 0 14px,var(--stp,#FFF5FA) 14px 28px)}
+/* 20 Nov 14:35 card tidy pass 3 (review fixes, gen/objs6.py) */
+.land-real.land-pier .flash .face,.land-real.land-pier .flash .back{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%22370 16 214 116%22 preserveAspectRatio=%22none%22%3E%3Crect x=%22490%22 y=%2222%22 width=%2288%22 height=%22104%22 fill=%22%237FC8F8%22 stroke=%22%23FFFFFF%22 stroke-width=%223%22 stroke-dasharray=%226 5%22/%3E%3Crect x=%22490%22 y=%2222%22 width=%2288%22 height=%22104%22 fill=%22none%22 stroke-width=%222%22 stroke=%22%232A1B2E%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%22534%22 cy=%2258%22 r=%2214%22 fill=%22%23FFD43B%22/%3E%3Cpath d=%22M506,98 q10-12 20 0 t20 0 t20 0%22 fill=%22none%22 stroke=%22%23FFFFFF%22 stroke-width=%223%22/%3E%3Ccircle cx=%22452%22 cy=%2280%22 r=%2240%22 fill=%22none%22 stroke=%22%233A3F7A%22 stroke-width=%222.5%22/%3E%3Cpath d=%22M380,64 q14-10 28 0 t28 0 t28 0 M380,96 q14-10 28 0 t28 0 t28 0%22 fill=%22none%22 stroke=%22%233A3F7A%22 stroke-width=%222.5%22/%3E%3C/svg%3E") right 2.6% top 14px/200px 108px no-repeat,url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22 preserveAspectRatio=%22none%22%3E%3Crect x=%223%22 y=%223%22 width=%22594%22 height=%22334%22 rx=%226%22 fill=%22%23FFFDF5%22 stroke-width=%223%22 stroke=%22%232A1B2E%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M430,150 V316%22 stroke=%22%23C9B9A0%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M448,200 H578 M448,240 H578 M448,280 H578%22 stroke=%22%23C9B9A0%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3C/svg%3E") 0 0/100% 100% no-repeat!important}
+@media (max-width:640px){.land-real.land-pier .flash .face,.land-real.land-pier .flash .back{background-size:130px 70px,100% 100%!important}}
+.land-real:not(.land-tkt) .flash.revealed .face.back:not(.blen-s):not(.blen-m) .notes{font-size:1.08em}
+.land-real.land-tkt .flash .face.back{padding-bottom:30px!important}
+.land-real.land-library .flash .face > .ftop{top:7.5%!important}
+.land-real.land-airport .flash .face > .ftop{left:31.5%!important}
+.land-real.land-aquarium .flash .face{padding-left:14%!important;padding-right:31.5%!important}.land-real.land-aquarium .flash .face > .ftop{left:14%!important}
+.land-real.land-farm .flash .face > .ftop{top:27.5%!important}.land-real.land-farm .flash .face{--pt:39%}
+.land-real.land-botanic-garden .flash .face{--pb:35%}.land-real.land-botanic-garden .flash .face > .ftop{top:4.5%!important}
+.land-real.land-lighthouse .flash .face > .ftop{top:8.5%!important}
+.land-real.land-botanic-garden .flash .face.back{--pb:28%}
+.land-real.land-botanic-garden .flash.revealed.blen-l .inner{min-height:570px}.land-real.land-botanic-garden .flash.revealed.blen-xl .inner{min-height:650px}
+
+/* 14:35 (QA pass 1): tabs centred (equal space both sides) and a clear "you are here" on the current tab */
+.head .tabs{margin-left:0!important;margin-right:0!important;padding-left:0!important;padding-right:0!important;width:auto!important}
+.head .tabs a.on{background:color-mix(in srgb,var(--tc) 20%,#fff)!important;box-shadow:inset 0 -5px 0 var(--tc)!important;border-radius:9px 9px 0 0;color:#10294A!important}
+/* only if Dark is picked in Settings: keep tabs, topic list rows and the Hide button readable */
+:root[data-theme="dark"] .head .tabs a{color:#17232D!important}
+:root[data-theme="dark"] .side .tp,:root[data-theme="dark"] .side .tp *,:root[data-theme="dark"] .side .tp b{color:#17232D!important}
+:root[data-theme="dark"] .side .tp .cnt{color:#4A5866!important}
+:root[data-theme="dark"] .sidetog{background:#fff!important;color:#10294A!important}
+/* 14:42 (QA): boxes that tick themselves look different from the ones she taps */
+.tdbox[disabled]{border-style:dashed!important;background:#F3F5F8!important;opacity:.75;cursor:default}
+.tdbox[disabled].on{opacity:1;border-style:solid!important}
+.tdauto{margin-left:8px;font-size:12px;font-style:italic;color:#5A6874;white-space:nowrap}
+/* 14:44 (QA): a lone last card in a two-column grid spans the full row instead of leaving half a row empty */
+.grid2>.card:last-child:nth-child(odd){grid-column:1/-1}
+/* 14:46 (QA): at night the rainbow and clouds are moonlit, not full daytime colour */
+.head.nb.nbnight .nbrain{filter:brightness(.6) saturate(.55)}
+@media (max-width:640px){.land-real.land-farm .flash.revealed.blen-xl .inner{min-height:960px}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -148094,6 +148125,7 @@ BURST["dr-enforcement"] = [
 ];
 STOPDATA["dr"] = {on: function(){ return FAIR_ON; }, hub: {"title": "The Fairground", "place": "the fairground", "img": "img/scene/fairground-hub.webp", "ratio": 1.7916666666666667, "bg": "#E3F4FF", "alt": "The fairground's entrance plaza: a striped arch, a ticket kiosk, the big wheel and helter skelter, and sixteen little striped ride gates along the fence", "doors": [[50.0, 55.0, 3.6, 13.5], [53.7, 55.0, 3.9, 12.5], [57.8, 54.6, 4.0, 11.6], [61.9, 54.6, 3.4, 11.0], [65.4, 54.5, 3.3, 10.5], [68.8, 54.4, 3.2, 10.0], [72.1, 54.3, 2.9, 9.5], [75.1, 54.2, 2.9, 9.3], [78.1, 54.2, 2.8, 9.0], [81.0, 54.1, 2.7, 9.0], [83.8, 54.1, 2.6, 9.0], [86.4, 54.1, 2.5, 9.0], [89.0, 54.1, 2.4, 9.0], [91.5, 54.1, 2.3, 9.0], [94.0, 54.1, 2.3, 9.0], [96.4, 54.1, 2.2, 9.0]], "signs": [{"x": 8.6, "y": 46.0, "w": 14.2, "h": 15.0, "t": "The Fairground"}], "key": "dr/fairground"}, rooms: ["dr-options", "dr-limitation", "dr-pre-action", "dr-parties-law", "dr-where-to-start", "dr-issue-service", "dr-responding", "dr-statements-of-case", "dr-interim", "dr-case-management", "dr-evidence", "dr-disclosure", "dr-trial", "dr-costs", "dr-appeals", "dr-enforcement"], words: [["Back to the hall", "Back to the plaza"], ["back to the hall", "back to the plaza"], ["Leave the shop", "Leave the fairground"], ["leave the shop", "leave the fairground"], ["Stay in the shop", "Stay at the fair"], ["Back into the shop", "Back to the ride"], ["out of the shop", "out of the fairground"], ["Out of the shop", "Out of the fairground"], ["the shop", "the fairground"], ["🍬 Done! Eat it", "Done! Stamp it"], ["treats opened", "spots opened"], ["Yum! ", "Nice! "], [" eaten. ", " done. "]]};
 /* FAIRGROUND-GEN END */
+var FG_ANIM = {"star": [1956.9, 445.2, 70], "hen": [1555, 1177, 303, 275], "arch": [[455.4, 207.6, 11.0], [1111.5, 214.3, 10.0], [1215.0, 252.0, 14.5], [387.1, 267.2, 11.5], [301.2, 274.7, 16.5], [1189.6, 283.4, 9.0], [332.5, 333.6, 12.0], [1245.4, 355.3, 9.5], [235.5, 389.2, 16.5], [289.8, 410.3, 11.5], [1288.7, 433.5, 8.5], [261.7, 491.2, 12.0], [193.6, 520.6, 17.0], [1321.9, 520.7, 9.0], [245.5, 575.7, 12.0], [1336.6, 592.8, 9.0], [240.7, 648.5, 12.0], [1342.6, 653.0, 8.5], [1345.1, 716.6, 9.0], [1346.7, 775.5, 8.0], [1346.6, 838.3, 9.0], [1346.8, 903.8, 8.0]], "wheel": [[1957.5, 144.2, 12.0], [1782.1, 205.5, 12.0], [2135.6, 207.4, 12.5], [1678.1, 361.7, 12.5], [2240.0, 365.8, 12.5], [1689.1, 560.0, 12.5], [2222.5, 562.2, 13.0], [1849.0, 703.5, 8.0], [2064.9, 704.4, 7.5], [1957.7, 730.5, 13.0], [2085.1, 752.3, 8.5], [1828.4, 751.8, 8.5]]}; /* Fairground hall animation positions, in the hub picture's 2752 x 1536 pixels */
 /* Fairground boards (Monnie 20 Nov 13:51: every drawn board shows the room's key points): lines from each room's own notes deck */
 Object.assign(BOARD_HOOKS, {"dr-options": ["Litigation: judge decides", "Arbitration: binding award", "Mediation: parties decide"], "dr-limitation": ["Contract: 6 years", "Deed: 12 years", "Tort: 6 years", "Personal injury: 3 years", "Longstop: 15 years", "Child: starts at 18"], "dr-pre-action": ["1. Letter before claim", "2. Response (14 days)", "3. Key documents", "4. Consider ADR", "5. Review positions", "Ignore it? Costs sanction"], "dr-parties-law": ["1. Good claim?", "2. Right defendant?", "3. Worth suing?", "4. Which courts?", "5. Which law?", "Courts and law: separate"], "dr-where-to-start": ["Claim of £100,000 or less:", "start in the County Court", "Injury under £50,000:", "start in the County Court", "Ignore interest and costs", "Court is not the track"], "dr-issue-service": ["Serve within 4 months", "Abroad: 6 months", "Deemed served on the", "second business day", "Email: agreed in writing"], "dr-responding": ["14 days to respond", "Acknowledged? 28 to defend", "Agree 28 more: 56 maximum", "Silence: default judgment", "Must set aside if wrong", "May set aside if strong"], "dr-statements-of-case": ["Plead facts, not evidence", "Defence: admit, deny or", "not admitted", "Silence: taken as admitted", "A reply is optional", "False statement: contempt"], "dr-interim": ["Summary judgment:", "no real prospect", "Interim payment:", "a reasonable proportion", "Injunction:", "American Cyanamid test"], "dr-case-management": ["The court runs the case", "Small claims: to £10,000", "Fast track: to £25,000", "Intermediate: to £100,000", "Multi-track: over £100,000", "Relief: Denton, 3 stages"], "dr-evidence": ["Balance of probabilities", "Hearsay is admissible", "Give a hearsay notice", "Experts need permission", "Expert duty: to the court", "Questions: once, 28 days"], "dr-disclosure": ["Disclose: it exists", "Inspect: see a copy", "Harmful documents too", "Privileged: list, not show", "Without prejudice:", "hidden from the judge"], "dr-trial": ["1. Opening speech", "2. Claimant's evidence", "3. Defendant's evidence", "4. Closing speeches", "5. Judgment", "Own witness: no leading"], "dr-costs": ["Loser pays the winner", "Part 36: 21 days or more", "Claimant beats own offer:", "interest, indemnity costs", "Security: defendant asks", "Standard basis is normal"], "dr-appeals": ["Ask the trial judge first", "Real prospect of success", "File within 21 days", "One level of judge up", "Review, not a rehearing", "No automatic stay"], "dr-enforcement": ["Bank: third party debt order", "Land: charging order", "Employed: attachment", "Goods: taking control"]});
 
@@ -148548,6 +148580,8 @@ var CSS = [
 '.hub-door.next .stt{background:#FFF200}',
 '.hub-door.locked{background:#EEE7EC}.hub-door.locked .th{filter:grayscale(.85) brightness(.85)}',
 '.hub-art{position:relative}',
+'.fg-anim{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;overflow:visible}.fg-anim .fgb{fill:#FFF8B0;opacity:.15;animation:fgTw 1.8s ease-in-out infinite}.fg-anim .fgw{animation-duration:1.6s}@keyframes fgTw{0%,100%{opacity:.1}50%{opacity:.95;fill:#FFFFFF}}.fg-anim .fgstar{transform-box:fill-box;transform-origin:center;animation:fgSpin 12s linear infinite}@keyframes fgSpin{to{transform:rotate(360deg)}}.fg-anim .fghen{transform-box:fill-box;transform-origin:45% 96%;animation:fgHen 11s ease-in-out infinite}@keyframes fgHen{0%,6%{transform:none}9%{transform:rotate(7deg)}12%{transform:none}15%{transform:rotate(7deg)}18%,24%{transform:none}38%,48%{transform:translateX(-90px)}51%{transform:translateX(-90px) rotate(7deg)}54%,60%{transform:translateX(-90px)}62%,70%{transform:translateX(-90px) scaleX(-1)}84%,88%{transform:scaleX(-1)}90%,100%{transform:none}}.fg-wb{position:absolute;left:9.6%;top:62.5%;width:14.2%;height:18.5%;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.25cqw;text-align:center;color:#1D3557;font:400 1.15cqw/1.1 "Gochi Hand","Delius",cursive;pointer-events:none}.fg-wb b{font-weight:400;font-size:1.3cqw;color:#B3261E;text-decoration:underline;text-underline-offset:.2cqw}@media (prefers-reduced-motion:reduce){.fg-anim .fgb,.fg-anim .fgstar,.fg-anim .fghen{animation:none}.fg-anim .fgride{display:none}}',
+
 '.hub-hs .scn-pin{display:block;left:50%;top:68%;bottom:auto;transform:translateX(-50%)}',
 '.hub-hs .scn-lab{display:none;position:absolute;top:calc(68% + 32px);bottom:auto;left:50%;transform:translateX(-50%);width:max-content;max-width:180px}',
 '.hub-hs:hover .scn-lab,.hub-hs:focus-visible .scn-lab,.hub-hs.next .scn-lab{display:block}',
@@ -149164,12 +149198,31 @@ window.SQE_SCENE = function(A){
   }
   function visited(x){ var s = S().scene && S().scene[x]; return !!(s && s.open && Object.keys(s.open).length); }
   function hubHTML(k){ var hb0 = HUBS[k]; skinFor(k); return hb0 && hb0.stop ? SK(Wst(hb0.stop, hubHTML0(k))) : hubHTML0(k); }
+  /* the Fairground hall comes alive (Monnie 20 Nov 13:51): arch lights twinkle, the big wheel's lights chase round and its star spins, Britney pecks and strolls, a rider whizzes down the helter skelter, and the whiteboard shows where she is */
+  function fgHubAnim(k){ var A = FG_ANIM, hb = HUBS[k], s = '<svg class="fg-anim" viewBox="0 0 2752 1536" preserveAspectRatio="none" aria-hidden="true" focusable="false">';
+    A.arch.forEach(function(b, i){ s += '<circle class="fgb" cx="' + b[0].toFixed(1) + '" cy="' + b[1].toFixed(1) + '" r="' + (b[2] + 3).toFixed(1) + '" style="animation-delay:-' + ((i * 0.37) % 1.8).toFixed(2) + 's"/>'; });
+    var cx = A.star[0], cy = A.star[1], R = A.star[2], wb = A.wheel.slice().sort(function(a, b){ return Math.atan2(a[1] - cy, a[0] - cx) - Math.atan2(b[1] - cy, b[0] - cx); });
+    wb.forEach(function(b, i){ s += '<circle class="fgb fgw" cx="' + b[0].toFixed(1) + '" cy="' + b[1].toFixed(1) + '" r="' + (b[2] + 3).toFixed(1) + '" style="animation-delay:-' + (i / wb.length * 1.6).toFixed(2) + 's"/>'; });
+    s += '<image class="fgstar" href="img/scene/fg-hub-star.webp" x="' + (cx - R).toFixed(1) + '" y="' + (cy - R).toFixed(1) + '" width="' + 2 * R + '" height="' + 2 * R + '"/>';
+    var K = ' stroke="#1b1b1b" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"';
+    s += '<g class="fgride"><g transform="scale(1.5)"><ellipse cx="0" cy="20" rx="36" ry="9" fill="#9C6B3F"' + K + '/><path d="M2 14 L30 12" fill="none"' + K + ' stroke-width="9"/><path d="M2 14 L30 12" fill="none" stroke="#1D3557" stroke-width="5" stroke-linecap="round"/>' +
+      '<path d="M-12 16 Q-14 -6 0 -9 Q14 -6 12 16 Z" fill="#E63946"' + K + '/><path d="M-8 -4 L-24 -28 M8 -4 L24 -28" fill="none"' + K + ' stroke-width="9"/><path d="M-8 -4 L-24 -28 M8 -4 L24 -28" fill="none" stroke="#C68B59" stroke-width="5" stroke-linecap="round"/>' +
+      '<circle cx="0" cy="-21" r="12" fill="#C68B59"' + K + '/><path d="M-13 -24 Q-14 -38 0 -36 Q14 -38 13 -24 Q8 -31 0 -30 Q-8 -31 -13 -24 Z" fill="#2B1A12"' + K + ' stroke-width="3"/><path d="M-5 -16 Q0 -12 5 -16" fill="none" stroke="#1b1b1b" stroke-width="2.5" stroke-linecap="round"/><circle cx="-4.5" cy="-22" r="1.6" fill="#1b1b1b"/><circle cx="4.5" cy="-22" r="1.6" fill="#1b1b1b"/></g>' +
+      '<animateMotion dur="9s" repeatCount="indefinite" calcMode="linear" keyPoints="0;1;1" keyTimes="0;0.7;1" path="M2330,362 C2420,388 2560,418 2630,492 L2605,582 C2500,632 2330,654 2245,738"/>' +
+      '<animate attributeName="opacity" dur="9s" repeatCount="indefinite" values="0;1;1;0;0;1;1;0;0" keyTimes="0;0.02;0.26;0.28;0.35;0.37;0.66;0.7;1"/></g>';
+    var H = A.hen; s += '<image class="fghen" href="img/scene/fg-hub-hen.webp" x="' + H[0] + '" y="' + H[1] + '" width="' + H[2] + '" height="' + H[3] + '"/>';
+    s += '</svg>';
+    var rooms = hb.rooms || [], done = rooms.filter(function(x){ return roomDone(x); }).length, nx = null;
+    for (var i = 0; i < rooms.length && !nx; i++) if (!roomDone(rooms[i])) nx = rooms[i];
+    var nm = nx && SCENES[nx] ? SCENES[nx].name : '';
+    s += '<div class="fg-wb" aria-hidden="true"><b>Dispute Resolution</b><span>16 rides, one topic each</span><span>Rides done: ' + done + ' of ' + rooms.length + '</span>' + (nm ? '<span>Next: ' + esc(nm) + '</span>' : '<span>Every ride done!</span>') + '</div>';
+    return s; }
   function hubHTML0(k){
     var hb = HUBS[k], H = hubState(hb), N = H.keys.length, nxk = H.keys[H.next];
     var h = '<div class="scn hub' + skRoot() + '"><div class="scn-head"><h2>🚪 ' + esc(hb.title) + '</h2><div class="scn-links">' + (hb.outside ? '<a class="scn-nb" href="#/scene/' + hb.outside + '/outside">Outside the shop</a>' : '') + '</div>' +
       '<p class="scn-sub">You\'re inside ' + esc(hb.place || 'the shop') + '. ' + (H.next < 0 ? 'Every room is done! Time to leave the shop.' : 'Each door leads to one topic. The glowing door is next: <b>' + esc((ROOMS[nxk.split('/')[1]] || SCENES[nxk]).name) + '</b>.') + '</p></div>';
     h += '<div class="scn-prog"><span>' + H.done + ' of ' + N + ' rooms done</span><span class="scn-bar" role="progressbar" aria-valuemin="0" aria-valuemax="' + N + '" aria-valuenow="' + H.done + '"><i style="width:' + Math.round(H.done / N * 100) + '%"></i></span>' + (H.next < 0 ? '<span>🏆</span>' : '') + '</div>';
-    h += '<div class="scn-art hub-art' + (hb.img ? '' : ' noimg') + '" style="--rbg:' + esc(hb.bg || '#FFF1C9') + '" role="img" aria-label="' + esc(hb.alt || hb.title) + '">' + (hb.img ? '<img src="' + esc(hb.img) + '" alt="" style="aspect-ratio:auto ' + (hb.ratio || 16 / 9) + '" onerror="this.parentNode.classList.add(\'noimg\');this.parentNode.removeChild(this)">' : '<span class="hub-ph" aria-hidden="true">🚪🍬🚪🍭🚪</span>') +
+    h += '<div class="scn-art hub-art' + (hb.img ? '' : ' noimg') + '" style="--rbg:' + esc(hb.bg || '#FFF1C9') + '" role="img" aria-label="' + esc(hb.alt || hb.title) + '">' + (hb.img ? '<img src="' + esc(hb.img) + '" alt="" style="aspect-ratio:auto ' + (hb.ratio || 16 / 9) + '" onerror="this.parentNode.classList.add(\'noimg\');this.parentNode.removeChild(this)">' + (hb.stop === 'dr' && typeof FG_ANIM !== 'undefined' ? fgHubAnim(k) : '') : '<span class="hub-ph" aria-hidden="true">🚪🍬🚪🍭🚪</span>') +
       (hb.img && hb.doors ? H.keys.map(function(x, i){ var d = hb.doors[i]; if (!d) return ''; var done = H.fin[i], nxt = i === H.next, open = ROOMS_FREE || done || nxt || visited(x) || H.next < 0, m = ROOMS[x.split('/')[1]] || {}, c = conf(x);
         var pos = 'left:' + d[0] + '%;top:' + d[1] + '%;width:' + d[2] + '%;height:' + d[3] + '%', lab = (i + 1) + '. ' + (m.name || SCENES[x].name);
         var inner = '<span class="scn-pin" aria-hidden="true"' + (done ? ' style="background:' + (RAGC[c] || '#2E9E5B') + ';color:#fff"' : '') + '>' + (done ? '✓' : open ? i + 1 : '🔒') + '</span><span class="scn-lab">' + esc(lab) + '</span>' + (nxt ? '<span class="scn-nexttag" aria-hidden="true"><span class="d">Next ↓</span><span class="m">↑ Next</span></span>' : '');
@@ -150851,7 +150904,8 @@ window.SQE_MOUNT = function(A){
       if (!say){ say = document.createElement('span'); say.className = 'mg-say'; g.appendChild(say); }
       if (say.getAttribute('data-say') !== 'britney'){ say.setAttribute('data-say', 'britney'); say.classList.remove('fade'); say.innerHTML = esc(sc.say) + TAIL; }
       aim(g, say, be);
-    } else if (say){
+    } else if (say && FEED){ say.style.display = 'none'; lastLine = ''; say.setAttribute('data-say', ''); }   /* Mama and Baba keep quiet while Britney has her moment */
+    else if (say){
       var pp = parentPair();
       if (!(owned('mama') || owned('baba'))){ say.parentNode.removeChild(say); return; }
       if (say.getAttribute('data-say') === 'britney'){ say.setAttribute('data-say', pp[0]); say.innerHTML = esc(pp[1]) + TAIL; }
@@ -150927,6 +150981,8 @@ window.SQE_MOUNT = function(A){
     if (who.classList.contains('mg-brit')){ headX = r.left + r.width * 0.55 - gr.left; headY = r.top - gr.top; }
     say.style.display = '';
     var bw = say.offsetWidth, cx = clamp(headX, bw / 2 + 6, gr.width - bw / 2 - 6), top = Math.max(say.offsetHeight + 4, headY - 18);
+    var lay = who.classList.contains('mg-brit') && g.querySelector('.mg-layla');
+    if (lay){ var li = lay.querySelector('.ml-rig.on .tr.on,.ml-rig.on .tl.on,.ml-rig.on .ttr.on,.ml-rig.on .ttl.on,img.pose.on') || lay.querySelector('img.sp'), lr = li.getBoundingClientRect(); if (lr.right - gr.left > cx - bw / 2 - 4 && lr.left - gr.left < cx + bw / 2 + 4) top = Math.min(top, lr.top - gr.top - 8); }   /* Britney's bubble goes up above Layla's head, never sideways onto someone else (QA 14:24) */
     /* never over anyone's head: lift the bubble above every person under it (Monnie 06:45) */
     var bottom = top;
     [].forEach.call(g.querySelectorAll('.mg-person'), function(pe){
@@ -150935,10 +150991,8 @@ window.SQE_MOUNT = function(A){
       if (rr > cx - bw / 2 - 4 && l < cx + bw / 2 + 4) bottom = Math.min(bottom, ht - 8);
     });
     top = Math.max(say.offsetHeight + 4, bottom);
-    var lay = who.classList.contains('mg-brit') && g.querySelector('.mg-layla img.sp');
-    if (lay){ var lr = lay.getBoundingClientRect(), lx = lr.right - gr.left; if (lr.top - gr.top < top && cx - bw / 2 < lx + 4) cx = Math.min(gr.width - bw / 2 - 6, lx + 4 + bw / 2); }   /* Britney's bubble never covers Layla */
     say.style.left = cx.toFixed(1) + 'px'; say.style.top = top.toFixed(1) + 'px';
-    var tail = say.querySelector('i'); if (tail){ tail.style.left = clamp(headX - (cx - bw / 2), 16, bw - 16).toFixed(1) + 'px'; tail.style.height = clamp(headY - top + 1, 12, 90).toFixed(0) + 'px'; }   /* the tail stretches down to the speaker's head */
+    var tail = say.querySelector('i'); if (tail){ tail.style.left = clamp(headX - (cx - bw / 2), 16, bw - 16).toFixed(1) + 'px'; tail.style.height = clamp(headY - top + 1, 12, 160).toFixed(0) + 'px'; }   /* the tail stretches down to the speaker's head */
   }
   requestAnimationFrame(tick);
   window.SQE_MOUNT_DEBUG = {c0: CLOCK0, TRIM: TRIM, laylaAt: laylaAt, britAt: britAt, LT: LT, get BT(){ return BT; }, startFeed: startFeed, startTrip: startTrip, tripOut: tripOut, trip: function(){ return TRIP; }, feeding: function(){ return !!FEED; }, FEED: function(){ return FEED; }};
@@ -152048,9 +152102,10 @@ function timerStrip(){
   return '<div class="tstrip">' + sandBtn() +
     '<span class="lab">Study timer</span><span class="clock" id="clock">' + fmtClock(runningMins() * 60000) + '</span>' +
     (running ? '<button class="btn sm" data-act="tpause">Pause</button>' : '<button class="btn sm primary" data-act="tstart">' + (has ? "Resume" : "▶ Start") + '</button>') +
-    (S.focus ? '' : '<span class="brkbtns wkbtns" role="group" aria-label="Study for a set time">' + [20, 30, 40].map(function(n){ /* 13:53 (Monnie): just three study times, 20/30/40 */ return '<button class="btn sm brkbtn wkbtn" data-act="wkgo" data-m="focus" data-n="' + n + '" aria-label="Study for ' + n + ' minutes" title="Study for ' + n + ' minutes (counts down, then logs it)">' + ICO_BOOKS + '<span class="bl">' + n + ' min</span><span class="bs">' + n + 'm</span></button>'; }).join("") + '</span>' +
-      '<span class="brkbtns" role="group" aria-label="Take a break">' + [5, 10, 15].map(function(n){ return '<button class="btn sm brkbtn" data-act="tbreak" data-n="' + n + '" aria-label="Take a ' + n + ' minute break" title="' + n + ' minute break">' + ICO_TEA + '<span class="bl">' + n + ' min</span><span class="bs">' + n + 'm</span></button>'; }).join("") + '</span>') +
+    /* 14:38 (QA): while a session is on, Stop & log / Discard sit next to Pause and the set-time study buttons step aside, so the strip stays one row */
     (has ? '<button class="btn sm good" data-act="tstop">Stop &amp; log</button><button class="btn sm" data-act="tdiscard" title="Throw this session away">Discard</button>' : '') +
+    (S.focus ? '' : (has ? '' : '<span class="brkbtns wkbtns" role="group" aria-label="Study for a set time">' + [20, 30, 40].map(function(n){ /* 13:53 (Monnie): just three study times, 20/30/40 */ return '<button class="btn sm brkbtn wkbtn" data-act="wkgo" data-m="focus" data-n="' + n + '" aria-label="Study for ' + n + ' minutes" title="Study for ' + n + ' minutes (counts down, then logs it)">' + ICO_BOOKS + '<span class="bl">' + n + ' min</span><span class="bs">' + n + 'm</span></button>'; }).join("") + '</span>') +
+      '<span class="brkbtns" role="group" aria-label="Take a break">' + [5, 10, 15].map(function(n){ return '<button class="btn sm brkbtn" data-act="tbreak" data-n="' + n + '" aria-label="Take a ' + n + ' minute break" title="' + n + ' minute break">' + ICO_TEA + '<span class="bl">' + n + ' min</span><span class="bs">' + n + 'm</span></button>'; }).join("") + '</span>') +
 
     '<span class="saved" id="savedIndicator"></span></div>';
 }
@@ -152657,7 +152712,7 @@ function cbaTopicHead(x){
 }
 function viewCBA(r){
   var c = cbaS();
-  if (r[1] === "shop" && !r[2]){ setTimeout(function(){ location.replace("#/palace/shop"); }, 0); return '<div class="card">Opening the shop in Cluckington Palace…</div>'; }
+  if (r[1] === "shop" && !r[2]){ setTimeout(function(){ location.replace("#/palace/shop"); }, 0); return '<div class="card">Opening Hen Bargains…</div>'; }
   if (r[1] && r[2]){
     var x = TBYKEY[r[1] + "/" + r[2]];
     if (!x || !cbaReady(x)) return '<div class="cbag"><div class="cbacard"><h2>This level is coming soon</h2><a class="btn" href="#/syllabus">Back to the syllabus</a></div></div>';
@@ -152903,7 +152958,7 @@ function topicSteps(x){
   if (nq) st.push({k:"quick", l:"⚡ Quick fire (" + nq + ")", h:"#/quick/" + s.id + "/" + t.id});
   if (nm) st.push({k:"qa", l:"✍️ Model Q&A (" + nm + ")", h:"#/questions/" + s.id + "/" + t.id});
   /* Monnie 20 Nov 05:43: the topic's final boss step = Face Bert (10-question topic game); ticks itself when she beats him */
-  if (typeof bossQs === "function" && bossQs(x.key).length) st.push({k:"bert", l:"Final boss: Face the Butcher (10 questions)", h:"#/boss/" + s.id + "/" + t.id, auto:true, autoT:"Ticks itself when you beat Bert"});
+  if (typeof bossQs === "function" && bossQs(x.key).length) st.push({k:"bert", l:"🥊 Final boss: Face the Butcher (10 questions)", h:"#/boss/" + s.id + "/" + t.id, auto:true, autoT:"Ticks itself when you beat Bert"});
   st.forEach(function(z, i){ z.l = "Step " + (i + 1) + ": " + z.l; });
   st.push({k:"rate", l:"Then rate it <span class=\"ragdots\"><svg class=\"ragdot\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" aria-hidden=\"true\"><circle cx=\"9\" cy=\"9\" r=\"7\" fill=\"#e53935\" stroke=\"#333\" stroke-width=\"1.5\"/></svg><svg class=\"ragdot\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" aria-hidden=\"true\"><circle cx=\"9\" cy=\"9\" r=\"7\" fill=\"#ffb300\" stroke=\"#333\" stroke-width=\"1.5\"/></svg><svg class=\"ragdot\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" aria-hidden=\"true\"><circle cx=\"9\" cy=\"9\" r=\"7\" fill=\"#43a047\" stroke=\"#333\" stroke-width=\"1.5\"/></svg></span><span class=\"sr-only\"> red, amber or green</span>", h:base + "/rate", auto:true});
   return st;
@@ -152930,7 +152985,7 @@ function todoHTML(it){
     '<li><button class="tdbox' + (stepDone(x, "notes") ? " on" : "") + '" data-act="todo" data-k="' + x.key + '|notes" aria-label="Tick off">' + (stepDone(x, "notes") ? "✓" : "") + '</button><a href="' + topicSteps(x)[0].h + '">' + (/Sweet Shop/.test(topicSteps(x)[0].l) ? topicSteps(x)[0].l.replace(/^Step 1: 🍬 Visit/, "🍬 " + (it.part === "start" ? "Start" : "Carry on in")) + (it.part === "start" ? " (big topic, it carries on next session)" : "") : "📝 " + (it.part === "start" ? "Start reading the notes (big topic, it carries on next session)" : "Carry on reading the notes")) + '</a><span class="tdmin">' + fmtM(it.m) + '</span></li></ul></li>';
   var st = topicSteps(x), sm = stepMins(x, it.m), bwon = bossS().won[x.key];
   var brow = false /* 20 Nov: Bert off topic lists */ ? '<li class="tdboss' + (bwon ? ' won' : '') + '"><img class="bert" src="img/boss/bert-knife.webp" alt="" width="612" height="800" loading="lazy"><a href="#/boss/' + x.s.id + '/' + x.t.id + '">' + (bwon ? '🏆 You beat Bert the butcher on this topic' : '⭐ Optional bonus: Bert the butcher challenges you!') + '</a></li>' : '';
-  return '<li class="tdtopic"><b>' + esc(tnum(x)) + '</b> ' + esc(x.t.title) + ' <span class="muted small">' + fmtM(it.m) + (it.part === "finish" ? " · finish this topic" : "") + '</span><ul class="tdsteps">' + st.map(function(z){ var dn = stepDone(x, z.k); return '<li><button class="tdbox' + (dn ? " on" : "") + '"' + (z.auto ? ' disabled title="' + (z.autoT || 'Ticks itself when you rate the topic') + '"' : ' data-act="todo" data-k="' + x.key + '|' + z.k + '"') + ' aria-label="Tick off">' + (dn ? "✓" : "") + '</button><a href="' + z.h + '">' + z.l + '</a>' + (z.alt || '') + (sm(z.k) ? '<span class="tdmin">' + fmtM(sm(z.k)) + '</span>' : '') + '</li>'; }).join("") + brow + '</ul></li>';
+  return '<li class="tdtopic"><b>' + esc(tnum(x)) + '</b> ' + esc(x.t.title) + ' <span class="muted small">' + fmtM(it.m) + (it.part === "finish" ? " · finish this topic" : "") + '</span><ul class="tdsteps">' + st.map(function(z){ var dn = stepDone(x, z.k); return '<li><button class="tdbox' + (dn ? " on" : "") + '"' + (z.auto ? ' disabled title="' + (z.autoT || 'Ticks itself when you rate the topic') + '"' : ' data-act="todo" data-k="' + x.key + '|' + z.k + '"') + ' aria-label="Tick off">' + (dn ? "✓" : "") + '</button><a href="' + z.h + '">' + z.l + '</a>' + (z.auto && !dn ? '<span class="tdauto">ticks itself</span>' : '') + (z.alt || '') + (sm(z.k) ? '<span class="tdmin">' + fmtM(sm(z.k)) + '</span>' : '') + '</li>'; }).join("") + brow + '</ul></li>';
 }
 function topicStepCount(x){ var st = topicSteps(x), d = st.filter(function(z){ return stepDone(x, z.k); }).length; return [d, st.length]; }
 function reviewHTML(pd){
@@ -154342,9 +154397,9 @@ VIEW.settings = function(){
     '<p class="small muted" style="margin:0">Pick the exact day on your booking confirmation. FLK1 runs 11 to 15 January and FLK2 runs 18 to 22 January 2027.</p>' +
     '<label class="f"><span>Colours</span><select id="stheme"><option value="light"' + (S.settings.theme !== "dark" ? " selected" : "") + '>Light</option><option value="dark"' + (S.settings.theme === "dark" ? " selected" : "") + '>Dark</option></select></label>' +
     '<div class="btns"><button class="btn primary" data-act="ssave">Save settings</button><span id="smsg" class="small" style="align-self:center"></span></div></div>' +
-    '<div class="card montool"><h3>Game test buttons (only on Monnie\'s devices)</h3><p class="small">For trying out Cluckington Palace. Reset puts coins, Britney and prizes back to the start (your revision progress is kept).</p><div class="btns"><a class="btn" href="#/boss/home">Watch the rescue ending</a><button class="btn" data-act="gdemo">Give me 100 coins</button><button class="btn" data-act="greset">Reset the game</button><span id="gmsg" class="small" style="align-self:center"></span></div></div>';
+    '<div class="card montool"><h3>Game test buttons (only on Monnie\'s devices)</h3><p class="small">For trying out Peckham and The Mount. Reset puts coins, Britney and prizes back to the start (your revision progress is kept).</p><div class="btns"><a class="btn" href="#/boss/home">Watch the rescue ending</a><button class="btn" data-act="gdemo">Give me 100 coins</button><button class="btn" data-act="greset">Reset the game</button><span id="gmsg" class="small" style="align-self:center"></span></div></div>';
   if (window.SQESync) h += window.SQESync.settingsHTML();
-  h += '<div class="card"><h3>Saving</h3><p class="small" style="margin:0 0 6px">' + (storageOK ? '✓ Everything saves automatically on this device as you go. Nothing to press.' : '<b style="color:var(--bad)">⚠ This browser is blocking saving.</b> Open the file in Chrome, Edge or Safari (not a private window).') + '</p>' +
+  h += '<div class="card"><h3>Saving</h3><p class="small" style="margin:0 0 6px">' + (storageOK ? '✓ Your revision progress saves automatically on this device as you go. (The button above is only for the settings on this page.)' : '<b style="color:var(--bad)">⚠ This browser is blocking saving.</b> Open the file in Chrome, Edge or Safari (not a private window).') + '</p>' +
     '<p class="small muted" style="margin:0">Space used: ' + (used / 1024).toFixed(1) + ' KB of about 5,000 KB. That\'s room for years of study logs.</p>' +
     '<details style="margin-top:10px"' + (importMsg ? ' open' : '') + '><summary class="small" style="cursor:pointer">Spare copy (only needed when moving to a new computer)</summary>' +
     '<p class="small muted">Download a copy of everything, then load it on the new computer.</p><div class="btns"><button class="btn sm" data-act="export">Download a copy</button><label class="btn sm" style="cursor:pointer">Load a copy<input type="file" id="importfile" accept=".json,application/json" class="hide"></label></div>' +
@@ -154703,7 +154758,7 @@ function bagHTML(){
   var nd0 = henNeed(), lockd = nd0 && it && nd0.it.id === it.id && nd0.ok === false;
   var sub = it ? (c.coins >= it.p ? esc(it.n) + ' ready to buy!' : (it.p - c.coins) + ' more for ' + esc(it.n)) : 'Every prize won! 👑';
   if (lockd) f = Math.min(f, 0.999);
-  return '<a class="mbag' + (f >= 1 ? ' full' : '') + '" id="mbag" href="#/palace" data-fill="' + f.toFixed(3) + '" title="Your coins: tap to visit Cluckington Palace">' + (NB ? nbBagSVG(f) : bagSVG(f)) +
+  return '<a class="mbag' + (f >= 1 ? ' full' : '') + '" id="mbag" href="#/palace" data-fill="' + f.toFixed(3) + '" title="Your coins: tap to go to Peckham">' + (NB ? nbBagSVG(f) : bagSVG(f)) +
     '<span class="mbt"><span class="mbn"><b>' + c.coins + '</b>' + (NB ? '' : ' coin' + (c.coins === 1 ? '' : 's')) + '</span>' + (NB ? '' : '<small>' + sub + '</small>') + '</span></a>'; /* 20 Nov: new banner shows just the number (Monnie) */
 }
 
@@ -155263,7 +155318,7 @@ function bossResult(){
   var B = BOSS, d = B.done, x = TBYKEY[B.key], b = bossS(), L = henLife(), happyHen = cbaHen("happy jump", cbaWear());
   var score = '<p class="bscore">' + d.right + ' right out of ' + d.n + ' asked</p>', back = '<a class="btn big" href="#/topic/' + x.s.id + '/' + x.t.id + '">Back to the topic</a>', h = '<div class="cbag bossg"><div class="cbacard win bres">';
   if (d.kind === "won" || d.kind === "freed"){
-    h += '<h2>' + (d.kind === "freed" ? "Britney is FREE!" : "You beat Bert the butcher!") + '</h2>' + score + '<p>' + (d.kind === "freed" ? "She's flapping all the way home to Cluckington Palace." : bossHatched() ? "He's off sulking behind his counter. Britney is safe at home." : "He's off sulking behind his counter.") + '</p>';
+    h += '<h2>' + (d.kind === "freed" ? "Britney is FREE!" : "You beat Bert the butcher!") + '</h2>' + score + '<p>' + (d.kind === "freed" ? "She's flapping all the way home to The Mount." : bossHatched() ? "He's off sulking behind his counter. Britney is safe at home." : "He's off sulking behind his counter.") + '</p>';
     h += '<div class="bwinrow">' + (bossHatched() ? '<span class="bwhen">' + happyHen + '</span>' : '') + (b.chest ? '<button class="bchestbtn" data-act="bosschest" aria-label="Open the coin chest">' + bossChestSvg(false) + '</button>' : bossChestSvg(true)) + '</div>';
     h += b.chest ? '<p><b>Tap the chest to open it!</b></p>' : '<p><b>Chest opened: coins in the bag!</b></p>';
     h += '<div class="btns cbac">' + (d.kind === "freed" ? '<a class="btn primary big" href="#/palace">Welcome her home</a>' : back + '<a class="btn primary big" href="#/home">Back to Today</a>') + '</div>';
@@ -155420,7 +155475,7 @@ function podWhenTxt(ts){
   var d = new Date(ts); if (!ts || isNaN(d.getTime())) return "";
   return ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"][d.getDay()] + " " + d.getDate() + " " + ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][d.getMonth()] + ", " + pad(d.getHours()) + ":" + pad(d.getMinutes());
 }
-function podPic(x){ var p = ""; try { p = JPIC ? JPIC(x.s.id) : ""; } catch(e){} return p ? '<span class="podpic" title="Cluckington stop picture">' + p + '</span>' : ""; }
+function podPic(x){ var p = ""; try { p = JPIC ? JPIC(x.s.id) : ""; } catch(e){} return p ? '<span class="podpic" title="Peckham stop picture">' + p + '</span>' : ""; }
 function podWhen(r){ return r && r.at ? '<div class="podwhen">Listened ' + esc(podWhenTxt(r.at)) + '</div>' : ''; }
 /* keep a row in the list in step after a tick, untick or auto-listen (works whichever player did it) */
 function podRowPaint(k){
@@ -156095,7 +156150,7 @@ document.addEventListener("click", function(e){
   var css = ".rpt-btn{position:fixed;left:10px;bottom:10px;z-index:9000;font:600 12px/1 system-ui,sans-serif;padding:6px 10px;border-radius:14px;border:1px solid rgba(0,0,0,.18);background:rgba(255,255,255,.85);color:#555;cursor:pointer;opacity:.55;transition:opacity .15s}" +
     ".rpt-btn:hover,.rpt-btn:focus{opacity:1}" +
     /* 14:25 (QA pass 1): solid tab on the left edge, in its own space, instead of a see-through pill over the page */
-    ".rpt-btn{left:0;bottom:22px;opacity:1;writing-mode:vertical-rl;transform:rotate(180deg);padding:10px 5px;border-radius:0 10px 10px 0;border:2px solid #10294A;border-left:0;background:#fff;color:#10294A;font:700 12px/1 Calibri,Carlito,system-ui,sans-serif;box-shadow:none}" +
+    ".rpt-btn{left:0;bottom:22px;opacity:1;writing-mode:vertical-rl;transform:rotate(180deg);padding:9px 1px;border-radius:0 8px 8px 0;border:1.5px solid #10294A;border-left:0;background:#fff;color:#10294A;font:700 11px/1 Calibri,Carlito,system-ui,sans-serif;box-shadow:none}" +
     ".rpt-btn:hover,.rpt-btn:focus{background:#FFF3C4}" +
     ".rpt-pan{left:34px;bottom:22px}" +
     ".rpt-pan{position:fixed;left:10px;bottom:44px;z-index:9001;width:min(360px,calc(100vw - 20px));max-height:70vh;overflow:auto;background:#fff;color:#222;border:1px solid #ccc;border-radius:12px;box-shadow:0 6px 24px rgba(0,0,0,.2);padding:12px;font:14px/1.4 system-ui,sans-serif}" +
