@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120023723";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120024921";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -2755,16 +2755,16 @@ html.dfv-on{overflow:hidden}
 
 /* map-layla3 + town night (20 Nov): Layla takes turns between 3 poses (ahead / glancing at Britney / waving), 7s each; Bert's shop shuts at night */
 /* Layla: 4 walking poses in turn (ahead, glance at Britney, wave, skip) and, once every 6 poses, the rare jokey front pose (peace sign, hand on hip: Monnie asked for this one) */
-.jsv .jlw1{opacity:0;animation:jl-jlw1 19.6s linear infinite}
-@keyframes jl-jlw1{0%{opacity:1}0.8%{opacity:1}13.49%{opacity:1}14.29%{opacity:0}57.14%{opacity:0}57.94%{opacity:1}70.63%{opacity:1}71.43%{opacity:0}100%{opacity:0}}
-.jsv .jlw2{opacity:0;animation:jl-jlw2 19.6s linear infinite}
-@keyframes jl-jlw2{0%{opacity:0}14.29%{opacity:0}15.09%{opacity:1}27.77%{opacity:1}28.57%{opacity:0}71.43%{opacity:0}72.23%{opacity:1}84.91%{opacity:1}85.71%{opacity:0}100%{opacity:0}}
-.jsv .jlw3{opacity:0;animation:jl-jlw3 19.6s linear infinite}
-@keyframes jl-jlw3{0%{opacity:0}28.57%{opacity:0}29.37%{opacity:1}42.06%{opacity:1}42.86%{opacity:0}100%{opacity:0}}
-.jsv .jlw4{opacity:0;animation:jl-jlw4 19.6s linear infinite}
-@keyframes jl-jlw4{0%{opacity:0}42.86%{opacity:0}43.66%{opacity:1}56.34%{opacity:1}57.14%{opacity:0}100%{opacity:0}}
-.jsv .jlwj{opacity:0;animation:jl-jlwj 19.6s linear infinite}
-@keyframes jl-jlwj{0%{opacity:0}85.71%{opacity:0}86.51%{opacity:1}99.2%{opacity:1}100%{opacity:0}}
+.jsv .jlw1{opacity:0;animation:jl-jlw1 19.6s step-end infinite}
+@keyframes jl-jlw1{0%{opacity:1}14.286%{opacity:0}28.571%{opacity:0}42.857%{opacity:0}57.143%{opacity:1}71.429%{opacity:0}85.714%{opacity:0}100%{opacity:1}}
+.jsv .jlw2{opacity:0;animation:jl-jlw2 19.6s step-end infinite}
+@keyframes jl-jlw2{0%{opacity:0}14.286%{opacity:1}28.571%{opacity:0}42.857%{opacity:0}57.143%{opacity:0}71.429%{opacity:1}85.714%{opacity:0}100%{opacity:0}}
+.jsv .jlw3{opacity:0;animation:jl-jlw3 19.6s step-end infinite}
+@keyframes jl-jlw3{0%{opacity:0}14.286%{opacity:0}28.571%{opacity:1}42.857%{opacity:0}57.143%{opacity:0}71.429%{opacity:0}85.714%{opacity:0}100%{opacity:0}}
+.jsv .jlw4{opacity:0;animation:jl-jlw4 19.6s step-end infinite}
+@keyframes jl-jlw4{0%{opacity:0}14.286%{opacity:0}28.571%{opacity:0}42.857%{opacity:1}57.143%{opacity:0}71.429%{opacity:0}85.714%{opacity:0}100%{opacity:0}}
+.jsv .jlwj{opacity:0;animation:jl-jlwj 19.6s step-end infinite}
+@keyframes jl-jlwj{0%{opacity:0}14.286%{opacity:0}28.571%{opacity:0}42.857%{opacity:0}57.143%{opacity:0}71.429%{opacity:0}85.714%{opacity:1}100%{opacity:0}}
 .jsv .jtnight{opacity:0}
 @media (prefers-reduced-motion:reduce){.jsv .jlw1{animation:none!important;opacity:1}.jsv .jlw2,.jsv .jlw3,.jsv .jlw4,.jsv .jlwj{animation:none!important;opacity:0}}
 /* banner-r3 (20 Nov, Monnie): full banner on every page, bag top-left and small, TEMP M button. Scoped to .head.nb */
@@ -2773,7 +2773,7 @@ html.dfv-on{overflow:hidden}
 .head.nb.compact .nbring .ring{display:block!important}
 .head.nb.compact .nbring .ringtxt{display:block!important}
 .head.nb.nb.nb .nbl .mbag{left:-10px;top:-10px;right:auto;bottom:auto;font-size:13px;gap:5px;padding:2px 11px 2px 2px!important;border-width:2px!important;box-shadow:0 2px 0 #10294A!important}
-.head.nb.nb .nbl .mbag .mbsvg{width:34px!important;height:34px!important;margin:-3px 0 -3px -3px;padding:2px 3px 3px;border-width:2px;box-shadow:none}
+.head.nb.nb .nbl .mbag .mbsvg{width:34px!important;height:34px!important;margin:-3px 0 -3px -3px;padding:1px!important;border-width:2px;box-shadow:none}
 .head.nb.nb .nbl .mbag .mbn b{font-size:17px;font-weight:800;color:#10294A}
 .head.nb .nbbub{top:48px}
 /* TEMP M button: display-only streak step preview, directly under Home */
@@ -2781,6 +2781,7 @@ html.dfv-on{overflow:hidden}
 @media (max-width:720px){
  .head.nb .nbmbtn{top:calc(min(100cqw - 28px,400px) * 1.0267 - 20px);right:14px}
  .head.nb.nb.nb .nbl .mbag{left:-8px;top:-6px}
+ .head.nb.nb .nbl{position:static}
 }
 /* banner-r3: when the Topics list narrows the banner on a big screen, size the left column from the banner width (not the window) and keep the stats on one row so the Remember card stays above the hens */
 @media (min-width:1061px){@container (max-width:1320px){
@@ -2792,17 +2793,17 @@ html.dfv-on{overflow:hidden}
  .head.nb .nbring .ring circle{transform:scale(.5946)}
  .head.nb.nb .ringtxt{max-width:84px;font-size:10.5px}
 }}
-/* banner-r3 middle band (721-1060px, e.g. Monnie's half-screen Mac window): the whole scene shown full width along the bottom over a sky fill,
-   Layla's staircase stands on the drawn grass at the left, title + dates + 3 stats + ring + Remember sit above the empty sky, clear of the sun and the girls */
-@media (min-width:721px) and (max-width:1060px){
- .head.nb,.head.nb.compact{background-image:url(img/banner-bg4.webp),url(img/sky-tile.webp)!important;background-repeat:no-repeat,repeat!important;background-size:100% auto,800px auto!important;background-position:right bottom var(--tabh,50px),left top!important}
- .head.nb.nb .nbstage{--nbh:clamp(230px,33cqw,330px);--nbw:calc(var(--nbh) * 600 / 616);display:grid;width:100%;grid-template-columns:var(--nbw) minmax(0,1fr);column-gap:14px;row-gap:0;padding:0 0 21cqw;align-items:start}
- .head.nb.nb .nbl{grid-column:1;grid-row:1;align-self:end;margin-bottom:-16cqw;position:static}
- .head.nb.nb .nbc{display:flex;grid-column:2;grid-row:1;width:auto;max-width:calc(74cqw - var(--nbw) - 30px);gap:8px}
- .head.nb.nb.nb.nb .kw{grid-column:auto;width:100%!important}
- .head.nb.nb .nbtitle h1{font-size:clamp(24px,3.4cqw,34px)}
- .head.nb.nb .nbtitle .sub{font-size:13px;gap:0 10px}
-}
+/* banner-r3 middle band: any banner 721-1060px wide (Monnie's half-screen Mac window, or a big screen narrowed by the Topics list). app.js sets .nbmid from the banner's own width.
+   The whole scene runs full width along the bottom over a sky fill; title, dates and the 3 stats + ring sit in one row across the top; Layla's staircase stands on the drawn grass at the left with the Remember card beside it, clear of the trees, the sun and the girls */
+.head.nb.nbmid,.head.nb.nbmid.compact{background-image:url(img/banner-bg4.webp),url(img/sky-tile.webp)!important;background-repeat:no-repeat,repeat!important;background-size:100% auto,800px auto!important;background-position:right bottom var(--tabh,50px),left top!important}
+.head.nb.nb.nbmid .nbstage{--nbh:clamp(230px,26cqw,280px);--nbw:calc(var(--nbh) * 600 / 616);display:grid;width:100%;grid-template-columns:var(--nbw) minmax(0,1fr);column-gap:14px;row-gap:8px;padding:0 0 calc(21cqw - 6px);align-items:start}
+.head.nb.nb.nbmid .nbc{display:contents}
+.head.nb.nb.nbmid .nbtitle{grid-column:1/-1;grid-row:1;justify-self:center;text-align:center}
+.head.nb.nb.nbmid .nbstats{grid-column:1/-1;grid-row:2;justify-self:center;flex-wrap:nowrap;gap:6px}
+.head.nb.nb.nbmid .nbl{grid-column:1;grid-row:3;align-self:end;margin-bottom:-16cqw;position:static}
+.head.nb.nb.nb.nbmid .kw{grid-column:2;grid-row:3;align-self:start;width:auto!important;max-width:calc(72cqw - var(--nbw) - 30px)!important}
+.head.nb.nb.nbmid .nbtitle h1{font-size:clamp(24px,3.4cqw,34px)}
+.head.nb.nb.nbmid .nbtitle .sub{font-size:13px;gap:0 10px}
 
 
 /* map-motion-wheel: the Ferris wheel turns once every 40s (rim, hub, cars and night bulbs together); each car turns back the same amount so it hangs upright.
@@ -2813,6 +2814,17 @@ html.dfv-on{overflow:hidden}
 @keyframes jwh-rock{0%{transform:rotate(-3deg)}100%{transform:rotate(3deg)}}
 @keyframes jwh-back{to{transform:rotate(-360deg)}}
 @media (prefers-reduced-motion:reduce){.jsv .jwh,.jsv .jwh-c,.jsv .jwh-sw{animation:none!important}}
+/* banner-anim (20 Nov, Monnie): gentle CSS-only motion on the existing art, scoped to .head.nb; transforms only so nothing else on the page moves. The sun is part of the background picture, so it stays still. */
+.head.nb .nbbrit{animation:none}
+.head.nb .nbbrit image{transform-box:fill-box;transform-origin:50% 60%;animation:nbflut 1.2s ease-in-out infinite}
+@keyframes nbflut{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-7px) rotate(3deg)}}
+.head.nb .nblayla{transform-box:fill-box;transform-origin:50% 100%;animation:nbhop .75s ease-out .2s both}
+@keyframes nbhop{0%{transform:translateY(-16px)}45%{transform:translateY(0) scale(1.04,.94)}70%{transform:translateY(-3px) scale(.98,1.02)}100%{transform:none}}
+.head.nb .nbcl{animation:nbdrift 5.2s ease-in-out infinite alternate}
+@keyframes nbdrift{0%{transform:translate(-4px,0)}100%{transform:translate(4px,-2px)}}
+.head.nb .stgift:not(.wob){transform-box:fill-box;transform-origin:50% 100%;animation:nbgift 3.4s ease-in-out infinite}
+@keyframes nbgift{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+@media (prefers-reduced-motion:reduce){.head.nb .nbbrit,.head.nb .nbbrit image,.head.nb .nblayla,.head.nb .nbcl,.head.nb .stgift,.head.nb .stgift.wob{animation:none!important}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -90115,6 +90127,7 @@ var CSS = [
 '.scn-art:has(.scn-board){container-type:inline-size}',
 '.scn-board{position:absolute;z-index:1;display:flex;align-items:center;justify-content:center;padding:var(--bpy,1cqw) var(--bpx,1cqw);box-sizing:border-box;background:none;border:0;border-radius:6px;cursor:zoom-in;color:#fff;font:400 1em/1.05 "Caveat Brush","Gochi Hand","Patrick Hand",cursive;letter-spacing:.01em;text-align:center;text-shadow:0 0 1px rgba(255,255,255,.9),0 0 3px rgba(255,255,255,.45),0 0 8px rgba(255,255,255,.18);overflow:hidden}',
 '.scn-board.tight{padding:calc(var(--bpy,1cqw) * .3) calc(var(--bpx,1cqw) * .3);overflow:visible}.scn-board.tight .scn-bt{line-height:1}.scn-board.tight .ln+.ln{margin-top:.05em}',
+'.scn-board.more .scn-bt::after{content:"tap to read ›";display:block;font-size:.95em;opacity:.95;text-decoration:underline;text-underline-offset:2px}',
 '.scn-board:hover,.scn-board:focus-visible{outline:3px dashed rgba(255,255,255,.7);outline-offset:-3px}',
 '.scn-bt{display:block;max-width:100%;font-size:2cqw;overflow-wrap:break-word}.scn-bt .ln{display:block}.scn-bt .ln+.ln{margin-top:.14em}',
 '.scn-boardov{position:fixed;inset:0;z-index:1000;background:rgba(20,16,30,.62);display:grid;place-items:center;padding:16px}',
@@ -90743,10 +90756,14 @@ window.SQE_SCENE = function(A){
   function fitBoards(){ var els = document.querySelectorAll('.scn-board .scn-bt:not([data-fit]), .scn-boardov .scn-bt:not([data-fit])');
     for (var i = 0; i < els.length; i++){ var t = els[i], box = t.parentNode, lo = 0.5, hi = box.classList.contains('scn-board') ? 12 : 80, unit = box.classList.contains('scn-board') ? 'cqw' : 'px';
       if (box.clientWidth < 8 || box.clientHeight < 8) continue; /* picture not loaded yet: the image load listener refits */
+      var lns = t.querySelectorAll('.ln'), j; for (j = 0; j < lns.length; j++) lns[j].style.display = ''; box.classList.remove('tight', 'more');
       var cw = box.clientWidth - parseFloat(getComputedStyle(box).paddingLeft) * 2, ch = box.clientHeight - parseFloat(getComputedStyle(box).paddingTop) * 2;
       for (var n = 0; n < 14; n++){ var mid = (lo + hi) / 2; t.style.fontSize = mid + unit; if (t.scrollHeight <= ch + 1 && t.scrollWidth <= cw + 1) lo = mid; else hi = mid; }
       /* never smaller than readable on a phone (12px); the board is tappable to read it big anyway */
-      var floor = unit === 'cqw' ? 12 / (box.parentNode.clientWidth / 100) : 18; if (lo < floor){ lo = floor; box.classList.add('tight'); } else box.classList.remove('tight');
+      var floor = unit === 'cqw' ? 12 / (box.parentNode.clientWidth / 100) : 18;
+      if (lo < floor){ lo = floor; t.style.fontSize = lo + unit; box.classList.add('tight');
+        /* too small a board for readable text (a phone): keep the lines that fit and say "tap to read" for the rest */
+        for (j = lns.length - 1; j >= 0 && t.scrollHeight > box.clientHeight + 1; j--){ lns[j].style.display = 'none'; box.classList.add('more'); } }
       t.style.fontSize = lo + unit; t.setAttribute('data-fit', '1'); } }
   if (ROOMS_ON && window.MutationObserver) try { var fitQ = 0; new MutationObserver(function(){ if (fitQ) return; fitQ = 1; requestAnimationFrame(function(){ fitQ = 0; fitBoards(); }); }).observe(document.documentElement, {childList: true, subtree: true});
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ var f = document.querySelectorAll('.scn-bt[data-fit]'); for (var i = 0; i < f.length; i++) f[i].removeAttribute('data-fit'); fitBoards(); }); } catch(e){}
@@ -92080,16 +92097,16 @@ function nbStreakHTML(){
   var svg = '<svg viewBox="0 0 600 616" class="nbsvg" aria-hidden="true">', pos = [[85, 588]];
   /* 20 Nov: no mound, she stands on the plain grass (Monnie) */
   for (var i = 0; i < PRESENT_STEPS; i++){
-    var cx = 150 + i * 92, cy = 482 - i * 40, on = i < n; /* r3: bigger clouds, further apart, so both her feet sit on each one */
+    var cx = 150 + i * 92, cy = 490 - i * 31, on = i < n; /* r3: bigger clouds, further apart, so both her feet sit on each one; top step kept low enough to miss the rainbow */
     pos.push([cx + 1, cy - 16]);
-    svg += stCloud(cx, cy, 92, on ? '#FFD93B' : '#fff');
-    svg += '<text x="' + cx + '" y="' + (cy + 8) + '" text-anchor="middle" font-size="' + (on ? 22 : 20) + '" font-weight="800" fill="#10294A">' + (on ? '✓' : (i + 1)) + '</text>';
+    svg += '<g class="' + (i + 1 === Math.min(n, PRESENT_STEPS) ? 'nbclon' : 'nbcl') + '" style="animation-delay:-' + (i * 1.3).toFixed(1) + 's">' + stCloud(cx, cy, 92, on ? '#FFD93B' : '#fff');
+    svg += '<text x="' + cx + '" y="' + (cy + 8) + '" text-anchor="middle" font-size="' + (on ? 22 : 20) + '" font-weight="800" fill="#10294A">' + (on ? '✓' : (i + 1)) + '</text></g>'; /* banner-anim: clouds drift, except the one she stands on */
   }
   var st = Math.min(n, PRESENT_STEPS), lp = pos[st], pz = STEP_POSE[st], LH = pz[0], LW = LH * pz[1] / 600;
   var lsrc = NB_STEPMISS[st] ? STEP_IMG[st] : 'img/layla-step' + st + '.webp';
   /* Britney flies beside Layla's shoulder on clouds 1-5 (right side on 1-3, left on 4-5 to miss the rainbow); hidden if her picture is missing */
-  /* r3: Britney on the open side with a clear gap (right on grass/1/2, left on 3/4/5), drawn after Layla so she is never covered; fly2/fly3 stand in on steps 4/5 */
-  var brit = ''; if (NB_FLY){ var BH = LH * 0.33, rt = st <= 2, bx = rt ? lp[0] + LW / 2 + 14 : lp[0] - LW / 2 - 14 - BH, by = Math.max(14, lp[1] - pz[2] - LH * (rt ? 0.76 : 0.62) - BH / 2); brit += '<g class="nbbrit"><image href="img/britney/fly' + ([1, 1, 2, 3, 2, 3][st]) + '.webp" onerror="if(this.dataset.fb){this.parentNode.style.display=\'none\'}else{this.dataset.fb=1;this.setAttribute(\'href\',\'img/britney/fly.webp\')}" x="' + bx.toFixed(1) + '" y="' + by.toFixed(1) + '" width="' + BH.toFixed(1) + '" height="' + BH.toFixed(1) + '"/></g>'; }
+  /* r3: Britney on the open side with a clear gap (right on grass/1/2, left on 3/4/5), drawn after Layla so she is never covered; fly1 on the grass, flyN on step N */
+  var brit = ''; if (NB_FLY){ var BH = LH * 0.33, rt = st <= 2, bx = rt ? lp[0] + LW / 2 + 14 : lp[0] - LW / 2 - 14 - BH, by = Math.max(14, lp[1] - pz[2] - LH * (rt ? 0.76 : 0.62) - BH / 2); brit += '<g class="nbbrit"><image href="img/britney/fly' + ([1, 1, 2, 3, 4, 5][st]) + '.webp" onerror="if(this.dataset.fb){this.parentNode.style.display=\'none\'}else{this.dataset.fb=1;this.setAttribute(\'href\',\'img/britney/fly.webp\')}" x="' + bx.toFixed(1) + '" y="' + by.toFixed(1) + '" width="' + BH.toFixed(1) + '" height="' + BH.toFixed(1) + '"/></g>'; }
   svg += '<image class="nblayla" href="' + lsrc + '" onerror="NB_STEPMISS[' + st + ']=1;this.setAttribute(\'href\',STEP_IMG[' + st + '])" x="' + (lp[0] - LW / 2).toFixed(1) + '" y="' + (lp[1] - LH - pz[2]).toFixed(1) + '" width="' + LW.toFixed(1) + '" height="' + LH + '" preserveAspectRatio="xMidYMax meet"/>';
   svg += brit;
   var rx = 551, ry = 60;
@@ -92154,7 +92171,7 @@ function header(route){
 }
 /* newbanner preview header: [fun: streak bubble, staircase + Layla, coin bag | serious: title, dates, numbers + hours ring, Remember]; tabs exactly as the normal header */
 function nbHeader(route, cur, tabs, countdown, pct, C, done, tgt, todayDone, todayGoal, name){
-  return '<div class="head nb' + (route[0] === "home" ? '' : ' compact') + '"><div class="nbstage">' +
+  return '<div class="head nb' + (route[0] === "home" ? '' : ' compact') + (NB_MID ? ' nbmid' : '') + '"><div class="nbstage">' +
     '<div class="nbl">' + nbStreakHTML() + bagHTML() + '</div>' +
     '<div class="nbc"><div class="nbtitle"><h1>' + name + 'SQE1 Revision</h1><div class="sub"><span>FLK1 ' + esc(fmtDate(S.settings.exam1)) + '</span><span>FLK2 ' + esc(fmtDate(S.settings.exam2)) + '</span></div></div>' +
       '<div class="nbstats">' + countdown + '<div class="stat"><b>' + fmtH(todayDone) + (todayGoal ? ' <small>of ' + fmtH(todayGoal) + '</small>' : '') + '</b><span>' + (todayGoal && todayDone >= todayGoal ? "today ✓ goal met" : "studied today") + '</span></div>' +
@@ -92242,7 +92259,8 @@ function timerStrip(){
 
     '<span class="saved" id="savedIndicator"></span></div>';
 }
-function tabH(){ try { var h = document.querySelector(".head"), t = h && h.querySelector(".tabs"); if (!t) return; var v = Math.round(h.getBoundingClientRect().bottom - t.getBoundingClientRect().top) + "px"; if (h.style.getPropertyValue("--tabh") !== v) h.style.setProperty("--tabh", v); var mh = (window.innerWidth > 720 && (!h.classList.contains("compact") || h.classList.contains("nb"))) ? Math.round(Math.min(h.clientWidth / 4.03, 400) + 26 + parseInt(v, 10)) + "px" : ""; if (h.style.minHeight !== mh) h.style.minHeight = mh; layGuard(); } catch(e){} }
+function tabH(){ try { var h = document.querySelector(".head"), t = h && h.querySelector(".tabs"); if (!t) return; var v = Math.round(h.getBoundingClientRect().bottom - t.getBoundingClientRect().top) + "px"; if (h.style.getPropertyValue("--tabh") !== v) h.style.setProperty("--tabh", v); var mh = (window.innerWidth > 720 && (!h.classList.contains("compact") || h.classList.contains("nb"))) ? Math.round(Math.min(h.clientWidth / 4.03, 400) + 26 + parseInt(v, 10)) + "px" : ""; if (h.style.minHeight !== mh) h.style.minHeight = mh; if (h.classList.contains("nb")){ NB_MID = window.innerWidth > 720 && h.clientWidth <= 1060; h.classList.toggle("nbmid", NB_MID); } layGuard(); } catch(e){} }
+var NB_MID = window.innerWidth > 720 && window.innerWidth <= 1060; /* banner-r3: the middle-band banner layout follows the banner's own width (the Topics list can narrow it on a big screen) */
 /* 22:55 guard: whatever the fonts, browser or saved layout, push the present clouds (with cloud-Layla) down until Layla's head is clear of the numbers row, and grow the banner to fit */
 function layGuard(){ try { var h = document.querySelector(".head"), st = h && h.querySelector(".streak"), ly = st && st.querySelector(".stlayla"), hs = h && h.querySelector(".hstats"); if (!st) return;
   st.style.transform = ""; if (!ly || !hs || h.classList.contains("bl-edit")) return;
@@ -94655,12 +94673,25 @@ function bagSVG(f){
     '<text x="30" y="48.5" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="14" fill="#7A4E00">£</text>' +
     '<g stroke="#9A6A00" stroke-width="1.4" fill="#FFC21A"><ellipse cx="9" cy="64" rx="7" ry="3"/><ellipse cx="9" cy="61" rx="7" ry="3"/><ellipse cx="51" cy="64" rx="7" ry="3"/></g></svg>';
 }
+/* banner-r3: felt-tip cartoon money bag for the new banner (thick wobbly black outline, flat bright blue sack, big yellow £ coin); darker blue fills up toward the next prize */
+function nbBagSVG(f){
+  f = Math.max(0, Math.min(1, f));
+  var y = (56 - 36 * f).toFixed(1), sack = 'M25 19.5C14.5 22 7.5 32.5 8.2 43.5 9 52 17.5 56.3 30.5 56 43 56.4 51.6 51.5 52 42.8 52.6 32 45.5 22.3 35.2 19.2 31.8 20.3 28.2 20.4 25 19.5z';
+  return '<svg class="mbsvg nbbag" viewBox="0 0 60 60" aria-hidden="true"><defs><clipPath id="nbbagclip"><path d="' + sack + '"/></clipPath></defs>' +
+    '<path d="M22.5 13.2C24.2 8.6 27 12.4 29.8 8.8 32.6 12.2 35.6 8.5 38 13.5L35.2 19.6 25 19.4z" fill="#3B8FE0" stroke="#111" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>' +
+    '<path d="' + sack + '" fill="#5BB0FF"/><g clip-path="url(#nbbagclip)"><rect x="0" y="' + y + '" width="60" height="40" fill="#2F7AD0"/></g>' +
+    '<path d="' + sack + '" fill="none" stroke="#111" stroke-width="3.2" stroke-linejoin="round"/>' +
+    '<path d="M22.6 20.2C27.3 22.6 32.8 22.4 37.6 19.8" fill="none" stroke="#111" stroke-width="6" stroke-linecap="round"/><path d="M22.6 20.2C27.3 22.6 32.8 22.4 37.6 19.8" fill="none" stroke="#E0457B" stroke-width="2.6" stroke-linecap="round"/>' +
+    '<path d="M30.3 27.6C36.8 27.2 41.6 32.4 41.2 39 40.9 45.3 36 50.2 29.7 49.9 23.4 49.7 18.9 44.6 19.3 38.3 19.6 32.2 24.2 27.9 30.3 27.6z" fill="#FFD93B" stroke="#111" stroke-width="3" stroke-linejoin="round"/>' +
+    '<path d="M34.4 33.6C33.2 31.2 28.2 31.1 28 35.4L28.2 42.6C28 44.4 26.6 45.4 25.2 45.6L35.6 45.3M25 38.8L32.3 38.6" fill="none" stroke="#111" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>' +
+    '<path d="M13.5 36.5C14.2 32.8 16 30 18.4 28" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>';
+}
 function bagHTML(){
   var c = cbaS(), it = nextPrize(), f = it ? Math.min(1, c.coins / it.p) : 1;
   var nd0 = henNeed(), lockd = nd0 && it && nd0.it.id === it.id && nd0.ok === false;
   var sub = it ? (lockd ? (c.coins >= it.p ? 'Egg unlocks when a day\'s list is all ticked' : (it.p - c.coins) + ' more for ' + esc(it.n)) : c.coins >= it.p ? esc(it.n) + ' ready to buy!' : (it.p - c.coins) + ' more for ' + esc(it.n)) : 'Every prize won! 👑';
   if (lockd) f = Math.min(f, 0.999);
-  return '<a class="mbag' + (f >= 1 ? ' full' : '') + '" id="mbag" href="#/palace" data-fill="' + f.toFixed(3) + '" title="Your coins: tap to visit Cluckington Palace">' + bagSVG(f) +
+  return '<a class="mbag' + (f >= 1 ? ' full' : '') + '" id="mbag" href="#/palace" data-fill="' + f.toFixed(3) + '" title="Your coins: tap to visit Cluckington Palace">' + (NB ? nbBagSVG(f) : bagSVG(f)) +
     '<span class="mbt"><span class="mbn"><b>' + c.coins + '</b>' + (NB ? '' : ' coin' + (c.coins === 1 ? '' : 's')) + '</span>' + (NB ? '' : '<small>' + sub + '</small>') + '</span></a>'; /* 20 Nov: new banner shows just the number (Monnie) */
 }
 
