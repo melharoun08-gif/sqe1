@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120165225";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120170356";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -130342,7 +130342,7 @@ var FG_SKIN = {"dr-options": "00000000000000000000000000000000000000000000000000
 var FG_BPAD = {'dr-enforcement': [.12, .2], 'dr-trial': [.22, .08], 'dr-costs': [.17, .12], 'dr-pre-action': [.17, .12]}; /* per-board margins [side, top] as a share of the board */
 var FG_WRITE = {'dr-responding/board': [20, 14, 20, 12]}; /* [x, y, w, h] % of the picture: the drawn sign's writing area */ /* blank drawn signs: their words are written ON the sign, not as a label under it */
 function fgTags(a){ var m = /^#\/scene\/dr\/(dr-[a-z-]+)\//.exec(location.hash), v = m && ROOMV3[m[1]]; if (!v || !v.hooks) return;
-  var W = a.clientWidth, H = a.clientHeight; if (!W || !H) return; var key = m[1] + ':' + W + 'x' + H + ':' + [].reduce.call(a.querySelectorAll('.scn-hook'), function(n, e){ return n + e.offsetWidth; }, 0) + ':' + (a.querySelector('.scn-hs.next') || {}).className; if (a.getAttribute('data-fgt') === key) return;
+  var W = a.clientWidth, H = a.clientHeight; if (!W || !H) return; var key = m[1] + ':' + W + 'x' + H + ':' + [].reduce.call(a.querySelectorAll('.scn-hook'), function(n, e){ return n + e.offsetWidth; }, 0) + ':' + (a.querySelector('.scn-hs.next') || {}).className + ':' + ((a.querySelector('.scn-hs.next > .scn-nexttag') || {style: {}}).style.left || '') + ((a.querySelector('.scn-hs.next > .scn-nexttag') || {style: {}}).style.top || ''); if (a.getAttribute('data-fgt') === key) return;
   /* Monnie 16:11: board writing must sit INSIDE the board with margins: extra side margin, then shrink until every line and word fits */
   [].forEach.call(a.querySelectorAll('.scn-board'), function(bd){ var bt = bd.querySelector('.scn-bt'); if (!bt) return; var bp = FG_BPAD[m[1]] || [.17, .09], px = bd.offsetWidth * bp[0], py = bd.offsetHeight * bp[1];
     bd.style.setProperty('padding', py + 'px ' + px + 'px ' + (py * 1.6) + 'px', 'important');
@@ -130365,8 +130365,14 @@ function fgTags(a){ var m = /^#\/scene\/dr\/(dr-[a-z-]+)\//.exec(location.hash),
       if (q.l < 2 || q.r > W - 2 || q.t < 2 || q.b > H - 2) sc += 5000; placed.forEach(function(P){ sc += 3000 * ov(q, P) / (nw * nh); });
       if (!best || sc < best.sc) best = {sc: sc, q: q, up: c[1] < 0, side: c[1] === 0}; });
     nt.style.left = Math.round(best.q.l - T.l) + 'px'; nt.style.top = Math.round(best.q.t - T.t) + 'px';
-    placed.push(best.q); var d = nt.querySelector('.d'), mm = nt.querySelector('.m'); if (d && mm){ d.style.display = best.up ? 'inline' : 'none'; mm.style.display = best.up ? 'none' : 'inline'; if (best.side) mm.textContent = 'Next →'; } }
+    placed.push({l: best.q.l - 12, r: best.q.r + 12, t: best.q.t - 12, b: best.q.b + 12}); var d = nt.querySelector('.d'), mm = nt.querySelector('.m'); if (d && mm){ d.style.display = best.up ? 'inline' : 'none'; mm.style.display = best.up ? 'none' : 'inline'; if (best.side) mm.textContent = 'Next →'; } }
 
+  /* speech bubbles: just above the speaker's head, never on it */
+  sp.forEach(function(e){ var sid = byText[norm(e.textContent)], S = sid && spots[sid]; if (!S) return; var r = R(e), tw = r.r - r.l, th = r.b - r.t, g = Math.max(4, H * .008), best = null;
+    [0, -.4, .4, -.8, .8].forEach(function(k, n){ var l = Math.max(2, Math.min(W - tw - 2, (S.l + S.r) / 2 - tw / 2 + k * tw)), t = S.t - th - g, q = {l: l, r: l + tw, t: t, b: t + th}, sc = n * 3 + (t < 2 ? 5000 : 0);
+      placed.forEach(function(P){ sc += 3000 * ov(q, P) / (tw * th); }); objs.forEach(function(O){ if (O !== S) sc += 60 * ov(q, O) / (tw * th); }); if (BR) sc += 400 * ov(q, BR) / (tw * th);
+      if (!best || sc < best.sc) best = {sc: sc, q: q}; });
+    if (best.sc >= 5000) return; placed.push(best.q); e.style.left = (best.q.l / W * 100).toFixed(2) + '%'; e.style.top = (best.q.b / H * 100).toFixed(2) + '%'; });
   tags.forEach(function(e){ var sid = byText[norm(e.textContent)], S = sid && spots[sid]; if (!S) return;
     var WR = FG_WRITE[m[1] + '/' + sid]; if (WR){ e.classList.add('fgwrite'); var sw = WR[2] / 100 * W, sh = WR[3] / 100 * H, fs = Math.max(10, Math.min(22, Math.round(sh / 3.2))); e.style.setProperty('width', Math.round(sw * .94) + 'px', 'important'); e.style.setProperty('max-width', 'none', 'important'); e.style.setProperty('padding', '0', 'important');
       for (; fs > 8; fs--){ e.style.setProperty('font-size', fs + 'px', 'important'); if (e.scrollHeight <= sh * .92 && e.scrollWidth <= sw * .95) break; }
@@ -130383,12 +130389,6 @@ function fgTags(a){ var m = /^#\/scene\/dr\/(dr-[a-z-]+)\//.exec(location.hash),
       objs.forEach(function(O){ sc += (O === S ? 80 : 60) * ov(q, O) / A0; }); if (BR) sc += 400 * ov(q, BR) / A0; sc += 70 * skinPen(q);
       if (!best || sc < best.sc) best = {sc: sc, q: q}; });
     placed.push(best.q); e.style.left = ((best.q.l + tw / 2) / W * 100).toFixed(2) + '%'; e.style.top = (best.q.b / H * 100).toFixed(2) + '%'; });
-  /* speech bubbles: just above the speaker's head, never on it */
-  sp.forEach(function(e){ var sid = byText[norm(e.textContent)], S = sid && spots[sid]; if (!S) return; var r = R(e), tw = r.r - r.l, th = r.b - r.t, g = Math.max(4, H * .008), best = null;
-    [0, -.4, .4, -.8, .8].forEach(function(k, n){ var l = Math.max(2, Math.min(W - tw - 2, (S.l + S.r) / 2 - tw / 2 + k * tw)), t = S.t - th - g, q = {l: l, r: l + tw, t: t, b: t + th}, sc = n * 3 + (t < 2 ? 5000 : 0);
-      placed.forEach(function(P){ sc += 3000 * ov(q, P) / (tw * th); }); objs.forEach(function(O){ if (O !== S) sc += 60 * ov(q, O) / (tw * th); }); if (BR) sc += 400 * ov(q, BR) / (tw * th);
-      if (!best || sc < best.sc) best = {sc: sc, q: q}; });
-    if (best.sc >= 5000) return; placed.push(best.q); e.style.left = (best.q.l / W * 100).toFixed(2) + '%'; e.style.top = (best.q.b / H * 100).toFixed(2) + '%'; });
   a.setAttribute('data-fgt', key); }
 if (FAIR_ON) try { (function(){ var css = document.createElement('style'); css.textContent = '.scn-art .scn-fgdeclut{opacity:0!important;transition:none!important}'; document.head.appendChild(css); function run(){ try { var ht = document.querySelectorAll('.hub-art .hub-hs.next .scn-nexttag'); for (var q = 0; q < ht.length; q++){ var pn = ht[q].parentNode.querySelector('.scn-pin'); if (!pn) continue; var tr = ht[q].getBoundingClientRect(), pr = pn.getBoundingClientRect(), up = tr.top + tr.height / 2 < pr.top + pr.height / 2; ht[q].classList.toggle('fgabove', up); ht[q].classList.toggle('fgbelow', !up); } } catch(e0){} var a = document.querySelector('.scn-art'), i, j, h = a ? a.querySelectorAll('.scn-fgdeclut') : []; for (i = 0; i < h.length; i++) h[i].classList.remove('scn-fgdeclut'); if (!a || !/^#\/scene\/dr\//.test(location.hash)) return; try { fgTags(a); } catch(e1){} var t = a.querySelectorAll('.scn-nexttag'), k = a.querySelectorAll('.scn-hook'); for (i = 0; i < t.length; i++){ var T = t[i].getBoundingClientRect(); if (!T.width) continue; for (j = 0; j < k.length; j++){ var R = k[j].getBoundingClientRect(); if (T.left - 8 < R.right && R.left < T.right + 8 && T.top - 8 < R.bottom && R.top < T.bottom + 8) k[j].classList.add('scn-fgdeclut'); } } } setInterval(run, 300); ['mouseover', 'mouseout', 'focusin'].forEach(function(ev){ document.addEventListener(ev, function(){ setTimeout(run, 90); }, true); }); window.addEventListener('hashchange', function(){ setTimeout(run, 60); }); window.addEventListener('resize', run); })(); } catch(e){}
 /* room 01: The Bumper Cars, dr-options (measured) */
@@ -175504,6 +175504,8 @@ window.SQE_SCENE = function(A){
   /* 20 Nov (Fairground thread): the new entrance (fairground-hub2) draws all 16 rides; each ride is its own clickable shape (Monnie 16:11). */
   function fgHub2Anim(k, hb){ var s = '<svg class="fg-anim" viewBox="0 0 2752 1536" preserveAspectRatio="none" aria-hidden="true" focusable="false">';
     s += '<image href="img/scene/fg-hub2-sky.webp" x="1640" y="40" width="510" height="560"/>';
+    s += '<path d="M1641 571Q1626 520 1660 484 Q1683 450 1706 480 Q1729 456 1752 480 Q1775 462 1798 480 Q1821 450 1844 480 Q1867 456 1890 480 Q1913 462 1936 480 Q1959 450 1982 480 Q2005 456 2028 480 Q2051 462 2074 480 Q2097 450 2120 480 Q2124 456 2128 480 Q2162 520 2147 571Z" fill="#0E9A5C" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/><path d="M1662 571Q1650 540 1670 512 Q1700 502 1730 512 Q1760 494 1790 512 Q1820 502 1850 512 Q1880 494 1910 512 Q1940 502 1970 512 Q2000 494 2030 512 Q2060 502 2090 512 Q2104 494 2118 512 Q2140 540 2128 571Z" fill="#08794A"/><rect x="1639" y="568" width="510" height="14" fill="#B4DC3C"/><path d="M1639 568H2149" stroke="#1b1b1b" stroke-width="3"/>';
+
     s += '<g transform="translate(1895 283) scale(.726) translate(-1956.9 -445.2)">' + fgWheel(1956.9, 445.2, 70, {noSky: 1, legY: 878}) + '</g>';
     var K = ' stroke="#1b1b1b" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"';
     s += '<g class="fgride"><g transform="scale(1.05)"><ellipse cx="0" cy="20" rx="36" ry="9" fill="#9C6B3F"' + K + '/><path d="M2 14 L30 12" fill="none"' + K + ' stroke-width="9"/><path d="M2 14 L30 12" fill="none" stroke="#1D3557" stroke-width="5" stroke-linecap="round"/>' +
@@ -175511,6 +175513,7 @@ window.SQE_SCENE = function(A){
       '<circle cx="0" cy="-21" r="12" fill="#C68B59"' + K + '/><path d="M-13 -24 Q-14 -38 0 -36 Q14 -38 13 -24 Q8 -31 0 -30 Q-8 -31 -13 -24 Z" fill="#2B1A12"' + K + ' stroke-width="3"/><path d="M-5 -16 Q0 -12 5 -16" fill="none" stroke="#1b1b1b" stroke-width="2.5" stroke-linecap="round"/><circle cx="-4.5" cy="-22" r="1.6" fill="#1b1b1b"/><circle cx="4.5" cy="-22" r="1.6" fill="#1b1b1b"/></g>' +
       '<animateMotion dur="9s" repeatCount="indefinite" calcMode="linear" keyPoints="0;1;1" keyTimes="0;0.6;1" path="M2150,232 C2230,258 2330,284 2372,342 C2388,388 2300,418 2200,452 C2140,472 2092,488 2080,520"/>' +
       '<animate attributeName="opacity" dur="9s" repeatCount="indefinite" values="0;1;1;0;0;1;1;0;0" keyTimes="0;0.02;0.2;0.22;0.27;0.29;0.58;0.6;1"/></g>';
+    s += '<path d="M1662 650Q1650 612 1676 600Q1682 578 1704 584Q1724 572 1736 594Q1758 600 1748 650Z" fill="#0E9A5C" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/><circle cx="1690" cy="612" r="5" fill="#E63946"/><circle cx="1722" cy="604" r="5" fill="#FFC300"/><circle cx="1712" cy="628" r="5" fill="#E63946"/>';
     s += '<image class="fghen fgh2" href="img/scene/fg-hub-hen.webp" x="430" y="895" width="170" height="155"/>';
     s += '</svg>';
     var rooms = hb.rooms || [], done = rooms.filter(function(x){ return roomDone(x); }).length, nx = null;
@@ -176049,7 +176052,7 @@ window.SQE_TOWN = function(A){
     '.hbin-ctr{position:absolute;z-index:25;pointer-events:none}.hbin-sign{position:absolute;transform:skewY(25deg);transform-origin:0 0;padding:0 2%;box-sizing:border-box;display:flex;align-items:center;gap:4%;overflow:hidden}.hbin-sign .hb-logo{height:86%;width:auto;flex:none;border-radius:4px}.hbin-sign span{font-family:Calibri,Carlito,Arial,sans-serif;font-weight:700;color:#E2231A;font-size:1.05cqw;line-height:1;white-space:nowrap}' +
     '.hbi{position:absolute;transform:translateX(-50%);display:flex;align-items:flex-end;justify-content:center;background:none;border:0;padding:0;margin:0;cursor:pointer;z-index:10}' +
     '.hbi img{height:100%;width:auto;display:block;filter:drop-shadow(0 2px 0 rgba(0,0,0,.18));transition:transform .15s}.hbi img+img{margin-left:-14%}.hbi:hover img,.hbi:focus-visible img,.hbi.on img{transform:translateY(-6%) scale(1.06)}' +
-    '.hbi:focus-visible{outline:3px solid #E0457B;outline-offset:3px;border-radius:8px}.hbi.on{z-index:40}.hbi.locked img,.hbi.ate img{filter:grayscale(.7) drop-shadow(0 2px 0 rgba(0,0,0,.18))}' +
+    '.hbi:focus-visible{outline:3px solid #E0457B;outline-offset:3px;border-radius:8px}.hbi.on{z-index:40}.hbi:hover,.hbi:focus-visible{z-index:45!important}.hbi.locked img,.hbi.ate img{filter:grayscale(.7) drop-shadow(0 2px 0 rgba(0,0,0,.18))}' +
     '.hbi .hbtag{position:absolute;left:50%;bottom:0;transform:translate(-50%,72%);background:#fff;border:2px solid #1d1d1b;border-radius:6px;padding:0 5px;font:700 11px/1.3 Calibri,Carlito,Arial,sans-serif;color:#1d1d1b;white-space:nowrap}.hbi .hbtag.own{background:#7FD08B}' +
     '.hbi .hbname{position:absolute;left:50%;top:100%;transform:translate(-50%,26px);background:#1d1d1b;color:#fff;border-radius:8px;padding:3px 9px;font:400 15px/1.2 Calibri,Carlito,Arial,sans-serif;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s;z-index:60}.hbi:hover .hbname,.hbi:focus-visible .hbname{opacity:1}' +
     '.hbi.till .hbtag{display:none}.hbi[data-i="parents"] .hbtag{left:30%}.hbi.ppl .hbtag,.hbi.hen .hbtag{bottom:auto;top:-4px;transform:translate(-50%,-100%)}.hbi.ppl .hbname,.hbi.hen .hbname{top:auto;bottom:100%;transform:translate(-50%,-30px)}' +
