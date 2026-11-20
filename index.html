@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120001453";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120001731";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -81679,7 +81679,7 @@ function todoHTML(it){
   if (it.part === "start" || it.part === "continue") return '<li class="tdtopic"><b>' + esc(tnum(x)) + '</b> ' + esc(x.t.title) + ' <span class="muted small">' + fmtM(it.m) + '</span><ul class="tdsteps">' +
     '<li><button class="tdbox' + (stepDone(x, "notes") ? " on" : "") + '" data-act="todo" data-k="' + x.key + '|notes" aria-label="Tick off">' + (stepDone(x, "notes") ? "✓" : "") + '</button><a href="' + notesHref(x) + '">📝 ' + (it.part === "start" ? "Start reading the notes (big topic, it carries on next session)" : "Carry on reading the notes") + '</a><span class="tdmin">' + fmtM(it.m) + '</span></li></ul></li>';
   var st = topicSteps(x), sm = stepMins(x, it.m), bwon = bossS().won[x.key];
-  var brow = bossTopicReady(x) ? '<li class="tdboss' + (bwon ? ' won' : '') + '"><img class="bert" src="img/boss/bert.webp" alt="" width="256" height="360" loading="lazy"><a href="#/boss/' + x.s.id + '/' + x.t.id + '">' + (bwon ? '🏆 You beat Bert the butcher on this topic' : '⭐ Optional bonus: 🥊 Bert the butcher challenges you!') + '</a></li>' : '';
+  var brow = false /* 20 Nov: Bert off topic lists */ ? '<li class="tdboss' + (bwon ? ' won' : '') + '"><img class="bert" src="img/boss/bert.webp" alt="" width="256" height="360" loading="lazy"><a href="#/boss/' + x.s.id + '/' + x.t.id + '">' + (bwon ? '🏆 You beat Bert the butcher on this topic' : '⭐ Optional bonus: 🥊 Bert the butcher challenges you!') + '</a></li>' : '';
   return '<li class="tdtopic"><b>' + esc(tnum(x)) + '</b> ' + esc(x.t.title) + ' <span class="muted small">' + fmtM(it.m) + (it.part === "finish" ? " · finish this topic" : "") + '</span><ul class="tdsteps">' + st.map(function(z){ var dn = stepDone(x, z.k); return '<li><button class="tdbox' + (dn ? " on" : "") + '"' + (z.auto ? ' disabled title="Ticks itself when you rate the topic"' : ' data-act="todo" data-k="' + x.key + '|' + z.k + '"') + ' aria-label="Tick off">' + (dn ? "✓" : "") + '</button><a href="' + z.h + '">' + z.l + '</a>' + (z.alt || '') + (sm(z.k) ? '<span class="tdmin">' + fmtM(sm(z.k)) + '</span>' : '') + '</li>'; }).join("") + brow + '</ul></li>';
 }
 function topicStepCount(x){ var st = topicSteps(x), d = st.filter(function(z){ return stepDone(x, z.k); }).length; return [d, st.length]; }
@@ -81915,14 +81915,14 @@ VIEW.topic = function(r){
     '<a href="#/topic/' + s.id + '/' + t.id + '" class="' + (mode === "notes" ? "on" : "") + '">📝 Notes</a>' +
     (ct ? '<a href="#/topic/' + s.id + '/' + t.id + '/cartoon" class="' + (mode === "cartoon" ? "on" : "") + '">🖼️ Cartoon</a>' : '<span class="vt-off" title="Coming soon">🖼️ Cartoon</span>') +
     (fw ? '<a href="#/topic/' + s.id + '/' + t.id + '/framework" class="' + (mode === "framework" ? "on" : "") + '">🗺️ Framework</a>' : '<span class="vt-off" title="Coming soon">🗺️ Framework</span>') +
-    (cbaReady(x) ? '<a href="#/cba/' + s.id + '/' + t.id + '">🎯 Practice (CBA)</a>' : '<span class="vt-off" title="Coming soon">🎯 CBA</span>') +
+    /* 20 Nov Monnie: CBA tab removed */
     '</div></div>' + body +
     '<div class="btns" style="margin-top:18px;border-top:1px solid var(--line);padding-top:12px">' +
     '</div><div class="review"><b>Finished reviewing? How confident do you feel about this topic?</b>' +
       '<div class="btns" style="justify-content:center">' + CONF.slice().reverse().map(function(c){ var cur = trec(k) && trec(k).conf === c.v; return '<button class="rate' + (cur ? " on" : "") + '" data-act="trate" data-k="' + k + '" data-v="' + c.v + '">' + c.e + '<span>' + esc(c.l) + '</span></button>'; }).join("") + '</div>' +
       (trec(k) ? '<p class="small muted" style="margin:8px 0 0">Reviewed ' + plural(trec(k).n, "time") + ', last ' + ago(trec(k).at) + '. Rate it again each time you come back to it. <button class="linkbtn" data-act="undone" data-k="' + k + '">Clear</button></p>' : '<p class="small muted" style="margin:8px 0 0">Your rating counts this as a review and shows on the topic list and Progress charts.</p>') +
       '<div class="btns" style="justify-content:center">' + ((s.qq || []).some(function(q){ return q.t === t.id; }) ? '<a class="btn sm primary" href="#/quick/' + s.id + '/' + t.id + '">⚡ Quick-fire on this topic</a>' : '') + '<a class="btn sm" href="#/questions/' + s.id + '">Practise ' + esc(s.title) + ' questions</a></div></div>' +
-    bossTopicCTA(x) +
+    /* 20 Nov: Bert moved off topic pages */
     '<div class="btns">' + (prev ? '<a class="btn sm" href="#/topic/' + prev.s.id + '/' + prev.t.id + '">‹ ' + esc(prev.t.title) + '</a>' : '') + (next ? '<a class="btn sm" href="#/topic/' + next.s.id + '/' + next.t.id + '">' + esc(next.t.title) + ' ›</a>' : '') + '</div>' +
     '</div>';
   return h;
