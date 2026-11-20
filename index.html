@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120034240";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120035121";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -83051,7 +83051,7 @@ window.SQE_JOURNEY = function (A) {
        through the FLK1 meadow and the FLK2 autumn fields to revision camp and Cluckington Palace (with both exam flags) in the palace grounds at the bottom.
        reg = the top edge of each ground band, top to bottom: spring meadow (stops 1-7), autumn fields (8-14), palace grounds. */
     function layoutDesktop() {
-        var rows = TOWN ? [640, 1265, 2630, 3250] : [660, 1100, 1800, 2230], /* +130 at the top for the Welcome to Peckham sign (Monnie 20 Nov) */ cols = [200, 445, 690, 935], PB = rows[3] + 625, /* 20 Nov: +140 at the top for the FLK1 signpost, +160 between the meadow and the fields for the FLK2 signpost */ D = PB - 2145, W = 1100, H = 2300 + D; /* 03:27 Monnie: path starts higher, less empty field, flowers at the bottom no longer cut off */ /* landmarks 1.6x bigger, cards smaller (Monnie 21:29): rows spaced out */
+        var rows = TOWN ? [812, 1312, 2883, 3373] : [660, 1100, 1800, 2230], /* +130 at the top for the Welcome to Peckham sign (Monnie 20 Nov) */ cols = [200, 445, 690, 935], PB = rows[3] + 625, /* 20 Nov: +140 at the top for the FLK1 signpost, +160 between the meadow and the fields for the FLK2 signpost */ D = PB - 2145, W = 1100, H = 2300 + D; /* 03:27 Monnie: path starts higher, less empty field, flowers at the bottom no longer cut off */ /* landmarks 1.6x bigger, cards smaller (Monnie 21:29): rows spaced out */
         var ty = function (x) { return -(x - 570) * .09; }; /* each row of the path tilts gently upward to the right (Monnie 20 Nov: a path in perspective, not flat) */
         var st = [{ x: 200, y: rows[0] + ty(200) }];
         [1, 2, 3].forEach(function (s, k) { return st[s] = { x: cols[k + 1], y: rows[0] + ty(cols[k + 1]) }; });
@@ -83063,17 +83063,17 @@ window.SQE_JOURNEY = function (A) {
         return { mode: 'desk', W: W, H: H, stops: st,
             route: "M150,".concat(rows[0] + ty(150), " L960,").concat(rows[0] + R, " A110,").concat((rows[1] - rows[0]) / 2, " 0 0 1 960,").concat(rows[1] + R, " L140,").concat(rows[1] + Lf, " A110,").concat((rows[2] - rows[1]) / 2, " 0 0 0 140,").concat(rows[2] + Lf, " L960,").concat(rows[2] + R, " A110,").concat((rows[3] - rows[2]) / 2, " 0 0 1 960,").concat(rows[3] + R, " L140,").concat(rows[3] + Lf, " C20,").concat(rows[3] + Lf, " 20,").concat(PB, " 170,").concat(PB, " H570 Q600,").concat(PB, " 600,").concat(PB - 24),
             art: { x: -125, y: -262, w: 250, h: 268, gx: -115, gy: -200, gw: 220, gh: 206 },
-            lm: function (i) { return TOWN ? { x: st[i].x + ({ 1: -20, 3: -5 }[i] || 0), y: st[i].y - 34 - ({ 2: 120, 5: 90, 7: 90, 9: 40, 11: 90, 13: 90 }[i] || 0), s: ({ 0: .95, 15: .95, 1: 1.3, 2: 1.35, 3: 1.3, 9: 1.6, 11: 1.3 }[i] || 1.2) } /* 03:38 Monnie: much bigger stops, fairground set back, allotment big in the harvest field */ : { x: st[i].x, y: st[i].y - 34 - (i === 2 ? 45 : 0), s: .9 }; } /* 03:33 Monnie: stop drawings nearer the town buildings' size, using the spare grass */, /* 02:50 Monnie: less crammed: drawings 10% smaller, fairground set back */ /* Monnie 20 Nov: stagger 8-11 (farm a bit up, balloons float higher) */
+            lm: function (i) { return TOWN ? (function () { var X = { 1: 21, 3: -5, 4: 25, 5: -3, 6: -32, 7: -60, 8: 72, 9: 205, 10: 70, 11: 35, 12: 25, 13: -3, 14: -32, 15: -60 }, Y = { 2: 360, 9: 372, 11: 372 }, S = { 0: .95, 1: 1.3, 2: 1.35, 3: 1.3, 8: 1.35, 9: 1.5, 10: 1.35, 11: .95, 15: .95 }; return { x: st[i].x + (X[i] || 0), y: st[i].y - 34 - (Y[i] || 0), s: S[i] || 1.05 }; })() : { x: st[i].x, y: st[i].y - 34 - (i === 2 ? 45 : 0), s: .9 }; }, /* 03:46 Monnie: NO overlaps. Rows 2 and 4 spread evenly; the fairground sits right back behind the sweet shop and library; the allotment and balloons sit up in the harvest field beside the FLK2 sign */
             label: function (i) { return ({ cx: st[i].x, top: st[i].y + 44 }); },
             F: { w: 166, fs: 16, lh: 17, sfs: 12, max: 18, bar: 7 }, /* 03:38 Monnie: smaller stop boxes */
             hen: function (i) { return i === 0 ? { x: st[0].x + 66, y: st[0].y + 22, s: .85, m: true } : left(i) ? { x: st[i].x + 88, y: st[i].y + 24, s: .85, m: false } : { x: st[i].x - 88, y: st[i].y + 24, s: .85, m: true }; }, /* just before the stop, clear of its number */
             palace: { x: 600, y: 2115 + D, s: 1 },
             flags: [{ x: 176, y: 2117 + D, s: 1, h: 110 }, { x: 812, y: 2117 + D, s: 1, h: 110 }],
-            reg: { spring: 160, autumn: TOWN ? 2015 : 1320, grounds: 1750 + D },
-            town: TOWN ? { y: 1550, b: [['mount', 370, 'The Mount', '#/mount', 1990, 285], ['jobcentre2', 805, 'Job Centre', '#/town/jobs', 1700, 245], ['giftshop2', 825, 'Hen Bargains', '#/town/shop', 1975, 245], ['butchers3', 340, "Bert's Butchers", '#/town/butcher', 1715, 255]], w: 235, h: 175, /* Monnie 20 Nov: bigger, staggered over the grass; Mount low and big, Bert's up near Contract Law */ name: [560, 1365] } : null,
+            reg: { spring: 160, autumn: TOWN ? 2095 : 1320, grounds: 1750 + D },
+            town: TOWN ? { y: 1550, b: [['mount', 370, 'The Mount', '#/mount', 2075, 285], ['jobcentre2', 805, 'Job Centre', '#/town/jobs', 1762, 245], ['giftshop2', 825, 'Hen Bargains', '#/town/shop', 2060, 245], ['butchers3', 340, "Bert's Butchers", '#/town/butcher', 1777, 255]], w: 235, h: 175, /* Monnie 20 Nov: bigger, staggered over the grass; Mount low and big, Bert's up near Contract Law */ name: [560, 1365] } : null,
             sun: { x0: 80, x1: 1020, y: 150, rise: 82, s: 1 },
-            deco: function () { return cloud(330, 78, .8) + cloud(1010, 92, 1) + cloud(720, 48, .55) + (TOWN ? sign(950, 200, 'FLK1 Meadow', 'Stops 1–7', 30, 30) + welcome(190, 235, .64) : sign(185, 300, 'FLK1 Meadow', 'Stops 1–7', 30, 110) + welcome(950, 228, .64))
-                + sign(TOWN ? 190 : 560, TOWN ? 2050 : 1395, 'FLK2 Harvest Fields', 'Stops 8–14', 30, TOWN ? 40 : 72)
+            deco: function () { return cloud(330, 78, .8) + cloud(1010, 92, 1) + cloud(720, 48, .55) + (TOWN ? sign(950, 300, 'FLK1 Meadow', 'Stops 1–7', 30, 40) + welcome(190, 330, .7) : sign(185, 300, 'FLK1 Meadow', 'Stops 1–7', 30, 110) + welcome(950, 228, .64))
+                + sign(TOWN ? 320 : 560, TOWN ? 2130 : 1395, 'FLK2 Harvest Fields', 'Stops 8–14', 30, TOWN ? 40 : 72)
                 + topiary(1000, 2147 + D) + topiary(1060, 2133 + D) + topiary(228, 1855 + D) + flower(330, 1840 + D, '#fff') + flower(925, 1840 + D, '#FF9EC4')
                 + [60, 330, 575, 820].map(function (x, k) { return flower(x, 2250 + D, ['#FF9EC4', '#fff', '#FFB3D9', '#fff'][k]); }).join(''); },
         };
@@ -85122,7 +85122,7 @@ ROOMDATA["directors"] = {
  "game": {
   "type": "match",
   "title": "Stack the Seven Tiers",
-  "how": "Each card on the left is a baker's behaviour. Tap one, then tap the duty it breaks on the right. Get all seven right for a perfect score.",
+  "how": "Each white card is a baker's behaviour. Tap one, then tap the blue card with the duty it breaks. Get all seven right for a perfect score.",
   "pairs": [
    {
     "l": "Rory uses the board's power to issue new shares to a friend, just to stop a shareholder gaining control.",
@@ -88232,7 +88232,7 @@ ROOMDATA["insolvency-clawback-priority"] = {
  "game": {
   "type": "match",
   "title": "Tick-Tock Timers",
-  "how": "Each card on the left is a situation. Tap one, then tap the time limit on the right that shows how far back Ivy can look (or, for the phoenix cards, the period asked). A time limit can be used more than once.",
+  "how": "Each white card is a situation. Tap one, then tap the blue time limit that shows how far back Ivy can look (or, for the phoenix cards, the period asked). A time limit can be used more than once.",
   "pairs": [
    {
     "l": "Paid an ordinary supplier in full, wanting to help it (preference, unconnected)",
@@ -90533,7 +90533,31 @@ var CSS = [
 '.hub-leave{margin-top:14px}',
 '@media (max-width:900px){.hub-doors{grid-template-columns:repeat(2,1fr)}}',
 '@media (prefers-reduced-motion:reduce){.scn-say,.hub-door.next{animation:none}}',
-'@media (max-width:640px){.scn-art.noimg .scn-lab{display:none}.scn-art.noimg .scn-hs .scn-ico{font-size:20px}.scn-art.noimg .scn-pin{display:block}.scn-ribbon .rb{font-size:16px}.gm-match{grid-template-columns:1fr}.gm-item{font-size:16px}.scn-say .bub{font-size:15px}.scn-nextroom{font-size:22px}}'
+'@media (max-width:640px){.scn-art.noimg .scn-lab{display:none}.scn-art.noimg .scn-hs .scn-ico{font-size:20px}.scn-art.noimg .scn-pin{display:block}.scn-ribbon .rb{font-size:16px}.gm-match{grid-template-columns:1fr}.gm-item{font-size:16px}.scn-say .bub{font-size:15px}.scn-nextroom{font-size:22px}}',
+/* shop QA fixes (20 Nov): picture labels laid out by layArt() stay inside the picture and above the glow; the Next tag sits beside its label, never on it */
+'.scn-art .scn-lab.js{position:absolute;z-index:6;left:0;top:0;right:auto;bottom:auto;margin:0;transform:none;white-space:normal;overflow-wrap:break-word;box-sizing:border-box;pointer-events:auto;line-height:1.2}',
+'.scn-art .scn-hs.next .scn-lab.js{z-index:7}',
+'.scn-art .scn-nexttag.js{left:0;top:0;bottom:auto;transform:none;animation-name:scnTagJ;z-index:8}',
+'@keyframes scnTagJ{0%,100%{transform:none}50%{transform:translateY(-4px)}}',
+'.scn-art .scn-hs.door .scn-lab.js{animation-name:scnBobJ}',
+'@keyframes scnBobJ{0%,100%{transform:none}50%{transform:translateY(-5px)}}',
+'.scn-nexttag.js.up .d{display:none}.scn-nexttag.js.up .m{display:inline}.scn-nexttag.js.dn .d{display:inline}.scn-nexttag.js.dn .m{display:none}',
+'@media (prefers-reduced-motion:reduce){.scn-art .scn-nexttag.js,.scn-art .scn-hs.door .scn-lab.js{animation:none}}',
+'@media (max-width:640px){.scn-hs.door .scn-lab{top:36%;bottom:auto}}',
+'.scn-art>img,.hub-art>img{background:var(--rbg,#FFF1C9)}',
+/* match games: the answers on the right stay on screen while the list on the left scrolls */
+'.gm-right{position:sticky;top:0;align-self:start;z-index:2;background:var(--surface);padding:4px 0}',
+'@media (max-width:640px){.gm-right{top:auto;bottom:0;display:flex;flex-wrap:wrap;gap:6px;margin:0 -2px;padding:8px 2px 6px;border-top:2.5px dashed #1b1b1b;box-shadow:0 -6px 8px -6px rgba(0,0,0,.25)}.gm-right .gm-chip{width:auto;flex:1 1 auto;padding:6px 10px;font-size:13.5px;text-align:center}.gm-left .gm-chip{padding:7px 10px;font-size:14px}.gm-match{gap:8px}}',
+'.scn-sheet .scn-nav .scn-eat.wait{opacity:.6;box-shadow:none}',
+/* CSS chalkboard under the picture (rooms without a board spot on their picture) */
+'.scn-chalk{display:block;width:100%;margin:16px 0 4px;padding:11px;border:3px solid #1b1b1b;border-radius:16px;background:#9B6A3C linear-gradient(135deg,#B9844F,#8A5A2E 60%,#9B6A3C);box-shadow:4px 4px 0 #1b1b1b;cursor:zoom-in;font:inherit;color:#fff;text-align:center}',
+'.scn-chalk-in{display:block;padding:14px 18px 10px;border:2px solid #1f3328;border-radius:8px;background:#2F4A3A radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.09),transparent 60%);box-shadow:inset 0 0 18px rgba(0,0,0,.35)}',
+'.scn-chalk .scn-bt{font:400 28px/1.15 "Caveat Brush","Gochi Hand","Patrick Hand",cursive;letter-spacing:.01em;color:#fff;text-shadow:0 0 1px rgba(255,255,255,.9),0 0 4px rgba(255,255,255,.4)}',
+'.scn-chalk .scn-bt .ln+.ln{margin-top:.12em}',
+'.scn-chalk-tip{display:block;margin-top:8px;font:700 13px/1.2 var(--font);color:rgba(255,255,255,.8)}',
+'.scn-chalk:hover .scn-chalk-in,.scn-chalk:focus-visible .scn-chalk-in{outline:3px dashed rgba(255,255,255,.6);outline-offset:-6px}',
+'@media (min-width:1500px){.scn-chalk .scn-bt{font-size:32px}}',
+'@media (max-width:640px){.scn-chalk{padding:8px;border-radius:12px;box-shadow:3px 3px 0 #1b1b1b}.scn-chalk-in{padding:10px 10px 8px}.scn-chalk .scn-bt{font-size:22px}}'
 ].join('\n');
 
 /* bullets-sample: preview flag + splitter (no wording changes: only cuts the existing text at sentence ends) */
@@ -90687,7 +90711,8 @@ window.SQE_SCENE = function(A){
     if (G.spawned < G.items.length){ var i = G.spawned++, it = G.items[i], el = document.createElement('button');
       el.type = 'button'; el.className = 'gm-fly'; el.setAttribute('data-scn', 'gcatch'); el.setAttribute('data-i', i); el.style.top = (6 + (i * 37) % 68) + '%'; el.innerHTML = inl(it.t);
       el.addEventListener('animationend', function(){ if (el.parentNode) el.parentNode.removeChild(el); catchHit(i, false); });
-      lane.appendChild(el); CT = setTimeout(catchRun, 2100); }
+      lane.appendChild(el); var mh = lane.clientHeight - el.offsetHeight - 6; if (el.offsetTop > mh) el.style.top = Math.max(4, mh) + 'px'; /* keep tall pills inside the box */
+      CT = setTimeout(catchRun, 2100); }
   }
   function catchHit(i, tapped){
     var G = SC.game, k = cur(); if (!G || G.type !== 'catch' || G.res[i] != null) return; var it = G.items[i], good = !!(it.ok || it.good || it.correct), ok = tapped === good; G.res[i] = ok; G.done++; G.total++;
@@ -90724,12 +90749,13 @@ window.SQE_SCENE = function(A){
     else { G.lefts = shuf(nums(g.pairs.length)); G.rights = (g.rights || []).slice(); g.pairs.forEach(function(p){ if (G.rights.indexOf(p.r) < 0) G.rights.push(p.r); }); G.matched = {}; G.tried = {}; G.sel = null; }
     SC.game = G; SC.open = null; SC.exit = null; SC.scen = null; paint(); stopTimer(); GT = setInterval(tick, 500); if (G.type === 'catch') CT = setTimeout(catchRun, 600);
   }
+  function navIntoView(){ var nv = document.querySelector('.scn-sheet .scn-nav'); if (!nv) return; var r = nv.getBoundingClientRect(); if (r.bottom > innerHeight - 8) try { nv.scrollIntoView({block: 'end', behavior: 'smooth'}); } catch(e){ nv.scrollIntoView(false); } }
   function gpaint(){ var ov = document.querySelector('.scn-ov'), y = ov ? ov.scrollTop : 0; paint(); ov = document.querySelector('.scn-ov'); if (ov) ov.scrollTop = y; tick(); }
   function gameHTML(k){
     var g = SCENES[k].game, G = SC.game, h = '<div class="scn-st"><span class="ico" aria-hidden="true">' + esc(g.icon || '🎮') + '</span><div><div class="k">Mini-game · ' + esc(SCENES[k].name) + '</div><h2 id="scn-mt">' + esc(g.title) + '</h2></div><button type="button" class="scn-x" data-scn="close" aria-label="Close">✕</button></div>';
     if (G.phase === 'end'){
       var secs = Math.round((G.t1 - G.t0) / 1000);
-      h += '<div class="gm-big"><div class="big" aria-hidden="true">' + (G.right === G.total ? '🏆🍬🎉' : '🍬⭐') + '</div><h2>' + (G.right === G.total ? 'Perfect!' : 'Nice one!') + '</h2><p class="score"><b>' + G.right + ' / ' + G.total + '</b> right first time · ' + secs + 's' + (secs <= GSECS ? ' (inside the 30 seconds!)' : '') + '</p></div>';
+      h += '<div class="gm-big"><div class="big" aria-hidden="true">' + (G.right === G.total ? '🏆🍬🎉' : G.right >= G.total * 0.6 ? '🍬⭐' : '🍬') + '</div><h2>' + (function(f){ return f >= 1 ? 'Perfect!' : f >= 0.8 ? 'Great work!' : f >= 0.6 ? 'Nice one!' : f >= 0.4 ? 'Getting there!' : 'Keep practising!'; })(G.total ? G.right / G.total : 0) + '</h2><p class="score"><b>' + G.right + ' / ' + G.total + '</b> right first time · ' + secs + 's' + (secs <= GSECS ? ' (inside the 30 seconds!)' : '') + '</p></div>';
       if (G.wrong.length) h += '<p><b>Have another look at these:</b></p><ul class="gm-res">' + G.wrong.map(function(w){ return '<li><b>' + inl(w.t) + ' → ' + inl(w.a) + '</b>' + inl(w.why || '') + '</li>'; }).join('') + '</ul>';
       if (g.end) h += '<div class="scn-says">' + sayHTML({cast: []}, {who: 'Britney', text: g.end}) + '</div>';
       return h + '<div class="scn-nav"><button type="button" class="btn" data-scn="gagain">↺ Play again</button><button type="button" class="btn scn-eat" data-scn="gdone">✓ Done</button></div>';
@@ -90782,7 +90808,7 @@ window.SQE_SCENE = function(A){
       h += '<div class="gm-match"><div class="gm-left">' + G.lefts.map(function(i){ var p = g.pairs[i], m = G.matched[i];
         return '<button type="button" class="gm-chip' + (m ? ' ok' : G.sel === i ? ' sel' : '') + (G.shake === 'l' + i ? ' no' : '') + '" data-scn="gl" data-i="' + i + '"' + (m ? ' disabled' : '') + '>' + inl(p.l) + (m ? ' <b>→ ' + inl(p.r) + '</b>' : '') + '</button>'; }).join('') + '</div>' +
         '<div class="gm-right">' + G.rights.map(function(r, ri){ return '<button type="button" class="gm-chip' + (G.shake === 'r' + ri ? ' no' : '') + '" data-scn="gr" data-r="' + ri + '">' + inl(r) + '</button>'; }).join('') + '</div></div>';
-      h += '<p class="gm-fb' + (G.fb ? (G.fb.ok ? ' ok' : ' no') : '') + '" role="status">' + (G.fb ? (G.fb.ok ? '✓ ' : '✗ ') + inl(G.fb.t) : (G.sel == null ? 'Tap one on the left first.' : 'Now tap its match on the right.')) + '</p>';
+      h += '<p class="gm-fb' + (G.fb ? (G.fb.ok ? ' ok' : ' no') : '') + '" role="status">' + (G.fb ? (G.fb.ok ? '✓ ' : '✗ ') + inl(G.fb.t) : (G.sel == null ? 'Tap a white card first.' : 'Now tap its match in blue.')) + '</p>';
     }
     return h;
   }
@@ -90804,7 +90830,7 @@ window.SQE_SCENE = function(A){
   function gMatch(k, side, v){
     var g = SCENES[k].game, G = SC.game; G.shake = null;
     if (side === 'l'){ if (G.matched[v]) return; G.sel = v; G.fb = null; gpaint(); return; }
-    if (G.sel == null){ G.fb = {ok: false, t: 'Tap one on the left first, then its match.'}; gpaint(); return; }
+    if (G.sel == null){ G.fb = {ok: false, t: 'Tap a white card first, then its match.'}; gpaint(); return; }
     var p = g.pairs[G.sel], r = G.rights[v];
     if (p.r === r){ G.matched[G.sel] = 1; G.total++; if (!G.tried[G.sel]) G.right++; G.fb = {ok: true, t: p.why}; G.sel = null; if (Object.keys(G.matched).length === g.pairs.length) gEnd(); }
     else { if (!G.tried[G.sel]){ G.tried[G.sel] = 1; G.wrong.push({t: p.l, a: p.r, why: p.why}); } G.fb = {ok: false, t: 'Not that one. Try again.'}; G.shake = 'r' + v; }
@@ -90833,7 +90859,7 @@ window.SQE_SCENE = function(A){
     var h = '<div class="scn hub"><div class="scn-head"><h2>🚪 ' + esc(hb.title) + '</h2><div class="scn-links">' + (hb.outside ? '<a href="#/scene/' + hb.outside + '/outside">🚪 Step outside</a>' : '') + '<a href="#/map/' + k.split('/')[0] + '">🗺️ Map</a></div>' +
       '<p class="scn-sub">You\'re inside ' + esc(hb.place || 'the shop') + '. ' + (H.next < 0 ? 'Every room is done! Time to leave the shop.' : 'Each door leads to one topic. The glowing door is next: <b>' + esc((ROOMS[nxk.split('/')[1]] || SCENES[nxk]).name) + '</b>.') + '</p></div>';
     h += '<div class="scn-prog"><span>' + H.done + ' of ' + N + ' rooms done</span><span class="scn-bar" role="progressbar" aria-valuemin="0" aria-valuemax="' + N + '" aria-valuenow="' + H.done + '"><i style="width:' + Math.round(H.done / N * 100) + '%"></i></span>' + (H.next < 0 ? '<span>🏆</span>' : '') + '</div>';
-    h += '<div class="scn-art hub-art' + (hb.img ? '' : ' noimg') + '" style="--rbg:' + esc(hb.bg || '#FFF1C9') + '" role="img" aria-label="' + esc(hb.alt || hb.title) + '">' + (hb.img ? '<img src="' + esc(hb.img) + '" alt="" onerror="this.parentNode.classList.add(\'noimg\');this.parentNode.removeChild(this)">' : '<span class="hub-ph" aria-hidden="true">🚪🍬🚪🍭🚪</span>') +
+    h += '<div class="scn-art hub-art' + (hb.img ? '' : ' noimg') + '" style="--rbg:' + esc(hb.bg || '#FFF1C9') + '" role="img" aria-label="' + esc(hb.alt || hb.title) + '">' + (hb.img ? '<img src="' + esc(hb.img) + '" alt="" style="aspect-ratio:auto ' + (hb.ratio || 16 / 9) + '" onerror="this.parentNode.classList.add(\'noimg\');this.parentNode.removeChild(this)">' : '<span class="hub-ph" aria-hidden="true">🚪🍬🚪🍭🚪</span>') +
       (hb.img && hb.doors ? H.keys.map(function(x, i){ var d = hb.doors[i]; if (!d) return ''; var done = H.fin[i], nxt = i === H.next, open = ROOMS_FREE || done || nxt || visited(x) || H.next < 0, m = ROOMS[x.split('/')[1]] || {}, c = conf(x);
         var pos = 'left:' + d[0] + '%;top:' + d[1] + '%;width:' + d[2] + '%;height:' + d[3] + '%', lab = (i + 1) + '. ' + (m.name || SCENES[x].name);
         var inner = '<span class="scn-pin" aria-hidden="true"' + (done ? ' style="background:' + (RAGC[c] || '#2E9E5B') + ';color:#fff"' : '') + '>' + (done ? '✓' : open ? i + 1 : '🔒') + '</span><span class="scn-lab">' + esc(lab) + '</span>' + (nxt ? '<span class="scn-nexttag" aria-hidden="true"><span class="d">Next ↓</span><span class="m">↑ Next</span></span>' : '');
@@ -90862,6 +90888,9 @@ window.SQE_SCENE = function(A){
   function boardLines(k){ return (k && BOARD_HOOKS[k.split('/')[1]]) || null; }
   function boardHTML(view, k){ var b = view && view.board, L = boardLines(k); if (!ROOMS_ON || !b || !L || !view.img) return '';
     return '<button type="button" class="scn-board" data-scn-board="' + esc(k) + '" style="left:' + b.x + '%;top:' + b.y + '%;width:' + b.w + '%;height:' + b.h + '%;--bpx:' + (b.w * 0.05).toFixed(2) + 'cqw;--bpy:' + (b.h * 0.05 / (view.ratio || 16 / 9)).toFixed(2) + 'cqw" aria-label="Chalkboard: ' + esc(L.join(' ')) + '. Tap to read it big."><span class="scn-bt">' + L.map(function(l){ return '<span class="ln">' + esc(l) + '</span>'; }).join('') + '</span></button>'; }
+  /* rooms with no board spot on their picture (inside.board = null, e.g. while the pictures are being redrawn): the same hook on a CSS-drawn chalkboard just below the picture, tap to read it big */
+  function chalkHTML(view, k){ var L = boardLines(k); if (!ROOMS_ON || !L || (view && view.board && view.img)) return '';
+    return '<button type="button" class="scn-chalk" data-scn-board="' + esc(k) + '" aria-label="Chalkboard: ' + esc(L.join(' ')) + '. Tap to read it big."><span class="scn-chalk-in"><span class="scn-bt">' + L.map(function(l){ return '<span class="ln">' + esc(l) + '</span>'; }).join('') + '</span><span class="scn-chalk-tip" aria-hidden="true">🔍 tap to make it big</span></span></button>'; }
   function fitBoards(){ var els = document.querySelectorAll('.scn-board .scn-bt:not([data-fit]), .scn-boardov .scn-bt:not([data-fit])');
     for (var i = 0; i < els.length; i++){ var t = els[i], box = t.parentNode, lo = 0.5, hi = box.classList.contains('scn-board') ? 12 : 80, unit = box.classList.contains('scn-board') ? 'cqw' : 'px';
       if (box.clientWidth < 8 || box.clientHeight < 8) continue; /* picture not loaded yet: the image load listener refits */
@@ -90876,6 +90905,62 @@ window.SQE_SCENE = function(A){
       t.style.fontSize = lo + unit; t.setAttribute('data-fit', '1'); } }
   if (ROOMS_ON && window.MutationObserver) try { var fitQ = 0; new MutationObserver(function(){ if (fitQ) return; fitQ = 1; requestAnimationFrame(function(){ fitQ = 0; fitBoards(); }); }).observe(document.documentElement, {childList: true, subtree: true});
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ var f = document.querySelectorAll('.scn-bt[data-fit]'); for (var i = 0; i < f.length; i++) f[i].removeAttribute('data-fit'); fitBoards(); }); } catch(e){}
+  /* picture labels (rooms preview): every label and the "Next" tag stays inside the picture, wraps to two lines (smaller type before a third line, never cut off),
+     and is nudged off other labels, the number pins and the Next tag. Works from whatever spots the room data gives, so it keeps working when the pictures are redrawn. */
+  function labRect(el, art){ var r = el.getBoundingClientRect(), a = art.getBoundingClientRect(); return {x: r.left - a.left - art.clientLeft, y: r.top - a.top - art.clientTop, w: r.width, h: r.height}; }
+  function labOver(a, b){ var w = Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x), h = Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y); return w > 0 && h > 0 ? w * h : 0; }
+  function labFit(lab, W, door){
+    var fs0 = door ? (parseFloat(getComputedStyle(lab).fontSize) || 13) : W >= 900 ? 14 : W >= 700 ? 13 : 12, maxW = Math.round(Math.max(90, Math.min(W * (door ? 0.4 : 0.3), 240))), fs, lines = 1;
+    lab.style.width = 'max-content'; lab.style.maxWidth = maxW + 'px';
+    function nl(){ var cs = getComputedStyle(lab), lh = parseFloat(cs.lineHeight) || parseFloat(cs.fontSize) * 1.2, ih = lab.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom); return Math.max(1, Math.round(ih / lh)); }
+    for (fs = fs0; fs >= 10; fs--){ lab.style.fontSize = fs + 'px'; lines = nl(); if (lines <= 2) break; }
+    if (lines === 2){ var hi = lab.offsetWidth, lo = Math.ceil(hi / 2), i; /* even out the two lines */
+      for (i = 0; i < 7 && hi - lo > 3; i++){ var mid = Math.round((lo + hi) / 2); lab.style.width = mid + 'px'; if (nl() <= 2) hi = mid; else lo = mid; }
+      lab.style.width = hi + 'px'; }
+    return {w: lab.offsetWidth, h: lab.offsetHeight};
+  }
+  function labBest(pref, w, h, W, H, obst, extra){
+    var M = 4, best = null, cx0 = pref.x + pref.w / 2, cy0 = pref.y + pref.h / 2, ys = [cy0].concat(extra || []), xs = [0, -0.5, 0.5, -1, 1, -1.5, 1.5];
+    ys.forEach(function(cy){ xs.forEach(function(dx){
+      var r = {x: Math.max(M, Math.min(W - M - w, cx0 + dx * w - w / 2)), y: Math.max(M, Math.min(H - M - h, cy - h / 2)), w: w, h: h}, ov = 0;
+      obst.forEach(function(o){ ov += labOver(r, o); });
+      var sc = ov * 40 + Math.abs(r.x + w / 2 - cx0) + Math.abs(r.y + h / 2 - cy0) * 1.2;
+      if (!best || sc < best.sc) best = {x: r.x, y: r.y, w: w, h: h, sc: sc}; }); });
+    return best;
+  }
+  function layArt(art){
+    if (!art || art.classList.contains('zoom')) return; var W = art.clientWidth, H = art.clientHeight; if (W < 50 || H < 50) return;
+    var hss = [].slice.call(art.querySelectorAll('.scn-hs')), obst = [], jobs = [];
+    hss.forEach(function(hs){ var lab = hs.querySelector('.scn-lab'), tag = hs.querySelector('.scn-nexttag');
+      [lab, tag].forEach(function(e){ if (e){ e.classList.remove('js', 'up'); e.style.left = e.style.top = e.style.width = e.style.maxWidth = e.style.fontSize = ''; } });
+      var pin = hs.querySelector('.scn-pin'); if (pin && getComputedStyle(pin).display !== 'none') obst.push(labRect(pin, art));
+      var vis = function(e){ return e && getComputedStyle(e).display !== 'none' && !hs.classList.contains('open'); };
+      if (vis(lab) || vis(tag)) jobs[hs.classList.contains('next') ? 'unshift' : 'push']({hs: hs, lab: vis(lab) ? lab : null, tag: vis(tag) ? tag : null});
+    });
+    jobs.forEach(function(j){ var hs = j.hs, hr = {x: hs.offsetLeft, y: hs.offsetTop, w: hs.offsetWidth, h: hs.offsetHeight}, bx = hs.offsetLeft + hs.clientLeft, by = hs.offsetTop + hs.clientTop, lr = null;
+      if (j.lab){ var pref = labRect(j.lab, art), door = hs.classList.contains('door'); j.lab.classList.add('js'); var sz = labFit(j.lab, W, door);
+        pref = {x: pref.x + pref.w / 2 - sz.w / 2, y: pref.y + pref.h - sz.h, w: sz.w, h: sz.h}; /* keep the label's bottom where the page put it */
+        lr = labBest(pref, sz.w, sz.h, W, H, obst, [hr.y + sz.h / 2 + 4, hr.y + hr.h / 2, hr.y + hr.h + sz.h / 2 + 3, hr.y - sz.h / 2 - 3]);
+        j.lab.style.left = Math.round(lr.x - bx) + 'px'; j.lab.style.top = Math.round(lr.y - by) + 'px'; obst.push(lr); }
+      if (j.tag){ var tp = labRect(j.tag, art), tw = j.tag.offsetWidth, th = j.tag.offsetHeight, tr, up = false;
+        j.tag.classList.add('js');
+        if (lr){ var cx = lr.x + lr.w / 2, cands = [{x: cx - tw / 2, y: lr.y - th - 3}, {x: cx - tw / 2, y: lr.y + lr.h + 6, up: true}, {x: lr.x - tw - 4, y: lr.y + (lr.h - th) / 2}, {x: lr.x + lr.w + 4, y: lr.y + (lr.h - th) / 2}], best = null;
+          cands.forEach(function(c, ci){ var r = {x: Math.max(4, Math.min(W - 4 - tw, c.x)), y: Math.max(4, Math.min(H - 4 - th, c.y)), w: tw, h: th}, ov = 0; obst.forEach(function(o){ ov += labOver(r, o); }); var sc = ov * 40 + ci * 30 + Math.abs(r.x - c.x) + Math.abs(r.y - c.y) * 2; if (!best || sc < best.sc){ best = r; best.sc = sc; best.up = !!c.up; } });
+          tr = best; up = best.up; }
+        else tr = labBest({x: tp.x, y: tp.y, w: tw, h: th}, tw, th, W, H, obst);
+        if (lr) j.tag.classList.add(up ? 'up' : 'dn');
+        j.tag.style.left = Math.round(tr.x - bx) + 'px'; j.tag.style.top = Math.round(tr.y - by) + 'px'; obst.push({x: tr.x, y: tr.y, w: tw, h: th}); }
+    });
+    art.setAttribute('data-lay', W + 'x' + H);
+  }
+  var LAYQ = 0, LAYRO = window.ResizeObserver ? new ResizeObserver(function(es){ es.forEach(function(e){ var a = e.target; if (a.getAttribute('data-lay') !== a.clientWidth + 'x' + a.clientHeight) layArt(a); }); }) : null;
+  function layAll(force){ [].forEach.call(document.querySelectorAll('.scn-art'), function(a){ if (LAYRO && !a.__lay){ a.__lay = 1; LAYRO.observe(a); } if (force || !a.hasAttribute('data-lay')) layArt(a); }); }
+  if (ROOMS_ON){
+    if (window.MutationObserver) try { new MutationObserver(function(){ if (LAYQ) return; LAYQ = 1; requestAnimationFrame(function(){ LAYQ = 0; layAll(); }); }).observe(document.documentElement, {childList: true, subtree: true}); } catch(e){}
+    addEventListener('resize', function(){ layAll(true); });
+    try { if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ layAll(true); }); } catch(e){}
+    addEventListener('load', function(){ layAll(true); });
+  }
   function boardOpen(k){ var L = boardLines(k); if (!L) return; boardClose(); var d = document.createElement('div'); d.className = 'scn-boardov'; d.setAttribute('role', 'dialog'); d.setAttribute('aria-modal', 'true'); d.setAttribute('aria-label', 'Chalkboard');
     d.innerHTML = '<div class="scn-boardbig"><button type="button" class="scn-boardx" aria-label="Close">✕</button><div class="scn-boardin"><span class="scn-bt">' + L.map(function(l){ return '<span class="ln">' + esc(l) + '</span>'; }).join('') + '</span></div></div>';
     document.body.appendChild(d); var x = d.querySelector('.scn-boardx'); if (x) x.focus(); }
@@ -90891,7 +90976,7 @@ window.SQE_SCENE = function(A){
   }
   function artHTML(view, done, k, mode){
     var lt = mode === 'inside' && later(k);
-    var pic = lt && !view.img ? '' : view.img ? '<img src="' + esc(view.img) + '" alt="' + esc(view.alt || '') + '"' + (lt ? ' onerror="this.parentNode.classList.add(\'noimg\');this.parentNode.removeChild(this)"' : '') + '>' : '<svg viewBox="0 0 1000 ' + Math.round(1000 / view.ratio) + '" role="img" aria-label="' + esc(view.alt || '') + '" xmlns="http://www.w3.org/2000/svg">' + view.svg(done) + '</svg>';
+    var pic = lt && !view.img ? '' : view.img ? '<img src="' + esc(view.img) + '" alt="' + esc(view.alt || '') + '" style="aspect-ratio:auto ' + (view.ratio || 16 / 9) + '"' + (lt ? ' onerror="this.parentNode.classList.add(\'noimg\');this.parentNode.removeChild(this)"' : '') + '>' : '<svg viewBox="0 0 1000 ' + Math.round(1000 / view.ratio) + '" role="img" aria-label="' + esc(view.alt || '') + '" xmlns="http://www.w3.org/2000/svg">' + view.svg(done) + '</svg>';
     var nx = mode === 'inside' ? nextId(k) : null;
     var hs = view.hotspots.map(function(h, i){
       var dn = done && done[h.id], pos = 'left:' + h.x + '%;top:' + h.y + '%;width:' + h.w + '%;height:' + h.h + '%';
@@ -90937,7 +91022,7 @@ window.SQE_SCENE = function(A){
       inner = '<div class="scn-st"><div><div class="k">' + esc(h.label.split(':')[0]) + ' · ' + esc(p.sec) + '</div><h2 id="scn-mt">' + inl(titleOf(k, h)) + '</h2></div><button type="button" class="scn-x" data-scn="close" aria-label="Close">✕</button></div>' +
         '<div class="scn-mbar" role="progressbar" aria-valuemin="1" aria-valuemax="' + n + '" aria-valuenow="' + (i + 1) + '"><i style="width:' + Math.round((i + 1) / n * 100) + '%"></i></div><div class="scn-mn">' + (p.k === 'check' ? 'Last one: quick check' : (i + 1) + ' of ' + st.filter(function(q){ return q.k !== 'check'; }).length) + '</div>' + card +
         '<div class="scn-nav"><button type="button" class="btn" data-scn="prev"' + (i ? '' : ' disabled') + '>‹ Back</button>' +
-        (last ? '<button type="button" class="btn scn-eat" data-scn="eat">' + (dn2 ? '✓ Done' : '🍬 Done! Eat it') + '</button>' : '<button type="button" class="btn primary" data-scn="next">Next ›</button>') + '</div>';
+        (last ? '<button type="button" class="btn scn-eat' + (ROOMS_ON && p.k === 'check' && /class="nck"/.test(p.html) ? ' wait" aria-disabled="true' : '') + '" data-scn="eat">' + (dn2 ? '✓ Done' : '🍬 Done! Eat it') + '</button>' : '<button type="button" class="btn primary" data-scn="next">Next ›</button>') + '</div>';
     }
     if (!inner) return '';
     return '<div class="scn-ov" role="dialog" aria-modal="true" aria-labelledby="scn-mt"><button type="button" class="scn-bg" data-scn="close" aria-label="Close" tabindex="-1"></button><div class="scn-sheet' + (bulletsOn() ? ' bul-on' : '') + '">' + inner + '</div></div>';
@@ -91038,7 +91123,7 @@ window.SQE_SCENE = function(A){
     if (!sc || !x || (!deck(k) && !later(k))) return '<div class="card"><h2>This scene isn\'t ready yet</h2><a class="btn" href="#/palace">Back to the map</a></div>';
     var o = state(k), mode = later(k) ? 'inside' : r[3] === 'outside' || r[3] === 'inside' ? r[3] : (o.door && !rk(k) ? 'inside' : 'outside'), base = '#/scene/' + k, LT = later(k), EX = extras(k);
     var N = order(k).length + EX.length, n = nOpen(k) + EX.filter(function(e){ return exDone(k, e); }).length, h = '<div class="scn">';
-    if (rk(k)) h += ribbon(k);
+    if (rk(k) && mode !== 'outside') h += ribbon(k); /* the shop front isn't a room: no "Room 1 of 16" or "Back to the hall" there */
     h += '<div class="scn-head"><h2>' + (LT ? esc(sc.icon || '🍬') : '🍭') + ' ' + esc(sc.name) + '</h2><div class="scn-links"><a href="#/topic/' + x.s.id + '/' + x.t.id + '">📖 Full notes</a>' + (LT ? '' : mode === 'inside' ? '<a href="' + base + '/outside">🚪 Step outside</a>' : (rk(k) && HUBS[hubOf(k)] ? '<a href="#/scene/' + hubOf(k) + '">🚪 Go into the hall ›</a>' : o.door ? '<a href="' + base + '/inside">Go straight in ›</a>' : '')) + '<a href="#/map/' + x.s.id + '">🗺️ Map</a></div>' +
       '<p class="scn-sub">' + esc(A.tnum(x)) + ': <b>' + esc(x.t.title) + '</b>. ' + (LT ? (order(k).length ? 'Every person and prop hides part of the notes. Tap the glowing one.' + (sc.scenario || sc.game ? ' Then play the ' + (sc.scenario && sc.game ? 'scenario and the mini-game' : sc.scenario ? 'scenario' : 'mini-game') + '.' : '') : 'This room\'s sweets are still being made. Read the full notes for now, then tell Britney how it went.') : mode === 'outside' ? 'You\'re outside the sweet shop on Cluckington High Street. Tap the door to go in.' : 'Every sweet hides part of the notes. Tap one to open it.') + '</p></div>';
     if (mode === 'outside'){
@@ -91047,7 +91132,7 @@ window.SQE_SCENE = function(A){
       h += '<div class="scn-prog"><span>' + n + ' of ' + N + ' ' + esc(N === 1 ? sc.treat : sc.treats) + ' opened</span><span class="scn-bar" role="progressbar" aria-valuemin="0" aria-valuemax="' + N + '" aria-valuenow="' + n + '"><i style="width:' + Math.round(n / N * 100) + '%"></i></span>' + (n === N ? '<span>🏆</span>' : '') + '</div>';
       var at = o.at && hsById(sc, o.at);
       if (at && !o.open[at.id] && (o.pos[at.id] || 0) > 0) h += '<button type="button" class="btn primary scn-carry" data-scn="obj" data-id="' + esc(at.id) + '">▶ Carry on: ' + esc(at.label) + ' (card ' + (o.pos[at.id] + 1) + ')</button>';
-      h += artHTML(sc.inside, o.open, k, 'inside');
+      h += artHTML(sc.inside, o.open, k, 'inside') + chalkHTML(sc.inside, k);
       var nx = nextId(k);
       if (!LT) h += '<p class="scn-hint">' + (n === N ? '🏆 You\'ve opened everything! Open any sweet again to go over it. <button type="button" class="lrn-link" data-scn="restock">↺ Restock the shop (start again)</button>' : 'The glowing one is a good next pick, but you can open them in any order.') + '</p>';
       if (LT){ roomFin(k); h += roomDone(k) ? endHTML(k) : '<p class="scn-lock">🔒 Open everything' + (EX.length ? ', then play the ' + EX.map(function(e){ return e.id === 'game' ? 'mini-game' : 'scenario'; }).join(' and the ') : '') + '. Then Britney asks how the topic went.</p>'; }
@@ -91075,14 +91160,17 @@ window.SQE_SCENE = function(A){
   function openObj(k, id){ var o = state(k), h = hsById(SCENES[k], id); if (!h) return; SC.open = id; SC.gate = false; SC.yay = false; SC.exit = null; var n = steps(k, h).length; SC.step = o.open[id] ? 0 : Math.max(0, Math.min(n - 1, o.pos[id] || 0)); o.at = id; try { A.save(); } catch(e){} paint(); }
   function go(k, d){ var h = hsById(SCENES[k], SC.open); if (!h) return; var n = steps(k, h).length, i = SC.step + d; if (i < 0 || i >= n) return; SC.step = i; var o = state(k); if (!o.open[h.id]){ o.pos[h.id] = i; try { A.save(); } catch(e){} } paint(); }
   function close(){ SC.open = null; SC.gate = false; SC.yay = false; SC.exit = null; SC.scen = null; SC.game = null; stopTimer(); var k = cur(); if (k) A.render(); }
+  function pendChecks(){ return [].filter.call(document.querySelectorAll('.scn-sheet .nck'), function(b){ return !b.classList.contains('ok') && !b.classList.contains('no'); }); }
+  function updEat(){ var b = document.querySelector('.scn-sheet [data-scn=eat]'); if (!b) return; var w = pendChecks().length > 0; b.classList.toggle('wait', w); if (w) b.setAttribute('aria-disabled', 'true'); else b.removeAttribute('aria-disabled'); }
   function eat(k){
+    if (ROOMS_ON){ var pend = pendChecks(); if (pend.length){ toast('Answer the quick check first, then eat it!'); try { pend[0].scrollIntoView({block: 'center', behavior: 'smooth'}); } catch(e){} return; } }
     var o = state(k), id = SC.open, was = nOpen(k), N = order(k).length, h = hsById(SCENES[k], id);
     if (!o.open[id]) o.open[id] = Date.now(); delete o.pos[id];
     SC.open = null;
     if (nOpen(k) === N && was < N && later(k)){ var s1 = S(); s1.todo = s1.todo || {}; if (!s1.todo[k + '|notes']) s1.todo[k + '|notes'] = Date.now(); try { A.save(); } catch(e){} A.render(); showNext(); toast('Yum! Everything opened.' + (extras(k).length ? ' Now the glowing ' + (nextId(k) === 'game' ? 'mini-game' : 'scenario') + '!' : '')); return; }
     if (nOpen(k) === N && was < N){ var s = S(); s.todo = s.todo || {}; if (!s.todo[k + '|notes']) s.todo[k + '|notes'] = Date.now(); SC.yay = true; try { A.save(); } catch(e){} A.render(); confetti(); return; }
     try { A.save(); } catch(e){} A.render(); showNext();
-    if (was < nOpen(k)) toast('Yum! ' + h.label + ' eaten. ' + nOpen(k) + ' of ' + N + ' treats opened.');
+    if (was < nOpen(k)){ var EXn = extras(k); toast('Yum! ' + h.label + ' eaten. ' + (nOpen(k) + EXn.filter(function(e){ return exDone(k, e); }).length) + ' of ' + (N + EXn.length) + ' treats opened.'); } /* same count as the bar above the picture */
   }
   function enter(k){
     var o = state(k); o.door = Date.now(); try { A.save(); } catch(e){}
@@ -91095,6 +91183,7 @@ window.SQE_SCENE = function(A){
   document.addEventListener('click', function(e){
     var k = cur(); if (!k) return;
     /* the door's quick check: answering it right unlocks the door (the notes page's handler has already saved the answer) */
+    if (ROOMS_ON && SC.open && e.target.closest && e.target.closest('.nck-o, .nck-again')) setTimeout(updEat, 0);
     if (SC.gate && e.target.closest && e.target.closest('.nck-o') && document.querySelector('.scn-gate')){ /* the notes page's handler has already saved the answer and swapped the box */ setTimeout(function(){ if (!SC.gate || !gateAns(k)) return; paint(); if (gateOK(k)) setTimeout(function(){ if (SC.gate && cur() === k) enter(k); }, 1800); }, 0); }
     if (e.target.closest && e.target.closest('.scn-end [data-act=trate]')) setTimeout(function(){ var nb = document.querySelector('.scn-nextroom'); if (nb) try { nb.scrollIntoView({block: 'center'}); } catch(er){} }, 120);
     var b = e.target.closest && e.target.closest('[data-scn]'); if (!b) return;
@@ -91107,20 +91196,20 @@ window.SQE_SCENE = function(A){
     }
     if (a === 'scen'){ scenStart(k); return; }
     if (a === 'game'){ gameStart(k); return; }
-    if (a === 'scpick' && SC.scen && SC.scen.pick == null){ var ss = SC.scen, sst = SCENES[k].scenario.steps[ss.i]; ss.pick = +b.getAttribute('data-o'); if (ss.pick === sst.a){ ss.right++; earnC(1, 'room|' + k + '|sc|' + ss.i); } gpaint(); return; }
+    if (a === 'scpick' && SC.scen && SC.scen.pick == null){ var ss = SC.scen, sst = SCENES[k].scenario.steps[ss.i]; ss.pick = +b.getAttribute('data-o'); if (ss.pick === sst.a){ ss.right++; earnC(1, 'room|' + k + '|sc|' + ss.i); } gpaint(); navIntoView(); return; }
     if (a === 'scnext' && SC.scen){ var s2 = SC.scen, sp2 = SCENES[k].scenario; s2.i++; s2.pick = null; if (s2.i < sp2.steps.length) s2.ord = shuf(nums(sp2.steps[s2.i].opts.length)); paint(); return; }
     if (a === 'scendone' && SC.scen){ var o3 = state(k); if (!o3.sc) o3.sc = Date.now(); o3.scScore = SC.scen.right; SC.scen = null; try { A.save(); } catch(er){} A.render(); showNext(); toast('🎬 Scenario done!' + (nextId(k) === 'game' ? ' Now the mini-game.' : '')); return; }
     if (a === 'gbin'){ gSort(k, +b.getAttribute('data-b')); return; }
-    if (a === 'gask' && SC.game && SC.game.askPick == null){ var G1 = SC.game, q1 = G1.rounds[G1.ri].ask; G1.askPick = +b.getAttribute('data-o'); G1.total++; if (G1.askPick === q1.a) G1.right++; else G1.wrong.push({t: q1.q, a: q1.opts[q1.a], why: q1.why}); gpaint(); return; }
+    if (a === 'gask' && SC.game && SC.game.askPick == null){ var G1 = SC.game, q1 = G1.rounds[G1.ri].ask; G1.askPick = +b.getAttribute('data-o'); G1.total++; if (G1.askPick === q1.a) G1.right++; else G1.wrong.push({t: q1.q, a: q1.opts[q1.a], why: q1.why}); gpaint(); navIntoView(); return; }
     if (a === 'gnext'){ gNext(); return; }
     if (a === 'gput' && SC.game){ var O1 = SC.game.rounds[SC.game.ri]; O1.placed.push(+b.getAttribute('data-i')); gpaint(); return; }
     if (a === 'gun' && SC.game){ var O2 = SC.game.rounds[SC.game.ri]; O2.placed.splice(+b.getAttribute('data-i'), 1); gpaint(); return; }
-    if (a === 'gcheck' && SC.game){ var G2 = SC.game, O3 = G2.rounds[G2.ri]; O3.checked = true; O3.score = 0; O3.placed.forEach(function(pi, j){ G2.total++; if (pi === j){ O3.score++; G2.right++; } else G2.wrong.push({t: O3.items[j].t, a: 'place ' + (j + 1), why: O3.items[j].why}); }); gpaint(); return; }
+    if (a === 'gcheck' && SC.game){ var G2 = SC.game, O3 = G2.rounds[G2.ri]; O3.checked = true; O3.score = 0; O3.placed.forEach(function(pi, j){ G2.total++; if (pi === j){ O3.score++; G2.right++; } else G2.wrong.push({t: O3.items[j].t, a: 'place ' + (j + 1), why: O3.items[j].why}); }); gpaint(); navIntoView(); return; }
     if (a === 'gl'){ gMatch(k, 'l', +b.getAttribute('data-i')); return; }
     if (a === 'gmv' && SC.game){ var O4 = SC.game.rounds[SC.game.ri], mi = +b.getAttribute('data-i'), mj = mi + (+b.getAttribute('data-d')); if (mj >= 0 && mj < O4.placed.length){ var tmp = O4.placed[mi]; O4.placed[mi] = O4.placed[mj]; O4.placed[mj] = tmp; } gpaint(); return; }
-    if (a === 'gnum' && SC.game && SC.game.pick == null){ var G4 = SC.game, Q4 = G4.rounds[G4.ri]; G4.pick = +b.getAttribute('data-o'); G4.total++; if (G4.pick === Q4.a) G4.right++; else G4.wrong.push({t: Q4.q, a: String(Q4.opts[Q4.a]), why: Q4.why}); gpaint(); return; }
+    if (a === 'gnum' && SC.game && SC.game.pick == null){ var G4 = SC.game, Q4 = G4.rounds[G4.ri]; G4.pick = +b.getAttribute('data-o'); G4.total++; if (G4.pick === Q4.a) G4.right++; else G4.wrong.push({t: Q4.q, a: String(Q4.opts[Q4.a]), why: Q4.why}); gpaint(); navIntoView(); return; }
     if (a === 'gspot' && SC.game){ var P4 = SC.game.rounds[SC.game.ri], si = +b.getAttribute('data-i'); if (!P4.shown){ if (P4.sel[si]) delete P4.sel[si]; else P4.sel[si] = 1; gpaint(); } return; }
-    if (a === 'gspotrev' && SC.game){ var G5 = SC.game, P5 = G5.rounds[G5.ri]; P5.shown = true; P5.lines.forEach(function(l, i){ var on = !!P5.sel[i]; if (!l.bad && !on) return; G5.total++; if (on === !!l.bad) G5.right++; else G5.wrong.push({t: l.t, a: l.bad ? 'has a mistake' : 'is correct', why: l.why || ''}); }); gpaint(); return; }
+    if (a === 'gspotrev' && SC.game){ var G5 = SC.game, P5 = G5.rounds[G5.ri]; P5.shown = true; P5.lines.forEach(function(l, i){ var on = !!P5.sel[i]; if (!l.bad && !on) return; G5.total++; if (on === !!l.bad) G5.right++; else G5.wrong.push({t: l.t, a: l.bad ? 'has a mistake' : 'is correct', why: l.why || ''}); }); gpaint(); navIntoView(); return; }
     if (a === 'gcatch'){ var ci = +b.getAttribute('data-i'); if (b.parentNode) b.parentNode.removeChild(b); catchHit(ci, true); return; }
     if (a === 'gr'){ gMatch(k, 'r', +b.getAttribute('data-r')); return; }
     if (a === 'gagain'){ gameStart(k); return; }
@@ -91148,7 +91237,9 @@ window.SQE_SCENE = function(A){
       if (e.key === 'Enter' && ex.ans[ex.i] != null){ e.preventDefault(); ex.i++; paint(); return; } }
     if (SC.open && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')){ e.preventDefault(); go(k, e.key === 'ArrowRight' ? 1 : -1); }
   });
-  addEventListener('hashchange', function(){ /* any route change closes an open pop-up (e.g. the locked-door question no longer follows you inside) */ SC.open = null; SC.gate = false; SC.yay = false; SC.exit = null; SC.scen = null; SC.game = null; stopTimer(); paint(); });
+  addEventListener('hashchange', function(){ /* any route change closes an open pop-up (e.g. the locked-door question no longer follows you inside) */ SC.open = null; SC.gate = false; SC.yay = false; SC.exit = null; SC.scen = null; SC.game = null; stopTimer(); paint(); if (ROOMS_ON) sceneTop(); });
+  /* rooms preview: a new scene (door tap, hall, back to the hall) opens with the scene's top at the top of the screen, straight away, instead of flashing the page top and then scrolling */
+  function sceneTop(){ var r = A.route(); if (r[0] !== 'scene') return; var el = document.querySelector('.scn'); if (!el) return; var t = el.getBoundingClientRect().top + (window.scrollY || window.pageYOffset || 0) - 8; window.scrollTo(0, Math.max(0, t)); }
   window.__sceneExitFor = function(k){ return exitPool(k).map(function(it){ var h = objFor(k, it); return {kind: it.kind, q: it.q.slice(0, 60), obj: h && h.id}; }); };
   return {coverage: coverage};
 };
@@ -94515,7 +94606,9 @@ function showPops(){
   el.setAttribute("role", "status");
   el.innerHTML = n ? '+' + n + ' ' + cbaCoin() + ' <span>coin' + (n === 1 ? '' : 's') + '</span>' : 'Too quick for coins: take your time to read it';
   document.body.appendChild(el);
-  var w = el.offsetWidth; el.style.left = Math.max(6, Math.min(window.innerWidth - w - 6, x - w / 2)) + "px"; el.style.top = y + "px";
+  var w = el.offsetWidth, maxR = window.innerWidth - 6, sd = document.querySelector(".layout > .side"), sr = sd && sd.getBoundingClientRect(); /* keep the pop-up off the Topic list sidebar */
+  if (sr && sr.width > 40 && sr.left > 200 && sr.top < y + 40 && sr.bottom > y) maxR = Math.min(maxR, sr.left - 8);
+  el.style.left = Math.max(6, Math.min(maxR - w, x - w / 2)) + "px"; el.style.top = y + "px";
   setTimeout(function(){ if (el.parentNode) el.parentNode.removeChild(el); }, 1900);
   if (n && bag){ bag.classList.remove("wig"); void bag.offsetWidth; bag.classList.add("wig"); }
 }
