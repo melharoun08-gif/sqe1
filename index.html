@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120132111";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120133257";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -3959,6 +3959,47 @@ a.pkback:hover .pksign{transform:rotate(-3deg) scale(1.05)}
 .land-real.land-airport .flash .face > .lbc{right:auto!important;left:61.67%!important;transform:translateX(-50%);bottom:calc(7.6% + 10px)!important;width:38%;align-items:stretch;text-align:center}
 .land-real.land-airport .flash .face > .lbc .bcode{width:100%!important;height:30px}
 .land-real.land-airport .flash .face{--pb:22%}
+
+/* Monnie 20 Nov 13:16: knife while he walks up to Britney; the shaking thumbs-down only once he has grabbed her */
+.bbody .btd-b,.bbody .btd-a{position:absolute;left:0;top:0;width:100%;height:auto;opacity:0;animation:none}
+.grab .bbody .brunimg{animation:bgone 0s .5s forwards}
+.grab .bbody .btd-b{animation:bshow 0s .5s forwards}
+.grab .bbody .btd-a{transform:none;animation:bshow 0s .5s forwards,btdShake .3s .5s ease-in-out infinite alternate}
+.grab .bcarry{left:-16%;top:36%;width:54%}
+.bts-bert .bktd,.bts-bert .bka{position:absolute;left:0;top:0;width:100%;height:auto;opacity:0;animation:none}
+.btstrip.grab .bts-bert .bk{animation:bgone 0s .1s forwards}
+.btstrip.grab .bts-bert .bktd{animation:bshow 0s .1s forwards}
+.btstrip.grab .bts-bert .bka{animation:bshow 0s .1s forwards,btdShake .3s .1s ease-in-out infinite alternate}
+.btstrip.grab .bts-bert .bc{left:-12%;top:38%;width:54%}
+/* Bert's shouts are real speech bubbles: room for the words, narrow and tall, tail down to Bert (Monnie 13:21) */
+.bhb-bert .bshout,.bc-bert .bshout{white-space:normal;width:134px;box-sizing:border-box;text-align:center;padding:8px 10px;border-radius:22px;line-height:1.12;font-size:18px;top:auto;bottom:calc(100% + 14px)}
+.bhb-bert .bshout::after,.bc-bert .bshout::after{content:"";position:absolute;left:50%;top:100%;margin-left:-8px;border:8px solid transparent;border-top:12px solid #1d1d1b;border-bottom:0}
+.bhb-bert .bshout::before,.bc-bert .bshout::before{content:"";position:absolute;left:50%;top:100%;margin-left:-5px;margin-top:-1px;border:5px solid transparent;border-top:8px solid #fff;border-bottom:0;z-index:1}
+@media (max-width:560px){.bhb-bert .bshout,.bc-bert .bshout{width:108px;font-size:14.5px;padding:6px 8px;bottom:calc(100% + 12px)}}
+/* 20 Nov 13:40 card fit pass: every card text kept inside its object's clean area, sized to fill it (gen/objs3.py) */
+.land-real.land-amazon-forest .flash .face,.land-real.land-amazon-forest .flash .back{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M0,176 Q14,170 34,170%22 fill=%22none%22 stroke=%22%235C3D1E%22 stroke-width=%227%22 vector-effect=%22non-scaling-stroke%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M30,170 C90,-50 500,-50 598,170 C500,390 90,390 30,170 Z%22 fill=%22%2352B788%22 stroke-width=%223%22 stroke=%22%232A1B2E%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M60,170 Q80,121 110,80%22 stroke=%22%232B8A3E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 fill=%22none%22/%3E%3Cpath d=%22M60,170 Q80,219 110,260%22 stroke=%22%232B8A3E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 fill=%22none%22/%3E%3Cpath d=%22M120,170 Q140,107 170,54%22 stroke=%22%232B8A3E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 fill=%22none%22/%3E%3Cpath d=%22M120,170 Q140,233 170,286%22 stroke=%22%232B8A3E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 fill=%22none%22/%3E%3Cpath d=%22M450,170 Q470,121 500,80%22 stroke=%22%232B8A3E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 fill=%22none%22/%3E%3Cpath d=%22M450,170 Q470,219 500,260%22 stroke=%22%232B8A3E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 fill=%22none%22/%3E%3Cpath d=%22M510,170 Q530,144 560,122%22 stroke=%22%232B8A3E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 fill=%22none%22/%3E%3Cpath d=%22M510,170 Q530,196 560,218%22 stroke=%22%232B8A3E%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22 fill=%22none%22/%3E%3Cpath d=%22M30,170 H598%22 stroke=%22%232B8A3E%22 stroke-width=%224%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cellipse cx=%22318%22 cy=%22170%22 rx=%22256%22 ry=%22132%22 fill=%22%23F1FAEE%22 stroke=%22%232B8A3E%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3C/svg%3E") 0 0/100% 100% no-repeat!important}
+.land-real.land-aquarium .flash .face,.land-real.land-aquarium .flash .back{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22 preserveAspectRatio=%22none%22%3E%3Crect x=%224%22 y=%2214%22 width=%22486%22 height=%22312%22 rx=%2296%22 fill=%22%23BFEAF5%22 fill-opacity=%22.8%22 stroke-width=%223%22 stroke=%22%232A1B2E%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M488,116 H550 V224 H488%22 fill=%22%23BFEAF5%22 stroke-width=%223%22 stroke=%22%232A1B2E%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Crect x=%22548%22 y=%22120%22 width=%2246%22 height=%22100%22 rx=%2210%22 fill=%22%23C68B59%22 stroke-width=%223%22 stroke=%22%232A1B2E%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M562,138 v64 M578,138 v64%22 stroke=%22%238A5A33%22 stroke-width=%222%22 vector-effect=%22non-scaling-stroke%22/%3E%3Crect x=%2258%22 y=%2244%22 width=%22384%22 height=%22252%22 rx=%226%22 fill=%22%23FFF6DC%22 stroke-width=%222.5%22 stroke=%22%232A1B2E%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Crect x=%2246%22 y=%2236%22 width=%2218%22 height=%22268%22 rx=%229%22 fill=%22%23F2E3BC%22 stroke-width=%222.5%22 stroke=%22%232A1B2E%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Crect x=%22436%22 y=%2236%22 width=%2218%22 height=%22268%22 rx=%229%22 fill=%22%23F2E3BC%22 stroke-width=%222.5%22 stroke=%22%232A1B2E%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M34,80 Q40,48 74,34%22 fill=%22none%22 stroke=%22%23FFFFFF%22 stroke-width=%226%22 vector-effect=%22non-scaling-stroke%22 stroke-linecap=%22round%22/%3E%3C/svg%3E") 0 0/100% 100% no-repeat!important}
+.land-real.land-farm .flash .face,.land-real.land-farm .flash .back{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22 preserveAspectRatio=%22none%22%3E%3Cellipse cx=%2270%22 cy=%2240%22 rx=%2242%22 ry=%2234%22 fill=%22%23C9B99A%22 stroke-width=%223%22 stroke=%22%232A1B2E%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M48,28 Q60,14 80,14%22 fill=%22none%22 stroke=%22%23FFFFFF%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cellipse cx=%22162%22 cy=%2240%22 rx=%2242%22 ry=%2234%22 fill=%22%23C9B99A%22 stroke-width=%223%22 stroke=%22%232A1B2E%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M140,28 Q152,14 172,14%22 fill=%22none%22 stroke=%22%23FFFFFF%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cellipse cx=%22254%22 cy=%2240%22 rx=%2242%22 ry=%2234%22 fill=%22%23C9B99A%22 stroke-width=%223%22 stroke=%22%232A1B2E%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M232,28 Q244,14 264,14%22 fill=%22none%22 stroke=%22%23FFFFFF%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cellipse cx=%22346%22 cy=%2240%22 rx=%2242%22 ry=%2234%22 fill=%22%23C9B99A%22 stroke-width=%223%22 stroke=%22%232A1B2E%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M324,28 Q336,14 356,14%22 fill=%22none%22 stroke=%22%23FFFFFF%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cellipse cx=%22438%22 cy=%2240%22 rx=%2242%22 ry=%2234%22 fill=%22%23C9B99A%22 stroke-width=%223%22 stroke=%22%232A1B2E%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M416,28 Q428,14 448,14%22 fill=%22none%22 stroke=%22%23FFFFFF%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cellipse cx=%22530%22 cy=%2240%22 rx=%2242%22 ry=%2234%22 fill=%22%23C9B99A%22 stroke-width=%223%22 stroke=%22%232A1B2E%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M508,28 Q520,14 540,14%22 fill=%22none%22 stroke=%22%23FFFFFF%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M3,52 H597 V320 Q597,337 580,337 H20 Q3,337 3,320 Z%22 fill=%22%23BFAE8E%22 stroke-width=%223%22 stroke=%22%232A1B2E%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Crect x=%2240%22 y=%2272%22 width=%22520%22 height=%22246%22 rx=%2212%22 fill=%22%23FFFFFF%22 stroke-width=%222.5%22 stroke=%22%232A1B2E%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Crect x=%2248%22 y=%2280%22 width=%22504%22 height=%22230%22 rx=%228%22 fill=%22none%22 stroke=%22%232D6A4F%22 stroke-width=%222%22 stroke-dasharray=%225 4%22 vector-effect=%22non-scaling-stroke%22/%3E%3C/svg%3E") 0 0/100% 100% no-repeat!important}
+.land-real.land-balloon-field .flash .face,.land-real.land-balloon-field .flash .back{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M80,300 C30,300 6,262 18,228 C-6,200 10,150 54,146 C50,96 96,64 140,80 C160,30 230,14 270,52 C300,10 380,10 404,58 C440,30 510,46 516,98 C566,96 600,140 584,184 C606,214 590,272 540,280 C536,318 480,334 440,312 C410,338 340,338 310,312 C280,336 210,336 180,312 C150,330 100,326 80,300 Z%22 fill=%22%23FFFFFF%22 stroke-width=%223%22 stroke=%22%232A1B2E%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cg transform=%22translate(468,0) scale(1.2)%22%3E%3Cpath d=%22M40,4 C18,4 6,20 6,36 C6,58 28,72 34,80 H46 C52,72 74,58 74,36 C74,20 62,4 40,4 Z%22 fill=%22%23E63946%22 stroke-width=%222.5%22 stroke=%22%232A1B2E%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M40,4 C30,20 30,60 36,80 M40,4 C50,20 50,60 44,80%22 fill=%22none%22 stroke=%22%23FFD43B%22 stroke-width=%223%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M36,80 L34,92 M44,80 L46,92%22 stroke-width=%222%22 stroke=%22%232A1B2E%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3Crect x=%2231%22 y=%2292%22 width=%2218%22 height=%2214%22 rx=%222%22 fill=%22%23B5743F%22 stroke-width=%222.5%22 stroke=%22%232A1B2E%22 vector-effect=%22non-scaling-stroke%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3C/g%3E%3C/svg%3E") 0 0/100% 100% no-repeat!important}
+.land-real.land-library .flash .face > .lbc{bottom:6%!important;right:5%!important}
+.land-real.land-library .flash .face{padding-left:6%!important;padding-right:6%!important;--pt:29%;--pb:26%}.land-real.land-library .flash .face > .ftop{top:3%!important;left:5%!important}.land-real.land-library .flash .face:not(.back){font-size:30px!important}.land-real.land-library .flash .back{font-size:17px!important}
+.land-real.land-airport .flash .face{padding-left:31.5%!important;padding-right:8%!important;--pt:27%;--pb:25%}.land-real.land-airport .flash .face > .ftop{top:3.5%!important;left:33%!important}.land-real.land-airport .flash .face:not(.back){font-size:27px!important}.land-real.land-airport .flash .back{font-size:16.5px!important}
+.land-real.land-zoo .flash .face{padding-left:8%!important;padding-right:8%!important;--pt:35%;--pb:9%}.land-real.land-zoo .flash .face > .ftop{top:19%!important;left:8%!important}.land-real.land-zoo .flash .face:not(.back){font-size:30px!important}.land-real.land-zoo .flash .back{font-size:17px!important}
+.land-real.land-museum .flash .face{padding-left:11%!important;padding-right:11%!important;--pt:31%;--pb:16%}.land-real.land-museum .flash .face > .ftop{top:15%!important;left:11%!important}.land-real.land-museum .flash .face:not(.back){font-size:30px!important}.land-real.land-museum .flash .back{font-size:16.5px!important}
+.land-real.land-pier .flash .face{padding-left:5%!important;padding-right:40%!important;--pt:23%;--pb:7%}.land-real.land-pier .flash .face > .ftop{top:5%!important;left:5%!important}.land-real.land-pier .flash .face:not(.back){font-size:26px!important}.land-real.land-pier .flash .back{font-size:15.5px!important}
+.land-real.land-aquarium .flash .face{padding-left:13%!important;padding-right:29%!important;--pt:28%;--pb:15%}.land-real.land-aquarium .flash .face > .ftop{top:15.5%!important;left:13%!important}.land-real.land-aquarium .flash .face:not(.back){font-size:26px!important}.land-real.land-aquarium .flash .back{font-size:15px!important}
+.land-real.land-farm .flash .face{padding-left:10%!important;padding-right:10%!important;--pt:36%;--pb:12%}.land-real.land-farm .flash .face > .ftop{top:25%!important;left:10%!important}.land-real.land-farm .flash .face:not(.back){font-size:28px!important}.land-real.land-farm .flash .back{font-size:15px!important}
+.land-real.land-botanic-garden .flash .face{padding-left:7%!important;padding-right:7%!important;--pt:21%;--pb:27%}.land-real.land-botanic-garden .flash .face > .ftop{top:3%!important;left:6%!important}.land-real.land-botanic-garden .flash .face:not(.back){font-size:30px!important}.land-real.land-botanic-garden .flash .back{font-size:17px!important}
+.land-real.land-balloon-field .flash .face{padding-left:16%!important;padding-right:15%!important;--pt:40%;--pb:16%}.land-real.land-balloon-field .flash .face > .ftop{top:27%!important;left:16%!important}.land-real.land-balloon-field .flash .face:not(.back){font-size:31px!important}.land-real.land-balloon-field .flash .back{font-size:16.5px!important}
+.land-real.land-amazon-forest .flash .face{padding-left:19%!important;padding-right:13%!important;--pt:30%;--pb:24%}.land-real.land-amazon-forest .flash .face > .ftop{top:15%!important;left:53.0%!important;transform:translateX(-50%);right:auto!important}.land-real.land-amazon-forest .flash .face{align-items:center!important;text-align:center}.land-real.land-amazon-forest .flash .face:not(.back){font-size:27px!important}.land-real.land-amazon-forest .flash .back{font-size:15.5px!important}
+.land-real.land-ice-rink .flash .face{padding-left:13%!important;padding-right:13%!important;--pt:32%;--pb:18%}.land-real.land-ice-rink .flash .face > .ftop{top:22%!important;left:13%!important}.land-real.land-ice-rink .flash .face:not(.back){font-size:30px!important}.land-real.land-ice-rink .flash .back{font-size:17px!important}
+.land-real.land-lighthouse .flash .face{padding-left:16%!important;padding-right:10%!important;--pt:25%;--pb:8%}.land-real.land-lighthouse .flash .face > .ftop{top:5%!important;left:16%!important}.land-real.land-lighthouse .flash .face:not(.back){font-size:30px!important}.land-real.land-lighthouse .flash .back{font-size:16.5px!important}
+.land-real:not(.land-tkt) .flash .inner{min-height:430px}
+.land-real.land-amazon-forest .flash .inner,.land-real.land-aquarium .flash .inner{min-height:480px}.land-real.land-farm .flash .inner{min-height:490px}
+@media (max-width:640px){.land-real:not(.land-tkt) .flash .face:not(.back){font-size:22px!important}.land-real:not(.land-tkt) .flash .back{font-size:14px!important}.land-real:not(.land-tkt) .flash .inner{min-height:560px}.land-real.land-amazon-forest .flash .inner,.land-real.land-aquarium .flash .inner{min-height:640px}.land-real.land-farm .flash .inner{min-height:610px}}
+@media (max-width:640px){.land-real.land-pier .ftop .fnm b,.land-real.land-aquarium .ftop .fnm b{font-size:13px!important}.land-real.land-pier .ftop .fnm span,.land-real.land-aquarium .ftop .fnm span{font-size:9px!important}.land-real.land-amazon-forest .flash .face > .ftop{top:19%!important}.land-real.land-amazon-forest .flash .face{--pt:32%}}
+
+.sico.semo{font-size:17px;line-height:1;display:inline-block;width:auto;height:auto}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -110324,6 +110365,7 @@ window.SQE_JOURNEY = function (A) {
             m: s <= G.S[k] + .5 ? G.M[k] : s >= G.S[k + 1] - .5 ? G.M[k + 1] : Math.abs(dx) > 4 ? (dx > 0 ? 1 : -1) : G.M[k] };
     }
     function placePair(g, mode, P, hop) {
+        g.__s = P.s;
         g.setAttribute('transform', "translate(".concat(f1(P.x), ",").concat(f1(P.y), ")"));
         if (P.m && +g.getAttribute('data-f') !== P.m) {
             g.setAttribute('data-f', P.m);
@@ -110407,6 +110449,60 @@ window.SQE_JOURNEY = function (A) {
         [0, 150, 500, 1000, 1700, 2700].forEach(function (ms) { return setTimeout(go, ms); });
         setTimeout(function () { return evs.forEach(function (ev) { return removeEventListener(ev, stop); }); }, 3000);
     }
+    /* 13:26 Monnie: tap any numbered stop and Layla walks along the path to it (facing her way, brisk, at most ~3s), then the stop opens.
+       Her progress spot is not changed (sqe_map_lastPos untouched); back on the map she stands at her progress spot again. */
+    var JGO = null;
+    try {
+        document.addEventListener('click', function (ev) {
+            try {
+                if (ev.defaultPrevented || ev.button !== 0 || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey)
+                    return;
+                var a = ev.target && ev.target.closest ? ev.target.closest('.jsv a[href]') : null;
+                if (!a)
+                    return;
+                var m = /^Stop (\d+)\b/.exec(a.getAttribute('aria-label') || '');
+                if (!m)
+                    return;
+                var box = a.closest('.jsv'), g_2 = box && box.querySelector('.jpair'), G_1 = box && walkGeo(box), href_1 = a.getAttribute('href');
+                if (!g_2 || !G_1 || !href_1)
+                    return;
+                var reduce = false;
+                try {
+                    reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+                }
+                catch (e) { }
+                var mode_1 = box.classList.contains('jphone') ? 'phone' : 'desk', s0_1 = g_2.__s != null ? g_2.__s : walkAtS(G_1, walkS(G_1, +box.getAttribute('data-pos') || 0)).s, s1_1 = walkS(G_1, +m[1]);
+                if (reduce || Math.abs(s1_1 - s0_1) < 8)
+                    return; /* already there: just go in */
+                ev.preventDefault();
+                if (JGO)
+                    JGO.stop = 1;
+                var me_1 = { stop: 0 };
+                JGO = me_1;
+                var dir_1 = s1_1 > s0_1 ? 1 : -1, dur_1 = Math.min(3000, Math.max(700, Math.abs(s1_1 - s0_1) / 1.6)), hopLen_1 = mode_1 === 'phone' ? 46 : 36;
+                var t0_2 = 0;
+                var step_1 = function (ts) {
+                    if (me_1.stop || !g_2.isConnected)
+                        return;
+                    if (!t0_2)
+                        t0_2 = ts;
+                    var u = Math.min(1, (ts - t0_2) / dur_1), e = u < .5 ? 2 * u * u : 1 - 2 * (1 - u) * (1 - u), s = s0_1 + (s1_1 - s0_1) * e;
+                    var P = walkAtS(G_1, s), dx = G_1.pt(s + 10)[0] - G_1.pt(s - 10)[0];
+                    if (u < 1 && Math.abs(dx) > 3)
+                        P.m = (dx > 0 ? 1 : -1) * dir_1;
+                    placePair(g_2, mode_1, P, u < 1 ? Math.abs(Math.sin(Math.PI * (s - s0_1) / hopLen_1)) * (mode_1 === 'phone' ? 9 : 7) : 0);
+                    if (u < 1)
+                        requestAnimationFrame(step_1);
+                    else
+                        setTimeout(function () { if (!me_1.stop && /^#\/palace/.test(location.hash))
+                            location.hash = href_1; }, 250);
+                };
+                requestAnimationFrame(step_1);
+            }
+            catch (e) { }
+        }, true);
+    }
+    catch (e) { }
     function walkPair() {
         try {
             setTimeout(shopWalk, 300);
@@ -110593,7 +110689,7 @@ window.SQE_JOURNEY = function (A) {
     }
     /* tapping a stop (picture, number, plate or today button) goes straight to that stop's own page: its scene if it has one, else the subject page (19 Nov, Monnie: no pop-up) */
     var STOP_PAGES = { blp: "#/scene/blp/business-structures" };
-    function stopHref(id) { var H = window.SQE_STOP_HUB || {}; return STOP_PAGES[id] || (H[id] ? "#/scene/" + id : "#/subject/" + id); } /* Monnie 20 Nov 13:14: a stop with its own rooms opens its entrance, not the syllabus */
+    function stopHref(id) { return STOP_PAGES[id] || ("#/subject/" + id); }
     /* the journey map sits at the top of the Cluckington Palace tab; sid = the stop whose panel is open (#/map/<sid>) */
     function mapBlock(sid) {
         var r = ['map', sid];
@@ -149509,7 +149605,7 @@ window.SQE_TOWN = function(A){
     var at = function(x){ return (1 - x / m).toFixed(3); }, near = w / m, left = m - w;
     var h = '<div class="btstrip' + (still && grab ? ' grab done' : '') + '" id="btstrip" style="--p:' + at(pw) + ';--ta:' + (1 + 5 * near).toFixed(1) + 'px;--tr:' + (1.5 + 8 * near).toFixed(1) + 'deg;--ts:' + (.5 - .38 * near).toFixed(2) + 's" role="img" aria-label="Bert is ' + left + ' steps from Britney">' +
       '<span class="bts-brit"><img src="img/britney/' + ['set/neutral', 'fear1', 'fear2', 'fear3', 'terrified'][w ? Math.min(4, Math.ceil(near * 4)) : 0] + '.webp" alt=""></span>' + /* Monnie 20 Nov 09:49: fear builds gradually */
-      '<span class="bts-bert"><span class="bb"><span class="bkw"><img class="bk" src="img/boss/bert-td-body.webp" alt=""><img class="bka" src="img/boss/bert-td-arm.webp" alt=""></span><img class="bc" src="img/britney/terrified.webp" alt=""></span></span>' +
+      '<span class="bts-bert"><span class="bb"><span class="bkw"><img class="bk" src="img/boss/bert-knife.webp" alt=""><img class="bktd" src="img/boss/bert-td-body.webp" alt=""><img class="bka" src="img/boss/bert-td-arm.webp" alt=""></span><img class="bc" src="img/britney/terrified.webp" alt=""></span></span>' +
       '<span class="bts-n">' + (grab ? 'Bert grabbed Britney!' : w + ' wrong · ' + left + ' more and Bert grabs Britney') + '</span></div>';
     if (!still && pw !== w){ b.shownW = w; setTimeout(function(){ var e = document.getElementById('btstrip'); if (!e) return; e.style.setProperty('--p', at(w)); if (grab) setTimeout(function(){ e.classList.add('grab'); }, 700); }, 60); }
     else b.shownW = w;
@@ -149762,16 +149858,19 @@ var SWING_HEN_H = 8.5;
 var BRUCEY_COOP = [96.6, 57.6];   /* with a coop there, Brucey perches on the bank behind it */   /* Beefy sits on the swing when Layla has both */
 function coopTop(o){ return o.palace ? [91.1, 36 + 20] : o.coop ? [91.1, 36 + 19] : null; }
 /* Layla's walk: [x, b, pause ms, pose while paused ('a' stand, 't' wave)]; stays inside x 37..54 so she never meets the people */
-var LAYLA_LAP = [[42.5, 36, 1400, 'a'], [54.5, 31, 900, 'a'], [43.5, 24, 900, 'a'], [52.5, 15, 1600, 't'], [44.5, 12, 1100, 'a'], [54.5, 20, 900, 'a'], [48, 30, 900, 'a']];   /* Monnie 10:00: no moonwalking, every leg goes more sideways than up/down */
+var LAYLA_LAP = [[41, 11, 1200, 'a'], [49, 11, 0, 'a'], [55, 12, 900, 'a'], [50, 18, 0, 'a'], [39, 22, 1400, 't'], [47, 27, 900, 'a'], [55, 24, 900, 'a'], [51, 17, 0, 'a'], [43, 14, 600, 'a']];   /* Monnie 13:22: one big loop over the whole open lawn, on the grass, mostly side to side (never zig-zagging up towards the trees) */   /* Monnie 10:00: no moonwalking, every leg goes more sideways than up/down */
 var LAYLA_WP = (function(){   /* three laps; only the first has the cartwheel, so it comes round about once a minute (Monnie 08:19) */
   var out = [];
-  for (var lap = 0; lap < 3; lap++) LAYLA_LAP.forEach(function(w, i){ var c = w.slice(); if (lap === 0 && i === 4) c[4] = 'c'; if (lap === 1 && i === 0) c[2] = 6500; out.push(c); });
+  for (var lap = 0; lap < 3; lap++) LAYLA_LAP.forEach(function(w, i){ var c = w.slice(); if (lap === 0 && i === 1) c[4] = 'c'; if (lap === 1 && i === 0) c[2] = 6500; out.push(c); });
   return out;
 })();
-var RIDE_WP = 7;   /* Britney rides on Layla's head from the start of lap 2 (waypoint 7: Layla stands still a while, then walks on) */
+var RIDE_WP = LAYLA_LAP.length;   /* Britney rides on Layla's head from the start of lap 2 (waypoint 7: Layla stands still a while, then walks on) */
 var RIDE_MS = 9000, RIDE_FLY = 1600;
 var LAYLA_X = [40, 54];
-var WALK_PX = 115;   /* Layla's speed, picture pixels per second (calm) */
+var WALK_PX = 115, TRIP_PX = 205;   /* going to the shed and feeding: brisker (Monnie 13:23) */
+/* side-on stride when she crosses the garden; a walking-away / towards-us step when she mostly goes up or down the lawn */
+function gait(a, b){ return Math.abs(b[1] - a[1]) * 15.36 > Math.abs(b[0] - a[0]) * 27.52 * 0.9 ? 'v' : 'w'; }
+/* Layla's speed, picture pixels per second (calm) */
 var STRIDE_PX = 234; /* one full walk cycle (two steps) in picture pixels, matched to her leg swing so her feet don't slide */
 var CART_MS = 1300;  /* one proper cartwheel: arm up, legs wide, a full turn over her hands (Monnie 08:19) */
 /* Britney's day: walk / peck / fly / sit. Positions are where her feet are. */
@@ -149781,7 +149880,7 @@ var BRIT_SEQ = [
   ['fly', 'COOP', 3200], ['sit', null, 3600], ['fly', SHED_ROOF, 3800], ['sit', null, 3200], ['fly', [45, 24], 2600], ['walk', [50, 22]]
 ];
 var HEN_WALK_PX = 48;
-var FEED_SPOT = [44.5, 18], FEED_BRIT = [53, 15];
+var FEED_SPOT = [44.5, 18], FEED_BRIT = [53, 15], PAT_SPOT = [46.6, 20];
 var GRAINS = [[51, 13], [55.5, 16], [52.5, 18.5], [57, 12.5], [49.5, 16.5], [54, 11], [58, 17.5], [50.5, 11.5], [55, 20]];
 /* the shed's shelves, as % of the inside picture: [top of the shelf board, left, right] */
 var SHELVES = [[23.3, 15, 91], [42.7, 15, 91], [62.4, 15, 91]];
@@ -149819,7 +149918,7 @@ function laylaAt(t){
     var s = LSEG[i]; if (t >= s.t + s.w + s.p) continue;
     var u = t - s.t;
     if (u < s.w){ var k = u / s.w; if (s.cart){ var e = ease(k); return {x: lerp(s.a[0], s.b[0], e), b: lerp(s.a[1], s.b[1], e) + Math.sin(Math.PI * k) * 3, face: s.face, fr: 'c', spin: 360 * e, k: k}; }
-      return {x: lerp(s.a[0], s.b[0], k), b: lerp(s.a[1], s.b[1], k), face: s.face, fr: 'w', dist: s.t * 0 + k * s.d}; }
+      return {x: lerp(s.a[0], s.b[0], k), b: lerp(s.a[1], s.b[1], k), face: s.face, fr: gait(s.a, s.b), dist: k * s.d}; }
     return {x: s.b[0], b: s.b[1], face: s.face, fr: s.pose === 't' ? 't' : 'a'};
   }
   return {x: LAYLA_WP[0][0], b: LAYLA_WP[0][1], face: 'r', fr: 'a'};
@@ -149827,7 +149926,7 @@ function laylaAt(t){
 function walkTo(p, q, u, speed){
   var d = pxd(p, q), w = d / (speed || WALK_PX) * 1000, f = q[0] - p[0] > 0.4 ? 'r' : q[0] - p[0] < -0.4 ? 'l' : null;
   if (w < 1 || u >= w) return {x: q[0], b: q[1], fr: 'a', done: true, w: w, face: f};
-  var k = u / w; return {x: lerp(p[0], q[0], k), b: lerp(p[1], q[1], k), fr: 'w', dist: k * d, w: w, face: f};
+  var k = u / w; return {x: lerp(p[0], q[0], k), b: lerp(p[1], q[1], k), fr: gait(p, q), dist: k * d, w: w, face: f};
 }
 
 /* ----- Britney's loop ----- */
@@ -149913,10 +150012,10 @@ window.SQE_MOUNT = function(A){
     '.mg-walker img.sp{visibility:hidden}.mg-walker img.up,.mg-walker img.lg1,.mg-walker img.lg2{position:absolute;left:0;top:0;height:100%;width:100%;transform-origin:50% 100%}' +
     '.ml-rig{position:absolute;inset:0;display:none}.ml-rig.on{display:block}.ml-rig img,.ml-legs{position:absolute;left:0;top:0;width:100%;height:100%;transform-origin:0 0}.ml-legs{transform-origin:50% 50%}.ml-rig .far{filter:brightness(.72)}.ml-rig img.tl,.ml-rig img.tr,.ml-rig img.ttl,.ml-rig img.ttr{display:none}.ml-rig img.tl.on,.ml-rig img.tr.on,.ml-rig img.ttl.on,.ml-rig img.ttr.on{display:block}' +
     '.mg-brit{height:auto;cursor:pointer;pointer-events:auto}' +
-    '.mg-feedbag{position:absolute;left:5%;bottom:6%;width:9%;background:none;border:0;padding:0;cursor:pointer;z-index:3}.mg-feedbag img{width:100%;height:auto;display:block;filter:drop-shadow(0 3px 0 rgba(0,0,0,.25))}.mg-feedbag.off{cursor:default;opacity:.75}' +
-    '.mg-feedbag .n{position:absolute;right:-12%;top:-6%;background:#E0115F;color:#fff;border-radius:999px;padding:1px 7px;font-weight:700;font-size:14px}' +
+    '.mg-shelf .it.mg-feedbag{background:none;border:0;padding:0;cursor:pointer}.mg-shelf .it.mg-feedbag img{opacity:1;filter:drop-shadow(0 2px 0 rgba(0,0,0,.22))}.mg-feedbag.off{cursor:default}.mg-shelf .it.mg-feedbag b{opacity:1}' +
+    '.mg-feedbag .n{position:absolute;right:-6%;top:-4%;z-index:2;background:#E0115F;color:#fff;border-radius:999px;padding:1px 7px;font-weight:700;font-size:14px}' +
     '.mg-feedbag b{position:absolute;left:50%;top:100%;transform:translateX(-50%);margin-top:4px;background:#fff;border:2px solid #1d1d1b;border-radius:8px;padding:2px 8px;font-size:13px;white-space:nowrap}' +
-    '.mg-feedbag:not(.off){animation:mbagpulse 1.6s ease-in-out infinite}@keyframes mbagpulse{0%,100%{transform:none}50%{transform:scale(1.06)}}' +
+    '.mg-feedbag:not(.off) img{animation:mbagpulse 1.6s ease-in-out infinite}@keyframes mbagpulse{0%,100%{transform:none}50%{transform:scale(1.06)}}' +
     '.ml-rig .ml-bag{display:none;position:absolute;left:82%;top:40%;width:22%;height:auto;transform-origin:50% 0}.mg-layla.bag .ml-rig .ml-bag{display:block}.mg-layla.bag.fl .ml-rig .ml-bag{left:-4%}' +
     '.mg-carry{position:absolute;left:30%;top:38%;width:40%;z-index:2;pointer-events:none;transform:rotate(-8deg)}.mg-carry img,.mg-carry svg{display:block!important;width:100%;height:auto;filter:drop-shadow(0 1px 0 rgba(0,0,0,.25))}' +
     '.mg-shedtip{position:absolute;left:50%;bottom:3%;transform:translateX(-50%);z-index:2;background:#fff;border:2px solid #1d1d1b;border-radius:999px;padding:1px 12px;font-size:13px;white-space:nowrap}' +
@@ -149931,13 +150030,13 @@ window.SQE_MOUNT = function(A){
     '.mg-hen .boluimg,.mg-hen .bonnieimg,.mg-hen img{height:100%;width:auto}' +
     '.mg-item img{height:100%;width:auto;display:block}' +
     '.mg-swing{position:absolute;transform:translateX(-50%) rotate(0);transform-origin:50% 0;animation:mswing 3.6s ease-in-out infinite;pointer-events:none}.mg-swing svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}' +
-    '.mg-swing .seat{position:absolute;left:-6%;right:-6%;bottom:0;height:5%;background:#B07A3B;border:2px solid #3B2A12;border-radius:3px}' +
+    '.mg-swing .swpic{position:absolute;left:0;bottom:0;width:100%;display:block}' +
     '.mg-swing .mg-hen{left:50%;bottom:4%;transform:translateX(-50%)}' +
     '@keyframes mswing{0%,100%{transform:translateX(-50%) rotate(-7deg)}50%{transform:translateX(-50%) rotate(7deg)}}' +
     /* gentle idle life (Monnie 09:44): hens breathe and peck now and then, Jiminey hops, people breathe and shift their weight; staggered so nobody moves in step */
     '.mg-hen img{transform-origin:55% 92%;animation:mhidle 7.5s ease-in-out infinite}.mh-friend img{animation-delay:-1.3s}.mh-bianca img{animation-delay:-3.1s}.mh-beefy img{animation-delay:-5.2s}.mh-brucey img{animation-delay:-2.2s}' +
     '@keyframes mhidle{0%,100%{transform:none}25%{transform:scale(1.012,.988)}50%{transform:none}70%{transform:translateY(5%) rotate(9deg)}74%{transform:none}78%{transform:translateY(5%) rotate(9deg)}82%{transform:none}}' +
-    '.mh-bonnie img{transform-origin:50% 100%;animation:mrhop 6.5s ease-in-out infinite}' +
+    '.mh-bonnie img{transform-origin:50% 100%;animation:none!important}' +
     '@keyframes mrhop{0%,80%,100%{transform:none}84%{transform:translateY(-16%) scale(.97,1.04)}88%{transform:scale(1.04,.96)}91%{transform:translateY(-9%)}95%{transform:none}}' +
     '.mg-bert{transform:translateX(-50%)}.mg-bert img{height:100%;width:auto;display:block;transform-origin:50% 100%}' +
     '.mg-mama img,.mg-baba img{transform-origin:50% 100%;animation:none!important}.mg-person:not(.mg-walker) img{transform-origin:50% 100%;animation:mpidle 5.5s ease-in-out infinite}.mg-yasmin img{animation-delay:-1.8s}.mg-mo img{animation-delay:-3.6s}' +
@@ -149962,6 +150061,7 @@ window.SQE_MOUNT = function(A){
     '.mg-say{position:absolute;z-index:3000;background:#fff;border:2.5px solid #1d1d1b;border-radius:16px;padding:5px 11px;font-weight:700;font-size:clamp(10px,1.3vw,16px);line-height:1.2;color:#1d1d1b;width:max-content;max-width:13%;text-align:center;box-shadow:0 2px 0 rgba(0,0,0,.12);transition:opacity .25s;pointer-events:none;transform:translate(-50%,-100%)}' +
     '.mg-say i{position:absolute;top:100%;margin-top:-3px;width:18px;height:14px;margin-left:-9px}.mg-say i svg{display:block;width:100%;height:100%;overflow:visible}' +
     '.mg-say.fade{opacity:0}' +
+    '.mg-heart{position:absolute;width:1.5%;aspect-ratio:24/22;z-index:2950;pointer-events:none}.mg-heart svg{display:block;width:100%;height:100%}' +
     '.mg-grain{position:absolute;width:1.1%;aspect-ratio:1/.8;background:#F2C230;border:1px solid #A97C0C;border-radius:50%;z-index:2400;pointer-events:none;transform:translate(-50%,50%)}' +
     '.mount-joy{position:absolute;inset:0;pointer-events:none;z-index:3500}' +
     '.mount-joy i{position:absolute;font-style:normal;font-size:clamp(14px,2.4vw,32px);opacity:0;animation:mpop 1.6s ease-out both}' +
@@ -150079,19 +150179,20 @@ window.SQE_MOUNT = function(A){
   function shedHTML(){
     var ids = shedItems(), per = 7, h = '<div class="mg-shedbox" role="dialog" aria-modal="true" aria-label="Layla\'s shed" data-mount="shedbg"><div class="mg-shedin">' +
       '<img class="bg" src="img/mount/shed-inside.webp" alt="" onerror="this.style.display=\'none\'"><span class="mg-shedttl">Layla\'s shed</span><span class="mg-shedtip">Tap something and Britney carries it around</span><button type="button" class="mg-shedx" data-mount="shedx" aria-label="Close the shed">×</button>';
-    var bags = has('feedLeft') ? A.feedLeft() : 0, inTrip = !!(TRIP && !TRIP.out);
+    var bags = has('feedLeft') ? A.feedLeft() : 0, inTrip = !!(TRIP && !TRIP.out), bagH = '';
     if (bags || TEST){
       var canFeed = inTrip && (bags ? feedable().length > 0 : TEST), testBag = !bags;
-      h += '<button type="button" class="mg-feedbag' + (canFeed ? '' : ' off') + '"' + (canFeed ? ' data-mount="feedbag"' + (testBag ? ' data-test="1"' : '') : ' disabled') + ' title="Chicken feed">' +
+      bagH = '<button type="button" class="it mg-feedbag' + (canFeed ? '' : ' off') + '"' + (canFeed ? ' data-mount="feedbag"' + (testBag ? ' data-test="1"' : '') : ' disabled') + ' title="Chicken feed">' +
         '<img src="img/mount/item-feed.webp" alt="Chicken feed"><span class="n">' + (testBag ? 'test' : '×' + bags) + '</span>' +
         '<b>' + (canFeed ? 'Tap to feed ' + esc(A.henName(A.henLife())) : !inTrip ? 'Chicken feed' : 'Everyone has eaten today') + '</b></button>';
     }
+    var ents = (bagH ? ['__bag'] : []).concat(ids);   /* the feed sits on the top shelf with everything else (Monnie 13:22) */
     if (!ids.length && !bags) h += '<div class="mg-empty">Nothing here yet. Everything Layla buys in <a href="#/town/shop">Hen Bargains</a> goes on these shelves.</div>';
     for (var r = 0; r < SHELVES.length; r++){
-      var row = ids.slice(r * per, r * per + per), sh = SHELVES[r]; if (!row.length) break;
-      h += '<div class="mg-shelf" style="top:' + sh[0] + '%;left:' + sh[1] + '%;width:' + (sh[2] - sh[1]) + '%">' + row.map(function(id){ var it = A.cbaItem(id); var on = carrying() === id; return '<button type="button" class="it' + (on ? ' carried' : '') + '" data-mount="carry" data-i="' + id + '" title="' + esc(on ? 'Britney has this. Tap to put it back' : 'Give this to Britney to carry') + '">' + A.prizePic(id) + '<b>' + esc(on ? 'Britney has it!' : it.n) + '</b></button>'; }).join('') + '</div>';
+      var row = ents.slice(r * per, r * per + per), sh = SHELVES[r]; if (!row.length) break;
+      h += '<div class="mg-shelf" style="top:' + sh[0] + '%;left:' + sh[1] + '%;width:' + (sh[2] - sh[1]) + '%">' + row.map(function(id){ if (id === '__bag') return bagH; var it = A.cbaItem(id); var on = carrying() === id; return '<button type="button" class="it' + (on ? ' carried' : '') + '" data-mount="carry" data-i="' + id + '" title="' + esc(on ? 'Britney has this. Tap to put it back' : 'Give this to Britney to carry') + '">' + A.prizePic(id) + '<b>' + esc(on ? 'Britney has it!' : it.n) + '</b></button>'; }).join('') + '</div>';
     }
-    if (ids.length > per * SHELVES.length) h += '<div class="mg-empty" style="top:auto;bottom:2%;transform:translateX(-50%)">+' + (ids.length - per * SHELVES.length) + ' more</div>';
+    if (ents.length > per * SHELVES.length) h += '<div class="mg-empty" style="top:auto;bottom:2%;transform:translateX(-50%)">+' + (ents.length - per * SHELVES.length) + ' more</div>';
     return h + '</div></div>';
   }
   function openShed(){ closeShed(); var d = document.createElement('div'); d.innerHTML = shedHTML(); document.body.appendChild(d.firstChild); var x = document.querySelector('.mg-shedx'); if (x) try { x.focus(); } catch(e){} }
@@ -150133,7 +150234,7 @@ window.SQE_MOUNT = function(A){
     var swingHen = '';
     HENS.forEach(function(p){
       if (!o[p[0]] && !TRY) return; who.push(p[4]);
-      var onSwing = p[0] === 'beefy' && go.swing;
+      var onSwing = p[0] === 'beefy' && go.swing && !!o.beefy;   /* only a hen Layla really owns ever rides it (Monnie 13:27) */
       if (p[0] === 'brucey' && (go.coop || go.palace)) p = ['brucey', BRUCEY_COOP[0], BRUCEY_COOP[1], p[3], p[4]];
       var hg = p[0] !== 'bonnie' && hungry(p[0]);
       var hen = '<div class="mg-act mg-hen mh-' + p[0] + (hg ? ' hungry' : '') + (onSwing ? ' onswing' : '') + (p[1] > 75 ? ' rt' : '') + '" data-hen="' + p[0] + '"' + (onSwing ? '' : ' data-g="' + p[1] + ',' + p[2] + ',' + p[3] + '"') + ' title="' + esc(p[4]) + '">' + A.cbaItemPic(p[0]) +
@@ -150141,10 +150242,12 @@ window.SQE_MOUNT = function(A){
       if (onSwing) swingHen = hen; else h += hen;   /* no name labels on the hens (they overlapped); names are in the line under the garden */
     });
     if (go.swing){
-      var sh = SWING.top - SWING.seat;
-      h += '<div class="mg-swing" style="left:' + SWING.x + '%;bottom:' + SWING.seat + '%;height:' + sh + '%;width:' + SWING.w + '%;z-index:' + Math.round(2000 - SWING.seat * 10 + 60) + '" aria-hidden="true">' +
-        '<svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M18 0L12 97M82 0L88 97" stroke="#6B4A1E" stroke-width="3.2" vector-effect="non-scaling-stroke" fill="none" stroke-linecap="round"/></svg>' +
-        '<i class="seat"></i>' + swingHen.replace('class="mg-act mg-hen', 'style="height:' + (SWING_HEN_H / sh * 100).toFixed(1) + '%" class="mg-act mg-hen') + '</div>';
+      /* the shop's own swing picture (beads and both ropes), its ropes carried up to the branch (Monnie 13:27) */
+      var bot = SWING.seat - 2.2, sh = SWING.top - bot, ih = SWING.w * (554 / 484) * (2752 / 1536), ip = ih / sh * 100, rope = (100 - ip + 1.5).toFixed(1);
+      h += '<div class="mg-swing" style="left:' + SWING.x + '%;bottom:' + bot + '%;height:' + sh.toFixed(2) + '%;width:' + SWING.w + '%;z-index:' + Math.round(2000 - SWING.seat * 10 + 60) + '" aria-hidden="true">' +
+        '<svg viewBox="0 0 100 100" preserveAspectRatio="none" style="height:' + rope + '%;bottom:auto"><path d="M19.6 0V100M80.8 0V100" stroke="#C9A066" stroke-width="5" vector-effect="non-scaling-stroke" fill="none"/><path d="M19.6 0V100M80.8 0V100" stroke="#5A3B17" stroke-width="5" stroke-dasharray="2 5" vector-effect="non-scaling-stroke" fill="none"/></svg>' +
+        '<img class="swpic" src="img/mount/item-swing.webp" alt="" style="height:' + ip.toFixed(1) + '%">' +
+        swingHen.replace('class="mg-act mg-hen', 'style="height:' + (SWING_HEN_H / sh * 100).toFixed(1) + '%;bottom:' + (ip * 0.14).toFixed(1) + '%" class="mg-act mg-hen') + '</div>';
     }
     h += A.broodScene();
     /* Layla: a jointed cut-out of the approved drawing (torso + thigh + shin, both legs) for walking; whole poses for waving and cartwheels */
@@ -150187,7 +150290,7 @@ window.SQE_MOUNT = function(A){
     if (A.route()[0] !== 'mount' || TRIP) return;
     var n = now(), lp = laylaAt(loopT());
     if (lp.fr === 'c') return;   /* never mid-cartwheel */
-    TRIP = {t0: n, L0: [lp.x, lp.b], Lf: lp.face, auto: !!auto, test: !!test, walk: walkTo([lp.x, lp.b], SHED_DOOR, 0).w, tIn: null, opened: false, out: null};
+    TRIP = {t0: n, L0: [lp.x, lp.b], Lf: lp.face, auto: !!auto, test: !!test, walk: walkTo([lp.x, lp.b], SHED_DOOR, 0, TRIP_PX).w, tIn: null, opened: false, out: null};
     closeShed();
     var g = document.querySelector('.mount-garden'); if (g && auto) try { g.scrollIntoView({block: 'center', behavior: 'smooth'}); } catch(e){}
   }
@@ -150200,19 +150303,19 @@ window.SQE_MOUNT = function(A){
   function tripOut(withFeed, test){
     if (!TRIP || TRIP.out) return;
     var n = now(); closeShed();
-    if (!withFeed){ TRIP.out = {t0: n, w: walkTo(SHED_DOOR, TRIP.L0, 0).w}; return; }
+    if (!withFeed){ TRIP.out = {t0: n, w: walkTo(SHED_DOOR, TRIP.L0, 0, TRIP_PX).w}; return; }
     test = test || TRIP.test;
     var fed = [];
     if (!test && has('feedOne')) feedable().forEach(function(id){ if (A.feedOne(id)) fed.push(id); });
-    if (!test && !fed.length){ TRIP.out = {t0: n, w: walkTo(SHED_DOOR, TRIP.L0, 0).w}; return; }
+    if (!test && !fed.length){ TRIP.out = {t0: n, w: walkTo(SHED_DOOR, TRIP.L0, 0, TRIP_PX).w}; return; }
     if (test) fed = feedable().length ? feedable() : ['britney'];
     var bp = britState(loopT(), n, true);
-    var lw = walkTo(SHED_DOOR, FEED_SPOT, 0).w + FADE, bw = pxd([bp.x, bp.b], FEED_BRIT) / 140 * 1000;
+    var lw = walkTo(SHED_DOOR, FEED_SPOT, 0, TRIP_PX).w + FADE, bw = pxd([bp.x, bp.b], FEED_BRIT) / 140 * 1000;
     var A0 = Math.max(lw, bw, 600) + 300;
     FEED = {t0: n, L0: SHED_DOOR, Lback: TRIP.L0, Lf: 'l', B0: [bp.x, bp.b], Bf: bp.face, A: A0, test: test, others: fed.filter(function(id){ return id !== 'britney'; }), lines: britLines()};
     FEED.eat = A0 + 2400 + GRAINS.length * 820;
-    FEED.end = FEED.eat + 3 * 2500 + 300;   /* three bubbles, then she stops (Monnie 10:05) */
-    FEED.back = Math.max(walkTo(FEED_SPOT, FEED.Lback, 0).w, pxd(FEED_BRIT, FEED.B0) / 140 * 1000) + 200;
+    FEED.pat = FEED.eat + 700; FEED.end = FEED.pat + 3 * 2500 + 900;   /* she goes over and pats Britney through the three bubbles, then waves */   /* three bubbles, then she stops (Monnie 10:05) */
+    FEED.back = Math.max(walkTo(PAT_SPOT, FEED.Lback, 0, TRIP_PX).w, pxd(FEED_BRIT, FEED.B0) / 140 * 1000) + 200;
     TRIP.out = {t0: n, feed: true};
     setTimeout(function(){ if (A.route()[0] === 'mount') A.render(); }, 20);   /* tears and the hungry card go */
   }
@@ -150224,13 +150327,13 @@ window.SQE_MOUNT = function(A){
   }
   function tripState(n){   /* Layla while she goes to / into / out of the shed (outside the feeding itself) */
     var T = TRIP, u = n - T.t0;
-    if (T.tIn == null){ var w = walkTo(T.L0, SHED_DOOR, u); if (!w.done) return {x: w.x, b: w.b, face: w.face || T.Lf, fr: w.fr, dist: w.dist}; T.tIn = n; }
+    if (T.tIn == null){ var w = walkTo(T.L0, SHED_DOOR, u, TRIP_PX); if (!w.done) return {x: w.x, b: w.b, face: w.face || T.Lf, fr: w.fr, dist: w.dist}; T.tIn = n; }
     if (!T.out){
       var k = clamp((n - T.tIn) / FADE, 0, 1);
       if (k >= 1 && !T.opened){ T.opened = true; if (T.auto) setTimeout(function(){ tripOut(true); }, 700); else openShed(); }
       return {x: SHED_DOOR[0], b: SHED_DOOR[1], face: 'r', fr: 'a', alpha: 1 - k};
     }
-    var v = n - T.out.t0, k2 = clamp(v / FADE, 0, 1), w2 = walkTo(SHED_DOOR, T.L0, Math.max(0, v - FADE));
+    var v = n - T.out.t0, k2 = clamp(v / FADE, 0, 1), w2 = walkTo(SHED_DOOR, T.L0, Math.max(0, v - FADE), TRIP_PX);
     if (w2.done && v > FADE){ PAUSED += n - T.t0; TRIP = null; }
     return {x: w2.x, b: w2.b, face: w2.face || 'l', fr: v < FADE || w2.done ? 'a' : w2.fr, dist: w2.dist, alpha: k2};
   }
@@ -150238,11 +150341,22 @@ window.SQE_MOUNT = function(A){
     var u = n - FEED.t0, F = FEED, out = {grains: [], say: null};
     var throws = [F.A + 200, F.A + 1100, F.A + 2000], peck0 = F.A + 2400;
     /* Layla walks over, scatters three handfuls, waits while Britney eats, then walks back */
-    if (u < F.A) { var w = walkTo(F.L0, FEED_SPOT, Math.max(0, u - FADE)); out.L = {x: w.x, b: w.b, face: w.face || F.Lf, fr: w.done || u < FADE ? 'a' : w.fr, dist: w.dist, alpha: clamp(u / FADE, 0, 1), bag: true}; }
-    else if (u < F.end){ var tossing = throws.some(function(t0){ return u >= t0 && u < t0 + 520; }); out.L = {x: FEED_SPOT[0], b: FEED_SPOT[1], face: 'r', fr: tossing ? 't' : 'a', bag: u < throws[2] + 520}; }
-    else { var w2 = walkTo(FEED_SPOT, F.Lback, u - F.end); out.L = {x: w2.x, b: w2.b, face: w2.face || 'l', fr: w2.done ? 'a' : w2.fr, dist: w2.dist}; }
+    var PK = 470;   /* one pat */
+    if (u < F.A) { var w = walkTo(F.L0, FEED_SPOT, Math.max(0, u - FADE), TRIP_PX); out.L = {x: w.x, b: w.b, face: w.face || F.Lf, fr: w.done || u < FADE ? 'a' : w.fr, dist: w.dist, alpha: clamp(u / FADE, 0, 1), bag: true}; }
+    else if (u < peck0){   /* crouches and flings three handfuls low over the grass */
+      var th = 0; throws.forEach(function(t0){ var q = (u - t0) / 620; if (q >= 0 && q < 1) th = Math.sin(Math.PI * q); });
+      out.L = {x: FEED_SPOT[0], b: FEED_SPOT[1], face: 'r', fr: 'k', ck: clamp((u - F.A) / 250, 0, 1) * 0.45, lean: 10 + th * 22, arm: th > 0.15, bag: u < throws[2] + 520};
+    }
+    else if (u < F.eat){ out.L = {x: FEED_SPOT[0], b: FEED_SPOT[1], face: 'r', fr: 'k', ck: 0.55, lean: 8 + Math.sin((u - peck0) / 700) * 3}; }   /* crouched, watching her eat */
+    else if (u < F.pat){ var kp = (u - F.eat) / 700; out.L = {x: lerp(FEED_SPOT[0], PAT_SPOT[0], ease(kp)), b: lerp(FEED_SPOT[1], PAT_SPOT[1], ease(kp)), face: 'r', fr: 'k', ck: 0.55 - Math.sin(Math.PI * kp) * 0.3, lean: 8}; }   /* shuffles up beside her */
+    else if (u < F.end - 900){ var pp = (u - F.pat) / PK; out.L = {x: PAT_SPOT[0], b: PAT_SPOT[1], face: 'r', fr: 'k', ck: 0.62, lean: 24 + Math.max(0, Math.sin(pp * Math.PI * 2)) * 9, arm: true}; }   /* strokes and pats Britney */
+    else if (u < F.end){ var kh = (u - (F.end - 900)) / 900; out.L = {x: PAT_SPOT[0], b: PAT_SPOT[1] + Math.max(0, Math.sin(Math.PI * clamp((kh - 0.15) / 0.55, 0, 1))) * 2.4, face: 'r', fr: 'k', ck: kh < 0.15 ? 0.62 * (1 - kh / 0.15) : 0, lean: 0, arm: true}; }   /* stands up, a happy little hop and a wave */
+    else { var w2 = walkTo(PAT_SPOT, F.Lback, u - F.end, TRIP_PX); out.L = {x: w2.x, b: w2.b, face: w2.face || 'l', fr: w2.done ? 'a' : w2.fr, dist: w2.dist}; }
+    /* little hearts float up from Britney each time Layla pats her */
+    out.hearts = [];
+    if (u >= F.pat && u < F.end){ for (var hj = Math.max(0, Math.floor((u - F.pat) / PK) - 3); hj * PK + F.pat <= u && hj * PK + F.pat < F.end - 900; hj++){ var age = (u - F.pat - hj * PK) / 1300; if (age < 0 || age >= 1) continue; var lb = GRAINS[GRAINS.length - 1]; out.hearts.push([lb[0] - 3.6 + ((hj % 3) - 1) * 1.1 + Math.sin(age * 6) * 0.4, lb[1] + BRIT_W * 1.25 + age * 9, 1 - age * age, 0.7 + age * 0.4]); } }
     /* grains fly from her hand to the lawn, then wait until Britney pecks each one */
-    var hand = [FEED_SPOT[0] + 3.2, FEED_SPOT[1] + LAYLA_H * DEPTH(FEED_SPOT[1]) * 0.78];
+    var hand = [FEED_SPOT[0] + 4.2, FEED_SPOT[1] + LAYLA_H * DEPTH(FEED_SPOT[1]) * 0.5];   /* low, from her crouch */
     GRAINS.forEach(function(gp, i){
       var t0 = throws[Math.floor(i / 3)] + (i % 3) * 60, eatAt = peck0 + i * 820 + 560;
       if (u < t0 || u >= eatAt) return;
@@ -150260,7 +150374,7 @@ window.SQE_MOUNT = function(A){
       var prev = i ? GRAINS[i - 1] : [FEED_BRIT[0] + 2.2, FEED_BRIT[1]], from = [prev[0] + (i ? (to[0] >= prev[0] ? -2.2 : 2.2) : -2.2), prev[1]];
       var face = to[0] >= from[0] ? 'r' : 'l', target = [to[0] + (face === 'r' ? -2.2 : 2.2), to[1]];
       out.B = {x: lerp(from[0], target[0], ease(kk)), b: lerp(from[1], target[1], ease(kk)), face: face, bob: kk < 1 ? Math.abs(Math.sin(v / 120)) * 2 : 0, peck: v > 320 ? Math.max(0, Math.sin((v - 320) / 500 * Math.PI)) * 30 : 0};
-    } else if (u < F.end){ var last = GRAINS[GRAINS.length - 1], li = Math.floor((u - F.eat) / 2500), lv = (u - F.eat) % 2500; out.B = {x: last[0] - 2.2, b: last[1], face: 'l', bob: Math.abs(Math.sin(u / 160)) * 3}; if (li < 3 && lv < 2200) out.say = F.lines[li]; }
+    } else if (u < F.end){ var last = GRAINS[GRAINS.length - 1], li = Math.floor((u - F.pat) / 2500), lv = (u - F.pat) % 2500; out.B = {x: last[0] - 2.2, b: last[1], face: 'l', bob: Math.abs(Math.sin(u / 160)) * 3}; if (u >= F.pat && li < 3 && lv < 2200) out.say = F.lines[li]; }
     else {
       var last2 = GRAINS[GRAINS.length - 1], st = [last2[0] - 2.2, last2[1]], k3 = clamp((u - F.end) / Math.max(400, F.back - 200), 0, 1);
       if (pxd(st, F.B0) > 300){ var q = flyPos(st, F.B0, k3); out.B = {x: q[0], b: q[1], face: F.B0[0] > st[0] ? 'r' : 'l', air: k3 < 1, fr: Math.floor(n / 140) % 2}; }
@@ -150310,6 +150424,21 @@ window.SQE_MOUNT = function(A){
     requestAnimationFrame(tick);
     try { frame(); } catch(e){ if (!tick.err){ tick.err = 1; try { console.error('Mount garden:', e); } catch(e2){} } }
   }
+  /* Jiminey hops about his corner of the lawn: a few hops, a sniff, a few more (Monnie 13:27) */
+  var RAB = [[89, 26, 2600], [92.5, 22, 1800], [96, 24, 3200], [92.5, 26.5, 2200]], HOP_MS = 520, HOP_D = 1.4, RSEG = [], RT = 0;
+  (function(){ for (var i = 0; i < RAB.length; i++){ var a = RAB[i], b = RAB[(i + 1) % RAB.length], hops = Math.max(1, Math.round(Math.sqrt(Math.pow(b[0] - a[0], 2) + Math.pow((b[1] - a[1]) * 0.56, 2)) / HOP_D)); RSEG.push({a: a, b: b, t: RT, hops: hops}); RT += hops * HOP_MS + b[2]; } })();
+  function rabbitAt(n){
+    var t = n % RT;
+    for (var i = 0; i < RSEG.length; i++){
+      var s = RSEG[i], w = s.hops * HOP_MS, u = t - s.t, face = s.b[0] >= s.a[0] ? 'r' : 'l';
+      if (u < 0 || u >= w + s.b[2]) continue;
+      if (u >= w) return {x: s.b[0], b: s.b[1], face: face, lift: 0, sq: [1, 1 + Math.sin((u - w) / 260) * 0.012]};   /* sitting, nose twitching */
+      var j = Math.floor(u / HOP_MS), k = (u - j * HOP_MS) / HOP_MS, air = clamp((k - 0.15) / 0.7, 0, 1), f = (j + ease(air)) / s.hops;
+      var sq = k < 0.15 ? [1.05, 0.94] : k > 0.85 ? [1.04, 0.96] : [0.97, 1.04];
+      return {x: lerp(s.a[0], s.b[0], f), b: lerp(s.a[1], s.b[1], f), face: face, lift: Math.sin(Math.PI * air) * 18, sq: sq};
+    }
+    return {x: RAB[0][0], b: RAB[0][1], face: 'l', lift: 0, sq: [1, 1]};
+  }
   function frame(){
     var g = document.querySelector('.mount-garden'); if (!g){ G = null; return; }
     if (g !== G) setup(g);
@@ -150319,6 +150448,7 @@ window.SQE_MOUNT = function(A){
     var kid = KID ? kidState(n) : null;
     statics.forEach(function(s){
       if (s.el.style.display === 'none') return;
+      if (s.el.getAttribute('data-hen') === 'bonnie' && s.img){ var rb = rabbitAt(n); place(s.el, rb.x, rb.b, s.h, s.img); s.img.style.transform = (rb.face === 'l' ? 'scaleX(-1) ' : '') + 'translateY(' + (-rb.lift).toFixed(2) + '%) scale(' + rb.sq[0].toFixed(3) + ',' + rb.sq[1].toFixed(3) + ')'; return; }
       var walker = false, who = s.el.getAttribute('data-who'), par = who === 'mama' || who === 'baba';
       place(s.el, s.x + (kid && par ? kid[who].dx : 0), s.b, s.h, s.img);
       if (par && s.img) s.img.style.transform = kid ? kid[who].tf : parentPose(who, n);
@@ -150354,6 +150484,10 @@ window.SQE_MOUNT = function(A){
     for (var i = els.length; i < gr.length; i++){ var s = document.createElement('i'); s.className = 'mg-grain'; g.appendChild(s); }
     els = g.querySelectorAll('.mg-grain');
     for (var j = 0; j < els.length; j++){ if (j < gr.length){ els[j].style.display = ''; els[j].style.left = gr[j][0].toFixed(2) + '%'; els[j].style.bottom = gr[j][1].toFixed(2) + '%'; } else els[j].style.display = 'none'; }
+    var hs = sc && sc.hearts ? sc.hearts : [], hels = g.querySelectorAll('.mg-heart');
+    for (var hi = hels.length; hi < hs.length; hi++){ var he = document.createElement('i'); he.className = 'mg-heart'; he.innerHTML = '<svg viewBox="0 0 24 22"><path d="M12 20.5C6 16 1.5 12.3 1.5 7.2 1.5 4 4 1.6 7 1.6c2.1 0 3.8 1.1 5 2.9 1.2-1.8 2.9-2.9 5-2.9 3 0 5.5 2.4 5.5 5.6 0 5.1-4.5 8.8-10.5 13.3z" fill="#F0507A" stroke="#7A1F38" stroke-width="1.6" stroke-linejoin="round"/></svg>'; g.appendChild(he); }
+    hels = g.querySelectorAll('.mg-heart');
+    for (var hk = 0; hk < hels.length; hk++){ var hv = hs[hk]; if (hv){ hels[hk].style.display = ''; hels[hk].style.left = hv[0].toFixed(2) + '%'; hels[hk].style.bottom = hv[1].toFixed(2) + '%'; hels[hk].style.opacity = hv[2].toFixed(2); hels[hk].style.transform = 'translate(-50%,50%) scale(' + hv[3].toFixed(2) + ')'; } else hels[hk].style.display = 'none'; }
     var thinks = g.querySelectorAll('.mg-hen .mg-think'), turn = thinks.length ? Math.floor(n / 3500) % thinks.length : 0;   /* hungry hens take turns to say it, so bubbles never overlap */
     for (var q = 0; q < thinks.length; q++) thinks[q].style.display = q === turn ? '' : 'none';
     [].forEach.call(g.querySelectorAll('.mg-hen'), function(h){ var on = !!(sc && sc.othersPeck && FEED.others.indexOf(h.getAttribute('data-hen')) >= 0); if (h.classList.contains('peck') !== on) h.classList.toggle('peck', on); });
@@ -150407,23 +150541,26 @@ window.SQE_MOUNT = function(A){
   }
   function ankleY(a, bend){ var r = Math.PI / 180; return HIP[1] + LT_ * Math.cos(a * r) + LS_ * Math.cos((a - bend) * r); }
   function rigLayla(le, L){
-    var rig = le.querySelector('.ml-rig'), legs = le.querySelector('.ml-legs'), poses = le.querySelectorAll('img.pose'), useRig = L.fr === 'w' || L.fr === 'a' || L.fr === 'c', cw = L.fr === 'c';
+    var rig = le.querySelector('.ml-rig'), legs = le.querySelector('.ml-legs'), poses = le.querySelectorAll('img.pose'), useRig = L.fr === 'w' || L.fr === 'v' || L.fr === 'k' || L.fr === 'a' || L.fr === 'c', cw = L.fr === 'c';
     var pose = L.fr === 't' ? 't' + L.face : '';
     for (var i = 0; i < poses.length; i++){ var on = poses[i].getAttribute('data-f') === pose; if (poses[i].classList.contains('on') !== on) poses[i].classList.toggle('on', on); }
     if (rig.classList.contains('on') !== useRig) rig.classList.toggle('on', useRig);
     if (!useRig) return;
-    var tq = ['tr', 'tl', 'ttr', 'ttl'], want = (cw ? 'tt' : 't') + (L.face === 'l' ? 'l' : 'r');   /* cartwheel: the waving top half, arm up */
+    var tq = ['tr', 'tl', 'ttr', 'ttl'], want = (cw || L.arm ? 'tt' : 't') + (L.face === 'l' ? 'l' : 'r');   /* cartwheel: the waving top half, arm up */
     tq.forEach(function(c){ var im = rig.querySelector('img.' + c); if (im && im.classList.contains('on') !== (c === want)) im.classList.toggle('on', c === want); });
     var near, far;
     if (L.fr === 'w'){ var p = (L.dist || 0) / STRIDE_PX; near = legAngles(p); far = legAngles(p + 0.5); }
     else if (cw){ var sp = 42 * Math.min(1, Math.sin(Math.PI * L.k) * 1.8); near = [-sp, 0]; far = [sp, 0]; }   /* legs swing wide apart over the top */
+    else if (L.fr === 'v'){ var pv = (L.dist || 0) / (STRIDE_PX * 0.5), sv = Math.sin(pv * Math.PI * 2); near = [4 + Math.max(0, sv) * 10, Math.max(0, sv) * 40]; far = [-4 + Math.max(0, -sv) * 10, Math.max(0, -sv) * 40]; }   /* walking away from us / towards us: knees lift in turn, no sideways stride */
+    else if (L.fr === 'k'){ var ck = L.ck || 0; near = [5 + 48 * ck, 2 + 100 * ck]; far = [-5 + 44 * ck, 2 + 96 * ck]; }   /* crouching: thighs forward, knees bent */
     else { near = [5, 2]; far = [-5, 2]; }   /* standing: feet together under her */
     var cn = legCss(near[0], near[1]), cf = legCss(far[0], far[1]), ims = legs.querySelectorAll('img');
     ims[0].style.transform = cf[0]; ims[1].style.transform = cf[1]; ims[2].style.transform = cn[0]; ims[3].style.transform = cn[1];
     legs.style.transform = L.face === 'l' ? 'scaleX(-1)' : '';
     var dy = cw ? 277 - ankleY(5, 2) : 277 - Math.max(ankleY(near[0], near[1]), ankleY(far[0], far[1]));   /* keep the lowest foot on the ground: the body rises as the legs pass */
     rig.style.transformOrigin = (HIP[0] / BOX[0] * 100).toFixed(2) + '% ' + (HIP[1] / BOX[1] * 100).toFixed(2) + '%';
-    rig.style.transform = 'translateY(' + (dy / BOX[1] * 100).toFixed(2) + '%)' + (cw ? ' rotate(' + (L.face === 'l' ? -L.spin : L.spin).toFixed(1) + 'deg)' : '');
+    var rot = cw ? L.spin : L.fr === 'k' ? (L.lean || 0) : L.fr === 'v' ? Math.sin((L.dist || 0) / (STRIDE_PX * 0.5) * Math.PI * 2) * 1.6 : 0;
+    rig.style.transform = 'translateY(' + (dy / BOX[1] * 100).toFixed(2) + '%)' + (rot ? ' rotate(' + (L.face === 'l' ? -rot : rot).toFixed(1) + 'deg)' : '');
   }
   /* bubble above the speaker's head; the tail points at the head even when the bubble is nudged to stay inside the garden */
   function aim(g, say, who){
@@ -151370,12 +151507,16 @@ function nbStreakHTML(){
   if (!caught) svg += '<g class="' + (ready ? 'stgift wob' : 'stgift') + '">' + giftIn(rx, ry) + '</g>';
   svg += '</g></g>'; /* closes nbrain + rainbow scale group */
   if (caught){
-    /* catch spot: centred between her raised hands, the box resting on top of her head (layla-step5 hands at ~y 45 of 755) */
-    var GS = 2.5, cxg = lp[0] - LW / 2 + LW * 0.5, cyg = (lp[1] - LH - pz[2]) + LH * 0.02 - 15.5 * GS * 0.65, sx = 735, sy = 56 - 11.5 * 1.45, dx = (sx - cxg).toFixed(1), dy = (sy - cyg).toFixed(1);
+    /* 20 Nov 13:25 (Monnie): the present flies from the rainbow into her arms and she hugs it (pose layla-step5-hold.webp, same feet line and head size as the jump pose) */
     var play = false; try { play = nbPrev() !== null || !sessionStorage.getItem("nbCaught"); sessionStorage.setItem("nbCaught", "1"); } catch(e){ play = true; }
-    svg += '<g class="nbcatch" transform="translate(' + cxg.toFixed(1) + ' ' + cyg.toFixed(1) + ')"><g>' +
-      (play ? '<animateMotion path="M' + dx + ' ' + dy + ' Q' + (dx * 0.45).toFixed(1) + ' ' + (dy - 70).toFixed(1) + ' 0 0" keyPoints="0;0;1" keyTimes="0;.25;1" calcMode="spline" keySplines="0 0 1 1;.35 0 .45 1" dur="1.8s" fill="freeze"/>' : '') +
-      '<g transform="scale(' + GS + ')">' + (play ? '<animateTransform attributeName="transform" type="scale" values="1.45;1.45;' + (GS * 1.08).toFixed(2) + ';' + GS + '" keyTimes="0;.25;.9;1" dur="1.8s" fill="freeze"/>' : '') + giftIn(0, 11.5) + '</g></g></g>';
+    var HH = LH * 1.057, HW = HH * 525 / 859, hx = lp[0] - HW / 2, hy = lp[1] - pz[2] - HH;
+    var GS = 1.3, cxg = hx + HW * 240 / 525, cyg = hy + HH * 405 / 859 - 4 * GS, sx = 735, sy = 56 - 11.5 * 1.45, dx = (sx - cxg).toFixed(1), dy = (sy - cyg).toFixed(1), T = "1.8s";
+    var jg = '<g class="nblayg nbst' + st + '">';
+    svg = svg.replace(jg, play ? jg + '<set attributeName="opacity" to="0" begin="' + T + '" fill="freeze"/>' : '<g class="nblayg nbst' + st + '" opacity="0">');
+    svg += '<g class="nbhold"' + (play ? ' opacity="0"><set attributeName="opacity" to="1" begin="' + T + '" fill="freeze"/>' : '>') + '<image href="img/layla-step5-hold.webp" x="' + hx.toFixed(1) + '" y="' + hy.toFixed(1) + '" width="' + HW.toFixed(1) + '" height="' + HH.toFixed(1) + '"/></g>';
+    if (play) svg += '<g class="nbcatch" transform="translate(' + cxg.toFixed(1) + ' ' + cyg.toFixed(1) + ')"><set attributeName="opacity" to="0" begin="' + T + '" fill="freeze"/><g>' +
+      '<animateMotion path="M' + dx + ' ' + dy + ' Q' + (dx * 0.45).toFixed(1) + ' ' + (dy - 70).toFixed(1) + ' 0 0" keyPoints="0;0;1" keyTimes="0;.25;1" calcMode="spline" keySplines="0 0 1 1;.35 0 .45 1" dur="' + T + '" fill="freeze"/>' +
+      '<g transform="scale(' + GS + ')"><animateTransform attributeName="transform" type="scale" values="1.45;1.45;' + GS + '" keyTimes="0;.25;1" dur="' + T + '" fill="freeze"/>' + giftIn(0, 11.5) + '</g></g></g>';
   }
   svg += '</svg>';
   var flame = '<span class="nbflame" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.5c1 3.6 5.8 6 5.8 11.2A5.8 5.8 0 0 1 6.2 13.7c0-2.6 1.5-4.4 2.8-5.6.2 1.8 1 3 2.2 3.6-.6-3.4.2-6.4.8-9.2z" fill="#F25A1F" stroke="#10294A" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 12.2c.9 1.4 2.6 2.4 2.6 4.4a2.6 2.6 0 0 1-5.2 0c0-1.5.9-2.6 2.6-4.4z" fill="#FFD93B" stroke="#10294A" stroke-width="1.2" stroke-linejoin="round"/></svg></span>';
@@ -151768,8 +151909,8 @@ function logTimer(note){
 
 
 /* 20 Nov 08:45 (Monnie): drawn felt-tip icons for the strip, no emoji: a stack of books for study sessions, a teacup for breaks */
-var ICO_BOOKS = '<svg class="sico" width="22" height="20" viewBox="0 0 22 20" aria-hidden="true"><rect x="2" y="13" width="18" height="5" rx="1.2" fill="#E53935" stroke="#222" stroke-width="1.4"/><rect x="4" y="8" width="15" height="5" rx="1.2" fill="#1E88E5" stroke="#222" stroke-width="1.4"/><rect x="3" y="3" width="14" height="5" rx="1.2" fill="#FDD835" stroke="#222" stroke-width="1.4"/><path d="M5 15.5h12M6.5 10.5h10M5.5 5.5h9" stroke="#fff" stroke-width="1" stroke-linecap="round"/></svg>';
-var ICO_TEA = '<svg class="sico" width="22" height="20" viewBox="0 0 22 20" aria-hidden="true"><path d="M7 2.5c-1 1.2 1 2-0 3.4M11 2.5c-1 1.2 1 2-0 3.4" stroke="#999" stroke-width="1.3" fill="none" stroke-linecap="round"/><path d="M3 8h13v4.5a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5Z" fill="#FFFFFF" stroke="#222" stroke-width="1.5"/><path d="M16 9.5h1.5a2.3 2.3 0 0 1 0 4.6H15.6" fill="none" stroke="#222" stroke-width="1.5"/><path d="M4.5 10.5h10" stroke="#EC407A" stroke-width="2"/><path d="M1.5 18.5h17" stroke="#222" stroke-width="1.5" stroke-linecap="round"/></svg>';
+var ICO_BOOKS = '<span class="sico semo" aria-hidden="true">📚</span>'; /* 13:30 (Monnie): use the emojis here, not drawn icons */
+var ICO_TEA = '<span class="sico semo" aria-hidden="true">☕</span>';
 /* ============ SAND TIMER (focus / breaks) ============ */
 var sandOpen = false, sandMsg = "", audioCtx = null;
 var SAND_OPTS = [["focus",20,"20 min study"],["focus",25,"25 min study"],["focus",30,"30 min study"],["focus",40,"40 min study"],["focus",50,"50 min study"],["break",5,"5 min break"],["break",10,"10 min break"],["break",15,"15 min break"]];
@@ -152663,7 +152804,7 @@ VIEW.topic = function(r){
   var body;
   var c2 = COMIC2[k];
   if (mode === "cartoon") body = DFPH[k] && DFPH[k].length ? dfphHTML(DFPH[k]) : c2 ? comic2HTML(c2) : cartoon(ct);
-  else if (mode === "framework") body = /* fw-steps 20 Nov (Monnie): each framework is a tap-to-open step-by-step walk-through; replaces the old hide-the-details self-test */ (skinOf(s.id) && (window.SQE_SCENES || {})[k] ? '<div class="fwtest' + skinOf(s.id) + '"><a class="btn sm fwshop" href="#/scene/' + k + '">Back to the Sweet Shop</a></div>' : '') + '<div class="fwwrap' + skinOf(s.id) + '">' + (mm ? fwkMind(mm, skinOf(s.id), k) : '') + (steps ? (mm ? '<h3 class="fwk-sec">Step by step: how to answer a question on this topic</h3>' : '') + fwkSteps(steps, skinOf(s.id), k) : '') + '</div>';
+  else if (mode === "framework") body = /* fw-steps 20 Nov (Monnie): each framework is a tap-to-open step-by-step walk-through; replaces the old hide-the-details self-test */ (skinOf(s.id) && (window.SQE_SCENES || {})[k] ? '<div class="fwtest' + skinOf(s.id) + '"><a class="btn sm fwshop" href="#/scene/' + k + '">Back to the Sweet Shop</a></div>' : '') + '<div class="fwwrap' + skinOf(s.id) + '">' + (mm ? mindmap(mm, skinOf(s.id)) : '') /* 13:30 (Monnie): the framework diagram is back as it was; the step-by-step walk-through stays below it */ + (steps ? (mm ? '<h3 class="fwk-sec">Step by step: how to answer a question on this topic</h3>' : '') + fwkSteps(steps, skinOf(s.id), k) : '') + '</div>';
   else if (rateOnly) body = '<p style="margin:14px 0 4px">Think back over <b>' + esc(t.title) + '</b>, then pick a colour below. <a href="#/topic/' + s.id + '/' + t.id + '">Read the notes again ›</a></p>';
   else if (hl < 0 && learnDeck(k) && LEARNFULL[k]) body = (NCK = k, learnHTML(x));
   else body = (hl < 0 && skinOf(s.id) && (window.SQE_SCENES || {})[k] ? '<div class="swn-shop"><span class="swn-shopic" aria-hidden="true">🍭</span><span class="swn-shopt"><b>This topic is a shop on your Journey</b><span>The Sweet Shop has the same notes as tap-and-learn sweets, jars and quick checks.</span></span><a class="btn primary swn-shopb" href="#/scene/' + k + '">🍬 Go to the Sweet Shop</a></div>' : '') + (hl < 0 && learnDeck(k) ? '<div class="lrn-tog"><button type="button" class="lrn-link" data-learn="full">🃏 Step-by-step cards instead</button></div>' : '') + (hl >= 0 ? '<div class="banner warn hlnote">📍 The part of the notes that question was about is highlighted in yellow below.</div>' : '') + '<div class="notes">' + (NCK = k, COMIC2[k] ? notesWithComic2(t.notes, COMIC2[k]) : notesWithCartoons(t.notes, ct)) + '</div>';
@@ -154488,7 +154629,7 @@ function bossAnswer(o){
   if (!BOSS || BOSS.done || BOSS.ans !== null) return;
   var z = BOSS.qs[BOSS.i]; if (!z) return;
   if (Date.now() < BOSS.at + bossLockMs(z) - 30) return;
-  var ok = o === z.a;
+  var ok = o === z.a; (BOSS.hist = BOSS.hist || [])[BOSS.i] = o; /* kept for "Previous question" review */
   BOSS.ans = o; BOSS.ansAt = Date.now(); BOSS.fx = ok ? "hit" : "near";
   if (ok) BOSS.right++; else { BOSS.wrong++; (BOSS.miss = BOSS.miss || []).push(z); }
   BOSS.pdist = BOSS.dist; BOSS.mv = ok ? "back" : "closer"; BOSS.shown = 0;
@@ -154603,6 +154744,7 @@ function resqPick(o){
   if (z.kind === "qa") record(z.id, o === z.a); else if (window.SQE_WS_LOG) window.SQE_WS_LOG(z.kind, z.id, o === z.a);
   save();
 }
+var RESQPREV = null, RESQV = 0;
 function bossResqView(){
   var b = bossS(), c = b.cap, top = '<div class="cbag bossg"><div class="cbatop"><a class="cbaback" href="#/town/butcher">‹ Bert\'s Butchers</a><span class="cbattl">Get Britney back</span><span class="spill coin">' + cbaCoin() + ' <b>' + cbaS().coins + '</b></span></div>';
   if (!c) return top + '<div class="bcard"><h2>Britney is safe at home</h2><div class="btns"><a class="btn primary" href="#/town/butcher">Bert\'s Butchers</a></div></div></div>';
@@ -154613,7 +154755,15 @@ function bossResqView(){
     return top + '<div class="bcard bintro">' + bossShopImg("") + '<div><h2>You did it!</h2>' + prog + '<p>Every question you missed is now right. Go and collect Britney from Bert.</p><div class="btns"><button type="button" class="btn primary big" data-act="resqcollect">Collect Britney from Bert</button></div></div></div></div>';
   }
   if (!RESQ || !all.some(function(z){ return z.id === RESQ.id; })){ var z0 = left[0]; RESQ = {id:z0.id, ord:shuffle(z0.o.map(function(_, i){ return i; })), ans:null}; }
-  var z = all.filter(function(q){ return q.id === RESQ.id; })[0], h = top + '<div class="bcard"><p class="small muted" style="margin:0 0 6px">Get each question you missed right to set Britney free. ' + (all.length - left.length) + ' of ' + all.length + ' done.</p>' + prog + '<div class="btnav">' + (function(){ var xz = (z && z.tk && TBYKEY[z.tk]) || x; return xz ? '<a class="btn sm" href="#/topic/' + xz.s.id + '/' + xz.t.id + '">Look at the notes: ' + esc(xz.t.title) + '</a>' : ''; })() + '</div>';
+  var pz = RESQPREV && all.filter(function(q){ return q.id === RESQPREV.id; })[0];
+  if (RESQV && pz){ /* read-only look back at the question just answered */
+    var hv = top + '<div class="bcard">' + prog + '<div class="btnav"><button type="button" class="btn sm primary" data-act="resqback">Back to this question ›</button></div><div class="cbaq bqtext">' + (pz.kind === "qa" ? esc(pz.q).replace(/\n\s*\n/g, "<br><br>").replace(/\n/g, "<br>") : inl(pz.q)) + '</div><div class="opts">';
+    RESQPREV.ord.forEach(function(oi, pos){ hv += '<button type="button" class="opt' + (oi === pz.a ? " right" : oi === RESQPREV.ans ? " wrong" : "") + '" disabled><span class="L">' + L.charAt(pos) + '</span><span>' + (pz.kind === "qa" ? esc(pz.o[oi]) : inl(pz.o[oi])) + '</span></button>'; });
+    hv += '</div><div class="explain">' + (pz.kind === "qa" ? '<div class="notes">' + md(pz.e || "") + '</div>' : inl(pz.e || "")) + '</div></div></div>';
+    return hv;
+  }
+  RESQV = 0;
+  var z = all.filter(function(q){ return q.id === RESQ.id; })[0], h = top + '<div class="bcard"><p class="small muted" style="margin:0 0 6px">Get each question you missed right to set Britney free. ' + (all.length - left.length) + ' of ' + all.length + ' done.</p>' + prog + '<div class="btnav">' + (pz ? '<button type="button" class="btn sm" data-act="resqprev">‹ Previous question</button>' : '') + (RESQ.ans != null ? '<button type="button" class="btn sm primary" data-act="resqnext">Next question ›</button>' : '') + (function(){ var xz = (z && z.tk && TBYKEY[z.tk]) || x; return xz ? '<a class="btn sm" href="#/topic/' + xz.s.id + '/' + xz.t.id + '">Look at the notes: ' + esc(xz.t.title) + '</a>' : ''; })() + '</div>';
   h += '<div class="cbaq bqtext">' + (z.kind === "qa" ? esc(z.q).replace(/\n\s*\n/g, "<br><br>").replace(/\n/g, "<br>") : inl(z.q)) + '</div><div class="opts">';
   RESQ.ord.forEach(function(oi, pos){ var cls = "opt"; if (RESQ.ans != null){ if (oi === z.a) cls += " right"; else if (oi === RESQ.ans) cls += " wrong"; } h += '<button type="button" class="' + cls + '" data-act="resqpick" data-o="' + oi + '"' + (RESQ.ans != null ? " disabled" : "") + '><span class="L">' + L.charAt(pos) + '</span><span>' + (z.kind === "qa" ? esc(z.o[oi]) : inl(z.o[oi])) + '</span></button>'; });
   h += '</div>';
@@ -154637,7 +154787,7 @@ function bossHomeView(){
 /* ---------- the duel: a chase. Britney in her nest on the left, Bert creeping in from the right ---------- */
 /* Bert in layers: three faces (grin, gleeful laugh, angry scowl) stacked, plus a fist-and-spoon arm that shakes */
 function bossBert(face, carry){
-  return '<span class="bwalk f-' + face + '"><span class="bbody"><img class="bf bf-grin brunimg btd-b" src="img/boss/bert-td-body.webp" alt="" width="679" height="800"><img class="btd-a" src="img/boss/bert-td-arm.webp" alt="" width="679" height="800">' + (carry ? '<span class="bcarry">' + carry + '</span>' : '') + '</span></span>';
+  return '<span class="bwalk f-' + face + '"><span class="bbody"><img class="bf bf-grin brunimg" src="' + BERT_RUN + '" alt="" width="612" height="800"><img class="btd-b" src="img/boss/bert-td-body.webp" alt="" width="679" height="800"><img class="btd-a" src="img/boss/bert-td-arm.webp" alt="" width="679" height="800">' + (carry ? '<span class="bcarry">' + carry + '</span>' : '') + '</span></span>';
 }
 var BOSS_CAGE = '<svg class="bcage" viewBox="0 0 100 110" aria-hidden="true"><path d="M8 34Q50 -6 92 34" fill="none" stroke="#5B5249" stroke-width="5" stroke-linecap="round"/><path d="M8 34v70M27 18v86M50 12v92M73 18v86M92 34v70" stroke="#5B5249" stroke-width="4" stroke-linecap="round"/><path d="M4 104h92" stroke="#5B5249" stroke-width="7" stroke-linecap="round"/><circle cx="50" cy="8" r="5" fill="none" stroke="#5B5249" stroke-width="3"/></svg>';
 /* what happens at the end of the round, for the scene: grab (he takes her), reach (nothing to take), flee (she won), or "" */
@@ -154712,13 +154862,24 @@ function bossChase(B){
 function bossDuel(){
   var B = BOSS, x = TBYKEY[B.key], z = B.qs[B.i], c = cbaS();
   if (!B.chased && B.i === 0 && B.ans === null) return bossChase(B);
+  if (B.view != null && B.view >= B.i) B.view = null;
   if (!B.at) B.at = Date.now();
   var lock = bossLockMs(z), left = B.ans === null ? Math.max(0, B.at + lock - Date.now()) : 0;
   var hits = B.right, miss = B.wrong;
   var h = '<div class="cbag bossg"><div class="cbatop"><a class="cbaback" href="' + (B.mode === "rescue" ? "#/boss" : "#/topic/" + x.s.id + "/" + x.t.id) + '">‹ ' + (B.mode === "rescue" ? "Bert's page" : "Topic") + '</a><span class="cbattl">' + (B.mode === "rescue" ? "Rescue mission: " : "Bert the butcher: ") + esc(x.t.title) + '</span><span class="spill coin">' + cbaCoin() + ' <b>' + c.coins + '</b></span></div>';
   h += bossScene(B) + bossSay(B, z);
   if (!B.stake && B.mode === "fight") h += '<p class="small muted bnostake">' + (bossS().cap ? 'Britney is already at Bert\'s shop, so this round is just for coins.' : 'You\'ve already beaten Bert on this topic, so this is a practice round: nothing to lose.') + '</p>';
-  h += '<div class="cbacard ask bq"><div class="bqmeta"><span>Question ' + (B.i + 1) + ' of ' + B.qs.length + '</span><span>' + hits + ' right · ' + miss + ' wrong</span></div>';
+  /* Monnie 20 Nov 13:15: Previous / Next also at the top, so a long question never needs scrolling; earlier questions open read-only */
+  var vi = B.view != null ? B.view : B.i, nav = '<div class="btnav bqnav">' + (vi > 0 ? '<button type="button" class="btn sm" data-act="bossprev">‹ Previous question</button>' : '') +
+    (B.view != null ? '<button type="button" class="btn sm primary" data-act="bossfwd">' + (B.view + 1 >= B.i ? 'Back to question ' + (B.i + 1) + ' ›' : 'Next question ›') + '</button>' : B.ans !== null ? '<button type="button" class="btn sm primary" data-act="bossnext">' + (B.wrong >= B.maxMiss || B.i + 1 >= B.qs.length ? (B.wrong < B.maxMiss ? "See what you won ›" : "Uh oh… ›") : "Next question ›") + '</button>' : '') + '</div>';
+  if (B.view != null){
+    var zv = B.qs[B.view], av = (B.hist || [])[B.view];
+    h += nav + '<div class="cbacard ask bq"><div class="bqmeta"><span>Question ' + (B.view + 1) + ' of ' + B.qs.length + ' (already answered)</span></div><div class="cbaq bqtext">' + (zv.kind === "qa" ? esc(zv.q).replace(/\n\s*\n/g, "<br><br>").replace(/\n/g, "<br>") : inl(zv.q)) + '</div><div class="opts">';
+    zv.ord.forEach(function(oi, pos){ h += '<button class="opt bopt' + (oi === zv.a ? " right" : oi === av ? " wrong" : "") + '" disabled><span class="L">' + "ABCDE"[pos] + '</span><span>' + (zv.kind === "qa" ? esc(zv.o[oi]) : inl(zv.o[oi])) + '</span></button>'; });
+    h += '</div><div class="cbafb ' + (av === zv.a ? "ok" : "no") + '"><b class="' + (av === zv.a ? "cg" : "cb") + '">' + (av === zv.a ? "✓ You got this one right." : "✗ The answer is " + "ABCDE"[zv.ord.indexOf(zv.a)] + ".") + '</b><div class="cbawhy">' + (zv.kind === "qa" ? '<div class="notes">' + md(zv.e || "") + '</div>' : '<b>Why:</b> ' + inl(zv.e || "")) + '</div></div>';
+    return h + '</div></div>';
+  }
+  h += nav + '<div class="cbacard ask bq"><div class="bqmeta"><span>Question ' + (B.i + 1) + ' of ' + B.qs.length + '</span><span>' + hits + ' right · ' + miss + ' wrong</span></div>';
   h += '<div class="cbaq bqtext">' + (z.kind === "qa" ? esc(z.q).replace(/\n\s*\n/g, "<br><br>").replace(/\n/g, "<br>") : inl(z.q)) + '</div>';
   h += '<div class="opts">';
   z.ord.forEach(function(oi, pos){
@@ -155243,12 +155404,16 @@ document.addEventListener("click", function(e){
     case "bossgo": if (bossStart(el.getAttribute("data-k"), "fight")){ if (location.hash === "#/boss/fight") render(); else location.hash = "#/boss/fight"; } break;
     case "bossrescue": if (bossRescue()){ if (location.hash === "#/boss/fight") render(); else location.hash = "#/boss/fight"; } else render(); break;
     case "bosspick": if (BOSS && !BOSS.done && BOSS.ans === null){ bossAnswer(+el.getAttribute("data-o")); render(); bossScroll(); } break;
+    case "bossprev": if (BOSS && !BOSS.done){ BOSS.view = Math.max(0, (BOSS.view != null ? BOSS.view : BOSS.i) - 1); render(); bossScroll(); } break;
+    case "bossfwd": if (BOSS && BOSS.view != null){ BOSS.view++; if (BOSS.view >= BOSS.i) BOSS.view = null; render(); bossScroll(); } break;
     case "bossnext": if (BOSS && BOSS.ans !== null && Date.now() >= BOSS.ansAt + 980){ bossNext(); if (BOSS.done) location.hash = "#/boss/result"; else { render(); bossScroll(); } } break;
     case "bosschest": { var bn = bossChest(); render(); if (bn){ var ch = document.querySelector(".bres .bchest"); if (ch) ch.classList.add("pop"); } break; }
     case "bossransom": if (bossRansom()) location.hash = "#/palace"; else render(); break;
     case "bossgetback": if (BOSS && !BOSS.done && BOSS.ans !== null) bossEnd(); RESQ = null; location.hash = "#/boss/rescue"; break;
     case "resqpick": resqPick(+el.getAttribute("data-o")); render(); break;
-    case "resqnext": RESQ = null; render(); window.scrollTo(0, 0); break;
+    case "resqnext": if (RESQ && RESQ.ans != null) RESQPREV = {id:RESQ.id, ord:RESQ.ord, ans:RESQ.ans}; RESQ = null; RESQV = 0; render(); window.scrollTo(0, 0); break;
+    case "resqprev": RESQV = 1; render(); break;
+    case "resqback": RESQV = 0; render(); break;
     case "bhreplay": render(); break;
     case "resqcollect": if (bossResqLeft().length === 0 && bossS().cap){ bossFree("rescue"); save(); location.hash = "#/boss/home"; } break;
     case "podtick": { var pk = el.getAttribute("data-k"), pr = podS()[pk] || {}; if (pr.at) delete pr.at; else { pr.at = Date.now(); if (!pr.paid){ pr.paid = Date.now(); earn(POD_COINS, "pod|" + pk, true); } layEgg(pk); } podS()[pk] = pr; save(); var pli = el.closest(".podrow"); el.classList.toggle("on", !!pr.at); el.textContent = pr.at ? "✓" : ""; if (pli){ pli.classList.toggle("done", !!pr.at); var peb = pli.querySelector(".podearn b"); if (peb && pr.paid) peb.textContent = "✓ " + POD_COINS; } podRowPaint(pk); break; }
