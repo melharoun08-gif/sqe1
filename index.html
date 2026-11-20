@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261119235204";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120001453";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -1117,13 +1117,13 @@ a.bpalcard{display:flex;align-items:center;gap:12px;text-decoration:none;color:v
 .mbag .mbn::after{content:" in your bag"}
 /* v5: one picture BEHIND the header: plain sky and grass where the writing is, the scene on the right (Monnie 04:00) */
 .head .hscene,.head.compact .hscene{display:none!important}
-.head{background:#c2e3f8 url(img/banner-bg2.webp) right bottom/auto 100% no-repeat!important}
+.head{background:#c2e3f8 url(img/banner-bg3.webp) right bottom/auto 100% no-repeat!important}
 .head .row1,.head .row2{max-width:calc(100% - 520px)}
 .head.compact .row1,.head.compact .row2{max-width:calc(100% - 360px)}
 .head .kw,.head .cheer{background:rgba(255,255,255,.55);border-radius:12px}
 .head .kw{border:0}
 .head .tabs{background:rgba(255,255,255,.85)}
-@media (max-width:720px){.head{background:#c2e3f8 url(img/banner-bg2.webp) right bottom/auto 210px no-repeat!important;padding-bottom:210px!important}.head .row1,.head .row2,.head.compact .row1,.head.compact .row2{max-width:none}.head.compact{padding-bottom:12px!important;background-size:0 0!important}.head .tabs{position:relative;top:0}}
+@media (max-width:720px){.head{background:#c2e3f8 url(img/banner-bg3.webp) right bottom/auto 210px no-repeat!important;padding-bottom:210px!important}.head .row1,.head .row2,.head.compact .row1,.head.compact .row2{max-width:none}.head.compact{padding-bottom:12px!important;background-size:0 0!important}.head .tabs{position:relative;top:0}}
 @media (min-width:721px){.head .row1,.head .row2{max-width:calc(100% - 650px)}.head.compact .row1,.head.compact .row2{max-width:calc(100% - 420px)}.head .cheer{display:none}.head .row1{flex-wrap:wrap}}
 /* side panel: light blue to match the header, no beige/green (Monnie 04:01) */
 .side{background:#EAF6FE!important;border-left:3px solid #8FD2F8!important}
@@ -1158,11 +1158,11 @@ a.bpalcard{display:flex;align-items:center;gap:12px;text-decoration:none;color:v
 .cnrow input{font:inherit;font-size:16px;padding:6px 10px;border:2px solid #F3E3CC;border-radius:10px;max-width:180px;background:#fff;color:#2A2622}
 /* v7: seamless banner — picture ends above a solid tab bar; crayon sky texture behind everything */
 @media (min-width:721px){
-.head{background-color:#fff!important;background-image:url(img/banner-bg2.webp),url(img/sky-tile.webp)!important;background-repeat:no-repeat,repeat!important;background-position:right bottom var(--tabh,50px),left top!important;background-size:auto calc(100% - var(--tabh,50px)),800px auto!important}
+.head{background-color:#fff!important;background-image:url(img/banner-bg3.webp),url(img/sky-tile.webp)!important;background-repeat:no-repeat,repeat!important;background-position:right bottom var(--tabh,50px),left top!important;background-size:auto calc(100% - var(--tabh,50px)),800px auto!important}
 .head .tabs{background:#fff!important;margin-bottom:0}
 }
 @media (max-width:720px){
-.head{background-image:url(img/banner-bg2.webp),url(img/sky-tile.webp)!important;background-repeat:no-repeat,repeat!important;background-position:right bottom,left top!important;background-size:auto 210px,800px auto!important}
+.head{background-image:url(img/banner-bg3.webp),url(img/sky-tile.webp)!important;background-repeat:no-repeat,repeat!important;background-position:right bottom,left top!important;background-size:auto 210px,800px auto!important}
 .head.compact{background-size:0 0,800px auto!important}
 }
 /* Bolu photo, royal palace, medicine card */
@@ -1714,7 +1714,7 @@ body.podcar-on .startnext{bottom:110px}
 .streak .stsvg{overflow:visible}
 /* 19 Nov: whole banner scene always visible (never cropped): fit to banner height, plain sky/grass continues to the left */
 @media (min-width:721px){
-.head,.head.compact{background-image:url(img/banner-bg2.webp),url(img/banner-ext.webp)!important;background-repeat:no-repeat,repeat-x!important;background-size:auto calc(100% - var(--tabh,50px)),auto calc(100% - var(--tabh,50px))!important;background-position:right bottom var(--tabh,50px),right bottom var(--tabh,50px)!important;background-color:#c2e3f8!important}
+.head,.head.compact{background-image:url(img/banner-bg3.webp),url(img/banner-ext.webp)!important;background-repeat:no-repeat,repeat-x!important;background-size:auto calc(100% - var(--tabh,50px)),auto calc(100% - var(--tabh,50px))!important;background-position:right bottom var(--tabh,50px),right bottom var(--tabh,50px)!important;background-color:#c2e3f8!important}
 }
 
 .c2pt{font-family:"Comic Sans MS","Chalkboard SE","Comic Neue",system-ui,sans-serif;font-weight:700;color:#1a2a6c;text-align:left;justify-content:flex-start;align-items:flex-start;padding:3% 4%;line-height:1.2}
@@ -2536,6 +2536,21 @@ html.dfv-on{overflow:hidden}
   .nc-row .nc-pic{max-width:120px}
   .nc-btn{max-width:none}
 }
+/* tab-colours 20 Nov (Monnie): bright, all different, Palace pink, no browns */
+.tabs a[data-tab="home"]{--tc:#FF6B2C!important}
+.tabs a[data-tab="palace"]{--tc:#FF4FA3!important}
+.tabs a[data-tab="plan"]{--tc:#2F80ED!important}
+.tabs a[data-tab="syllabus"]{--tc:#9B51E0!important}
+.tabs a[data-tab="cartoons"]{--tc:#FFC300!important}
+.tabs a[data-tab="frameworks"]{--tc:#27AE60!important}
+.tabs a[data-tab="questions"]{--tc:#E91E63!important}
+.tabs a[data-tab="quick"]{--tc:#FF3B30!important}
+.tabs a[data-tab="cards"]{--tc:#00B8D9!important}
+.tabs a[data-tab="podcasts"]{--tc:#7B61FF!important}
+.tabs a[data-tab="mock"]{--tc:#00C2A8!important}
+.tabs a[data-tab="hours"]{--tc:#A3D400!important}
+.tabs a[data-tab="progress"]{--tc:#FF8FC7!important}
+.tabs a[data-tab="settings"]{--tc:#5B6CFF!important}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -78891,15 +78906,15 @@ window.SQE_JOURNEY = function (A) {
     /* ---------- decoration ---------- */
     var cloud = function (x, y, s) {
         if (s === void 0) { s = 1; }
-        return "<path transform=\"translate(".concat(x, ",").concat(y, ") scale(").concat(s, ")\" d=\"M-50,12 C-64,-6 -34,-24 -18,-12 C-12,-36 26,-36 32,-12 C52,-22 72,2 54,12 Z\" fill=\"#fff\" ").concat(INK, "/>");
-    };
+        return "<g class=\"jmo jcloud\" style=\"animation-duration:".concat(36 + Math.round(x) % 9 * 5, "s\"><path transform=\"translate(").concat(x, ",").concat(y, ") scale(").concat(s, ")\" d=\"M-50,12 C-64,-6 -34,-24 -18,-12 C-12,-36 26,-36 32,-12 C52,-22 72,2 54,12 Z\" fill=\"#fff\" ").concat(INK, "/></g>");
+    }; /* map-motion: clouds drift */
     var sun = function (x, y) {
         var r = '';
         for (var k = 0; k < 10; k++) {
             var a = k * Math.PI / 5;
             r += "M".concat(x + Math.cos(a) * 46, ",").concat(y + Math.sin(a) * 46, " L").concat(x + Math.cos(a) * 60, ",").concat(y + Math.sin(a) * 60, " ");
         }
-        return "<path d=\"".concat(r, "\" fill=\"none\" ").concat(INK, "/><circle cx=\"").concat(x, "\" cy=\"").concat(y, "\" r=\"36\" fill=\"#FFD23F\" ").concat(INK, "/>");
+        return "<g class=\"jmo jsunr\"><path d=\"".concat(r, "\" fill=\"none\" ").concat(INK, "/></g><circle cx=\"").concat(x, "\" cy=\"").concat(y, "\" r=\"36\" fill=\"#FFD23F\" ").concat(INK, "/>");
     };
     var flower = function (x, y, c) {
         var p = '';
@@ -78917,7 +78932,9 @@ window.SQE_JOURNEY = function (A) {
     /* region signs (Monnie: show stops 1-7 / 8-14 more imaginatively): a wooden arrow sign on a little post, big region name + small stop range */
     var sign = function (x, y, t1, t2, fs, post) {
         var w = Math.max(t1.length * fs * .56, t2.length * fs * .42) + 60, h = fs * 2.3, l = x - w / 2, r = x + w / 2 - 18, tp = y - h / 2, bt = y + h / 2;
-        return "<g ".concat(INK, "><rect x=\"").concat(x - 6, "\" y=\"").concat(bt - 4, "\" width=\"12\" height=\"").concat(post || fs * 1.6, "\" fill=\"#7A4A21\"/>")
+        var base = bt - 4 + (post || fs * 1.6); /* planted in the grass: a shadow and grass tufts where the post meets the ground (Monnie: not floating) */
+        return "<ellipse cx=\"".concat(x, "\" cy=\"").concat(base, "\" rx=\"26\" ry=\"6\" fill=\"#111\" opacity=\".2\"/><g ").concat(INK, "><rect x=\"").concat(x - 6, "\" y=\"").concat(bt - 4, "\" width=\"12\" height=\"").concat(post || fs * 1.6, "\" fill=\"#7A4A21\"/>")
+            + "<path d=\"M".concat(x - 20, ",").concat(base + 1, " q2,-11 5,0 q2,-13 5,0 q2,-9 4,0 M").concat(x + 7, ",").concat(base + 1, " q2,-12 5,0 q2,-9 5,0\" fill=\"#52B788\" stroke=\"#2D6A4F\" stroke-width=\"2.5\"/>")
             + "<path d=\"M".concat(l, ",").concat(tp, " H").concat(r, " L").concat(r + 26, ",").concat(y, " L").concat(r, ",").concat(bt, " H").concat(l, " Z\" fill=\"#B87333\"/>")
             + "<path d=\"M".concat(l + 10, ",").concat(tp + h * .36, " H").concat(r - 6, " M").concat(l + 18, ",").concat(tp + h * .7, " H").concat(r - 30, "\" stroke=\"#8A5226\" stroke-width=\"2\" fill=\"none\"/>")
             + "<circle cx=\"".concat(l + 12, "\" cy=\"").concat(tp + 10, "\" r=\"3.5\" fill=\"#3B2A1A\" stroke=\"none\"/><circle cx=\"").concat(l + 12, "\" cy=\"").concat(bt - 10, "\" r=\"3.5\" fill=\"#3B2A1A\" stroke=\"none\"/></g>")
@@ -79011,14 +79028,16 @@ window.SQE_JOURNEY = function (A) {
        reg = the top edge of each ground band, top to bottom: spring meadow (stops 1-7), autumn fields (8-14), palace grounds. */
     function layoutDesktop() {
         var rows = [390, 830, 1370, 1800], cols = [200, 445, 690, 935], PB = rows[3] + 625, D = PB - 2145, W = 1100, H = 2235 + D; /* landmarks 1.6x bigger, cards smaller (Monnie 21:29): rows spaced out */
-        var st = [{ x: 200, y: rows[0] }];
-        [1, 2, 3].forEach(function (s, k) { return st[s] = { x: cols[k + 1], y: rows[0] }; });
-        [4, 5, 6, 7].forEach(function (s, k) { return st[s] = { x: cols[3 - k], y: rows[1] }; });
-        [8, 9, 10, 11].forEach(function (s, k) { return st[s] = { x: cols[k], y: rows[2] }; });
-        [12, 13, 14, 15].forEach(function (s, k) { return st[s] = { x: cols[3 - k], y: rows[3] }; });
+        var ty = function (x) { return -(x - 570) * .05; }; /* each row of the path tilts gently upward to the right (Monnie 20 Nov: a path in perspective, not flat) */
+        var st = [{ x: 200, y: rows[0] + ty(200) }];
+        [1, 2, 3].forEach(function (s, k) { return st[s] = { x: cols[k + 1], y: rows[0] + ty(cols[k + 1]) }; });
+        [4, 5, 6, 7].forEach(function (s, k) { return st[s] = { x: cols[3 - k], y: rows[1] + ty(cols[3 - k]) }; });
+        [8, 9, 10, 11].forEach(function (s, k) { return st[s] = { x: cols[k], y: rows[2] + ty(cols[k]) }; });
+        [12, 13, 14, 15].forEach(function (s, k) { return st[s] = { x: cols[3 - k], y: rows[3] + ty(cols[3 - k]) }; });
+        var R = ty(960), Lf = ty(140);
         var left = function (i) { return (i >= 4 && i <= 7) || i >= 12; }; /* rows 2 and 4 run right to left */
         return { mode: 'desk', W: W, H: H, stops: st,
-            route: "M150,".concat(rows[0], " H960 A110,").concat((rows[1] - rows[0]) / 2, " 0 0 1 960,").concat(rows[1], " H140 A110,").concat((rows[2] - rows[1]) / 2, " 0 0 0 140,").concat(rows[2], " H960 A110,").concat((rows[3] - rows[2]) / 2, " 0 0 1 960,").concat(rows[3], " H140 C20,").concat(rows[3], " 20,").concat(PB, " 170,").concat(PB, " H570 Q600,").concat(PB, " 600,").concat(PB - 24),
+            route: "M150,".concat(rows[0] + ty(150), " L960,").concat(rows[0] + R, " A110,").concat((rows[1] - rows[0]) / 2, " 0 0 1 960,").concat(rows[1] + R, " L140,").concat(rows[1] + Lf, " A110,").concat((rows[2] - rows[1]) / 2, " 0 0 0 140,").concat(rows[2] + Lf, " L960,").concat(rows[2] + R, " A110,").concat((rows[3] - rows[2]) / 2, " 0 0 1 960,").concat(rows[3] + R, " L140,").concat(rows[3] + Lf, " C20,").concat(rows[3] + Lf, " 20,").concat(PB, " 170,").concat(PB, " H570 Q600,").concat(PB, " 600,").concat(PB - 24),
             art: { x: -125, y: -262, w: 250, h: 268, gx: -115, gy: -200, gw: 220, gh: 206 },
             lm: function (i) { return ({ x: st[i].x, y: st[i].y - 34, s: 1 }); },
             label: function (i) { return ({ cx: st[i].x, top: st[i].y + 44 }); },
@@ -79027,7 +79046,8 @@ window.SQE_JOURNEY = function (A) {
             palace: { x: 600, y: 2115 + D, s: 1 },
             flags: [{ x: 176, y: 2117 + D, s: 1, h: 110 }, { x: 812, y: 2117 + D, s: 1, h: 110 }],
             reg: { spring: 160, autumn: 1020, grounds: 1750 + D },
-            deco: function () { return sun(95, 82) + cloud(330, 78, .8) + cloud(1010, 92, 1) + sign(650, 92, 'FLK1 Meadow', 'Stops 1–7', 36)
+            sun: { x0: 80, x1: 1020, y: 150, rise: 82, s: 1 },
+            deco: function () { return cloud(330, 78, .8) + cloud(1010, 92, 1) + cloud(720, 48, .55) + sign(200, 163, 'FLK1 Meadow', 'Stops 1–7', 26, 22)
                 + sign(570, 1044, 'FLK2 Harvest Fields', 'Stops 8–14', 27, 18)
                 + topiary(1000, 2147 + D) + topiary(1060, 2133 + D) + topiary(228, 1855 + D) + flower(330, 1840 + D, '#fff') + flower(925, 1840 + D, '#FF9EC4')
                 + [60, 330, 575, 820].map(function (x, k) { return flower(x, 2219 + D, ['#FF9EC4', '#fff', '#FFB3D9', '#fff'][k]); }).join('') + flower(345, 2215 + D, '#FFD6A5'); },
@@ -79039,12 +79059,13 @@ window.SQE_JOURNEY = function (A) {
         for (var i = 0; i <= 15; i++)
             st[i] = { x: i % 2 ? 530 : 70, y: y0 + i * R + (i >= 8 ? G : 0) };
         var pts = [[70, y0 - 40]];
+        var tp = function (x) { return -(x - 300) * .07; }; /* each crossing tilts gently upward to the right (Monnie 20 Nov) */
         for (var i = 0; i < 15; i++) {
             var a = st[i], b = st[i + 1], yc_1 = (a.y + b.y) / 2;
-            pts.push([a.x, a.y], [a.x, yc_1], [b.x, yc_1]);
+            pts.push([a.x, a.y], [a.x, yc_1 + tp(a.x)], [b.x, yc_1 + tp(b.x)]);
         }
         var sl = st[15], Pb = sl.y + 485, yc = Pb + 94, H = yc + 150; /* palace base, the path along the front of the palace, page height (tidy: room for the exam flags under the path) */
-        pts.push([sl.x, sl.y], [sl.x, yc], [280, yc], [280, Pb + 6]);
+        pts.push([sl.x, sl.y], [sl.x, yc + tp(sl.x)], [280, yc + tp(280)], [280, Pb + 6]);
         return { mode: 'phone', W: W, H: H, stops: st, route: roundPoly(pts, 50),
             lm: function (i) { return ({ x: i % 2 ? 135 : 465, y: st[i].y + 118, s: 1 }); },
             label: function (i) { return ({ cx: i % 2 ? 390 : 210, cy: st[i].y }); },
@@ -79054,7 +79075,8 @@ window.SQE_JOURNEY = function (A) {
             palace: { x: 280, y: Pb, s: 1 },
             flags: [{ x: 100, y: yc + 116, s: 1, h: 80 }, { x: 320, y: yc + 116, s: 1, h: 80 }], /* tidy: planted in front of the palace, below the path, so they no longer cover the palace steps */
             reg: { spring: 212, autumn: st[7].y + 222, grounds: sl.y + 150 },
-            deco: function () { return "<g transform=\"translate(14,14) scale(.62)\">".concat(sun(60, 60), "</g>") + cloud(522, 168, .7) + sign(330, 96, 'FLK1 Meadow', 'Stops 1–7', 38)
+            sun: { x0: 50, x1: 550, y: 205, rise: 130, s: .62 },
+            deco: function () { return cloud(522, 150, .7) + cloud(150, 60, .5) + sign(330, 186, 'FLK1 Meadow', 'Stops 1–7', 38, 20)
                 + sign(295, st[7].y + 290, 'FLK2 Harvest Fields', 'Stops 8–14', 30, 20)
                 + flower(28, H - 14, '#FF9EC4') + flower(580, H - 14, '#fff') + flower(40, sl.y + 250, '#fff') + flower(565, sl.y + 250, '#FF9EC4'); },
         };
@@ -79105,7 +79127,7 @@ window.SQE_JOURNEY = function (A) {
     }
     function flagArt(f, t1, t2) {
         var h = f.h || 120, bw = 150, bh = 52, top = -h;
-        return "<g transform=\"translate(".concat(f.x, ",").concat(f.y, ") scale(").concat(f.s, ")\"><g ").concat(INK, ">\n    <ellipse cx=\"0\" cy=\"0\" rx=\"13\" ry=\"5\" fill=\"#8B5A2B\"/><path d=\"M0,0 V").concat(top - 6, "\" stroke-width=\"5\"/>\n    <path d=\"M0,").concat(top, " H").concat(bw, " L").concat(bw - 14, ",").concat(top + bh / 2, " L").concat(bw, ",").concat(top + bh, " H0 Z\" fill=\"#FFE066\"/><circle cx=\"0\" cy=\"").concat(top - 9, "\" r=\"6\" fill=\"#FFC300\"/></g>\n    <text class=\"jpl\" x=\"").concat((bw - 14) / 2 + 2, "\" y=\"").concat(top + 23, "\" font-size=\"20\">").concat(t1, "</text>\n    <text class=\"jps\" x=\"").concat((bw - 14) / 2 + 2, "\" y=\"").concat(top + 43, "\" font-size=\"16\">").concat(t2, "</text></g>");
+        return "<g transform=\"translate(".concat(f.x, ",").concat(f.y, ") scale(").concat(f.s, ")\"><g ").concat(INK, ">\n    <ellipse cx=\"0\" cy=\"0\" rx=\"13\" ry=\"5\" fill=\"#8B5A2B\"/><path d=\"M0,0 V").concat(top - 6, "\" stroke-width=\"5\"/>\n    <path class=\"jmo jflag\" d=\"M0,").concat(top, " H").concat(bw, " L").concat(bw - 14, ",").concat(top + bh / 2, " L").concat(bw, ",").concat(top + bh, " H0 Z\" fill=\"#FFE066\"/><circle cx=\"0\" cy=\"").concat(top - 9, "\" r=\"6\" fill=\"#FFC300\"/></g>\n    <text class=\"jpl\" x=\"").concat((bw - 14) / 2 + 2, "\" y=\"").concat(top + 23, "\" font-size=\"20\">").concat(t1, "</text>\n    <text class=\"jps\" x=\"").concat((bw - 14) / 2 + 2, "\" y=\"").concat(top + 43, "\" font-size=\"16\">").concat(t2, "</text></g>");
     }
     function camp() {
         var s = "<polygon points=\"-70,0 -20,-92 30,0\" fill=\"#FF8FC7\"/><polygon points=\"-20,-92 -36,0 -4,0\" fill=\"#FFD6EA\"/><path d=\"M-20,-92 l-6,-14 M-20,-92 l8,-12\" fill=\"none\"/>";
@@ -79121,30 +79143,133 @@ window.SQE_JOURNEY = function (A) {
     /* detailed drawn landmarks (Monnie: same style and vibrancy as the sweet shop picture) */
     var MAP_ART = true, ART_SLUG = ['sweetshop', 'fairground', 'library', 'airport', 'zoo', 'museum', 'pier', 'aquarium', 'farm', 'botanic', 'balloons', 'forest', 'icerink', 'lighthouse'];
     var artImg = function (slug, x, y, w, h) { return "<image href=\"img/map-new/".concat(slug, ".webp\" x=\"").concat(x, "\" y=\"").concat(y, "\" width=\"").concat(w, "\" height=\"").concat(h, "\" preserveAspectRatio=\"xMidYMax meet\"/>"); };
+    /* ---------- map-motion (20 Nov, Monnie): sky by Layla's real time of day, and gentle looping life on the map (CSS only; stops under reduced motion) ---------- */
+    var qs = function () { return (location.search || '') + '&' + (location.hash || ''); };
+    function skyHour() { var ov = /[?&]hour=(\d+)/.exec(qs()); if (ov)
+        return (+ov[1]) % 24; var d = new Date(); return d.getHours() + d.getMinutes() / 60; }
+    function skyPhase(h) { return h >= 21 || h < 6 ? 'night' : h >= 18 ? 'dusk' : h < 8 ? 'dawn' : 'day'; }
+    var NAT = { fairground: [520, 457], lighthouse: [507, 520], pier: [520, 502], aquarium: [520, 509], farm: [520, 502], airport: [520, 472], balloons: [518, 520], zoo: [520, 509] };
+    /* a point on a landmark picture (fx, fy = fractions of the picture) in map coordinates, plus the picture's scale */
+    function apt(L, slug, fx, fy) {
+        var i = ART_SLUG.indexOf(slug) + 1, a = L.art, n = NAT[slug], sc = Math.min(a.w / n[0], a.h / n[1]), dw = n[0] * sc, dh = n[1] * sc, p = L.lm(i);
+        return { x: p.x + (a.x + (a.w - dw) / 2 + fx * dw) * p.s, y: p.y + (a.y + a.h - dh + fy * dh) * p.s, dw: dw * p.s, dh: dh * p.s };
+    }
+    var f1 = function (n) { return n.toFixed(1); };
+    function skyDefs(L, ph) {
+        var m = L.mode;
+        return "<defs><radialGradient id=\"jglow-".concat(m, "\"><stop offset=\"0\" stop-color=\"#FFF4B0\" stop-opacity=\"1\"/><stop offset=\".45\" stop-color=\"#FFD25A\" stop-opacity=\".75\"/><stop offset=\"1\" stop-color=\"#FFB020\" stop-opacity=\"0\"/></radialGradient>")
+            + "<linearGradient id=\"jbeam-".concat(m, "\" x1=\"0\" x2=\"1\"><stop offset=\"0\" stop-color=\"#FFF6B8\" stop-opacity=\".75\"/><stop offset=\"1\" stop-color=\"#FFF6B8\" stop-opacity=\"0\"/></linearGradient>")
+            + "<linearGradient id=\"jsky-".concat(m, "\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">").concat(ph === 'dusk' ? '<stop offset="0" stop-color="#FF8A7A"/><stop offset=".55" stop-color="#FFB38A"/><stop offset="1" stop-color="#FFD9B8"/>' : ph === 'dawn' ? '<stop offset="0" stop-color="#BFD9FF"/><stop offset="1" stop-color="#FFD3C2"/>' : ph === 'night' ? '<stop offset="0" stop-color="#1B2456"/><stop offset="1" stop-color="#3A4A8C"/>' : '<stop offset="0" stop-color="#BFE3FF"/><stop offset="1" stop-color="#DDF2FF"/>', "</linearGradient></defs>");
+    }
+    /* the sun crosses the sky from 6am (left, low) to 9pm (right, setting behind the meadow); hidden at night */
+    function skySun(L, h) {
+        var S = L.sun;
+        if (!S || skyPhase(h) === 'night')
+            return '';
+        var u = Math.max(0, Math.min(1, (h - 6) / 15)), x = S.x0 + u * (S.x1 - S.x0), y = S.y - Math.sin(u * Math.PI) * S.rise;
+        return "<g transform=\"translate(".concat(f1(x), ",").concat(f1(y), ") scale(").concat(S.s, ")\">").concat(sun(0, 0), "</g>");
+    }
+    function skyNight(L) {
+        var m = L.mode, W = L.W, top = L.reg.spring - 26;
+        var s = '', seed = 7;
+        var rnd = function () { return (seed = (seed * 16807) % 2147483647) / 2147483647; };
+        var n = m === 'phone' ? 14 : 22;
+        for (var k = 0; k < n; k++) {
+            var x = 20 + rnd() * (W - 40), y = 12 + rnd() * (top - 12), r = 1.6 + rnd() * 1.8;
+            s += "<path class=\"jmo jstar\" style=\"animation-delay:-".concat(f1(rnd() * 4), "s\" transform=\"translate(").concat(f1(x), ",").concat(f1(y), ") scale(").concat(f1(r), ")\" d=\"M0,-3 L.8,-.8 3,0 .8,.8 0,3 -.8,.8 -3,0 -.8,-.8Z\" fill=\"#FFF6C8\"/>");
+        }
+        var mx = m === 'phone' ? 470 : W - 170, my = m === 'phone' ? 70 : 72;
+        return s + "<g transform=\"translate(".concat(mx, ",").concat(my, ")\"><circle r=\"40\" fill=\"#FFF6C8\" opacity=\".18\"/><path d=\"M8,-30 A30,30 0 1 0 8,30 A22,22 0 1 1 8,-30Z\" fill=\"#FFF2B0\" stroke=\"#111\" stroke-width=\"3\"/></g>");
+    }
+    var glow = function (x, y, r, d) { return "<circle class=\"jmo jglow\" style=\"animation-delay:-".concat(d || 0, "s\" cx=\"").concat(f1(x), "\" cy=\"").concat(f1(y), "\" r=\"").concat(r, "\" fill=\"url(#jglow-GLOWID)\"/>"); };
+    /* night lights over a few landmarks (palace windows, pier lamps, fairground bulbs, lighthouse beam) */
+    function nightLights(L) {
+        var s = '';
+        var P = L.palace, pp = function (fx, fy) { return ({ x: P.x + (-212 + fx * 424) * P.s, y: P.y + (-420 + fy * 428) * P.s }); };
+        [[.395, .325], [.5, .325], [.605, .325], [.118, .53], [.855, .53], [.13, .73], [.84, .73]].forEach(function (_a, k) {
+            var a = _a[0], b = _a[1];
+            var q = pp(a, b);
+            s += glow(q.x, q.y, 16, k * .7);
+        });
+        var d = pp(.487, .76);
+        s += glow(d.x, d.y, 26, 1.3);
+        [[.355, .31], [.947, .31]].forEach(function (_a, k) {
+            var a = _a[0], b = _a[1];
+            var q = apt(L, 'pier', a, b);
+            s += glow(q.x, q.y, 15, k);
+        });
+        var lh = apt(L, 'lighthouse', .487, .18), bl = L.mode === 'phone' ? 150 : 190;
+        s += "<g class=\"jmo jbeam\"><path d=\"M".concat(f1(lh.x), ",").concat(f1(lh.y), " l").concat(bl, ",-22 v44 Z M").concat(f1(lh.x), ",").concat(f1(lh.y), " l").concat(-bl, ",22 v-44 Z\" fill=\"url(#jbeam-").concat(L.mode, ")\"/></g>") + glow(lh.x, lh.y, 18, 0);
+        ['sweetshop', 'library'].forEach(function (sl) { var p = L.lm(ART_SLUG.indexOf(sl) + 1); s += glow(p.x - 30, p.y - 110, 14, .4) + glow(p.x + 30, p.y - 110, 14, 1.1); });
+        return s.replace(/GLOWID/g, L.mode);
+    }
+    var fish = function (c) { return "<path d=\"M-9,0 C-5,-6 5,-6 8,0 C5,6 -5,6 -9,0Z M8,0 L14,-5 L14,5Z\" fill=\"".concat(c, "\" stroke=\"#111\" stroke-width=\"1.6\" stroke-linejoin=\"round\"/><circle cx=\"-4\" cy=\"-1\" r=\"1.3\" fill=\"#111\"/>"); };
+    var minib = function (c1, c2) { return "<path d=\"M0,-30 C-15,-30 -17,-14 -10,-6 L-4,2 H4 L10,-6 C17,-14 15,-30 0,-30Z\" fill=\"".concat(c1, "\" stroke=\"#111\" stroke-width=\"2\"/><path d=\"M0,-30 C-5,-24 -5,-10 -4,2 M0,-30 C5,-24 5,-10 4,2\" fill=\"none\" stroke=\"").concat(c2, "\" stroke-width=\"2.5\"/><path d=\"M-4,2 L-4,7 M4,2 L4,7\" stroke=\"#111\" stroke-width=\"1.4\"/><rect x=\"-5\" y=\"7\" width=\"10\" height=\"7\" rx=\"1.5\" fill=\"#B07A45\" stroke=\"#111\" stroke-width=\"1.6\"/>"); };
+    var plane = "<g><path d=\"M-22,0 C-22,-5 14,-6 20,-2 C24,0 22,3 18,3 L-18,4 C-21,4 -22,2 -22,0Z\" fill=\"#fff\" stroke=\"#111\" stroke-width=\"2\"/><path d=\"M-16,-1 L-22,-12 L-16,-12 L-9,-1Z\" fill=\"#E63946\" stroke=\"#111\" stroke-width=\"1.8\"/><path d=\"M-2,1 L-10,12 L-4,12 L8,1Z\" fill=\"#9BB8E0\" stroke=\"#111\" stroke-width=\"1.8\"/><path d=\"M4,-2 h3 M10,-2 h3 M-2,-2 h3\" stroke=\"#4361EE\" stroke-width=\"2\"/></g>";
+    /* daytime-and-night life drawn over the landmarks */
+    function mapLife(L) {
+        var s = '';
+        var w = apt(L, 'fairground', .33, .415), r = 144 * w.dw / 520;
+        var b = '';
+        for (var k = 0; k < 12; k++) {
+            var a = k * Math.PI / 6;
+            b += "<circle cx=\"".concat(f1(Math.cos(a) * r), "\" cy=\"").concat(f1(Math.sin(a) * r), "\" r=\"3.4\" fill=\"#FFF7B0\" stroke=\"#111\" stroke-width=\"1.2\"/>");
+        }
+        s += "<g transform=\"translate(".concat(f1(w.x), ",").concat(f1(w.y), ")\"><g class=\"jmo jwheel\"><circle r=\"").concat(f1(r), "\" fill=\"none\" stroke=\"none\"/>").concat(b, "<path d=\"M").concat(f1(-r * .92), ",0 H").concat(f1(r * .92), " M0,").concat(f1(-r * .92), " V").concat(f1(r * .92), "\" stroke=\"#FFF7B0\" stroke-width=\"2.5\" opacity=\".75\"/></g></g>");
+        var aq = apt(L, 'aquarium', .5, .42);
+        s += "<g transform=\"translate(".concat(f1(aq.x - 12), ",").concat(f1(aq.y + aq.dh * .1), ")\"><g class=\"jmo jfish\">").concat(fish('#FF9F1C'), "</g></g><g transform=\"translate(").concat(f1(aq.x + 8), ",").concat(f1(aq.y - aq.dh * .12), ")\"><g class=\"jmo jfish jf2\">").concat(fish('#4CC9F0'), "</g></g>");
+        var pw = apt(L, 'pier', .5, .93);
+        s += "<g transform=\"translate(".concat(f1(pw.x), ",").concat(f1(pw.y), ") scale(.8)\"><g class=\"jmo jfish jf3\">").concat(fish('#FFC300'), "</g></g>");
+        var lw = apt(L, 'lighthouse', .25, .9);
+        s += "<g transform=\"translate(".concat(f1(lw.x), ",").concat(f1(lw.y), ") scale(.8)\"><g class=\"jmo jfish jf2\">").concat(fish('#FF6FB5'), "</g></g>");
+        var ap = apt(L, 'airport', .12, .97);
+        s += "<g transform=\"translate(".concat(f1(ap.x), ",").concat(f1(ap.y), ")\"><g class=\"jmo jplane\" style=\"opacity:0\">").concat(plane, "</g></g>");
+        var b1 = apt(L, 'balloons', .22, .82), b2 = apt(L, 'balloons', .78, .78);
+        s += "<g transform=\"translate(".concat(f1(b1.x), ",").concat(f1(b1.y), ")\"><g class=\"jmo jrise\">").concat(minib('#FF6FB5', '#FFC300'), "</g></g><g transform=\"translate(").concat(f1(b2.x), ",").concat(f1(b2.y), ") scale(.8)\"><g class=\"jmo jrise jr2\">").concat(minib('#4CC9F0', '#fff'), "</g></g>");
+        var fa = apt(L, 'farm', .17, .33), fb = apt(L, 'farm', .17, .6);
+        s += "<g transform=\"translate(".concat(f1(fa.x), ",").concat(f1(fa.y), ")\" style=\"--fall:").concat(f1(fb.y - fa.y), "px\"><circle class=\"jmo japple\" style=\"opacity:0\" r=\"6\" fill=\"#E63946\" stroke=\"#111\" stroke-width=\"2\"/></g>");
+        return "<g class=\"jlife\" aria-hidden=\"true\" pointer-events=\"none\">".concat(s, "</g>");
+    }
+    var SWAY = { forest: 1, botanic: 1, farm: 1 };
     /* ---------- the map ---------- */
     function mapSVG(J, L) {
         var W = L.W, H = L.H, reg = L.reg;
         var s = "<svg viewBox=\"0 0 ".concat(W, " ").concat(H, "\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-labelledby=\"jmt-").concat(L.mode, "\"><title id=\"jmt-").concat(L.mode, "\">Britney's journey: 14 subject stops in timetable order, from the farm gate to Cluckington Palace, where both exams are.</title>");
-        s += "<rect width=\"".concat(W, "\" height=\"").concat(H, "\" fill=\"#CDEBFF\"/>");
+        var hr = skyHour(), ph = skyPhase(hr);
+        s += skyDefs(L, ph) + "<rect width=\"".concat(W, "\" height=\"").concat(H, "\" fill=\"url(#jsky-").concat(L.mode, ")\"/>") + skySun(L, hr); /* sky by Layla's local time (?hour=N to preview); the sun sets behind the meadow */
         var band = function (y, amp, c) { return "<path d=\"M-10,".concat(y, " L0,").concat(y).concat(wavy(y, W, amp, 8), " L").concat(W + 10, ",").concat(y, " V").concat(H + 10, " H-10 Z\" fill=\"").concat(c, "\" ").concat(INK, "/>"); };
         s += band(reg.spring, 8, '#C9EFA4') + band(reg.autumn, 7, '#F7D9A8') + band(reg.grounds, 12, '#FFD6EA'); /* sky at the top, then the meadow, the autumn fields and the palace grounds */
         s += L.deco();
-        s += "<path d=\"".concat(L.route, "\" fill=\"none\" stroke=\"#3E3A36\" stroke-width=\"62\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"); /* path edge (kerb) */
-        s += "<path d=\"".concat(L.route, "\" fill=\"none\" stroke=\"#A39D95\" stroke-width=\"56\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"); /* kerb stones */
-        s += "<path class=\"jroute\" d=\"".concat(L.route, "\" fill=\"none\" stroke=\"#8F8A84\" stroke-width=\"47\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"); /* grout between slabs */
-        s += "<path class=\"jdone\" d=\"".concat(L.route, "\" fill=\"none\" stroke=\"#9A8F86\" stroke-width=\"47\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-dasharray=\"0 99999\"/>");
-        s += "<g class=\"jstones\" stroke=\"#7E7973\" stroke-width=\".8\"></g>";
+        /* garden path (Monnie 20 Nov): a grass border along both sides, soil showing between irregular rounded stone slabs (laid by stones()) */
+        var rp = function (w, c, x) { return "<path ".concat(x || '', " d=\"").concat(L.route, "\" fill=\"none\" stroke=\"").concat(c, "\" stroke-width=\"").concat(w, "\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"); };
+        s += rp(84, '#4F8F34') + rp(78, '#8ACB64') + rp(56, '#8C6E4E') + rp(52, '#A88660', 'class="jroute"') + rp(52, '#B8946A', 'class="jdone" stroke-dasharray="0 99999"');
+        s += "<g class=\"jstones\"></g>";
         var g0 = L.lm(0);
         s += "<g transform=\"translate(".concat(g0.x, ",").concat(g0.y, ") scale(").concat(g0.s, ")\" ").concat(INK, ">").concat(MAP_ART ? artImg('gate', L.art.gx, L.art.gy, L.art.gw, L.art.gh) : gate(), "</g>");
         J.stops.forEach(function (o) {
             var i = o.i, p = L.lm(i), st = jStatus(J, i);
-            s += "<a href=\"".concat(stopHref(o.s.id), "\" aria-label=\"Stop ").concat(i, ", ").concat(esc(o.land), ": ").concat(esc(o.s.title), "\"><g class=\"jhit\" transform=\"translate(").concat(p.x, ",").concat(p.y, ") scale(").concat(p.s, ")\" ").concat(INK, ">").concat(MAP_ART ? artImg(ART_SLUG[i - 1], L.art.x, L.art.y, L.art.w, L.art.h) : DRAW[i - 1](), "</g></a>");
+            var sl = ART_SLUG[i - 1], A = L.art;
+            var art = MAP_ART ? artImg(sl, A.x, A.y, A.w, A.h) : DRAW[i - 1]();
+            if (MAP_ART && SWAY[sl])
+                art = "<g class=\"jmo jsway\">".concat(art, "</g>"); /* trees and plants sway gently */
+            if (MAP_ART && sl === 'zoo')
+                art += [['zoo-blink', 'jzb'], ['zoo-trunk', 'jzt']].map(function (_a) {
+                    var f = _a[0], c = _a[1];
+                    return artImg(f, A.x, A.y, A.w, A.h).replace('<image ', "<image class=\"jmo ".concat(c, "\" style=\"opacity:0\" onerror=\"this.style.display='none'\" "));
+                }).join(''); /* the giraffe blinks, the elephant raises its trunk */
+            s += "<a href=\"".concat(stopHref(o.s.id), "\" aria-label=\"Stop ").concat(i, ", ").concat(esc(o.land), ": ").concat(esc(o.s.title), "\"><g class=\"jhit\" transform=\"translate(").concat(p.x, ",").concat(p.y, ") scale(").concat(p.s, ")\" ").concat(INK, ">").concat(art, "</g></a>");
         });
+        if (MAP_ART)
+            s += mapLife(L);
         var pc = L.lm(15);
         s += "<g transform=\"translate(".concat(pc.x, ",").concat(pc.y, ") scale(").concat(pc.s, ")\" ").concat(INK, ">").concat(MAP_ART ? artImg('camp', L.art.gx, L.art.gy, L.art.gw, L.art.gh) : camp(), "</g>");
         var P = L.palace;
         s += "<g transform=\"translate(".concat(P.x, ",").concat(P.y, ") scale(").concat(P.s, ")\"><g ").concat(INK, ">").concat(MAP_ART ? artImg('palace-hen', -230, -420, 460, 428) : palace(), "</g>").concat(MAP_ART ? '<rect x="-118" y="-148" width="236" height="42" rx="12" fill="#FFFDF5" stroke="#111" stroke-width="3.5"/>' : '', "<text class=\"jpl\" x=\"0\" y=\"-119\" font-size=\"25\">Cluckington Palace</text></g>");
         s += flagArt(L.flags[0], 'FLK1 exam', esc(dm(J.ex1))) + flagArt(L.flags[1], 'FLK2 exam', esc(dm(J.ex2)));
+        if (ph !== 'day')
+            s += "<rect width=\"".concat(W, "\" height=\"").concat(H, "\" fill=\"").concat(ph === 'night' ? '#0B1640' : ph === 'dusk' ? '#FF5E3A' : '#FFB070', "\" opacity=\"").concat(ph === 'night' ? .42 : ph === 'dusk' ? .1 : .07, "\" pointer-events=\"none\"/>"); /* dusk / night tint */
+        if (ph === 'night')
+            s += "<g aria-hidden=\"true\" pointer-events=\"none\">".concat(skyNight(L)).concat(MAP_ART ? nightLights(L) : '', "</g>");
         L.stops.forEach(function (p, i) {
             var m = marker(i, p, i === 0 ? '' : i === 15 ? 'rev' : jStatus(J, i)), o = i > 0 && i < 15 ? J.stops[i - 1] : null; /* the stop numbers are tappable too */
             s += o ? "<a class=\"jnum\" href=\"".concat(stopHref(o.s.id), "\" aria-label=\"Stop ").concat(i, ": ").concat(esc(o.s.title), "\">").concat(m, "</a>") : m;
@@ -79166,7 +79291,7 @@ window.SQE_JOURNEY = function (A) {
         return "<g class=\"jhen jpair\" transform=\"translate(".concat(Hn.x, ",").concat(Hn.y, ")\" aria-hidden=\"true\">")
             + "<ellipse cx=\"0\" cy=\"2\" rx=\"".concat(lw * .5 + bh * .55, "\" ry=\"6\" fill=\"#111\" opacity=\".2\"/>")
             + "<image href=\"img/layla-cloud-love.webp\" x=\"".concat(lx, "\" y=\"").concat(-lh, "\" width=\"").concat(lw, "\" height=\"").concat(lh, "\" preserveAspectRatio=\"xMidYMax meet\"/>")
-            + "<g transform=\"translate(".concat(bx + bh / 2, ",0) scale(").concat(f, ",1)\"><image href=\"img/britney/plain.webp\" x=\"").concat(-bh / 2, "\" y=\"").concat(-bh * .93, "\" width=\"").concat(bh, "\" height=\"").concat(bh, "\"/></g></g>");
+            + "<g transform=\"translate(".concat(bx + bh / 2, ",0) scale(").concat(f, ",1)\"><g class=\"jmo jbob\"><image href=\"img/britney/plain.webp\" x=\"").concat(-bh / 2, "\" y=\"").concat(-bh * .93, "\" width=\"").concat(bh, "\" height=\"").concat(bh, "\"/></g></g></g>");
     }
     function stones() {
         [].forEach.call(document.querySelectorAll('.jmap .jsv'), function (box) {
@@ -79195,17 +79320,44 @@ window.SQE_JOURNEY = function (A) {
             box.querySelector('.jdone').setAttribute('stroke-dasharray', "".concat(best, " ").concat(Lt + 100));
             var seed = 11;
             var rnd = function () { return (seed = (seed * 16807) % 2147483647) / 2147483647; };
-            /* footpath seen from above (Monnie: should read as a path, colours greyer): rows of flat paving slabs laid across the path band,
-               two slabs per row in a staggered bond, soft pastel-grey tints (pink/blue/green/lilac/sand greys), a touch warmer where Britney has walked */
-            var out = '', k = 0;
-            var PAST = ['#CFC7C9', '#C4CAD1', '#C7CFC6', '#CAC5D1', '#D3CDC0', '#C2C2C0', '#D2CBC6'], DONE = ['#DDC9CC', '#C5D1DE', '#C9D9C7', '#D3CAE0', '#E2D5B9', '#D0CEC8', '#E0D0C4'];
-            for (var t = 14; t < Lt - 8; t += 24, k++) {
-                var p = path.getPointAtLength(t), p2 = path.getPointAtLength(Math.min(Lt, t + 1)), w = t <= best;
-                var deg = (Math.atan2(p2.y - p.y, p2.x - p.x) * 180 / Math.PI).toFixed(1), x = p.x.toFixed(1), y = p.y.toFixed(1), C = w ? DONE : PAST;
-                var sp = (k % 2 ? 7 : -7) + (rnd() - .5) * 4, c1 = C[(k * 3) % 7], c2 = C[(k * 3 + 2 + Math.floor(rnd() * 3)) % 7];
-                out += "<g transform=\"translate(".concat(x, " ").concat(y, ") rotate(").concat(deg, ")\"><rect x=\"-10\" y=\"-22.5\" width=\"20\" height=\"").concat((22.5 + sp - 1.5).toFixed(1), "\" rx=\"2\" fill=\"").concat(c1, "\"/>")
-                    + "<rect x=\"-10\" y=\"".concat((sp + 1.5).toFixed(1), "\" width=\"20\" height=\"").concat((22.5 - sp - 1.5).toFixed(1), "\" rx=\"2\" fill=\"").concat(c2, "\"/></g>");
+            /* garden path seen from above (Monnie 20 Nov): irregular stone slabs with soft rounded edges, soil between them, a soft shadow under each,
+               grass tufts along both borders; slabs a touch warmer where Britney has walked */
+            var PAST = ['#CFC9C2', '#C4C8CC', '#C9CEC4', '#CCC6CE', '#D6CFC1', '#C2C1BD', '#D3CCC5'], DONE = ['#E0D2C8', '#CAD4DC', '#CEDAC8', '#D8CEDC', '#E6D8BC', '#D5D1C8', '#E3D3C6'];
+            var out = '', sh = '', tf = '', k = 0;
+            var blob = function (cx, cy, rx, ry, rot) {
+                var n = 7, c = Math.cos(rot), sn = Math.sin(rot), P = [];
+                for (var j = 0; j < n; j++) {
+                    var a = j * 2 * Math.PI / n + (rnd() - .5) * .5, r = .86 + rnd() * .18, x = Math.cos(a) * rx * r, y = Math.sin(a) * ry * r;
+                    P.push([cx + x * c - y * sn, cy + x * sn + y * c]);
+                }
+                var m = function (p, q) { return [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2]; }, F = function (v) { return v[0].toFixed(1) + ',' + v[1].toFixed(1); };
+                var d = 'M' + F(m(P[n - 1], P[0]));
+                for (var j = 0; j < n; j++)
+                    d += 'Q' + F(P[j]) + ' ' + F(m(P[j], P[(j + 1) % n]));
+                return d + 'Z';
+            };
+            var _loop_1 = function (t) {
+                var p = path.getPointAtLength(t), p2 = path.getPointAtLength(Math.min(Lt, t + 1)), w = t <= best, C = w ? DONE : PAST;
+                var an = Math.atan2(p2.y - p.y, p2.x - p.x), nx = -Math.sin(an), ny = Math.cos(an);
+                var offs = k % 2 ? [-14.5, 0, 14.5] : [-10.5, 10.5], ry = k % 2 ? 6.6 : 9.4;
+                offs.forEach(function (o, j) {
+                    var jt = (rnd() - .5) * 2.4, x = p.x + nx * (o + jt) + Math.cos(an) * (rnd() - .5) * 3, y = p.y + ny * (o + jt) + Math.sin(an) * (rnd() - .5) * 3;
+                    var d = blob(x, y, 9.6 + rnd() * 1.4, ry + rnd() * 1.2, an + (rnd() - .5) * .35);
+                    sh += d;
+                    out += "<path d=\"".concat(d, "\" fill=\"").concat(C[(k * 3 + j * 2 + Math.floor(rnd() * 3)) % 7], "\"/>");
+                });
+                if (k % 2 === 0)
+                    [1, -1].forEach(function (sd) {
+                        if (rnd() < .6) {
+                            var e = 33 + rnd() * 4, x = p.x + nx * e * sd, y = p.y + ny * e * sd;
+                            tf += "M".concat((x - 4).toFixed(1), ",").concat((y + 2).toFixed(1), " l2,-6 l2,6 l2,-7 l2,7");
+                        }
+                    });
+            };
+            for (var t = 12; t < Lt - 6; t += 23, k++) {
+                _loop_1(t);
             }
+            out = "<path d=\"".concat(sh, "\" fill=\"#3E2E1E\" opacity=\".28\" transform=\"translate(1.4,2)\"/><g stroke=\"#7E776E\" stroke-width=\".9\">").concat(out, "</g><path d=\"").concat(tf, "\" fill=\"none\" stroke=\"#3F7F2A\" stroke-width=\"1.8\" stroke-linejoin=\"round\"/>");
             box.querySelector('.jstones').innerHTML = out;
         });
     }
@@ -79624,6 +79776,27 @@ var CSS = [
 '.scn-revisit .t small{color:var(--ink);opacity:.8}',
 '.scn-nextup{margin:12px 0 4px}',
 '.scn-xres{margin-top:12px}',
+/* britney-asks (19 Nov): Britney's speech bubble + big faces on the exit pass screen */
+'.scn-brit{margin:16px auto 6px;max-width:640px;background:#FFF0F6;border:2.5px solid #1b1b1b;border-radius:20px;box-shadow:4px 4px 0 #1b1b1b;padding:14px 14px 16px;color:#1b1b1b}',
+'.scn-brit-k{margin:0 0 6px;font-size:15px}',
+'.scn-brit-row{display:flex;align-items:center;gap:16px;justify-content:center}',
+'.scn-brit-hen{flex:0 0 auto;width:190px;height:190px}',
+'.scn-brit-hen img{width:100%;height:100%;object-fit:contain;display:block}',
+'.scn-brit.rated .scn-brit-hen img{animation:scnBritHop .5s ease}',
+'@keyframes scnBritHop{0%{transform:translateY(0) scale(1)}40%{transform:translateY(-12px) scale(1.06)}100%{transform:translateY(0) scale(1)}}',
+'.scn-brit-say{position:relative;flex:1 1 auto;min-width:0;background:#fff;border:2.5px solid #1b1b1b;border-radius:22px;padding:14px 16px;text-align:left}',
+'.scn-brit-say:before{content:"";position:absolute;left:-14px;top:50%;margin-top:-10px;border:10px solid transparent;border-right:14px solid #1b1b1b;border-left:0}',
+'.scn-brit-say:after{content:"";position:absolute;left:-9px;top:50%;margin-top:-7px;border:7px solid transparent;border-right:10px solid #fff;border-left:0}',
+'.scn-brit-say .q{display:block;font-family:"Chewy",var(--font);font-size:30px;line-height:1.1;color:#A3215B}',
+'.scn-brit-say .a{display:block;margin-top:6px;font-size:16px;font-weight:700;color:#1b1b1b}',
+'.scn-brit .scn-rate{margin-top:12px;gap:10px}',
+'.scn-brit .scn-rate .rate{background:#fff;border:2.5px solid #1b1b1b;border-radius:16px;min-width:92px;padding:8px 10px;font-size:15px;font-weight:800;color:#1b1b1b;display:inline-flex;flex-direction:column;align-items:center;gap:4px}',
+'.scn-brit .scn-rate .rate .ragw{display:block;width:48px;height:48px;font-size:0}',
+'.scn-brit .scn-rate .rate .ragf{width:48px;height:48px;display:block}',
+'.scn-brit .scn-rate .rate > span:not(.ragw){font-size:14px;font-weight:800;color:#1b1b1b;margin-top:2px}',
+'.scn-brit .scn-rate .rate.on{background:#FFE08A;box-shadow:3px 3px 0 #1b1b1b;transform:translateY(-2px)}',
+'.scn-outbtns .scn-tomap{background:#FFD1E3;border:2.5px solid #1b1b1b;color:#1b1b1b;font-weight:800}',
+'@media (max-width:520px){.scn-brit-hen{width:120px;height:120px}.scn-brit-say .q{font-size:24px}.scn-brit-say{padding:10px 12px}.scn-brit .scn-rate .rate{min-width:78px}.scn-outbtns .btn{flex:1 1 100%;justify-content:center;text-align:center}}',
 '.scn-sheet .nck{--nk:#A3215B;--nk-bg:#FFF0F6;--nk-o:#FFFFFF;--nk-line:#1b1b1b;--nk-ink:#1b1b1b;border-color:#1b1b1b;box-shadow:3px 3px 0 #1b1b1b}',
 '.scn-sheet .nck.ok{border-color:#2E7D32;box-shadow:3px 3px 0 #2E7D32}',
 '.scn-sheet .lrn-sub{color:var(--ink)}',
@@ -79850,6 +80023,15 @@ window.SQE_SCENE = function(A){
     return best;
   }
   function leaveBtn(k){ var o = state(k), p = !!o.passed; return '<button type="button" class="scn-leave' + (p ? ' passed' : '') + '" data-scn="leave"><span aria-hidden="true">🚪</span><span>' + (p ? 'Exit quiz passed ✓' : 'Leave the shop') + '<small>' + (p ? 'Take it again any time' : 'Exit quiz: 10 questions, 6 to pass') + '</small></span></button>'; }
+  /* britney-asks (19 Nov): Britney asks how the topic went; her face follows the rating Layla taps (green happy, amber unsure, red sad) */
+  function britAsk(k){
+    var c = window.SQE_CONF ? window.SQE_CONF(k) : null, f = c === 0 ? 'sad' : c === 0.5 ? 'meh' : 'happy';
+    var say = c === 1 ? 'Yay! Green it is. Come on, let\'s go!' : c === 0.5 ? 'Hmm, a bit wobbly. We\'ll come back to it.' : c === 0 ? 'Oh no! Don\'t worry, we\'ll go over it again.' : 'Tap a face:';
+    return '<div class="scn-brit' + (c == null ? '' : ' rated') + '" data-face="' + f + '"><p class="scn-brit-k"><b>You\'re out of the shop!</b> Before you set off on your next journey…</p>' +
+      '<div class="scn-brit-row"><span class="scn-brit-hen"><img src="img/britney/face-' + f + '.webp" alt="Britney the hen looking ' + (f === 'meh' ? 'unsure' : f) + '" width="300" height="300" onerror="this.onerror=null;this.src=\'img/britney/plain.webp\'"></span>' +
+      '<div class="scn-brit-say" role="status"><span class="q">How did you find the topic?</span><span class="a">' + say + '</span></div></div>' +
+      window.SQE_RATE(k) + '</div>';
+  }
   function exitHTML(k){
     var ex = SC.exit, x = A.TBYKEY[k], n = ex.items.length, need = exitNeed(n), right = ex.ans.filter(function(a){ return a && a.ok; }).length;
     var head = '<div class="scn-st"><span class="ico" aria-hidden="true">🚪</span><div><div class="k">Exit quiz · ' + esc(x.t.title) + '</div><h2 id="scn-mt">Leave the shop</h2></div><button type="button" class="scn-x" data-scn="close" aria-label="Close">✕</button></div>';
@@ -79865,9 +80047,9 @@ window.SQE_SCENE = function(A){
       }
       if (pass) return head + '<div class="scn-xres"><div class="big" aria-hidden="true">🏆🚪🎉</div><h2>You passed! Out you go</h2><p class="score">' + right + ' / ' + n + ' (' + Math.round(right / n * 100) + '%)</p><p>The pass mark is ' + need + ' out of ' + n + ' (60%). <b>✓ The Sweet Shop exit quiz is passed.</b></p>' +
         (S().todo && S().todo[k + '|qa'] ? '<p class="small">✓ Model Q&amp;A and quick-fire for this topic are ticked off on Today.</p>' : '') +
-        (window.SQE_RATE ? '<div class="scn-rateq"><p><b>You\'re out of the shop!</b> Before you set off on your next journey, rate this topic:</p>' + window.SQE_RATE(k) + '</div>' : '') +
+        (window.SQE_RATE ? (/[?&]britask=1/.test(location.search) ? britAsk(k) : '<div class="scn-rateq"><p><b>You\'re out of the shop!</b> Before you set off on your next journey, rate this topic:</p>' + window.SQE_RATE(k) + '</div>') : '') + /* britney-asks held until master Britney approved; preview ?britask=1 */
         (function(){ var nx = (window.SQE_NEXT ? window.SQE_NEXT() : {h: '#/home', l: 'Back to Today'}); return '<p class="scn-nextup"><b>What next?</b> ' + (nx.h === '#/home' ? 'Back to Today\'s list.' : 'The next thing on today\'s list.') + '</p>' +
-        '<div class="btns"><a class="btn primary" href="' + nx.h + '">Next: ' + esc(nx.l) + ' ›</a>'; })() + '<a class="btn" href="#/map/' + x.s.id + '">Back to the map 🗺️</a><button type="button" class="btn" data-scn="close">Stay in the shop</button></div></div>';
+        '<div class="btns scn-outbtns"><a class="btn primary" href="' + nx.h + '">Next: ' + esc(nx.l) + ' ›</a>'; })() + '<a class="btn scn-tomap" href="#/palace">🏰 Back to the map</a><button type="button" class="btn" data-scn="close">Stay in the shop</button></div></div>';
       var seen = {}, rev = [];
       ex.items.forEach(function(it, i){ if (ex.ans[i] && ex.ans[i].ok) return; var h = objFor(k, it); if (!h) return; if (!seen[h.id]){ seen[h.id] = {h: h, n: 0}; rev.push(seen[h.id]); } seen[h.id].n++; });
       rev.sort(function(p, q){ return order(k).indexOf(p.h) - order(k).indexOf(q.h); });
@@ -79911,6 +80093,7 @@ window.SQE_SCENE = function(A){
       h += n === N ? leaveBtn(k) : '<p class="scn-lock">🔒 Open all ' + N + ' to unlock the exit quiz: 🚪 Leave the shop (10 questions, 6 to pass).</p>';
       h += '<ol class="scn-list">' + order(k).map(function(hh, i){ var dn = o.open[hh.id]; return '<li class="' + (dn ? 'done' : '') + (hh.id === nx ? ' next' : '') + '"><button type="button" data-scn="obj" data-id="' + esc(hh.id) + '"><span class="n">' + (dn ? '✓' : i + 1) + '</span><span class="t">' + esc(hh.label) + '<small>' + (function(st){ var c = st.filter(function(q){ return q.k !== 'check'; }).length; return c + ' cards' + (c < st.length ? ' + quick check' : ''); })(steps(k, hh)) + (dn ? ' · opened' : hh.id === nx ? ' · next' : '') + '</small></span><span aria-hidden="true">' + esc(hh.icon || '🍬') + '</span></button></li>'; }).join('') + '</ol>';
     }
+    if (!SC.demoDone && /[?&]exitdemo=1\b/.test(location.search)){ SC.demoDone = true; var di = exitPool(k); if (di.length) SC.exit = {k: k, items: di, i: di.length, ans: di.map(function(){ return {ok: true}; }), saved: true}; } /* preview only: ?exitdemo=1 opens the passed exit screen without saving anything */
     h += modalHTML(k);
     return h + '</div>';
   };
@@ -80579,7 +80762,7 @@ function header(route){
 }
 
 var TABS = [
-  ["home","Today","--t1"],["palace",'<span>Cluckington</span><span>Palace</span>',"--t14","two"],["plan","Time|table","--t4"],["syllabus","Syllabus","--t2"],["cartoons","Cartoons","--t5"],["frameworks","Frame|works","--t3"],["questions","Model|Q&A","--t10"],
+  ["home","Today","--t1"],["palace",'<span>Cluckington</span><span>Palace</span>',"--t14","two"],["plan","Timetable","--t4"],["syllabus","Syllabus","--t2"],["cartoons","Cartoons","--t5"],["frameworks","Frameworks","--t3"],["questions","Model|Q&A","--t10"],
   ["quick","Quick|fire","--t11"],["cards","Revision|cards","--t6"],["podcasts","🎧|Podcasts","--t15"],["mock","Mock|exam","--t9"],
   ["hours","Hours|log","--t7"],["progress","Progress","--t8"],["settings","Settings","--t12"]
 ];
@@ -80978,40 +81161,40 @@ var CBA_CHEERS = ["Level complete! Britney would be proud. 🐔", "Nailed it. An
 var CBA_R = 12, CBA_QUICK = 3000, CBA_DAY = 864e5;
 /* shop v3: every prize is for Britney. eat = a daily treat, need = must own that item first */
 var CBA_SHOP = [
-  {id:"corn", n:"Bag of corn", d:"Her favourite snack. Keeps her happy for a day.", p:15, eat:1},
-  {id:"pandan", n:"Pandan roll", d:"A fluffy green Japanese Swiss roll. Pure joy in every bite.", p:25, eat:1},
-  {id:"latte", n:"Strawberry matcha latte", d:"From LIV Cafe, Preston. Britney sips it like a queen.", p:30, eat:1},
-  {id:"cookies", n:"Chicken cookies", d:"Crunchy cookies shaped like little hens. The chickens go wild for them.", p:20, eat:1},
-  {id:"goldcorn", n:"Golden corn", d:"Magic sparkly corn. Britney is much more likely to lay a chick egg on her next 3 fed days.", p:40, boost:3},
-  {id:"crocs", n:"Baby pink Crocs", d:"Comfy pink clogs for her little chicken feet.", p:90},
-  {id:"charms", n:"Chicken Croc charms", d:"Farmyard chicken charms to make her Crocs extra cute.", p:45, need:"crocs"},
-  {id:"socks", n:"Pink chicken socks", d:"Keep her toes toasty on chilly mornings.", p:40},
-  {id:"clawsocks", n:"Chicken claw socks", d:"Black socks with yellow chicken legs and claws. Very fashion.", p:50},
-  {id:"pens", n:"Chick pens", d:"Pens with little chick heads, for writing very important clucks.", p:35},
-  {id:"stickers", n:"Chicken stickers", d:"She sticks them all over her shelf.", p:30},
-  {id:"colouring", n:"Chicken colouring book", d:"Britney colours inside the lines. Mostly.", p:45},
-  {id:"calendar", n:"Fairy Pig Man & Chicken calendar", d:"The 2027 calendar, so she never forgets a revision day.", p:50},
-  {id:"toppers", n:"Chicken cake toppers", d:"A little cake with chickens on top. Party time!", p:55},
-  {id:"plaque", n:"Cluckington Palace sign", d:"A wooden plaque for her home: Welcome to Cluckington Palace.", p:120},
-  {id:"soap", n:"Portable paper soap", d:"Pink paper soap sheets. Clean wings wherever she goes.", p:35},
-  {id:"lamp", n:"Purse light", d:"A mini lamp so she can find things in her bag.", p:40},
-  {id:"sweets", n:"Haribo Friends & Party (Dubai Edition)", d:"Halal travel-edition sweets with a camel on the bag. She's sharing (maybe).", p:45},
-  {id:"tote", n:"Haribo tote bag", d:"A shiny blue Goldbear bag, big enough for all her snacks.", p:80},
-  {id:"cushion", n:"Haribo jelly-baby cushion", d:"A squishy jelly baby for comfy naps.", p:160},
-  {id:"skincare", n:"Beauty of Joseon skincare", d:"To keep Britney's skin glowing.", p:150},
-  {id:"cup", n:"Big lilac cup", d:"A giant cup with a handle and straw. Hydrated hen!", p:110},
-  {id:"coop", n:"Coop", d:"A cosy house for Britney and her flock.", p:150},
-  {id:"player", n:"Record player", d:"Her very own turntable. Records sold separately!", p:250},
-  {id:"rec_ss", n:"Sienna Spiro 'Visitor' record", d:"Britney's go-to for a sing-along.", p:60, need:"player"},
-  {id:"rec_mj", n:"Michael Jackson record", d:"She moonwalks round the farm. Hee-hee!", p:60, need:"player"},
-  {id:"friend", n:"Bolu", d:"A best friend for Britney.", p:200},
-  {id:"bianca", n:"Bianca", d:"A speckled black-and-white hen. Every freckle is a fashion statement.", p:200},
-  {id:"beefy", n:"Beefy", d:"A big stripy hen in black and white. Looks tough, loves cuddles.", p:200},
-  {id:"brucey", n:"Brucey", d:"A grey-blue hen with a rusty-orange neck. Thinks she's in charge.", p:200},
-  {id:"swing", n:"Chicken swing", d:"A wooden swing by the coop. Wheee!", p:70},
-  {id:"nestbox", n:"Cosy nesting box", d:"A snug straw bed. Britney is more likely to lay a chick egg.", p:120},
-  {id:"bonnie", n:"Jiminey the rabbit", d:"A fluffy ginger bunny with floppy ears. A new friend for the chickens.", p:150},
-  {id:"palace", n:"Royal chicken palace", d:"A grand pink palace with towers and gold roofs. The hens move in straight away.", p:500}
+  {id:"corn", n:"Bag of corn", d:"Her favourite snack. Keeps her happy for a day.", p:25, eat:1},
+  {id:"pandan", n:"Pandan roll", d:"A fluffy green Japanese Swiss roll. Pure joy in every bite.", p:40, eat:1},
+  {id:"latte", n:"Strawberry matcha latte", d:"From LIV Cafe, Preston. Britney sips it like a queen.", p:50, eat:1},
+  {id:"cookies", n:"Chicken cookies", d:"Crunchy cookies shaped like little hens. The chickens go wild for them.", p:30, eat:1},
+  {id:"goldcorn", n:"Golden corn", d:"Magic sparkly corn. Britney is much more likely to lay a chick egg on her next 3 fed days.", p:100, boost:3},
+  {id:"crocs", n:"Baby pink Crocs", d:"Comfy pink clogs for her little chicken feet.", p:300},
+  {id:"charms", n:"Chicken Croc charms", d:"Farmyard chicken charms to make her Crocs extra cute.", p:150, need:"crocs"},
+  {id:"socks", n:"Pink chicken socks", d:"Keep her toes toasty on chilly mornings.", p:125},
+  {id:"clawsocks", n:"Chicken claw socks", d:"Black socks with yellow chicken legs and claws. Very fashion.", p:175},
+  {id:"pens", n:"Chick pens", d:"Pens with little chick heads, for writing very important clucks.", p:100},
+  {id:"stickers", n:"Chicken stickers", d:"She sticks them all over her shelf.", p:100},
+  {id:"colouring", n:"Chicken colouring book", d:"Britney colours inside the lines. Mostly.", p:150},
+  {id:"calendar", n:"Fairy Pig Man & Chicken calendar", d:"The 2027 calendar, so she never forgets a revision day.", p:175},
+  {id:"toppers", n:"Chicken cake toppers", d:"A little cake with chickens on top. Party time!", p:200},
+  {id:"plaque", n:"Cluckington Palace sign", d:"A wooden plaque for her home: Welcome to Cluckington Palace.", p:400},
+  {id:"soap", n:"Portable paper soap", d:"Pink paper soap sheets. Clean wings wherever she goes.", p:125},
+  {id:"lamp", n:"Purse light", d:"A mini lamp so she can find things in her bag.", p:125},
+  {id:"sweets", n:"Haribo Friends & Party (Dubai Edition)", d:"Halal travel-edition sweets with a camel on the bag. She's sharing (maybe).", p:150},
+  {id:"tote", n:"Haribo tote bag", d:"A shiny blue Goldbear bag, big enough for all her snacks.", p:250},
+  {id:"cushion", n:"Haribo jelly-baby cushion", d:"A squishy jelly baby for comfy naps.", p:500},
+  {id:"skincare", n:"Beauty of Joseon skincare", d:"To keep Britney's skin glowing.", p:450},
+  {id:"cup", n:"Big lilac cup", d:"A giant cup with a handle and straw. Hydrated hen!", p:350},
+  {id:"coop", n:"Coop", d:"A cosy house for Britney and her flock.", p:500},
+  {id:"player", n:"Record player", d:"Her very own turntable. Records sold separately!", p:600},
+  {id:"rec_ss", n:"Sienna Spiro 'Visitor' record", d:"Britney's go-to for a sing-along.", p:200, need:"player"},
+  {id:"rec_mj", n:"Michael Jackson record", d:"She moonwalks round the farm. Hee-hee!", p:200, need:"player"},
+  {id:"friend", n:"Bolu", d:"A best friend for Britney.", p:750},
+  {id:"bianca", n:"Bianca", d:"A speckled black-and-white hen. Every freckle is a fashion statement.", p:750},
+  {id:"beefy", n:"Beefy", d:"A big stripy hen in black and white. Looks tough, loves cuddles.", p:750},
+  {id:"brucey", n:"Brucey", d:"A grey-blue hen with a rusty-orange neck. Thinks she's in charge.", p:750},
+  {id:"swing", n:"Chicken swing", d:"A wooden swing by the coop. Wheee!", p:250},
+  {id:"nestbox", n:"Cosy nesting box", d:"A snug straw bed. Britney is more likely to lay a chick egg.", p:400},
+  {id:"bonnie", n:"Jiminey the rabbit", d:"A fluffy ginger bunny with floppy ears. A new friend for the chickens.", p:500},
+  {id:"palace", n:"Royal chicken palace", d:"A grand pink palace with towers and gold roofs. The hens move in straight away.", p:1500}
 ];
 function cbaItem(id){ return CBA_SHOP.filter(function(x){ return x.id === id; })[0]; }
 /* a gold coin (the coin emoji looks like a moon on some Macs) */
@@ -82803,6 +82986,7 @@ function dayTaskList(ds){
 function nextTaskLink(){ try { var L = dayTaskList(ymd()); for (var i = 0; i < L.length; i++){ var z = L[i]; if (taskDone(z)) continue; if (z.x && z.st){ var st = topicSteps(z.x).filter(function(y){ return y.k === z.st; })[0]; if (st && st.h) return {h: st.h, l: String(st.l || "").replace(/<[^>]*>/g, "").trim()}; } return {h: "#/home", l: "Next task on Today"}; } } catch(e){} return {h: "#/home", l: "Back to Today"}; }
 window.SQE_NEXT = nextTaskLink; window.SQE_RAGFACES = function(r){ try { ragFaces(r); } catch(e){} };
 /* 23:50 Monnie: rate the topic right on the "out of the shop" screen (same buttons as the topic page; ticks the rating task) */
+window.SQE_CONF = function(k){ try { var r = trec(k); return r && r.conf != null ? r.conf : null; } catch(e){ return null; } }; /* britney-asks: the topic's current RAG rating (1, 0.5, 0 or null) */
 window.SQE_RATE = function(k){ try { return '<div class="btns scn-rate" style="justify-content:center">' + CONF.slice().reverse().map(function(c){ var cur = trec(k) && trec(k).conf === c.v; return '<button class="rate' + (cur ? " on" : "") + '" data-act="trate" data-k="' + k + '" data-v="' + c.v + '">' + c.e + '<span>' + esc(c.l) + '</span></button>'; }).join("") + '</div>'; } catch(e){ return ''; } };
 function mockDoneOn(ds){ return S.mocks.some(function(r){ return r && r.d === ds && r.mock; }); }
 function taskDone(z){
@@ -82822,20 +83006,13 @@ function dayFedOK(ds){ var g = gameS(); return !!(g.fed[ds] || g.unl[ds]) || day
    who grows into the adult hen after GROW_FED fed days. Hunger only counts once she has hatched:
    0 days missed = fine, 1 = sad, 2 = really sad, 3 = on death's door, 4+ = very ill until she buys medicine (Britney never dies).
    A day counts as fed if she was fed, if feed was unlocked that day (Britney helps herself), or if it had no tasks. */
-var GROW_FED = 5, EGG = {id:"egg", n:"Britney's egg", d:"A real chicken egg. Britney is inside, waiting to meet you!", p:30},
-  INCUB = {id:"incubator", n:"Incubator and heat lamp", d:"Keeps the egg warm and cosy so Britney can hatch.", p:60},
+var GROW_FED = 5, EGG = {id:"egg", n:"Britney's egg", d:"A real chicken egg. Britney is inside, waiting to meet you!", p:50},
+  INCUB = {id:"incubator", n:"Incubator and heat lamp", d:"Keeps the egg warm and cosy so Britney can hatch.", p:100},
   MED = {id:"medicine", n:"Medicine", d:"Chicken medicine to make Britney well again."};
 function anyFullDay(){ var g = gameS(); return Object.keys(g.full).length > 0; }
-/* medicine costs what one full day of revision earns: every step on the next study day's list plus the full-day bonus */
-function medPrice(){
-  var p = buildPlan(), t = ymd(), last = p.days.length ? p.days[p.days.length - 1].d : t;
-  for (var ds = t, i = 0; ds <= last && i < 200; ds = addDays(ds, 1), i++){
-    var l = dayTaskList(ds); if (!l.length) continue;
-    var sum = COIN.dayFull; l.forEach(function(z){ sum += STEP_COINS[z.kind] || 3; });
-    return {p:sum, d:ds};
-  }
-  return {p:85, d:""};
-}
+/* medicine: a fixed price (20 Nov: was "one full day of revision", which changed daily). See proposals/shop-prices.md */
+var MED_PRICE = 150;
+function medPrice(){ return {p:MED_PRICE, d:""}; }
 /* INCUBATOR POLICY: after buying the incubator, Britney's egg hatches once INCUB_DAYS study days (days with tasks where at
    least half were done) have been completed, counting the day it was bought. Old saves that already hatched are left alone. */
 var INCUB_DAYS = 3;
@@ -82889,7 +83066,7 @@ function henNeed(){
   if (L.stage === "none") return {it:EGG, p:EGG.p, ok:L.canEgg, why:L.canEgg ? "" : "Locked: first tick off every task on one day's to-do list."};
   if (L.stage === "egg") return L.incub ? null : {it:INCUB, p:INCUB.p, ok:true, why:""};
   if (L.away) return null;
-  if (L.ill){ var mp = medPrice(); return {it:MED, p:mp.p, ok:true, why:"", sub:"one full day of revision"}; }
+  if (L.ill){ var mp = medPrice(); return {it:MED, p:mp.p, ok:true, why:""}; }
   return null;
 }
 /* REVIVE POLICY: medicine makes her well and happy straight away (and counts as today's feed). Change only here. */
@@ -83018,7 +83195,7 @@ function henMood(L){
   if (L.stage === "egg" && L.incub) return {m:"egg", cls:"ok", e:"🥚", l:"in the incubator", t:"Britney's egg is warm in the incubator. She hatches in " + plural(L.left, "study day") + ": days where you do at least half your tasks."};
   if (L.stage === "egg") return {m:"egg", cls:"ok", e:"🥚", l:"still an egg", t:"Britney's egg is here! It needs to be kept warm. Buy the incubator and heat lamp (" + INCUB.p + " coins) and she hatches."};
   if (L.away) return {m:"away", cls:"ok", e:"🏪", l:"At Bert's Butchers", t:bossS().cap.ransom ? "Bert has Britney in his shop window and wants a " + BOSS_RANSOM + "-coin ransom to give her back. Keep earning coins!" : "Bert the butcher has taken Britney to his shop! Win a rescue round to bring her home. Her feeding is paused while she's away."};
-  if (L.ill) return {m:"ill", cls:"ill", e:"🤒", l:"Very ill", t:"Britney is very sick and won't make it without medicine. Food alone can't fix this. Medicine costs " + medPrice().p + " coins (one full day of revision)."};
+  if (L.ill) return {m:"ill", cls:"ill", e:"🤒", l:"Very ill", t:"Britney is very sick and won't make it without medicine. Food alone can't fix this. Medicine costs " + medPrice().p + " coins."};
   if (L.fed){
     var tr = ({cookies:"Chicken cookies! Crunch crunch. ", pandan:"That pandan roll was sooo good! ", latte:"A strawberry matcha latte from LIV Cafe! I feel so fancy. ", corn:"Mmm, corn for pudding! "})[cbaAte(cc.lastAte) ? cc.lastAte : ""] || "";
     return {m:"happy", cls:"happy", e:"😊", l:"Happy and full", t:tr + (L.stage === "chick" ? "Cheep cheep! Thank you for my breakfast. " + plural(Math.max(1, L.grow), "more fed day") + " and I'll be a big hen!" : "Thank you for my breakfast! I'm full and very happy. Shall we learn something?")};
@@ -83079,7 +83256,7 @@ var NEED_PICS = {
   incubator: '<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M30 3v6" stroke="#8A8F98" stroke-width="1.6"/><path d="M24 9h12l-2 5h-8z" fill="#E5383B" stroke="#B3272A" stroke-width="1"/><path d="M26.5 14l-6 9M30 14v9M33.5 14l4 7" stroke="#FFB347" stroke-width="1.2" opacity=".7" stroke-dasharray="2 1.5"/><ellipse cx="20" cy="28" rx="16" ry="4" fill="#FFE8A3" opacity=".7"/><path d="M5 28a15 12 0 0 1 30 0z" fill="#D8F1FF" opacity=".7" stroke="#8EC7E8" stroke-width="1.3"/><path d="M9 24a11 9 0 0 1 6-6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/><path d="M20 15.5c-3.6 0-6 5-6 9.5h12c0-4.5-2.4-9.5-6-9.5z" fill="#E9C9A0" stroke="#C49A66" stroke-width="1"/><rect x="3" y="27.5" width="34" height="8" rx="2.5" fill="#F4A6C3" stroke="#D97AA0" stroke-width="1.2"/><circle cx="10" cy="31.5" r="1.6" fill="#7BD389"/><rect x="15" y="30" width="12" height="3" rx="1" fill="#2A2622"/><text x="21" y="32.6" text-anchor="middle" font-size="2.8" font-family="Arial,sans-serif" font-weight="700" fill="#7BD389">37.5°</text></svg>',
   medicine: '<svg viewBox="0 0 40 40" aria-hidden="true"><rect x="13" y="3" width="12" height="6" rx="1.5" fill="#fff" stroke="#9AA4B2" stroke-width="1.2"/><path d="M12 9h14v3c3 1.6 4 4 4 7v14a3 3 0 0 1-3 3H11a3 3 0 0 1-3-3V19c0-3 1-5.4 4-7z" fill="#C46A2F" stroke="#8F4718" stroke-width="1.2"/><rect x="10" y="19" width="18" height="12" rx="1.5" fill="#fff"/><path d="M17.5 21.5h3v3h3v3h-3v3h-3v-3h-3v-3h3z" fill="#E5383B" transform="translate(0 -1)"/><path d="M11.5 14c1-1.5 2.5-2.2 4-2.4" fill="none" stroke="#F2B184" stroke-width="1.4" stroke-linecap="round"/><path d="M27 37l9-6" stroke="#B8BEC8" stroke-width="2" stroke-linecap="round"/><ellipse cx="36.5" cy="30.5" rx="2.6" ry="1.8" fill="#D6DBE2" stroke="#9AA4B2" stroke-width=".8"/></svg>'
 };
-function needPic(id){ var src = SHOPIMG[id]; if (src) return '<img class="prizeimg" src="' + esc(src) + '" alt="" loading="lazy">'; return NEED_PICS[id] || ""; }
+function needPic(id){ var src = (id === "medicine" && /[?&]med2=1/.test(location.search)) ? "img/kit/medicine2.webp" : SHOPIMG[id]; /* new medicine pic awaiting Monnie OK */ if (src) return '<img class="prizeimg" src="' + esc(src) + '" alt="" loading="lazy">'; return NEED_PICS[id] || ""; }
 function henPic(L, m, extra){
   if (L.stage === "none" || L.away) return cbaNest('');
   if (L.stage === "egg") return cbaNest(cbaEgg("wob"));
@@ -83105,7 +83282,7 @@ function feedPanel(where){
     btn = '<a class="btn primary" href="#/boss">' + (bc.ransom ? 'Ransom note' : brs.can ? '🗝️ Rescue her' : 'Bert\'s shop') + '</a>';
   } else if (L.ill){
     btn = '<a class="btn primary" href="#/palace">💊 Medicine: ' + nd.p + ' coins</a>';
-    line = '<b>Britney is very ill.</b> Feeding alone won\'t cure her: she needs medicine (' + nd.p + ' coins, one full day of revision).';
+    line = '<b>Britney is very ill.</b> Feeding alone won\'t cure her: she needs medicine (' + nd.p + ' coins).';
     if (g.fed[t]) line += ' She has had her feed today.';
     else if (c.n && c.d >= c.need || !c.n) btn = '<button class="btn feedbtn" data-act="feed">🌾 Feed her</button>' + btn;
   } else if (g.fed[t]) btn = '<span class="fedok">✓ ' + esc(nm) + ' is fed today</span>';
