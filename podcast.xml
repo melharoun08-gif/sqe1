@@ -429,5 +429,71 @@
    <itunes:episodeType>full</itunes:episodeType>
    <description>Contract 3: Intention, certainty and capacity. SQE1 revision episode.</description>
   </item>
+  <item>
+   <title>Tort 1: Negligence: duty of care and breach</title>
+   <guid isPermaLink="false">sqe1-tort/negligence</guid>
+   <pubDate>Mon, 02 Nov 2026 20:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/tort-01-negligence.m4a" length="19689504" type="audio/x-m4a"/>
+   <itunes:duration>00:26:55</itunes:duration>
+   <itunes:season>5</itunes:season>
+   <itunes:episode>1</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Tort 1: Negligence: duty of care and breach. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Tort 2: Causation and remoteness</title>
+   <guid isPermaLink="false">sqe1-tort/causation-remoteness</guid>
+   <pubDate>Mon, 02 Nov 2026 21:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/tort-02-causation-remoteness.m4a" length="17665157" type="audio/x-m4a"/>
+   <itunes:duration>00:24:09</itunes:duration>
+   <itunes:season>5</itunes:season>
+   <itunes:episode>2</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Tort 2: Causation and remoteness. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Tort 3: Pure economic loss and negligent misstatement</title>
+   <guid isPermaLink="false">sqe1-tort/economic-loss</guid>
+   <pubDate>Mon, 02 Nov 2026 22:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/tort-03-economic-loss.m4a" length="18060368" type="audio/x-m4a"/>
+   <itunes:duration>00:24:41</itunes:duration>
+   <itunes:season>5</itunes:season>
+   <itunes:episode>3</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Tort 3: Pure economic loss and negligent misstatement. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Tort 4: Psychiatric harm</title>
+   <guid isPermaLink="false">sqe1-tort/psychiatric-harm</guid>
+   <pubDate>Mon, 02 Nov 2026 23:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/tort-04-psychiatric-harm.m4a" length="14371078" type="audio/x-m4a"/>
+   <itunes:duration>00:19:38</itunes:duration>
+   <itunes:season>5</itunes:season>
+   <itunes:episode>4</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Tort 4: Psychiatric harm. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Tort 5: Employers' primary liability</title>
+   <guid isPermaLink="false">sqe1-tort/employers-liability</guid>
+   <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/tort-05-employers-liability.m4a" length="11438486" type="audio/x-m4a"/>
+   <itunes:duration>00:15:38</itunes:duration>
+   <itunes:season>5</itunes:season>
+   <itunes:episode>5</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Tort 5: Employers' primary liability. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Tort 6: Vicarious liability</title>
+   <guid isPermaLink="false">sqe1-tort/vicarious-liability</guid>
+   <pubDate>Tue, 03 Nov 2026 01:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/tort-06-vicarious-liability.m4a" length="20093007" type="audio/x-m4a"/>
+   <itunes:duration>00:27:28</itunes:duration>
+   <itunes:season>5</itunes:season>
+   <itunes:episode>6</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Tort 6: Vicarious liability. SQE1 revision episode.</description>
+  </item>
  </channel>
 </rss>

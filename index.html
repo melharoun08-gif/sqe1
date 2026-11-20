@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120052108";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120052350";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -100415,7 +100415,13 @@ window.SQE_PODCASTS = {
  "ls/financial-services": {file: "podcasts/ls-06-financial-services.m4a", mins: 23},
  "ls/funding-private-cfa-dba": {file: "podcasts/ls-07-funding-private-cfa-dba.m4a", mins: 24},
  "ls/funding-legal-aid-tpf-lei": {file: "podcasts/ls-08-funding-legal-aid-tpf-lei.m4a", mins: 26},
- "ls/transparency-client-care": {file: "podcasts/ls-09-transparency-client-care.m4a", mins: 24}
+ "ls/transparency-client-care": {file: "podcasts/ls-09-transparency-client-care.m4a", mins: 24},
+  "tort/negligence": {file: "podcasts/tort-01-negligence.m4a", mins: 27},
+  "tort/causation-remoteness": {file: "podcasts/tort-02-causation-remoteness.m4a", mins: 24},
+  "tort/economic-loss": {file: "podcasts/tort-03-economic-loss.m4a", mins: 25},
+  "tort/psychiatric-harm": {file: "podcasts/tort-04-psychiatric-harm.m4a", mins: 20},
+  "tort/employers-liability": {file: "podcasts/tort-05-employers-liability.m4a", mins: 16},
+  "tort/vicarious-liability": {file: "podcasts/tort-06-vicarious-liability.m4a", mins: 27}
 };
 
 ;
@@ -101621,6 +101627,10 @@ window.SQE_JOURNEY = function (A) {
             }).join('') + "</g>"; };
             s += L.mode === 'phone' ? zz(apt(L, 'zoo', .30, .3), -1) + zz(apt(L, 'zoo', .83, .34), 1) : zz(apt(L, 'zoo', .30, .06), -1) + zz(apt(L, 'zoo', .83, .13), 1);
         }
+        {
+            var Z = natBox(L, 'zoo'), fs = Z.h * .085;
+            s += "<text class=\"jpl\" x=\"".concat(f1(Z.x + .487 * Z.w), "\" y=\"").concat(f1(Z.y + .445 * Z.h), "\" font-size=\"").concat(f1(fs), "\" fill=\"#E2231A\" style=\"fill:#E2231A\" stroke=\"#111\" stroke-width=\"").concat(f1(fs * .09), "\" paint-order=\"stroke\" stroke-linejoin=\"round\" letter-spacing=\"").concat(f1(fs * .04), "\">ZOO</text>");
+        } /* 05:18 Monnie: stop 5's arch banner just says ZOO */
         return "<g class=\"jlife jlifez\" aria-hidden=\"true\" pointer-events=\"none\">".concat(s, "</g>");
     }
     /* ---------- map-motion-nature (20 Nov, Monnie): the aquarium's big fish swim and wag their tails, the big balloons float in the breeze,
@@ -109646,7 +109656,7 @@ window.SQE_TOWN = function(A){
     var rec = bertS()[s.id], back = '<a class="btn" href="#/town/butcher">Back to the shop</a>';
     var n = bertSize(s);
     if (!n) return '<div class="bcard"><h2>' + esc(s.title) + ' test</h2><p>Bert is still writing this test. Check back soon.</p><div class="btns">' + back + '</div></div>';
-    return '<div class="bcard town-bert"><img src="img/boss/bert-run.webp" alt="Bert the butcher" width="612" height="800"><div><h2>' + esc(s.title) + ': Bert\'s test</h2><div class="bspeech">"' + n + ' questions on ' + esc(s.title) + '. Get ' + Math.ceil(n * BERT_PASS) + ' right to pass, or that hen of yours is coming back to my shop!"</div>' +
+    return '<div class="bcard town-bert"><img src="img/boss/bert-run.webp" alt="Bert the butcher" width="612" height="800"><div><h2>' + esc(s.title) + ': Bert\'s test</h2><div class="bspeech">"' + n + ' questions on ' + esc(s.title) + '. Get ' + Math.ceil(n * BERT_PASS) + ' right to pass."</div>' +
       (rec ? '<p class="small">Your best so far: <b>' + rec.best + '%</b>' + (rec.passed ? ' (passed)' : '') + '.</p>' : '') + '<div class="btns"><button type="button" class="btn primary" data-town="btstart" data-s="' + s.id + '">Start the test</button>' + back + '</div></div></div>';
   }
   function bertItem(q){ return {text: '<div class="town-q notes">' + md(q.q) + '</div>', opts: q.o.map(function(o){ return inl(o); }), a: q.a, why: md(q.e || ''), lab: ''}; }
@@ -109818,11 +109828,9 @@ window.SQE_TOWN = function(A){
 (function(){
 
 /* ===== Mum and Dad's annoying things (placeholders: Monnie will send the real lines). One line every 5 seconds, in this order. ===== */
-var MOUNT_PARENT_LINES = [
-  "Have you done your revision yet?",
-  "Is that chicken in the house again?",
-  "When I was your age...",
-  "Tidy your room!"
+var MOUNT_PARENT_LINES = [  /* Monnie 20 Nov 05:21: [who, line]; each bubble comes out of the one speaking */
+  ["baba", "You can't sit on your arse!"],
+  ["mama", "Go to sleep, I've turned the heating on."]
 ];
 var PARENT_MS = 5000;
 
@@ -109874,17 +109882,18 @@ window.SQE_MOUNT = function(A){
     '.mount-crocs.l{left:-6%}.mount-crocs.r{right:-8%}' +
     '.mount-cup{position:absolute;right:-26%;top:38%;width:42%}.mount-cup img,.mount-cup svg{display:block;width:100%;height:auto}' +
     /* Mum and Dad */
-    '.mount-parents{position:absolute;left:66%;bottom:34%;width:10%;transform:translateX(-50%);z-index:3;pointer-events:none}' +
+    '.mount-parents{position:absolute;left:66%;bottom:30%;width:11.6%;transform:translateX(-50%);z-index:3;pointer-events:none}' + /* Mama as tall as Layla, Baba 20% taller (Monnie 05:21) */
     /* Monnie 20 Nov 04:48: Mama and Baba animated, as two separate layers cut from the same picture (no redraw) */
-    '.mount-parents .mp-pair{position:relative;width:100%;aspect-ratio:537/600}' +
+    '.mount-parents .mp-pair{position:relative;width:100%;aspect-ratio:11.6/14.64}' +
     '.mount-parents .mp-pair img{position:absolute;bottom:0;height:100%;width:auto;transform-origin:50% 100%}' +
-    '.mount-parents .mp-baba{left:0;animation:mpbaba 2.6s ease-in-out infinite}' +
-    '.mount-parents .mp-mama{right:0;animation:mpmama 2.2s ease-in-out infinite .4s}' +
-    '@keyframes mpbaba{0%,100%{transform:rotate(-3deg)}25%{transform:translateY(-4%) rotate(0)}50%{transform:rotate(3deg)}75%{transform:translateY(-4%) rotate(0)}}' +
-    '@keyframes mpmama{0%,100%{transform:rotate(3deg)}20%{transform:translateY(-7%) rotate(0)}40%{transform:rotate(-3deg)}60%{transform:translateY(-7%) rotate(0) scaleX(-1)}80%{transform:rotate(3deg) scaleX(-1)}90%{transform:rotate(3deg)}}' +
-    '.mount-bubble{position:absolute;bottom:100%;right:30%;margin-bottom:6px;background:#fff;border:2px solid #3B2F1E;border-radius:14px;padding:4px 9px;font-weight:700;font-size:clamp(10px,1.25vw,16px);line-height:1.2;color:#3B2F1E;width:max-content;max-width:min(240px,32vw);text-align:left;box-shadow:0 2px 0 rgba(0,0,0,.12);transition:opacity .25s}' +
+    '.mount-parents .mp-baba{left:0;animation:mpbaba 7s ease-in-out infinite}' +
+    '.mount-parents .mp-mama{right:0;animation:mpmama 6s ease-in-out infinite 1.5s}' +
+    '@keyframes mpbaba{0%,100%{transform:rotate(-1.5deg)}50%{transform:rotate(1.5deg) translateY(-1%)}}' +
+    '@keyframes mpmama{0%,100%{transform:rotate(1.5deg)}50%{transform:rotate(-1.5deg) translateY(-1%)}}' +
+    '.mount-bubble{position:absolute;bottom:100%;right:auto;margin-bottom:6px;background:#fff;border:2px solid #3B2F1E;border-radius:14px;padding:4px 9px;font-weight:700;font-size:clamp(10px,1.25vw,16px);line-height:1.2;color:#3B2F1E;width:max-content;max-width:min(240px,32vw);text-align:left;box-shadow:0 2px 0 rgba(0,0,0,.12);transition:opacity .25s}' +
     '.mount-bubble:after{content:"";position:absolute;right:16px;bottom:-9px;border:8px solid transparent;border-top-color:#3B2F1E;border-bottom:0}' +
     '.mount-bubble.fade{opacity:0}' +
+    '.mount-bubble.mpb-baba{left:-30%}.mount-bubble.mpb-baba:after{right:auto;left:22%}.mount-bubble.mpb-mama{left:40%}.mount-bubble.mpb-mama:after{right:auto;left:22%}' +
     /* the shelf */
     '.mount-shelf{position:absolute;left:22.5%;bottom:47%;z-index:2;display:flex;flex-direction:column;gap:0}' +
     '.mount-shelf .row{display:flex;align-items:flex-end;gap:.25vw;padding:0 .5vw;min-height:1em;border-bottom:clamp(3px,.55vw,8px) solid #A8743F;box-shadow:0 2px 0 #6B4A22}' +
@@ -109924,12 +109933,13 @@ window.SQE_MOUNT = function(A){
   function given(id){ return mst().given[id] === A.ymd() && A.cbaAte(id); }
   function pic(id, cls){ return '<span class="' + cls + '" title="' + esc(A.cbaItem(id) ? A.cbaItem(id).n : id) + '">' + A.prizePic(id) + '</span>'; }
   function shelfRows(ids, per){ var rows = []; for (var i = 0; i < ids.length; i += per) rows.push(ids.slice(i, i + per)); return rows.map(function(r){ return '<div class="row">' + r.map(function(id){ return pic(id, 'it'); }).join('') + '</div>'; }).join(''); }
-  function parentLine(){ var n = MOUNT_PARENT_LINES.length; return n ? MOUNT_PARENT_LINES[Math.floor(Date.now() / PARENT_MS) % n] : ''; }
+  function parentPair(){ var n = MOUNT_PARENT_LINES.length; return n ? MOUNT_PARENT_LINES[Math.floor(Date.now() / PARENT_MS) % n] : ['baba', '']; }
+  function parentLine(){ return parentPair()[1]; }
   /* the bubble changes in place (no re-render) */
   setInterval(function(){
     var b = document.querySelector('.mount-bubble'); if (!b) return;
-    var t = parentLine(); if (b.textContent === t) return;
-    b.classList.add('fade'); setTimeout(function(){ b.textContent = t; b.classList.remove('fade'); }, 250);
+    var pp = parentPair(), t = pp[1]; if (b.textContent === t) return;
+    b.classList.add('fade'); setTimeout(function(){ b.textContent = t; b.className = 'mount-bubble mpb-' + pp[0]; }, 250);
   }, 500);
 
   function joyHTML(){
@@ -109964,10 +109974,10 @@ window.SQE_MOUNT = function(A){
     h += '<div class="mount-garden mood-' + esc(m.cls) + '"><img class="mount-bg" src="img/scene/mount-garden.webp" alt="The Mount: a garden with a lawn, a round stone patio, a path, two benches and a chicken coop" width="2752" height="1536">';
     var onShelf = SHELF.filter(function(id){ return o[id] && A.cbaItem(id) && (id.indexOf('rec_') !== 0 || o.player); });
     if (onShelf.length) h += '<div class="mount-shelf" aria-label="Britney\'s shelf">' + shelfRows(onShelf, 8) + '<div class="legs"><i></i><i></i></div></div>';
-    if (o.parents || o.mum || o.dad) h += '<div class="mount-parents" title="Mama and Baba"><div class="mp-pair" role="img" aria-label="Mama and Baba"><img class="mp-baba" src="img/souvenir/baba.webp" alt=""><img class="mp-mama" src="img/souvenir/mama.webp" alt=""></div><span class="mount-bubble" aria-live="polite">' + esc(parentLine()) + '</span></div>';
+    if (o.parents || o.mum || o.dad) h += '<div class="mount-parents" title="Mama and Baba"><div class="mp-pair" role="img" aria-label="Mama and Baba"><img class="mp-baba" src="img/souvenir/baba.webp" alt=""><img class="mp-mama" src="img/souvenir/mama.webp" alt=""></div><span class="mount-bubble mpb-' + parentPair()[0] + '" aria-live="polite">' + esc(parentLine()) + '</span></div>';
     h += '<div class="mount-layla" title="Layla"><img src="img/layla-walk-1.webp" alt="Layla" width="163" height="300">' +
       (o.crocs ? '<span class="mount-crocs l">' + CROC + '</span><span class="mount-crocs r">' + CROC + '</span>' : '') +
-      (o.cup ? '<span class="mount-cup" title="Big lilac cup">' + A.prizePic('cup') + '</span>' : '') + '<span class="mount-tag">Layla</span></div>';
+      (o.cup ? '<span class="mount-cup" title="Big lilac cup">' + A.prizePic('cup') + '</span>' : '') + '</div>'; /* no "Layla" name label (Monnie 05:21) */
     var who = [];
     Object.keys(SPOTS).forEach(function(id){
       if (!o[id]) return;
