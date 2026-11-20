@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120200211";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120200912";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -4451,18 +4451,32 @@ details.cardsubj > ul.cardtopics{margin-top:6px!important}
 @keyframes jrbreath{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.014)}}
 @media (prefers-reduced-motion:reduce){.jsv .jpair .jrtt,.jsv .jpair .jrtr,.jsv .jpair .jrbr{animation:none!important}.jsv .jpair .jrtt{opacity:0}}
 
-/* PERF (anim-speed thread, 20 Nov): on the Peckham map the little moving things are now drawn with the map instead of
-   each getting its own GPU layer (hundreds of stacked layers over the tall map made it judder at ~35fps).
-   Same motion, same look: 'add' onto a base of none/0 gives exactly the animated value; the glows and stars fade
-   their fill instead of the whole shape (identical for a filled shape with no outline). Delete this block to undo. */
-@keyframes jm-glow-fo{0%,100%{fill-opacity:1}30%{fill-opacity:.82}55%{fill-opacity:.95}70%{fill-opacity:.78}}
-@keyframes jm-twinkle-fo{0%,100%{fill-opacity:1}50%{fill-opacity:.35}}
-.jsv .jglow{animation-name:jm-glow-fo}
-.jsv .jstar{animation-name:jm-twinkle-fo}
-.jsv svg :is(.jsunr,.jwh,.jcloud,.jrf,.jwh-c,.jwh-sw,.jsway,.jfish,.jnswim,.jnwag,.jnbal,.jnflow,.jnfoam,.jnparrot,.jbfly,.jbflap,.jnflap,.jclk-m,.jclk-s,.jflag,.jring,.jbm1,.jbm2,.jbm3,.jtf2,.jbert-f1,.jbert-f2,.jbert-b,.jzb,.jzt,.japple,.jplanez,.jnbird,.jnote,.jbf){animation-composition:add}
+/* PERF (anim-speed thread, 20 Nov): the Peckham map juddered (~35-40fps) because the sun, clouds, felt-tip tiles and
+   Bert's frames are drawn FIRST, and each moving one became its own GPU layer, which forced the whole tall map on top
+   of it into extra full-size layers. These few now animate a registered custom property (--pvt / --pvo0 / --pvo1)
+   that feeds transform/opacity: identical motion and timing (same durations, delays and steps), but no layers.
+   Keyframes are copies of jm-spin / jm-cloud / jtf2 / jbert-*: if you change those, change the -pv copy too.
+   Only active once extras.js has registered the properties ([data-pv] on <html>) and never under reduced motion. */
+@media (prefers-reduced-motion:no-preference){
+@keyframes jm-spin-pv{0%{--pvt:rotate(0deg)}100%{--pvt:rotate(360deg)}}
+@keyframes jm-cloud-pv{0%{--pvt:translateX(-30px)}100%{--pvt:translateX(30px)}}
+@keyframes jtf2-pv{0%{--pvo0:0}70%{--pvo0:1}88%{--pvo0:0}100%{--pvo0:0}}
+@keyframes jbert-c-pv{0%{--pvo1:1}50%{--pvo1:0}82%{--pvo1:1}}
+@keyframes jbert-b-pv{0%{--pvo0:0}58%{--pvo0:1}60.5%{--pvo0:0}}
+@keyframes jbert-f1-pv{0%{--pvo0:0}64.00%{--pvo0:1}66.86%{--pvo0:0}69.71%{--pvo0:1}72.57%{--pvo0:0}75.43%{--pvo0:1}78.28%{--pvo0:0}80%{--pvo0:0}}
+@keyframes jbert-f2-pv{0%{--pvo0:0}64.00%{--pvo0:0}66.86%{--pvo0:1}69.71%{--pvo0:0}72.57%{--pvo0:1}75.43%{--pvo0:0}78.28%{--pvo0:1}80%{--pvo0:0}}
+[data-pv] .jsv .jsunr{animation-name:jm-spin-pv;transform:var(--pvt)}
+[data-pv] .jsv .jcloud{animation-name:jm-cloud-pv;transform:var(--pvt)}
+[data-pv] .jsv .jtf2{animation-name:jtf2-pv;opacity:var(--pvo0)}
+[data-pv] .jsv .jbert-c{animation-name:jbert-c-pv;opacity:var(--pvo1)}
+[data-pv] .jsv .jbert-b{animation-name:jbert-b-pv;opacity:var(--pvo0)}
+[data-pv] .jsv .jbert-f1{animation-name:jbert-f1-pv;opacity:var(--pvo0)}
+[data-pv] .jsv .jbert-f2{animation-name:jbert-f2-pv;opacity:var(--pvo0)}
+}
 /* /PERF anim-speed */
 .jsv .jswrig .jrf{filter:brightness(.72)}
+.jsv .jsw-bob{animation:none!important} /* 19:36: no bobbing, the rig walks */
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
-<script src="js/d-2ac77036df.js"></script><script src="js/c-77b6d057d8.js"></script><script>(function(){var L=window.SQE_LATE;if(!L)return;function go(n){var s=document.createElement("script");s.src="js/l-0a08f68334.js";s.onerror=function(){if(s.parentNode)s.parentNode.removeChild(s);if(n<2){setTimeout(function(){go(n+1);},1500);return;}L.failed=1;var c=L.cb.splice(0);for(var i=0;i<c.length;i++)try{c[i]();}catch(e){}};document.body.appendChild(s);}go(0);})();</script></body></html>
+<script src="js/d-2ac77036df.js"></script><script src="js/c-5b76393c31.js"></script><script>(function(){var L=window.SQE_LATE;if(!L)return;function go(n){var s=document.createElement("script");s.src="js/l-0a08f68334.js";s.onerror=function(){if(s.parentNode)s.parentNode.removeChild(s);if(n<2){setTimeout(function(){go(n+1);},1500);return;}L.failed=1;var c=L.cb.splice(0);for(var i=0;i<c.length;i++)try{c[i]();}catch(e){}};document.body.appendChild(s);}go(0);})();</script></body></html>
