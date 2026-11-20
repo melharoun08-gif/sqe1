@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120150245";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120150853";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -4149,6 +4149,10 @@ details.podsubj[open] .podchev{transform:rotate(-135deg);margin-top:6px}
 .jsv .jpair.jmoving .jlw1{animation:jl8-m1 .36s step-end infinite!important}.jsv .jpair.jmoving .jlw1F{animation:jl8-m2 .36s step-end infinite!important}
 .jsv .jpair.jmoving :is(.jlw2,.jlw3,.jlwj,.jlw2F,.jlw3F,.jlw4){animation:none!important;opacity:0!important}
 @keyframes jl8-m1{0%{opacity:1}50%{opacity:0}100%{opacity:1}}@keyframes jl8-m2{0%{opacity:0}50%{opacity:1}100%{opacity:0}}
+/* 15:05 Monnie: walking up the map she is seen from the back (jback), legs swapping */
+.jsv .jpair :is(.jlwB1,.jlwB2){opacity:0!important;animation:none!important}
+.jsv .jpair.jmoving.jback :is(.jlw1,.jlw1F,.jlw2,.jlw3,.jlwj,.jlw2F,.jlw3F,.jlw4){animation:none!important;opacity:0!important}
+.jsv .jpair.jmoving.jback .jlwB1{animation:jl8-m1 .36s step-end infinite!important}.jsv .jpair.jmoving.jback .jlwB2{animation:jl8-m2 .36s step-end infinite!important}
 @media (prefers-reduced-motion:reduce){.jsv .jpair :is(.jlw1F,.jlw2,.jlw3,.jlwj,.jlw2F,.jlw3F,.jlw4){animation:none!important;opacity:0!important}.jsv .jpair .jlw1{animation:none!important;opacity:1!important}}
 
 /* QA 14:36: Britney held out behind him in his fist, clear of his apron, so she never looks see-through */
@@ -4197,6 +4201,9 @@ details.podsubj[open] .podchev{transform:rotate(-135deg);margin-top:6px}
 .grab .bcarry{animation:bshow 0s .95s forwards}
 .grab .bfeath{animation:bgone 0s .95s forwards}
 .layout.v-cards .main{padding-bottom:240px}
+/* room for her "Beaker" bubble when she stops by the shop */
+.bhandback{--stopw:255px}
+@media (max-width:560px){.bhandback{--stopw:150px}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -110381,10 +110388,10 @@ window.SQE_JOURNEY = function (A) {
         var BAG = shopToday() || /[?&]bag=1/.test(qs()), MV = function (u) { return f < 0 ? u.replace(/\.webp$/, u.indexOf('layla-front-bag') >= 0 ? '-L.webp' : '-M.webp') : u; }, /* 10:00 Monnie (moonwalk): heading left she faces left (mirrored frames, jumper print put back the right way) */ lh = mode === 'phone' ? 240 : 200, lw = lh * (BAG ? 385 / 600 : LAYLA_AR), bh = lh * .42;
         var lx = -lw / 2 - bh * .3 * f, bx = f > 0 ? lx + lw - 8 : lx - bh + 8, x0 = Math.min(lx, bx + bh * (f > 0 ? .07 : .24)), x1 = Math.max(lx + lw, bx + bh * (f > 0 ? .76 : .93));
         return "<ellipse cx=\"".concat(f1((x0 + x1) / 2), "\" cy=\"2\" rx=\"").concat(f1((x1 - x0) / 2 + 4), "\" ry=\"6\" fill=\"#111\" opacity=\".2\"/><g class=\"jhop\">")
-            + (BAG ? "<image href=\"".concat(MV('img/souvenir/layla-front-bag.webp'), "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/>") : "<image class=\"jlw1\" href=\"".concat(MV(LAYLA_IMG), "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/><image class=\"jmo jlw2\" href=\"").concat(MV(LAYLA_IMG2), "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/><image class=\"jmo jlw3\" href=\"").concat(MV(LAYLA_IMG3), "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/>") + [['img/layla-walk-4w.webp', 179, 'jlw4'], ['img/layla-joke.webp', 124, 'jlwj'], ['img/layla-walk-1-F.webp', 163, 'jlw1F'], ['img/layla-walk-2-F.webp', 161, 'jlw2F'], ['img/layla-walk-3-F.webp', 163, 'jlw3F']] /* 05:10 Monnie: her other leg comes forward too (-F = far leg in front) */.map(function (_a) {
+            + (BAG ? "<image href=\"".concat(MV('img/souvenir/layla-front-bag.webp'), "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/>") : "<image class=\"jlw1\" href=\"".concat(MV(LAYLA_IMG), "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/><image class=\"jmo jlw2\" href=\"").concat(MV(LAYLA_IMG2), "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/><image class=\"jmo jlw3\" href=\"").concat(MV(LAYLA_IMG3), "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/>") + [['img/layla-walk-4w.webp', 179, 'jlw4'], ['img/layla-joke.webp', 124, 'jlwj'], ['img/layla-walk-1-F.webp', 163, 'jlw1F'], ['img/layla-walk-2-F.webp', 161, 'jlw2F'], ['img/layla-walk-3-F.webp', 163, 'jlw3F'], ['img/layla-back-walk-1.webp', 107, 'jlwB1'], ['img/layla-back-walk-2.webp', 108, 'jlwB2']] /* 05:10 Monnie: her other leg comes forward too (-F = far leg in front) */.map(function (_a) {
                 var u = _a[0], wd = _a[1], c = _a[2];
                 var wi = lh * wd / 300;
-                return "<image class=\"jmo ".concat(c, "\" href=\"").concat(/joke/.test(u) ? u : MV(u), "\" x=\"").concat(f1(lx + (lw - wi) / 2), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(wi), "\" height=\"").concat(lh, "\"/>");
+                return "<image class=\"jmo ".concat(c, "\" href=\"").concat(/joke|back-walk/.test(u) ? u : MV(u), "\" x=\"").concat(f1(lx + (lw - wi) / 2), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(wi), "\" height=\"").concat(lh, "\"/>");
             }).join(''))
             + (britCaught() ? '' : "<g transform=\"translate(".concat(f1(bx + bh / 2), ",0) scale(").concat(f, ",1)\">").concat(BRIT_FR.map(function (u, k) { var h2 = bh * .86, w2 = h2 * 1.348; return "<g class=\"jbf jbf".concat(k + 1, "\"><g class=\"jbm").concat(k + 1, "\"><image href=\"").concat(u, "\" x=\"").concat(f1(-w2 * .42), "\" y=\"").concat(f1(-h2 * .97), "\" width=\"").concat(f1(w2), "\" height=\"").concat(f1(h2), "\"/></g></g>"); }).join(''), "</g>") + britHungry(bx, bh, f)) + "</g>";
     }
@@ -110656,6 +110663,22 @@ window.SQE_JOURNEY = function (A) {
     /* 13:26 Monnie: tap any numbered stop and Layla walks along the path to it (facing her way, brisk, at most ~3s), then the stop opens.
        Her progress spot is not changed (sqe_map_lastPos untouched); back on the map she stands at her progress spot again. */
     var JGO = null;
+    /* the stop's own entrance: bottom-middle of its picture, in map units (where she walks to after the path, up the grass) */
+    function stopDoor(box, n) {
+        try {
+            var svg = box.querySelector('svg'), art = Array.prototype.slice.call(box.querySelectorAll('a[aria-label^="Stop ' + n + ',"] .jhit')).find(function (e) { return e.getBoundingClientRect().width > 0; });
+            if (!svg || !art)
+                return null;
+            var r = art.getBoundingClientRect(), M = svg.getScreenCTM().inverse(), pt = svg.createSVGPoint();
+            pt.x = r.left + r.width / 2;
+            pt.y = r.top + r.height * .93;
+            var q = pt.matrixTransform(M);
+            return { x: q.x, y: q.y };
+        }
+        catch (e) {
+            return null;
+        }
+    }
     try {
         document.addEventListener('click', function (ev) {
             try {
@@ -110675,13 +110698,13 @@ window.SQE_JOURNEY = function (A) {
                     reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
                 }
                 catch (e) { }
+                if (reduce)
+                    return;
                 var mode_1 = box.classList.contains('jphone') ? 'phone' : 'desk', s0_1 = g_2.__s != null ? g_2.__s : walkAtS(G_1, walkS(G_1, +box.getAttribute('data-pos') || 0)).s, s1_1 = walkS(G_1, +m[1]);
-                if (reduce || Math.abs(s1_1 - s0_1) < 8)
-                    return; /* already there: just go in */
                 ev.preventDefault();
                 if (JGO && !JGO.stop && JGO.href === href_1) {
                     JGO.stop = 1;
-                    g_2.classList.remove('jmoving');
+                    g_2.classList.remove('jmoving', 'jback');
                     location.hash = href_1;
                     return;
                 } /* a second tap skips the walk */
@@ -110690,27 +110713,46 @@ window.SQE_JOURNEY = function (A) {
                 var me_1 = { stop: 0, href: href_1 };
                 JGO = me_1;
                 g_2.classList.add('jmoving');
-                var dir_1 = s1_1 > s0_1 ? 1 : -1, dur_1 = Math.min(2000, Math.max(600, Math.abs(s1_1 - s0_1) / 1.8)), hopLen_1 = mode_1 === 'phone' ? 46 : 36;
-                var t0_2 = 0;
+                var dir_1 = s1_1 > s0_1 ? 1 : -1, d1_1 = Math.abs(s1_1 - s0_1), hopLen_1 = mode_1 === 'phone' ? 46 : 36, hopH_1 = mode_1 === 'phone' ? 9 : 7;
+                var spot_1 = walkAtS(G_1, s1_1), door_1 = stopDoor(box, m[1]) || { x: spot_1.x, y: spot_1.y }, d2_1 = Math.hypot(door_1.x - spot_1.x, door_1.y - spot_1.y);
+                /* one brisk walk: along the path, then up the grass to the entrance (14:58 Monnie: all the way, quickly; seen from the back going up) */
+                var total_1 = d1_1 + d2_1, dur_1 = Math.min(2200, Math.max(700, total_1 / 1.7));
+                var t0_2 = 0, lx_1 = null, ly_1 = null;
+                var face_1 = function (vx, vy) { var up = vy < -Math.abs(vx) * .7; g_2.classList.toggle('jback', up); };
+                var done_1 = function () { g_2.classList.remove('jmoving'); setTimeout(function () { if (!me_1.stop && /^#\/palace/.test(location.hash)) {
+                    me_1.stop = 1;
+                    location.hash = href_1;
+                    setTimeout(function () { return g_2.classList.remove('jback'); }, 400);
+                } }, 180); };
                 var step_1 = function (ts) {
                     if (me_1.stop || !g_2.isConnected)
                         return;
                     if (!t0_2)
                         t0_2 = ts;
-                    var u = Math.min(1, (ts - t0_2) / dur_1), e = u < .5 ? 2 * u * u : 1 - 2 * (1 - u) * (1 - u), s = s0_1 + (s1_1 - s0_1) * e;
-                    var P = walkAtS(G_1, s), dx = G_1.pt(s + 10)[0] - G_1.pt(s - 10)[0];
-                    if (u < 1 && Math.abs(dx) > .5)
-                        P.m = (dx > 0 ? 1 : -1) * dir_1;
-                    {
-                        var q = G_1.pt(s), w = Math.min(1, Math.min(Math.abs(s - s0_1), Math.abs(s1_1 - s)) / 60);
-                        if (u < 1 && w < 1) { }
-                        var k = 1 - w;
-                        if (u < 1) {
-                            P.x = q[0] + (P.x - q[0]) * k;
-                            P.y = q[1] + (P.y - q[1]) * k;
-                        }
-                    } /* 14:42 Monnie: on the drawn path the whole way (stand-off from the path only at the stops) */
-                    placePair(g_2, mode_1, P, u < 1 ? Math.abs(Math.sin(Math.PI * (s - s0_1) / hopLen_1)) * (mode_1 === 'phone' ? 9 : 7) : 0);
+                    var u = Math.min(1, (ts - t0_2) / dur_1), e = u < .5 ? 2 * u * u : 1 - 2 * (1 - u) * (1 - u), dist = e * total_1;
+                    var P;
+                    if (dist <= d1_1 && d1_1 > 0) {
+                        var s = s0_1 + (s1_1 - s0_1) * (dist / d1_1);
+                        P = walkAtS(G_1, s);
+                        var q = G_1.pt(s), w = Math.min(1, Math.min(Math.abs(s - s0_1), Math.abs(s1_1 - s)) / 60), k = 1 - w;
+                        P.x = q[0] + (P.x - q[0]) * k;
+                        P.y = q[1] + (P.y - q[1]) * k; /* on the drawn path between stops */
+                        var dx = G_1.pt(s + 10)[0] - G_1.pt(s - 10)[0];
+                        if (Math.abs(dx) > .5)
+                            P.m = (dx > 0 ? 1 : -1) * dir_1;
+                    }
+                    else {
+                        var f = d2_1 > 0 ? (dist - d1_1) / d2_1 : 1;
+                        P = { x: spot_1.x + (door_1.x - spot_1.x) * f, y: spot_1.y + (door_1.y - spot_1.y) * f, s: s1_1, m: Math.abs(door_1.x - spot_1.x) > 4 ? (door_1.x > spot_1.x ? 1 : -1) : (spot_1.m || 1) };
+                    }
+                    if (lx_1 != null) {
+                        var vx = P.x - lx_1, vy = P.y - ly_1;
+                        if (Math.abs(vx) + Math.abs(vy) > .3)
+                            face_1(vx, vy);
+                    }
+                    lx_1 = P.x;
+                    ly_1 = P.y;
+                    placePair(g_2, mode_1, P, u < 1 ? Math.abs(Math.sin(Math.PI * dist / hopLen_1)) * hopH_1 : 0);
                     try {
                         var r = g_2.getBoundingClientRect(), c = (r.top + r.bottom) / 2, lo = innerHeight * .3, hi = innerHeight * .7;
                         if (c < lo || c > hi)
@@ -110719,13 +110761,8 @@ window.SQE_JOURNEY = function (A) {
                     catch (_) { } /* the page follows her */
                     if (u < 1)
                         requestAnimationFrame(step_1);
-                    else {
-                        g_2.classList.remove('jmoving');
-                        setTimeout(function () { if (!me_1.stop && /^#\/palace/.test(location.hash)) {
-                            me_1.stop = 1;
-                            location.hash = href_1;
-                        } }, 200);
-                    }
+                    else
+                        done_1();
                 };
                 requestAnimationFrame(step_1);
             }
@@ -148463,6 +148500,8 @@ var CSS = [
 '.scn-confetti{position:fixed;inset:0;pointer-events:none;z-index:71;overflow:hidden}',
 '.scn-confetti i{position:absolute;top:-60px;font-style:normal;font-size:30px;animation:scnFall 2.8s linear forwards}',
 '@keyframes scnFall{to{transform:translateY(115vh) rotate(540deg)}}',
+'.scn-msg{min-height:34px;margin:4px 0 6px;padding:5px 14px;border-radius:99px;font-weight:700;font-size:17px;color:#111;background:transparent;border:3px solid transparent;opacity:0;transition:opacity .3s}',
+'.scn-msg.on{opacity:1;background:#B8F2C9;border-color:#1b1b1b}',
 '.scn-toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:72;max-width:calc(100vw - 32px);padding:10px 18px;border:3px solid #1b1b1b;border-radius:99px;background:#B8F2C9;color:#111;font-weight:700;box-shadow:3px 3px 0 #1b1b1b;animation:scnToast 2.6s ease forwards}',
 '@keyframes scnToast{0%{opacity:0;transform:translate(-50%,20px)}10%,80%{opacity:1;transform:translate(-50%,0)}100%{opacity:0}}',
 '.jscenes{display:grid;gap:8px;margin:12px 0 4px}',
@@ -149442,7 +149481,7 @@ window.SQE_SCENE = function(A){
           cands.forEach(function(c, ci){ var r = {x: Math.max(4, Math.min(W - 4 - tw, c.x)), y: Math.max(4, Math.min(H - 4 - th, c.y)), w: tw, h: th}, ov = 0; obst.forEach(function(o){ ov += labOver(r, o); }); var sc = ov * 40 + ci * 30 + Math.abs(r.x - c.x) + Math.abs(r.y - c.y) * 2; if (!best || sc < best.sc){ best = r; best.sc = sc; best.up = !!c.up; } });
           tr = best; up = best.up; }
         else if (ROOMS_ON && !HUB){ var ccx = hr.x + hr.w / 2, bst = null; /* rooms: straight under the object pointing up at it, or above it pointing down if there's no room below */
-          [{x: ccx - tw / 2, y: hr.y + hr.h + 4, up: true}, {x: ccx - tw / 2, y: hr.y - th - 4}].forEach(function(c, ci){ var fits = c.y >= 2 && c.y + th <= H - 2, r = {x: Math.max(4, Math.min(W - 4 - tw, c.x)), y: Math.max(2, Math.min(H - 2 - th, c.y)), w: tw, h: th}, ov = 0; obst.forEach(function(o){ ov += labOver(r, o); }); var sc = (fits ? 0 : 1e6) + ov * 4 + ci * 200; if (!bst || sc < bst.sc){ bst = r; bst.sc = sc; bst.up = !!c.up; } });
+          [{x: ccx - tw / 2, y: hr.y - th - 6}, {x: ccx - tw / 2, y: hr.y + hr.h + 4, up: true}].forEach(function(c, ci){ var fits = c.y >= 2 && c.y + th <= H - 2, r = {x: Math.max(4, Math.min(W - 4 - tw, c.x)), y: Math.max(2, Math.min(H - 2 - th, c.y)), w: tw, h: th}, ov = 0; obst.forEach(function(o){ ov += labOver(r, o); }); var sc = (fits ? 0 : 1e6) + ov * 4 + ci * 200; if (!bst || sc < bst.sc){ bst = r; bst.sc = sc; bst.up = !!c.up; } });
           tr = bst; up = bst.up; lr = 1; }
         else tr = labBest({x: tp.x, y: tp.y, w: tw, h: th}, tw, th, W, H, obst);
         if (lr) j.tag.classList.add(up ? 'up' : 'dn');
@@ -149632,6 +149671,7 @@ window.SQE_SCENE = function(A){
       h += '<div class="scn-prog"><span>' + n + ' of ' + N + ' ' + esc(N === 1 ? sc.treat : sc.treats) + ' opened</span><span class="scn-bar" role="progressbar" aria-valuemin="0" aria-valuemax="' + N + '" aria-valuenow="' + n + '"><i style="width:' + Math.round(n / N * 100) + '%"></i></span>' + (n === N ? '<span>🏆</span>' : '') + '</div>';
       var at = o.at && hsById(sc, o.at);
       if (at && !o.open[at.id] && (o.pos[at.id] || 0) > 0) h += '<button type="button" class="btn primary scn-carry" data-scn="obj" data-id="' + esc(at.id) + '">▶ Carry on: ' + esc(at.label) + ' (card ' + (o.pos[at.id] + 1) + ')</button>';
+      h += '<div class="scn-msg" role="status" aria-live="polite"></div>';
       h += artHTML(sc.inside, o.open, k, 'inside');
       var nx = nextId(k);
       if (!LT) h += '<p class="scn-hint">' + (n === N ? '🏆 You\'ve opened everything! Open any sweet again to go over it. <button type="button" class="lrn-link" data-scn="restock">↺ Restock the shop (start again)</button>' : 'The glowing one is a good next pick, but you can open them in any order.') + '</p>';
@@ -149655,7 +149695,7 @@ window.SQE_SCENE = function(A){
     else if (nw){ var host = document.querySelector('.scn'); if (host) host.appendChild(nw); }
     if (nw){ var sh = nw.querySelector('.scn-sheet'); nw.scrollTop = 0; var f = nw.querySelector('[data-scn=next],[data-scn=eat],[data-scn=enter],[data-scn=xnext],[data-scn=xpick],.nck-o:not([disabled]),.scn-x'); if (f) try { f.focus({preventScroll: true}); } catch(e){} }
   }
-  function toast(t){ [].forEach.call(document.querySelectorAll('.scn-toast'), function(x){ x.parentNode.removeChild(x); }); var d = document.createElement('div'); d.className = 'scn-toast'; d.setAttribute('role', 'status'); d.textContent = SK(t); document.body.appendChild(d); setTimeout(function(){ if (d.parentNode) d.parentNode.removeChild(d); }, 2700); }
+  function toast(t){ [].forEach.call(document.querySelectorAll('.scn-toast'), function(x){ x.parentNode.removeChild(x); }); var slot = document.querySelector('.scn-msg'); if (slot){ slot.textContent = SK(t); slot.classList.remove('on'); void slot.offsetWidth; slot.classList.add('on'); clearTimeout(toast.T); toast.T = setTimeout(function(){ slot.classList.remove('on'); }, 5000); return; } /* Monnie 20 Nov: messages sit in their own line above the picture, never over text */ var d = document.createElement('div'); d.className = 'scn-toast'; d.setAttribute('role', 'status'); d.textContent = SK(t); document.body.appendChild(d); setTimeout(function(){ if (d.parentNode) d.parentNode.removeChild(d); }, 2700); }
   function confetti(){ var d = document.createElement('div'), em = ['🍬', '🍭', '🍫', '⭐', '🎉', '🍡'], SKc = SKIN; d.className = 'scn-confetti' + (SKc ? ' sk' : ''); for (var i = 0; i < 36; i++){ var e = document.createElement('i'); if (SKc) e.innerHTML = STOPSHAPE(i % 3 === 2 ? 'star' : SKc.bul, SKc.c[i % SKc.c.length]); else e.textContent = em[i % em.length]; e.style.left = Math.round(Math.random() * 96) + '%'; e.style.animationDelay = (Math.random() * 1.2).toFixed(2) + 's'; d.appendChild(e); } document.body.appendChild(d); setTimeout(function(){ if (d.parentNode) d.parentNode.removeChild(d); }, 4500); }
   function openObj(k, id){ var o = state(k), h = hsById(SCENES[k], id); if (!h) return; SC.open = id; SC.gate = false; SC.yay = false; SC.exit = null; var n = steps(k, h).length; SC.step = o.open[id] ? 0 : Math.max(0, Math.min(n - 1, o.pos[id] || 0)); o.at = id; try { A.save(); } catch(e){} paint(); }
   function go(k, d){ var h = hsById(SCENES[k], SC.open); if (!h) return; var stp = steps(k, h), n = stp.length, i = SC.step + d; if (i < 0 || i >= n) return; if (d > 0 && ROOMS_ON && stp[SC.step] && stp[SC.step].k === 'check'){ var pd = pendChecks(); if (pd.length){ toast('Answer the quick check first, then play!'); try { pd[0].scrollIntoView({block: 'center', behavior: 'smooth'}); } catch(e){} return; } } SC.step = i; var o = state(k); if (!o.open[h.id]){ o.pos[h.id] = i; try { A.save(); } catch(e){} } paint(); }
@@ -149829,7 +149869,7 @@ window.SQE_TOWN = function(A){
     '.hbi:focus-visible{outline:3px solid #E0457B;outline-offset:3px;border-radius:8px}.hbi.on{z-index:40}.hbi.locked img,.hbi.ate img{filter:grayscale(.7) drop-shadow(0 2px 0 rgba(0,0,0,.18))}' +
     '.hbi .hbtag{position:absolute;left:50%;bottom:0;transform:translate(-50%,72%);background:#fff;border:2px solid #1d1d1b;border-radius:6px;padding:0 5px;font:700 11px/1.3 Calibri,Carlito,Arial,sans-serif;color:#1d1d1b;white-space:nowrap}.hbi .hbtag.own{background:#7FD08B}' +
     '.hbi .hbname{position:absolute;left:50%;top:100%;transform:translate(-50%,26px);background:#1d1d1b;color:#fff;border-radius:8px;padding:3px 9px;font:400 15px/1.2 Calibri,Carlito,Arial,sans-serif;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s;z-index:60}.hbi:hover .hbname,.hbi:focus-visible .hbname{opacity:1}' +
-    '.hbi.till .hbtag{display:none}.hbi.ppl .hbtag,.hbi.hen .hbtag{bottom:auto;top:-4px;transform:translate(-50%,-100%)}.hbi.ppl .hbname,.hbi.hen .hbname{top:auto;bottom:100%;transform:translate(-50%,-30px)}' +
+    '.hbi.till .hbtag{display:none}.hbi[data-i="parents"] .hbtag{left:30%}.hbi.ppl .hbtag,.hbi.hen .hbtag{bottom:auto;top:-4px;transform:translate(-50%,-100%)}.hbi.ppl .hbname,.hbi.hen .hbname{top:auto;bottom:100%;transform:translate(-50%,-30px)}' +
     '.hbin-layla{position:absolute;bottom:.6%;height:27%;width:0;left:var(--b);animation:hbwalk var(--d) linear both;z-index:30;pointer-events:none}@keyframes hbwalk{from{left:var(--a)}to{left:var(--b)}}' +
     '.hbin-layla img{position:absolute;bottom:0;height:100%;width:auto;left:0;transform:translateX(-50%)}.hbin-layla .lb{opacity:0}.hbin-layla .lbr{height:30%;bottom:1%;left:var(--bx);transform:translateX(-50%)}' +
     '.hbin-layla.mv .la{animation:hbsa .46s steps(1,end) var(--n)}.hbin-layla.mv .lb{animation:hbsb .46s steps(1,end) var(--n)}.hbin-layla.mv .lbr{animation:hbhop .23s ease-in-out calc(var(--n) * 2)}' +
@@ -150145,9 +150185,9 @@ window.SQE_TOWN = function(A){
   /* ---------- walk-in shop (Monnie 13:27) ---------- */
   /* where everything sits in the drawing, in % of the picture: rows of shelves (items spread evenly along each), then the family by the till and the hens wandering in the aisle */
   var HB_ROWS = [   /* the drawing's four shelf lines. The till hides the lower two left of x 36, so those rows start further right. Big garden things on the top shelf */
-    {b: 62.8, h: 10, x0: 28.5, x1: 72.5, ids: ['coop', 'palace', 'player', 'rec_ss', 'rec_mj', 'nestbox', 'swing', 'plaque']},
-    {b: 51.2, h: 8.2, x0: 28.5, x1: 72.5, ids: ['pandan', 'latte', 'cookies', 'cup', 'goldcorn', 'corn', 'sweets', 'skincare']},
-    {b: 40.8, h: 8.2, x0: 36.5, x1: 72.5, ids: ['crocs', 'charms', 'socks', 'clawsocks', 'tote', 'soap']},
+    {b: 62.8, h: 10, x0: 28.5, x1: 86, ids: ['coop', 'palace', 'player', 'rec_ss', 'rec_mj', 'nestbox', 'swing', 'plaque']},
+    {b: 51.2, h: 8.2, x0: 28.5, x1: 86, ids: ['pandan', 'latte', 'cookies', 'cup', 'goldcorn', 'corn', 'sweets', 'skincare']},
+    {b: 40.8, h: 8.2, x0: 36.5, x1: 86, ids: ['crocs', 'charms', 'socks', 'clawsocks', 'tote', 'soap']},
     {b: 30.4, h: 8.2, x0: 36.5, x1: 72.5, ids: ['pens', 'stickers', 'colouring', 'calendar', 'toppers', 'lamp']}
   ];
   var HB_SPOT = {   /* id: [x%, bottom%, height%, kind]: the family together at the end of the aisle (Monnie 14:46: Mama and Baba next to Mo; Monnie taller than Yasmin); hens and Jiminey wander under the shelves */
@@ -150189,9 +150229,11 @@ window.SQE_TOWN = function(A){
   }
   function hbFit(){
     var sc = document.getElementById('hbin'); if (!sc) return; sc.style.width = ''; sc.style.marginLeft = '';
-    var pr = sc.parentNode.getBoundingClientRect(), vw = document.documentElement.clientWidth, W = Math.min(1750, vw - 32, Math.max(pr.width, (innerHeight - 90) * 1.778));
+    var pr = sc.parentNode.getBoundingClientRect(), vw = document.documentElement.clientWidth, R = vw - 16, sd = document.querySelector('aside.side');
+    if (sd){ var sr = sd.getBoundingClientRect(); if (sr.width > 0 && sr.height > 0 && sr.left > pr.left) R = Math.min(R, sr.left - 14); }   /* never under the Topics sidebar (QA 15:07) */
+    var W = Math.min(1750, R - 16, Math.max(pr.width, (innerHeight - 90) * 1.778));
     if (W <= pr.width + 2) return;
-    var left = Math.min(Math.max(pr.left + pr.width / 2 - W / 2, 16), vw - 16 - W);
+    var left = Math.min(Math.max(pr.left + pr.width / 2 - W / 2, 16), R - W);
     sc.style.width = W + 'px'; sc.style.marginLeft = (left - pr.left) + 'px';
   }
   addEventListener('resize', function(){ if (document.getElementById('hbin')) hbFit(); });
@@ -152852,8 +152894,8 @@ function cbaTopicHead(x){
   var s = x.s, t = x.t, r = topicRes(s, t);
   return '<div class="card cbahead' + skinOf(s.id) + '"><div class="small muted"><a href="#/syllabus">Syllabus</a> › <a href="#/subject/' + s.id + '">' + esc(s.title) + '</a></div><div class="topichead"><h2>' + esc(t.title) + '</h2><div class="viewtabs">' +
     '<a href="#/topic/' + s.id + '/' + t.id + '">Notes</a>' +
-    (r.ct ? '<a href="#/topic/' + s.id + '/' + t.id + '/cartoon">🖼️ Cartoon</a>' : '<span class="vt-off">🖼️ Cartoon</span>') +
     (r.fw ? '<a href="#/topic/' + s.id + '/' + t.id + '/framework">🗺️ Framework</a>' : '<span class="vt-off">🗺️ Framework</span>') +
+    (r.ct ? '<a href="#/topic/' + s.id + '/' + t.id + '/cartoon">🖼️ Cartoon</a>' : '<span class="vt-off">🖼️ Cartoon</span>') +
     '<a href="#/cba/' + s.id + '/' + t.id + '" class="on">🎯 CBA</a></div></div><p class="small muted" style="margin:6px 0 0">Not up to reading today? CBA teaches you the whole topic one small piece at a time and tests you as you go. Finishing every round counts as reading the notes.</p></div>';
 }
 function viewCBA(r){
@@ -153371,8 +153413,8 @@ VIEW.topic = function(r){
   var h = '<div class="card' + (mode === "notes" && skinOf(s.id) ? skinOf(s.id) + ' swnotes' : '') + (mode === "cartoon" && skinOf(s.id) ? skinOf(s.id) + ' swcart' : '') + '"><div class="small muted">' + (mode === "framework" ? '<a href="#/frameworks">Frameworks</a>' : mode === "cartoon" ? '<a href="#/cartoons">Cartoons</a>' : '<a href="#/syllabus">Syllabus</a>') + ' › <a href="#/subject/' + s.id + '">' + esc(s.title) + '</a></div>' +
     '<div class="topichead"><h2>' + esc(t.title) + '</h2><div class="viewtabs">' +
     '<a href="#/topic/' + s.id + '/' + t.id + '" class="' + (mode === "notes" ? "on" : "") + '">Notes</a>' +
-    (ct ? '<a href="#/topic/' + s.id + '/' + t.id + '/cartoon" class="' + (mode === "cartoon" ? "on" : "") + '">Cartoon</a>' : '<span class="vt-off" title="Coming soon">Cartoon</span>') +
     (fw ? '<a href="#/topic/' + s.id + '/' + t.id + '/framework" class="' + (mode === "framework" ? "on" : "") + '">Framework</a>' : '<span class="vt-off" title="Coming soon">Framework</span>') +
+    (ct ? '<a href="#/topic/' + s.id + '/' + t.id + '/cartoon" class="' + (mode === "cartoon" ? "on" : "") + '">Cartoon</a>' : '<span class="vt-off" title="Coming soon">Cartoon</span>') +
     /* 20 Nov Monnie: CBA tab removed */
     '</div></div>' + body +
     '<div class="btns" style="margin-top:18px;border-top:1px solid var(--line);padding-top:12px">' +
@@ -154362,7 +154404,8 @@ VIEW.cards = function(r){
         rows += op ? '<li style="display:flex;gap:8px;align-items:baseline;padding:3px 0"><a href="#/cards/' + s.id + '/topic/' + t.id + '" style="flex:1">' + (ti + 1) + '. ' + esc(t.title) + '</a>' + (ne ? '<a class="small" href="#/cards/' + s.id + '/topic/' + t.id + '/extra">⭐ ' + ne + ' extra</a>' : '') + '<span class="small">' + (k2 === ids.length ? '🟢 ' : '') + k2 + '/' + ids.length + '</span></li>'
           : '<li style="display:flex;gap:8px;align-items:baseline;padding:3px 0;opacity:.45" title="Unlocks once you\'ve done and rated this topic"><span style="flex:1">🔒 ' + (ti + 1) + '. ' + esc(t.title) + '</span><span class="small">' + ids.length + ' cards</span></li>'; });
       var CT = cardTheme(s.id), cpic = ""; try { cpic = JPIC ? JPIC(s.id) : ""; } catch(e){}
-      h += '<div class="subjrow cardrow crstop"' + (CT ? ' style="' + CT.style.replace(/;--stm1:[^;]*;--stm2:.*$/, "") + '"' : '') + '><span class="cr-t">' + (cpic ? '<span class="cr-pic" aria-hidden="true">' + cpic + '</span>' : '') + '<a href="#/cards/' + s.id + '">' + esc(s.title) + '</a>' + (CT ? '<span class="cr-land">Stop ' + CT.i + ': ' + esc(CT.land) + '</span>' : '') + '</span><span class="cr-ring">' + mring(kn, nk, "var(--good)", kn + " of " + nk + " cards known") + '</span><span class="cr-x small muted">' + nk + ' cards' + '</span></div><ul class="cardtopics" style="list-style:none;margin:0 0 10px;padding:0 0 0 14px">' + rows + '</ul>'; });
+      var co = {}; try { co = JSON.parse(sessionStorage.getItem("sqe_cardopen") || "{}"); } catch(e){}
+      h += '<details class="cardsubj" data-s="' + esc(s.id) + '"' + (co[s.id] ? ' open' : '') + '><summary class="subjrow cardrow crstop"' + (CT ? ' style="' + CT.style.replace(/;--stm1:[^;]*;--stm2:.*$/, "") + '"' : '') + '><span class="cs-chev" aria-hidden="true"></span><span class="cr-t">' + (cpic ? '<span class="cr-pic" aria-hidden="true">' + cpic + '</span>' : '') + '<a href="#/cards/' + s.id + '">' + esc(s.title) + '</a>' + (CT ? '<span class="cr-land">Stop ' + CT.i + ': ' + esc(CT.land) + '</span>' : '') + '</span><span class="cr-ring">' + mring(kn, nk, "var(--good)", kn + " of " + nk + " cards known") + '</span><span class="cr-x small muted">' + nk + ' cards' + '</span></summary><ul class="cardtopics" style="list-style:none;margin:0 0 10px;padding:0 0 0 14px">' + rows + '</ul></details>'; });
   });
   return h + '</div>';
 };
@@ -155683,6 +155726,13 @@ VIEW.podcasts = function(){
   });
   return h;
 };
+/* 20 Nov 15:10 (Monnie): revision-card subjects fold open and shut like the podcasts; remembered while she stays on the site */
+document.addEventListener("toggle", function(e){
+  var d = e.target; if (!d || !d.classList || !d.classList.contains("cardsubj")) return;
+  var co = {}; try { co = JSON.parse(sessionStorage.getItem("sqe_cardopen") || "{}"); } catch(x){}
+  if (d.open) co[d.getAttribute("data-s")] = 1; else delete co[d.getAttribute("data-s")];
+  try { sessionStorage.setItem("sqe_cardopen", JSON.stringify(co)); } catch(x){}
+}, true);
 document.addEventListener("toggle", function(e){
   var d = e.target; if (!d || !d.classList || !d.classList.contains("podsubj")) return;
   var po = {}; try { po = JSON.parse(sessionStorage.getItem("sqe_podopen") || "{}"); } catch(x){}
