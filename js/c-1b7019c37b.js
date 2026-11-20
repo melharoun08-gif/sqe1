@@ -1200,15 +1200,68 @@ window.SQE_JOURNEY = function (A) {
             + "<rect x=\"".concat(f1(bxc - tw / 2), "\" y=\"").concat(f1(ty), "\" width=\"").concat(f1(tw), "\" height=\"").concat(f1(th), "\" rx=\"").concat(f1(th / 2), "\" fill=\"#fff\" stroke=\"#111\" stroke-width=\"3\"/>")
             + "<text class=\"jpl\" x=\"".concat(f1(bxc), "\" y=\"").concat(f1(ty + th * .67), "\" font-size=\"").concat(f1(th * .44), "\">Layla, I'm hungry!</text></g>");
     }
+    /* Monnie 19:36 "make sure every time someone walks it looks normal": one shared jointed walk, the rig the Mount and Hen Bargains use
+       (img/mount/lw-thigh, lw-shin, lw-torso cut from the approved drawing). The hips swing the legs in turn, the knee bends as each leg comes
+       forward, the body rises only enough to keep the lower foot on the ground (no hopping), and the step cycle follows the distance walked so
+       the feet don't slide. Standing still: both feet down, breathing, a wave now and then. With the hb carrier bag it hangs from her front hand. */
+    var RIG = { HIP: [90, 165], KNEE: [120, 220], ANG: 28.6, L: 62.6, STRIDE: 140, W: 179 };
+    function rigLeg(p) { p = ((p % 1) + 1) % 1; return [16 * Math.cos(2 * Math.PI * p), p > .5 ? 42 * Math.sin(Math.PI * (p - .5) / .5) : 3]; }
+    function rigAnkle(a, b) { var r = Math.PI / 180; return RIG.HIP[1] + RIG.L * Math.cos(a * r) + RIG.L * Math.cos((a - b) * r); }
+    function rigSVG(cx, lh, f, bag) {
+        var k = lh / 300, w = RIG.W * k, x = cx - w / 2, y = -lh, im = function (u, c, X, Y, W, H) { return "<image class=\"".concat(c, "\" href=\"").concat(u, "\" x=\"").concat(f1(X), "\" y=\"").concat(f1(Y), "\" width=\"").concat(f1(W), "\" height=\"").concat(f1(H), "\"/>"); }, I = function (u, c) { return im(u, c, x, y, w, lh); };
+        var legs = I('img/mount/lw-thigh.webp', 'jrt jrf') + I('img/mount/lw-shin.webp', 'jrs jrf') + I('img/mount/lw-thigh.webp', 'jrt') + I('img/mount/lw-shin.webp', 'jrs');
+        var B = bag ? (f < 0 ? im('img/map-new/hb-bag-hand-L.webp', 'jrbag', x - 32.5 * k, y + 126 * k, 70 * k, 95.5 * k) : im('img/map-new/hb-bag-hand.webp', 'jrbag', x + 142 * k, y + 126 * k, 70 * k, 95.5 * k)) : '';
+        var T = f < 0 ? '-l' : '-r';
+        return "<g class=\"jrig\" data-cx=\"".concat(f1(cx), "\" data-k=\"").concat(k.toFixed(4), "\" data-x=\"").concat(f1(x), "\"><g class=\"jrbody\"><g class=\"jrlegs\"").concat(f < 0 ? " transform=\"translate(".concat(f1(2 * cx), ",0) scale(-1,1)\"") : '', ">").concat(legs, "</g><g class=\"jrbr\">").concat(I('img/mount/lw-torso' + T + '.webp', 'jrtr') + (bag ? '' : I('img/mount/lw-torso-t' + T + '.webp', 'jrtt')), "</g>").concat(B, "</g></g>");
+    }
+    /* pose the rig: ph = step phase (cycles), moving = legs swing; also picks the back-view frame when walking away up the map */
+    function rigPose(g, ph, moving) {
+        var r = g.querySelector('.jrig');
+        if (!r)
+            return;
+        var k = +r.getAttribute('data-k'), x0 = +r.getAttribute('data-x'), ty = -300 * k;
+        var n = moving ? rigLeg(ph) : [5, 2], fa = moving ? rigLeg(ph + .5) : [-5, 2], hx = x0 + RIG.HIP[0] * k, hy = ty + RIG.HIP[1] * k, kx = x0 + RIG.KNEE[0] * k, ky = ty + RIG.KNEE[1] * k;
+        var tf = function (a, b) { return ["rotate(".concat((RIG.ANG - a).toFixed(2), " ").concat(f1(hx), " ").concat(f1(hy), ")"), "rotate(".concat((RIG.ANG - a).toFixed(2), " ").concat(f1(hx), " ").concat(f1(hy), ") rotate(").concat(b.toFixed(2), " ").concat(f1(kx), " ").concat(f1(ky), ")")]; };
+        var im = r.querySelectorAll('.jrlegs image'), cf = tf(fa[0], fa[1]), cn = tf(n[0], n[1]);
+        im[0].setAttribute('transform', cf[0]);
+        im[1].setAttribute('transform', cf[1]);
+        im[2].setAttribute('transform', cn[0]);
+        im[3].setAttribute('transform', cn[1]);
+        var dy = 277 - Math.max(rigAnkle(n[0], n[1]), rigAnkle(fa[0], fa[1]));
+        r.querySelector('.jrbody').setAttribute('transform', "translate(0,".concat((dy * k).toFixed(2), ")"));
+        var bg = r.querySelector('.jrbag');
+        if (bg)
+            bg.setAttribute('transform', moving ? "rotate(".concat((Math.sin(ph * 2 * Math.PI) * 4).toFixed(2), " ").concat(f1(+bg.getAttribute('x') + (g.getAttribute('data-f') === '-1' ? 48.5 : 21) * k), " ").concat(f1(+bg.getAttribute('y') + 6 * k), ")") : '');
+        g.setAttribute('data-b', moving && Math.floor(ph * 2) % 2 ? '2' : '1');
+        var bk = g.querySelectorAll('.jlwB1,.jlwB2');
+        if (bk.length === 2) {
+            var lift_1 = moving ? -Math.abs(Math.sin(ph * Math.PI * 2)) * 1.2 * k * 3 : 0;
+            bk.forEach(function (e) { return e.setAttribute('transform', lift_1 ? "translate(0,".concat(lift_1.toFixed(2), ")") : ''); });
+        }
+    }
+    /* advance the step cycle by the distance just walked; at most ~2.6 steps a second so a fast walk never turns into spinning legs */
+    function rigEase(u) { var a = .12; return u < a ? u * u / (2 * a * (1 - a)) : u > 1 - a ? 1 - (1 - u) * (1 - u) / (2 * a * (1 - a)) : (u - a / 2) / (1 - a); } /* steady pace with a short start and stop */
+    function rigStep(g, P) {
+        var now = (typeof performance !== 'undefined' ? performance.now() : Date.now()), r = g.querySelector('.jrig'), k = r ? +r.getAttribute('data-k') : 1;
+        var moving = g.classList.contains('jmoving');
+        var ph = g.__ph || 0;
+        if (moving && g.__lp) {
+            var d = Math.hypot(P.x - g.__lp[0], P.y - g.__lp[1]), dt = Math.max(1, Math.min(80, now - g.__lp[2])) / 1000;
+            ph += Math.min(d / (RIG.STRIDE * k), 2.6 * dt);
+        }
+        g.__lp = [P.x, P.y, now];
+        g.__ph = ph;
+        rigPose(g, ph, moving);
+    }
     function pairInner(mode, f) {
-        var BAG = shopToday() || /[?&]bag=1/.test(qs()), MV = function (u) { return f < 0 ? u.replace(/\.webp$/, u.indexOf('layla-front-bag') >= 0 ? '-L.webp' : '-M.webp') : u; }, /* 10:00 Monnie (moonwalk): heading left she faces left (mirrored frames, jumper print put back the right way) */ lh = mode === 'phone' ? 240 : 200, lw = lh * (BAG ? 385 / 600 : LAYLA_AR), bh = lh * .42;
+        var BAG = shopToday() || /[?&]bag=1/.test(qs()), MV = function (u) { return f < 0 ? u.replace(/\.webp$/, u.indexOf('layla-front-bag') >= 0 ? '-L.webp' : '-M.webp') : u; }, /* 10:00 Monnie (moonwalk): heading left she faces left (mirrored frames, jumper print put back the right way) */ lh = mode === 'phone' ? 240 : 200, lw = lh * LAYLA_AR, bh = lh * .42;
         var lx = -lw / 2 - bh * .3 * f, bx = f > 0 ? lx + lw - 8 : lx - bh + 8, x0 = Math.min(lx, bx + bh * (f > 0 ? .07 : .24)), x1 = Math.max(lx + lw, bx + bh * (f > 0 ? .76 : .93));
         return "<ellipse cx=\"".concat(f1((x0 + x1) / 2), "\" cy=\"2\" rx=\"").concat(f1((x1 - x0) / 2 + 4), "\" ry=\"6\" fill=\"#111\" opacity=\".2\"/><g class=\"jhop\">")
-            + (BAG ? "<image href=\"".concat(MV('img/souvenir/layla-front-bag.webp'), "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/>") : "<image class=\"jlw1\" href=\"".concat(MV(LAYLA_IMG), "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/><image class=\"jmo jlw2\" href=\"").concat(MV(LAYLA_IMG2), "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/><image class=\"jmo jlw3\" href=\"").concat(MV(LAYLA_IMG3), "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/>") + [['img/layla-walk-4w.webp', 179, 'jlw4'], ['img/layla-joke.webp', 124, 'jlwj'], ['img/layla-walk-1-F.webp', 163, 'jlw1F'], ['img/layla-walk-2-F.webp', 161, 'jlw2F'], ['img/layla-walk-3-F.webp', 163, 'jlw3F'], ['img/layla-back-walk-1.webp', 107, 'jlwB1'], ['img/layla-back-walk-2.webp', 108, 'jlwB2']] /* 05:10 Monnie: her other leg comes forward too (-F = far leg in front) */.map(function (_a) {
-                var u = _a[0], wd = _a[1], c = _a[2];
-                var wi = lh * wd / 300;
-                return "<image class=\"jmo ".concat(c, "\" href=\"").concat(/joke|back-walk/.test(u) ? u : MV(u), "\" x=\"").concat(f1(lx + (lw - wi) / 2), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(wi), "\" height=\"").concat(lh, "\"/>");
-            }).join(''))
+            + rigSVG(lx + lw / 2, lh, f, BAG) + [['img/layla-back-walk-1.webp', 107, 'jlwB1'], ['img/layla-back-walk-2.webp', 108, 'jlwB2']].map(function (_a) {
+            var u = _a[0], wd = _a[1], c = _a[2];
+            var wi = lh * wd / 300;
+            return "<image class=\"jmo ".concat(c, "\" href=\"").concat(u, "\" x=\"").concat(f1(lx + (lw - wi) / 2), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(wi), "\" height=\"").concat(lh, "\"/>");
+        }).join('')
             + (britCaught() ? '' : "<g transform=\"translate(".concat(f1(bx + bh / 2), ",0) scale(").concat(f, ",1)\">").concat(BRIT_FR.map(function (u, k) { var h2 = bh * .86, w2 = h2 * 1.348; return "<g class=\"jbf jbf".concat(k + 1, "\"><g class=\"jbm").concat(k + 1, "\"><image href=\"").concat(u, "\" x=\"").concat(f1(-w2 * .42), "\" y=\"").concat(f1(-h2 * .97), "\" width=\"").concat(f1(w2), "\" height=\"").concat(f1(h2), "\"/></g></g>"); }).join(''), "</g>") + britHungry(bx, bh, f)) + "</g>";
     }
     function pair(Hn, mode) {
@@ -1398,9 +1451,7 @@ window.SQE_JOURNEY = function (A) {
             g.setAttribute('data-f', P.m);
             g.innerHTML = pairInner(mode, P.m);
         }
-        var h = g.querySelector('.jhop');
-        if (h)
-            h.setAttribute('transform', hop ? "translate(0,".concat(f1(-hop), ")") : '');
+        rigStep(g, P); /* 19:36 Monnie: natural walk, no hopping (hop is ignored) */
     }
     /* put the pair at its spot; when it has moved on since last time, walk it along the path from the old spot with little hops
        (once, when it scrolls into view; not under reduced motion). Preview: ?walkfrom=N (start), ?henstop=N (end); previews never touch storage. */
@@ -1506,6 +1557,9 @@ window.SQE_JOURNEY = function (A) {
     }
     /* Layla's own middle relative to the pair's anchor (Britney stands beside her), so it is LAYLA who lines up with the door */
     function laylaOX(g) { try {
+        var rr = g.querySelector('.jrig');
+        if (rr)
+            return +rr.getAttribute('data-cx');
         var i = g.querySelector('image.jlw1') || g.querySelector('image');
         return +i.getAttribute('x') + (+i.getAttribute('width')) / 2;
     }
@@ -1626,6 +1680,7 @@ window.SQE_JOURNEY = function (A) {
                 if (JGO && !JGO.stop && JGO.href === href_1) {
                     JGO.stop = 1;
                     g_2.classList.remove('jmoving', 'jback');
+                    rigPose(g_2, 0, false);
                     location.hash = href_1;
                     return;
                 } /* a second tap skips the walk */
@@ -1663,7 +1718,7 @@ window.SQE_JOURNEY = function (A) {
                 g_2.__out = null;
                 var D1_1 = same ? 0 : d1;
                 /* one brisk walk: along the path, then up the grass to the entrance (14:58 Monnie: all the way, quickly; seen from the back going up) */
-                var total_1 = d0_1 + D1_1 + d2_1, dur_1 = Math.min(2600, Math.max(1000, total_1 / (mode_1 === "phone" ? 1.1 : 1.5)));
+                var total_1 = d0_1 + D1_1 + d2_1, dur_1 = Math.min(4200, Math.max(900, total_1 / (mode_1 === "phone" ? .27 : .23))); /* 19:36 Monnie: a brisk but natural walking pace, so her steps match the ground */
                 var t0_2 = 0, lx_1 = null, ly_1 = null;
                 var face_1 = function (vx, vy) { var up = vy < -Math.abs(vx) * .7; g_2.classList.toggle('jback', up); };
                 var done_1 = function () { /* 16:12 Monnie: she must keep facing the door as she goes in, so the walking pose (from the back when going up) stays until the page opens */ setTimeout(function () { if (!me_1.stop && /^#\/palace/.test(location.hash)) {
@@ -1671,8 +1726,10 @@ window.SQE_JOURNEY = function (A) {
                     location.hash = href_1;
                     setTimeout(function () { return g_2.classList.remove('jmoving', 'jback'); }, 600);
                 }
-                else
-                    g_2.classList.remove('jmoving', 'jback'); }, 180); };
+                else {
+                    g_2.classList.remove('jmoving', 'jback');
+                    rigPose(g_2, 0, false);
+                } }, 180); };
                 var onSeg_1 = function (L, k, dflt) { var sg = L[L.length - 1]; for (var _i = 0, L_1 = L; _i < L_1.length; _i++) {
                     var z = L_1[_i];
                     if (k <= z[2] + z[3]) {
@@ -1686,7 +1743,7 @@ window.SQE_JOURNEY = function (A) {
                         return;
                     if (!t0_2)
                         t0_2 = ts;
-                    var u = Math.min(1, (ts - t0_2) / dur_1), e = u < .5 ? 2 * u * u : 1 - 2 * (1 - u) * (1 - u);
+                    var u = Math.min(1, (ts - t0_2) / dur_1), e = rigEase(u);
                     var dist = e * total_1, P;
                     if (dist < d0_1) {
                         P = onSeg_1(PRE_1, dist, { x: OUT_1.x, y: OUT_1.y, s: s0_1, m: 1 });
@@ -1775,20 +1832,22 @@ window.SQE_JOURNEY = function (A) {
                     return;
                 io.disconnect();
                 save(to);
-                var dur = Math.min(4000, Math.max(700, 1500 * (to - from))), s0 = P0.s, s1 = walkS(G, to), hopLen = mode === 'phone' ? 46 : 36;
+                var s0 = P0.s, s1 = walkS(G, to), dur = Math.min(4500, Math.max(900, Math.abs(s1 - s0) / (mode === 'phone' ? .27 : .23))), hopLen = mode === 'phone' ? 46 : 36;
                 var t0 = 0;
                 var step = function (ts) {
                     if (!g.isConnected)
                         return;
                     if (!t0)
                         t0 = ts;
-                    var u = Math.min(1, (ts - t0) / dur), e = u < .5 ? 2 * u * u : 1 - 2 * (1 - u) * (1 - u);
+                    var u = Math.min(1, (ts - t0) / dur), e = rigEase(u);
                     var P = walkAtS(G, s0 + (s1 - s0) * e);
                     placePair(g, mode, P, u < 1 ? Math.abs(Math.sin(Math.PI * (P.s - s0) / hopLen)) * (mode === 'phone' ? 9 : 7) : 0);
                     if (u < 1)
                         requestAnimationFrame(step);
-                    else
+                    else {
                         g.classList.remove('jmoving');
+                        rigPose(g, 0, false);
+                    }
                 };
                 g.classList.add('jmoving');
                 requestAnimationFrame(step);

@@ -46771,7 +46771,9 @@ window.SQE_PODCASTS = {
   "wills/income-cgt-administration": {file: "podcasts/wills-14-income-cgt-administration.m4a", mins: 26},
   "accounts/framework-client-money": {file: "podcasts/accounts-01-framework-client-money.m4a", mins: 20},
   "accounts/client-account-withdrawals": {file: "podcasts/accounts-02-client-account-withdrawals.m4a", mins: 22},
-  "trusts/certainties": {file: "podcasts/trusts-01-certainties.m4a", mins: 29}
+  "trusts/certainties": {file: "podcasts/trusts-01-certainties.m4a", mins: 29},
+  "contract/mistake-duress-ui-illegality": {file: "podcasts/contract-09-mistake-duress-ui-illegality.m4a", mins: 29},
+  "property/title": {file: "podcasts/property-02-title.m4a", mins: 16}
 };
 
 ;
