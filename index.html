@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120032426";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120032708";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -2845,6 +2845,20 @@ html.dfv-on{overflow:hidden}
 @keyframes jbert-c{0%{opacity:1}50%{opacity:0}82%{opacity:1}}
 @keyframes jbert-b{0%{opacity:0}58%{opacity:1}60.5%{opacity:0}}
 @media (prefers-reduced-motion:reduce){.jsv .jbert-c,.jsv .jbert-b{animation:none;opacity:0}}
+
+/* map-layla4 (Monnie 20 Nov 03:25): twice as fast (0.7s a pose) and more moves: each pose now comes with a little bob, sway, hop, step, tilt or bounce. 14 slots, joke pose 2 in 14 (once per 6 others). */
+.jsv .jlw1{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl4-jlw1 9.8s step-end infinite,jl4-move 9.8s ease-in-out infinite}
+@keyframes jl4-jlw1{0.000%{opacity:1}7.143%{opacity:0}28.571%{opacity:1}35.714%{opacity:0}50.000%{opacity:1}57.143%{opacity:0}78.571%{opacity:1}85.714%{opacity:0}100%{opacity:1}}
+.jsv .jlw2{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl4-jlw2 9.8s step-end infinite,jl4-move 9.8s ease-in-out infinite}
+@keyframes jl4-jlw2{0.000%{opacity:0}7.143%{opacity:1}14.286%{opacity:0}35.714%{opacity:1}42.857%{opacity:0}57.143%{opacity:1}64.286%{opacity:0}85.714%{opacity:1}92.857%{opacity:0}100%{opacity:0}}
+.jsv .jlw3{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl4-jlw3 9.8s step-end infinite,jl4-move 9.8s ease-in-out infinite}
+@keyframes jl4-jlw3{0.000%{opacity:0}14.286%{opacity:1}21.429%{opacity:0}64.286%{opacity:1}71.429%{opacity:0}100%{opacity:0}}
+.jsv .jlw4{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl4-jlw4 9.8s step-end infinite,jl4-move 9.8s ease-in-out infinite}
+@keyframes jl4-jlw4{0.000%{opacity:0}21.429%{opacity:1}28.571%{opacity:0}71.429%{opacity:1}78.571%{opacity:0}100%{opacity:0}}
+.jsv .jlwj{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl4-jlwj 9.8s step-end infinite,jl4-move 9.8s ease-in-out infinite}
+@keyframes jl4-jlwj{0.000%{opacity:0}42.857%{opacity:1}50.000%{opacity:0}92.857%{opacity:1}100%{opacity:0}}
+@keyframes jl4-move{0.000%{transform:translateY(0)}3.571%{transform:translateY(-5px)}7.136%{transform:translateY(0)}7.143%{transform:rotate(0)}9.286%{transform:rotate(-4deg)}12.143%{transform:rotate(4deg)}14.279%{transform:rotate(0)}14.286%{transform:translateY(0)}17.143%{transform:translateY(-14px)}20.000%{transform:translateY(0)}21.421%{transform:translateY(0)}21.429%{transform:translateX(-4px)}25.000%{transform:translateX(4px) translateY(-3px)}28.564%{transform:translateX(-4px)}28.571%{transform:rotate(0)}31.429%{transform:rotate(5deg)}34.286%{transform:rotate(5deg)}35.707%{transform:rotate(0)}35.714%{transform:translateY(0)}39.286%{transform:translateY(-5px)}42.850%{transform:translateY(0)}42.857%{transform:scale(1,1)}44.643%{transform:scale(1.04,.95)}46.786%{transform:scale(.97,1.04) translateY(-8px)}49.993%{transform:scale(1,1)}50.000%{transform:translateX(-4px)}53.571%{transform:translateX(4px) translateY(-3px)}57.136%{transform:translateX(-4px)}57.143%{transform:translateY(0)}60.000%{transform:translateY(-14px)}62.857%{transform:translateY(0)}64.279%{transform:translateY(0)}64.286%{transform:rotate(0)}66.429%{transform:rotate(-4deg)}69.286%{transform:rotate(4deg)}71.421%{transform:rotate(0)}71.429%{transform:translateY(0)}75.000%{transform:translateY(-5px)}78.564%{transform:translateY(0)}78.571%{transform:translateY(0)}81.429%{transform:translateY(-14px)}84.286%{transform:translateY(0)}85.707%{transform:translateY(0)}85.714%{transform:rotate(0)}88.571%{transform:rotate(5deg)}91.429%{transform:rotate(5deg)}92.850%{transform:rotate(0)}92.857%{transform:rotate(0)}94.286%{transform:rotate(-5deg)}95.714%{transform:rotate(5deg)}97.143%{transform:rotate(-5deg)}98.571%{transform:rotate(5deg)}99.993%{transform:rotate(0)}}
+@media (prefers-reduced-motion:reduce){.jsv .jlw1{animation:none!important;opacity:1;transform:none}.jsv .jlw2,.jsv .jlw3,.jsv .jlw4,.jsv .jlwj{animation:none!important;opacity:0}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
