@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120143115";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120143558";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -149097,7 +149097,7 @@ window.SQE_SCENE = function(A){
       '.stsk .bu-how b{color:var(--sk2)}.stsk .scn-sheet.bul-on .lrn-fact{background:var(--skp);border-left-color:var(--sk1)}' +
       '.stsk .scn-confetti i svg,.scn-confetti.sk i svg{width:30px;height:30px}' +
       '.stsk .scn-hook.speech{height:auto!important;white-space:nowrap;line-height:1.15;transform:translateY(-100%) rotate(var(--rot,0deg));background:#fff;color:#1b1b1b;border:.2cqw solid #1b1b1b;border-radius:1.4cqw;box-shadow:.2cqw .25cqw 0 #1b1b1b;text-shadow:none;padding:.25cqw .8cqw;font-family:"Gochi Hand","Sour Gummy",cursive;font-weight:400;font-size:max(1.25cqw,13px)!important;width:auto!important;min-width:0;z-index:3}.stsk .scn-hook.speech::after{background:#fff;border-right:.2cqw solid #1b1b1b;border-bottom:.2cqw solid #1b1b1b;box-shadow:none}' +
-      '.stsk .scn-board{color:#1D3557;text-shadow:none;font-family:"Gochi Hand","Delius",cursive}.stsk .scn-board[data-scn-board$="dr-case-management"],.stsk .scn-board[data-scn-board$="dr-costs"]{color:#fff;text-shadow:0 1px 2px #1b1b1b}' +
+      '.stsk .scn-board{padding:calc(var(--bpy,1cqw) * 1.5) calc(var(--bpx,1cqw) * 2);color:#1D3557;text-shadow:none;font-family:"Gochi Hand","Delius",cursive}.stsk .scn-board[data-scn-board$="dr-case-management"],.stsk .scn-board[data-scn-board$="dr-costs"]{color:#fff;text-shadow:0 1px 2px #1b1b1b}' +
       '.stsk .scn-hook.tag{transform:translate(-50%,-100%) rotate(var(--rot,0deg));height:auto!important;width:auto!important;padding:.08cqw .3cqw;line-height:1.05;background:rgba(255,253,242,.86);border-width:.12cqw;box-shadow:.12cqw .12cqw 0 #1b1b1b}' +
       '.stsk .bk-on .bu-wr{display:block}.stsk .bk-on .bu-body{border-radius:14px}.stsk .bk-on .bu-body::before{display:none}' +
       '.stsk .bk-popcorn .bu-body{border-radius:44% 56% 40% 60%/58% 42% 58% 42%;background:radial-gradient(circle at 12% 30%,#FFE27A 0 7px,transparent 8px),radial-gradient(circle at 88% 72%,#FFD24A 0 6px,transparent 7px),radial-gradient(circle at 70% 14%,#FFE9A0 0 6px,transparent 7px),#FFFBEF}' +
@@ -149251,8 +149251,8 @@ window.SQE_SCENE = function(A){
   /* memory hooks: hand-lettered words drawn onto objects in the picture (rooms v3), e.g. "Alfie" on the door. Text lives in code, never in the drawing. */
   function hooksHTML(view){ var H = view && view.hooks; if (!ROOMS_ON || !H || !H.length || !view.img) return ''; var r = view.ratio || 16 / 9;
     return H.map(function(o){ var t = String(o.text || ''), n = t.split('\n').length, fs = Math.min(o.h * 0.62 / n / r, o.w * 1.6 / Math.max(4, Math.max.apply(null, t.split('\n').map(function(l){ return l.length; }))));
-      var sty = o.style || 'tag'; if (SKIN && sty === 'speech' && !SKSPEECH[SKROOM]) sty = 'tag'; var skt = SKIN && sty === 'tag'; if (skt) fs = Math.min(fs, 0.8);
-      return '<span class="scn-hook ' + esc(sty) + '" aria-hidden="true" style="left:' + (skt ? +o.x + o.w / 2 : o.x) + '%;top:' + (skt ? +o.y + +o.h : o.y) + '%;width:' + o.w + '%;height:' + o.h + '%;font-size:' + fs.toFixed(2) + 'cqw;--rot:' + (+o.rot || 0) + 'deg">' + esc(t).replace(/\n/g, '<br>') + '</span>'; }).join(''); }
+      var sty = o.style || 'tag'; if (SKIN && sty === 'speech' && !SKSPEECH[SKROOM]) sty = 'tag'; var skt = SKIN && sty === 'tag'; if (skt) fs = Math.min(fs, 0.95);
+      return '<span class="scn-hook ' + esc(sty) + '" aria-hidden="true" style="left:' + (skt ? +o.x + o.w / 2 : o.x) + '%;top:' + (skt ? (/^BRITNEY/.test(t) ? +o.y - 1 : +o.y + +o.h) : o.y) + '%;width:' + o.w + '%;height:' + o.h + '%;font-size:' + (skt ? 'max(' + fs.toFixed(2) + 'cqw,9.5px)' : fs.toFixed(2) + 'cqw') + ';--rot:' + (+o.rot || 0) + 'deg">' + esc(t).replace(/\n/g, '<br>') + '</span>'; }).join(''); }
   function boardLines(k){ return (k && BOARD_HOOKS[k.split('/')[1]]) || null; }
   /* 20 Nov: rooms whose new picture has no drawn chalkboard get a painted board behind the words so they stay readable */
   var BOARD_PLAIN = {'shareholders-minority':1, 'partnerships':1, 'corporate-insolvency':1, 'insolvency-clawback-priority':1, 'personal-insolvency':1, 'income-tax':1, 'cgt':1, 'corporation-tax':1, 'vat-iht-bpr':1};
