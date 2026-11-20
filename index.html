@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120141235";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120141715";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -4085,6 +4085,14 @@ details.podsubj[open] .podchev{transform:rotate(-135deg);margin-top:6px}
 @media (max-width:640px){.flash.revealed.blen-l .inner{min-height:440px}.flash.revealed.blen-xl .inner{min-height:540px}.land-real:not(.land-tkt) .flash.revealed.blen-l .inner{min-height:640px}.land-real:not(.land-tkt) .flash.revealed.blen-xl .inner{min-height:740px}.land-real.land-amazon-forest .flash.revealed.blen-l .inner,.land-real.land-aquarium .flash.revealed.blen-l .inner,.land-real.land-farm .flash.revealed.blen-l .inner{min-height:760px}.land-real.land-amazon-forest .flash.revealed.blen-xl .inner,.land-real.land-aquarium .flash.revealed.blen-xl .inner,.land-real.land-farm .flash.revealed.blen-xl .inner{min-height:860px}}
 .land-real:not(.land-tkt) .flash .face.back.blen-s .notes{font-size:1.22em}
 .land-real.land-amazon-forest .flash .face.back{--pb:27%;padding-left:21%!important;padding-right:15%!important}
+@media (max-width:640px){.flash .inner{min-height:380px}.flash.revealed.blen-l .inner{min-height:520px}.flash.revealed.blen-xl .inner{min-height:640px}}
+
+/* 14:20 (QA pass 1): 900-1100px wide: topic list folded by default; when opened it overlays instead of squeezing the banner */
+@media (min-width:901px) and (max-width:1099.98px){
+ .layout.sidenarrow{grid-template-columns:minmax(0,1fr) 46px}
+ .layout.sidenarrow:not(.sideoff)>.side{position:fixed;right:0;top:0;bottom:0;width:300px;height:100vh;z-index:70;box-shadow:-6px 0 18px rgba(16,41,74,.25)}
+ body:has(.layout.sidenarrow) #podcar{right:46px}
+}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -131386,7 +131394,8 @@ ROOMDATA["dr-pre-action"] = {
 "how": "Each round names one queue: no specific protocol, the Debt Claims protocol or the Personal Injury protocol. Cards float across the box, each with someone in the queue. Tap a card ONLY if that person has NOT done the pre-action steps; let the rest float past. 3 rounds.",
 "rounds": [
 {
-"prompt": "PD-PAC queue (no specific protocol)",
+"prompt": "Round 1: claims with no special protocol (the general Practice Direction on Pre-Action Conduct).",
+"tag": "GENERAL RULES",
 "items": [
 {
 "t": "A claimant who never sent a letter before claim",
@@ -131421,7 +131430,8 @@ ROOMDATA["dr-pre-action"] = {
 ]
 },
 {
-"prompt": "Debt Claims queue (a business v an individual)",
+"prompt": "Round 2: the Debt Claims protocol (a business claiming from an individual).",
+"tag": "DEBT CLAIMS",
 "items": [
 {
 "t": "A creditor who gave the debtor only 14 days",
@@ -131451,7 +131461,8 @@ ROOMDATA["dr-pre-action"] = {
 ]
 },
 {
-"prompt": "Personal Injury queue",
+"prompt": "Round 3: the Personal Injury protocol.",
+"tag": "INJURY",
 "items": [
 {
 "t": "An insurer who has taken five months with no answer on liability",
@@ -136064,7 +136075,8 @@ ROOMDATA["dr-responding"] = {
 "how": "The particulars were deemed served on 1 March. Each round gives today's date. Cards float across the box, each with a situation. Tap a card ONLY if default judgment can be requested today; let the rest float past. 3 rounds.",
 "rounds": [
 {
-"prompt": "Today is 20 March",
+"prompt": "Today is 20 March. Tap each case where the claimant can ask for default judgment today.",
+"tag": "20 MARCH",
 "items": [
 {
 "t": "No AoS and no defence filed",
@@ -136099,7 +136111,8 @@ ROOMDATA["dr-responding"] = {
 ]
 },
 {
-"prompt": "Today is 30 March",
+"prompt": "Today is 30 March. Tap each case where the claimant can ask for default judgment today.",
+"tag": "30 MARCH",
 "items": [
 {
 "t": "AoS filed on 10 March, no defence, no extension",
@@ -136134,7 +136147,8 @@ ROOMDATA["dr-responding"] = {
 ]
 },
 {
-"prompt": "Today is 27 April",
+"prompt": "Today is 27 April. Tap each case where the claimant can ask for default judgment today.",
+"tag": "27 APRIL",
 "items": [
 {
 "t": "AoS filed, 28-day extension agreed and notified, still no defence",
@@ -144871,7 +144885,7 @@ ROOMDATA["dr-costs"] = {
 "Nothing extra: he only beat it by £10,000."
 ],
 "a": 0,
-"why": "Britney: \"Ice cream, ice lolly, icing, extra sprinkles!\"",
+"why": "Kwame beat his own offer, so all four consequences apply: interest on the damages at up to 10% above base rate, indemnity costs, interest on those costs, and an extra 10% of the damages (£9,000).",
 "whys": [
 "",
 "the judgment is at least as advantageous as his offer, so the four consequences apply.",
@@ -144962,7 +144976,8 @@ ROOMDATA["dr-costs"] = {
 "how": "Each round gives a result at trial and who is paying this round. Cards float across the box, each with a costs order. Tap a card ONLY if that party pays under that order; let the rest float past. 3 rounds.",
 "rounds": [
 {
-"prompt": "The claimant WINS at trial. Tray: the DEFENDANT pays",
+"prompt": "The claimant won at trial. Tap every costs order that makes the DEFENDANT pay.",
+"tag": "DEFENDANT PAYS",
 "items": [
 {
 "t": "Costs in the case",
@@ -144997,7 +145012,8 @@ ROOMDATA["dr-costs"] = {
 ]
 },
 {
-"prompt": "The claimant LOSES at trial. Tray: the CLAIMANT pays",
+"prompt": "The claimant lost at trial. Tap every costs order that makes the CLAIMANT pay.",
+"tag": "CLAIMANT PAYS",
 "items": [
 {
 "t": "Costs in the case",
@@ -145032,7 +145048,8 @@ ROOMDATA["dr-costs"] = {
 ]
 },
 {
-"prompt": "Mixed results. Tray: the CLAIMANT pays",
+"prompt": "Different outcomes. Tap every costs order that makes the CLAIMANT pay.",
+"tag": "CLAIMANT PAYS",
 "items": [
 {
 "t": "The claimant amends its particulars late: costs of and caused by",
@@ -146247,7 +146264,7 @@ ROOMDATA["dr-appeals"] = {
 "New evidence is allowed if Mr Pike agrees."
 ],
 "a": 0,
-"why": "Couldn't, crucial, credible.",
+"why": "New evidence is allowed only if it could not have been obtained for the trial with reasonable diligence, it would probably have had an important influence on the result, and it is credible.",
 "whys": [
 "",
 "An appeal is a review, not a rehearing, unless a practice direction or the interests of justice require otherwise.",
@@ -148756,7 +148773,7 @@ window.SQE_SCENE = function(A){
     h += '</div>';
     if (p != null){
       var ok = p === st.a;
-      h += '<div class="scn-fb' + (ok ? ' ok' : '') + '" role="status"><b>' + (ok ? '✓ Right! ' : '✗ Not quite. ') + '</b>' + (!ok && st.whys && st.whys[p] ? inl(st.whys[p]) + '<br>' : '') + (ok ? '' : '<b>The answer is ' + L.charAt(s.ord.indexOf(st.a)) + ':</b> ' + inl(st.opts[st.a]) + '<br>') + '<b>Why:</b> ' + inl(st.why || '') + '</div>' +
+      h += '<div class="scn-fb' + (ok ? ' ok' : '') + '" role="status"><b>' + (ok ? '✓ Right! ' : '✗ Not quite. ') + '</b>' + (!ok && st.whys && st.whys[p] ? inl(scap(st.whys[p])) + '<br>' : '') + (ok ? '' : '<b>The answer is ' + L.charAt(s.ord.indexOf(st.a)) + ':</b> ' + inl(st.opts[st.a]) + '<br>') + (st.why ? '<b>Why:</b> ' + inl(scap(st.why)) : '') + '</div>' +
         '<div class="scn-nav"><span></span><button type="button" class="btn primary" data-scn="scnext">' + (s.i + 1 >= n ? 'Finish ›' : 'Next ›') + '</button></div>';
     }
     return h;
@@ -148969,16 +148986,17 @@ window.SQE_SCENE = function(A){
   var BICO = '<span class="bu-ico" aria-hidden="true"><svg viewBox="0 0 92 56"><path d="M24 22 L4 8 Q0 28 4 48 L24 34 Z M68 22 L88 8 Q92 28 88 48 L68 34 Z" fill="#FF2D8A" stroke="#1b1b1b" stroke-width="4" stroke-linejoin="round"/><rect x="20" y="12" width="52" height="32" rx="16" fill="#FFE14D" stroke="#1b1b1b" stroke-width="4"/><path d="M34 14 L28 42 M48 14 L42 42 M62 14 L56 42" stroke="#FF8A3D" stroke-width="4" stroke-linecap="round"/></svg></span>';
   /* per-stop skin: set from the current room or hall key before anything is drawn (VIEW.scene, paint, toasts) */
   var BICO0 = BICO, BSWP0 = BSWP, SKIN = null;
+  function scap(t){ t = String(t || ''); return t.charAt(0).toUpperCase() + t.slice(1); }
   function skCap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
   function skWords(S){ if (S._w) return S._w; var it = S.item, its = S.items, pn = S.potName;
     return S._w = [
       ['Sort onto the trays', S.sort], ['Drag each card onto the right tray, or tap a tray.', 'Drag each card onto the right ' + S.bin + ', or tap a ' + S.bin + '.'],
       ['The jar bursts and sweets fly out.', 'The ' + pn + ' bursts open and ' + its + ' fly out.'],
-      ['into the container', 'into the ' + pn], ['Cards float across the box, each', 'Cards float across, each'], ['Tap a card ONLY if', 'Tap a card into the ' + pn + ' ONLY if'], ['Tap a true sweet before', 'Tap a true ' + it + ' before'],
-      ['Tap a sweet to catch it. True ones go in the jar.', 'Tap a ' + it + ' to catch it. True ones go in the ' + pn + '.'],
+      ['into the container', 'into the ' + pn], ['Cards float across the box, each', 'Cards float across, each'], ['Tap a card ONLY if', 'Tap a card into the ' + pn + ' ONLY if'], ['Tap a true sweet before its fuse runs out', 'Tap a true card before it flies away'], ['Tap a true sweet before', 'Tap a true card before'],
+      ['Tap a sweet to catch it. True ones go in the jar.', 'Tap a card to catch it. True ones go in the ' + pn + '.'],
       ['True! Into the jar it goes.', 'True! Into the ' + pn + ' it goes.'], ['True! In the jar', 'True! In the ' + pn],
-      ['Perfect jar!', 'Perfect catching!'], ['Sweet work!', 'Great work!'], [' true sweets in the jar', ' true ' + its + ' in the ' + pn],
-      ['Sweet: ', skCap(it) + ': '], ['Sweets explosion', skCap(it) + ' explosion'],
+      ['Perfect jar!', 'Perfect catching!'], ['Sweet work!', 'Great work!'], [' true sweets in the jar', ' true cards in the ' + pn], ['before their fuse runs out', 'before they fly away'],
+      ['Sweet: ', 'Card: '], ['Sweets explosion', skCap(it) + ' explosion'],
       ['then eat it!', 'then tick it off!'], ['Done! Eat it', 'Done! Tick it off'], ['Eat it', 'Done'],
       ['You\'ve eaten the whole shop!', 'You\'ve done every spot!'], ['This room\'s sweets are still being made', 'This room is still being built'],
       ['Open any sweet again', 'Open any spot again'], ['Restock the shop (start again)', 'Start this room again'],
@@ -148986,7 +149004,7 @@ window.SQE_SCENE = function(A){
       ['A sweet for your jar.', 'Nice one.'], ['Leave the shop', 'Leave'], ['the shop', 'the ' + (STOPDATA[S.id] && STOPDATA[S.id].hub ? String(STOPDATA[S.id].hub.place || 'room').replace(/^the /, '') : 'room')],
       ['🍬 ', ''], ['🍭 ', ''], ['🍫 ', ''], ['🍡 ', ''], ['🫙 ', ''], ['🍬', ''], ['🍭', ''], ['🍫', ''], ['🍡', ''], ['🫙', '']
     ]; }
-  function skinFor(k){ var sid = k && (STOP_OF[k] || (HUBS[k] && HUBS[k].stop)), S = sid && STOPSKIN[sid] || null; SKIN = S;
+  function skinFor(k){ SKROOM = k ? String(k).split('/')[1] || '' : ''; var sid = k && (STOP_OF[k] || (HUBS[k] && HUBS[k].stop)), S = sid && STOPSKIN[sid] || null; SKIN = S;
     BICO = S ? '<span class="bu-ico" aria-hidden="true">' + STOPSHAPE(S.bul, S.a1).replace('<svg ', '<svg overflow="visible" ') + '</span>' : BICO0; BSWP = S ? '' : BSWP0; return S; }
   function SK(s){ if (!SKIN || typeof s !== 'string') return s; skWords(SKIN).forEach(function(p){ s = s.split(p[0]).join(p[1]); }); return s; }
   /* Fairground burst items (Monnie 13:49: "the popcorns don't look like popcorns"): each ride's burst names its own thing, so every flying card wears two drawn ones */
@@ -149010,6 +149028,7 @@ window.SQE_SCENE = function(A){
   };
   function bkOf(t){ t = String(t || '').toLowerCase(); var ks = ['popcorn', 'coin', 'coconut', 'firework', 'confetti', 'toffee', 'juggling', 'hoop', 'music', 'mirror', 'ghost', 'pinwheel', 'flag', 'photo', 'star'];
     for (var i = 0; i < ks.length; i++) if (t.indexOf(ks[i]) >= 0) return ks[i]; return ''; }
+  var SKSPEECH = {'dr-options': 1, 'dr-disclosure': 1}, SKROOM = '';
   function skRoot(){ return SKIN ? ' stsk stsk-' + SKIN.id + '" style="--sk1:' + SKIN.a1 + ';--sk2:' + SKIN.a2 + ';--skp:' + SKIN.pale : ''; }
   /* stop-scoped copies of every scene style that uses the sweet shop's pinks, with the stop's own colours */
   function skHsl(hex){ var h = hex.slice(1); if (h.length === 3) h = h.replace(/./g, '$&$&'); var r = parseInt(h.substr(0, 2), 16) / 255, g = parseInt(h.substr(2, 2), 16) / 255, b = parseInt(h.substr(4, 2), 16) / 255;
@@ -149040,7 +149059,7 @@ window.SQE_SCENE = function(A){
       '.stsk .gm-bin.flash-ok{background:repeating-linear-gradient(90deg,var(--sk1) 0 16px,#fff 16px 32px) top/100% 17px no-repeat,#B8F2C9}.stsk .gm-bin.flash-no{background:repeating-linear-gradient(90deg,var(--sk1) 0 16px,#fff 16px 32px) top/100% 17px no-repeat,#FFD2C2}' +
       '.stsk .bu-how b{color:var(--sk2)}.stsk .scn-sheet.bul-on .lrn-fact{background:var(--skp);border-left-color:var(--sk1)}' +
       '.stsk .scn-confetti i svg,.scn-confetti.sk i svg{width:30px;height:30px}' +
-      '.stsk .scn-hook.speech{background:#fff;color:#1b1b1b;border:.2cqw solid #1b1b1b;border-radius:1.4cqw;box-shadow:.2cqw .25cqw 0 #1b1b1b;text-shadow:none;padding:.25cqw .8cqw;font-family:"Gochi Hand","Sour Gummy",cursive;font-weight:400;font-size:max(1.25cqw,13px)!important;width:auto!important;min-width:0;z-index:3}.stsk .scn-hook.speech::after{background:#fff;border-right:.2cqw solid #1b1b1b;border-bottom:.2cqw solid #1b1b1b;box-shadow:none}' +
+      '.stsk .scn-hook.speech{height:auto!important;white-space:nowrap;line-height:1.15;transform:translateY(-100%) rotate(var(--rot,0deg));background:#fff;color:#1b1b1b;border:.2cqw solid #1b1b1b;border-radius:1.4cqw;box-shadow:.2cqw .25cqw 0 #1b1b1b;text-shadow:none;padding:.25cqw .8cqw;font-family:"Gochi Hand","Sour Gummy",cursive;font-weight:400;font-size:max(1.25cqw,13px)!important;width:auto!important;min-width:0;z-index:3}.stsk .scn-hook.speech::after{background:#fff;border-right:.2cqw solid #1b1b1b;border-bottom:.2cqw solid #1b1b1b;box-shadow:none}' +
       '.stsk .scn-board{color:#1D3557;text-shadow:none;font-family:"Gochi Hand","Delius",cursive}.stsk .scn-board[data-scn-board$="dr-case-management"],.stsk .scn-board[data-scn-board$="dr-costs"]{color:#fff;text-shadow:0 1px 2px #1b1b1b}' +
       '.stsk .scn-hook.tag{transform:translate(-50%,-100%) rotate(var(--rot,0deg));height:auto!important;width:auto!important;padding:.08cqw .3cqw;line-height:1.05;background:rgba(255,253,242,.86);border-width:.12cqw;box-shadow:.12cqw .12cqw 0 #1b1b1b}' +
       '.stsk .bk-on .bu-wr{display:block}.stsk .bk-on .bu-body{border-radius:14px}.stsk .bk-on .bu-body::before{display:none}' +
@@ -149176,8 +149195,8 @@ window.SQE_SCENE = function(A){
   /* memory hooks: hand-lettered words drawn onto objects in the picture (rooms v3), e.g. "Alfie" on the door. Text lives in code, never in the drawing. */
   function hooksHTML(view){ var H = view && view.hooks; if (!ROOMS_ON || !H || !H.length || !view.img) return ''; var r = view.ratio || 16 / 9;
     return H.map(function(o){ var t = String(o.text || ''), n = t.split('\n').length, fs = Math.min(o.h * 0.62 / n / r, o.w * 1.6 / Math.max(4, Math.max.apply(null, t.split('\n').map(function(l){ return l.length; }))));
-      var skt = SKIN && (o.style || 'tag') === 'tag'; if (skt) fs = Math.min(fs, 0.8);
-      return '<span class="scn-hook ' + esc(o.style || 'tag') + '" aria-hidden="true" style="left:' + (skt ? +o.x + o.w / 2 : o.x) + '%;top:' + (skt ? +o.y + +o.h : o.y) + '%;width:' + o.w + '%;height:' + o.h + '%;font-size:' + fs.toFixed(2) + 'cqw;--rot:' + (+o.rot || 0) + 'deg">' + esc(t).replace(/\n/g, '<br>') + '</span>'; }).join(''); }
+      var sty = o.style || 'tag'; if (SKIN && sty === 'speech' && !SKSPEECH[SKROOM]) sty = 'tag'; var skt = SKIN && sty === 'tag'; if (skt) fs = Math.min(fs, 0.8);
+      return '<span class="scn-hook ' + esc(sty) + '" aria-hidden="true" style="left:' + (skt ? +o.x + o.w / 2 : o.x) + '%;top:' + (skt ? +o.y + +o.h : o.y) + '%;width:' + o.w + '%;height:' + o.h + '%;font-size:' + fs.toFixed(2) + 'cqw;--rot:' + (+o.rot || 0) + 'deg">' + esc(t).replace(/\n/g, '<br>') + '</span>'; }).join(''); }
   function boardLines(k){ return (k && BOARD_HOOKS[k.split('/')[1]]) || null; }
   /* 20 Nov: rooms whose new picture has no drawn chalkboard get a painted board behind the words so they stay readable */
   var BOARD_PLAIN = {'shareholders-minority':1, 'partnerships':1, 'corporate-insolvency':1, 'insolvency-clawback-priority':1, 'personal-insolvency':1, 'income-tax':1, 'cgt':1, 'corporation-tax':1, 'vat-iht-bpr':1};
@@ -153002,7 +153021,10 @@ function sideCards(r){
   });
   return h;
 }
-function sideOff(){ return !!(S.ui && S.ui.sideOff); }
+/* 14:20 (QA pass 1): below 1100px wide the topic list starts folded so the banner keeps its full width; opening it there slides it over the page */
+function sideNarrow(){ return window.innerWidth < 1100 && window.innerWidth > 900; }
+function sideOff(){ if (sideNarrow()) return !(S.ui && S.ui.sideNarrowOn); return !!(S.ui && S.ui.sideOff); }
+(function(){ var was = null, t = 0; window.addEventListener("resize", function(){ clearTimeout(t); t = setTimeout(function(){ var n = sideOff(); if (was !== null && n !== was && typeof render === "function") render(); was = n; }, 200); }); setTimeout(function(){ try { was = sideOff(); } catch(e){} }, 0); })();
 function sidebar(curKey, r){
   if (r && r[0] === "cards") return sideCards(r);
   r = r || [];
@@ -154101,10 +154123,10 @@ VIEW.mock = function(){
   if (MK && !MK.finished) return mockQuestion();
   if (MK && MK.finished) return mockResults();
   var timed = S.mockTimed !== false;
-  var h = '<div class="card"><h2>Mock exam</h2><p class="muted" style="margin:0">Short practice mocks for each paper, plus full timed papers further down. Each short mock mixes every subject on that paper, and the questions stay in the same order every time, so you can retake a mock and compare scores. The real SQE1 (from January 2027) allows 153 minutes for each session of 85 questions, about 1.8 minutes a question. You can change answers and flag questions. Answers and worked explanations are shown at the end, like the real exam.</p>' +
+  var h = '<div class="card"><h2>Mock exam</h2><p class="muted" style="margin:0">Full-length timed papers come first, then single-session mocks for each paper. Each mock mixes every subject on that paper, and the questions stay in the same order every time, so you can retake a mock and compare scores. The real SQE1 (from January 2027) allows 153 minutes for each session of 85 questions, about 1.8 minutes a question. You can change answers and flag questions. Answers and worked explanations are shown at the end, like the real exam.</p>' +
     '<div class="mk-timer"><button class="btn sm' + (timed ? ' primary' : '') + '" data-act="mktimed" aria-pressed="' + timed + '">' + (timed ? '⏱ Countdown on' : '⏱ Countdown off') + '</button><span class="small muted">' + (timed ? 'The mock submits itself when the suggested time runs out.' : 'No time limit. A clock shows how long you have taken.') + '</span></div></div>';
   if (FULL_PAPERS.length){
-    h += '<div class="card"><h3 style="margin-top:0">Full-length papers</h3><p class="small muted" style="margin:0 0 8px">Exactly like the real exam: each paper is 170 questions in two sessions of 85, with 153 minutes for each session. Sit session 1, take a break, then sit session 2. These questions are different from the shorter mocks below.</p><div class="mk-list">';
+    h += '<div class="card"><h3 style="margin-top:0">Full-length papers</h3><p class="small muted" style="margin:0 0 8px">Exactly like the real exam: each paper is 170 questions in two sessions of 85, with 153 minutes for each session. Sit session 1, take a break, then sit session 2. These questions are different from the single-session mocks below.</p><div class="mk-list">';
     FULL_PAPERS.forEach(function(fp){
       var tot = 0, totc = 0, both = true;
       var cells = [1, 2].map(function(si){
@@ -154375,7 +154397,7 @@ function showPops(){
   var q = POPQ; POPQ = []; if (!q.length) return;
   var n = 0; q.forEach(function(v){ n += v; });
   var bag = document.getElementById("mbag"), x = window.innerWidth - 24, y = 84, r = bag && bag.getBoundingClientRect();
-  if (r && r.width && r.bottom > 0 && r.top < window.innerHeight - 30){ x = r.left + 26; y = Math.max(8, r.top + 4); }
+  if (r && r.width && r.bottom > 0 && r.top < window.innerHeight - 30){ x = r.left + 26; y = Math.max(8, r.bottom + 6); } /* 14:25 (QA): under the bag, not on top of it or the timer buttons */
   [].forEach.call(document.querySelectorAll(".coinpop"), function(o){ if (o.parentNode) o.parentNode.removeChild(o); });
   var el = document.createElement("div");
   el.className = "coinpop" + (n ? "" : " slow");
@@ -155660,7 +155682,7 @@ function render(){
   var nt = nextTopic();
   var showNext = nt && ["syllabus","subject"].indexOf(r[0]) >= 0;
   var app = document.getElementById("app");
-  app.innerHTML = '<div class="layout v-' + esc(r[0]) + (sideOff() ? ' sideoff' : '') + '"><div class="main">' + timerStrip() + header(r) +
+  app.innerHTML = '<div class="layout v-' + esc(r[0]) + (sideOff() ? ' sideoff' : '') + (sideNarrow() ? ' sidenarrow' : '') + '"><div class="main">' + timerStrip() + header(r) +
     (storageOK ? "" : '<div class="wrap" style="padding-bottom:0"><div class="banner bad">⚠ This browser isn\'t letting the site save. Your progress will be lost when you close it. Open the file in Chrome, Edge or Safari, and not in a private window.</div></div>') +
     '<div class="wrap' + (th ? ' stth" style="' + th.style : '') + '">' + (PENDING.length ? '<div class="banner warn"><b>Preview version.</b> Still being written: ' + esc(PENDING.join(", ")) + '.</div>' : '') + (th ? th.strip : '') + body + '</div></div><aside class="side"><button class="sidetog" data-act="sidetog" aria-expanded="' + (sideOff() ? 'false' : 'true') + '" aria-label="' + (sideOff() ? 'Show the topic list' : 'Hide the topic list') + '"><span aria-hidden="true">' + (sideOff() ? '‹' : '›') + '</span><b>' + (sideOff() ? 'Topics' : 'Hide') + '</b></button><div class="sidein">' + sidebar(curKey, r) + '</div></aside></div>' +
     (false ? '<button class="startnext" data-go="#/topic/' + nt.s.id + '/' + nt.t.id + '"><b>▶ Start next: ' + esc(nt.t.title) + '</b><span>' + esc(nt.s.title) + ' · ' + TOPICS.filter(function(x){ return S.done[x.key]; }).length + ' of ' + TOPICS.length + ' done</span></button>' : '');
@@ -155696,7 +155718,7 @@ document.addEventListener("click", function(e){
     case "nbprev": /* TEMP M button: display-only, cycles 0..5 */ var nbp = nbPrev(); nbp = nbp === null ? (Math.min(presentStreak(), PRESENT_STEPS) + 1) % 6 : (nbp + 1) % 6; try { window.sessionStorage.setItem("nbPrevStep", String(nbp)); } catch(e2){} var nbs = document.querySelector(".head.nb .nbsteps"), nbh = nbStreakHTML(); if (!nbs){ render(); break; } (function(old, html){ /* QA: build the new step off-screen and swap only once its pictures are decoded, so Layla never blinks out */ var t = document.createElement("div"); t.innerHTML = html; var nw = t.firstElementChild; if (!nw){ old.outerHTML = html; return; } var imgs = [].slice.call(nw.querySelectorAll("image,img")).map(function(el){ var u = el.getAttribute("href") || el.getAttribute("xlink:href") || el.getAttribute("src"); if (!u) return null; var im = new Image(); im.src = u; return im.decode ? im.decode().catch(function(){}) : null; }).filter(Boolean); var done = false, go = function(){ if (done) return; done = true; if (old.parentNode) old.parentNode.replaceChild(nw, old); }; Promise.all(imgs).then(go); setTimeout(go, 1500); })(nbs, nbh); break;
     case "voucherclose": var vb = document.querySelector(".voucher-bg"); if (vb) vb.remove(); break;
     case "fwtest": FWTEST = !FWTEST; render(); break;
-    case "sidetog": S.ui = S.ui && typeof S.ui === "object" ? S.ui : {}; S.ui.sideOff = !S.ui.sideOff; save(); render(); break;
+    case "sidetog": S.ui = S.ui && typeof S.ui === "object" ? S.ui : {}; if (sideNarrow()) S.ui.sideNarrowOn = !S.ui.sideNarrowOn; else S.ui.sideOff = !S.ui.sideOff; save(); render(); break;
     case "cheer": cheerI++; var cte = document.getElementById("cheertxt"); if (cte) cte.textContent = CHEERS[cheerI % CHEERS.length]; break;
     case "tstart": S.brkOver = 0; S.timer.subj = ($("#tsubj") || {}).value || S.timer.subj || ""; S.timer.start = Date.now(); save(); render(); break;
     case "tbreak": stripBreak(+el.getAttribute("data-n") || 5); break;
@@ -156062,6 +156084,10 @@ document.addEventListener("click", function(e){
   }
   var css = ".rpt-btn{position:fixed;left:10px;bottom:10px;z-index:9000;font:600 12px/1 system-ui,sans-serif;padding:6px 10px;border-radius:14px;border:1px solid rgba(0,0,0,.18);background:rgba(255,255,255,.85);color:#555;cursor:pointer;opacity:.55;transition:opacity .15s}" +
     ".rpt-btn:hover,.rpt-btn:focus{opacity:1}" +
+    /* 14:25 (QA pass 1): solid tab on the left edge, in its own space, instead of a see-through pill over the page */
+    ".rpt-btn{left:0;bottom:22px;opacity:1;writing-mode:vertical-rl;transform:rotate(180deg);padding:10px 5px;border-radius:0 10px 10px 0;border:2px solid #10294A;border-left:0;background:#fff;color:#10294A;font:700 12px/1 Calibri,Carlito,system-ui,sans-serif;box-shadow:none}" +
+    ".rpt-btn:hover,.rpt-btn:focus{background:#FFF3C4}" +
+    ".rpt-pan{left:34px;bottom:22px}" +
     ".rpt-pan{position:fixed;left:10px;bottom:44px;z-index:9001;width:min(360px,calc(100vw - 20px));max-height:70vh;overflow:auto;background:#fff;color:#222;border:1px solid #ccc;border-radius:12px;box-shadow:0 6px 24px rgba(0,0,0,.2);padding:12px;font:14px/1.4 system-ui,sans-serif}" +
     ".rpt-pan h3{margin:0 0 6px;font-size:15px}.rpt-pan textarea{width:100%;box-sizing:border-box;min-height:70px;font:inherit;padding:6px;border:1px solid #bbb;border-radius:6px}" +
     ".rpt-pan .rpt-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.rpt-pan button{font:600 13px system-ui,sans-serif;padding:6px 10px;border-radius:8px;border:1px solid #bbb;background:#f4f4f4;cursor:pointer}" +
