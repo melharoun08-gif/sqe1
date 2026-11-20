@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120050416";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120050808";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -3095,6 +3095,25 @@ details.bsubj summary{cursor:pointer;font-family:var(--hand);font-size:19px}
 .head.nb .nblayla.nbngt{display:none}
 .head.nb.nbnight .nblayla.nbngt{display:inline}
 .head.nb.nbnight .nblayla.nbday{display:none}
+
+/* map-layla7 (Monnie 05:10): legs take turns - normal frames alternate with -F frames (far leg forward); 28s, 2s per pose */
+.jsv .jlw1{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl7-jlw1 28s step-end infinite,jl4-move 28s ease-in-out infinite}
+@keyframes jl7-jlw1{0.000%{opacity:1}7.143%{opacity:0}14.286%{opacity:0}21.429%{opacity:0}28.571%{opacity:1}35.714%{opacity:0}42.857%{opacity:0}50.000%{opacity:1}57.143%{opacity:0}64.286%{opacity:0}71.429%{opacity:0}78.571%{opacity:0}85.714%{opacity:0}92.857%{opacity:0}100%{opacity:0}}
+.jsv .jlw2{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl7-jlw2 28s step-end infinite,jl4-move 28s ease-in-out infinite}
+@keyframes jl7-jlw2{0.000%{opacity:0}7.143%{opacity:0}14.286%{opacity:0}21.429%{opacity:0}28.571%{opacity:0}35.714%{opacity:0}42.857%{opacity:0}50.000%{opacity:0}57.143%{opacity:0}64.286%{opacity:1}71.429%{opacity:0}78.571%{opacity:0}85.714%{opacity:0}92.857%{opacity:0}100%{opacity:0}}
+.jsv .jlw3{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl7-jlw3 28s step-end infinite,jl4-move 28s ease-in-out infinite}
+@keyframes jl7-jlw3{0.000%{opacity:0}7.143%{opacity:0}14.286%{opacity:1}21.429%{opacity:0}28.571%{opacity:0}35.714%{opacity:0}42.857%{opacity:0}50.000%{opacity:0}57.143%{opacity:0}64.286%{opacity:0}71.429%{opacity:0}78.571%{opacity:1}85.714%{opacity:0}92.857%{opacity:0}100%{opacity:0}}
+.jsv .jlw4{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl7-jlw4 28s step-end infinite,jl4-move 28s ease-in-out infinite}
+@keyframes jl7-jlw4{0.000%{opacity:0}7.143%{opacity:0}14.286%{opacity:0}21.429%{opacity:1}28.571%{opacity:0}35.714%{opacity:0}42.857%{opacity:0}50.000%{opacity:0}57.143%{opacity:0}64.286%{opacity:0}71.429%{opacity:1}78.571%{opacity:0}85.714%{opacity:0}92.857%{opacity:0}100%{opacity:0}}
+.jsv .jlwj{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl7-jlwj 28s step-end infinite,jl4-move 28s ease-in-out infinite}
+@keyframes jl7-jlwj{0.000%{opacity:0}7.143%{opacity:0}14.286%{opacity:0}21.429%{opacity:0}28.571%{opacity:0}35.714%{opacity:0}42.857%{opacity:1}50.000%{opacity:0}57.143%{opacity:0}64.286%{opacity:0}71.429%{opacity:0}78.571%{opacity:0}85.714%{opacity:0}92.857%{opacity:1}100%{opacity:0}}
+.jsv .jlw1F{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl7-jlw1F 28s step-end infinite,jl4-move 28s ease-in-out infinite}
+@keyframes jl7-jlw1F{0.000%{opacity:0}7.143%{opacity:0}14.286%{opacity:0}21.429%{opacity:0}28.571%{opacity:0}35.714%{opacity:0}42.857%{opacity:0}50.000%{opacity:0}57.143%{opacity:0}64.286%{opacity:0}71.429%{opacity:0}78.571%{opacity:0}85.714%{opacity:1}92.857%{opacity:0}100%{opacity:0}}
+.jsv .jlw2F{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl7-jlw2F 28s step-end infinite,jl4-move 28s ease-in-out infinite}
+@keyframes jl7-jlw2F{0.000%{opacity:0}7.143%{opacity:1}14.286%{opacity:0}21.429%{opacity:0}28.571%{opacity:0}35.714%{opacity:1}42.857%{opacity:0}50.000%{opacity:0}57.143%{opacity:0}64.286%{opacity:0}71.429%{opacity:0}78.571%{opacity:0}85.714%{opacity:0}92.857%{opacity:0}100%{opacity:0}}
+.jsv .jlw3F{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:jl7-jlw3F 28s step-end infinite,jl4-move 28s ease-in-out infinite}
+@keyframes jl7-jlw3F{0.000%{opacity:0}7.143%{opacity:0}14.286%{opacity:0}21.429%{opacity:0}28.571%{opacity:0}35.714%{opacity:0}42.857%{opacity:0}50.000%{opacity:0}57.143%{opacity:1}64.286%{opacity:0}71.429%{opacity:0}78.571%{opacity:0}85.714%{opacity:0}92.857%{opacity:0}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.jsv .jlw1F,.jsv .jlw2F,.jsv .jlw3F{animation:none!important;opacity:0}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -101813,7 +101832,7 @@ window.SQE_JOURNEY = function (A) {
         var BAG = shopToday() || /[?&]bag=1/.test(qs()), lh = mode === 'phone' ? 240 : 200, lw = lh * (BAG ? 385 / 600 : LAYLA_AR), bh = lh * .42;
         var lx = -lw / 2 - bh * .3 * f, bx = f > 0 ? lx + lw - 8 : lx - bh + 8, x0 = Math.min(lx, bx + bh * (f > 0 ? .07 : .24)), x1 = Math.max(lx + lw, bx + bh * (f > 0 ? .76 : .93));
         return "<ellipse cx=\"".concat(f1((x0 + x1) / 2), "\" cy=\"2\" rx=\"").concat(f1((x1 - x0) / 2 + 4), "\" ry=\"6\" fill=\"#111\" opacity=\".2\"/><g class=\"jhop\">")
-            + (BAG ? "<image href=\"img/souvenir/layla-front-bag.webp\" x=\"".concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/>") : "<image class=\"jlw1\" href=\"".concat(LAYLA_IMG, "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/><image class=\"jmo jlw2\" href=\"").concat(LAYLA_IMG2, "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/><image class=\"jmo jlw3\" href=\"").concat(LAYLA_IMG3, "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/>") + [['img/layla-walk-4w.webp', 179, 'jlw4'], ['img/layla-joke.webp', 124, 'jlwj']].map(function (_a) {
+            + (BAG ? "<image href=\"img/souvenir/layla-front-bag.webp\" x=\"".concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/>") : "<image class=\"jlw1\" href=\"".concat(LAYLA_IMG, "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/><image class=\"jmo jlw2\" href=\"").concat(LAYLA_IMG2, "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/><image class=\"jmo jlw3\" href=\"").concat(LAYLA_IMG3, "\" x=\"").concat(f1(lx), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(lw), "\" height=\"").concat(lh, "\"/>") + [['img/layla-walk-4w.webp', 179, 'jlw4'], ['img/layla-joke.webp', 124, 'jlwj'], ['img/layla-walk-1-F.webp', 163, 'jlw1F'], ['img/layla-walk-2-F.webp', 161, 'jlw2F'], ['img/layla-walk-3-F.webp', 163, 'jlw3F']] /* 05:10 Monnie: her other leg comes forward too (-F = far leg in front) */.map(function (_a) {
                 var u = _a[0], wd = _a[1], c = _a[2];
                 var wi = lh * wd / 300;
                 return "<image class=\"jmo ".concat(c, "\" href=\"").concat(u, "\" x=\"").concat(f1(lx + (lw - wi) / 2), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(wi), "\" height=\"").concat(lh, "\"/>");
