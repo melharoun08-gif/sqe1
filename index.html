@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120030948";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120031610";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -2830,6 +2830,12 @@ html.dfv-on{overflow:hidden}
 @media (max-width:720px){.head.nb .nbnbtn{top:calc(min(100cqw - 28px,400px) * 1.0267 + 12px)}}
 /* 20 Nov: stats tiles stay on one row on desktop; nbFit() in app.js scales them down to fit */
 @media (min-width:721px){.head.nb .nbstats{flex-wrap:nowrap!important}.head.nb .nbstats>*{flex:none!important}}
+
+/* map-lighthouse: sea spray splashes up and falls back (two puffs out of step) */
+.jsv .jlhdrop{transform-box:fill-box;transform-origin:50% 100%;animation:jlh-spray 1.8s ease-out infinite}
+.jsv .jlhdrop2{animation-delay:-.9s}
+@keyframes jlh-spray{0%{transform:translateY(10px) scale(.6);opacity:0}25%{opacity:1}55%{transform:translateY(-10px) scale(1.05);opacity:1}100%{transform:translateY(6px) scale(.9);opacity:0}}
+@media (prefers-reduced-motion:reduce){.jsv .jlhdrop{animation:none!important;opacity:1}.jsv .jlhdrop2{display:none}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -83332,8 +83338,7 @@ window.SQE_JOURNEY = function (A) {
         s += "<g transform=\"translate(".concat(f1(aq.x - 12), ",").concat(f1(aq.y + aq.dh * .1), ")\"><g class=\"jmo jfish\">").concat(fish('#FF9F1C'), "</g></g><g transform=\"translate(").concat(f1(aq.x + 8), ",").concat(f1(aq.y - aq.dh * .12), ")\"><g class=\"jmo jfish jf2\">").concat(fish('#4CC9F0'), "</g></g>");
         var pw = apt(L, 'pier', .5, .93);
         s += "<g transform=\"translate(".concat(f1(pw.x), ",").concat(f1(pw.y), ") scale(.8)\"><g class=\"jmo jfish jf3\">").concat(fish('#FFC300'), "</g></g>");
-        var lw = apt(L, 'lighthouse', .25, .9);
-        s += "<g transform=\"translate(".concat(f1(lw.x), ",").concat(f1(lw.y), ") scale(.8)\"><g class=\"jmo jfish jf2\">").concat(fish('#FF6FB5'), "</g></g>");
+        // removed 20 Nov (Monnie: no fish on the rocks)   const lw=apt(L,'lighthouse',.25,.9); s+=`<g transform="translate(${f1(lw.x)},${f1(lw.y)}) scale(.8)"><g class="jmo jfish jf2">${fish('#FF6FB5')}</g></g>`;
         var ap = apt(L, 'airport', .12, .97);
         s += "<g transform=\"translate(".concat(f1(ap.x), ",").concat(f1(ap.y), ")\"><g class=\"jmo jplane\" style=\"opacity:0\">").concat(plane, "</g></g>");
         var b1 = apt(L, 'balloons', .22, .82), b2 = apt(L, 'balloons', .78, .78);
@@ -83456,6 +83461,13 @@ window.SQE_JOURNEY = function (A) {
         })
             .replace(/class="jmo jflag"([\s\S]*?)class="jmo jflag"/, 'class="jmo jflag"$1class="jmo jflag jrf-ex2"'); /* the two exam flags wave out of step */
     }
+    /* lighthouse (Monnie 20 Nov): the lamp and its rays are off in the day (on at night with the beam), the sea spray splashes up and falls back */
+    function life_lh(L, hr, s) {
+        var nt = skyState(hr).n > .5;
+        return s.replace(/<image href="img\/map-new\/lighthouse\.webp" x="([-\d.]+)" y="([-\d.]+)" width="([\d.]+)" height="([\d.]+)" preserveAspectRatio="xMidYMax meet"\/>/, function (m0, xs, ys, ws, hs) {
+            return artImg(nt ? 'anim/lighthouse-nodrop' : 'anim/lighthouse-day', +xs, +ys, +ws, +hs) + "<g class=\"jmo jlhdrop\">".concat(artImg('anim/lighthouse-drops', +xs, +ys, +ws, +hs), "</g><g class=\"jmo jlhdrop jlhdrop2\">").concat(artImg('anim/lighthouse-drops', +xs, +ys, +ws, +hs), "</g>");
+        });
+    }
     var SWAY = { forest: 1, botanic: 1, farm: 1 };
     /* ---------- the map ---------- */
     function mapSVG(J, L) {
@@ -83500,6 +83512,8 @@ window.SQE_JOURNEY = function (A) {
         s += flagArt(L.flags[0], 'FLK1 exam', esc(dm(J.ex1))) + flagArt(L.flags[1], 'FLK2 exam', esc(dm(J.ex2)));
         if (MAP_ART)
             s = life_rinkflag(L, hr, s); /* map-motion-rinkflag */
+        if (MAP_ART)
+            s = life_lh(L, hr, s); /* lighthouse: lamp off by day, spray splashes */
         s += skyOver(L, hr); /* map-sky: the tint and the night layer (stars, moon, lit windows) blend in with the hour */
         L.stops.forEach(function (p, i) {
             var m = marker(i, p, i === 0 ? '' : i === 15 ? 'rev' : jStatus(J, i)), o = i > 0 && i < 15 ? J.stops[i - 1] : null; /* the stop numbers are tappable too */
@@ -91072,7 +91086,7 @@ var BERT_PER_TOPIC = 2, BERT_MAX = 20, BERT_PASS = 0.6, BERT_MINS = 2;  /* subje
 var BERT_PASS_COINS = 50;    /* paid once per subject, the first time she passes its test */
 var GAMBLE_N = 10, GAMBLE_PASS = 6, GAMBLE_OFF = 0.5;  /* Gift Shop gamble: questions, right answers needed, half off / half as much again */
 var SRA_CREDIT = "© Solicitors Regulation Authority / Kaplan. SQE Sample Questions and Performance Indicators remain the property of the SRA. The SRA makes no warranty as to the accuracy of their reproduction or usage in these materials. Explanations are this site's own, not SRA-endorsed.";
-var TOWN_ON = !/[?&]town=0/.test(location.search); /* live 20 Nov (Monnie wants Peckham finished on the live site) */
+var TOWN_ON = !/[?&]town=0/.test(location.search); window.SQE_TOWN_LIVE = TOWN_ON; /* live 20 Nov (Monnie wants Peckham finished on the live site) */
 
 window.SQE_TOWN = function(A){
   var VIEW = A.VIEW, esc = A.esc, inl = A.inl, md = A.md, COIN = A.cbaCoin;
@@ -91124,8 +91138,8 @@ window.SQE_TOWN = function(A){
   function subj(id){ return A.SUBJ.filter(function(s){ return s.id === id; })[0]; }
   function subjDone(s){ return s.topics.length && s.topics.every(function(t){ return learned(s.id + '/' + t.id); }); }
   function top(here){
-    var h = '<div class="cbag town"><div class="cbatop"><a class="cbaback" href="#/palace">‹ Palace</a><span class="cbattl">' + esc({jobs: 'Job Centre', butcher: 'Bert\'s Butchers', shop: 'Gift Shop'}[here]) + '</span><span class="spill coin">' + COIN() + ' <b>' + A.cbaS().coins + '</b></span></div>';
-    return h + '<nav class="town-nav" aria-label="Town">' + [['jobs', 'Job Centre'], ['butcher', 'Bert\'s Butchers'], ['shop', 'Gift Shop']].map(function(b){ return '<a href="#/town/' + b[0] + '"' + (b[0] === here ? ' class="on" aria-current="page"' : '') + '>' + b[1] + '</a>'; }).join('') + '</nav>';
+    var h = '<div class="cbag town"><div class="cbatop"><a class="cbaback" href="#/palace">‹ Peckham</a><span class="cbattl">' + esc({jobs: 'Job Centre', butcher: 'Bert\'s Butchers', shop: 'Hen Bargains'}[here]) + '</span><span class="spill coin">' + COIN() + ' <b>' + A.cbaS().coins + '</b></span></div>';
+    return h + '<nav class="town-nav" aria-label="Town">' + [['jobs', 'Job Centre'], ['butcher', 'Bert\'s Butchers'], ['shop', 'Hen Bargains']].map(function(b){ return '<a href="#/town/' + b[0] + '"' + (b[0] === here ? ' class="on" aria-current="page"' : '') + '>' + b[1] + '</a>'; }).join('') + '</nav>';
   }
   function scrollTop(sel){ setTimeout(function(){ var el = document.querySelector(sel); if (el && el.getBoundingClientRect().top < 0) try { el.scrollIntoView({block: 'start'}); } catch(e){} }, 20); }
   /* one multiple-choice question card. it = {text (html), opts [html], a (index), ord, pick, why (html), lab} */
@@ -91519,6 +91533,7 @@ window.SQE_MOUNT = function(A){
     if (L.stage !== 'none' && L.stage !== 'egg') h += '<div class="cbasay mood-' + esc(m.cls) + '"><b>' + esc(L.away ? 'Palace butler' : L.ill ? 'Palace vet' : nm) + ':</b> ' + esc(m.t) + '</div>';
     if (L.away) h += A.bossCaptivePanel('palace');
     h += treatsCard(L) + A.feedPanel('palace') + A.broodCard();
+    h += '<a class="palcard" href="#/palace/old" style="display:block;text-decoration:none"><b>📖 ' + esc(nm) + '\'s records</b><span class="small" style="display:block">Egg and incubator, prizes, topic flock, feeds this week, how it works</span></a>'; /* the old palace page, kept (Monnie 20 Nov) */
     return h + '</div></div>';
   };
 
@@ -94860,6 +94875,12 @@ function howItWorks(){
     '</ul><details class="hiwmore"><summary>Exact coin amounts</summary>' + earnList() + '</details></details>';
 }
 function viewPalace(r){
+  /* 20 Nov 03:12 Monnie: the Peckham page is just the map. Britney's shop lives in Hen Bargains (#/town/shop), Bert in Bert's Butchers,
+     Britney's garden/feeding in The Mount (#/mount). Nothing deleted: the old palace page is kept at #/palace/old. */
+  if (window.SQE_TOWN_LIVE && r[1] !== "old"){
+    if (r[1] === "shop"){ setTimeout(function(){ location.replace("#/town/shop"); }, 0); return ''; }
+    return JMAP ? (function(){ try { return JMAP(null); } catch(ej){ if (window.console) console.error(ej); return ""; } })() : '';
+  }
   var c = cbaS(), L = henLife(), m = henMood(L), f = cbaFlock(), nm = henName(L);
   if (r[1] === "shop") setTimeout(function(){ var s = document.getElementById("shop"); if (s && s.scrollIntoView) try { s.scrollIntoView({block:"start"}); } catch(e){} }, 40);
   var h = (JMAP ? (function(){ try { return JMAP(null); /* 23:52 Monnie: Map always just shows the palace map, no stop panel */ } catch(ej){ if (window.console) console.error(ej); return ""; } })() : '') + '<div class="cbag palace"><div class="paltop"><h2 class="paltitle">🏰 Cluckington Palace</h2><span class="spill coin">' + cbaCoin() + ' <b>' + c.coins + '</b></span></div>';
