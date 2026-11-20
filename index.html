@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120104351";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120104750";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -127901,8 +127901,8 @@ window.SQE_TOWN = function(A){
     var m = btMax(b), w = Math.min(b.wrong || 0, m), pw = still || b.shownW == null ? w : Math.min(b.shownW, m), grab = w >= m;
     var at = function(x){ return (1 - x / m).toFixed(3); }, near = w / m, left = m - w;
     var h = '<div class="btstrip' + (still && grab ? ' grab done' : '') + '" id="btstrip" style="--p:' + at(pw) + ';--ta:' + (1 + 5 * near).toFixed(1) + 'px;--tr:' + (1.5 + 8 * near).toFixed(1) + 'deg;--ts:' + (.5 - .38 * near).toFixed(2) + 's" role="img" aria-label="Bert is ' + left + ' steps from Britney">' +
-      '<span class="bts-brit"><img src="img/britney/' + (near >= .5 ? 'terrified' : 'set/neutral') + '.webp" alt=""></span>' +
-      '<span class="bts-bert"><span class="bb"><img class="bk" src="img/boss/bert-knife.webp" alt=""><img class="bc" src="img/britney/terrified.webp" alt=""></span></span>' +
+      '<span class="bts-brit"><img src="img/britney/' + ['set/neutral', 'fear1', 'fear2', 'fear3', 'terrified'][w ? Math.min(4, Math.ceil(near * 4)) : 0] + '.webp" alt=""></span>' + /* Monnie 20 Nov 09:49: fear builds gradually */
+      '<span class="bts-bert"><span class="bb"><span class="bkw"><img class="bk" src="img/boss/bert-td-body.webp" alt=""><img class="bka" src="img/boss/bert-td-arm.webp" alt=""></span><img class="bc" src="img/britney/terrified.webp" alt=""></span></span>' +
       '<span class="bts-n">' + (grab ? 'Bert grabbed Britney!' : w + ' wrong · ' + left + ' more and Bert grabs Britney') + '</span></div>';
     if (!still && pw !== w){ b.shownW = w; setTimeout(function(){ var e = document.getElementById('btstrip'); if (!e) return; e.style.setProperty('--p', at(w)); if (grab) setTimeout(function(){ e.classList.add('grab'); }, 700); }, 60); }
     else b.shownW = w;
