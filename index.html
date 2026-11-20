@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120052706";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120053048";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -3018,7 +3018,7 @@ html.dfv-on{overflow:hidden}
 
 /* tabs-bigger (20 Nov): bigger tab labels in the scaled banner; app.js tabCols() picks 15, 8 or 5 even columns */
 .head.nb.nbz .tabs{gap:4px}
-.head.nb.nbz .tabs a,.head.nb.nbz .tabs a.two{font-size:var(--tabfs,16px)!important;line-height:1.1;padding:6px 3px 4px;min-height:50px}
+.head.nb.nbz .tabs a,.head.nb.nbz .tabs a.two{font-size:var(--tabfs,18px)!important;line-height:1.1;padding:7px 3px 5px;min-height:56px}
 /* bert-master + town logos (thread "Fix Job Centre, Bert's and The Mount", 20 Nov) */
 /* the Peckham map's Bert's Butchers with its door animation (same frames + timings as the map: .jbert-* rules) */
 .bmshop{position:relative;width:min(100%,420px);aspect-ratio:520/523;margin:0 auto 10px}
@@ -101365,7 +101365,7 @@ window.SQE_JOURNEY = function (A) {
                 s += "<rect x=\"".concat(bx, "\" y=\"").concat(by, "\" width=\"").concat(Math.max(F.bar, bw * frac), "\" height=\"").concat(F.bar, "\" rx=\"").concat(F.bar / 2, "\" fill=\"").concat(st === 'done' ? '#3BB273' : '#FF7F11', "\" stroke=\"#111\" stroke-width=\"2.5\"/>");
         }
         if (L.cw && L.moved && L.moved(i))
-            s += "<circle class=\"jbadge\" cx=\"".concat(cx - w / 2 - 9, "\" cy=\"").concat(top - 9, "\" r=\"12\" fill=\"#fff\" stroke=\"#111\" stroke-width=\"3\"/><text class=\"jpl\" x=\"").concat(cx - w / 2 - 9, "\" y=\"").concat(top - 4, "\" font-size=\"14\">").concat(i, "</text>"); /* 04:59 Monnie rule: off-path numbers are small, sit ON the corner, never over any words */ /* QA 20 Nov: boxes moved under set-back drawings carry their stop number */
+            s += "<circle class=\"jbadge\" cx=\"".concat(cx - w / 2 - 17, "\" cy=\"").concat(top + h / 2, "\" r=\"12\" fill=\"#fff\" stroke=\"#111\" stroke-width=\"3\"/><text class=\"jpl\" x=\"").concat(cx - w / 2 - 17, "\" y=\"").concat(top + h / 2 + 5, "\" font-size=\"14\">").concat(i, "</text>"); /* 04:59 Monnie rule: off-path numbers are small, sit ON the corner, never over any words */ /* QA 20 Nov: boxes moved under set-back drawings carry their stop number */
         if (st === 'done')
             s += tick(cx + w / 2 - 4, top + 2, 14);
         if (st === 'today') {
@@ -108461,7 +108461,216 @@ ROOMDATA["vat-iht-bpr"] = {
 /* ROOMDATA-GEN END */
 
 /* ROOMV3-GEN START: the rooms v3 pictures (previews/rooms-v3, cleaned in code) with their board and spot boxes, from proposals/rooms/v3/room-NN.json via proposals/rooms/v3/apply-v3.py. Rooms flag only. */
-var ROOMV3 = {};
+var ROOMV3 = {
+"cgt": {
+"board": {
+"x": 55.3,
+"y": 27.0,
+"w": 19.7,
+"h": 22.3
+},
+"spots": {
+"chalk": [
+43.2,
+44.0,
+6.8,
+32.6
+],
+"gumball": [
+1.7,
+52.0,
+8.6,
+46.5
+],
+"twins": [
+12.5,
+49.5,
+12.5,
+11.4
+],
+"podium": [
+10.8,
+74.0,
+6.0,
+19.5
+],
+"bea": [
+83.6,
+53.8,
+6.0,
+34.0
+],
+"window": [
+90.1,
+53.8,
+8.1,
+45.7
+],
+"key": [
+17.8,
+34.8,
+6.8,
+9.2
+],
+"suki": [
+52.3,
+62.5,
+30.6,
+21.3
+],
+"scenario": [
+32.1,
+43.2,
+9.2,
+30.3
+],
+"game": [
+17.3,
+61.6,
+7.3,
+15.0
+]
+},
+"labels": {
+"chalk": [
+"🎰",
+"Tall pink gumball machine: the big idea"
+],
+"gumball": [
+"🔴",
+"Big red gumball machine: when does CGT apply?"
+],
+"twins": [
+"🫧",
+"Wall bubbles: calculating the gain"
+],
+"podium": [
+"🍬",
+"Little red gumball machine: losses, allowance and rates"
+],
+"bea": [
+"🍭",
+"Giant wrapped sweet: business asset disposal relief"
+],
+"window": [
+"🌀",
+"Spiral gumball machine: rollover relief"
+],
+"key": [
+"🎁",
+"Wrapped sweet on the shelf: gift relief"
+],
+"suki": [
+"🛒",
+"Sweet counter: incorporation relief"
+]
+}
+},
+"corporation-tax": {
+"board": {
+"x": 78.0,
+"y": 32.9,
+"w": 16.0,
+"h": 18.1
+},
+"spots": {
+"h1": [
+14.2,
+44.0,
+9.0,
+12.0
+],
+"h2": [
+44.0,
+43.5,
+6.0,
+13.0
+],
+"h3": [
+0.8,
+51.5,
+12.8,
+9.5
+],
+"h4": [
+23.8,
+48.5,
+10.9,
+18.0
+],
+"h5": [
+22.3,
+71.5,
+7.6,
+24.0
+],
+"h6": [
+77.5,
+58.5,
+18.2,
+33.0
+],
+"h7": [
+63.0,
+52.5,
+6.3,
+20.0
+],
+"h8": [
+69.8,
+50.0,
+7.2,
+11.5
+],
+"scenario": [
+51.5,
+36.0,
+8.3,
+30.0
+],
+"game": [
+30.5,
+67.2,
+11.5,
+19.8
+]
+},
+"labels": {
+"h1": [
+"🌀",
+"Milkshake mixers: one tax on all profits"
+],
+"h2": [
+"🧃",
+"Juice dispensers: trading profits"
+],
+"h3": [
+"🫙",
+"Sprinkle jars: company gains"
+],
+"h4": [
+"🥤",
+"Row of milkshakes: losses"
+],
+"h5": [
+"🪑",
+"Front bar stool: the rates"
+],
+"h6": [
+"🍨",
+"Topping freezer: paying out profits"
+],
+"h7": [
+"🧊",
+"Small topping cabinet: close companies"
+],
+"h8": [
+"💷",
+"Cash register: deadlines and anti-avoidance"
+]
+}
+}
+};
 /* ROOMV3-GEN END */
 function v3inside(tid, hs, alt){ var v = ROOMV3[tid], L = v.labels || {};
   return { img: 'img/scene/v3/' + ROOMS[tid].slug + '.webp', ratio: 2752 / 1536, alt: alt, board: v.board,
@@ -110856,7 +111065,7 @@ function nbFit(h){ try { var ns = h.querySelector(".nbstats"); if (!ns) return; 
 var NBZ_W = 1730; /* 20 Nov (Monnie): above phone width the whole banner is one fixed design (as at a 2030px window) scaled evenly, so everything keeps its size and place relative to everything else */
 function nbZoom(h, t){ var z = 1; try { var on = h.classList.contains("nb") && window.innerWidth > 560 && !/[?&]nbz=0/.test(location.search); h.style.zoom = ""; h.style.width = ""; t.style.zoom = ""; h.classList.toggle("nbz", on); if (!on) return 1; var w = h.getBoundingClientRect().width; z = w / NBZ_W; h.style.width = NBZ_W + "px"; h.style.zoom = z.toFixed(4); t.style.zoom = (1 / z).toFixed(4); } catch(e){ z = 1; } return z; }
 /* tabs-bigger (20 Nov): pick 15 / 8 / 5 columns from the tab bar's own width and its widest label, so rows are even and no label runs into its neighbour */
-function tabCols(h, t){ try { if (!h.classList.contains("nbz")){ t.style.removeProperty("grid-template-columns"); t.style.removeProperty("--tabfs"); return; } var W = t.getBoundingClientRect().width, mx = 0, a = t.querySelector("a"), f0 = a ? parseFloat(getComputedStyle(a).fontSize) || 16 : 16; t.querySelectorAll("a span").forEach(function(s){ mx = Math.max(mx, s.getBoundingClientRect().width); }); var pick = [5, 16]; [[15, 16], [15, 15], [8, 16], [8, 15], [8, 14]].some(function(o){ if ((W - 4 * (o[0] - 1)) / o[0] >= mx * o[1] / f0 + 12){ pick = o; return true; } }); var v = "repeat(" + pick[0] + ",minmax(0,1fr))"; if (t.style.getPropertyValue("grid-template-columns") !== v) t.style.setProperty("grid-template-columns", v, "important"); if (t.style.getPropertyValue("--tabfs") !== pick[1] + "px") t.style.setProperty("--tabfs", pick[1] + "px"); t.setAttribute("data-cols", pick[0]); } catch(e){} }
+function tabCols(h, t){ try { if (!h.classList.contains("nbz")){ t.style.removeProperty("grid-template-columns"); t.style.removeProperty("--tabfs"); return; } var W = t.getBoundingClientRect().width, mx = 0, a = t.querySelector("a"), f0 = a ? parseFloat(getComputedStyle(a).fontSize) || 16 : 16; t.querySelectorAll("a span").forEach(function(s){ mx = Math.max(mx, s.getBoundingClientRect().width); }); var pick = [5, 18]; [[15, 20], [15, 19], [15, 18], [8, 20], [8, 19], [8, 18], [8, 17]] /* Monnie 05:27: clearly bigger */.some(function(o){ if ((W - 4 * (o[0] - 1)) / o[0] >= mx * o[1] / f0 + 12){ pick = o; return true; } }); var v = "repeat(" + pick[0] + ",minmax(0,1fr))"; if (t.style.getPropertyValue("grid-template-columns") !== v) t.style.setProperty("grid-template-columns", v, "important"); if (t.style.getPropertyValue("--tabfs") !== pick[1] + "px") t.style.setProperty("--tabfs", pick[1] + "px"); t.setAttribute("data-cols", pick[0]); } catch(e){} }
 function tabH(){ try { var h = document.querySelector(".head"), t = h && h.querySelector(".tabs"); if (!t) return; var nz = nbZoom(h, t); tabCols(h, t); var v = Math.round((h.getBoundingClientRect().bottom - t.getBoundingClientRect().top) / nz) + "px"; if (h.style.getPropertyValue("--tabh") !== v) h.style.setProperty("--tabh", v); var mh = (window.innerWidth > (h.classList.contains("nbz") ? 560 : 720) && (!h.classList.contains("compact") || h.classList.contains("nb"))) ? Math.round(Math.min((nz !== 1 ? NBZ_W : h.clientWidth) / 4.03, 400) + 26 + parseInt(v, 10)) + "px" : ""; if (h.style.minHeight !== mh) h.style.minHeight = mh; if (h.classList.contains("nb")){ NB_MID = nz === 1 && window.innerWidth > 720 && h.clientWidth <= 1060; h.classList.toggle("nbmid", NB_MID); if (nz === 1) nbFit(h); } layGuard(); } catch(e){} }
 var NB_MID = window.innerWidth > 720 && window.innerWidth <= 1060; /* banner-r3: the middle-band banner layout follows the banner's own width (the Topics list can narrow it on a big screen) */
 /* 22:55 guard: whatever the fonts, browser or saved layout, push the present clouds (with cloud-Layla) down until Layla's head is clear of the numbers row, and grow the banner to fit */
