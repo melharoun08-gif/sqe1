@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120024921";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120024937";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -92085,7 +92085,7 @@ var NB = !/[?&]oldbanner=1/.test(location.search); var NB_FLY = true; /* set tru
 /* Layla's picture per streak step (0 = on the grass). Drawn expressions img/layla-step0..5.webp are used when present, else this clean cutout. */
 var STEP_IMG = window.STEP_IMG = {0:"img/layla-stand.webp", 1:"img/layla-stand.webp", 2:"img/layla-stand.webp", 3:"img/layla-stand.webp", 4:"img/layla-stand.webp", 5:"img/layla-stand.webp"}, NB_STEPMISS = window.NB_STEPMISS = {};
 /* per pose: [height in viewBox units so her head/body match across poses, image px width at 600 tall, hover above the cloud] */
-var STEP_POSE = {0:[294,213,0], 1:[294,265,0], 2:[294,227,0], 3:[294,254,0], 4:[273,332,-4], 5:[221,440,9]}; /* 20 Nov r3: 40% bigger again (Monnie) */
+var STEP_POSE = {0:[294,213,0], 1:[294,265,0], 2:[294,227,0], 3:[294,254,0], 4:[294,268,-4], 5:[229,518,9]}; /* 20 Nov r3: 40% bigger again (Monnie) */
 /* TEMP M button: display-only preview step (sessionStorage), never touches the saved streak, presents or coins */
 function nbPrev(){ try { var v = window.sessionStorage.getItem("nbPrevStep"); return v === null ? null : Math.max(0, Math.min(5, +v || 0)); } catch(e){ return null; } }
 function nbStreakHTML(){
