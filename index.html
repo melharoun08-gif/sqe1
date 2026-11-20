@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120085310";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120085846";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -3652,7 +3652,7 @@ a.tlink::after{content:none}
 .land-fairground{--sb:repeating-linear-gradient(45deg,rgba(255,255,255,.14) 0 8px,transparent 8px 16px),#E63946}
 /* library: a green cloth book spine with gold bands; ruled index-card face with a red margin */
 .land-library{--sb:linear-gradient(#E9B949,#E9B949) 0 18%/100% 6px no-repeat,linear-gradient(#E9B949,#E9B949) 0 82%/100% 6px no-repeat,#1F6B4A;--b1:#1F4E8C;--b2:#E8F0FB;--bk1:#1F6B4A;--fc:#FFFDF4;--bc:#F2FAF5}
-.land-library .flash .face{background:repeating-linear-gradient(transparent 0 31px,#BFD7F2 31px 32px) 0 70px/100% calc(100% - 70px) no-repeat,linear-gradient(#E63946,#E63946) 38px 34px/2px 100% no-repeat,radial-gradient(circle at 50% 0,var(--fc) 9px,transparent 10px) 0 30px/24px 12px repeat-x,repeating-linear-gradient(90deg,var(--b1) 0 24px,var(--b2) 24px 48px) 0 0/100% 34px no-repeat,var(--fc)}
+.land-library .flash .face{background:repeating-linear-gradient(transparent 0 31px,#BFD7F2 31px 32px) 0 70px/100% calc(100% - 70px) no-repeat,linear-gradient(#E63946,#E63946) 14px 34px/2px 100% no-repeat,radial-gradient(circle at 50% 0,var(--fc) 9px,transparent 10px) 0 30px/24px 12px repeat-x,repeating-linear-gradient(90deg,var(--b1) 0 24px,var(--b2) 24px 48px) 0 0/100% 34px no-repeat,var(--fc)}
 /* airport: navy boarding pass with a sky-blue stripe */
 .land-airport{--sb:linear-gradient(90deg,transparent 40%,rgba(255,255,255,.25) 40% 60%,transparent 60%),#1F3A93;--b1:#1F3A93;--b2:#7FC8F8;--bk1:#7FC8F8;--fc:#F7FBFF;--bc:#EEF7FD}
 /* zoo: leopard-spot stub, jungle green band */
@@ -3696,6 +3696,13 @@ a.tlink::after{content:none}
 @media (prefers-reduced-motion:reduce){.glass.glit .gsandg,.glass.glit .gspark{animation:none}}
 @media (max-width:1180px){.tstrip .brkbtn .bl{display:none}.tstrip .brkbtn .bs{display:inline}.tstrip .lab{display:none}}
 @media (max-width:1180px){.tstrip .brkbtn{padding:3px 6px!important;min-width:0!important}.tstrip .brkbtns{gap:4px}.tstrip #savedIndicator{display:none}.tstrip .brkbtn .sico{margin-right:2px}}
+/* timer strip widths (20 Nov 08:55) */
+@media (max-width:1400px){.tstrip .brkbtn .bl{display:none}.tstrip .brkbtn .bs{display:inline}}
+@media (max-width:640px){.tstrip .brkbtns{flex-wrap:wrap}}
+/* Remember box bigger (Monnie 20 Nov 08:49) */
+.head .kw .kwlab{font-size:14px!important}
+.head .kw b{font-size:21px!important;line-height:1.2}
+.head .kw .kwd{font-size:17px!important;line-height:1.35}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -107734,13 +107741,13 @@ window.SQE_JOURNEY = function (A) {
         if (day) {
             var top_1 = L.reg.spring, W_1 = L.W;
             /* 08:46 Monnie: birds never fly through the sun: each bird's height keeps clear of where the sun is now (above or below it) */
-            var sp_1 = skySunAt(m, hr), sR_1 = 36 * SKY_PATH[m].s + 26, by_1 = function (fy) { var y = 20 + fy * (top_1 - 40); if (sp_1 && Math.abs(y - sp_1.y) < sR_1) {
+            var sp_1 = skySunAt(m, hr), sR_1 = 72 * SKY_PATH[m].s + 16, by_1 = function (fy, k) { var y = 20 + fy * (top_1 - 40); if (sp_1 && Math.abs(y - sp_1.y) < sR_1) {
                 var lo = sp_1.y + sR_1, hi = sp_1.y - sR_1;
-                y = lo < top_1 - 18 ? lo : hi > 12 ? hi : y;
-            } return y; };
+                y = lo <= top_1 - 18 ? Math.min(lo + k * 18, top_1 - 18) : hi >= 12 ? Math.max(hi - k * 18, 12) : -999;
+            } return y; }; /* sR: the sun's rays reach 72 units (x scale) */
             s += [[.28, 34, 0], [.5, 46, -14], [.38, 40, -27]].map(function (_a, k) {
                 var fy = _a[0], t = _a[1], d = _a[2];
-                return "<g transform=\"translate(-30,".concat(f1(by_1(fy)), ") scale(").concat(k === 1 ? .8 : 1, ")\"><g class=\"jmo jnbird\" style=\"--fly:").concat(W_1 + 60, "px;opacity:0;animation-duration:").concat(t, "s;animation-delay:").concat(d, "s\">")
+                return "<g transform=\"translate(-30,".concat(f1(by_1(fy, k)), ") scale(").concat(k === 1 ? .8 : 1, ")\"><g class=\"jmo jnbird\" style=\"--fly:").concat(W_1 + 60, "px;opacity:0;animation-duration:").concat(t, "s;animation-delay:").concat(d, "s\">")
                     + [[0, 0], [16, 7]].slice(0, k === 2 ? 2 : 1).map(function (_a, j) {
                         var ox = _a[0], oy = _a[1];
                         return "<g transform=\"translate(".concat(-ox, ",").concat(oy, ")\"><path class=\"jmo jnflap\" style=\"animation-delay:-").concat((k * .13 + j * .2).toFixed(2), "s\" d=\"M-9,-3 Q-4,-7 0,0 Q4,-7 9,-3\" fill=\"none\" stroke=\"#111\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g>");
@@ -117138,7 +117145,7 @@ var TOWN_ON = !/[?&]town=0/.test(location.search);
 var GOLD = '#8A6400';
 /* Monnie-only preview (08:20): add ?try=all to the address to see The Mount as if everything were bought. Nothing is saved, and nothing on the site links to it. */
 var TRY = /[?&]try=all\b/.test(location.search), TRY_CARRY = null;
-var TRY_SHED = ['crocs', 'charms', 'socks', 'clawsocks', 'pens', 'stickers', 'colouring', 'calendar', 'toppers', 'plaque', 'soap', 'lamp', 'sweets', 'tote', 'skincare', 'cup', 'player', 'rec_ss', 'rec_mj'];
+var TRY_SHED = ['crocs', 'charms', 'socks', 'clawsocks', 'pens', 'stickers', 'colouring', 'calendar', 'toppers', 'soap', 'lamp', 'sweets', 'tote', 'skincare', 'cup'];
 
 /* ===== layout (all % of the garden picture) ===== */
 var LAYLA_H = 33;                 /* Layla's height (% of garden height) at b = 20 */
@@ -117153,10 +117160,23 @@ var PEOPLE = [
 ];
 /* hens and Jiminey: [id, x, b, height %, name] */
 var HENS = [
-  ['friend', 71.5, 53, 11, 'Bolu'], ['bianca', 65.5, 52, 10.5, 'Bianca'], ['beefy', 80, 50, 11, 'Beefy'], ['brucey', 93, 44, 11, 'Brucey'], ['bonnie', 89, 30, 9, 'Jiminey']
+  ['friend', 71.5, 53, 11, 'Bolu'], ['bianca', 65.5, 52, 10.5, 'Bianca'], ['beefy', 80, 50, 11, 'Beefy'], ['brucey', 96.5, 44, 11, 'Brucey'], ['bonnie', 89, 26, 9, 'Jiminey']
 ];
 var SHED = {x: 58, b: 50, h: 18};   /* the shed (img/mount/shed.webp); click opens the shelves */
 var SHED_ROOF = [56.5, 67];
+/* Hen Bargains things with their own spot in the garden (Monnie OK'd the plan 08:50): [id, x, b, h, front-of(id) or ''] ; everything else goes on the shed shelves */
+var GARDEN_ITEMS = {
+  coop:    [87.5, 35.5, 19],
+  palace:  [87.5, 35.5, 20],          /* the luxury makeover replaces the coop in the same spot */
+  plaque:  [87.5, 46, 3.4],           /* on the coop (lower on the palace) */
+  nestbox: [96.5, 33, 7],
+  swing:   [79.5, 46.5, 12],
+  player:  [37, 2.5, 8],
+  rec_ss:  [31.5, 2.5, 4.6],
+  rec_mj:  [42.4, 2.5, 4.8]
+};
+var SWING_SEAT = [79.5, 48.3, 8.5];   /* Beefy sits on the swing when Layla has both */
+function coopTop(o){ return o.palace ? [87.5, 35.5 + 20] : o.coop ? [87.5, 35.5 + 19] : null; }
 /* Layla's walk: [x, b, pause ms, pose while paused ('a' stand, 't' wave)]; stays inside x 37..54 so she never meets the people */
 var LAYLA_LAP = [[47, 37, 1400, 'a'], [44, 28, 700, 'a'], [42, 13, 1600, 't'], [50, 8, 900, 'a'], [54, 20, 900, 'a'], [51, 34, 800, 'a'], [44, 38, 1100, 'a']];
 var LAYLA_WP = (function(){   /* three laps; only the first has the cartwheel, so it comes round about once a minute (Monnie 08:19) */
@@ -117174,14 +117194,14 @@ var CART_MS = 1300;  /* one proper cartwheel: arm up, legs wide, a full turn ove
 var BRIT_W = 7.6;    /* her width (% of garden width) at b = 20: the same on the ground and in the air */
 var BRIT_SEQ = [
   ['peck', [50, 22], 2600], ['walk', [44, 28]], ['peck', null, 2000], ['walk', [49.5, 33]], ['sit', null, 900],
-  ['fly', [86.5, 57], 3200], ['sit', null, 3600], ['fly', SHED_ROOF, 3800], ['sit', null, 3200], ['fly', [45, 24], 2600], ['walk', [50, 22]]
+  ['fly', 'COOP', 3200], ['sit', null, 3600], ['fly', SHED_ROOF, 3800], ['sit', null, 3200], ['fly', [45, 24], 2600], ['walk', [50, 22]]
 ];
 var HEN_WALK_PX = 48;
 var FEED_SPOT = [44.5, 18], FEED_BRIT = [53, 15];
 var GRAINS = [[51, 13], [55.5, 16], [52.5, 18.5], [57, 12.5], [49.5, 16.5], [54, 11], [58, 17.5], [50.5, 11.5], [55, 20]];
 /* the shed's shelves, as % of the inside picture: [top of the shelf board, left, right] */
 var SHELVES = [[23.3, 15, 91], [42.7, 15, 91], [62.4, 15, 91]];
-var SHED_SKIP = {friend:1, bianca:1, beefy:1, brucey:1, bonnie:1, parents:1, yasmin:1, mo:1, monnie:1, coop:1, palace:1, swing:1, nestbox:1};
+var SHED_SKIP = {friend:1, bianca:1, beefy:1, brucey:1, bonnie:1, parents:1, yasmin:1, mo:1, monnie:1, coop:1, palace:1, swing:1, nestbox:1, plaque:1, player:1, rec_ss:1, rec_mj:1};
 var TREATS = ['pandan', 'latte', 'cookies'];
 var JOY_MS = 6000;
 var JOY = {until: 0, start: 0};
@@ -117226,17 +117246,18 @@ function walkTo(p, q, u, speed){
 }
 
 /* ----- Britney's loop ----- */
-var BSEG = [], BT = 0;
-(function(){
+var BSEG = [], BT = 0, BSEG_KEY = null;
+function buildBrit(top){   /* top = the coop roof [x, b] when there is a coop; otherwise she visits the grass where it would stand */
+  var key = top ? top.join(',') : 'none'; if (key === BSEG_KEY) return; BSEG_KEY = key; BSEG = []; RIDE = null;
   var pos = BRIT_SEQ[0][1], t = 0, face = 'r';
   BRIT_SEQ.forEach(function(st){
-    var kind = st[0], to = st[1] || pos, ms = st[2];
+    var kind = st[0], to = st[1] === 'COOP' ? (top || [88, 37]) : (st[1] || pos), ms = st[2];
     if (kind === 'walk') ms = pxd(pos, to) / HEN_WALK_PX * 1000;
     if (to[0] - pos[0] > 0.4) face = 'r'; else if (to[0] - pos[0] < -0.4) face = 'l';
     BSEG.push({k: kind, a: pos, b: to, t: t, ms: ms, face: face}); t += ms; pos = to;
   });
   BT = t;
-})();
+}
 function flyPos(a, b, k){
   /* a smooth curve over the top: stays high over the people's heads, slow take-off and landing, never stops in the air */
   var e = ease(k), lift = Math.max(14, Math.abs(b[0] - a[0]) * 0.55), cx = (a[0] + b[0]) / 2, cb = Math.max(a[1], b[1]) + lift;
@@ -117261,6 +117282,7 @@ function laylaHead(L){
   return [L.x + (L.face === 'l' ? -off : off), L.b + H * 0.93];
 }
 var RIDE = null;
+buildBrit(null);
 function rideWin(){
   if (RIDE) return RIDE;
   var s = LSEG[RIDE_WP - 1], t0 = s.t + s.w + 200; RIDE = {t0: t0, t1: t0 + RIDE_FLY, t2: t0 + RIDE_FLY + RIDE_MS, t3: t0 + 2 * RIDE_FLY + RIDE_MS}; return RIDE;
@@ -117317,6 +117339,8 @@ window.SQE_MOUNT = function(A){
     '@keyframes mjoy{0%{transform:none}8%{transform:translateY(-55%) rotate(-8deg)}16%{transform:translateY(-70%)}28%{transform:translateY(-70%) rotate(360deg)}36%{transform:translateY(-20%) rotate(360deg)}40%{transform:rotate(360deg)}62%{transform:translateY(-35%) rotate(360deg) scale(1.08)}68%{transform:rotate(360deg)}80%{transform:translateY(-12%) rotate(375deg)}100%{transform:rotate(360deg)}}' +
     '.mg-tag{position:absolute;left:50%;bottom:100%;margin-bottom:2px;transform:translateX(-50%);background:rgba(255,255,255,.88);border-radius:999px;padding:1px 8px;font-size:13px;font-weight:700;color:#3B2F1E;white-space:nowrap;pointer-events:none}' +
     '.mg-hen .boluimg,.mg-hen .bonnieimg,.mg-hen img{height:100%;width:auto}' +
+    '.mg-item img{height:100%;width:auto;display:block}.mg-hen.onswing img{transform-origin:50% -60%;animation:mswing 3.2s ease-in-out infinite}' +
+    '@keyframes mswing{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}' +
     '.mg-hen.peck img{transform-origin:55% 90%;animation:mgpeck .62s ease-in-out infinite}' +
     '@keyframes mgpeck{0%,45%,100%{transform:none}22%{transform:rotate(18deg)}}' +
     '.mg-shed{cursor:pointer;pointer-events:auto;border-radius:6px}.mg-shed:hover img,.mg-shed:focus-visible img{filter:drop-shadow(0 0 6px #fff) drop-shadow(0 0 3px #FFD43B)}' +
@@ -117432,7 +117456,18 @@ window.SQE_MOUNT = function(A){
     var shop = '#/town/shop';
     var h = '<div class="mount"><div class="mount-top"><a class="mount-back" href="#/palace">‹ Peckham</a><h2 class="mount-title"><span class="mount-sign">The Mount</span></h2>' +
       '<span class="spill coin">' + A.cbaCoin() + ' <b>' + c.coins + '</b></span><a class="spill shop mount-shop" href="' + shop + '">🛒 Hen Bargains</a></div>' + (window.SQE_TOWN_NAV ? window.SQE_TOWN_NAV('#/mount') : '');
-    h += '<div class="mount-garden mood-' + esc(m.cls) + '"><img class="mount-bg" src="img/scene/mount-garden.webp" alt="The Mount: a garden with a lawn, a round stone patio, a path, two benches, a shed and a chicken coop" width="2752" height="1536">';
+    h += '<div class="mount-garden mood-' + esc(m.cls) + '"><img class="mount-bg" src="img/scene/mount-garden-nocoop.webp" alt="The Mount: a garden with a lawn, a round stone patio, a path, two benches and a shed" width="2752" height="1536">';
+    /* the things Layla has bought that live in the garden (each has its own spot; gone again if she returns it) */
+    var go = TRY ? {coop: 1, palace: 1, plaque: 1, nestbox: 1, swing: 1, player: 1, rec_ss: 1, rec_mj: 1} : o;
+    buildBrit(coopTop(go));
+    Object.keys(GARDEN_ITEMS).forEach(function(id){
+      if (!go[id] || (id === 'coop' && go.palace)) return;
+      var gi = GARDEN_ITEMS[id], b = id === 'plaque' && go.palace ? 37 : gi[1], hasCoop = go.coop || go.palace;
+      if (id === 'plaque' && !hasCoop) b = 2.5;   /* no coop yet: the sign stands on the lawn by the path */
+      var x = id === 'plaque' && !hasCoop ? 25.5 : gi[0];
+      var front = id === 'plaque' && hasCoop;
+      h += '<div class="mg-act mg-item mi-' + id + (front ? ' front' : '') + '" data-g="' + x + ',' + b + ',' + gi[2] + '"><img src="img/mount/item-' + id + '.webp" alt="" onerror="this.parentNode.style.display=\'none\'"></div>';
+    });
     h += '<button type="button" class="mg-act mg-shed" data-mount="shed" data-g="' + SHED.x + ',' + SHED.b + ',' + SHED.h + '" aria-label="Open Layla\'s shed (' + shedItems().length + ' things inside)"><img src="img/mount/shed.webp" alt="" onerror="this.parentNode.style.display=\'none\'"></button>';
     var who = [];
     PEOPLE.forEach(function(p){
@@ -117445,8 +117480,9 @@ window.SQE_MOUNT = function(A){
     if (owned('baba') || owned('mama')){ var pp = parentPair(); h += '<span class="mg-say" data-say="' + pp[0] + '" aria-live="polite">' + esc(pp[1]) + '<i></i></span>'; }
     HENS.forEach(function(p){
       if (!o[p[0]] && !TRY) return; who.push(p[4]);
+      if (p[0] === 'beefy' && go.swing) p = ['beefy', SWING_SEAT[0], SWING_SEAT[1], SWING_SEAT[2], p[4], 1];
       var hg = p[0] !== 'bonnie' && hungry(p[0]);
-      h += '<div class="mg-act mg-hen mh-' + p[0] + (hg ? ' hungry' : '') + (p[1] > 75 ? ' rt' : '') + '" data-hen="' + p[0] + '" data-g="' + p[1] + ',' + p[2] + ',' + p[3] + '" title="' + esc(p[4]) + '">' + A.cbaItemPic(p[0]) +
+      h += '<div class="mg-act mg-hen mh-' + p[0] + (hg ? ' hungry' : '') + (p[5] ? ' onswing' : '') + (p[1] > 75 ? ' rt' : '') + '" data-hen="' + p[0] + '" data-g="' + p[1] + ',' + p[2] + ',' + p[3] + '" title="' + esc(p[4]) + '">' + A.cbaItemPic(p[0]) +
         (hg ? '<span class="mg-tears" aria-hidden="true"><i></i><i></i></span><span class="mg-think">Layla, I\'m hungry!</span>' : '') + '</div>';   /* no name labels on the hens (they overlapped); names are in the line under the garden */
     });
     h += A.broodScene();
@@ -117582,6 +117618,7 @@ window.SQE_MOUNT = function(A){
       if (s.el.style.display === 'none') return;
       var walker = s.el.classList.contains('mg-walker');
       place(s.el, s.x + (walker ? pw.dx : 0), s.b, s.h, s.img);
+      if (s.el.classList.contains('front') || s.el.classList.contains('onswing')) s.el.style.zIndex = String(Math.round(2000 - s.b * 10) + 60);   /* the sign on the coop, Beefy on the swing seat */
       if (walker) stepParent(s.el, s.img, pw, s.el.getAttribute('data-who') === 'baba' ? 0.5 : 0);
     });
     /* Layla */
@@ -117705,7 +117742,7 @@ window.SQE_MOUNT = function(A){
     var tail = say.querySelector('i'); if (tail){ tail.style.left = clamp(headX - (cx - bw / 2), 16, bw - 16).toFixed(1) + 'px'; tail.style.height = clamp(headY - top + 1, 12, 90).toFixed(0) + 'px'; }   /* the tail stretches down to the speaker's head */
   }
   requestAnimationFrame(tick);
-  window.SQE_MOUNT_DEBUG = {c0: CLOCK0, TRIM: TRIM, laylaAt: laylaAt, britAt: britAt, LT: LT, BT: BT, startFeed: startFeed, feeding: function(){ return !!FEED; }, FEED: function(){ return FEED; }};
+  window.SQE_MOUNT_DEBUG = {c0: CLOCK0, TRIM: TRIM, laylaAt: laylaAt, britAt: britAt, LT: LT, get BT(){ return BT; }, startFeed: startFeed, feeding: function(){ return !!FEED; }, FEED: function(){ return FEED; }};
 
   var joyT = 0;
   document.addEventListener('click', function(e){
@@ -118642,7 +118679,7 @@ function presentVoucher(){
 function kwHTML(){
   var pool = kwPool(); if (!pool.length) return "";
   var k = pool[kwI % pool.length];
-  return '<div class="kw" id="kw" data-bl="kw" title="From: ' + esc(k.from) + '"><span class="kwlab">🔑 Remember</span><b>' + esc(k.w) + '</b><span class="kwd">' + esc(k.d) + '</span><button data-act="kwnext" aria-label="Next keyword">↻</button></div>';
+  return '<div class="kw" id="kw" data-bl="kw" title="From: ' + esc(k.from) + '"><span class="kwlab">Remember</span><b>' + esc(k.w) + '</b><span class="kwd">' + esc(k.d) + '</span><button data-act="kwnext" aria-label="Next keyword">↻</button></div>';
 }
 function header(route){
   var tgt = Math.max(1, buildPlan().all), done = totalMins();
@@ -119924,7 +119961,7 @@ VIEW.topic = function(r){
       return '<div class="tpsteps"><b>This topic\'s steps</b><ol>' + topicSteps(x).filter(function(z){ return z.k !== "rate"; }).map(function(z){ var dn = stepDone(x, z.k); return '<li class="' + (dn ? 'done' : '') + (z.k === "bert" ? ' tpbert' : '') + '"><span class="tpck">' + (dn ? '✓' : '') + '</span><a href="' + z.h + '">' + z.l.replace(/^Step \d+: /, '') + '</a></li>'; }).join("") + '</ol></div>'; } catch(e){ return ''; } })() + '<div class="review"><b>Finished reviewing? How confident do you feel about this topic?</b>' +
       '<div class="btns" style="justify-content:center">' + CONF.slice().reverse().map(function(c){ var cur = trec(k) && trec(k).conf === c.v; return '<button class="rate' + (cur ? " on" : "") + '" data-act="trate" data-k="' + k + '" data-v="' + c.v + '">' + c.e + '<span>' + esc(c.l) + '</span></button>'; }).join("") + '</div>' +
       (trec(k) ? '<p class="small muted" style="margin:8px 0 0">Reviewed ' + plural(trec(k).n, "time") + ', last ' + ago(trec(k).at) + '. Rate it again each time you come back to it. <button class="linkbtn" data-act="undone" data-k="' + k + '">Clear</button></p>' : '<p class="small muted" style="margin:8px 0 0">Your rating counts this as a review and shows on the topic list and Progress charts.</p>') +
-      (mode === "cartoon" ? '' : '<div class="btns" style="justify-content:center">' + ((s.qq || []).some(function(q){ return q.t === t.id; }) ? '<a class="btn sm primary" href="#/quick/' + s.id + '/' + t.id + '">⚡ Quick fire on this topic</a>' : '') + '<a class="btn sm" href="#/questions/' + s.id + '">Practise ' + esc(s.title) + ' questions</a></div></div>') + /* 20 Nov Monnie: no question links under the cartoon */
+      (mode === "cartoon" ? '</div>' /* QA 20 Nov: close .review here too, or the topic list falls inside the page as an empty blue block */ : '<div class="btns" style="justify-content:center">' + ((s.qq || []).some(function(q){ return q.t === t.id; }) ? '<a class="btn sm primary" href="#/quick/' + s.id + '/' + t.id + '">⚡ Quick fire on this topic</a>' : '') + '<a class="btn sm" href="#/questions/' + s.id + '">Practise ' + esc(s.title) + ' questions</a></div></div>') + /* 20 Nov Monnie: no question links under the cartoon */
     /* 20 Nov: Bert moved off topic pages */
     '<div class="btns">' + (prev ? '<a class="btn sm" href="#/topic/' + prev.s.id + '/' + prev.t.id + navSuf(prev, navMode) + '">‹ ' + esc(prev.t.title) + '</a>' : '') + (next ? '<a class="btn sm" href="#/topic/' + next.s.id + '/' + next.t.id + navSuf(next, navMode) + '">' + esc(next.t.title) + ' ›</a>' : '') + '</div>' + /* 20 Nov Monnie: previous/next stay on the same tab (framework to framework, cartoon to cartoon when the next topic has one) */
     '</div>';
