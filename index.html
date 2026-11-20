@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120102600";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120103111";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -117176,21 +117176,21 @@ var ROOMV3 = {
 },
 {
 "spot": "sundae",
-"x": 74.4,
-"y": 40.2,
-"w": 3.4,
-"h": 4.2,
-"text": ">50%",
+"x": 73.9,
+"y": 39.6,
+"w": 4.0,
+"h": 5.0,
+"text": "OVER\n50%",
 "style": "tag",
 "rot": -4
 },
 {
 "spot": "sundae",
-"x": 78.1,
-"y": 40.2,
-"w": 3.4,
-"h": 4.2,
-"text": "75%+",
+"x": 78.2,
+"y": 39.6,
+"w": 4.0,
+"h": 5.0,
+"text": "75%\nOR MORE",
 "style": "tag",
 "rot": 4
 },
@@ -133022,7 +133022,7 @@ var BOSS_CAGE = '<svg class="bcage" viewBox="0 0 100 110" aria-hidden="true"><pa
 /* what happens at the end of the round, for the scene: grab (he takes her), reach (nothing to take), flee (she won), or "" */
 function bossEndFx(B){
   if (B.ans === null) return "";
-  if (B.wrong >= B.maxMiss) return B.mode === "rescue" || (B.stake && bossStake(B.key)) ? "grab" : "reach";
+  if (B.wrong >= B.maxMiss) return B.mode === "rescue" || (B.stake && (B.capNow || bossStake(B.key))) ? "grab" : "reach"; /* capNow: the capture is saved the moment the last wrong answer lands */
   return B.i + 1 >= B.qs.length ? "flee" : "";
 }
 function bossScene(B){
