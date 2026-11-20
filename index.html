@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120170356";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120171026";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -175761,7 +175761,7 @@ window.SQE_SCENE = function(A){
     var x = A.TBYKEY[k], s = x.s, qa = [], qq;
     try { qa = (A.topicQs(s, x.t.id) || []).map(function(id){ var r = A.qById(id); return r ? {kind: 'qa', id: id, q: r.q.q, o: r.q.o, a: r.q.a, e: r.q.e, ord: shuf(nums(r.q.o.length))} : null; }).filter(Boolean); } catch(e){}
     qq = shuf((s.qq || []).filter(function(z){ return z.t === x.t.id; })).map(function(z){ return {kind: 'qq', x: z, q: z.q, o: z.o, a: 0, e: z.e, ord: shuf([0, 1, 2, 3])}; });
-    var all = shuf(qa.concat(qq)), st = function(z){ try { return z.kind === 'qa' && A.seenToday && A.seenToday(z.id) ? 1 : 0; } catch(e){ return 0; } };
+    var all = shuf(qa.concat(qq)), st = function(z){ try { var id = z.kind === 'qa' ? z.id : z.x && z.x.id; return id && A.seenToday && A.seenToday(id) ? 1 : 0; } catch(e){ return 0; } };
     return all.filter(function(z){ return !st(z); }).concat(all.filter(function(z){ return st(z); })); /* 20 Nov Monnie: ALL model Qs + ALL quick-fire; 16:05 QA: ones not seen today first */
   }
   function exitCount(k){ try { var x = A.TBYKEY[k]; return (A.topicQs(x.s, x.t.id) || []).length + (x.s.qq || []).filter(function(z){ return z.t === x.t.id; }).length; } catch(e){ return 10; } }
@@ -178263,7 +178263,7 @@ var SCENE_JUMP = ".mount-garden, .town-scene";
 function sceneJump(){ var rr = route(); if (!/^(town|mount|scene|palace|boss|bosschase)$/.test(rr[0] || "") || (rr[0] === "town" && /^(shop|jobs)$/.test(rr[1] || ""))) return; /* Hen Bargains (hbScroll) and the Job Centre (sceneFocus) place themselves */ var set = -1, go = function(){ if (set < 0 ? window.scrollY > 40 : Math.abs(window.scrollY - set) > 4) return; /* not if she (or the page) already scrolled */ var w = document.querySelector(".wrap"); if (!w) return; var el = w.querySelector(SCENE_JUMP);
   if (!el) el = [].filter.call(w.querySelectorAll("img, svg, canvas, .scn-art, .bossg .arena"), function(e){ var r = e.getBoundingClientRect(); return r.width > 400 && r.height > 200; })[0] || w;
   var t = el.getBoundingClientRect().top + window.scrollY - 8; if (t > 40 && Math.abs(t - window.scrollY) > 4){ window.scrollTo(0, t); set = window.scrollY; } else if (set < 0) set = window.scrollY; }; [60, 450, 1100, 2000].forEach(function(ms){ setTimeout(go, ms); }); }
-function seenToday(id){ var r = S.qa[id], d = new Date(); d.setHours(0,0,0,0); return !!(r && r.at >= d.getTime()); } /* 16:05 (QA): games draw questions not seen today first */
+function seenToday(id){ var r = S.qa[id] || (S.qf || {})[id], d = new Date(); d.setHours(0,0,0,0); return !!(r && r.at >= d.getTime()); } /* 16:05 (QA): games draw questions not seen today first */
 function wrongIds(){ return Object.keys(S.qa).filter(function(id){ return S.qa[id].last === -1 && qById(id); }); }
 
 /* hours */
@@ -180354,7 +180354,7 @@ VIEW.play = function(){
       (n >= QZ.items.length ? '<p class="small exq-tick">✓ Exam-style questions ticked off' + (qrv ? ', and today\'s review for this topic too' : '') + '.</p>' : '') +
       '<div class="btns" style="justify-content:center">' + (function(){ var nz = nextUndone(qtx, "qa"); return nz ? '<a class="btn primary" href="' + nz.h + '">Next: ' + esc(stepLabel(nz)) + ' ›</a>' : '<a class="btn primary" href="#/home">All steps done. Back to Today ›</a>'; })() + /* 16:00 (QA): next = the next unticked step (Bert before rating) */ '<button class="btn" data-act="qagain">Try this set again</button>' + (wrongIds().length ? '<a class="btn bad" href="#/questions/wrong">Redo wrong answers</a>' : '') + '<a class="btn" href="#/home">Back to Today</a></div></div>';
     var nz2 = qtx ? nextUndone(qtx, "qa") : null;
-    return '<div class="card"><h2>' + (n && c / n >= 0.7 ? 'Well done! ' : '') + esc(QZ.title) + ': finished</h2><p style="font-size:22px;margin:6px 0"><b>' + c + ' / ' + n + '</b> correct (' + (n ? Math.round(c / n * 100) : 0) + '%)</p>' + qaWell(c, n) +
+    return '<div class="card"><h2>' + esc(QZ.title) + ': finished</h2><p style="font-size:22px;margin:6px 0"><b>' + c + ' / ' + n + '</b> correct (' + (n ? Math.round(c / n * 100) : 0) + '%)</p>' + qaWell(c, n) +
       '<div class="btns">' + (nz2 ? '<a class="btn primary" href="' + nz2.h + '">Next: ' + esc(stepLabel(nz2)) + ' ›</a>' : '') + '<button class="btn' + (nz2 ? '' : ' primary') + '" data-act="qagain">Try this set again</button>' + (wrongIds().length ? '<a class="btn bad" href="#/questions/wrong">Redo wrong answers</a>' : '') + '<a class="btn" href="' + QZ.back + '">Back</a></div></div>';
   }
   var it = QZ.items[QZ.i], x = qById(it.id), a = QZ.ans[QZ.i];
@@ -181645,7 +181645,8 @@ function bossQs(key){
   var qq = cbaTopicQQ(key).map(function(z){ return {kind:"qq", id:z.id, q:z.q, o:z.o, a:0, e:z.e}; });
   var cb = (CBA[key] || []).map(function(st, i){ return st && st.q && st.o && st.o.length >= 2 ? {kind:"cba", id:key + "@" + i, q:st.q, o:st.o, a:0, e:st.e} : null; }).filter(Boolean);
   var fresh = function(a){ a = shuffle(a); var rk = function(z){ return (seenToday(z.id) ? 2 : 0) + (seen[z.id] ? 1 : 0); }; return [0,1,2,3].reduce(function(o, r){ return o.concat(a.filter(function(z){ return rk(z) === r; })); }, []); };
-  [qa, qq, cb].forEach(function(pool){ fresh(pool).forEach(function(z){ if (out.length < BOSS_N) out.push(z); }); });
+  var all = [].concat(fresh(qa), fresh(qq), fresh(cb)); /* 17:05 (QA): questions seen today go after ALL unseen ones, not just within each pool */
+  all.filter(function(z){ return !seenToday(z.id); }).concat(all.filter(function(z){ return seenToday(z.id); })).forEach(function(z){ if (out.length < BOSS_N) out.push(z); });
   if (out.length < BOSS_N){ /* tiny topic: top up with Quick fire from the rest of the subject */
     var more = fresh((x.s.qq || []).filter(function(z){ return z.t !== x.t.id; }).map(function(z){ return {kind:"qq", id:z.id, q:z.q, o:z.o, a:0, e:z.e}; }));
     more.forEach(function(z){ if (out.length < BOSS_N) out.push(z); });
@@ -182707,7 +182708,7 @@ if (window.SQE_WEAK) try { window.SQE_WEAK({hooks:function(h){ WEAKHOOK = h || {
 if (window.SQE_EXTRAS) try { window.SQE_EXTRAS({S:function(){ return S; }, VIEW:VIEW, save:save, render:render, route:route, esc:esc, SUBJ:SUBJ, earn:earn, earnedToday:earnedToday, tooQuick:tooQuick, COIN:COIN, READ_MS:READ_MS}); } catch(ex){ if (window.console) console.error(ex); }
 load(); if (window.SQE_PREVIEW_DEMO && !S.demoSeeded){ S.demoSeeded = 1; gameDemo(); } render(); startTick(); sandTick();
 if (window.SQESync) try { window.SQESync.init({get:function(){ return S; }, set:function(v){ S = v; }, save:save, render:render, canRender:function(){ var a = document.activeElement; return !podPlaying() && !(a && /INPUT|TEXTAREA|SELECT/.test(a.tagName)); }}); } catch(e){ if (window.console) console.error(e); }
-window.__sqe = {seenToday:seenToday, layRoll:function(ds){ return layRoll(ds); }, S:function(){ return S; }, TOPICS:TOPICS, SUBJ:SUBJ, findSection:findSection, boss:function(){ return BOSS; }, bossLockScale:function(v){ BOSS_LOCK_SCALE = v; }, PODS:PODS};
+window.__sqe = {seenToday:seenToday, bossQs:function(k){ return bossQs(k); }, layRoll:function(ds){ return layRoll(ds); }, S:function(){ return S; }, TOPICS:TOPICS, SUBJ:SUBJ, findSection:findSection, boss:function(){ return BOSS; }, bossLockScale:function(v){ BOSS_LOCK_SCALE = v; }, PODS:PODS};
 })();
 
 /* framework self-test: tap a branch box (or the dashed "tap to reveal" box, or a step heading) to show or hide it */
@@ -182833,7 +182834,8 @@ document.addEventListener("click", function(e){
   function txt(el){ return el ? (el.innerText || el.textContent || "").replace(/\s+/g, " ").trim() : ""; }
   function where(){
     var app = document.getElementById("app"), main = app && (app.querySelector(".wrap") || app);
-    var head = main ? txt(main.querySelector("h1, h2")) : "";
+    var head = main ? txt(main.querySelector("h1, h2")) || txt(main.querySelector(".qmeta, .qzcard .pill, .tag, .scn h3, h3")) : "";
+    if (!head){ var r0 = (location.hash.split("/")[1] || "home"); head = ({play:"Model Q&A", questions:"Model Q&A", quick:"Quick fire", cards:"Revision cards", topic:"Topic notes", scene:"Peckham stop", town:"Peckham", mount:"The Mount", palace:"Peckham map", today:"Today", boss:"Bert's fight", mock:"Mock exam"})[r0] || r0; } /* 17:05 (QA): never show a bare "#/play" */
     var q = main ? txt(main.querySelector(".qtext, .qstem, .stem, .qq, .qf, .cbaq, .bq, .bossq, .q, .fcq, .fc .face, .front, .scn-pop h3, .hlpara")) : "";
     return { page: location.hash || "#/home", heading: head.slice(0, 140), item: q.slice(0, 300) };
   }
@@ -182853,12 +182855,13 @@ document.addEventListener("click", function(e){
     ".rpt-pan h3{margin:0 0 6px;font-size:15px}.rpt-pan textarea{width:100%;box-sizing:border-box;min-height:70px;margin-top:8px;display:block;font:inherit;padding:6px;border:1px solid #bbb;border-radius:6px}" +
     ".rpt-pan .rpt-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.rpt-pan button{font:600 13px system-ui,sans-serif;padding:6px 10px;border-radius:8px;border:1px solid #bbb;background:#f4f4f4;cursor:pointer}" +
     ".rpt-pan button.rpt-go{background:#4A3B6B;color:#fff;border-color:#4A3B6B}.rpt-pan .rpt-mut{color:#666;font-size:12px}.rpt-pan ol{padding-left:18px;margin:6px 0}.rpt-pan li{margin:4px 0;font-size:12px}" +
-    ".rpt-pan .rpt-x{float:right;border:0;background:none;font-size:16px;padding:0 4px}.rpt-pan.rpt-pan{left:50%;top:50%;bottom:auto;transform:translate(-50%,-50%);width:min(440px,calc(100vw - 32px));max-height:80vh;box-shadow:0 0 0 100vmax rgba(0,0,0,.35),0 10px 30px rgba(0,0,0,.3)}";
+    ".rpt-pan .rpt-x{float:right;border:0;background:none;font-size:16px;padding:0 4px}.rpt-bd{position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.45)}.rpt-pan.rpt-pan{left:50%;top:50%;bottom:auto;transform:translate(-50%,-50%);width:min(440px,calc(100vw - 32px));max-height:80vh;box-shadow:0 10px 30px rgba(0,0,0,.3)}";
   var st = document.createElement("style"); st.textContent = css; document.head.appendChild(st);
   var btn = document.createElement("button"); btn.className = "rpt-btn"; btn.type = "button"; btn.textContent = "⚑ Report a mistake"; btn.title = "Spotted something wrong? Flag it here.";
   var pan = null, lastSel = "";
   document.addEventListener("selectionchange", function(){ try { var s = String(window.getSelection() || "").replace(/\s+/g, " ").trim(); if (s && !(pan && pan.contains(document.activeElement))) lastSel = s.slice(0, 300); } catch(e){} });
-  function close(){ if (pan){ pan.remove(); pan = null; } }
+  var bd = null;
+  function close(){ if (pan){ pan.remove(); pan = null; } if (bd){ bd.remove(); bd = null; } }
   function open(msg){
     close(); var a = load(), w = where();
     pan = document.createElement("div"); pan.className = "rpt-pan";
@@ -182870,6 +182873,7 @@ document.addEventListener("click", function(e){
       '<hr style="border:0;border-top:1px solid #eee;margin:10px 0"><b>Your saved reports (' + a.length + ')</b>' +
       (a.length ? '<ol>' + a.map(function(x, i){ return '<li>' + esc(x.note) + ' <span class="rpt-mut">(' + esc(x.heading || x.page) + ')</span> <button data-r="del" data-i="' + i + '" style="padding:0 6px;font-size:11px">delete</button></li>'; }).join("") + '</ol>' +
         '<div class="rpt-row"><button data-r="mail">Email the list</button><button data-r="dl">Download the list</button><button data-r="copy">Copy</button></div>' : '<p class="rpt-mut">None yet.</p>');
+    bd = document.createElement("div"); bd.className = "rpt-bd"; bd.addEventListener("click", close); document.body.appendChild(bd); /* 17:05 (QA): dimmed backdrop, tap it to close */
     document.body.appendChild(pan);
     var ta = pan.querySelector("#rpt-note"); if (ta) ta.focus();
   }
