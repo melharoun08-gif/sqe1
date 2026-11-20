@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120153632";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120154603";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -4120,7 +4120,7 @@ details.podsubj[open] .podchev{transform:rotate(-135deg);margin-top:6px}
 :root[data-theme="dark"] .sidetog{background:#fff!important;color:#10294A!important}
 /* 14:42 (QA): boxes that tick themselves look different from the ones she taps */
 .tdbox[disabled]{border-style:dashed!important;background:#F3F5F8!important;opacity:.75;cursor:default}
-.tdbox[disabled].on{opacity:1;border-style:solid!important}
+.tdbox[disabled].on{opacity:1;border-style:solid!important;background:var(--good)!important;border-color:var(--good)!important;color:#fff}
 .tdauto{margin-left:8px;font-size:12px;font-style:italic;color:#5A6874;white-space:nowrap}
 /* 14:44 (QA): a lone last card in a two-column grid spans the full row instead of leaving half a row empty */
 .grid2>.card:last-child:nth-child(odd){grid-column:1/-1}
@@ -4214,6 +4214,26 @@ details.cardsubj > ul.cardtopics{margin-top:6px!important}
 
 /* 15:15 covered label on subject pages */
 .revd .covok{color:#2E7D32;margin-right:6px}
+
+/* QA 15:41 Face the Butcher layout: a shorter strip on laptops so the answers sit on screen with Bert, and a clear red/green fill on the answer */
+@media (min-width:561px){.bossg .atrack{height:236px;--bw:150px;--nw:84px;--near:calc(var(--nw) - 10px)}.bossg .blay{width:190px;height:174px}}
+.bossg .bopt.wrong{background:#FDE0DE!important;border-color:#E2231A!important;border-width:2px}
+.bossg .bopt.wrong .L{background:#E2231A;color:#fff}
+.bossg .bopt.right{background:#E2F5DC!important;border-color:#2E9B3E!important;border-width:2px}
+.bossg .bopt.right .L{background:#2E9B3E;color:#fff}
+/* the opened chest with coins popping out */
+.bchestopen{position:relative;display:inline-block}
+.bcoinpop{position:absolute;left:50%;top:30%;width:0;height:0}
+.bcoinpop i{position:absolute;left:-12px;top:0;font-style:normal;font-size:26px;opacity:0;animation:bcoinUp 1.4s calc(var(--n) * .12s) ease-out forwards}
+@keyframes bcoinUp{0%{opacity:0;transform:translate(0,10px) scale(.6)}20%{opacity:1}100%{opacity:0;transform:translate(calc((var(--n) - 2) * 34px),-90px) scale(1.1)}}
+.bchestgot b{font-size:1.15em}
+@media (prefers-reduced-motion:reduce){.bcoinpop{display:none}}
+
+/* 15:50 "Logged 25 min to ..." confirmation */
+.logtoast{position:fixed;left:50%;top:76px;transform:translateX(-50%);z-index:9998;background:#2E7D32;color:#fff;font-weight:800;font-size:16px;padding:10px 18px;border-radius:999px;border:2px solid #10294A;box-shadow:0 4px 0 #10294A;transition:opacity .5s;max-width:calc(100vw - 32px);text-align:center}
+.logtoast.out{opacity:0}
+
+.weakdone{font-weight:800;color:#2E7D32;font-size:17px;margin:10px 0 4px}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
@@ -149308,8 +149328,8 @@ window.SQE_SCENE = function(A){
       '.stsk .scn-confetti i svg,.scn-confetti.sk i svg{width:30px;height:30px}' +
       '.stsk .scn-hook.speech{height:auto!important;white-space:nowrap;line-height:1.15;transform:translateY(-100%) rotate(var(--rot,0deg));background:#fff;color:#1b1b1b;border:.2cqw solid #1b1b1b;border-radius:1.4cqw;box-shadow:.2cqw .25cqw 0 #1b1b1b;text-shadow:none;padding:.25cqw .8cqw;font-family:"Gochi Hand","Sour Gummy",cursive;font-weight:400;font-size:max(1.25cqw,13px)!important;width:auto!important;min-width:0;z-index:3}.stsk .scn-hook.speech::after{background:#fff;border-right:.2cqw solid #1b1b1b;border-bottom:.2cqw solid #1b1b1b;box-shadow:none}' +
       '.stsk .scn-board{padding:calc(var(--bpy,1cqw) * 1.5) calc(var(--bpx,1cqw) * 2);color:#1D3557;text-shadow:none;font-family:"Gochi Hand","Delius",cursive}.stsk .scn-board[data-scn-board$="dr-case-management"],.stsk .scn-board[data-scn-board$="dr-costs"]{color:#fff;text-shadow:0 1px 2px #1b1b1b}' +
-      '.scn-hook.tag{z-index:5}',
-'.stsk .scn-hook.tag{z-index:5;transform:translate(-50%,-100%) rotate(var(--rot,0deg));height:auto!important;width:auto!important;padding:.08cqw .3cqw;line-height:1.05;background:rgba(255,253,242,.86);border-width:.12cqw;box-shadow:.12cqw .12cqw 0 #1b1b1b}' +
+      '.scn-hook.tag{z-index:5}' +
+      '.stsk .scn-hook.tag{z-index:5;transform:translate(-50%,-100%) rotate(var(--rot,0deg));height:auto!important;width:auto!important;padding:.08cqw .3cqw;line-height:1.05;background:rgba(255,253,242,.86);border-width:.12cqw;box-shadow:.12cqw .12cqw 0 #1b1b1b}' +
       '.stsk .bk-on .bu-wr{display:block}.stsk .bk-on .bu-body{border-radius:14px}.stsk .bk-on .bu-body::before{display:none}' +
       '.stsk .bk-popcorn .bu-body{border-radius:44% 56% 40% 60%/58% 42% 58% 42%;background:radial-gradient(circle at 12% 30%,#FFE27A 0 7px,transparent 8px),radial-gradient(circle at 88% 72%,#FFD24A 0 6px,transparent 7px),radial-gradient(circle at 70% 14%,#FFE9A0 0 6px,transparent 7px),#FFFBEF}' +
       '.stsk .bk-popcorn .gm-pc{border-radius:50%;width:20%!important;height:17%;margin-left:12%;background:radial-gradient(circle at 60% 40%,#FFD34D 0 22%,transparent 26%),#FFFBEF!important}.stsk .bk-coin .gm-pc{border-radius:50%;width:22%!important;margin-left:10%;background:#FFC300!important}.stsk .bk-coconut .gm-pc{border-radius:50%;width:22%!important;margin-left:10%;background:#8D5A3B!important}' +
@@ -151477,7 +151497,7 @@ window.SQE_WEAK = function(A){
       var left = dueCount(), fixed = RD.items.filter(function(c){ return !c.repeat && !c.it.extra && (W().it[c.it.key] || {}).b >= CLEAR_AT; }).length;
       return '<div class="card wk wkend">' + top + '<h2>Round over</h2><p style="font-size:26px;margin:6px"><b>' + RD.right + ' / ' + RD.n0 + '</b> first time</p>' +
         '<p class="muted">Anything you got right comes back in a day, then in three days. Get it right then and it is fixed. Anything you got wrong comes back tomorrow.' + (fixed ? ' <b>' + fixed + ' fixed for good this round.</b>' : '') + '</p>' +
-        '<div class="btns">' + (left ? '<button class="btn primary" data-weak="again">Next round (' + left + ' still due)</button>' : '<span class="pill g">All weak spots done for today</span>') + '<a class="btn" href="#/weak">See progress by subject</a><a class="btn" href="#/home">Back to Today</a></div></div>';
+        (left ? '' : '<p class="weakdone">✓ All weak spots done for today. Well done!</p>') + '<div class="btns">' + (left ? '<button class="btn primary" data-weak="again">Next round (' + left + ' still due)</button>' : '') + /* 15:55 (QA): a plain message, not a pill that looks like a button */ '<a class="btn" href="#/weak">See progress by subject</a><a class="btn" href="#/home">Back to Today</a></div></div>';
     }
     var c = RD.items[RD.i], it = c.it, n = RD.items.length;
     var strip = '<div class="qsq strip">' + RD.items.map(function(z, k){ return '<button class="sq' + (z.pick !== null ? (z.pick === z.it.a ? ' ok' : ' bad') : '') + (k === RD.i ? ' cur' : '') + '" data-weak="go" data-n="' + k + '">' + (k + 1) + '</button>'; }).join('') + '</div>';
@@ -152587,9 +152607,16 @@ function startTick(){
     if (++kwT % 900 === 0){ rotateBanner(); }
   }, 1000);
 }
+function logToast(txt){ var el = document.createElement("div"); el.className = "logtoast"; el.setAttribute("role", "status"); el.textContent = txt; document.body.appendChild(el); setTimeout(function(){ el.classList.add("out"); }, 2600); setTimeout(function(){ if (el.parentNode) el.parentNode.removeChild(el); }, 3200); }
 function logTimer(note){
   var m = Math.round(runningMins());
-  if (m >= 1){ S.logs.push({id:uid(), d:ymd(), m:m, s:S.timer.subj || "", note:note || "Timer"});
+  /* 15:50 (QA): log it to the topic she is on (or today's first topic) instead of "General", and say so */
+  var sj = S.timer.subj || "", tn = "";
+  try { var rr = route(), tx = (rr[0] === "topic" || rr[0] === "quick" || rr[0] === "boss" || rr[0] === "scene") && rr[1] && rr[2] ? TBYKEY[rr[1] + "/" + rr[2]] : null;
+    if (!tx){ var nt0 = nextTopic(); tx = nt0 || null; }
+    if (tx){ if (!sj) sj = tx.s.id; tn = tx.t.title; } } catch(e){}
+  if (m >= 1){ S.logs.push({id:uid(), d:ymd(), m:m, s:sj, note:note || (tn ? "Timer: " + tn : "Timer")});
+    setTimeout(function(){ logToast("Logged " + fmtM(m) + (tn ? " to " + tn : sj && BYID[sj] ? " to " + BYID[sj].title : "") + " ✓"); }, 50);
     var g = gameS(), td = ymd(); if (!g.tday || g.tday.d !== td) g.tday = {d:td, n:0, r:0};
     var tot = (g.tday.r || 0) + m, coins = Math.min(COIN.timerCap - g.tday.n, Math.floor(tot / 10) * COIN.timerPer10); g.tday.r = tot % 10;
     if (coins > 0){ g.tday.n += coins; earn(coins); } }
@@ -153231,10 +153258,14 @@ function topicCards(s, tid, mode){ return (s.cards || []).map(function(c, i){ re
 function topicQs(s, tid){ return (s.qs || []).map(function(q, i){ var k = s.id + "#" + i; if (!(k in QTOP) && q.t) QTOP[k] = q.t; if (!(k in QTOP)){ var sec = null; try { sec = findSection(s, null, q.q + " " + q.o[q.a] + " " + q.e); } catch(e){} QTOP[k] = sec ? sec.t : ""; } return QTOP[k] === tid ? k : null; }).filter(Boolean); }
 /* "Read the notes" goes to the topic's immersive scene when it has one (src/scene.js), else the notes page */
 function notesHref(x){ return (window.SQE_SCENES || {})[x.key] ? "#/scene/" + x.key : "#/topic/" + x.s.id + "/" + x.t.id; }
+/* the first step of this topic still to do after step k (then any earlier one), for "Next:" buttons */
+function stepLabel(z){ return z.k === "rate" ? "Rate this topic" : String(z.l).replace(/^Step \d+:\s*/, "").replace(/<[^>]+>/g, "").trim(); }
+function nextUndone(x, k){ var st = topicSteps(x), i = st.map(function(z){ return z.k; }).indexOf(k), rest = st.slice(i + 1).concat(st.slice(0, Math.max(0, i)));
+  for (var j = 0; j < rest.length; j++) if (rest[j].k !== k && !stepDone(x, rest[j].k)) return rest[j]; return null; }
 function topicSteps(x){
   var s = x.s, t = x.t, base = "#/topic/" + s.id + "/" + t.id, nq = (s.qq || []).filter(function(q){ return q.t === t.id; }).length, nc = topicCards(s, t.id).length, nm = topicQs(s, t.id).length;
   var rmS = (window.SQE_SCENES || {})[x.key], stO = (window.SQE_STOP_OF || {})[x.key], rmOn = rmS && window.SQE_ROOMS_ON && (s.id === "blp" || stO); /* Monnie 05:45: step 1 = visit the topic's room (the syllabus notes and cartoons stay in their own tabs) */
-  var st = [rmOn ? (stO ? {k:"notes", l:"Visit " + (stO === "dr" ? "Ride " : "Room ") + (((window.SQE_STOP_IDX || {})[x.key] || 0) + 1) + " at " + esc(String(((window.SQE_STOPDATA || {})[stO] || {hub: {}}).hub.title || "the stop").replace(/^The /, "the ")) + ": " + esc(t.title), h:"#/scene/" + x.key + "/inside"} : {k:"notes", l:"🍬 Visit Room " + (x.i + 1) + " in the Sweet Shop: " + esc(t.title), h:"#/scene/" + x.key + (x.i ? "/inside" : "")}) : {k:"notes", l:"📝 Learn it: read the notes", h:notesHref(x), alt:(window.SQE_SCENES || {})[x.key] && DFPH[x.key] && DFPH[x.key].length ? ' <a class="tdalt" href="' + base + '/cartoon">🖼️ Cartoon (' + DFPH[x.key].length + ' pages)</a>' : ''}]; /* 20 Nov Monnie: framework only in the day-6 review, not on the learning day */
+  var st = [rmOn ? (stO ? {k:"notes", l:"Visit " + (stO === "dr" ? "Ride " : "Room ") + (((window.SQE_STOP_IDX || {})[x.key] || 0) + 1) + " at " + esc(String(((window.SQE_STOPDATA || {})[stO] || {hub: {}}).hub.title || "the stop").replace(/^The /, "the ")) + ": " + esc(t.title), h:"#/scene/" + x.key + "/inside"} : {k:"notes", l:"🍬 Visit Room " + (x.i + 1) + " in the Sweet Shop: " + esc(t.title), h:"#/scene/" + x.key + "/inside"} /* 15:52 (QA): step 1 opens the room itself, not the shop front */) : {k:"notes", l:"📝 Learn it: read the notes", h:notesHref(x), alt:(window.SQE_SCENES || {})[x.key] && DFPH[x.key] && DFPH[x.key].length ? ' <a class="tdalt" href="' + base + '/cartoon">🖼️ Cartoon (' + DFPH[x.key].length + ' pages)</a>' : ''}]; /* 20 Nov Monnie: framework only in the day-6 review, not on the learning day */
   if (nq) st.push({k:"quick", l:"⚡ Quick fire (" + nq + ")", h:"#/quick/" + s.id + "/" + t.id});
   if (nm) st.push({k:"qa", l:"✍️ Model Q&A (" + nm + ")", h:"#/questions/" + s.id + "/" + t.id});
   /* Monnie 20 Nov 05:43: the topic's final boss step = Face Bert (10-question topic game); ticks itself when she beats him */
@@ -153500,7 +153531,7 @@ VIEW.topic = function(r){
   var body;
   var c2 = COMIC2[k];
   if (mode === "cartoon") body = DFPH[k] && DFPH[k].length ? dfphHTML(DFPH[k]) : c2 ? comic2HTML(c2) : cartoon(ct);
-  else if (mode === "framework") body = /* fw-steps 20 Nov (Monnie): each framework is a tap-to-open step-by-step walk-through; replaces the old hide-the-details self-test */ /* 14:50 (Monnie): the hide-everything-then-tap-to-reveal self-test is back on every framework */ '<div class="fwtest' + skinOf(s.id) + '"><button class="btn sm primary" data-act="fwtest">' + (FWTEST ? 'Show everything' : 'Hide it all and test myself') + '</button>' + (FWTEST ? '<span class="fwcount" aria-live="polite">0 revealed so far</span><span class="fwhint small muted">Tap each covered line, or a heading, to reveal it.</span>' : '') + (skinOf(s.id) && (window.SQE_SCENES || {})[k] ? '<a class="btn sm fwshop" href="#/scene/' + k + '">Back to the Sweet Shop</a>' : '') + '</div>' + '<div class="fwwrap' + skinOf(s.id) + (FWTEST ? ' mmtest' : '') + '">' + (mm ? mindmap(mm, skinOf(s.id), s.id) : '') /* 13:30 (Monnie): the framework diagram is back as it was; the step-by-step walk-through stays below it */ + (steps ? (mm ? '<h3 class="fwk-sec">Step by step: how to answer a question on this topic</h3>' : '') + fwkSteps(steps, skinOf(s.id), k) : '') + '</div>';
+  else if (mode === "framework") body = /* fw-steps 20 Nov (Monnie): each framework is a tap-to-open step-by-step walk-through; replaces the old hide-the-details self-test */ /* 14:50 (Monnie): the hide-everything-then-tap-to-reveal self-test is back on every framework */ '<div class="fwtest' + skinOf(s.id) + '"><button class="btn sm primary" data-act="fwtest">' + (FWTEST ? 'Show everything' : 'Hide it all and test myself') + '</button>' + (steps && mm ? '<button type="button" class="btn sm fwjump" onclick="var e=document.querySelector(\'.fwk-sec\');if(e)e.scrollIntoView({behavior:\'smooth\',block:\'start\'})">Step through it ↓</button>' : '') + (FWTEST ? '<span class="fwcount" aria-live="polite">0 revealed so far</span><span class="fwhint small muted">Tap each covered line, or a heading, to reveal it.</span>' : '') + (skinOf(s.id) && (window.SQE_SCENES || {})[k] ? '<a class="btn sm fwshop" href="#/scene/' + k + '">Back to the Sweet Shop</a>' : '') + '</div>' + '<div class="fwwrap' + skinOf(s.id) + (FWTEST ? ' mmtest' : '') + '">' + (mm ? mindmap(mm, skinOf(s.id), s.id) : '') /* 13:30 (Monnie): the framework diagram is back as it was; the step-by-step walk-through stays below it */ + (steps ? (mm ? '<h3 class="fwk-sec">Step by step: how to answer a question on this topic</h3>' : '') + fwkSteps(steps, skinOf(s.id), k) : '') + '</div>';
   else if (rateOnly) body = '<p style="margin:14px 0 4px">Think back over <b>' + esc(t.title) + '</b>, then pick a colour below. <a href="#/topic/' + s.id + '/' + t.id + '">Read the notes again ›</a></p>';
   else if (hl < 0 && learnDeck(k) && LEARNFULL[k]) body = (NCK = k, learnHTML(x));
   else body = (hl < 0 && skinOf(s.id) && (window.SQE_SCENES || {})[k] ? '<div class="swn-shop"><span class="swn-shopic" aria-hidden="true">🍭</span><span class="swn-shopt"><b>This topic is a shop on your Journey</b><span>The Sweet Shop has the same notes as tap-and-learn sweets, jars and quick checks.</span></span><a class="btn primary swn-shopb" href="#/scene/' + k + '">🍬 Go to the Sweet Shop</a></div>' : '') + (hl < 0 && learnDeck(k) ? '<div class="lrn-tog"><button type="button" class="lrn-link" data-learn="full">🃏 Step-by-step cards instead</button></div>' : '') + (hl >= 0 ? '<div class="banner warn hlnote">📍 The part of the notes that question was about is highlighted in yellow below.</div>' : '') + '<div class="notes">' + (NCK = k, COMIC2[k] ? notesWithComic2(t.notes, COMIC2[k]) : notesWithCartoons(t.notes, ct)) + '</div>';
@@ -154014,7 +154045,7 @@ function fwkHTML(title, sub, items, skin, id){
     '<ol class="fwk-list">' + items.map(function(it, i){ var did = 'fwk-' + esc(id).replace(/[^a-z0-9]+/gi, '-') + '-' + i, open = i === 0;
       return '<li class="fwk-step' + (open ? ' open' : '') + '"' + (it.c ? ' style="--mc:' + it.c[1] + ';--mb:' + it.c[0] + ';--mh:' + it.c[2] + '"' : '') + '>' +
         '<button type="button" class="fwk-h" aria-expanded="' + open + '" aria-controls="' + did + '"><span class="fwk-n">' + (i + 1) + '</span><span class="fwk-t">' + inl(it.h) + '</span><span class="fwk-ch" aria-hidden="true"></span></button>' +
-        '<div class="fwk-d" id="' + did + '"' + (open ? '' : ' hidden') + '>' + it.html + (i < n - 1 ? '<button type="button" class="btn sm primary fwk-next">Next step ›</button>' : '<div class="fwk-end">That is every step. <button type="button" class="linkbtn fwk-reset">Start again</button></div>') + '</div></li>'; }).join('') +
+        '<div class="fwk-d" id="' + did + '"' + (open ? '' : ' hidden') + '>' + it.html + (i < n - 1 ? '<button type="button" class="btn sm primary fwk-next">Next step ›</button>' : '<div class="fwk-end"><b>Well done, that\'s every step!</b> <button type="button" class="linkbtn fwk-reset">Start again</button></div>') + '</div></li>'; }).join('') +
     '</ol></div>';
 }
 function fwkMind(m, skin, k){
@@ -154108,9 +154139,10 @@ VIEW.play = function(){
     if (qtx && n >= QZ.items.length){ try { (buildPlan().revs || {})[QZ.tkey].forEach(function(rv){ if (rv.gap === 10 && rv.d === ymd()){ qrv = true; if (!S.todo[rv.k]){ S.todo[rv.k] = Date.now(); save(); } } }); } catch(eR){} }
     if (qsk) return '<div class="card exq-end' + qsk + '" style="text-align:center"><div class="swend" aria-hidden="true">' + SWJAR + '</div><h2>' + esc(QZ.title) + ': finished</h2><p class="exq-score"><b>' + c + ' / ' + n + '</b> correct (' + (n ? Math.round(c / n * 100) : 0) + '%)</p>' +
       (n >= QZ.items.length ? '<p class="small exq-tick">✓ Exam-style questions ticked off' + (qrv ? ', and today\'s review for this topic too' : '') + '.</p>' : '') +
-      '<div class="btns" style="justify-content:center"><a class="btn primary" href="#/topic/' + qtx.s.id + '/' + qtx.t.id + '/rate">🚦 Next: rate this topic ›</a><button class="btn" data-act="qagain">Try this set again</button>' + (wrongIds().length ? '<a class="btn bad" href="#/questions/wrong">Redo wrong answers</a>' : '') + '<a class="btn" href="#/home">Back to Today</a></div></div>';
-    return '<div class="card"><h2>' + esc(QZ.title) + ': finished</h2><p style="font-size:22px;margin:6px 0"><b>' + c + ' / ' + n + '</b> correct (' + (n ? Math.round(c / n * 100) : 0) + '%)</p>' +
-      '<div class="btns"><button class="btn primary" data-act="qagain">Try this set again</button>' + (wrongIds().length ? '<a class="btn bad" href="#/questions/wrong">Redo wrong answers</a>' : '') + '<a class="btn" href="' + QZ.back + '">Back</a></div></div>';
+      '<div class="btns" style="justify-content:center">' + (function(){ var nz = nextUndone(qtx, "qa"); return nz ? '<a class="btn primary" href="' + nz.h + '">Next: ' + esc(stepLabel(nz)) + ' ›</a>' : '<a class="btn primary" href="#/home">All steps done. Back to Today ›</a>'; })() + /* 16:00 (QA): next = the next unticked step (Bert before rating) */ '<button class="btn" data-act="qagain">Try this set again</button>' + (wrongIds().length ? '<a class="btn bad" href="#/questions/wrong">Redo wrong answers</a>' : '') + '<a class="btn" href="#/home">Back to Today</a></div></div>';
+    var nz2 = qtx ? nextUndone(qtx, "qa") : null;
+    return '<div class="card"><h2>' + (n && c / n >= 0.7 ? 'Well done! ' : '') + esc(QZ.title) + ': finished</h2><p style="font-size:22px;margin:6px 0"><b>' + c + ' / ' + n + '</b> correct (' + (n ? Math.round(c / n * 100) : 0) + '%)</p>' +
+      '<div class="btns">' + (nz2 ? '<a class="btn primary" href="' + nz2.h + '">Next: ' + esc(stepLabel(nz2)) + ' ›</a>' : '') + '<button class="btn' + (nz2 ? '' : ' primary') + '" data-act="qagain">Try this set again</button>' + (wrongIds().length ? '<a class="btn bad" href="#/questions/wrong">Redo wrong answers</a>' : '') + '<a class="btn" href="' + QZ.back + '">Back</a></div></div>';
   }
   var it = QZ.items[QZ.i], x = qById(it.id), a = QZ.ans[QZ.i];
   if (QZ.atI !== QZ.i || QZ.atId !== it.id){ QZ.atI = QZ.i; QZ.atId = it.id; QZ.at = Date.now(); }
@@ -154127,7 +154159,7 @@ VIEW.play = function(){
   if (a){
     var letter = "ABCDE"[it.order.indexOf(x.q.a)];
     h += '<div class="explain"><h4 style="color:' + (a.ok ? "var(--good)" : "var(--bad)") + '">' + (a.ok ? "✓ Correct" : "✗ Not quite. The answer is " + letter) + '</h4><div class="notes">' + md(x.q.e) + '</div></div>' +
-      '<div class="btns">' + '<button class="btn" data-act="qprev"' + (QZ.i ? '' : ' disabled') + '>‹ Previous</button>' + '<button class="btn primary" data-act="qnext">' + (QZ.i + 1 < QZ.items.length ? "Next question ›" : "See my score") + '</button>' + notesLink(x.s, null, x.q.q + " " + x.q.o[x.q.a] + " " + x.q.e) + '<a class="btn" href="' + QZ.back + '">Stop</a></div>';
+      '<div class="btns">' + '<button class="btn" data-act="qprev"' + (QZ.i ? '' : ' disabled') + '>‹ Previous</button>' + '<button class="btn primary" data-act="qnext">' + (QZ.i + 1 < QZ.items.length ? "Next question ›" : "See my score") + '</button>' + notesLink(x.s, x.q.t || null, x.q.q + " " + x.q.o[x.q.a] + " " + x.q.e) + '<a class="btn" href="' + QZ.back + '">Stop</a></div>';
   } else h += '<div class="btns">' + '<button class="btn sm" data-act="qprev"' + (QZ.i ? '' : ' disabled') + '>‹ Previous</button>' + '<button class="btn sm" data-act="qskip">Skip</button><a class="btn sm" href="' + QZ.back + '">Stop</a></div><div class="kbd" style="margin-top:6px">Tip: press keys A to E to answer.</div>';
   return h + '</div>';
 };
@@ -154222,10 +154254,10 @@ VIEW.quick = function(r){
       var after = key === "review" ? qfDue().length : 0;
       /* quickfire (19 Nov): sweet-shop skin on the round-over card + a button on to the topic's next step (Model Q&A questions, else rate it) */
       var qfX = TBYKEY[QF.key], qfSk = qfX ? skinOf(qfX.s.id) : (QF.items.length && QF.items.every(function(q){ return q.x.s.id === QF.items[0].x.s.id; }) ? skinOf(QF.items[0].x.s.id) : ""), qfNx = null;
-      if (qfX && qfSk){ var qfSt = topicSteps(qfX), qfI = qfSt.map(function(z){ return z.k; }).indexOf("quick"); qfNx = qfI >= 0 ? qfSt[qfI + 1] : null; }
-      return '<div class="card qfend' + qfSk + '" style="text-align:center">' + (qfSk ? '<div class="swend" aria-hidden="true">' + SWJAR + '</div>' : '') + '<h2>Round over</h2><p style="font-size:26px;margin:6px"><b>' + QF.score + ' / ' + n + '</b></p><p class="muted">in ' + secs + ' seconds. Anything you got wrong will come back sooner.</p>' +
+      if (qfX) qfNx = nextUndone(qfX, "quick"); /* 15:59 (QA): every topic gets the next unticked step as the main button, not just the sweet shop */
+      return '<div class="card qfend' + qfSk + '" style="text-align:center">' + (qfSk ? '<div class="swend" aria-hidden="true">' + SWJAR + '</div>' : '') + '<h2>' + (QF.score >= n * 0.7 ? 'Well done!' : QF.score >= n * 0.4 ? 'Good effort!' : 'Round over') + '</h2><p style="font-size:26px;margin:6px"><b>' + QF.score + ' / ' + n + '</b></p><p class="muted">in ' + secs + ' seconds. Anything you got wrong will come back sooner.</p>' +
         '<div class="btns" style="justify-content:center">' +
-        (key === "review" ? (after ? '<button class="btn primary" data-act="qfagain">Next ' + Math.min(10, after) + ' (' + after + ' still due)</button>' : '<span class="pill g">All caught up for now ✓</span>') : (qfNx ? '<a class="btn primary" href="' + qfNx.h + '">Next: ' + esc(qfNx.l.replace(/^\S+\s+/, "")) + ' ›</a><button class="btn" data-act="qfagain">Another round</button>' : '<button class="btn primary" data-act="qfagain">Another round</button>')) +
+        (key === "review" ? (after ? '<button class="btn primary" data-act="qfagain">Next ' + Math.min(10, after) + ' (' + after + ' still due)</button>' : '<span class="pill g">All caught up for now ✓</span>') : (qfNx ? '<a class="btn primary" href="' + qfNx.h + '">Next: ' + esc(stepLabel(qfNx)) + ' ›</a><button class="btn" data-act="qfagain">Another round</button>' : '<button class="btn primary" data-act="qfagain">Another round</button>')) +
         (qfNx ? '<a class="btn" href="' + notesHref(qfX) + '">Back to the ' + (STOPSHORT[qfX.s.id] && (window.SQE_SCENES || {})[qfX.key] ? 'Sweet Shop' : 'notes') + '</a>' : '<a class="btn" href="#/quick">Back to Quick fire</a>') + '</div></div>';
     }
     var it = QF.items[QF.i], x = it.x;
@@ -154507,6 +154539,12 @@ VIEW.cards = function(r){
 /* ---------- Mock exam ---------- */
 /* mocks v2: 3 fixed mocks per paper, built from window.SQE_MOCKS (src/mocks/<subj>.json). */
 var MK = null, mkTick = 0;
+/* QA 20 Nov: keep an unfinished mock through a reload or closed tab. The clock pauses while the page is closed. */
+var MK_KEY = "sqe1-mock-inprogress";
+function mkPersist(){ try { if (MK && !MK.finished && !MK.review) localStorage.setItem(MK_KEY, JSON.stringify({k:MK.key, a:MK.items.map(function(x){ return x.pick === null ? "-" : String(x.pick); }).join(""), f:MK.items.map(function(x){ return x.flag ? "1" : "0"; }).join(""), i:MK.i, el:Date.now() - MK.t0, timed:MK.timed})); else localStorage.removeItem(MK_KEY); } catch(e){} }
+function mkRestore(){ try { var o = JSON.parse(localStorage.getItem(MK_KEY) || "null"), set = o && MOCKS[o.k]; if (!set || o.a.length !== set.length) return; var b = o.k.split("-");
+  MK = {key:o.k, sess:o.k, paper:b[0], m:isNaN(+b[1]) ? b[1] : +b[1], items:set.map(function(x, i){ var ch = o.a.charAt(i); return {ref:x, pick:ch !== "-" ? +ch : null, flag:o.f.charAt(i) === "1"}; }), i:Math.min(o.i || 0, set.length - 1), t0:Date.now() - (o.el || 0),
+    timed:o.timed !== false, limit:mockMins(set.length) * 60000, finished:false, confirm:false, filter:"all", rev:-1}; } catch(e){} }
 var MIN_PER_Q = 1.8; // SQE1 from Jan 2027: 153 minutes for each session of 85 questions
 var MOCK_LIST = [["FLK1",1],["FLK1",2],["FLK1",3],["FLK2",1],["FLK2",2],["FLK2",3]];
 function mkHash(s){ var h = 2166136261; for (var i = 0; i < s.length; i++){ h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
@@ -154559,6 +154597,8 @@ function mockRowTitle(r){ return r.mock ? mockName(r.mock) : (sessTitle(r.sess) 
 function mockPct(c, n){ return n ? Math.round(c / n * 100) : 0; }
 function mockQText(s){ return esc(s).replace(/\n\s*\n/g, '</p><p>').replace(/\n/g, '<br>'); }
 VIEW.mock = function(){
+  if (!MK) mkRestore();
+  mkPersist();
   if (MK && !MK.finished) return mockQuestion();
   if (MK && MK.finished) return mockResults();
   var timed = S.mockTimed !== false;
@@ -154606,6 +154646,7 @@ function mockStart(k){
   var b = k.split("-");
   MK = {key:k, sess:k, paper:b[0], m:isNaN(+b[1]) ? b[1] : +b[1], items:set.map(function(x){ return {ref:x, pick:null, flag:false}; }), i:0, t0:Date.now(),
     timed:S.mockTimed !== false, limit:mockMins(set.length) * 60000, finished:false, confirm:false, filter:"all", rev:-1};
+  if (sideNarrow() && S.ui && S.ui.sideNarrowOn){ S.ui.sideNarrowOn = false; save(); } /* QA 20 Nov: the folded-out topic list covered the options and Next at 960 */
   render();
 }
 function mockLeft(){ return MK.timed ? Math.max(0, MK.limit - (Date.now() - MK.t0)) : Math.max(0, Date.now() - MK.t0); }
@@ -154614,7 +154655,7 @@ function mockTickFn(){
   if (!MK || MK.finished){ clearInterval(mkTick); return; }
   var v = mockLeft(), c = document.getElementById("mkclock");
   if (c){ c.textContent = fmtClock(v); c.className = "bigclock" + (MK.timed && v < 300000 ? " low" : ""); }
-  if (MK.timed && v <= 0) mockFinish();
+  if (MK.timed && v <= 0) mockFinish(); else if (v % 5000 < 1000) mkPersist();
 }
 function mockQuestion(){
   var it = MK.items[MK.i], q = it.ref.q, n = MK.items.length;
@@ -154644,9 +154685,9 @@ function mockFinish(){
     f:MK.items.map(function(x){ return x.flag ? "1" : "0"; }).join("")});
   var ans = MK.items.filter(function(x){ return x.pick !== null; }).length;
   if (ans && !earnedToday("mock|" + MK.key)){
-    if (MK.secs >= ans * READ_MS.mockQ / 1000) earn(c * COIN.mockRight + (ans >= MK.items.length * 0.8 ? COIN.mockDone : 0), "mock|" + MK.key); else tooQuick();
+    if (MK.secs >= ans * READ_MS.mockQ / 1000) earn(c * COIN.mockRight + (ans >= MK.items.length * 0.8 ? COIN.mockDone : 0), "mock|" + MK.key); else tooQuick(READ_MS.mockQ);
   }
-  save(); MK.rev = -1; MK.filter = "all"; clearInterval(mkTick); render();
+  save(); mkPersist(); MK.rev = -1; MK.filter = "all"; clearInterval(mkTick); render();
 }
 function mockReview(k){
   var hist = mockHist(k), r = hist[hist.length - 1], set = MOCKS[k]; if (!r || !r.a || !set) return;
@@ -154662,7 +154703,7 @@ function mockResults(){
   var pct = mockPct(MK.c, n), keys = Object.keys(by).sort(function(a, b){ return by[a].c / by[a].n - by[b].c / by[b].n || by[a].t.localeCompare(by[b].t); });
   var h = '<div class="card"><h2>' + (MK.review ? 'Last attempt: ' : 'Mock finished: ') + esc(mockName(MK.key)) + '</h2>' +
     '<div class="mk-score"><div class="mk-big"><b>' + MK.c + ' / ' + n + '</b><span>' + pct + '%</span></div><div class="small muted">' +
-    (MK.d ? esc(fmtDate(MK.d)) + ' · ' : '') + 'Time used: ' + fmtH(MK.secs / 60) + ' (suggested ' + fmtH(MK.limit / 60000) + ')' + (blank ? ' · ' + blank + ' unanswered' : '') +
+    (MK.d ? esc(fmtDate(MK.d)) + ' · ' : '') + 'Time used: ' + fmtH(MK.secs / 60) + ' (suggested ' + fmtH(MK.limit / 60000) + ')' + (blank ? ' · ' + blank + ' unanswered' + (n - blank ? ' · ' + MK.c + ' of the ' + (n - blank) + ' you answered (' + mockPct(MK.c, n - blank) + '%)' : '') : '') +
     '<br>SQE1 pass marks are usually around 55 to 65%. ' + (pct >= 65 ? 'A strong score.' : pct >= 55 ? 'Around the pass mark: review the subjects at the top of the table first.' : 'Below the usual pass mark: the subject table shows where to focus.') + '</div></div>' +
     '<h3>By subject</h3><div class="mk-tablewrap"><table class="t mk-subj"><tr><th>Subject</th><th>Score</th><th></th></tr>' + keys.map(function(k){ var b = by[k], bp = mockPct(b.c, b.n); return '<tr><td>' + esc(b.t) + '</td><td><b>' + b.c + '/' + b.n + '</b> (' + bp + '%)</td><td class="mk-barcell">' + pbar(b.c, b.n, bp >= 65 ? "var(--good)" : bp >= 55 ? "var(--t5)" : "var(--bad)") + '</td></tr>'; }).join("") + '</table></div>' +
     '<div class="btns"><a class="btn" href="#/mock" data-act="mkclose">Back to mocks</a><button class="btn primary" data-act="mkstart" data-s="' + MK.key + '" data-n="' + n + '">Retake this mock</button></div></div>';
@@ -154824,24 +154865,24 @@ function earn(n, key, perm){
   if (!n) return 0;
   var g = gameS(), t = ymd();
   if (g.day.d !== t) g.day = {d:t, k:{}};
-  if (key){ if (perm ? g.paid[key] : g.day.k[key]) return 0; if (perm) g.paid[key] = t; else g.day.k[key] = 1; }
+  if (key){ if (perm ? g.paid[key] : g.day.k[key]){ if (/^(qa|qf|card|mock)\|/.test(key)){ POPQ.push(-1); schedulePop(); } return 0; } /* 15:45 (QA): say so, instead of nothing */ if (perm) g.paid[key] = t; else g.day.k[key] = 1; }
   var c = cbaS(); c.coins += n; g.earned = (+g.earned || 0) + n; GDIRTY = 1;
   POPQ.push(n); schedulePop();
   return n;
 }
 function earnedToday(key){ var g = gameS(); return g.day.d === ymd() && !!g.day.k[key]; }
-function tooQuick(){ POPQ.push(0); schedulePop(); }
+var QUICK_MS = 0; function tooQuick(ms){ QUICK_MS = ms || 0; POPQ.push(0); schedulePop(); }
 function schedulePop(){ clearTimeout(popT); popT = setTimeout(showPops, 30); }
 function showPops(){
   var q = POPQ; POPQ = []; if (!q.length) return;
-  var n = 0; q.forEach(function(v){ n += v; });
+  var n = 0, rep = false; q.forEach(function(v){ if (v > 0) n += v; else if (v < 0) rep = true; });
   var bag = document.getElementById("mbag"), x = window.innerWidth - 24, y = 84, r = bag && bag.getBoundingClientRect();
   if (r && r.width && r.bottom > 0 && r.top < window.innerHeight - 30){ x = r.left + 26; y = Math.max(8, r.bottom + 6); } /* 14:25 (QA): under the bag, not on top of it or the timer buttons */
   [].forEach.call(document.querySelectorAll(".coinpop"), function(o){ if (o.parentNode) o.parentNode.removeChild(o); });
   var el = document.createElement("div");
   el.className = "coinpop" + (n ? "" : " slow");
   el.setAttribute("role", "status");
-  el.innerHTML = n ? '+' + n + ' ' + cbaCoin() + ' <span>coin' + (n === 1 ? '' : 's') + '</span>' : 'Answered too fast for coins';
+  el.innerHTML = n ? '+' + n + ' ' + cbaCoin() + ' <span>coin' + (n === 1 ? '' : 's') + '</span>' : rep && q.indexOf(0) < 0 ? 'Coins already earned for this one today' : 'Too quick for coins: spend at least ' + Math.round((QUICK_MS || 3000) / 1000) + ' seconds reading it';
   document.body.appendChild(el);
   var w = el.offsetWidth, maxR = window.innerWidth - 6, sd = document.querySelector(".layout > .side"), sr = sd && sd.getBoundingClientRect(); /* keep the pop-up off the Topic list sidebar */
   if (sr && sr.width > 40 && sr.left > 200 && sr.top < y + 40 && sr.bottom > y) maxR = Math.min(maxR, sr.left - 8);
@@ -155510,7 +155551,7 @@ function bossChestSvg(open){
 function bossKeys(left){ var h = '<div class="bkeys" aria-label="' + left + ' rescue chances left">'; for (var i = 0; i < BOSS_RESCUES; i++) h += '<span class="' + (i < left ? "" : "used") + '">🗝️</span>'; return h + '</div>'; }
 function bossChestCard(){
   var b = bossS(); if (!b.chest) return "";
-  return '<div class="bcard bchestcard"><button class="bchestbtn" data-act="bosschest" aria-label="Open the coin chest">' + bossChestSvg(false) + '</button><div><h3>A coin chest is waiting! 🎁</h3><p>' + (b.chest.why === "rescue" ? "For rescuing Britney from Bert's Butchers." : "For beating Bert the butcher.") + ' Tap it to open: <b>+' + b.chest.n + ' ' + cbaCoin() + '</b></p></div></div>';
+  return '<div class="bcard bchestcard"><button class="bchestbtn" data-act="bosschest" aria-label="Open the coin chest">' + bossChestSvg(false) + '</button><div><h3>A coin chest is waiting!</h3><p>' + (b.chest.why === "rescue" ? "For rescuing Britney from Bert's Butchers." : "For beating Bert the butcher.") + ' Tap it to open: <b>+' + b.chest.n + ' ' + cbaCoin() + '</b></p></div></div>';
 }
 /* the "Britney is at Bert's" panel: shop window, keys, rescue or ransom */
 function bossCaptivePanel(where){
@@ -155701,8 +155742,8 @@ function bossResult(){
   var score = '<p class="bscore">' + d.right + ' right out of ' + d.n + ' asked</p>', back = '<a class="btn big" href="#/topic/' + x.s.id + '/' + x.t.id + '">Back to the topic</a>', h = '<div class="cbag bossg"><div class="cbacard win bres">';
   if (d.kind === "won" || d.kind === "freed"){
     h += '<h2>' + (d.kind === "freed" ? "Britney is FREE!" : "You beat Bert the butcher!") + '</h2>' + score + '<p>' + (d.kind === "freed" ? "She's flapping all the way home to The Mount." : bossHatched() ? "He's off sulking behind his counter. Britney is safe at home." : "He's off sulking behind his counter.") + '</p>';
-    h += '<div class="bwinrow">' + (bossHatched() ? '<span class="bwhen">' + happyHen + '</span>' : '') + (b.chest ? '<button class="bchestbtn" data-act="bosschest" aria-label="Open the coin chest">' + bossChestSvg(false) + '</button>' : bossChestSvg(true)) + '</div>';
-    h += b.chest ? '<p><b>Tap the chest to open it!</b></p>' : '<p><b>Chest opened: coins in the bag!</b></p>';
+    h += '<div class="bwinrow">' + (bossHatched() ? '<span class="bwhen">' + happyHen + '</span>' : '') + (b.chest ? '<button class="bchestbtn" data-act="bosschest" aria-label="Open the coin chest">' + bossChestSvg(false) + '</button>' : '<span class="bchestopen">' + bossChestSvg(true) + (B.chestN ? '<span class="bcoinpop" aria-hidden="true">' + [0, 1, 2, 3, 4].map(function(n){ return '<i style="--n:' + n + '">' + cbaCoin() + '</i>'; }).join('') + '</span>' : '') + '</span>') + '</div>';
+    h += b.chest ? '<p><b>Tap the chest to open it!</b></p>' : '<p class="bchestgot"><b>Chest opened' + (B.chestN ? ': +' + B.chestN + ' ' + cbaCoin() : '') + '</b> Coins in the bag!</p>';
     h += '<div class="btns cbac">' + (d.kind === "freed" ? '<a class="btn primary big" href="#/palace">Welcome her home</a>' : back + '<a class="btn primary big" href="#/home">Back to Today</a>') + '</div>';
   } else if (d.kind === "practice"){
     h += bertImg("bsmall", "scowl") + '<h2>You beat Bert again!</h2>' + score + '<p>Practice round: ' + (d.coins ? '<b>+' + d.coins + ' ' + cbaCoin() + '</b>.' : 'practice coins are once a day per topic.') + ' The chest for this topic was opened on ' + esc(fmtDate(b.won[B.key])) + '.</p><div class="btns cbac">' + back + '<button class="btn primary big" data-act="bossgo" data-k="' + B.key + '">Fight again</button></div>';
@@ -155769,7 +155810,11 @@ function bossTopicCTA(x){
 var PODS = (function(){ var p = window.SQE_PODCASTS, out = {}; if (!p || typeof p !== "object") return out; for (var k in p){ var e = p[k]; if (e && typeof e.file === "string" && e.file && TBYKEY[k]){ out[k] = {file:e.file, mins:+e.mins || 0}; var ps = Array.isArray(e.parts) ? e.parts.filter(function(q){ return q && typeof q.file === "string" && q.file; }).map(function(q){ return {file:q.file, secs:+q.secs || 0}; }) : []; if (ps.length > 1){ out[k].parts = ps; var ts = ps.reduce(function(n, q){ return n + q.secs; }, 0); if (ts && !out[k].mins) out[k].mins = Math.round(ts / 60); } } } return out; })();
 var POD_COINS = 3, POD_SHARE = 0.95;
 function podPlaying(){ return $all("audio[data-pod]").some(function(a){ return !a.paused && !a.ended; }); }
-function bossScroll(){ var el = document.querySelector(".bossg .arena"); if (el && el.getBoundingClientRect().top < 0) try { el.scrollIntoView({block:"start"}); } catch(e){} }
+/* QA 15:41: each new question starts with Bert's strip at the top of the screen so the answers are in view */
+function bossScroll(){ var el = document.querySelector(".bossg .arena"); if (!el) return; var t = el.getBoundingClientRect().top; if (t < 0 || t > 60) window.scrollTo(0, Math.max(0, window.scrollY + t - 8)); }
+function bossShowFb(){ var at = BOSS && BOSS.ansAt; setTimeout(function(){ if (!BOSS || BOSS.ansAt !== at) return; var f = document.querySelector(".bossg .cbafb"), n = document.querySelector(".bossg .bq .btns.cbac"), e = n || f; if (!e) return; var r = e.getBoundingClientRect(); if (r.bottom > innerHeight - 8){ var a = document.querySelector(".bossg .arena"), dy = Math.min(r.bottom - innerHeight + 16, a ? Math.max(0, a.getBoundingClientRect().bottom) + 400 : 9999); try { window.scrollBy({top: dy, behavior: "smooth"}); } catch(x){ window.scrollBy(0, dy); } } }, 1300); }
+/* the coin chest opens where she can see it, with the coins it gave */
+function bossChestView(){ [120, 450].forEach(function(ms){ setTimeout(function(){ var w = document.querySelector(".bres .bwinrow"); if (w){ var r = w.getBoundingClientRect(); if (r.top < 0 || r.bottom > innerHeight) w.scrollIntoView({block:"center"}); } }, ms); }); }
 function podS(){ if (!S.pods || typeof S.pods !== "object") S.pods = {}; return S.pods; }
 function podPlayedShare(a){ var d = a.duration; if (!d || !isFinite(d)) return 0; var t = 0; for (var i = 0; i < a.played.length; i++) t += a.played.end(i) - a.played.start(i); return t / d; }
 /* split episodes (preview build only: parts:[{file,secs}]): one <audio> plays part after part; listened seconds are kept per part
@@ -156218,7 +156263,7 @@ document.addEventListener("click", function(e){
       if (!QZ || QZ.ans[QZ.i]) break;
       var it = QZ.items[QZ.i], x = qById(it.id), pick = +el.getAttribute("data-o"), ok = pick === x.q.a;
       QZ.ans[QZ.i] = {pick:pick, ok:ok}; record(it.id, ok); layEgg(qaTopicKey(it.id));
-      if (Date.now() - (QZ.at || 0) >= READ_MS.qa) earn(COIN.qaDone + (ok ? COIN.qaRight : 0), "qa|" + it.id); else if (!earnedToday("qa|" + it.id)) tooQuick();
+      if (Date.now() - (QZ.at || 0) >= READ_MS.qa) earn(COIN.qaDone + (ok ? COIN.qaRight : 0), "qa|" + it.id); else if (!earnedToday("qa|" + it.id)) tooQuick(READ_MS.qa);
       save(); render(); break;
     }
     case "qnext": case "qskip": QZ.i++; render(); break;
@@ -156226,7 +156271,7 @@ document.addEventListener("click", function(e){
     case "qprev": if (QZ && QZ.i > 0){ QZ.i--; render(); } break;
     case "qagain": QZ = {title:QZ.title, items:shuffle(QZ.items.map(function(i){ return i.id; })).map(function(id){ return {id:id, order:shuffle([0,1,2,3,4])}; }), i:0, ans:[], back:QZ.back, tkey:QZ.tkey, src:QZ.src}; render(); break;
     case "qfpick": { if (!QF || QF.ans !== null) break; QF.ans = QF.ansA[QF.i] = +el.getAttribute("data-o"); var qx = QF.items[QF.i].x; if (QF.ans === 0) QF.score++; qfRecord(qx, QF.ans === 0); if (qx.s) layEgg(qx.s.id + "/" + qx.t);
-      if (QF.ans === 0){ if (Date.now() - (QF.at || 0) >= READ_MS.quick) earn(COIN.quick, "qf|" + qx.id); else if (!earnedToday("qf|" + qx.id)) tooQuick(); }
+      if (QF.ans === 0){ if (Date.now() - (QF.at || 0) >= READ_MS.quick) earn(COIN.quick, "qf|" + qx.id); else if (!earnedToday("qf|" + qx.id)) tooQuick(READ_MS.quick); }
       save(); render(); break; }
     case "qfnext": QF.i++; QF.ans = QF.ansA && QF.ansA[QF.i] != null ? QF.ansA[QF.i] : null; render(); break;
     case "todo": { var tk2 = el.getAttribute("data-k"); S.todo = S.todo || {}; if (S.todo[tk2]) delete S.todo[tk2]; else S.todo[tk2] = Date.now(); save(); render(); break; }
@@ -156241,14 +156286,14 @@ document.addEventListener("click", function(e){
     case "gbuy": buyNeed(el.getAttribute("data-i")); render(); break;
     case "chickname": broodName(el.getAttribute("data-i")); render(); break;
     case "feed": location.hash = "#/mount/feed"; break;
-    case "bosschase": if (BOSS && !BOSS.done){ BOSS.chased = 1; BOSS.at = 0; render(); } break;
+    case "bosschase": if (BOSS && !BOSS.done){ BOSS.chased = 1; BOSS.at = 0; render(); bossScroll(); } break;
     case "bossgo": if (bossStart(el.getAttribute("data-k"), "fight")){ if (location.hash === "#/boss/fight") render(); else location.hash = "#/boss/fight"; } break;
     case "bossrescue": if (bossRescue()){ if (location.hash === "#/boss/fight") render(); else location.hash = "#/boss/fight"; } else render(); break;
-    case "bosspick": if (BOSS && !BOSS.done && BOSS.ans === null){ bossAnswer(+el.getAttribute("data-o")); render(); bossScroll(); } break;
+    case "bosspick": if (BOSS && !BOSS.done && BOSS.ans === null){ bossAnswer(+el.getAttribute("data-o")); render(); bossShowFb(); } break; /* QA 15:41: no jump back up; Bert moves in view, then the explanation slides into view */
     case "bossprev": if (BOSS && !BOSS.done){ BOSS.view = Math.max(0, (BOSS.view != null ? BOSS.view : BOSS.i) - 1); render(); bossScroll(); } break;
     case "bossfwd": if (BOSS && BOSS.view != null){ BOSS.view++; if (BOSS.view >= BOSS.i) BOSS.view = null; render(); bossScroll(); } break;
-    case "bossnext": if (BOSS && BOSS.ans !== null && Date.now() >= BOSS.ansAt + 980){ bossNext(); if (BOSS.done) location.hash = "#/boss/result"; else { render(); bossScroll(); } } break;
-    case "bosschest": { var bn = bossChest(); render(); if (bn){ var ch = document.querySelector(".bres .bchest"); if (ch) ch.classList.add("pop"); } break; }
+    case "bossnext": if (BOSS && BOSS.ans !== null && Date.now() >= BOSS.ansAt + 980){ bossNext(); if (BOSS.done){ location.hash = "#/boss/result"; bossChestView(); } else { render(); bossScroll(); } } break;
+    case "bosschest": { var bn = bossChest(); if (bn && BOSS) BOSS.chestN = bn; render(); if (bn){ var ch = document.querySelector(".bres .bchest"); if (ch) ch.classList.add("pop"); } bossChestView(); break; }
     case "bossransom": if (bossRansom()) location.hash = "#/palace"; else render(); break;
     case "bossgetback": if (BOSS && !BOSS.done && BOSS.ans !== null) bossEnd(); RESQ = null; location.hash = "#/boss/rescue"; break;
     case "resqpick": resqPick(+el.getAttribute("data-o")); render(); break;
@@ -156266,7 +156311,7 @@ document.addEventListener("click", function(e){
     case "qfagain": QF.fresh = true; render(); break;
     case "fcflip": FC.flip = !FC.flip; render(); break;
     case "fcmark": S.cards[FC.deck[FC.i].id] = +el.getAttribute("data-v"); layEgg(cardTopicKey(FC.deck[FC.i]));
-      if (Date.now() - (FC.at || 0) >= READ_MS.card) earn(COIN.card, "card|" + FC.deck[FC.i].id); else if (!earnedToday("card|" + FC.deck[FC.i].id)) tooQuick();
+      if (Date.now() - (FC.at || 0) >= READ_MS.card) earn(COIN.card, "card|" + FC.deck[FC.i].id); else if (!earnedToday("card|" + FC.deck[FC.i].id)) tooQuick(READ_MS.card);
       FC.i++; try { var fcm = /^cards\/([^\/]+)\/topic\/([^\/]+)$/.exec(FC.key); if (fcm && FC.i >= FC.deck.length){ S.todo = S.todo || {}; ((buildPlan().revs || {})[fcm[1] + "/" + fcm[2]] || []).forEach(function(rv){ if (rv.k.indexOf("revc|") === 0 && rv.d <= ymd() && !S.todo[rv.k]) S.todo[rv.k] = Date.now(); }); } } catch(eRC){} /* QA 20 Nov: finishing a topic's card deck ticks its card review on Today */
       save(); FC.flip = false; render(); break;
     case "fcprev": if (FC && FC.i > 0){ FC.i--; FC.flip = false; render(); } break;
@@ -156282,7 +156327,7 @@ document.addEventListener("click", function(e){
     case "mkconfirm": MK.confirm = el.getAttribute("data-v") === "1"; render(); break;
     case "mkfinish": mockFinish(); break;
     case "mkrev": { MK.rev = +el.getAttribute("data-i"); if (MK.filter && MK.filter !== "all" && !document.getElementById("mkq-" + MK.rev)) MK.filter = "all"; render(); var rq = document.getElementById("mkq-" + MK.rev); if (rq && rq.scrollIntoView){ try { rq.scrollIntoView({block:"start"}); } catch(e2){} } break; }
-    case "mkclose": MK = null; render(); break;
+    case "mkclose": MK = null; mkPersist(); render(); break;
     case "hadd": {
       var d = $("#hd").value, hh = Math.max(0, +$("#hh").value || 0), mm = Math.max(0, +$("#hm").value || 0), m = Math.round(hh * 60 + mm);
       var msg = $("#hmsg");
@@ -156383,7 +156428,7 @@ window.addEventListener("hashchange", function(){
 function cbaFocus(){ setTimeout(function(){ var g = document.querySelector(".cbag .cbatop") || document.querySelector(".cbag"); if (!g) return; var t = g.getBoundingClientRect().top; if (t > 8 || t < 0) window.scrollTo({top: window.scrollY + t - 8}); }, 30); }
 window.addEventListener("storage", function(e){ if (e.key === KEY){ load(); if (!podPlaying()) render(); } });
 window.addEventListener("pagehide", save);
-window.addEventListener("beforeunload", function(e){ try { if (MK && !MK.finished && MK.items && MK.items.some(function(z){ return z.pick != null; })){ e.preventDefault(); e.returnValue = ""; } } catch(ex){} }); /* QA 20 Nov: warn before closing or reloading mid-mock (a mock in progress is not saved) */
+window.addEventListener("beforeunload", function(){ mkPersist(); }); /* QA 20 Nov: an unfinished mock is saved and resumes on reload */
 document.addEventListener("visibilitychange", function(){ if (document.visibilityState === "visible" && !podPlaying()) render(); });
 
 function gameDemo(){ var c = cbaS(); c.coins = Math.max(+c.coins || 0, 100); var g = gameS(); if (!Object.keys(g.full).length) g.full[ymd()] = Date.now(); save(); }
@@ -156504,7 +156549,7 @@ document.addEventListener("click", function(e){
     var w = t.closest(".fwalk"); if (!w) return;
     var steps = [].slice.call(w.querySelectorAll(".fwk-step"));
     if (t.closest(".fwk-h")){ var li = t.closest(".fwk-step"); setOpen(li, !li.classList.contains("open")); }
-    else if (t.closest(".fwk-next")){ var cur = t.closest(".fwk-step"), nx = steps[steps.indexOf(cur) + 1]; if (nx){ setOpen(nx, true); var hb = nx.querySelector(".fwk-h"); if (hb) try { hb.focus({preventScroll:true}); } catch(ex){} var r = nx.getBoundingClientRect(); if (r.bottom > innerHeight) try { nx.scrollIntoView({block:"nearest", behavior:"smooth"}); } catch(ex){ nx.scrollIntoView(false); } } }
+    else if (t.closest(".fwk-next")){ var cur = t.closest(".fwk-step"), nx = steps[steps.indexOf(cur) + 1]; if (nx){ setOpen(cur, false); /* 15:58 (QA): the finished step folds away */ setOpen(nx, true); var hb = nx.querySelector(".fwk-h"); if (hb) try { hb.focus({preventScroll:true}); } catch(ex){} var r = nx.getBoundingClientRect(); if (r.bottom > innerHeight) try { nx.scrollIntoView({block:"nearest", behavior:"smooth"}); } catch(ex){ nx.scrollIntoView(false); } } }
     else if (t.closest(".fwk-all")) steps.forEach(function(x){ setOpen(x, true); });
     else if (t.closest(".fwk-reset")){ steps.forEach(function(x, i){ setOpen(x, i === 0); }); try { w.scrollIntoView({block:"nearest", behavior:"smooth"}); } catch(ex){} var h0 = steps[0] && steps[0].querySelector(".fwk-h"); if (h0) try { h0.focus({preventScroll:true}); } catch(ex){} }
     else return;
@@ -156552,7 +156597,7 @@ document.addEventListener("click", function(e){
   function where(){
     var app = document.getElementById("app"), main = app && (app.querySelector(".wrap") || app);
     var head = main ? txt(main.querySelector("h1, h2")) : "";
-    var q = main ? txt(main.querySelector(".qtext, .qstem, .stem, .q, .fcq, .fc .face, .front")) : "";
+    var q = main ? txt(main.querySelector(".qtext, .qstem, .stem, .qq, .qf, .cbaq, .bq, .bossq, .q, .fcq, .fc .face, .front, .scn-pop h3, .hlpara")) : "";
     return { page: location.hash || "#/home", heading: head.slice(0, 140), item: q.slice(0, 300) };
   }
   function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
@@ -156581,7 +156626,7 @@ document.addEventListener("click", function(e){
     close(); var a = load(), w = where();
     pan = document.createElement("div"); pan.className = "rpt-pan";
     pan.innerHTML = '<button class="rpt-x" data-r="x" aria-label="Close">✕</button><h3>Report a mistake</h3>' +
-      '<div class="rpt-mut">On: ' + esc(w.heading || w.page) + (lastSel ? '<br>Highlighted: “' + esc(lastSel.slice(0, 120)) + (lastSel.length > 120 ? "…" : "") + '”' : '') + '</div>' +
+      '<div class="rpt-mut">On: ' + esc(w.heading || w.page) + (w.item ? '<br>Question: “' + esc(w.item.slice(0, 110)) + (w.item.length > 110 ? "…" : "") + '”' : '') + (lastSel ? '<br>Highlighted: “' + esc(lastSel.slice(0, 120)) + (lastSel.length > 120 ? "…" : "") + '”' : '') + '</div>' +
       '<textarea id="rpt-note" placeholder="What looks wrong? (A few words is fine.)"></textarea>' +
       '<div class="rpt-row"><button class="rpt-go" data-r="save">Save</button><button data-r="x">Cancel</button></div>' +
       (msg ? '<p class="rpt-mut" style="color:#2a7a2a">' + esc(msg) + '</p>' : '') +
@@ -156599,7 +156644,7 @@ document.addEventListener("click", function(e){
     else if (k === "save"){
       var n = (pan.querySelector("#rpt-note").value || "").trim(); if (!n){ pan.querySelector("#rpt-note").focus(); return; }
       var w = where(); a.push({ when: new Date().toLocaleString("en-GB"), page: w.page, heading: w.heading, item: w.item, sel: lastSel, note: n.slice(0, 1000) });
-      lastSel = ""; open(store(a) ? "Saved. Thank you!" : "Couldn't save in this browser.");
+      lastSel = ""; open(store(a) ? "Saved on this device, with the question attached. To send your saved reports to Monnie, tap \"Email the list\" below." : "Couldn't save in this browser.");
     }
     else if (k === "del"){ a.splice(+b.getAttribute("data-i"), 1); store(a); open(); }
     else if (k === "mail"){ location.href = "mailto:?subject=" + encodeURIComponent("SQE1 site: mistakes I spotted") + "&body=" + encodeURIComponent(asText(a).slice(0, 1800)); }
