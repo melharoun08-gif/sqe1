@@ -70046,7 +70046,8 @@ function planSeq(){
   return f1.concat(et, f2);
 }
 var READ_WPM = 110; // planning target; keeping each topic's testing steps together on one day adds a little, so the real pace comes out at about 140 words a minute
-function nWords(t){ return String(t.notes || "").split(/\s+/).length; }
+var NWC = typeof WeakMap === "function" ? new WeakMap() : null; /* speed (19:50): buildPlan counted every topic's notes words on every call (~0.3 s at startup); same count, cached per topic and notes text */
+function nWords(t){ var n = String(t.notes || ""), c = NWC && NWC.get(t); if (c && c.n === n) return c.w; var w = n.split(/\s+/).length; if (NWC) NWC.set(t, {n: n, w: w}); return w; }
 function buildPlan(){
   var st = S.settings, key = JSON.stringify([st.weekday, st.weekend, st.daysOff, st.exam1, st.exam2]);
   if (PLAN && PLAN.key === key) return PLAN;
@@ -70130,7 +70131,7 @@ function planDay(ds){ var p = buildPlan(); for (var i = 0; i < p.days.length; i+
 function planItemsBefore(ds){ var out = [], seen = {}; buildPlan().days.forEach(function(x){ if (x.d < ds) x.items.forEach(function(it){ if (it.part === "start" || it.part === "continue") return; /* QA 20 Nov: a big topic started on an earlier day and finishing today or later isn't 'behind' */ if (!S.done[it.x.key] && !seen[it.x.key]){ seen[it.x.key] = 1; out.push(it.x); } }); }); return out; }
 function fmtM(m){ if (m < 59.5) return Math.max(1, Math.round(m)) + " min"; m = Math.round(m / 5) * 5; return m >= 60 ? Math.floor(m / 60) + "h" + (m % 60 ? " " + (m % 60) + "m" : "") : Math.max(5, m) + " min"; }
 var CTOP = {}, QTOP = {};
-function cardTopic(s, i){ var k = s.id + "~" + i; if (!(k in CTOP) && s.cards[i] && s.cards[i][2]) CTOP[k] = s.cards[i][2]; if (!(k in CTOP)){ var c = s.cards[i], sec = null; try { sec = findSection(s, null, c[0] + " " + c[1]); } catch(e){} CTOP[k] = sec ? sec.t : ""; } return CTOP[k]; }
+function cardTopic(s, i){ var c0 = s.cards[i]; if (c0 && c0[2]) return c0[2]; /* speed (19:50): fast path, same answer (topicCards calls this ~76k times on Today) */ var k = s.id + "~" + i; if (!(k in CTOP) && s.cards[i] && s.cards[i][2]) CTOP[k] = s.cards[i][2]; if (!(k in CTOP)){ var c = s.cards[i], sec = null; try { sec = findSection(s, null, c[0] + " " + c[1]); } catch(e){} CTOP[k] = sec ? sec.t : ""; } return CTOP[k]; }
 function isCore(s, i){ return !s.core || !!s.core[i]; }
 function coreN(s){ return (s.cards || []).filter(function(c, i){ return isCore(s, i); }).length; }
 /* 20 Nov (Monnie): cards only unlock for topics she has done/rated; extra cards hidden unless Settings > Show extra cards */
