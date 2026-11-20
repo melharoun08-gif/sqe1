@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261120053626";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261120053909";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -3126,16 +3126,16 @@ details.bsubj summary{cursor:pointer;font-family:var(--hand);font-size:19px}
 .head.nb .nbfx .fxlh{position:absolute;left:0;top:0;width:100%;height:100%;transform-origin:51% 63%;animation:nbg-tilt 6s ease-in-out infinite}
 .head.nb .nbfx .fxlhh{left:0;top:0;width:100%;height:64.27%}
 .head.nb .nbfx .fxlhen{left:19.27%;top:.27%;width:63.3%;height:25.6%;transform-origin:50% 95%;animation:nbg-hen 1.8s ease-in-out infinite}
-@keyframes nbg-swY{0%,100%{transform:rotate(0)}30%{transform:rotate(3deg)}70%{transform:rotate(-2.5deg)}}
-@keyframes nbg-swL{0%,100%{transform:rotate(0)}30%{transform:rotate(-3deg)}70%{transform:rotate(2.5deg)}}
-@keyframes nbg-tilt{0%,15%,85%,100%{transform:rotate(0)}35%,65%{transform:rotate(-5deg)}}
-@keyframes nbg-hen{0%,100%{transform:translateY(0) rotate(0)}25%{transform:translateY(-5%) rotate(-4deg)}50%{transform:translateY(0) rotate(0)}75%{transform:translateY(-3%) rotate(3deg)}}
+@keyframes nbg-swY{0%,100%{transform:none}50%{transform:scaleY(1.006)}} /* Monnie 05:36: no side-to-side sway, breathing only */
+@keyframes nbg-swL{0%,100%{transform:none}50%{transform:scaleY(1.006)}}
+@keyframes nbg-tilt{0%,15%,85%,100%{transform:rotate(0)}35%,65%{transform:rotate(-3deg)}}
+@keyframes nbg-hen{0%,100%{transform:translateY(0) rotate(0)}25%{transform:translateY(-3%) rotate(-2deg)}50%{transform:translateY(0) rotate(0)}75%{transform:translateY(-2%) rotate(1.5deg)}}
 .head.nb .nbfx .gblink,.head.nb .gblink{opacity:0;animation:nbfx-blink 4.6s linear infinite}
 .head.nb .nbfx .glL{animation-duration:5.4s;animation-delay:-2s}
 .head.nb .glS{animation-duration:3.8s;animation-delay:-1s}
 .head.nb .nbfx .glY ellipse{fill:#FAAF6D}.head.nb .nbfx .glL ellipse{fill:#FDBB66}
 .head.nb.nbnight .nbfx .glY ellipse{fill:#996F54}.head.nb.nbnight .nbfx .glL ellipse{fill:#9B7650}
-.head.nb .nblayg{transform-box:fill-box;transform-origin:50% 100%;animation:nbg-swing 3.2s ease-in-out 1s infinite}
+.head.nb .nblayg{transform-box:fill-box;transform-origin:50% 100%} /* Monnie 05:36: cloud Layla no swing (she keeps her gentle breathing + blinks) */
 @keyframes nbg-swing{0%,100%{transform:rotate(0) translateY(0)}25%{transform:rotate(-4deg) translateY(-2%)}50%{transform:rotate(0) translateY(0)}75%{transform:rotate(4deg) translateY(-2%)}}
 @media (prefers-reduced-motion:reduce){.head.nb .nbfx .fxgirl,.head.nb .nbfx .fxlh,.head.nb .nbfx .fxlhen,.head.nb .gblink,.head.nb .nblayg{animation:none!important}}
 /* The Mount garden in motion (Monnie 20 Nov): Layla walks round the garden and hops up on both benches; Britney potters about,
@@ -109503,6 +109503,7 @@ var CSS = [
 '@keyframes scnBob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,-6px)}}',
 '.scn-art.zoom>svg,.scn-art.zoom>img,.scn-art.zoom>.scn-hs{transform-origin:77% 60%;animation:scnZoom .9s ease-in .75s forwards}',
 '.scn-art.zoom>.scn-hs{transform-origin:50% 50%}',
+'.scn-art.zoom{background:#FFE9F3 url(img/scene/shop-hall2.webp) 50% 50%/cover no-repeat}', /* the outside fades straight into the hall picture, never a plain colour */
 '@keyframes scnZoom{to{transform:scale(2.2);opacity:0}}',
 '.scn-list{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px}',
 '.scn-list button{width:100%;display:flex;align-items:center;gap:10px;padding:8px 10px;border:2.5px solid var(--ink);border-radius:14px;background:var(--surface);color:var(--ink);font:inherit;text-align:left;cursor:pointer}',
@@ -109769,6 +109770,12 @@ var CSS = [
 '.hub-art .hub-hs:hover,.hub-art .hub-hs:focus-visible{z-index:9}',
 '.hub-art:has(.hub-hs:hover) .hub-hs:not(:hover) .scn-lab,.hub-art:has(.hub-hs:hover) .hub-hs:not(:hover) .scn-nexttag{display:none}',
 '.hub-art:has(.hub-hs:hover) .hub-hs.next:not(:hover){animation:none}',
+/* rooms: like the hall, a spot's label shows only on hover (and the Next spot's always), so labels never pile up or overlap; while one is hovered the others hide */
+'html.scn-rooms .scn-art:not(.hub-art) .scn-hs:not(.door):not(.next) .scn-lab{display:none}',
+'html.scn-rooms .scn-art:not(.hub-art) .scn-hs:not(.door):hover .scn-lab,html.scn-rooms .scn-art:not(.hub-art) .scn-hs:not(.door):focus-visible .scn-lab{display:block}',
+'html.scn-rooms .scn-art .scn-hs.lay .scn-lab{display:block!important;visibility:hidden}',
+'html.scn-rooms .scn-art:not(.hub-art) .scn-hs:hover,html.scn-rooms .scn-art:not(.hub-art) .scn-hs:focus-visible{z-index:9}',
+'html.scn-rooms .scn-art:not(.hub-art):has(.scn-hs:hover) .scn-hs:not(:hover) .scn-lab,html.scn-rooms .scn-art:not(.hub-art):has(.scn-hs:hover) .scn-hs:not(:hover) .scn-nexttag{display:none}',
 'html.scn-rooms .scn{min-height:calc(100vh - 16px)}' /* a short scene (the shop front) can still sit at the top of the screen */
 ].join('\n');
 
@@ -110150,7 +110157,7 @@ window.SQE_SCENE = function(A){
       [lab, tag].forEach(function(e){ if (e){ e.classList.remove('js', 'up'); e.style.left = e.style.top = e.style.width = e.style.maxWidth = e.style.fontSize = ''; } });
       var pin = hs.querySelector('.scn-pin'); if (pin && getComputedStyle(pin).display !== 'none') obst.push(labRect(pin, art));
       var vis = function(e){ return e && getComputedStyle(e).display !== 'none' && !hs.classList.contains('open'); };
-      if (HUB && lab && !vis(lab) && !hs.classList.contains('locked')){ hs.classList.add('lay'); jobs.push({hs: hs, lab: lab, tag: null, solo: true}); return; } /* hall hover label: placed now, shown on hover */
+      if ((HUB || ROOMS_ON) && lab && !vis(lab) && !hs.classList.contains('locked') && !hs.classList.contains('done')){ hs.classList.add('lay'); jobs.push({hs: hs, lab: lab, tag: null, solo: true}); return; } /* hall hover label: placed now, shown on hover */
       if (vis(lab) || vis(tag)) jobs[hs.classList.contains('next') ? 'unshift' : 'push']({hs: hs, lab: vis(lab) ? lab : null, tag: vis(tag) ? tag : null});
     });
     jobs.forEach(function(j){ var hs = j.hs, hr = {x: hs.offsetLeft, y: hs.offsetTop, w: hs.offsetWidth, h: hs.offsetHeight}, bx = hs.offsetLeft + hs.clientLeft, by = hs.offsetTop + hs.clientTop, lr = null;
