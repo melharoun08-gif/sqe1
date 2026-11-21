@@ -2138,7 +2138,7 @@ window.SQE_JOURNEY = function (A) {
         if (scn.length)
             h += '<div class="jscenes">' + scn.map(function (z) { return "<a class=\"btn primary jscene\" href=\"#/scene/".concat(s.id, "/").concat(z.t.id, "\"><b>").concat(esc(z.sc.enter || 'Enter the scene'), "</b><span>").concat(esc(STOPSHORT_J[s.id] || s.title), " ").concat(z.k + 1, ": ").concat(esc(z.t.title), "</span></a>"); }).join('') + '</div>';
         if (o.today.length)
-            h += "<h3 class=\"jh3\">Today's topics</h3><div class=\"small muted\">Tick each step off as you go. It's the same list as on Today.</div><ul class=\"tdlist\">".concat(o.today.map(todoHTML).join(''), "</ul><h3 class=\"jh3\">Every topic at this stop</h3>");
+            h += "<h3 class=\"jh3\">Today's topics</h3><ul class=\"tdlist\">".concat(o.today.map(todoHTML).join(''), "</ul><h3 class=\"jh3\">Every topic at this stop</h3>");
         h += '<ul class="jtl">' + s.topics.map(function (t, k) {
             var key = s.id + '/' + t.id, dn = !!St().done[key], td = o.tday[t.id], now = o.today.some(function (it) { return it.x.t.id === t.id; });
             var sc = (window.SQE_SCENES || {})[key];
@@ -2162,7 +2162,7 @@ window.SQE_JOURNEY = function (A) {
         var J = journey(), D = layoutDesktop(), Ph = layoutPhone();
         var todays = J.stops.filter(function (x) { return x.today.length; }), name = St().settings.name ? esc(St().settings.name) + "'s" : "Your";
         var where = J.at === 0 ? 'Britney is at the farm gate, ready to set off.' : J.at === 15 ? 'Britney has reached revision camp, right by the palace.' : "Britney is at stop ".concat(J.at, ", the ").concat(esc(J.stops[J.at - 1].land.toLowerCase()), ": ").concat(esc(J.stops[J.at - 1].s.title), ".");
-        var h = "<div class=\"jmap\"><div class=\"jhead\"><h2 class=\"jtitle\">Peckham</h2><p class=\"jsub\">".concat(name, " syllabus as a journey, in the same order as the timetable. ").concat(where, "</p>");
+        var h = "<div class=\"jmap\"><div class=\"jhead\"><h2 class=\"jtitle\">Peckham</h2><p class=\"jsub\">".concat(where, "</p>");
         if (todays.length)
             h += '<div class="jtoday">' + todays.map(function (o) { return "<a class=\"jtbtn\" href=\"".concat(stopHref(o.s.id), "\"><b>Today: stop ").concat(o.i, ", ").concat(esc(o.land.toLowerCase()), "</b><span>").concat(esc(o.s.title), " \u00B7 ").concat(o.today.length, " topic").concat(o.today.length === 1 ? '' : 's', "</span></a>"); }).join('') + '</div>';
         else if (J.pd && J.pd.rev)
