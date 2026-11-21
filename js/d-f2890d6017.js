@@ -46803,7 +46803,26 @@ window.SQE_PODCASTS = {
   "property/lta1954": {file: "podcasts/property-13-lta1954.m4a", mins: 25},
   "accounts/separation-mixed-payments": {file: "podcasts/accounts-03-separation-mixed-payments.m4a", mins: 21},
   "accounts/double-entry-basics": {file: "podcasts/accounts-04-double-entry-basics.m4a", mins: 23},
-  "accounts/bills-vat-disbursements": {file: "podcasts/accounts-05-bills-vat-disbursements.m4a", mins: 20}
+  "accounts/bills-vat-disbursements": {file: "podcasts/accounts-05-bills-vat-disbursements.m4a", mins: 20},
+  "crimlaw/actus-reus": {file: "podcasts/crimlaw-01-actus-reus.m4a", mins: 25},
+  "crimlaw/mens-rea": {file: "podcasts/crimlaw-02-mens-rea.m4a", mins: 25},
+  "crimlaw/non-fatal-offences": {file: "podcasts/crimlaw-03-non-fatal-offences.m4a", mins: 24},
+  "crimlaw/theft": {file: "podcasts/crimlaw-04-theft.m4a", mins: 25},
+  "crimlaw/robbery-burglary": {file: "podcasts/crimlaw-05-robbery-burglary.m4a", mins: 23},
+  "crimlaw/criminal-damage": {file: "podcasts/crimlaw-06-criminal-damage.m4a", mins: 24},
+  "crimlaw/murder": {file: "podcasts/crimlaw-07-murder.m4a", mins: 24},
+  "crimlaw/voluntary-manslaughter": {file: "podcasts/crimlaw-08-voluntary-manslaughter.m4a", mins: 25},
+  "crimlaw/involuntary-manslaughter": {file: "podcasts/crimlaw-09-involuntary-manslaughter.m4a", mins: 25},
+  "crimlaw/fraud": {file: "podcasts/crimlaw-10-fraud.m4a", mins: 24},
+  "crimlaw/general-defences": {file: "podcasts/crimlaw-11-general-defences.m4a", mins: 22},
+  "crimlaw/parties": {file: "podcasts/crimlaw-12-parties.m4a", mins: 21},
+  "crimprac/police-station-detention": {file: "podcasts/crimprac-01-police-station-detention.m4a", mins: 24},
+  "crimprac/police-interview": {file: "podcasts/crimprac-02-police-interview.m4a", mins: 15},
+  "crimprac/identification": {file: "podcasts/crimprac-03-identification.m4a", mins: 24},
+  "crimprac/bail": {file: "podcasts/crimprac-04-bail.m4a", mins: 23},
+  "crimprac/first-hearings": {file: "podcasts/crimprac-05-first-hearings.m4a", mins: 23},
+  "crimprac/allocation-sending": {file: "podcasts/crimprac-06-allocation-sending.m4a", mins: 24},
+  "crimprac/case-management-disclosure": {file: "podcasts/crimprac-07-case-management-disclosure.m4a", mins: 23}
 };
 
 ;

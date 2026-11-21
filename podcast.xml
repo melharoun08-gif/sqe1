@@ -6,7 +6,7 @@
   <language>en-gb</language>
   <description>SQE1 revision episodes, one per topic, in timetable order.</description>
   <itunes:author>SQE1 Revision</itunes:author>
-  <itunes:image href="https://melharoun08-gif.github.io/sqe1/img/podcast-cover.jpg"/>
+  <itunes:image href="https://melharoun08-gif.github.io/sqe1/img/podcast-cover-v2.jpg"/>
   <itunes:type>serial</itunes:type>
   <itunes:block>yes</itunes:block>
   <itunes:explicit>false</itunes:explicit>
@@ -1583,6 +1583,215 @@
    <itunes:episode>15</itunes:episode>
    <itunes:episodeType>full</itunes:episodeType>
    <description>Property Practice 15: Property taxes: SDLT, LTT, VAT and CGT. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Criminal Law 1: Actus reus: acts, omissions and causation</title>
+   <guid isPermaLink="false">sqe1-crimlaw/actus-reus</guid>
+   <pubDate>Sat, 07 Nov 2026 05:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/crimlaw-01-actus-reus.m4a" length="18073283" type="audio/x-m4a"/>
+   <itunes:duration>00:24:42</itunes:duration>
+   <itunes:season>13</itunes:season>
+   <itunes:episode>1</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Criminal Law 1: Actus reus: acts, omissions and causation. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Criminal Law 2: Mens rea: intention, recklessness, negligence and strict liability</title>
+   <guid isPermaLink="false">sqe1-crimlaw/mens-rea</guid>
+   <pubDate>Sat, 07 Nov 2026 06:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/crimlaw-02-mens-rea.m4a" length="18197737" type="audio/x-m4a"/>
+   <itunes:duration>00:24:53</itunes:duration>
+   <itunes:season>13</itunes:season>
+   <itunes:episode>2</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Criminal Law 2: Mens rea: intention, recklessness, negligence and strict liability. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Criminal Law 3: Non-fatal offences against the person</title>
+   <guid isPermaLink="false">sqe1-crimlaw/non-fatal-offences</guid>
+   <pubDate>Sat, 07 Nov 2026 07:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/crimlaw-03-non-fatal-offences.m4a" length="17502863" type="audio/x-m4a"/>
+   <itunes:duration>00:23:56</itunes:duration>
+   <itunes:season>13</itunes:season>
+   <itunes:episode>3</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Criminal Law 3: Non-fatal offences against the person. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Criminal Law 4: Theft (Theft Act 1968 ss.1-6)</title>
+   <guid isPermaLink="false">sqe1-crimlaw/theft</guid>
+   <pubDate>Sat, 07 Nov 2026 08:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/crimlaw-04-theft.m4a" length="18309132" type="audio/x-m4a"/>
+   <itunes:duration>00:25:02</itunes:duration>
+   <itunes:season>13</itunes:season>
+   <itunes:episode>4</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Criminal Law 4: Theft (Theft Act 1968 ss.1-6). SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Criminal Law 5: Robbery, burglary and aggravated burglary</title>
+   <guid isPermaLink="false">sqe1-crimlaw/robbery-burglary</guid>
+   <pubDate>Sat, 07 Nov 2026 09:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/crimlaw-05-robbery-burglary.m4a" length="16878319" type="audio/x-m4a"/>
+   <itunes:duration>00:23:04</itunes:duration>
+   <itunes:season>13</itunes:season>
+   <itunes:episode>5</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Criminal Law 5: Robbery, burglary and aggravated burglary. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Criminal Law 6: Criminal damage and arson (Criminal Damage Act 1971)</title>
+   <guid isPermaLink="false">sqe1-crimlaw/criminal-damage</guid>
+   <pubDate>Sat, 07 Nov 2026 10:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/crimlaw-06-criminal-damage.m4a" length="17788002" type="audio/x-m4a"/>
+   <itunes:duration>00:24:19</itunes:duration>
+   <itunes:season>13</itunes:season>
+   <itunes:episode>6</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Criminal Law 6: Criminal damage and arson (Criminal Damage Act 1971). SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Criminal Law 7: Murder</title>
+   <guid isPermaLink="false">sqe1-crimlaw/murder</guid>
+   <pubDate>Sat, 07 Nov 2026 11:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/crimlaw-07-murder.m4a" length="17480495" type="audio/x-m4a"/>
+   <itunes:duration>00:23:54</itunes:duration>
+   <itunes:season>13</itunes:season>
+   <itunes:episode>7</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Criminal Law 7: Murder. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Criminal Law 8: Voluntary manslaughter: loss of control and diminished responsibility</title>
+   <guid isPermaLink="false">sqe1-crimlaw/voluntary-manslaughter</guid>
+   <pubDate>Sat, 07 Nov 2026 12:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/crimlaw-08-voluntary-manslaughter.m4a" length="18190434" type="audio/x-m4a"/>
+   <itunes:duration>00:24:52</itunes:duration>
+   <itunes:season>13</itunes:season>
+   <itunes:episode>8</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Criminal Law 8: Voluntary manslaughter: loss of control and diminished responsibility. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Criminal Law 9: Involuntary manslaughter: unlawful act and gross negligence</title>
+   <guid isPermaLink="false">sqe1-crimlaw/involuntary-manslaughter</guid>
+   <pubDate>Sat, 07 Nov 2026 13:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/crimlaw-09-involuntary-manslaughter.m4a" length="18113413" type="audio/x-m4a"/>
+   <itunes:duration>00:24:46</itunes:duration>
+   <itunes:season>13</itunes:season>
+   <itunes:episode>9</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Criminal Law 9: Involuntary manslaughter: unlawful act and gross negligence. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Criminal Law 10: Fraud (Fraud Act 2006)</title>
+   <guid isPermaLink="false">sqe1-crimlaw/fraud</guid>
+   <pubDate>Sat, 07 Nov 2026 14:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/crimlaw-10-fraud.m4a" length="17914110" type="audio/x-m4a"/>
+   <itunes:duration>00:24:29</itunes:duration>
+   <itunes:season>13</itunes:season>
+   <itunes:episode>10</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Criminal Law 10: Fraud (Fraud Act 2006). SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Criminal Law 11: General defences: intoxication and self-defence</title>
+   <guid isPermaLink="false">sqe1-crimlaw/general-defences</guid>
+   <pubDate>Sat, 07 Nov 2026 15:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/crimlaw-11-general-defences.m4a" length="16169336" type="audio/x-m4a"/>
+   <itunes:duration>00:22:06</itunes:duration>
+   <itunes:season>13</itunes:season>
+   <itunes:episode>11</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Criminal Law 11: General defences: intoxication and self-defence. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Criminal Law 12: Parties to crime: principals and accessories</title>
+   <guid isPermaLink="false">sqe1-crimlaw/parties</guid>
+   <pubDate>Sat, 07 Nov 2026 16:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/crimlaw-12-parties.m4a" length="15716329" type="audio/x-m4a"/>
+   <itunes:duration>00:21:29</itunes:duration>
+   <itunes:season>13</itunes:season>
+   <itunes:episode>12</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Criminal Law 12: Parties to crime: principals and accessories. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Criminal Practice 1: Police station: rights and detention limits</title>
+   <guid isPermaLink="false">sqe1-crimprac/police-station-detention</guid>
+   <pubDate>Sat, 07 Nov 2026 17:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/crimprac-01-police-station-detention.m4a" length="17817711" type="audio/x-m4a"/>
+   <itunes:duration>00:24:21</itunes:duration>
+   <itunes:season>14</itunes:season>
+   <itunes:episode>1</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Criminal Practice 1: Police station: rights and detention limits. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Criminal Practice 2: Police interviews: advising the client, silence and vulnerable suspects</title>
+   <guid isPermaLink="false">sqe1-crimprac/police-interview</guid>
+   <pubDate>Sat, 07 Nov 2026 18:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/crimprac-02-police-interview.m4a" length="11315717" type="audio/x-m4a"/>
+   <itunes:duration>00:15:28</itunes:duration>
+   <itunes:season>14</itunes:season>
+   <itunes:episode>2</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Criminal Practice 2: Police interviews: advising the client, silence and vulnerable suspects. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Criminal Practice 3: Identification procedures (PACE Code D)</title>
+   <guid isPermaLink="false">sqe1-crimprac/identification</guid>
+   <pubDate>Sat, 07 Nov 2026 19:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/crimprac-03-identification.m4a" length="17257410" type="audio/x-m4a"/>
+   <itunes:duration>00:23:35</itunes:duration>
+   <itunes:season>14</itunes:season>
+   <itunes:episode>3</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Criminal Practice 3: Identification procedures (PACE Code D). SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Criminal Practice 4: Bail (Bail Act 1976)</title>
+   <guid isPermaLink="false">sqe1-crimprac/bail</guid>
+   <pubDate>Sat, 07 Nov 2026 20:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/crimprac-04-bail.m4a" length="16580071" type="audio/x-m4a"/>
+   <itunes:duration>00:22:40</itunes:duration>
+   <itunes:season>14</itunes:season>
+   <itunes:episode>4</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Criminal Practice 4: Bail (Bail Act 1976). SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Criminal Practice 5: First hearings, funding and classification of offences</title>
+   <guid isPermaLink="false">sqe1-crimprac/first-hearings</guid>
+   <pubDate>Sat, 07 Nov 2026 21:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/crimprac-05-first-hearings.m4a" length="17101449" type="audio/x-m4a"/>
+   <itunes:duration>00:23:23</itunes:duration>
+   <itunes:season>14</itunes:season>
+   <itunes:episode>5</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Criminal Practice 5: First hearings, funding and classification of offences. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Criminal Practice 6: Plea before venue, allocation and sending</title>
+   <guid isPermaLink="false">sqe1-crimprac/allocation-sending</guid>
+   <pubDate>Sat, 07 Nov 2026 22:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/crimprac-06-allocation-sending.m4a" length="17779463" type="audio/x-m4a"/>
+   <itunes:duration>00:24:18</itunes:duration>
+   <itunes:season>14</itunes:season>
+   <itunes:episode>6</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Criminal Practice 6: Plea before venue, allocation and sending. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Criminal Practice 7: Case management and disclosure</title>
+   <guid isPermaLink="false">sqe1-crimprac/case-management-disclosure</guid>
+   <pubDate>Sat, 07 Nov 2026 23:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/crimprac-07-case-management-disclosure.m4a" length="16634213" type="audio/x-m4a"/>
+   <itunes:duration>00:22:44</itunes:duration>
+   <itunes:season>14</itunes:season>
+   <itunes:episode>7</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Criminal Practice 7: Case management and disclosure. SQE1 revision episode.</description>
   </item>
  </channel>
 </rss>

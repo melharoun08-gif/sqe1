@@ -1210,7 +1210,7 @@ window.SQE_JOURNEY = function (A) {
        (img/mount/lw-thigh, lw-shin, lw-torso cut from the approved drawing). The hips swing the legs in turn, the knee bends as each leg comes
        forward, the body rises only enough to keep the lower foot on the ground (no hopping), and the step cycle follows the distance walked so
        the feet don't slide. Standing still: both feet down, breathing, a wave now and then. With the hb carrier bag it hangs from her front hand. */
-    var RIG = { HIP: [90, 165], KNEE: [120, 220], ANG: 28.6, L: 62.6, STRIDE: 140, W: 179 };
+    var RIG = { HIP: [90, 165], KNEE: [120, 220], ANG: 28.6, L: 62.6, STRIDE: 220, SWING: 26, W: 179 }; /* QA 02:45: longer strides (thigh swings ±26°), about 3.4 steps a second */
     function britWalk(bh) {
         var h2 = bh * .86, w2 = h2 * 1.348, x = f1(-w2 * .42), y = f1(-h2 * .97), u = 'img/britney/set/neutral.webp';
         var C = [['jbcf1', '0.38,0.874 0.51,0.874 0.51,1 0.38,1'], ['jbcf2', '0.535,0.874 0.66,0.874 0.66,1 0.535,1'], ['jbcbb', '0,0 0.6,0 0.6,0.12 0.656,0.19 0.85,0.58 1,0.58 1,0.874 0,0.874'], ['jbcbh', '0.57,0 1,0 1,0.625 0.825,0.625 0.623,0.216 0.568,0.134']];
@@ -1222,13 +1222,15 @@ window.SQE_JOURNEY = function (A) {
             return "<g class=\"jbp\"><image clip-path=\"url(#".concat(i, ")\" href=\"").concat(u, "\" x=\"").concat(x, "\" y=\"").concat(y, "\" width=\"").concat(f1(w2), "\" height=\"").concat(f1(h2), "\"/></g>");
         }).join(''), "</g>");
     }
-    function rigLeg(p) { p = ((p % 1) + 1) % 1; return [16 * Math.cos(2 * Math.PI * p), p > .5 ? 42 * Math.sin(Math.PI * (p - .5) / .5) : 3]; }
+    function rigLeg(p) { p = ((p % 1) + 1) % 1; return [RIG.SWING * Math.cos(2 * Math.PI * p), p > .5 ? 42 * Math.sin(Math.PI * (p - .5) / .5) : 3]; }
     function rigAnkle(a, b) { var r = Math.PI / 180; return RIG.HIP[1] + RIG.L * Math.cos(a * r) + RIG.L * Math.cos((a - b) * r); }
     /* QA 21:07: walking towards us the legs lift in turn (the front drawing cut at the jumper hem, each leg its own layer behind it) */
-    function frontRig(cx, lh) {
-        var wi = lh * 232 / 689, x = cx - wi / 2, I = function (u, c) { return "<image class=\"".concat(c, "\" href=\"img/map-new/").concat(u, ".webp\" x=\"").concat(f1(x), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(wi), "\" height=\"").concat(f1(lh), "\"/>"); };
-        return "<g class=\"jmo jfrig\" data-x=\"".concat(f1(x), "\" data-w=\"").concat(f1(wi), "\">").concat(I('lvf-legL', 'jfl') + I('lvf-legR', 'jfr') + I('lvf-top', 'jft'), "</g>");
-    }
+    function frontRig(cx, lh, pre, cls, ar) {
+        pre = pre || 'lvf';
+        cls = cls || 'jfrig';
+        var wi = lh * (ar || 232 / 689), x = cx - wi / 2, I = function (u, c) { return "<image class=\"".concat(c, "\" href=\"img/map-new/").concat(pre, "-").concat(u, ".webp\" x=\"").concat(f1(x), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(wi), "\" height=\"").concat(f1(lh), "\"/>"); };
+        return "<g class=\"jmo ".concat(cls, " jvrig\" data-x=\"").concat(f1(x), "\" data-w=\"").concat(f1(wi), "\">").concat(I('hips', 'jfh') + I('legL', 'jfl') + I('legR', 'jfr') + I('top', 'jft'), "</g>");
+    } /* QA 02:45: the back view is cut the same way (lvb-*), and a trouser band (hips) sits behind so a leg stepping down never leaves a gap */
     /* QA 21:07: the carrier bag stays in her hand seen from the front and the back too */
     function viewBag(cx, lh, ar, c) {
         var wi = lh * ar, hx = cx - wi / 2 + .89 * wi, hy = -lh + .575 * lh, bw = lh * 140 / 600, bh = lh * 191 / 600;
@@ -1262,25 +1264,32 @@ window.SQE_JOURNEY = function (A) {
         g.setAttribute('data-b', moving && Math.floor(ph * 2) % 2 ? '2' : '1');
         /* QA 22:03: walking towards us the standing foot stays put on the ground while her body passes it, then swings through to the front */
         var D = g.__D || [0, 0];
-        var fr = g.querySelector('.jfrig');
-        if (fr) {
+        /* QA 01:35/02:45: seen from the front or the back, the standing foot is held exactly where it was put down (x and y) while her body passes it,
+           the other swings through lifted and lands a little ahead */
+        var dir = g.__dir || [0, 1], vb = g.classList.contains('jback'), vf = !vb && g.classList.contains('jfront');
+        [['.jfrig', vf, '__fp', 0], ['.jbrig', vb, '__bp', 1]] /* a leg only ever slides up under the jumper (the far foot), never down out of the trousers */.forEach(function (_a) {
+            var sel = _a[0], on = _a[1], key = _a[2], ah = _a[3];
+            var fr = g.querySelector(sel);
+            if (!fr)
+                return;
             var lh0 = 300 * k, L = fr.querySelector('.jfl'), Rr = fr.querySelector('.jfr');
-            /* QA 01:35: the standing foot is held exactly where it was put down (both directions), the other swings through lifted */
-            var fv = moving && g.classList.contains('jfront') && !g.classList.contains('jback');
-            if (fv) {
-                var a = rigPlant(g, '__fpL', ph, D), b = rigPlant(g, '__fpR', ph + .5, D);
+            if (moving && on) {
+                var st = .5 * RIG.STRIDE * k * RIG_FS, T = [dir[0] * ah * st, dir[1] * ah * st], a = rigPlant(g, key + 'L', ph, D, T), b = rigPlant(g, key + 'R', ph + .5, D, T), cx = .03 * lh0;
+                a[0] = Math.max(-cx, Math.min(cx, a[0]));
+                b[0] = Math.max(-cx, Math.min(cx, b[0])); /* feet spread sideways at most a little */
                 L.setAttribute('transform', "translate(".concat(a[0].toFixed(2), ",").concat((a[1] - a[2] * .035 * lh0).toFixed(2), ")"));
                 Rr.setAttribute('transform', "translate(".concat(b[0].toFixed(2), ",").concat((b[1] - b[2] * .035 * lh0).toFixed(2), ")"));
+                var sn = Math.sin(ph * Math.PI * 2), cxF = +fr.getAttribute('data-x') + (+fr.getAttribute('data-w')) / 2;
+                fr.setAttribute('transform', "rotate(".concat((sn * 1).toFixed(2), " ").concat(f1(cxF), " 0)"));
             }
             else {
-                g.__fpL = g.__fpR = null;
+                g[key + 'L'] = g[key + 'R'] = null;
                 L.setAttribute('transform', '');
                 Rr.setAttribute('transform', '');
+                fr.setAttribute('transform', '');
             }
-            var sn = Math.sin(ph * Math.PI * 2), cxF = +fr.getAttribute('data-x') + (+fr.getAttribute('data-w')) / 2;
-            fr.setAttribute('transform', fv ? "rotate(".concat((sn * 1).toFixed(2), " ").concat(f1(cxF), " 0)") : '');
-        }
-        var bk = g.querySelectorAll('.jlwB1,.jlwB2,.jbagF,.jbagB');
+        });
+        var bk = g.querySelectorAll('.jbagF,.jbagB');
         bk.forEach(function (e) { var lift = moving ? -Math.abs(Math.sin(ph * Math.PI * 2)) * 1.2 * k * 3 : 0, rot = moving ? Math.sin(ph * Math.PI * 2) * 1.6 : 0, bb = +e.getAttribute('x') + (+e.getAttribute('width')) / 2; e.setAttribute('transform', moving ? "translate(0,".concat(lift.toFixed(2), ") rotate(").concat(rot.toFixed(2), " ").concat(f1(bb), " 0)") : ''); });
         /* Britney trots beside her: quick little steps (two to each of Layla's), a waddle from foot to foot and a nod of the head */
         /* QA 21:07: Britney walks with her own feet (the Hen Bargains code walk: two foot layers under the body, the head nodding from the throat) */
@@ -1288,9 +1297,9 @@ window.SQE_JOURNEY = function (A) {
         if (bw) {
             var ims = bw.querySelectorAll('.jbp'), i0 = bw.querySelector('image'), w2 = +i0.getAttribute('width'), h2 = +i0.getAttribute('height'), x2 = +i0.getAttribute('x'), y2 = +i0.getAttribute('y');
             /* QA 22:03: her standing foot stays planted (drifts back by exactly the distance walked), the other swings forward lifted */
-            var bp = (g.__dist || 0) / (52 * k), bs = Math.sin(2 * Math.PI * bp), fq = ((bp * 2) % 1 + 1) % 1, ff = +g.getAttribute('data-f') || 1;
+            var bp = (g.__bdist || 0) / (110 * k), bs = Math.sin(2 * Math.PI * bp), fq = ((bp * 2) % 1 + 1) % 1, ff = +g.getAttribute('data-f') || 1, Db = g.__Db || D, bst = .5 * 110 * k, TB = [dir[0] * .5 * bst, dir[1] * .5 * bst];
             if (moving) {
-                var F0 = rigPlant(g, '__bf0', bp, D), F1 = rigPlant(g, '__bf1', bp + .5, D); /* QA 01:35: held in x and y, in her own (mirrored) coordinates */
+                var F0 = rigPlant(g, '__bf0', bp, Db, TB), F1 = rigPlant(g, '__bf1', bp + .5, Db, TB); /* QA 02:45: bigger hen steps (~7 a second); her tuck by the edge counts as walking too */ /* QA 01:35: held in x and y, in her own (mirrored) coordinates */
                 ims[0].setAttribute('transform', "translate(".concat((ff * F0[0]).toFixed(2), ",").concat((F0[1] - F0[2] * .05 * h2).toFixed(2), ")"));
                 ims[1].setAttribute('transform', "translate(".concat((ff * F1[0]).toFixed(2), ",").concat((F1[1] - F1[2] * .05 * h2).toFixed(2), ")"));
             }
@@ -1306,13 +1315,15 @@ window.SQE_JOURNEY = function (A) {
     /* advance the step cycle by the distance just walked; at most ~2.6 steps a second so a fast walk never turns into spinning legs */
     /* one foot that stays planted: p<.5 standing (held where it touched down while the body moves on, D = distance walked as x,y),
        p>=.5 swinging back under the body to land again; returns [dx, dy, lift 0..1] relative to the body */
-    function rigPlant(g, key, p, D) {
-        var S = g[key] || (g[key] = { pl: false, a: [0, 0], e: [0, 0], o: [0, 0] });
+    var RIG_FS = .7; /* front and back stride, as a share of the side stride */
+    function rigPlant(g, key, p, D, T) {
+        T = T || [0, 0];
+        var S = g[key] || (g[key] = { pl: false, a: [0, 0], e: [T[0], T[1]], o: [0, 0] });
         p = ((p % 1) + 1) % 1;
         if (p < .5) {
             if (!S.pl) {
                 S.pl = true;
-                S.a = [D[0], D[1]];
+                S.a = [D[0] - T[0], D[1] - T[1]];
             }
             S.o = [S.a[0] - D[0], S.a[1] - D[1]];
             return [S.o[0], S.o[1], 0];
@@ -1322,7 +1333,7 @@ window.SQE_JOURNEY = function (A) {
             S.e = S.o;
         }
         var q = (p - .5) / .5;
-        return [S.e[0] * (1 - q), S.e[1] * (1 - q), Math.sin(Math.PI * q)];
+        return [S.e[0] + (T[0] - S.e[0]) * q, S.e[1] + (T[1] - S.e[1]) * q, Math.sin(Math.PI * q)];
     }
     function rigEase(u) { var a = .12; return u < a ? u * u / (2 * a * (1 - a)) : u > 1 - a ? 1 - (1 - u) * (1 - u) / (2 * a * (1 - a)) : (u - a / 2) / (1 - a); } /* steady pace with a short start and stop */
     function rigStep(g, P) {
@@ -1331,12 +1342,22 @@ window.SQE_JOURNEY = function (A) {
         var ph = g.__ph || 0;
         if (moving && g.__lp) {
             var d = Math.hypot(P.x - g.__lp[0], P.y - g.__lp[1]), dt = Math.max(1, Math.min(80, now - g.__lp[2])) / 1000;
-            ph += d / (RIG.STRIDE * k * (fv ? .85 : 1));
+            var vv = fv || g.classList.contains('jback');
+            ph += d / (RIG.STRIDE * k * (vv ? RIG_FS : 1));
             g.__dist = (g.__dist || 0) + d;
             var D = g.__D || (g.__D = [0, 0]);
             D[0] += P.x - g.__lp[0];
             D[1] += P.y - g.__lp[1];
-        } /* QA 01:35: steps follow the distance exactly (no cap), the pace keeps them natural */
+            if (d > .05) {
+                var u = [(P.x - g.__lp[0]) / d, (P.y - g.__lp[1]) / d], o = g.__dir || u, m = [o[0] * .7 + u[0] * .3, o[1] * .7 + u[1] * .3], n = Math.hypot(m[0], m[1]) || 1;
+                g.__dir = [m[0] / n, m[1] / n];
+            }
+            var tb = [g.__tkx || 0, g.__tky || 0], ob = g.__tkp || tb, Db = g.__Db || (g.__Db = [0, 0]);
+            Db[0] += P.x - g.__lp[0] + tb[0] - ob[0];
+            Db[1] += P.y - g.__lp[1] + tb[1] - ob[1];
+            g.__bdist = (g.__bdist || 0) + Math.hypot(P.x - g.__lp[0] + tb[0] - ob[0], P.y - g.__lp[1] + tb[1] - ob[1]);
+        }
+        g.__tkp = [g.__tkx || 0, g.__tky || 0]; /* QA 01:35: steps follow the distance exactly (no cap), the pace keeps them natural */
         g.__lp = [P.x, P.y, now];
         g.__ph = ph;
         rigPose(g, ph, moving);
@@ -1351,7 +1372,7 @@ window.SQE_JOURNEY = function (A) {
         var vx = P.x - lp[0], vy = P.y - lp[1];
         if (Math.abs(vx) + Math.abs(vy) < .3)
             return;
-        var cur = g.classList.contains('jback') ? 'b' : g.classList.contains('jfront') ? 'f' : 's', a = Math.abs(vx), want = vy < -a * (cur === 'b' ? .25 : .35) ? 'b' : vy > a * (cur === 'f' ? .25 : .35) ? 'f' : 's';
+        var cur = g.classList.contains('jback') ? 'b' : g.classList.contains('jfront') ? 'f' : 's', a = Math.abs(vx), want = vy < -a * (cur === 'b' ? .45 : .6) ? 'b' : vy > a * (cur === 'f' ? .45 : .6) ? 'f' : 's'; /* QA 02:45: front/back only when she is going mostly up or down, so a planted foot never has to stretch far sideways */
         if (want === cur) {
             g.__vw = null;
             return;
@@ -1371,11 +1392,7 @@ window.SQE_JOURNEY = function (A) {
         var BAG = shopToday() || /[?&]bag=1/.test(qs()), MV = function (u) { return f < 0 ? u.replace(/\.webp$/, u.indexOf('layla-front-bag') >= 0 ? '-L.webp' : '-M.webp') : u; }, /* 10:00 Monnie (moonwalk): heading left she faces left (mirrored frames, jumper print put back the right way) */ lh = mode === 'phone' ? 240 : 200, lw = lh * LAYLA_AR, bh = lh * .42;
         var lx = -lw / 2 - bh * .3 * f, bx = f > 0 ? lx + lw - 8 : lx - bh + 8, x0 = Math.min(lx, bx + bh * (f > 0 ? .07 : .24)), x1 = Math.max(lx + lw, bx + bh * (f > 0 ? .76 : .93));
         return "<ellipse cx=\"".concat(f1((x0 + x1) / 2), "\" cy=\"2\" rx=\"").concat(f1((x1 - x0) / 2 + 4), "\" ry=\"6\" fill=\"#111\" opacity=\".2\"/><g class=\"jhop\">")
-            + rigSVG(lx + lw / 2, lh, f, BAG) + [['img/mount/lv-back-a.webp', 235 / 688, 'jlwB1'], ['img/mount/lv-back-b.webp', 235 / 688, 'jlwB2']] /* QA 20:14: the Mount's walking-away steps (feet clearly alternate) */.map(function (_a) {
-            var u = _a[0], ar = _a[1], c = _a[2];
-            var wi = lh * ar;
-            return "<image class=\"jmo ".concat(c, "\" href=\"").concat(u, "\" x=\"").concat(f1(lx + (lw - wi) / 2), "\" y=\"").concat(f1(-lh), "\" width=\"").concat(f1(wi), "\" height=\"").concat(lh, "\"/>");
-        }).join('') + frontRig(lx + lw / 2, lh) + (BAG ? viewBag(lx + lw / 2, lh, 232 / 689, 'jbagF') + viewBag(lx + lw / 2, lh, 235 / 688, 'jbagB') : '')
+            + rigSVG(lx + lw / 2, lh, f, BAG) + frontRig(lx + lw / 2, lh, 'lvb', 'jbrig', 235 / 688) + frontRig(lx + lw / 2, lh) + (BAG ? viewBag(lx + lw / 2, lh, 232 / 689, 'jbagF') + viewBag(lx + lw / 2, lh, 235 / 688, 'jbagB') : '')
             + "<g class=\"jext\" data-h=\"".concat(lh, "\" data-l=\"").concat(f1(lx + lw / 2 - lh * 179 / 600), ",").concat(f1(lx + lw / 2 + lh * 179 / 600), "\" data-b=\"").concat(f1(Math.min(bx + bh / 2 - f * bh * .86 * 1.348 * .42, bx + bh / 2 + f * bh * .86 * 1.348 * .58)), ",").concat(f1(Math.max(bx + bh / 2 - f * bh * .86 * 1.348 * .42, bx + bh / 2 + f * bh * .86 * 1.348 * .58)), "\" data-c=\"").concat(f1(lx + lw / 2), ",").concat(f1(bx + bh / 2), "\"/><g class=\"jbt\">") + (britCaught() ? '' : "<g transform=\"translate(".concat(f1(bx + bh / 2), ",0) scale(").concat(f, ",1)\">").concat(britWalk(bh), "<g class=\"jbw\">").concat(BRIT_FR.map(function (u, k) { var h2 = bh * .86, w2 = h2 * 1.348; return "<g class=\"jbf jbf".concat(k + 1, "\"><g class=\"jbm").concat(k + 1, "\"><image href=\"").concat(u, "\" x=\"").concat(f1(-w2 * .42), "\" y=\"").concat(f1(-h2 * .97), "\" width=\"").concat(f1(w2), "\" height=\"").concat(f1(h2), "\"/></g></g>"); }).join(''), "</g></g>") + britHungry(bx, bh, f)) + "</g>" + "</g>";
     }
     function pair(Hn, mode) {
@@ -1615,7 +1632,9 @@ window.SQE_JOURNEY = function (A) {
         var bt = g.querySelector('.jbt');
         if (bt) {
             var e = g.querySelector('.jext'), C = e ? e.getAttribute('data-c').split(',').map(Number) : [0, 0];
-            bt.setAttribute('transform', g.__tk > .005 ? "translate(".concat((-(C[1] - C[0]) * g.__tk).toFixed(2), ",").concat((4 * g.__tk).toFixed(2), ")") : '');
+            g.__tkx = g.__tk > .005 ? -(C[1] - C[0]) * g.__tk : 0;
+            g.__tky = g.__tk > .005 ? 4 * g.__tk : 0;
+            bt.setAttribute('transform', g.__tk > .005 ? "translate(".concat(g.__tkx.toFixed(2), ",").concat(g.__tky.toFixed(2), ")") : '');
         }
         g.setAttribute('transform', "translate(".concat(f1(X), ",").concat(f1(P.y), ")"));
         rigStep(g, { x: X, y: P.y }); /* 19:36 Monnie: natural walk, no hopping (hop is ignored) */
@@ -19837,7 +19856,7 @@ var FG_MOV_CSS = '.fg-mov{position:absolute;inset:0;width:100%;height:100%;point
   '.fgl-bg{position:absolute;left:0;top:0;width:100%;height:100%;z-index:0;display:block;pointer-events:none}.fgl-top{position:absolute;left:0;top:0;width:100%;height:44px;z-index:0;display:block;pointer-events:none}' +
   '.fgk0,.fgk1,.fgk2{animation:fgK 1.2s infinite}.fgk1{animation-delay:-.4s}.fgk2{animation-delay:-.8s}@keyframes fgK{0%,45%{opacity:1}50%,95%{opacity:.3}}' +
   '.stsk-dr .gm-burst .bu-lid{display:none}.stsk-dr .bu-ico.fg-bico{width:40px;height:40px}.stsk-dr .scn-st .ico .bu-ico.fg-bico{width:46px;height:46px}.stsk-dr .scn-list li.bu-li .n .bu-ico.fg-bico{width:30px;height:30px}.stsk-dr .bu-endjar{width:170px;height:150px}' +
-  '.stsk-dr .gm-fly{font-size:15px}@media (max-width:640px){.stsk-dr .bu-tx{font-size:15px}}' +
+  '.stsk-dr .gm-fly:not(.gm-nope):not(.gm-in):not(.gm-tapped){animation-duration:5s}.stsk-dr .gm-fly{font-size:15px}@media (max-width:640px){.stsk-dr .bu-tx{font-size:15px}}' +
   '@media (prefers-reduced-motion:no-preference){.stsk-dr .gm-lane:not(.bump):not(.nope):not(.shake) .gm-pl{animation:fgIdle 2.6s ease-in-out infinite}@keyframes fgIdle{0%,100%{transform:none}50%{transform:translateY(-4px) rotate(-1deg)}}' +
   '.stsk-dr .bu-sw.go{animation-name:fgBuOut2}@keyframes fgBuOut2{from{transform:translate(calc(var(--sx) * .5),calc(var(--sy) * .5)) scale(.6) rotate(calc(var(--sr) * .04));opacity:.6}to{transform:none;opacity:1}}' +
   '.stsk-dr .gm-fly.gm-nope{animation-name:fgNope}@keyframes fgNope{0%{transform:none}15%{transform:rotate(-5deg)}30%{transform:rotate(5deg)}45%{transform:rotate(-3deg)}62%{transform:none;opacity:1}100%{transform:translateY(70px) rotate(6deg);opacity:0}}' +
@@ -52961,11 +52980,11 @@ ROOMV3["sra-regulatory-role"] = {
 },
 {
 "spot": "scenario",
-"x": 72.56,
-"y": 83.0,
-"w": 4.89,
+"x": 74.5,
+"y": 90.0,
+"w": 5.5,
 "h": 3.2,
-"text": "DARREN",
+"text": "BRITNEY",
 "style": "tag",
 "rot": 0
 },
@@ -55519,7 +55538,7 @@ ROOMV3["equality-act"] = {
 {
 "spot": "door",
 "x": 7.5,
-"y": 44.5,
+"y": 37.0,
 "w": 5.3,
 "h": 6.4,
 "text": "EQUALITY\nACT 2010",
@@ -55668,11 +55687,11 @@ ROOMV3["equality-act"] = {
 },
 {
 "spot": "scenario",
-"x": 23.75,
-"y": 82.5,
-"w": 4.0,
+"x": 22.3,
+"y": 89.5,
+"w": 5.5,
 "h": 3.2,
-"text": "KEN",
+"text": "BRITNEY",
 "style": "tag",
 "rot": 0
 },
@@ -65294,7 +65313,7 @@ window.SQE_SCENE = function(A){
     if (kd === 'label') return ['Name that ' + rn + ' sign', 'Read the ticket, then tap the sign it belongs under.'];
     if (kd === 'catch') return ['Fill the ' + c, 'Tickets whizz past one at a time. Tap the true ones into the ' + c + '. Let the false ones go.'];
     return [rn + ' ticket burst', 'The ' + c + ' bursts and tickets fly out. Tap only the true ones before their fuse runs out.']; }
-  function baName(k, kd, data){ if (/^dr-/.test(k.split('/')[1] || '') && FG_BN[k.split('/')[1]]) return fgActName(k, kd, data); var nn = BA_NOUN[k.split('/')[1]] || 'sweet';
+  function baName(k, kd, data){ if (/^dr-/.test(k.split('/')[1] || '') && FG_BN[k.split('/')[1]]) return fgActName(k, kd, data); var nn = BA_NOUN[k.split('/')[1]] || (/^ls\//.test(k) ? 'book' : 'sweet');
     if (kd === 'gap'){ var dg = data.filter(function(r){ return baDig(r.ans) && !/^(s|ss|reg|art|para)\.|act|section|^cpr/i.test(r.ans); }).length; return dg * 2 >= data.length ? ['Pick the amount', 'Each card has an amount or number missing. Tap the ' + nn + ' chip that fills the gap.'] : ['Fill the gap', 'Each card has a word missing. Tap the ' + nn + ' chip that fills the gap.']; }
     if (kd === 'match') return ['Match the ' + nn + ' labels', 'Tap a card on the left, then the fact that goes with it.'];
     if (kd === 'spot') return ['Spot the mistake', 'Some of these ' + nn + ' labels have a mistake. Tap the wrong ones, then reveal.'];
@@ -65317,7 +65336,7 @@ window.SQE_SCENE = function(A){
       else { g.type = 'order'; g.prompt = 'Put these in order, first one at the top.'; g.items = D.slice(); }
       return g; };
     return sa; }
-  function actOf(k, h){ if (/^dr\/dr-/.test(k || '') && FG_BN[k.split('/')[1]]){ var p0 = actPos(k, h); if (!p0 || p0 % 3) return null; var b0 = blpAct(k, h); if (b0) return b0; var a0 = actOf0(k, h); if (a0){ var fw = ['sort', 'burst', 'catch'][(Object.keys(FG_BN).indexOf(k.split('/')[1]) + p0 / 3) % 3]; if (fw === 'catch' && k === 'dr/dr-responding') fw = 'sort'; if (a0.kind !== 'sort' && fw === 'sort'){ a0 = {id: a0.id, kind: 'sort', bins: ['True', 'False'], items: a0.items.map(function(x){ return {t: x.t, bin: x['true'] ? 0 : 1, why: x.fix}; })}; } else if (a0.kind !== 'sort') a0.kind = fw; /* objects with too little of their own: still rotate burst / catch / sort per ride */ var n0 = fgActName(k, a0.kind, a0.items || []); a0.name = n0[0]; a0.how = n0[1]; } return a0; } return /^blp\//.test(k || '') ? blpAct(k, h) : actOf0(k, h); }
+  function actOf(k, h){ if (/^dr\/dr-/.test(k || '') && FG_BN[k.split('/')[1]]){ var p0 = actPos(k, h); if (!p0 || p0 % 3) return null; var b0 = blpAct(k, h); if (b0) return b0; var a0 = actOf0(k, h); if (a0){ var fw = ['sort', 'burst', 'catch'][(Object.keys(FG_BN).indexOf(k.split('/')[1]) + p0 / 3) % 3]; if (fw === 'catch' && k === 'dr/dr-responding') fw = 'sort'; if (a0.kind !== 'sort' && fw === 'sort'){ a0 = {id: a0.id, kind: 'sort', bins: ['True', 'False'], items: a0.items.map(function(x){ return {t: x.t, bin: x['true'] ? 0 : 1, why: x.fix}; })}; } else if (a0.kind !== 'sort') a0.kind = fw; /* objects with too little of their own: still rotate burst / catch / sort per ride */ var n0 = fgActName(k, a0.kind, a0.items || []); a0.name = n0[0]; a0.how = n0[1]; } return a0; } return /^(blp|ls)\//.test(k || '') ? blpAct(k, h) : actOf0(k, h); } /* LIBQA: Library objects get their own-card games too */
   /* sweet-shop object sort games: the drop targets are drawn felt-tip trays (the card above them drags onto a tray; tapping a tray still works) */
   function baTray(i){ var f = ['#FFC4DE', '#BFF0D4', '#FFE48A'][i % 3];
     return '<svg class="ba-tray" viewBox="0 0 120 36" aria-hidden="true"><path d="M5 9 L115 9 L105 31 L15 31 Z" fill="' + f + '" stroke="#1b1b1b" stroke-width="3.5" stroke-linejoin="round"/><path d="M14 15 L106 15" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".85"/><path d="M1 10 Q5 3 11 9 M109 9 Q115 3 119 10" fill="none" stroke="#1b1b1b" stroke-width="3" stroke-linecap="round"/><circle cx="40" cy="23" r="4" fill="#FF5FA2" stroke="#1b1b1b" stroke-width="2"/><circle cx="60" cy="24" r="4" fill="#4CC9F0" stroke="#1b1b1b" stroke-width="2"/><circle cx="80" cy="23" r="4" fill="#FFC300" stroke="#1b1b1b" stroke-width="2"/></svg>'; }
@@ -65719,7 +65738,7 @@ window.SQE_SCENE = function(A){
     }
     return '<svg class="drw" viewBox="-2 -2 52 52" width="' + (sz || 56) + '" height="' + (sz || 56) + '" aria-hidden="true" focusable="false">' + s + '</svg>'; }
   function DRW(list){ try { drwCss(); } catch(e){} var C = {trophy: '#FFC300', sweet: '#FF2D8A', lolly: '#3DC1F2', star: '#FFE14D', mint: '#7BD34B', lock: '#FFC300', door: '#FF2D8A', bolt: '#FFE14D'}; return '<span class="drw-row">' + list.map(function(n){ return DRW1(n, C[n]); }).join('') + '</span>'; }
-  function SK(s){ if (typeof s !== 'string') return s; if (!SKIN){ if (SKROOM && blpMid()) BLPW.forEach(function(p){ s = s.split(p[0]).join(p[1]); }); return s; } skWords(SKIN).forEach(function(p){ s = s.split(p[0]).join(p[1]); }); var fr = fgRide(); if (fr) s = s.split('prize bucket').join(FG_BN[fr][1]).split('into the bucket').join('into the ' + FG_BN[fr][1]); return s; }
+  function SK(s){ if (typeof s !== 'string') return s; if (!SKIN){ if (SKROOM && blpMid()) BLPW.forEach(function(p){ s = s.split(p[0]).join(p[1]); }); return s; } if (SKIN.id === 'ls') BLPW.forEach(function(p, i){ if (i && i !== 7) s = s.split(p[0]).join(p[1]); }); if (SKIN.id === 'ls') s = s.split('Each tray is').join('Each shelf is').split('onto the tray it comes from, or tap a tray').join('onto the shelf it comes from, or tap a shelf'); /* LIBQA: Library rooms say "Leave the room" */ skWords(SKIN).forEach(function(p){ s = s.split(p[0]).join(p[1]); }); var fr = fgRide(); if (fr) s = s.split('prize bucket').join(FG_BN[fr][1]).split('into the bucket').join('into the ' + FG_BN[fr][1]); return s; }
   /* Fairground burst items (Monnie 13:49: "the popcorns don't look like popcorns"): each ride's burst names its own thing, so every flying card wears two drawn ones */
   var BKI = ' stroke="#1b1b1b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"';
   var SKBK = {
@@ -66030,7 +66049,7 @@ window.SQE_SCENE = function(A){
     'Dividends only from': 'Dividends | only from', 'Undervalue: 2 years': 'Undervalue: | 2 years', 'Preference: 6 months': 'Preference: | 6 months', 'Floating charge: 12 months': 'Floating charge: | 12 months',
     'Creditor\'s petition:': 'Creditor\'s | petition:', '£5,000 or more': '£5,000 | or more', 'Annual exempt amount:': 'Annual exempt | amount:', 'Business Property Relief:': 'Business | Property Relief:', 'Up to £50,000: 19%': 'Up to £50,000: | 19%', 'Over £250,000: 25%': 'Over £250,000: | 25%'
   };
-  function boardSegs(l){ return String(BOARD_SEG[l] || l).split(' | ').map(function(s){ return '<span class="sg' + (s.length > 12 ? ' lg' : '') + '">' + esc(s).replace(/-(?=\S)/g, '-⁠') + '</span>'; }).join(' '); }
+  function boardSegs(l){ return String(BOARD_SEG[l] || (window.SQE_BOARD_SEG_X || {})[l] || l).split(' | ').map(function(s){ return '<span class="sg' + (s.length > 12 ? ' lg' : '') + '">' + esc(s).replace(/-(?=\S)/g, '-⁠') + '</span>'; }).join(' '); }
   /* bigger boxes where the picture's board was too small for 16px writing (plain boards are painted, so they can spill onto empty wall) */
   var BOARD_BOX = {
     'formation': {x: 0.8, y: 49, w: 17.2, h: 33}, 'directors': {x: 28.4, y: 29.2, w: 14.2, h: 17.6}, 'shareholders-minority': {x: 51, y: 12.5, w: 18, h: 14.8},
@@ -66039,8 +66058,8 @@ window.SQE_SCENE = function(A){
     'personal-insolvency': {x: 57.2, y: 21, w: 12.6, h: 20.5}, 'income-tax': {x: 69.6, y: 17.3, w: 19.6, h: 13.2}, 'cgt': {x: 6.8, y: 16, w: 15.2, h: 16.4},
     'corporation-tax': {x: 15, y: 21.5, w: 15.6, h: 19}, 'vat-iht-bpr': {x: 60.2, y: 33.1, w: 19.8, h: 16.1}
   };
-  function boardHTML(view, k){ var b = view && view.board, L = boardLines(k); if (!ROOMS_ON || !b || !L || !view.img) return ''; if (BOARD_BOX[String(k).split('/')[1]] && !STOP_OF[k]) b = BOARD_BOX[String(k).split('/')[1]];
-    return '<button type="button" class="scn-board' + (BOARD_PLAIN[String(k).split('/')[1]] ? ' plain' : '') + '" data-scn-board="' + esc(k) + '" style="left:' + b.x + '%;top:' + b.y + '%;width:' + b.w + '%;height:' + b.h + '%;--bpx:' + (b.w * 0.03).toFixed(2) + 'cqw;--bpy:' + (b.h * 0.035 / (view.ratio || 16 / 9)).toFixed(2) + 'cqw" aria-label="Chalkboard: ' + esc(L.join(' ')) + '. Tap to read it big."><span class="scn-bt">' + L.map(function(l){ return '<span class="ln">' + (STOP_OF[k] ? esc(l) : boardSegs(l)) + '</span>'; }).join('') + '</span></button>'; }
+  function boardHTML(view, k){ var b = view && view.board, L = boardLines(k); if (!ROOMS_ON || !b || !L || !view.img) return ''; if (BOARD_BOX[String(k).split('/')[1]] && !STOP_OF[k]) b = BOARD_BOX[String(k).split('/')[1]]; else if (window.SQE_BOARD_BOX_X && SQE_BOARD_BOX_X[String(k).split('/')[1]]) b = SQE_BOARD_BOX_X[String(k).split('/')[1]]; /* LIBQA */
+    return '<button type="button" class="scn-board' + (BOARD_PLAIN[String(k).split('/')[1]] || b.plain ? ' plain' : '') + '" data-scn-board="' + esc(k) + '" style="left:' + b.x + '%;top:' + b.y + '%;width:' + b.w + '%;height:' + b.h + '%;--bpx:' + (b.w * 0.03).toFixed(2) + 'cqw;--bpy:' + (b.h * 0.035 / (view.ratio || 16 / 9)).toFixed(2) + 'cqw" aria-label="Chalkboard: ' + esc(L.join(' ')) + '. Tap to read it big."><span class="scn-bt">' + L.map(function(l){ return '<span class="ln">' + (STOP_OF[k] && STOP_OF[k] !== 'ls' ? esc(l) : boardSegs(l)) + '</span>'; }).join('') + '</span></button>'; }
   /* 20 Nov 17:45 Monnie: board writing must be big, clear and fill the board. The picture board now shows its lines a few at a time (pages),
      as big as the board allows, chalked on letter by letter, and moves to the next lines every few seconds. Tap still opens the whole board. */
   function fitPaged(t, box){ var lns = [].slice.call(t.querySelectorAll('.ln')), j, aw = box.parentNode.clientWidth / 100;
@@ -66764,7 +66783,7 @@ window.SQE_SCENE = function(A){
   setInterval(function(){ if (document.hidden || sidOf() === 'dr') return;
     [].forEach.call(document.querySelectorAll('.scn-art, .hub-art'), function(art){ var layer = art.querySelector(':scope > .scn-amblayer'), img = art.querySelector(':scope > img'); if (!layer || !img) return;
       var src = img.currentSrc || img.src, k = key(src); if (layer.getAttribute('data-sw') === k) return; layer.setAttribute('data-sw', k);
-      var D = SWD[k]; if (!D && !/^room-|^sweetshop-|^shop-hall/.test(k)) return;
+      var D = SWD[k] || (window.SQE_SWD_X || {})[k]; if (!D && !/^room-|^sweetshop-|^shop-hall/.test(k)) return;
       layer.setAttribute('data-swshop', '1'); try { D = D || {W: 1920, H: 1072}; D.key = k; decorate(art, layer, src, D); } catch(e){} }); }, 700);
 })();
 
@@ -66799,7 +66818,7 @@ window.SQE_SCENE = function(A){
     'debt-security': {c: [86, 50.5], t: [89.9, 59.4]}, 'insolvency-clawback-priority': {c: [24, 72], t: [19.4, 78.4]}, 'personal-insolvency': {c: [31, 63], t: [35.6, 60.6]},
     'income-tax': {c: [93, 29], t: [84.6, 33.6]}, 'cgt': {c: [82.5, 70.5], t: [87, 81]}, 'corporation-tax': {c: [87.5, 71], t: [85.8, 81.2]}, 'vat-iht-bpr': {c: [70, 73.5], t: [75.8, 70]}
   };
-  function slug(){ var m = /^#\/scene\/blp\/([a-z-]+)\/inside/.exec(location.hash); return m ? m[1] : ''; }
+  function slug(){ var m = /^#\/scene\/(?:blp|ls)\/([a-z-]+)\/inside/.exec(location.hash); return m ? m[1] : ''; } /* LIBQA: the Library rooms too */
   function heads(s, W, H){ return (SW_HEADS[s] || []).map(function(b){ return {l: b[0] / 100 * W, t: b[1] / 100 * H, r: (b[0] + b[2]) / 100 * W, b: (b[1] + b[3]) / 100 * H}; }); }
   function ov(p, q, g){ g = g || 0; var x = Math.min(p.r, q.r + g) - Math.max(p.l, q.l - g), y = Math.min(p.b, q.b + g) - Math.max(p.t, q.t - g); return x > 0 && y > 0 ? x * y : 0; }
   /* hover label: centred under its object; above only when it would run off the bottom; never over a head (slides sideways, or drops below the head) */
@@ -66820,7 +66839,7 @@ window.SQE_SCENE = function(A){
     for (var i = 1; i < n - 1; i++) for (var j = i + 1; j < n; j++){ var L = [w.slice(0, i).join(' '), w.slice(i, j).join(' '), w.slice(j).join(' ')], m = Math.max(L[0].length, L[1].length, L[2].length), sc = m * 10 + (L[1].length < Math.max(L[0].length, L[2].length) ? 3 : 0); if (!best || sc < best.sc) best = {sc: sc, L: L}; }
     return best.L; }
   function esc(s){ return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
-  function lay(){ var s = slug(), a = document.querySelector('.scn-art:not(.hub-art)'), cf = SW_SAY[s]; if (!a || !s) return; var W = a.clientWidth, H = a.clientHeight; if (W < 100 || H < 60) return;
+  function lay(){ var s = slug(), a = document.querySelector('.scn-art:not(.hub-art)'), cf = SW_SAY[s] || (window.SQE_SW_SAY_X || {})[s]; /* LIBQA */ if (!a || !s) return; var W = a.clientWidth, H = a.clientHeight; if (W < 100 || H < 60) return;
     var els = a.querySelectorAll('.scn-hook.speech'); if (!els.length) return; var bk = a.querySelector('.scn-board'), key = W + 'x' + H + (bk ? ':' + bk.offsetLeft + ',' + bk.offsetTop + ',' + bk.offsetWidth : '');
     for (var i = 0; i < els.length; i++){ var e = els[i]; if (e.getAttribute('data-swb') === key) continue;
       var txt = e.getAttribute('data-swtext'); if (!txt){ var tmp = document.createElement('div'); tmp.innerHTML = e.innerHTML.replace(/<br\s*\/?>/gi, ' '); txt = tmp.textContent; } e.setAttribute('data-swtext', txt); e.classList.add('swb');
@@ -66874,23 +66893,7 @@ window.SQE_SCENE = function(A){
     var lv = a.querySelector('.scn-leave'); if (lv){ lv.classList.add('swlv'); var lw = lv.offsetWidth, lh = lv.offsetHeight, objs = [].map.call(a.querySelectorAll('.scn-hs'), function(e){ return box(e.getBoundingClientRect()); }), bl = null;
       [[.5, 1], [.02, 1], [.98, 1], [.25, 1], [.75, 1], [.02, 0], [.98, 0], [.5, 0]].forEach(function(c, n){ var l = Math.max(6, Math.min(W - 6 - lw, c[0] * W - lw * c[0])), tp = c[1] ? H - lh - 8 : 8, p = {l: l, t: tp, r: l + lw, b: tp + lh}, sc = n * 50 + hit(p, placed) * 3 + hit(p, objs);
         if (!bl || sc < bl.sc) bl = {sc: sc, l: l, t: tp}; });
-      lv.style.setProperty('left', Math.round(bl.l) + 'px', 'important'); lv.style.setProperty('top', Math.round(bl.t) + 'px', 'important'); }
-    /* 21 Nov (QA quick check 7): room number pins slide clear of tags, bubbles, the board, faces (head boxes + blink lids), waving hands, the Leave button
-       and each other, with a 7px gap, staying as close to their own object as they can and inside the picture (Next pin first). */
-    var G = 8, pob = placed.slice(); if (lv) pob.push(box(lv.getBoundingClientRect()));
-    [].forEach.call(a.querySelectorAll('.sw-lid'), function(l){ var r = l.getBoundingClientRect(); if (!r.width) return; var cx = (r.left + r.right) / 2 - A.left, cy = (r.top + r.bottom) / 2 - A.top, w = r.width, h = r.height; pob.push({l: cx - 1.6 * w, r: cx + 1.6 * w, t: cy - 2.5 * h, b: cy + 3.2 * h}); });
-    [].forEach.call(a.querySelectorAll('.sw-hand'), function(e){ var r = e.getBoundingClientRect(); if (r.width) pob.push(box(r)); });
-    var gap = function(p, L){ var n = 0; L.forEach(function(o){ var x = Math.min(p.r, o.r + G) - Math.max(p.l, o.l - G), y = Math.min(p.b, o.b + G) - Math.max(p.t, o.t - G); if (x > 0 && y > 0) n += x * y; }); return n; };
-    var pins = [].slice.call(a.querySelectorAll('.scn-hs:not(.door) > .scn-pin')).filter(function(p){ return p.offsetWidth && getComputedStyle(p).display !== 'none'; })
-      .sort(function(p, q){ return (q.parentNode.classList.contains('next') ? 1 : 0) - (p.parentNode.classList.contains('next') ? 1 : 0); });
-    pins.forEach(function(p){ var q = base(p), w = q.r - q.l, h = q.b - q.t, O = box(p.parentNode.getBoundingClientRect()), best = null, cands = [];
-      [0, .5, 1].forEach(function(fy){ [0, .5, 1].forEach(function(fx){ cands.push([O.l + fx * (O.r - O.l) - w / 2, O.t + fy * (O.b - O.t) - h / 2]); }); });
-      for (var rr = 8; rr <= 168; rr += 8) for (var k = 0; k < 20; k++){ var an = k / 20 * Math.PI * 2; [[O.l, O.t], [O.r, O.t], [O.l, O.b], [O.r, O.b], [(O.l + O.r) / 2, O.t], [(O.l + O.r) / 2, O.b]].forEach(function(c){ cands.push([c[0] - w / 2 + Math.cos(an) * rr, c[1] - h / 2 + Math.sin(an) * rr]); }); }
-      cands.push([q.l, q.t]);
-      cands.forEach(function(c){ var x = Math.max(3, Math.min(W - 3 - w, c[0])), y = Math.max(3, Math.min(H - 3 - h, c[1])), r = {l: x, t: y, r: x + w, b: y + h};
-        var dx = Math.max(0, O.l - (x + w / 2), (x + w / 2) - O.r), dy = Math.max(0, O.t - (y + h / 2), (y + h / 2) - O.b), nx6 = p.parentNode.classList.contains('next') ? 4 : 0, sc = Math.hypot(dx, dy) + 1e3 * gap({l: r.l - nx6, t: r.t - nx6, r: r.r + nx6, b: r.b + nx6}, pob);
-        if (!best || sc < best.sc) best = {sc: sc, r: r}; });
-      setT(p, [Math.round(best.r.l - q.l), Math.round(best.r.t - q.t)]); pob.push(best.r); }); }
+      lv.style.setProperty('left', Math.round(bl.l) + 'px', 'important'); lv.style.setProperty('top', Math.round(bl.t) + 'px', 'important'); } }
   /* QA fault 3: a two-line tag grows to fit its lines instead of cutting the top line */
   function fitTags(){ if (!slug()) return; var a = document.querySelector('.scn-art:not(.hub-art)'); if (!a) return;
     [].forEach.call(a.querySelectorAll('.scn-hook.tag'), function(e){ if (e.scrollHeight > e.clientHeight + 1){ e.style.setProperty('height', 'auto', 'important'); e.style.paddingTop = e.style.paddingBottom = '.14em'; } }); }
@@ -67095,19 +67098,30 @@ if (window.SQE_ROOMS_ON) try { (function(){
     '.gm-morebtn{margin-left:4px;padding:0 8px;border:2px solid #1b1b1b;border-radius:99px;background:#fff;color:#1b1b1b;font:700 13px/1.6 var(--font);cursor:pointer;vertical-align:baseline}' +
     'details.gm-whyd{margin-top:2px;font-weight:400}details.gm-whyd>summary{display:inline-block;cursor:pointer;font-weight:700;color:#1b5fa8;list-style:none}details.gm-whyd>summary::-webkit-details-marker{display:none}details.gm-whyd[open]>summary{margin-bottom:2px}';
   document.head.appendChild(css);
-  /* each number sits on a corner of its object that doesn't cover a word hook, the chalkboard or another number */
+  /* each number sits on the edge of its object, on the calmest bit of picture (no drawn words, faces or busy detail: lowest edge energy), clear of word hooks, the chalkboard and other numbers */
   function Rc(e){ return e.getBoundingClientRect(); }
   function ov(a, b){ var x = Math.min(a.right, b.right) - Math.max(a.left, b.left), y = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top); return x > 0 && y > 0 ? x * y : 0; }
-  var C = [[0, 0], [1, 0], [0, 1], [1, 1], [.5, 0], [.5, 1], [0, .5], [1, .5], [.5, .5]];
+  var EM = {};
+  function edges(img){ var src = img.currentSrc || img.src; if (EM[src]) return EM[src]; if (!img.complete || !img.naturalWidth) return null;
+    try { var W = 480, H = Math.max(1, Math.round(W * img.naturalHeight / img.naturalWidth)), c = document.createElement('canvas'); c.width = W; c.height = H; var x = c.getContext('2d'); x.drawImage(img, 0, 0, W, H); var d = x.getImageData(0, 0, W, H).data, g = new Float32Array(W * H), I = new Float32Array((W + 1) * (H + 1)), i, j;
+      var K = new Float32Array((W + 1) * (H + 1)); for (i = 0; i < W * H; i++) g[i] = d[i * 4] * .3 + d[i * 4 + 1] * .59 + d[i * 4 + 2] * .11;
+      for (j = 0; j < H; j++){ var rk = 0; for (i = 0; i < W; i++){ var q = (j * W + i) * 4, rr = d[q], gg = d[q + 1], bb = d[q + 2]; rk += (rr > 110 && rr > gg + 8 && gg > bb && rr - bb > 25 && rr - bb < 150 && gg > 60) ? 1 : 0; K[(j + 1) * (W + 1) + i + 1] = K[j * (W + 1) + i + 1] + rk; } } /* skin-like felt-tip tones: keeps numbers off faces and hands */
+      for (j = 0; j < H; j++){ var row = 0; for (i = 0; i < W; i++){ var k = j * W + i, e = (i + 1 < W ? Math.abs(g[k + 1] - g[k]) : 0) + (j + 1 < H ? Math.abs(g[k + W] - g[k]) : 0); row += e; I[(j + 1) * (W + 1) + i + 1] = I[j * (W + 1) + i + 1] + row; } }
+      return EM[src] = {W: W, H: H, I: I, K: K}; } catch(e){ return EM[src] = {bad: 1}; } }
+  function busy(E, IR, r){ if (!E || E.bad) return 0; var sx = E.W / IR.width, sy = E.H / IR.height, x0 = Math.max(0, Math.floor((r.left - IR.left) * sx)), x1 = Math.min(E.W, Math.ceil((r.right - IR.left) * sx)), y0 = Math.max(0, Math.floor((r.top - IR.top) * sy)), y1 = Math.min(E.H, Math.ceil((r.bottom - IR.top) * sy)); if (x1 <= x0 || y1 <= y0) return 0;
+    var I = E.I, K = E.K, w = E.W + 1, n = (x1 - x0) * (y1 - y0); return (I[y1 * w + x1] - I[y0 * w + x1] - I[y1 * w + x0] + I[y0 * w + x0]) / n + 80 * (K[y1 * w + x1] - K[y0 * w + x1] - K[y1 * w + x0] + K[y0 * w + x0]) / n; }
+  var C = []; [0, .25, .5, .75, 1].forEach(function(f){ C.push([f, 0], [f, 1]); if (f > 0 && f < 1) C.push([0, f], [1, f]); });
   function place(){ var arts = document.querySelectorAll(R.trim()); for (var ai = 0; ai < arts.length; ai++){ var a = arts[ai], A = Rc(a); if (!A.width) continue;
+      var img = a.querySelector(':scope > img'), E = img ? edges(img) : null, IR = img ? Rc(img) : A;
       var obs = [].map.call(a.querySelectorAll('.scn-hook,.scn-board,.scn-leave,.scn-bt'), Rc).filter(function(r){ return r.width > 0; });
       var hs = [].slice.call(a.querySelectorAll('.scn-hs:not(.door)')).sort(function(p, q){ return (q.classList.contains('next') ? 1 : 0) - (p.classList.contains('next') ? 1 : 0); });
       hs.forEach(function(h){ var p = h.querySelector('.scn-pin'); if (!p || getComputedStyle(p).display === 'none') return; var H = Rc(h), bx = H.left + h.clientLeft, by = H.top + h.clientTop, P = Rc(p), w = P.width, ht = P.height; if (!w) return;
-        var best = null, bs = 1e12;
+        var best = null, bs = 1e15;
         for (var i = 0; i < C.length; i++){ var x = H.left + C[i][0] * H.width - w / 2, y = H.top + C[i][1] * H.height - ht / 2; x = Math.max(A.left + 3, Math.min(A.right - w - 3, x)); y = Math.max(A.top + 3, Math.min(A.bottom - ht - 3, y));
-          var r = {left: x - 3, top: y - 3, right: x + w + 3, bottom: y + ht + 3}, s = 0; for (var j = 0; j < obs.length; j++) s += ov(r, obs[j]); if (s < bs){ bs = s; best = [x, y]; } if (!s) break; }
-        var L = Math.round(best[0] - bx) + 'px', T = Math.round(best[1] - by) + 'px'; if (p.style.left !== L) p.style.setProperty('left', L, 'important'); if (p.style.top !== T) p.style.setProperty('top', T, 'important');
-        obs.push({left: best[0], top: best[1], right: best[0] + w, bottom: best[1] + ht}); }); } }
+          var r = {left: x - 3, top: y - 3, right: x + w + 3, bottom: y + ht + 3}, s = 0; for (var j = 0; j < obs.length; j++) s += ov(r, obs[j]); s = s * 1000 + busy(E, IR, r) + (C[i][1] === 1 ? 0 : 2); if (s < bs){ bs = s; best = [x, y]; } }
+        if (window.SQE_PINFIX) best = window.SQE_PINFIX(a, H, best, w, ht, obs) || best; /* LIBQA: a number still on a face or word looks a little further out */
+        var cw = h.clientWidth || 1, ch = h.clientHeight || 1, L = ((best[0] - bx) / cw * 100).toFixed(2) + '%', T = ((best[1] - by) / ch * 100).toFixed(2) + '%'; /* in % of the object, so it stays put when the picture resizes */ if (p.style.left !== L) p.style.setProperty('left', L, 'important'); if (p.style.top !== T) p.style.setProperty('top', T, 'important');
+        obs.push({left: best[0] - 4, top: best[1] - 4, right: best[0] + w + 4, bottom: best[1] + ht + 4}); }); } }
   var t = 0; function soon(){ clearTimeout(t); t = setTimeout(function(){ try { place(); } catch(e){} }, 180); }
   addEventListener('resize', soon); addEventListener('hashchange', function(){ soon(); setTimeout(soon, 900); setTimeout(soon, 2200); });
   document.addEventListener('load', function(e){ if (e.target && e.target.tagName === 'IMG') soon(); }, true);
@@ -67115,6 +67129,29 @@ if (window.SQE_ROOMS_ON) try { (function(){
   soon();
 })(); } catch(e){}
 /* CLARITY-21NOV END */
+/* LIBQA-21NOV START (Library rooms to the sweet-shop standard, 21 Nov): data the shared sweet-shop engine reads for the Library (stop ls).
+   SQE_SWD_X = felt-tip movers per picture (blinking lids, cheek blush, lamp glows, sparkles, motion marks, dust, a moth), same format as SWD;
+   heads = head boxes (% of picture) so tags, number pins and hover labels keep off faces; boards = bigger painted chalkboards (16px+ at 960). */
+(function(){ if (typeof window === 'undefined') return;
+  window.SQE_SWD_X = window.SQE_SWD_X || {}; var X = {"library-room-01":{"W":2752,"H":1536,"p":[{"e":[[56.34,35.7,0.48,0.95],[57.21,35.7,0.48,0.95]],"s":"#fac796","c":[[56.08,36.87,0.32],[57.47,36.87,0.32]]}],"o":[["glow",107,791,60],["glow",2653,753,60],["glow",1946,837,42],["glow",2229,791,52],["glow",1393,376,62],["glow",922,676,58],["glow",2070,1055,30],["glow",2328,1137,30],["spark",1293,860,40],["spark",1472,814,40],["spark",1624,1121,34],["spark",372,399,40],["spark",716,538,34],["spark",2504,376,40],["spark",2078,553,34],["spark",991,568,30],["spark",1472,1267,30],["marks",1470,1306,80,[150,195],[-15,30]],["dust",1046,980],["dust",1250,1010],["fly",1150,250,1750,650,"f",9]]},"library-room-02":{"W":2752,"H":1536,"p":[{"e":[[36.85,58.97,0.5,0.85],[37.8,58.7,0.5,0.85]],"s":"#fafaf6","c":[[36.1,60.0,0.32],[38.3,59.8,0.32]]},{"e":[[46.96,58.67,0.48,0.95],[47.94,58.97,0.48,0.95]],"s":"#fcc39d","c":[[46.67,59.99,0.32],[48.23,60.29,0.32]]},{"e":[[55.92,59.27,0.48,0.95],[56.94,59.41,0.48,0.95]],"s":"#fcc39d","c":[[55.61,60.64,0.32],[57.25,60.78,0.32]]},{"e":[[69.2,59.72,0.48,0.95],[70.07,59.24,0.48,0.95]],"s":"#f6b584","c":[[68.8,60.35,0.32],[70.6,59.9,0.32]]}],"o":[["glow",107,783,60],["glow",864,834,40],["glow",1948,834,40],["glow",2235,783,52],["glow",2669,768,58],["spark",1415,1067,28],["spark",2147,922,30],["spark",2614,1229,30],["spark",2477,507,34],["spark",2119,614,30],["spark",1060,584,28],["spark",360,700,30],["marks",1415,1083,58,[160,200],[-20,20]],["marks",1530,995,52,[200,240],[300,340]],["marks",1280,1013,46,[190,230],[310,350]],["dust",1700,1100],["dust",1000,1150],["fly",300,200,1100,700,"f",8]]},"library-room-03":{"W":2752,"H":1536,"p":[{"e":[[16.21,60.29,0.48,0.95],[17.25,60.26,0.48,0.95]],"s":"#fdc09a","c":[[15.9,61.69,0.32],[17.56,61.66,0.32]]},{"e":[[25.35,55.5,0.48,0.95],[26.06,55.36,0.48,0.95]],"s":"#f8c094","c":[[25.14,56.45,0.32],[26.27,56.31,0.32]]},{"e":[[28.74,55.03,0.48,0.95],[29.48,55.08,0.48,0.95]],"s":"#875c44","c":[[28.52,56.02,0.32],[29.7,56.07,0.32]]},{"e":[[38.49,55.89,0.48,0.95],[39.16,55.89,0.48,0.95]],"s":"#fabd8e","c":[[38.29,56.79,0.32],[39.36,56.79,0.32]]},{"e":[[43.6,54.99,0.48,0.95],[44.29,55.01,0.48,0.95]],"s":"#b07755","c":[[43.39,55.92,0.32],[44.5,55.94,0.32]]},{"e":[[51.52,61.32,0.48,0.95],[52.39,61.32,0.48,0.95]],"s":"#f7be9c","c":[[51.0,62.0,0.32],[52.95,62.0,0.32]]},{"e":[[55.12,66.05,0.48,0.95],[55.6,66.05,0.48,0.95]],"s":"#fbc39e","c":[[55.85,66.9,0.26]]},{"e":[[42.08,69.2,0.48,0.95],[42.81,69.0,0.48,0.95]],"s":"#efac80","c":[[41.86,70.18,0.32],[43.03,69.98,0.32]]},{"e":[[62.02,68.88,0.48,0.95],[62.8,68.98,0.48,0.95]],"s":"#d79467","c":[[61.79,69.93,0.32],[63.03,70.03,0.32]]},{"e":[[35.53,73.31,0.48,0.95],[36.21,73.47,0.48,0.95]],"s":"#ffb783","c":[[35.33,74.22,0.32],[36.41,74.38,0.32]]},{"e":[[39.68,81.5,0.48,0.95]],"s":"#fabf88","c":[[39.6,82.6,0.26]]},{"e":[[61.8,82.0,0.42,0.85]],"s":"#f9bc84","c":[[62.1,83.1,0.26]]},{"e":[[69.76,76.79,0.36,0.85],[70.19,76.92,0.36,0.85]],"s":"#e3a067","c":[[70.5,77.6,0.26]]}],"o":[["glow",107,783,60],["glow",864,834,40],["glow",1948,834,40],["glow",2235,783,52],["glow",2669,768,58],["glow",2587,1144,55],["spark",660,492,40],["spark",674,676,34],["spark",427,1044,24],["spark",1637,645,30],["spark",1459,1098,34],["spark",1115,730,30],["spark",2400,300,34],["marks",760,915,55,[190,230],[310,350]],["marks",1460,1060,72,[200,235],[305,340]],["dust",1850,1300],["fly",2250,600,2752,1100,"f",10]]},"library-hub":{"W":2752,"H":1536,"p":[],"o":[["glow",105,791,60],["glow",859,845,40],["glow",1926,845,40],["glow",2215,806,50],["glow",2650,783,58],["glow",1390,783,170],["spark",1183,722,44],["spark",1596,722,44],["spark",1390,614,40],["spark",1390,952,40],["spark",1211,875,36],["spark",1569,875,36],["spark",1390,553,30],["spark",344,430,36],["spark",757,415,30],["spark",2504,922,40],["steam",2440,350,1.4],["marks",900,1300,42,[0,40],[80,120]],["dust",1100,1250],["dust",1650,1250],["fly",0,600,600,1000,"f",9]]},"library-room-04":{"W":2752,"H":1536,"p":[{"e":[[13.78,61.0,0.48,0.95],[14.45,61.0,0.48,0.95]],"s":"#e2a177","c":[[13.58,61.9,0.32],[14.65,61.9,0.32]]},{"e":[[16.5,62.4,0.48,0.95],[17.29,62.4,0.48,0.95]],"s":"#f6bc90","c":[[16.26,63.46,0.26],[17.53,63.46,0.26]]},{"e":[[19.0,62.5,0.48,0.95],[19.85,62.5,0.48,0.95]],"s":"#b77846","c":[[18.75,63.64,0.26],[20.11,63.64,0.26]]},{"e":[[22.66,63.3,0.48,0.95],[23.71,63.3,0.48,0.95]],"s":"#cd8c54","c":[[22.34,64.71,0.32],[24.03,64.71,0.32]]},{"e":[[26.73,63.4,0.48,0.95],[27.84,63.4,0.48,0.95]],"s":"#f6c69d","c":[[26.4,64.89,0.32],[28.17,64.89,0.32]]},{"e":[[33.3,65.0,0.48,0.95],[34.35,64.9,0.48,0.95]],"s":"#a46843","c":[[32.98,66.41,0.32],[34.67,66.31,0.32]]}],"o":[["glow",550,845,40],["glow",1266,791,50],["glow",1481,791,50],["glow",2235,837,40],["spark",2380,553,36],["spark",1100,1167,30],["spark",2587,1044,30],["spark",757,1091,28],["spark",1900,700,30],["belt",1596,1290,1899,1262],["marks",151,1044,52,[180,220],[-40,0]],["dust",1250,1350],["fly",1300,250,2100,700,"f",7]]},"library-room-05":{"W":2752,"H":1536,"p":[{"e":[[43.3,49.4,0.48,0.95],[44.4,49.3,0.48,0.95]],"s":"#fdbf9c","c":[[42.97,50.88,0.32],[44.73,50.78,0.32]]},{"e":[[50.77,52.25,0.48,0.95],[51.57,52.25,0.48,0.95]],"s":"#bb7f5b","c":[[50.53,53.32,0.26],[51.81,53.32,0.26]]},{"e":[[26.54,66.7,0.48,0.95],[28.15,66.7,0.48,0.95]],"s":"#fbc0a1","c":[[26.2,68.0,0.32],[28.45,67.9,0.32]]},{"e":[[69.0,57.2,0.48,0.95],[70.2,57.6,0.48,0.95]],"s":"#de9c72","c":[[68.64,58.81,0.32],[70.56,59.21,0.32]]}],"o":[["clock",566,455,40],["clock",716,461,40],["clock",861,461,40],["glow",234,876,40],["glow",124,1075,45],["glow",1569,799,35],["glow",1624,891,48],["glow",2037,906,48],["spark",1032,415,28],["marks",2614,1183,70,[180,220],[-40,0]],["dust",1650,1250],["fly",300,250,1100,650,"f",8]]},"library-room-06":{"W":2752,"H":1536,"p":[{"e":[[16.25,73.55,0.48,0.95],[17.87,73.45,0.48,0.95]],"s":"#eaa87c","c":[[15.7,74.6,0.32],[18.4,74.5,0.32]]},{"e":[[65.44,61.5,0.48,0.95]],"s":"#f4c09f","c":[[65.15,62.7,0.28]]},{"e":[[91.05,61.8,0.48,0.95],[91.9,61.8,0.48,0.95]],"s":"#fcc49e","c":[[90.79,62.94,0.32],[92.16,62.94,0.32]]}],"o":[["glow",110,783,60],["glow",867,837,40],["glow",1948,837,40],["glow",2235,783,52],["glow",2669,768,58],["steam",839,1290,0.8],["spark",344,445,32],["spark",2614,1260,30],["spark",1650,1000,30],["spark",1450,560,30],["marks",495,1229,150,[-60,-30],[200,230]],["dust",1700,1300],["fly",1100,250,1800,650,"f",8]]},"library-room-07":{"W":2752,"H":1536,"p":[{"e":[[42.88,72.5,0.48,0.95],[44.42,72.5,0.48,0.95]],"s":"#fac39c","c":[[42.42,74.57,0.32],[44.88,74.57,0.32]]},{"e":[[57.6,70.4,0.48,0.95]],"s":"#fac198","c":[[54.9,72.0,0.28],[58.0,71.8,0.28]]},{"e":[[76.7,59.1,0.48,0.95],[78.15,58.7,0.48,0.95]],"s":"#faba90","c":[[76.27,61.05,0.32],[78.59,60.65,0.32]]}],"o":[["glow",110,783,60],["glow",867,837,40],["glow",1948,837,40],["glow",2235,783,52],["glow",2669,768,58],["glow",1390,783,150],["clock",2036,1213,30],["steam",2180,1250,0.7],["steam",2300,1280,0.6],["spark",2449,1275,34],["spark",2697,1275,30],["spark",1899,998,28],["spark",1300,700,36],["spark",1480,700,36],["marks",2078,1037,45,[180,220],[300,340]],["fly",300,250,1100,650,"f",8]]},"library-room-08":{"W":2752,"H":1536,"p":[{"e":[[35.37,43.07,0.48,0.95],[36.47,43.6,0.48,0.95]],"s":"#fcc294","c":[[35.04,44.55,0.32],[36.8,45.08,0.32]]},{"e":[[40.19,53.47,0.48,0.95],[41.2,53.47,0.48,0.95]],"s":"#fdb889","c":[[39.89,54.83,0.32],[41.5,54.83,0.32]]},{"e":[[74.2,49.0,0.48,0.95]],"s":"#eea373","c":[[73.9,50.4,0.28]]},{"e":[[89.0,62.0,0.48,0.95]],"s":"#fab98b","c":[[88.6,63.3,0.28]]}],"o":[["clock",1266,837,30],["spark",2133,952,26],["spark",2174,783,30],["spark",2257,791,30],["spark",450,500,30],["marks",1100,1150,60,[60,100],[110,150]],["marks",2408,1029,50,[190,230],[310,350]],["dust",1500,1300],["fly",1300,250,2100,700,"f",7]]},"library-room-09":{"W":2752,"H":1536,"p":[{"e":[[51.23,60.05,0.48,0.95],[52.58,60.05,0.48,0.95]],"s":"#fdc09a","c":[[50.82,61.86,0.32],[52.98,61.86,0.32]]}],"o":[["glow",110,783,60],["glow",867,837,40],["glow",2235,783,52],["glow",2669,768,58],["marks",1610,1044,55,[160,200],[-20,20]],["spark",1156,1060,28],["spark",303,261,36],["spark",688,538,40],["spark",2100,380,30],["dust",1500,1300],["fly",1300,250,2100,700,"f",7]]}}; for (var k in X) window.SQE_SWD_X[k] = X[k];
+  var HD = {"sra-regulatory-role":[[55.2,32.2,4.7,6.9],[72.3,83,3.8,5.5]],"pii-other-providers":[[34.3,55.2,5.2,7.3],[44.6,54.3,5,7.9],[54.4,54.8,4.5,7.5],[67.2,54.5,5,8],[29.8,81.5,4,6.5]],"equality-act":[[14.2,56.3,5,8.5],[24.0,53,3.2,5.6],[27.8,52.4,2.9,5.5],[37.2,52.6,3.3,5.7],[42.3,52.2,3.1,5.4],[49.8,58.4,3.9,5.8],[54.2,63.0,3.3,4.9],[40.9,66.4,2.9,4.7],[61.0,66.2,3.0,4.9],[34.2,70.5,3.3,5.3],[38.0,79,2.6,4.6],[60.9,79.0,3.2,5.1],[68.3,74.0,3.4,4.7],[85.3,22.8,3.4,5.1],[46.5,80.5,4,5.5],[26.6,85,3.4,5]],"aml-framework-cdd":[[12.6,58.3,3,5.5],[15.3,59,3.4,6],[17.7,59,3.6,6],[21,59.5,4,6.5],[25.2,58.5,4.2,7],[31.3,59.5,4.5,7.5],[0,60,3,6],[97,63,3,5],[91,72.5,3.5,5]],"poca-offences-reporting":[[41.8,45.5,4.2,7],[49.3,49.3,3.6,5.5],[24.5,62,5.5,8.5],[66.8,53.5,4.6,7],[34.5,67,4.5,7.5],[79.5,59.2,4.5,6.3],[18,52,4,6],[86.5,12,6,9]],"financial-services":[[13.5,66,6,10],[62.5,57.5,4,6.5],[89,58.5,4.5,7],[69.8,84.5,3.5,5.5]],"funding-private-cfa-dba":[[40.5,68,6,8.5],[52.5,65,6,9],[74.8,53,5.5,9],[28.5,89,3.5,5]],"funding-legal-aid-tpf-lei":[[32.5,38.5,5,7.5],[38.3,49.5,4.5,7],[70,44,5,8],[86,57.5,5,8],[30.5,86,3.5,5.5]],"transparency-client-care":[[48.5,54.5,6,8.5],[32,79.5,3.5,5]]}, tries = 0; (function merge(){ if (window.SQE_SW_HEADS){ for (var h in HD) window.SQE_SW_HEADS[h] = HD[h]; } else if (tries++ < 200) setTimeout(merge, 50); })(); /* the head table can be made after this block runs */
+  window.SQE_BOARD_BOX_X = window.SQE_BOARD_BOX_X || {}; var BB = {"sra-regulatory-role":{"x":16,"y":41,"w":13.3,"h":30,"plain":1},"pii-other-providers":{"x":42.8,"y":29.5,"w":16.2,"h":24.3,"plain":1},"equality-act":{"x":41.5,"y":25.5,"w":16.8,"h":22,"plain":1},"aml-framework-cdd":{"x":55.5,"y":12,"w":11.5,"h":27,"plain":1},"financial-services":{"x":43.5,"y":41,"w":14.5,"h":19.5,"plain":1},"funding-private-cfa-dba":{"x":82.6,"y":44,"w":13.6,"h":33,"plain":1},"funding-legal-aid-tpf-lei":{"x":83.3,"y":16,"w":12.7,"h":27.5,"plain":1},"transparency-client-care":{"x":84.6,"y":10,"w":11.4,"h":28.5,"plain":1}}; for (var b in BB) window.SQE_BOARD_BOX_X[b] = BB[b];
+  window.SQE_BOARD_SEG_X = window.SQE_BOARD_SEG_X || {}; var SG = {"Six reserved activities":"Six | reserved | activities","Will writing: not reserved":"Will | writing: | not reserved","Most SRA fines: max £25,000":"Most | SRA | fines: | max £25,000","The SRA cannot strike off":"The SRA | cannot | strike | off","Ombudsman: within 6 months":"Ombudsman: | within 6 months","of the firm's final response":"of the firm's | final | response","Minimum cover: £2 million":"Minimum | cover: | £2 million","LLP or company: £3 million":"LLP | or company: | £3 million","Insurer pays even if":"Insurer | pays | even | if","the firm broke the policy":"the firm | broke | the policy","Compensation Fund:":"Compensation | Fund:","dishonesty, last resort":"dishonesty, | last resort","9 protected characteristics":"9 | protected | characteristics","Direct discrimination:":"Direct | discrimination:","only age can be justified":"only age | can be | justified","Indirect: may be justified":"Indirect: | may be | justified","Adjustments: free to client":"Adjustments: | free | to client","One-off £12,000 or more:":"One-off | £12,000 | or more:","check the client":"check | the client","Suspicion: any amount":"Suspicion: | any amount","Beneficial owner: over 25%":"Beneficial | owner: | over 25%","Cannot check? Do not act":"Cannot | check? | Do not act","Keep records for 5 years":"Keep | records | for 5 years","Suspect: more than fanciful":"Suspect: | more than | fanciful","Report and await consent":"Report | and await | consent","No reply in 7 working days:":"No reply | in 7 working | days:","consent is deemed":"consent | is deemed","Refused: wait 31 days":"Refused: | wait 31 days","Do not tip off the client":"Do not tip | off | the client","1. Specified investment?":"1. | Specified | investment?","2. Specified activity?":"2. | Specified | activity?","3. By way of business?":"3. | By way | of business?","4. Does an exclusion apply?":"4. | Does | an exclusion | apply?","if not, can Part 20 apply?":"if not, can | Part 20 | apply?","Land: not an investment":"Land: | not an | investment","Breach: crime, up to 2 years":"Breach: | crime, | up to 2 years","Success fee cap: 100%":"Success | fee | cap: 100%","Personal injury cap: 25%":"Personal | injury | cap: 25%","Damages-based agreement:":"Damages-based | agreement:","employment 35%, others 50%":"employment | 35%, | others 50%","Client pays the success fee":"Client | pays | the success | fee","Estimate: not binding":"Estimate: | not binding","Legal aid: scope, means,":"Legal | aid: | scope, | means,","then merits":"then | merits","Merits: 50% or more":"Merits: | 50% | or more","Warn of the statutory charge":"Warn | of the | statutory | charge","Check legal expenses cover":"Check | legal | expenses | cover","Funder: nothing if it fails":"Funder: | nothing | if it | fails","Prices: listed services only":"Prices: | listed | services | only","Complaints info: every firm":"Complaints | info: | every | firm","Firm has 8 weeks to resolve,":"Firm | has 8 weeks | to resolve,","then the Legal Ombudsman":"then | the Legal | Ombudsman","Consumer off-premises:":"Consumer | off-premises:","14 days to cancel":"14 days | to cancel"}; for (var g in SG) window.SQE_BOARD_SEG_X[g] = SG[g]; /* where a board line may wrap (" | "), so a phrase like "max £25,000" stays together */
+  window.SQE_SW_SAY_X = window.SQE_SW_SAY_X || {}; var SY = {"funding-private-cfa-dba": {"c": [21, 78], "t": [29.6, 91.5]}, "funding-legal-aid-tpf-lei": {"c": [26, 76], "t": [31.2, 88.5]}, "transparency-client-care": {"c": [27, 70], "t": [33, 81]}}; for (var y in SY) window.SQE_SW_SAY_X[y] = SY[y]; /* speech bubble centre c and tail tip t (at Britney's beak), % of picture */
+  /* number pins: if the engine's best corner still touches a face or a word, try spots a little further out round the object (closest clear one wins) */
+  window.SQE_PINFIX = function(a, H, best, w, ht, obs){ if (!/^#\/scene\/ls\//.test(location.hash)) return null; var A = a.getBoundingClientRect(); obs = obs.concat(window.SQE_SWHEADRECTS(a));
+    function hit(x, y){ var r = {left: x - 3, top: y - 3, right: x + w + 3, bottom: y + ht + 3}, s = 0; for (var j = 0; j < obs.length; j++){ var o = obs[j], ox = Math.min(r.right, o.right) - Math.max(r.left, o.left), oy = Math.min(r.bottom, o.bottom) - Math.max(r.top, o.top); if (ox > 0 && oy > 0) s += ox * oy; } return s; }
+    if (!hit(best[0], best[1])) return null; var bb = null, bs = 1e15, F = [0, .25, .5, .75, 1], D = [0, 12, 24, 36, 52, 70];
+    F.forEach(function(fx){ F.forEach(function(fy){ if (fx > 0 && fx < 1 && fy > 0 && fy < 1) return; D.forEach(function(d){ var dx = fx === 0 ? -d : fx === 1 ? d : 0, dy = fy === 0 ? -d : fy === 1 ? d : 0;
+      var x = H.left + fx * H.width - w / 2 + dx, y = H.top + fy * H.height - ht / 2 + dy; x = Math.max(A.left + 3, Math.min(A.right - w - 3, x)); y = Math.max(A.top + 3, Math.min(A.bottom - ht - 3, y));
+      var s = hit(x, y) * 1000 + d + (fy === 1 ? 0 : 4); if (s < bs){ bs = s; bb = [x, y]; } }); }); });
+    return bb; };
+  /* head boxes of the room on show, as screen rectangles (the number pins use them to keep off faces) */
+  window.SQE_SWHEADRECTS = function(a){ var m = /^#\/scene\/(?:blp|ls)\/([a-z-]+)\/inside/.exec(location.hash), L = m && window.SQE_SW_HEADS && window.SQE_SW_HEADS[m[1]]; if (!L || !a) return [];
+    var A = a.getBoundingClientRect(), out = []; L.forEach(function(d){ var r = {left: A.left + d[0] / 100 * A.width, top: A.top + d[1] / 100 * A.height, right: A.left + (d[0] + d[2]) / 100 * A.width, bottom: A.top + (d[1] + d[3]) / 100 * A.height, width: d[2] / 100 * A.width}; for (var i = 0; i < 8; i++) out.push(r); }); return out; }; /* each face counts 8 times, so a number would rather touch a word than a face */
+})();
+/* LIBQA-21NOV END */
+
 
 ;
 /* The town beside Cluckington Palace (PREVIEW ONLY: needs ?town=1 in the address; without it #/town/... goes back to #/palace).
@@ -67702,10 +67739,10 @@ window.SQE_TOWN = function(A){
   (function runTick(now){
     for (var i = 0; i < RUNS.length; i++){
       var el = RUNS[i], r = RUNR[el.getAttribute('data-r')]; if (!r) continue;
-      var src = el.closest('.abert,.bcrun,.b3,.blay,.bts-bert') || el, rc = src.getBoundingClientRect(), eh = el.getBoundingClientRect().height; if (!eh) continue;
+      var src = el.closest('.abert,.bcrun,.b3,.blay,.bts-bert,.btt-b') || el, rc = src.getBoundingClientRect(), eh = el.getBoundingClientRect().height; if (!eh) continue;
       var x = rc.left + rc.width / 2;
       if (el._x == null){ el._x = x; el._d = 0; el._t = now; el._L = RUN_STAND.map(function(q){ return q.slice(); }); runSet(el, r, el._L); continue; }
-      var dx = Math.abs(x - el._x); el._x = x;
+      var dx = Math.abs(x - el._x); if (dx > .2) el._x = x;   /* slow walkers (Bert on the quiz clock) add up sub-pixel moves */
       if (dx > .2 && dx < eh){ el._d += dx * r.h / eh; el._t = now; var pp = runPhase(r, el._d), pf = runPhase(r, el._d + r.D); el._L = [runLeg(pf), runLeg(pp)]; runSet(el, r, el._L); }
       else if (now - el._t > 140){ var ch = 0; for (var j = 0; j < 2; j++) for (var q = 0; q < 2; q++){ var v = el._L[j][q], w = RUN_STAND[j][q]; if (Math.abs(v - w) > .3){ el._L[j][q] = v + (w - v) * .2; ch = 1; } } if (ch) runSet(el, r, el._L); }
     }
@@ -68127,7 +68164,7 @@ window.SQE_MOUNT = function(A){
     '.mg-say{position:absolute;z-index:3000;background:#fff;border:2.5px solid #1d1d1b;border-radius:18px;padding:9px 15px;font-weight:700;font-size:clamp(10px,1.3vw,16px);line-height:1.2;color:#1d1d1b;width:max-content;max-width:15%;text-align:center;box-shadow:0 2px 0 rgba(0,0,0,.12);transition:opacity .25s;pointer-events:none;transform:translate(-50%,-100%)}' +
     '.mg-say i{position:absolute;top:100%;margin-top:-3px;width:18px;height:14px;margin-left:-9px}.mg-say i svg{display:block;width:100%;height:100%;overflow:visible}' +
     '.mg-say.fade{opacity:0}' +
-    '.mg-ret{position:absolute;left:1.2%;bottom:2.2%;z-index:2950;background:#fff;border:2.5px solid #1d1d1b;border-radius:999px;padding:4px 12px;font:600 clamp(10px,1.05vw,14px)/1.25 Calibri,Carlito,system-ui,sans-serif;color:#1d1d1b;cursor:pointer;box-shadow:0 2px 0 rgba(0,0,0,.15)}.mg-ret b{color:#B3261E;text-decoration:underline}.mg-ret:hover{background:#FFF4D6}' +
+    '.mg-ret{position:absolute;left:1.2%;bottom:2.2%;box-sizing:border-box;max-width:calc(28.8% - 9px);text-align:center;z-index:2950;background:#fff;border:2.5px solid #1d1d1b;border-radius:999px;padding:4px 12px;font:600 clamp(10px,1.05vw,14px)/1.25 Calibri,Carlito,system-ui,sans-serif;color:#1d1d1b;cursor:pointer;box-shadow:0 2px 0 rgba(0,0,0,.15)}.mg-ret b{color:#B3261E;text-decoration:underline;white-space:nowrap}.mg-ret:hover{background:#FFF4D6}' +
     '.mg-heart{position:absolute;width:1.5%;aspect-ratio:24/22;z-index:2950;pointer-events:none}.mg-heart svg{display:block;width:100%;height:100%}' +
     '.mg-grain{position:absolute;width:1.1%;aspect-ratio:1/.8;background:#F2C230;border:1px solid #A97C0C;border-radius:50%;z-index:2400;pointer-events:none;transform:translate(-50%,50%)}' +
     '.mount-joy{position:absolute;inset:0;pointer-events:none;z-index:3500}' +
@@ -68215,32 +68252,56 @@ window.SQE_MOUNT = function(A){
   /* Bert runs in, grabs Baba and tucks him under his arm, turns round in full view and runs off the way he came;
      Mama runs after them, arms out, always a step behind (Monnie 19:18, QA 20:21, 21:45, 22:31).
      Bert's feet never slide: his body moves exactly as far as his planted foot pushes it. */
-  var B_LW = 180 / 800 * BERT_H * 1536 / 2752, B_A = 24 * Math.PI / 180, B_STEP = 2 * B_LW * Math.sin(B_A), B_MS = 340, B_N = 7;
-  var K_IN = B_N * B_MS, K_GRAB = K_IN + 120, K_TURN = K_GRAB + 800, K_OUT = K_TURN + 400;
+  /* feet that never skate (QA re-check 4): each leg's foot is measured from its drawing (offset from the hip pivot, drawing px);
+     in every half-step the foot on the ground stays put and the body moves by exactly what that foot's swing gives */
+  var B_MS = 340, B_N = 7, M_MS = 320;
+  var RUN_B = {k: BERT_H * 1536 / 2752 / 800, A: 24 * Math.PI / 180, H: 800, legs: [[-116, 127, 1, 747], [90, 199, -1, 799]]};
+  var RUN_M = {k: LAYLA_H * DEPTH(12) * (872 / 896) * 1536 / 2752 / 872, A: 20 * Math.PI / 180, H: 872, legs: [[-38, 238, 1, 848], [-4, 261, -1, 871]]};
+  function footX(L, a){ var r = L[2] * a; return L[0] * Math.cos(r) - L[1] * Math.sin(r); }
+  function halfStep(S, as, ae, m, dir){   /* the body's move (signed % of width) as the legs go from angle as to ae, standing on the foot that pushes the right way */
+    var best = 0;
+    S.legs.forEach(function(L){ var full = -m * (footX(L, -as) - footX(L, as)) * S.k; if (full * dir > 0) best = -m * (footX(L, ae) - footX(L, as)) * S.k; });
+    return best;
+  }
+  function lockRun(S, ph, m, dir){   /* ph 0 = legs together; each half-step runs between the legs-apart points */
+    var h = Math.floor((ph + Math.PI / 2) / Math.PI), as = (h % 2 ? 1 : -1) * S.A, a = S.A * Math.sin(ph);
+    var f0 = halfStep(S, -S.A, S.A, m, dir), f1 = halfStep(S, S.A, -S.A, m, dir);
+    return Math.floor(h / 2) * (f0 + f1) + (h % 2 ? f0 : 0) + halfStep(S, as, a, m, dir) - halfStep(S, -S.A, 0, m, dir);
+  }
+  /* the whole pose for phase ph: x (% of width), dy (body lowered, % of the figure's height) so the standing foot is on the ground,
+     and each leg's transform; the other leg lifts clear in an arc (the drawings' feet sit at different heights) */
+  function runPose(S, ph, m, dir){
+    var h = Math.floor((ph + Math.PI / 2) / Math.PI), as = (h % 2 ? 1 : -1) * S.A, a = S.A * Math.sin(ph), pr = (ph + Math.PI / 2) / Math.PI - h, si = 0, G = 0;
+    S.legs.forEach(function(L, i){ if (-m * (footX(L, -as) - footX(L, as)) * dir > 0) si = i; G = Math.max(G, L[3]); });
+    function fy(L){ var r = L[2] * a; return L[3] - L[1] + L[0] * Math.sin(r) + L[1] * Math.cos(r); }
+    var dy = G - fy(S.legs[si]); if (pr < 0.2){ var w = pr / 0.2; w = w * w * (3 - 2 * w); dy = lerp(G - fy(S.legs[1 - si]), dy, w); }
+    var tf = S.legs.map(function(L, i){
+      var lift = i === si ? 0 : Math.min(0, G - 26 * Math.sin(Math.PI * pr) - (fy(L) + dy));
+      return 'translateY(' + (lift / S.H * 100).toFixed(2) + '%) rotate(' + (L[2] * a * 180 / Math.PI).toFixed(2) + 'deg)';
+    });
+    return {x: lockRun(S, ph, m, dir), dy: dy / S.H * 100, tf: tf};
+  }
+  function setLegs(el, tf){ var f = el.querySelector('.lf'), b = el.querySelector('.lb'); if (f) f.style.transform = tf ? tf[0] : ''; if (b) b.style.transform = tf ? tf[1] : ''; }
+  var K_IN = B_N * B_MS, K_GRAB = K_IN + 120, K_TURN = K_GRAB + 800, K_OUT = K_TURN + 400, B_IN_D = lockRun(RUN_B, B_N * Math.PI, 1, 1);
   function legSwing(el, d, stride, amp){
     var a = Math.sin(d / stride * Math.PI * 2) * amp, f = el.querySelector('.lf'), b = el.querySelector('.lb');
     if (f) f.style.transform = 'rotate(' + a.toFixed(1) + 'deg)'; if (b) b.style.transform = 'rotate(' + (-a).toFixed(1) + 'deg)';
     return Math.abs(Math.sin(d / stride * Math.PI * 2));
   }
-  /* phase ph (a full cycle is two steps, starting with the legs apart); returns how far the body has gone in % of the garden width */
-  function bertGo(ph){
-    var h = Math.floor((ph + Math.PI / 2) / Math.PI), s = Math.sin(B_A * Math.sin(ph));
-    return h * B_STEP + (h % 2 ? -1 : 1) * B_LW * s + B_LW * Math.sin(B_A);
-  }
   function bertLegs(be, a){ var f = be.querySelector('.lf'), b = be.querySelector('.lb');
-    if (f) f.style.transform = 'rotate(' + a.toFixed(1) + 'deg)'; if (b) b.style.transform = 'rotate(' + (-a).toFixed(1) + 'deg)'; }
+    if (f) f.style.transform = 'rotate(' + a.toFixed(2) + 'deg)'; if (b) b.style.transform = 'rotate(' + (-a).toFixed(2) + 'deg)'; }
   function kidState(n){
     var u0 = n - KID.t0, P = KID.plan, HS = K_GRAB + 700, HH = P.hold;
     if (u0 > P.ms){ PAUSED += n - KID.s0; KID = null; setTimeout(function(){ if (A.route()[0] === 'mount') A.render(); }, 0); return null; }
     var u = u0 > HS ? Math.max(HS, u0 - HH) : u0;   /* time stands still for Bert while he holds them and they have their say */
-    var X0 = BERT_IN - B_N * B_STEP, bx, bf = 1, brz = 0, ang = -24, bob = 0, ph;
-    if (u < K_IN){ ph = -Math.PI / 2 + Math.PI * Math.max(0, u) / B_MS; bx = X0 + bertGo(ph); ang = 24 * Math.sin(ph); bob = (1 - Math.abs(Math.sin(ph))) * 1.6; }
-    else if (u < K_TURN){ bx = BERT_IN; ang = 24 * (1 - clamp((u - K_IN) / 160, 0, 1)) * Math.sin(-Math.PI / 2 + Math.PI * B_N); brz = 6 * bump(u, K_GRAB, 700) + (u0 > HS && u0 < HS + HH ? 2.5 * Math.sin((u0 - HS) / 170) * Math.min(1, (u0 - HS) / 300, (HS + HH - u0) / 300) : 0); }
-    else if (u < K_OUT){ bx = BERT_IN; ang = 0; bf = u < K_TURN + 200 ? 1 : -1; }   /* the turn, in full view */
-    else { ph = -Math.PI / 2 + Math.PI * (u - K_OUT) / B_MS; var ease0 = Math.min(1, (u - K_OUT) / 120); bx = BERT_IN - bertGo(ph); ang = 24 * Math.sin(ph) * ease0; bf = -1; bob = (1 - Math.abs(Math.sin(ph))) * 1.6; }
+    var X0 = BERT_IN - B_IN_D, bx, bf = 1, brz = 0, bob = 0, ph, rp = null;
+    if (u < K_IN){ ph = Math.PI * Math.max(0, u) / B_MS; rp = runPose(RUN_B, ph, 1, 1); bx = X0 + rp.x; bob = -rp.dy; }
+    else if (u < K_TURN){ bx = BERT_IN; brz = 6 * bump(u, K_GRAB, 700) + (u0 > HS && u0 < HS + HH ? 2.5 * Math.sin((u0 - HS) / 170) * Math.min(1, (u0 - HS) / 300, (HS + HH - u0) / 300) : 0); }
+    else if (u < K_OUT){ bx = BERT_IN; bf = u < K_TURN + 200 ? 1 : -1; }   /* the turn, in full view */
+    else { ph = Math.PI + Math.PI * (u - K_OUT) / B_MS; rp = runPose(RUN_B, ph, -1, -1); bx = BERT_IN + rp.x - lockRun(RUN_B, Math.PI, -1, -1); bf = -1; bob = -rp.dy; }
     var be = document.querySelector('.mg-bert'), bw = be && be.querySelector('.mg-bwrap');
     if (be){
-      bertLegs(be, ang);
+      setLegs(be, rp && rp.tf);
       be.style.left = bx.toFixed(2) + '%'; be.style.bottom = '12%'; be.style.height = BERT_H + '%'; be.style.zIndex = '1960';
       if (bw) bw.style.transform = (bf < 0 ? 'scaleX(-1) ' : '') + 'translateY(' + (-bob).toFixed(2) + '%) rotate(' + brz.toFixed(1) + 'deg)';
     }
@@ -68258,8 +68319,8 @@ window.SQE_MOUNT = function(A){
       var tmx = lerp(26.5, feetM, km), tmy = lerp(0, carryB - 12 + 11, km) / HIM * 100;
       mama = {dx: tmx - 26.5, z: 1967, tf: 'translateY(' + (-tmy).toFixed(2) + '%) ' + (bf > 0 && km > 0 ? 'scaleX(-1) ' : '') + 'rotate(' + (-90 * km + kickM * km).toFixed(1) + 'deg)'};
     }
-    else if (u < K_TURN){ var j = u0 > K_GRAB ? Math.abs(Math.sin((u0 - K_GRAB) / 160)) * 3 : 0; mama = {dx: rec, tf: 'translateY(' + (-j).toFixed(2) + '%)'}; }
-    else { var mk = clamp((u - K_TURN) / 4800, 0, 1), mx = Math.max(36.5 - 48 * mk, Math.min(36.5, bx + 22.5)); mama = {dx: mx - 26.5, chase: true, d: 36.5 - mx, tf: ''}; }
+    else if (u < K_OUT){ var j = u0 > K_GRAB ? Math.abs(Math.sin((u0 - K_GRAB) / 160)) * 3 : 0; mama = {dx: rec, tf: 'translateY(' + (-j).toFixed(2) + '%)'}; }
+    else { var mp = Math.PI * (u - K_OUT) / M_MS, mx = 36.5 + lockRun(RUN_M, mp, 1, -1); mama = {dx: mx - 26.5, chase: true, pose: runPose(RUN_M, mp, 1, -1), tf: ''}; }   /* her feet are locked too; slightly slower than Bert, so she stays behind */
     return {baba: baba, mama: mama, u: u0};
   }
   function bump(u, t0, d){ if (u < t0 || u > t0 + d) return 0; return Math.sin(Math.PI * (u - t0) / d); }
@@ -68633,7 +68694,7 @@ window.SQE_MOUNT = function(A){
       if (kid && par && kid[who].z) s.el.style.zIndex = String(kid[who].z);
       if (who === 'mama'){ var mc = g.querySelector('.mg-mchase'), ch = kid && kid.mama.chase;
         if (mc){ mc.style.display = ch ? '' : 'none';
-          if (ch){ var mh = LAYLA_H * DEPTH(s.b) * PUSH_ART.mama.hk, mb = legSwing(mc, kid.mama.d, 5.5, 20); mc.style.height = mh.toFixed(2) + '%'; mc.style.left = (s.x + kid.mama.dx).toFixed(2) + '%'; mc.style.bottom = (s.b + mb * 1.2).toFixed(2) + '%'; mc.style.zIndex = String(Math.round(2000 - s.b * 10)); } }
+          if (ch){ var mh = LAYLA_H * DEPTH(s.b) * PUSH_ART.mama.hk, mp2 = kid.mama.pose; setLegs(mc, mp2.tf); mc.style.transform = 'translateX(-50%) translateY(' + mp2.dy.toFixed(2) + '%)'; mc.style.height = mh.toFixed(2) + '%'; mc.style.left = (s.x + kid.mama.dx).toFixed(2) + '%'; mc.style.bottom = s.b + '%'; mc.style.zIndex = String(Math.round(2000 - s.b * 10)); } }
         if (s.img) s.img.style.opacity = ch ? '0' : ''; }
       if (par && s.img){
         var pu = kid ? null : parentPush(who, n), pe = g.querySelector('.mg-ppush[data-who="' + who + '"]');
@@ -69721,13 +69782,15 @@ function allLogs(){ try { return S.logs.concat(tickLogs()); } catch(e){ return S
 /* ============ PROGRESS FEED (21 Nov, Monnie) ============
    Quietly sends a summary of Layla's progress (and a spare copy of her save) to Monnie's private Google script, so Monnie can
    see it on her own private page. No button, nothing on screen. READ-ONLY: never changes S or the save key. Fails silently
-   when offline. Not sent from Monnie's own browser (sqe_monnie flag) or from anywhere but the live site. */
+   when offline. Not sent from a browser opened once with ?nofeed=1 (Monnie's own) or from anywhere but the live site. */
 var FEED = {url:"https://script.google.com/macros/s/AKfycbwL3Qc8IP29xB59Yu5FKfD-44yTmK-xNI9oCBiePsSrktd8i5a_DWg0aDJ07nF8KNovTQ/exec", tok:"Ck7i6LgiZz4rLTm6nhz0MWAR", every:3 * 60000, last:"", busy:0};
 function feedOn(){
   try {
     if (window.SQE_FEED_TEST) return true;
     if (!/^https?:/.test(location.protocol) || location.hostname !== "melharoun08-gif.github.io") return false;
-    if (localStorage.getItem("sqe_monnie")) return false;
+    if (/[?&#]nofeed=1/.test(location.href)) localStorage.setItem("sqe_nofeed", "1"); /* Monnie's own laptop: open once with ?nofeed=1 (NOT tied to ?monnie=1, which Layla has used too) */
+    if (/[?&#]nofeed=0/.test(location.href)) localStorage.removeItem("sqe_nofeed");
+    if (localStorage.getItem("sqe_nofeed")) return false;
     return /^https:\/\/script\.google\.com\//.test(FEED.url);
   } catch(e){ return false; }
 }
@@ -69762,6 +69825,7 @@ function feedSummary(){
   o.earned = t(function(){ return gameS().earned || 0; });
   o.fed = t(function(){ return Object.keys(gameS().fed || {}).sort().slice(-30); });
   o.ill = t(function(){ return !!gameS().ill; });
+  o.pocketTaken = t(function(){ return S.pocketTaken || {}; });
   o.cloud = t(function(){ return {step:Math.min(presentStreak(), PRESENT_STEPS), of:PRESENT_STEPS, presents:(presS().claimed || []).length}; });
   return o;
 }
@@ -69779,7 +69843,22 @@ function feedSend(force){
       .then(function(){ FEED.last = sig; }).catch(function(){}).then(function(){ FEED.busy = 0; });
   } catch(e){ FEED.busy = 0; }
 }
+/* 21 Nov (Monnie): coins earned in the phone app add to her website coins. The phone reports its running total (coinsEarned,
+   only goes up); we add only the part not taken yet (S.pocketTaken[dev]), so nothing is counted twice. */
+function feedPull(){
+  if (!feedOn()) return;
+  try {
+    fetch(FEED.url + "?pull=1&t=" + encodeURIComponent(FEED.tok)).then(function(r){ return r.json(); }).then(function(j){
+      if (!j || !j.ok || !Array.isArray(j.pocket)) return;
+      S.pocketTaken = S.pocketTaken || {}; var add = 0;
+      j.pocket.forEach(function(p){ var dev = String(p.dev || ""), tot = Math.floor(+p.coinsEarned || 0), had = +S.pocketTaken[dev] || 0;
+        if (!dev || !(tot > had)) return; var d = tot - had; if (d > 5000) return; add += d; S.pocketTaken[dev] = tot; });
+      if (add > 0){ var c = cbaS(); c.coins += add; var g = gameS(); g.earned = (+g.earned || 0) + add; GDIRTY = 1; try { POPQ.push(add); schedulePop(); } catch(e){} save(); FEED.last = ""; }
+    }).catch(function(){});
+  } catch(e){}
+}
 try {
+  setTimeout(feedPull, 8000); setInterval(feedPull, 5 * 60000);
   setTimeout(function(){ feedSend(true); }, 15000);
   setInterval(function(){ feedSend(false); }, FEED.every);
   document.addEventListener("visibilitychange", function(){ if (document.hidden) feedSend(false); });
@@ -73596,7 +73675,7 @@ var BTIMER_S = 120, BTIMER_T = {};
 function bossTimer(key, answered){
   if (answered){ delete BTIMER_T[key]; return ""; }
   if (!BTIMER_T[key]) BTIMER_T[key] = Date.now();
-  return '<div class="btimer" data-k="' + esc(key) + '" aria-live="off"><span class="btt-bar"><i></i><img class="btt-b" src="img/boss/bert-knife.webp" alt=""></span><b class="btt-say">Beat Bert\'s clock: 2:00</b></div>';
+  return '<div class="btimer" data-k="' + esc(key) + '" aria-live="off"><span class="btt-bar"><i></i><span class="btt-b">' + (window.SQE_RUN ? window.SQE_RUN.html("bert") : '<img src="img/boss/bert-knife.webp" alt="">') + '</span></span><b class="btt-say">Beat Bert\'s clock: 2:00</b></div>';
 }
 window.SQE_BTIMER = bossTimer;
 setInterval(function(){

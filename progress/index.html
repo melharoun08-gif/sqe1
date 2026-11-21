@@ -133,7 +133,7 @@ function render(){
     h += '</table></div>';
   }
   h += '<h2>Other</h2><div class="card small">Quick-fire questions tried: <b>' + ((S.quickN || 0) + PH.quickN) + '</b> · revision cards seen: <b>' + ((S.cardsN || 0) + PH.cardsN) + '</b>' + (PH.last ? ' · phone app last used: ' + esc(when(PH.last)) : '') + ' · coins earned in total: <b>' + (S.earned || 0) + '</b> · presents opened: <b>' + ((S.cloud || {}).presents || 0) + '</b> · started: ' + esc(when(S.created)) +
-    (D.hasSave ? '<div style="margin-top:10px"><a class="btn" href="' + esc(D.url + '?k=' + encodeURIComponent(D.k) + '&dev=' + encodeURIComponent(D.dev) + '&backup=1') + '">Download a spare copy of her saved progress</a> <span class="mut">(if her laptop ever loses it, this can be loaded back in Settings)</span></div>' : '') + '</div>';
+    (D.hasSave ? '<div style="margin-top:10px"><a class="btn" href="' + esc(D.url + '?k=' + encodeURIComponent(D.k) + '&backup=1') + '">Download a spare copy of her saved progress</a> <span class="mut">(if her laptop ever loses it, this can be loaded back in Settings)</span></div>' : '') + '</div>';
   app.innerHTML = h;
   var sel = document.getElementById("dev"); if (sel) sel.onchange = function(){ location.hash = "k=" + encodeURIComponent(D.k) + "&dev=" + encodeURIComponent(sel.value); location.reload(); };
 }
