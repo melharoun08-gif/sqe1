@@ -65,8 +65,8 @@ function doGet(e){
     if (q.t !== WRITE_TOK) return json_({ok:false});
     var pp = props_(), dd = devs_(pp), lapD = null, out = {ok:true, lap:null, pocket:[]};
     dd.forEach(function(d){ if ((d.app || "laptop") === "laptop" && (!lapD || (d.topics || 0) > (lapD.topics || 0) || ((d.topics || 0) === (lapD.topics || 0) && d.last > lapD.last))) lapD = d; });
-    if (lapD){ var ls = sumOf_(pp, lapD.id), done = {}; if (ls) (ls.subjects || []).forEach(function(s){ (s.topics || []).forEach(function(t){ if (t.done) done[s.id + "/" + t.id] = {conf:t.conf != null ? t.conf : null, at:t.at || 0}; }); }); out.lap = {at:lapD.last, done:done}; }
-    dd.forEach(function(d){ if (d.app === "pocket"){ var ps = sumOf_(pp, d.id); out.pocket.push({dev:d.id, last:d.last, logs:ps ? ps.logs || [] : [], ans:ps && ps.pocket ? ps.pocket.ans || [] : []}); } });
+    if (lapD){ var ls = sumOf_(pp, lapD.id), done = {}; if (ls) (ls.subjects || []).forEach(function(s){ (s.topics || []).forEach(function(t){ if (t.done) done[s.id + "/" + t.id] = {conf:t.conf != null ? t.conf : null, at:t.at || 0}; }); }); out.lap = {at:lapD.last, done:done, coins:ls && ls.coins != null ? ls.coins : null, pocketTaken:ls && ls.pocketTaken ? ls.pocketTaken : {}}; }
+    dd.forEach(function(d){ if (d.app === "pocket"){ var ps = sumOf_(pp, d.id); out.pocket.push({dev:d.id, last:d.last, logs:ps ? ps.logs || [] : [], ans:ps && ps.pocket ? ps.pocket.ans || [] : [], coinsEarned:ps ? +ps.coinsEarned || 0 : 0}); } });
     return json_(out);
   }
   if (q.k !== READ_KEY) return HtmlService.createHtmlOutput("<p style='font-family:sans-serif'>Nothing here.</p>");
