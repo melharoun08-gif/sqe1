@@ -37930,7 +37930,7 @@ window.SQE_ROOM_LEARN["ls/financial-services"] = {sections:[
    {t:"card", i:"", title:"Incidental", body:"The activity must be **incidental** to the provision of professional (legal) services: it **arises out of, or is complementary to**, a particular legal service to that client, and is **not a major part** of the firm's practice."},
    {t:"card", i:"", title:"Permitted", body:"The firm may only carry on activities **permitted by the SRA Scope Rules**, and not activities the **FCA** has prohibited for exempt firms."},
    {t:"card", i:"", title:"Compliance", body:"The firm must **comply** with the SRA **Scope Rules** and **Conduct of Business Rules**."},
-   {t:"card", i:"", title:"Incidental (Part 20) v necessary (art 67)", body:"**Incidental** (Part 20): the investment work arises from a legal service, e.g. **selling shares as part of administering an estate**.\n**Necessary** (art 67 exclusion): the investment activity is a **necessary part** of the legal service and **not separately paid for**."},
+   {t:"card", i:"", title:"Incidental (Part 20) versus necessary (art 67)", body:"**Incidental** (Part 20): the investment work arises from a legal service, e.g. **selling shares as part of administering an estate**.\n**Necessary** (art 67 exclusion): the investment activity is a **necessary part** of the legal service and **not separately paid for**."},
    {t:"reveal", i:"", title:"Exam tip: what trap do questions set with \"incidental\" and \"necessary\"?", body:"Questions sometimes offer the **wrong one** as the reason the firm does not need authorisation. Incidental = **Part 20**; necessary = the **art 67 exclusion**."}
  ]},
  {h:"SRA Financial Services (Scope) Rules: what is prohibited", cards:[
@@ -38453,7 +38453,7 @@ window.SQE_ROOM_LEARN["ls/transparency-client-care"] = {sections:[
    {t:"card", i:"", title:"Complaints procedure", body:"The firm's **complaints procedure**, including how and when a complaint can be made to the **Legal Ombudsman (LeO)** and to the **SRA**."},
    {t:"card", i:"", title:"Regulatory information", body:"A statement that the firm is **authorised and regulated by the SRA**, with its **SRA number**, on its **website and letterhead**."},
    {t:"card", i:"", title:"The SRA digital badge", body:"Every SRA-authorised firm, **including an ABS** (alternative business structure: a firm licensed to have non-lawyers among its owners or managers), must display the **SRA clickable logo** or \"**digital badge**\" prominently on its website; it links to the SRA's register entry and explains the protections clients have."},
-   {t:"card", i:"", title:"Watch out: listed services v every firm", body:"The duty to publish **price** information applies only to the **listed services**, but the duty to publish **complaints** and regulatory information applies to **every** firm."},
+   {t:"card", i:"", title:"Watch out: listed services versus every firm", body:"The duty to publish **price** information applies only to the **listed services**, but the duty to publish **complaints** and regulatory information applies to **every** firm."},
    {t:"card", i:"", title:"Example: £950 plus VAT", body:"A firm's website advertises residential conveyancing at \"£950 plus VAT\" and lists the stages and typical timescales, but says nothing about **search fees or Land Registry fees**, or about who will do the work. **It breaches the Transparency Rules**: it must describe likely **disbursements** and the **experience and qualifications** of the staff and supervisors."},
    {t:"card", i:"", title:"Example: a commercial-only firm", body:"If the firm only did **commercial property** work, it would **not** need to publish prices at all (commercial property is not a listed service), but it would **still** need to publish its **complaints procedure**."},
    {t:"reveal", i:"", title:"Exam tip: a question describes a firm's website. Which omission breaches the Transparency Rules?", body:"First check whether the service is **on the list** (e.g. commercial property, family law, personal injury and contested probate are **not**). Then check whether each required element is there, especially **disbursements**, **timescales** and **staff experience**, which candidates forget."}
@@ -46815,7 +46815,16 @@ window.SQE_PODCASTS = {
   "crimlaw/involuntary-manslaughter": {file: "podcasts/crimlaw-09-involuntary-manslaughter.m4a", mins: 25},
   "crimlaw/fraud": {file: "podcasts/crimlaw-10-fraud.m4a", mins: 24},
   "crimlaw/general-defences": {file: "podcasts/crimlaw-11-general-defences.m4a", mins: 22},
-  "crimlaw/parties": {file: "podcasts/crimlaw-12-parties.m4a", mins: 21}
+  "crimlaw/parties": {file: "podcasts/crimlaw-12-parties.m4a", mins: 21},
+  "crimprac/police-station-detention": {file: "podcasts/crimprac-01-police-station-detention.m4a", mins: 24},
+  "crimprac/police-interview": {file: "podcasts/crimprac-02-police-interview.m4a", mins: 15},
+  "crimprac/identification": {file: "podcasts/crimprac-03-identification.m4a", mins: 24},
+  "crimprac/bail": {file: "podcasts/crimprac-04-bail.m4a", mins: 23},
+  "crimprac/first-hearings": {file: "podcasts/crimprac-05-first-hearings.m4a", mins: 23},
+  "crimprac/allocation-sending": {file: "podcasts/crimprac-06-allocation-sending.m4a", mins: 24},
+  "crimprac/case-management-disclosure": {file: "podcasts/crimprac-07-case-management-disclosure.m4a", mins: 23},
+  "crimprac/trial-procedure": {file: "podcasts/crimprac-11-trial-procedure.m4a", mins: 28},
+  "crimprac/sentencing": {file: "podcasts/crimprac-12-sentencing.m4a", mins: 18}
 };
 
 ;
