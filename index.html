@@ -4,7 +4,47 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261121031247";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>/* 21 Nov (Monnie): "see it as Layla". Open https://melharoun08-gif.github.io/sqe1/?aslayla=<Monnie's key> to view the site
+   exactly as Layla sees it, using the latest copy of HER saved progress from Monnie's private Google store.
+   This tab only (sessionStorage): Monnie's own save is never read or written, nothing is sent to the progress feed,
+   and Monnie's test flags (monnie mode, previews, sky) are hidden so she sees Layla's real view. ?aslayla=0 or closing the tab ends it.
+   Runs before every other script. */
+(function(){
+  try {
+    var SS = window.sessionStorage, LS = window.localStorage, m = /[?&]aslayla=([^&#]*)/.exec(location.search);
+    if (m){ if (m[1] === "0" || !m[1]){ SS.removeItem("sqe_asl"); SS.removeItem("sqe_asl_save"); SS.removeItem("sqe_asl_k"); SS.removeItem("sqe_asl_at"); }
+            else { var k0 = decodeURIComponent(m[1]); if (SS.getItem("sqe_asl_k") !== k0){ SS.removeItem("sqe_asl_at"); SS.removeItem("sqe_asl_save"); } SS.setItem("sqe_asl", "1"); SS.setItem("sqe_asl_k", k0); }
+            try { history.replaceState(null, "", location.pathname + location.hash); } catch(e){} }
+    if (SS.getItem("sqe_asl") !== "1") return;
+    window.SQE_ASLAYLA = true;
+    var KEY = "sqe1-revision-v2", EXEC = "https://script.google.com/macros/s/AKfycbwL3Qc8IP29xB59Yu5FKfD-44yTmK-xNI9oCBiePsSrktd8i5a_DWg0aDJ07nF8KNovTQ/exec";
+    /* fetch her latest save once per tab (and again after 10 minutes) */
+    var at = +SS.getItem("sqe_asl_at") || 0;
+    if (Date.now() - at > 600000){
+      try {
+        var x = new XMLHttpRequest();
+        x.open("GET", EXEC + "?backup=1&k=" + encodeURIComponent(SS.getItem("sqe_asl_k") || ""), false);
+        x.send(null);
+        var d = x.status === 200 ? JSON.parse(x.responseText) : null;
+        if (d && d.epoch){ SS.setItem("sqe_asl_save", JSON.stringify(d)); }
+        SS.setItem("sqe_asl_at", String(Date.now()));
+      } catch(e){}
+    }
+    var hide = /^sqe_(monnie|sky|stop_|rooms|fair|try|nofeed)/;
+    var P = Storage.prototype, g = P.getItem, s = P.setItem, r = P.removeItem;
+    P.getItem = function(k){ if (this === LS){ if (k === KEY) return g.call(SS, "sqe_asl_save"); if (hide.test(k)) return null; } return g.call(this, k); };
+    P.setItem = function(k, v){ if (this === LS){ if (k === KEY) return s.call(SS, "sqe_asl_save", v); if (hide.test(k)) return; } return s.call(this, k, v); };
+    P.removeItem = function(k){ if (this === LS){ if (k === KEY) return r.call(SS, "sqe_asl_save"); if (hide.test(k)) return; } return r.call(this, k); };
+    document.addEventListener("DOMContentLoaded", function(){
+      var b = document.createElement("div");
+      b.style.cssText = "position:fixed;left:8px;bottom:8px;z-index:99999;background:#2b2b2b;color:#fff;font:13px/1.3 Calibri,Arial,sans-serif;padding:5px 10px;border-radius:14px;opacity:.85";
+      b.innerHTML = 'Viewing Layla’s copy' + (SS.getItem("sqe_asl_save") ? '' : ' (nothing synced yet)') + ' · <a href="?aslayla=0" style="color:#fff">Exit</a>';
+      document.body.appendChild(b);
+    });
+  } catch(e){}
+})();
+</script>
+<script>(function(){var B="20261121032136";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -4632,7 +4672,8 @@ details.cardsubj > ul.cardtopics{margin-top:6px!important}
 .btimer.hurry .btt-b{animation:none!important}
 .btimer.late .btt-b{animation:bttTap .5s steps(1) infinite!important}
 @media (max-width:560px){.btt-bar{margin:30px 18px 0 0}.btt-b{height:34px;width:27px}}
+@media (max-width:560px){.btimer{align-items:stretch;padding:6px 14px 8px 26px}.btt-say{text-align:left}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
-<script src="js/d-f2890d6017.js"></script><script src="js/c-997a929ead.js"></script><script>(function(){var L=window.SQE_LATE;if(!L)return;function go(n){var s=document.createElement("script");s.src="js/l-0a08f68334.js";s.onerror=function(){if(s.parentNode)s.parentNode.removeChild(s);if(n<6){setTimeout(function(){go(n+1);},1500*(n+1));return;}L.failed=1;var c=L.cb.splice(0);for(var i=0;i<c.length;i++)try{c[i]();}catch(e){}};document.body.appendChild(s);}go(0);})();</script></body></html>
+<script src="js/d-f2890d6017.js"></script><script src="js/c-51a149dd2d.js"></script><script>(function(){var L=window.SQE_LATE;if(!L)return;function go(n){var s=document.createElement("script");s.src="js/l-0a08f68334.js";s.onerror=function(){if(s.parentNode)s.parentNode.removeChild(s);if(n<6){setTimeout(function(){go(n+1);},1500*(n+1));return;}L.failed=1;var c=L.cb.splice(0);for(var i=0;i<c.length;i++)try{c[i]();}catch(e){}};document.body.appendChild(s);}go(0);})();</script></body></html>
