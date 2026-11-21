@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Layla's SQE1 Podcast</title>
+<link rel="apple-touch-icon" href="img/podcast-cover-v2-600.jpg">
+<style>
+  :root { --ink:#232323; --pink:#c8285a; --sky:#e6f4ff; --card:#fff; --muted:#5a5a5a; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--sky); color:var(--ink); font-family: Calibri, Carlito, "Segoe UI", Arial, sans-serif; font-size:18px; line-height:1.45; }
+  main { max-width:520px; margin:0 auto; padding:20px 16px 40px; }
+  .cover { display:block; width:72%; max-width:300px; margin:8px auto 14px; border-radius:22px; border:3px solid var(--ink); box-shadow:0 6px 0 rgba(0,0,0,.12); }
+  h1 { text-align:center; color:var(--pink); font-size:30px; margin:0 0 4px; }
+  .sub { text-align:center; color:var(--muted); margin:0 0 20px; }
+  .btn { display:block; width:100%; text-align:center; text-decoration:none; font-weight:700; font-size:21px; padding:16px 12px; border-radius:16px; border:3px solid var(--ink); margin:0 0 12px; cursor:pointer; font-family:inherit; }
+  .apple { background:#8e44d6; color:#fff; }
+  .android { background:#fff; color:var(--ink); }
+  .copy { background:#ffd63c; color:var(--ink); }
+  .card { background:var(--card); border:3px solid var(--ink); border-radius:16px; padding:14px 16px; margin-top:18px; }
+  .card h2 { font-size:20px; margin:0 0 8px; }
+  ol { margin:0; padding-left:22px; } li { margin:4px 0; }
+  .link { word-break:break-all; font-size:15px; background:#f3f3f3; border-radius:8px; padding:8px 10px; margin-top:8px; user-select:all; }
+  #msg { text-align:center; min-height:24px; font-weight:700; color:#1d7a2e; }
+</style>
+</head>
+<body>
+<main>
+  <img class="cover" src="img/podcast-cover-v2-600.jpg" alt="Layla and Britney the chicken on the podcast cover">
+  <h1>Layla's SQE1 Podcast</h1>
+  <p class="sub">One episode per topic, in timetable order. Perfect for the car.</p>
+
+  <a class="btn apple" id="apple" href="podcast://melharoun08-gif.github.io/sqe1/podcast.xml">Open in Apple Podcasts</a>
+  <a class="btn android" href="pktc://subscribe/melharoun08-gif.github.io/sqe1/podcast.xml">Open in Pocket Casts (Android)</a>
+  <button class="btn copy" id="copy" type="button">Copy the podcast link</button>
+  <div id="msg" aria-live="polite"></div>
+
+  <div class="card">
+    <h2>If the purple button doesn't open Podcasts</h2>
+    <ol>
+      <li>Tap <b>Copy the podcast link</b> above.</li>
+      <li>Open the <b>Podcasts</b> app, tap <b>Library</b>, then the <b>&middot;&middot;&middot;</b> button at the top right.</li>
+      <li>Tap <b>Follow a Show by URL&hellip;</b>, paste, and tap <b>Follow</b>.</li>
+    </ol>
+    <div class="link" id="feed">https://melharoun08-gif.github.io/sqe1/podcast.xml</div>
+  </div>
+
+  <div class="card">
+    <h2>Good to know</h2>
+    <ol>
+      <li>New episodes appear by themselves.</li>
+      <li>The app remembers where you stopped in each episode.</li>
+      <li>Download episodes before driving so they play without signal.</li>
+    </ol>
+  </div>
+</main>
+<script>
+  var FEED = 'https://melharoun08-gif.github.io/sqe1/podcast.xml';
+  document.getElementById('copy').addEventListener('click', function () {
+    var msg = document.getElementById('msg');
+    function done() { msg.textContent = 'Copied! Now paste it in the Podcasts app.'; }
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents(document.getElementById('feed'));
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      try { document.execCommand('copy'); done(); } catch (e) { msg.textContent = 'Press and hold the link below to copy it.'; }
+    }
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(FEED).then(done, fallback);
+      else fallback();
+    } catch (e) { fallback(); }
+  });
+</script>
+</body>
+</html>
