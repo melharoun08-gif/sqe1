@@ -1793,5 +1793,27 @@
    <itunes:episodeType>full</itunes:episodeType>
    <description>Criminal Practice 7: Case management and disclosure. SQE1 revision episode.</description>
   </item>
+  <item>
+   <title>Criminal Practice 11: Trial procedure, witnesses and the Welsh language</title>
+   <guid isPermaLink="false">sqe1-crimprac/trial-procedure</guid>
+   <pubDate>Sun, 08 Nov 2026 00:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/crimprac-11-trial-procedure.m4a" length="20119618" type="audio/x-m4a"/>
+   <itunes:duration>00:27:30</itunes:duration>
+   <itunes:season>14</itunes:season>
+   <itunes:episode>11</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Criminal Practice 11: Trial procedure, witnesses and the Welsh language. SQE1 revision episode.</description>
+  </item>
+  <item>
+   <title>Criminal Practice 12: Sentencing</title>
+   <guid isPermaLink="false">sqe1-crimprac/sentencing</guid>
+   <pubDate>Sun, 08 Nov 2026 01:00:00 GMT</pubDate>
+   <enclosure url="https://melharoun08-gif.github.io/sqe1/podcasts/crimprac-12-sentencing.m4a" length="13108270" type="audio/x-m4a"/>
+   <itunes:duration>00:17:55</itunes:duration>
+   <itunes:season>14</itunes:season>
+   <itunes:episode>12</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Criminal Practice 12: Sentencing. SQE1 revision episode.</description>
+  </item>
  </channel>
 </rss>
