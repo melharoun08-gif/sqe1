@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><title>Layla’s progress</title>
+<style>
+:root{--bg:#fbf8f3;--card:#fff;--ink:#2b2b2b;--mut:#6b6b6b;--line:#e7e1d8;--acc:#3f6fd8;--good:#2e9d4a;--warn:#e6a000;--bad:#d64541;--est:#b9a37a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 Calibri,Carlito,"Segoe UI",Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:18px 16px 60px}
+h1{font-size:28px;margin:4px 0 2px}
+h2{font-size:20px;margin:26px 0 10px}
+.mut{color:var(--mut)}.small{font-size:14px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:14px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.tile b{display:block;font-size:26px;line-height:1.1}
+.tile span{font-size:14px;color:var(--mut)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--mut);font-size:14px}
+td.n,th.n{text-align:right;white-space:nowrap}
+.tag{display:inline-block;font-size:12px;padding:1px 7px;border-radius:9px;background:#f1ebe0;color:#7a6440;margin-left:6px}
+.bar{height:10px;background:#efe9df;border-radius:6px;overflow:hidden;display:flex;min-width:80px}
+.bar i{display:block;height:100%}
+.dot{display:inline-block;width:12px;height:12px;border-radius:50%;vertical-align:-1px;margin-right:4px;border:1px solid rgba(0,0,0,.25)}
+details{margin:0}summary{cursor:pointer;list-style:none;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+summary::-webkit-details-marker{display:none}
+summary .t{font-weight:600;flex:1 1 220px}
+.steps span{display:inline-block;font-size:12px;padding:1px 7px;border-radius:9px;margin:2px 3px 0 0;background:#e9f4ec;color:#21733a}
+.steps span.no{background:#f3f0ea;color:#a39a8a}
+.scroll{overflow-x:auto}
+td.small{min-width:240px}
+select,a.btn{font:inherit;font-size:15px;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);text-decoration:none}
+.note{background:#fff7e3;border:1px solid #f0dca8;border-radius:10px;padding:10px 12px;font-size:15px;margin-top:12px}
+</style>
+</head>
+<body><div class="wrap" id="app"></div>
+<script>
+var EXEC = "https://script.google.com/macros/s/AKfycbwL3Qc8IP29xB59Yu5FKfD-44yTmK-xNI9oCBiePsSrktd8i5a_DWg0aDJ07nF8KNovTQ/exec";
+function boot(D){
+
+var S = D.sum, app = document.getElementById("app");
+/* phone app (pocket) data is added into the laptop view: time per day/subject and questions */
+var PH = {logs:[], ans:[], last:0, quickN:0, cardsN:0, bySub:{}};
+(D.pockets || []).forEach(function(pk){ var s = pk.sum; if (!s) return; PH.last = Math.max(PH.last, pk.last || 0);
+  (s.logs || []).forEach(function(l){ PH.logs.push({d:l.d, m:+l.m || 0, s:l.s || "", kind:"phone"}); });
+  ((s.pocket || {}).ans || []).forEach(function(a){ PH.ans.push(a); });
+  PH.quickN += +s.quickN || 0; PH.cardsN += +s.cardsN || 0;
+  (s.subjects || []).forEach(function(x){ var z = PH.bySub[x.id] = PH.bySub[x.id] || {n:0, r:0}; z.n += +x.qTried || 0; z.r += +x.qRight || 0; }); });
+function esc(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+function when(ms){ if (!ms) return "never"; return new Date(ms).toLocaleString("en-GB", {timeZone:"Europe/London", weekday:"short", day:"numeric", month:"short", hour:"numeric", minute:"2-digit"}); }
+function dayName(d){ var p = d.split("-"); return new Date(Date.UTC(+p[0], +p[1] - 1, +p[2], 12)).toLocaleDateString("en-GB", {timeZone:"UTC", weekday:"short", day:"numeric", month:"short"}); }
+function hm(m){ m = Math.round(m || 0); if (!m) return "0m"; var h = Math.floor(m / 60), r = m % 60; return (h ? h + "h " : "") + (r ? r + "m" : "").trim(); }
+function londonYmd(ms){ return new Date(ms).toLocaleDateString("en-CA", {timeZone:"Europe/London"}); }
+var CONF = {"1":["Green","var(--good)"], "0.5":["Amber","var(--warn)"], "0":["Red","var(--bad)"]};
+var STEP = {notes:"Room / notes", quick:"Quick fire", qa:"Model Q&A", bert:"Bert", rate:"Rated"};
+function render(){
+  var h = '<h1>Layla’s SQE1 progress</h1>';
+  if (!S){ app.innerHTML = h + '<p class="mut">Nothing has come in yet. Her site sends an update a few seconds after she opens it, then every few minutes while she studies.</p>'; return; }
+  h += '<div class="mut small">Last update from her laptop: <b>' + esc(when(S.sentAt)) + '</b> · last saved progress: ' + esc(when(S.savedAt)) + '</div>';
+  if (D.devs.length > 1){
+    h += '<div style="margin-top:10px" class="small">Device: <select id="dev">' + D.devs.map(function(d){ return '<option value="' + esc(d.id) + '"' + (d.id === D.dev ? " selected" : "") + '>' + esc((d.topics || 0) + ((d.topics === 1) ? " topic" : " topics") + ", last seen " + when(d.last)) + '</option>'; }).join("") + '</select></div>';
+  }
+  var subs = S.subjects || [], tAll = 0, tDone = 0, qT = 0, qR = 0, red = 0, amb = 0, grn = 0, bertW = Object.keys((S.bert || {}).won || {}).length;
+  Object.keys(PH.bySub).forEach(function(k){ qT += PH.bySub[k].n; qR += PH.bySub[k].r; });
+  subs.forEach(function(s){ tAll += s.n; tDone += s.done; qT += s.qTried; qR += s.qRight; s.topics.forEach(function(t){ if (t.conf === 1) grn++; else if (t.conf === 0.5) amb++; else if (t.conf === 0) red++; }); });
+  var logs = (S.logs || []).concat(PH.logs), byDay = {}, tot = {auto:0, est:0, timer:0, phone:0};
+  logs.forEach(function(l){ var z = byDay[l.d] = byDay[l.d] || {auto:0, est:0, timer:0, phone:0, subj:{}}; z[l.kind] = (z[l.kind] || 0) + l.m; tot[l.kind] = (tot[l.kind] || 0) + l.m; if (l.s) z.subj[l.s] = (z.subj[l.s] || 0) + l.m; });
+  var today = londonYmd(Date.now()), fedToday = (S.fed || []).indexOf(today) >= 0, cl = S.cloud || {};
+  h += '<div class="tiles">' +
+    '<div class="tile"><b>' + tDone + '<small style="font-size:16px;color:var(--mut)"> / ' + tAll + '</small></b><span>topics covered</span></div>' +
+    '<div class="tile"><b>' + hm(tot.auto + tot.est + tot.timer + tot.phone) + '</b><span>study time in total' + (tot.est ? ' (' + hm(tot.est) + ' estimated)' : '') + (tot.phone ? ' (' + hm(tot.phone) + ' on her phone)' : '') + '</span></div>' +
+    '<div class="tile"><b>' + qT + '</b><span>questions answered' + (qT ? ', ' + Math.round(qR * 100 / qT) + '% right' : '') + '</span></div>' +
+    '<div class="tile"><b>' + bertW + '</b><span>Bert games won</span></div>' +
+    '<div class="tile"><b>' + (S.coins != null ? S.coins : "?") + '</b><span>coins now</span></div>' +
+    '<div class="tile"><b>' + (cl.step != null ? cl.step + ' / ' + cl.of : "?") + '</b><span>cloud step (days in a row)</span></div>' +
+    '<div class="tile"><b><span class="dot" style="background:var(--good)"></span>' + grn + ' <span class="dot" style="background:var(--warn)"></span>' + amb + ' <span class="dot" style="background:var(--bad)"></span>' + red + '</b><span>her green / amber / red ratings</span></div>' +
+    '<div class="tile"><b>' + (fedToday ? "Yes" : "Not yet") + '</b><span>Britney fed today' + (S.ill ? " · Britney is ill" : "") + '</span></div>' +
+  '</div>';
+  if (S.bert && S.bert.cap) h += '<div class="note">Bert has Britney at the moment (since ' + esc(dayName(S.bert.cap.from)) + ', ' + S.bert.cap.tries + ' rescue tries' + (S.bert.cap.ransom ? ', ransom stage' : '') + ').</div>';
+
+  /* ---- days ---- */
+  var days = {}; Object.keys(byDay).forEach(function(d){ days[d] = 1; });
+  var qa = JSON.parse(JSON.stringify(S.qa || {}));
+  PH.ans.forEach(function(a){ if (!a.at) return; var d = londonYmd(a.at), z = qa[d] = qa[d] || {n:0, r:0}; z.n++; if (a.ok) z.r++; });
+  Object.keys(qa).forEach(function(d){ days[d] = 1; });
+  var stepsDay = {}, ratedDay = {};
+  subs.forEach(function(s){ s.topics.forEach(function(t){
+    for (var k in t.steps){ var ts = t.steps[k]; if (ts > 1.6e12){ var d = londonYmd(ts); days[d] = 1; (stepsDay[d] = stepsDay[d] || []).push(s.title + " " + t.i + ": " + (STEP[k] || k)); } }
+    if (t.at && t.conf != null){ var d2 = londonYmd(t.at); days[d2] = 1; ratedDay[d2] = (ratedDay[d2] || 0) + 1; }
+  }); });
+  var dl = Object.keys(days).sort().reverse();
+  h += '<h2>Day by day</h2><div class="card scroll"><table><tr><th>Day</th><th class="n">Time</th><th class="n">Steps done</th><th class="n">Questions</th><th class="n">Rated</th><th>What she did</th></tr>';
+  dl.forEach(function(d){
+    var z = byDay[d] || {auto:0, est:0, timer:0, phone:0, subj:{}}, m = z.auto + z.est + z.timer + z.phone, q = qa[d], st = stepsDay[d] || [];
+    var tag = (z.est && !z.auto ? '<span class="tag">estimated</span>' : z.est ? '<span class="tag">part estimated</span>' : '') + (z.phone ? '<span class="tag">' + hm(z.phone) + ' phone</span>' : '');
+    h += '<tr><td style="white-space:nowrap">' + esc(dayName(d)) + '</td><td class="n">' + hm(m) + tag + '</td><td class="n">' + st.length + '</td><td class="n">' + (q ? q.n + ' (' + Math.round(q.r * 100 / q.n) + '% right)' : '0') + '</td><td class="n">' + (ratedDay[d] || 0) + '</td><td class="small">' + esc(st.slice(0, 12).join(" · ")) + (st.length > 12 ? ' …' : '') + '</td></tr>';
+  });
+  if (!dl.length) h += '<tr><td colspan="6" class="mut">Nothing yet.</td></tr>';
+  h += '</table><div class="small mut" style="margin-top:8px">“Estimated” time comes from the steps she ticked (each step’s planned time). That is all there is for Friday 20 Nov, before automatic counting started. Since then, time is counted automatically while she is actually using a study page.</div></div>';
+
+  /* ---- time by subject ---- */
+  var bySub = {}; logs.forEach(function(l){ var k = l.s || ""; var z = bySub[k] = bySub[k] || {auto:0, est:0, timer:0, phone:0}; z[l.kind] += l.m; });
+  var subTitle = {}; subs.forEach(function(s){ subTitle[s.id] = s.title; });
+  var sk = Object.keys(bySub).sort(function(a, b){ var A = bySub[a], B = bySub[b]; return (B.auto + B.est + B.timer + B.phone) - (A.auto + A.est + A.timer + A.phone); });
+  if (sk.length){
+    h += '<h2>Time by subject</h2><div class="card scroll"><table><tr><th>Subject</th><th class="n">Counted automatically</th><th class="n">Estimated</th><th class="n">Timer / added</th>' + (tot.phone ? '<th class="n">Phone</th>' : '') + '<th class="n">Total</th></tr>';
+    sk.forEach(function(k){ var z = bySub[k]; h += '<tr><td>' + esc(subTitle[k] || (k ? k : "Games and mixed practice")) + '</td><td class="n">' + hm(z.auto) + '</td><td class="n">' + hm(z.est) + '</td><td class="n">' + hm(z.timer) + '</td>' + (tot.phone ? '<td class="n">' + hm(z.phone) + '</td>' : '') + '<td class="n"><b>' + hm(z.auto + z.est + z.timer + z.phone) + '</b></td></tr>'; });
+    h += '</table></div>';
+  }
+
+  /* ---- subjects ---- */
+  h += '<h2>Subjects</h2>';
+  subs.forEach(function(s){
+    var g = 0, a = 0, r = 0, o = 0; s.topics.forEach(function(t){ if (t.conf === 1) g++; else if (t.conf === 0.5) a++; else if (t.conf === 0) r++; else if (t.done) o++; });
+    var w = function(n, c){ return n ? '<i style="width:' + (n * 100 / s.n) + '%;background:' + c + '"></i>' : ''; };
+    h += '<div class="card"><details' + (s.topics.length ? '' : '') + '><summary><span class="t">' + esc(s.title) + '</span><span class="small mut">' + s.done + ' of ' + s.n + ' topics' + (function(){ var ph = PH.bySub[s.id] || {n:0, r:0}, n = s.qTried + ph.n, r = s.qRight + ph.r; return n ? ' · ' + n + ' questions, ' + Math.round(r * 100 / n) + '% right' + (ph.n ? ' (' + ph.n + ' on phone)' : '') : ''; })() + '</span><span class="bar" style="flex:0 0 140px">' + w(g, "var(--good)") + w(a, "var(--warn)") + w(r, "var(--bad)") + w(o, "var(--acc)") + '</span></summary>';
+    if (s.topics.length){
+      h += '<div class="scroll" style="margin-top:10px"><table><tr><th>Topic</th><th>Rating</th><th>Steps</th><th class="n">Questions</th><th>Bert</th></tr>';
+      s.topics.forEach(function(t){
+        var c = t.conf != null ? CONF[String(t.conf)] : null;
+        var steps = ["notes", "quick", "qa", "bert", "rate"].map(function(k){ var on = t.steps[k] || (k === 'rate' && t.conf != null) || (k === 'bert' && t.bert); return '<span' + (on ? '' : ' class="no"') + '>' + esc(STEP[k]) + '</span>'; }).join("");
+        h += '<tr><td>' + t.i + '. ' + esc(t.title) + '</td><td style="white-space:nowrap">' + (c ? '<span class="dot" style="background:' + c[1] + '"></span>' + c[0] : '<span class="mut">not rated</span>') + '</td><td class="steps">' + steps + '</td><td class="n">' + (t.q && t.q.n ? t.q.n + (t.q.of ? '/' + t.q.of : '') + ', ' + Math.round(t.q.r * 100 / t.q.n) + '% right' : '–') + '</td><td>' + (t.bert ? 'Won ' + esc(dayName(t.bert)) : '–') + '</td></tr>';
+      });
+      h += '</table></div>';
+    } else h += '<div class="small mut" style="margin-top:6px">Not started yet.</div>';
+    h += '</details></div>';
+  });
+
+  if ((S.mocks || []).length){
+    h += '<h2>Mock papers</h2><div class="card scroll"><table><tr><th>Day</th><th>Paper</th><th class="n">Score</th><th class="n">Time</th></tr>';
+    S.mocks.slice().reverse().forEach(function(m){ h += '<tr><td>' + esc(dayName(m.d)) + '</td><td>' + esc(m.mock || "") + (m.paper ? ' ' + esc(m.paper) : '') + '</td><td class="n">' + m.c + '/' + m.n + ' (' + Math.round(m.c * 100 / m.n) + '%)</td><td class="n">' + hm((m.secs || 0) / 60) + '</td></tr>'; });
+    h += '</table></div>';
+  }
+  h += '<h2>Other</h2><div class="card small">Quick-fire questions tried: <b>' + ((S.quickN || 0) + PH.quickN) + '</b> · revision cards seen: <b>' + ((S.cardsN || 0) + PH.cardsN) + '</b>' + (PH.last ? ' · phone app last used: ' + esc(when(PH.last)) : '') + ' · coins earned in total: <b>' + (S.earned || 0) + '</b> · presents opened: <b>' + ((S.cloud || {}).presents || 0) + '</b> · started: ' + esc(when(S.created)) +
+    (D.hasSave ? '<div style="margin-top:10px"><a class="btn" href="' + esc(D.url + '?k=' + encodeURIComponent(D.k) + '&dev=' + encodeURIComponent(D.dev) + '&backup=1') + '">Download a spare copy of her saved progress</a> <span class="mut">(if her laptop ever loses it, this can be loaded back in Settings)</span></div>' : '') + '</div>';
+  app.innerHTML = h;
+  var sel = document.getElementById("dev"); if (sel) sel.onchange = function(){ location.hash = "k=" + encodeURIComponent(D.k) + "&dev=" + encodeURIComponent(sel.value); location.reload(); };
+}
+render();
+
+}
+(function(){
+  var m = /[#&]k=([^&]+)/.exec(location.hash), app = document.getElementById("app");
+  if (!m){ app.innerHTML = "<p>Nothing here.</p>"; return; }
+  var k = decodeURIComponent(m[1]);
+  app.innerHTML = '<h1>Layla\u2019s SQE1 progress</h1><p class="mut">Loading\u2026</p>';
+  fetch(EXEC + "?json=1&k=" + encodeURIComponent(k) + ((/[#&]dev=([^&]+)/.exec(location.hash) || [])[1] ? "&dev=" + /[#&]dev=([^&]+)/.exec(location.hash)[1] : "")).then(function(r){ return r.json(); }).then(function(D){
+    if (!D || !D.devs){ app.innerHTML = "<p>Nothing here.</p>"; return; }
+    D.url = EXEC; boot(D);
+  }).catch(function(){ app.innerHTML = '<h1>Layla\u2019s SQE1 progress</h1><p>Couldn\u2019t load just now. Check your internet and refresh the page.</p>'; });
+})();
+</script>
+</body>
+</html>
