@@ -83,6 +83,7 @@ function doGet(e){
   var sum = getBig_(p, "sum:" + want) || "null";
   var pockets = ds.filter(function(d){ return d.app === "pocket"; }).map(function(d){ return {dev:d.id, last:d.last, sum:sumOf_(p, d.id)}; });
   var data = {devs:laps, pockets:pockets, dev:want, sum:JSON.parse(sum), hasSave:!!p.getProperty("save:" + want + ":n"), url:ScriptApp.getService().getUrl(), k:READ_KEY};
+  if (q.json === "1") return json_(data); /* for the viewer page on GitHub Pages (works whatever Google accounts the browser is signed into) */
   var html = HtmlService.createHtmlOutput(PAGE.split("<?!= dataJson ?>").join(JSON.stringify(data).replace(/</g, "\\u003c")));
   return html.setTitle("Layla's progress").addMetaTag("viewport", "width=device-width, initial-scale=1");
 }
