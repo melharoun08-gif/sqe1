@@ -40,8 +40,10 @@ body{font:18px/1.4 var(--font);color:var(--ink);background:#CDEBFA;overscroll-be
 /* sky, weather, time of day (Monnie 21 Nov 03:23) */
 #sky{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:linear-gradient(var(--sky1),var(--sky2) 75%);transition:background 2s}
 #sky svg{position:absolute;overflow:visible}
-#sky .sun{right:22px;top:calc(70px + env(safe-area-inset-top));width:70px;height:70px;animation:spin 40s linear infinite}
-#sky .moon{right:26px;top:calc(72px + env(safe-area-inset-top));width:56px;height:56px}
+#sky .sun{right:18px;bottom:calc(104px + env(safe-area-inset-bottom));width:64px;height:64px;animation:spin 40s linear infinite}
+#sky .moon{right:22px;bottom:calc(108px + env(safe-area-inset-bottom));width:52px;height:52px}
+@media (max-height:780px){#sky .sun{bottom:calc(92px + env(safe-area-inset-bottom));width:56px;height:56px}#sky .moon{bottom:calc(96px + env(safe-area-inset-bottom));width:46px;height:46px}.donebub{bottom:calc(178px + env(safe-area-inset-bottom))!important}}
+@media (max-height:700px){#sky .sun{bottom:calc(76px + env(safe-area-inset-bottom));width:50px;height:50px}#sky .moon{bottom:calc(80px + env(safe-area-inset-bottom));width:42px;height:42px}.donebub{bottom:calc(156px + env(safe-area-inset-bottom))!important}}
 #sky .cloud{width:120px;height:60px;left:-140px;animation:drift linear infinite}
 #sky .bird{width:34px;height:20px;left:-50px;animation:fly linear forwards}
 #sky .bird path{animation:flapw .35s ease-in-out infinite alternate;transform-origin:50% 60%}
@@ -70,6 +72,9 @@ body{font:18px/1.4 var(--font);color:var(--ink);background:#CDEBFA;overscroll-be
 @keyframes breathe{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.015)}}
 @keyframes jump{50%{transform:translateY(-16px)}}
 .bri2{position:absolute;left:96px;bottom:calc(12px + env(safe-area-inset-bottom));width:128px;z-index:3}
+.bri2 .bflip{display:block;transform:scaleX(-1)}
+.bri2.peck img{animation:peck .5s ease-in-out 2}
+@keyframes peck{50%{transform:rotate(16deg) translateY(6px)}}
 .bri2 img{width:100%;display:block;transform-origin:50% 100%;animation:rock 2.8s ease-in-out infinite;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
 .bri2.on img{animation:hop .45s ease-out 2}
 @keyframes rock{0%,100%{transform:rotate(0)}30%{transform:rotate(-4deg)}60%{transform:rotate(2deg) translateY(-2px)}}
@@ -80,7 +85,11 @@ body{font:18px/1.4 var(--font);color:var(--ink);background:#CDEBFA;overscroll-be
 .sb>i.td{position:absolute;top:100%;left:26px;margin-top:-3px;width:18px;height:16px}
 .sb>i.tl{position:absolute;left:-19px;bottom:18px;width:20px;height:18px;margin-left:2px}
 .sb>i svg{display:block;width:100%;height:100%;overflow:visible}
-.bri2 .pb{display:none;position:absolute;left:30px;bottom:calc(100% + 14px);width:max-content;max-width:180px}
+.bri2 .pb{display:none;position:absolute;left:30px;bottom:calc(100% + 14px);width:max-content;max-width:170px}
+.lb{display:none;position:absolute;left:calc(12px + var(--lw,64px) + 10px);bottom:calc(132px + env(safe-area-inset-bottom));width:max-content;max-width:190px;z-index:4}
+.lb.on{display:block;animation:fadeup .25s both}
+@media (max-height:780px){.lb{bottom:calc(112px + env(safe-area-inset-bottom))}}
+@media (max-height:700px){.lb{bottom:calc(92px + env(safe-area-inset-bottom))}}
 .bri2 .pb.on{display:block;animation:fadeup .25s both}
 .bri2 .pb.think{font-weight:400;font-style:normal;border-radius:26px}
 .bri2 .pb.think>i.td{display:none}
@@ -204,7 +213,7 @@ body{font:18px/1.4 var(--font);color:var(--ink);background:#CDEBFA;overscroll-be
 .roll{text-align:center;font-weight:700;font-size:26px;line-height:1.2;min-height:120px;display:flex;align-items:center;justify-content:center;background:#fff;border:3px solid #111;border-radius:22px;box-shadow:0 4px 0 #111;padding:14px}
 .roll span{color:var(--a)}
 .tick.half{color:#B07A00}
-.donebub{position:absolute;left:0;right:0;margin:0 auto;top:22%;z-index:30;display:flex;flex-direction:column;align-items:center;gap:6px;background:#fff;border:3px solid #111;border-radius:24px;box-shadow:0 5px 0 #111;padding:12px 18px 16px;width:min(86%,330px);text-align:center;font-size:21px;animation:pop .5s cubic-bezier(.2,1.6,.4,1) both;transition:opacity .5s}
+.donebub{position:absolute;left:12px;right:12px;top:calc(64px + env(safe-area-inset-top));bottom:calc(210px + env(safe-area-inset-bottom));justify-content:center;z-index:30;display:flex;flex-direction:column;align-items:center;gap:6px;background:#fff;border:3px solid #111;border-radius:24px;box-shadow:0 5px 0 #111;padding:12px 18px 16px;text-align:center;font-size:26px;animation:pop .5s cubic-bezier(.2,1.6,.4,1) both;transition:opacity .5s}
 .donebub img{width:150px;animation:hop .6s ease-out 3}
 .donebub.off{opacity:0}
 @media (max-height:780px){.main{margin-bottom:calc(172px + env(safe-area-inset-bottom))}.lay{height:160px}.bri2{width:104px;left:80px}}
@@ -219,10 +228,11 @@ body{font:18px/1.4 var(--font);color:var(--ink);background:#CDEBFA;overscroll-be
   <div class="main" id="main"></div>
   <div class="ground" aria-hidden="true"></div>
   <div class="lay" id="lay" aria-hidden="true"><img id="layimg" alt="" src="img/l-0.webp"></div>
-  <div class="bri2" id="bri2"><span class="pb sb" id="peekb"></span><img id="briimg" src="img/b-neutral.webp" alt="Britney"></div>
+  <span class="lb sb" id="laysay"></span>
+  <div class="bri2" id="bri2"><span class="pb sb" id="peekb"></span><span class="bflip"><img id="briimg" src="img/b-neutral.webp" alt="Britney"></span></div>
 </div>
 <div class="deskhint">This is Layla's phone app. On a phone it opens full screen from the home screen.</div>
-<script src="data.js?v=138bc2f3"></script>
+<script src="data.js?v=ef200336"></script>
 <script>
 (function(){
 "use strict";
@@ -386,6 +396,33 @@ var LAY = {img:document.getElementById("layimg"), box:document.getElementById("l
 ["img/l-1.webp", "img/l-2.webp", "img/l-3.webp", "img/l-5.webp", "img/b-happy.webp"].forEach(function(u){ var i = new Image(); i.src = u; });
 function layPose(n, ms){ LAY.img.src = "img/l-" + n + ".webp"; clearTimeout(LAY.t); LAY.busy = 1; LAY.t = setTimeout(function(){ LAY.img.src = "img/l-0.webp"; LAY.busy = 0; }, ms); }
 setInterval(function(){ if (document.hidden || LAY.busy) return; var r = Math.random(); if (r < .35) layPose(1, 1600); else if (r < .6) layPose(2, 2200); }, 7000);
+/* blinking (Layla's own drawing with her eyes closed for a moment) and Britney pecking */
+["img/l-0b.webp", "img/l-1b.webp"].forEach(function(u){ var i = new Image(); i.src = u; });
+(function blink(){ setTimeout(function(){ var src = LAY.img.getAttribute("src"); var m = /l-([01])\.webp$/.exec(src); if (m && !document.hidden){ LAY.img.src = "img/l-" + m[1] + "b.webp"; setTimeout(function(){ if (LAY.img.getAttribute("src") === "img/l-" + m[1] + "b.webp") LAY.img.src = "img/l-" + m[1] + ".webp"; }, 150); } blink(); }, 2600 + Math.random() * 3200); })();
+setInterval(function(){ var b = document.getElementById("bri2"); if (document.hidden || b.classList.contains("on")) return; if (Math.random() < .5){ b.classList.remove("peck"); void b.offsetWidth; b.classList.add("peck"); setTimeout(function(){ b.classList.remove("peck"); }, 1100); } }, 6000);
+function laySays(text, ms){ var e = document.getElementById("laysay"); e.style.setProperty("--lw", LAY.box.offsetWidth + "px"); e.innerHTML = esc(text) + TAILL; e.className = "lb sb on"; layPose(1, ms || 2600); clearTimeout(laySays.t); laySays.t = setTimeout(function(){ e.className = "lb sb"; }, ms || 2600); }
+/* little chats between Britney and Layla, one bubble at a time */
+var CHATS = [
+ [["b", "Layla, is that Bert over there?!"], ["l", "No, Britney, it's a lamp post."], ["b", "Phew!"]],
+ [["b", "Can I have some corn after this?"], ["l", "Only if I get the next one right!"]],
+ [["b", "Bianca says she's cleverer than me."], ["l", "Bianca can't even read!"], ["b", "Cluck, true."]],
+ [["l", "Ready for the next one, Britney?"], ["b", "Born ready!"]],
+ [["b", "Do my feathers look fluffy today?"], ["l", "The fluffiest in Peckham."]],
+ [["l", "I'm going to smash this exam."], ["b", "Then we celebrate with corn!"]],
+ [["b", "I think I hear Bert's van…"], ["l", "Don't worry, I'll protect you."]],
+ [["l", "Thanks for keeping me company."], ["b", "Always, Layla!"]],
+ [["b", "What's Mama making for tea?"], ["l", "Not cake, she said no cake!"]],
+ [["l", "Britney, stop pecking my shoelaces."], ["b", "Sorry, they look like worms."]]];
+var CHATI = Math.floor(Math.random() * CHATS.length), CHATON = 0;
+function chat(){
+  if (CHATON || document.hidden || app.classList.contains("herohere") || /\bon\b/.test(document.getElementById("peekb").className) || document.querySelector(".donebub")) return;
+  var c = CHATS[CHATI++ % CHATS.length], i = 0; CHATON = 1;
+  (function step(){ if (i >= c.length){ CHATON = 0; return; } var line = c[i++];
+    if (line[0] === "b") bub(line[1], "say2", 2400); else laySays(line[1], 2400);
+    setTimeout(step, 2700); })();
+}
+setInterval(function(){ if (Math.random() < .55) chat(); }, 22000);
+setTimeout(chat, 9000);
 function briFace(f, ms){ var im = document.getElementById("briimg"); im.src = "img/b-" + f + ".webp"; clearTimeout(briFace.t); briFace.t = setTimeout(function(){ im.src = "img/b-neutral.webp"; }, ms); }
 function coinPop(el, n){
   var r = el.getBoundingClientRect(), ar = app.getBoundingClientRect(), c = document.createElement("div");
@@ -404,7 +441,7 @@ function cheer(){
   clearTimeout(PEEKT); PEEKT = setTimeout(function(){ p.classList.remove("on"); }, 1500);
 }
 function uncheer(){ clearTimeout(PEEKT); document.getElementById("bri2").classList.remove("on"); }
-setInterval(function(){ var b = document.getElementById("peekb"); if (document.hidden || /\bon\b/.test(b.className) || app.classList.contains("herohere")) return; if (Math.random() < 0.5) bub(THINK[Math.floor(Math.random() * THINK.length)], "think", 4200); }, 14000);
+setInterval(function(){ var b = document.getElementById("peekb"); if (document.hidden || CHATON || /\bon\b/.test(b.className) || app.classList.contains("herohere")) return; if (Math.random() < 0.4) bub(THINK[Math.floor(Math.random() * THINK.length)], "think", 4200); }, 14000);
 function confetti(){ var cols = ["#E63946", "#FFC300", "#2EC4B6", "#9B5DE5", "#FF6FB5", "#4361EE"];
   for (var i = 0; i < 40; i++){ var c = document.createElement("i"); c.className = "confetti"; c.style.left = Math.random() * 100 + "%"; c.style.background = cols[i % cols.length];
     c.style.animationDuration = (1.8 + Math.random() * 1.6) + "s"; c.style.animationDelay = Math.random() * .6 + "s"; app.appendChild(c); (function(c){ setTimeout(function(){ c.remove(); }, 4200); })(c); } }
@@ -441,7 +478,7 @@ function go(v, arg){
       '<button class="choice tl' + (z.q ? " did" : "") + '" data-do="qs"' + (nq ? "" : " disabled") + '><span class="ic">' + QIC + '</span><span>Questions<small>' + (nq ? nq + " quick questions" + (z.qr ? " · last time " + z.qr[0] + " of " + z.qr[1] + " right" : "") : "Coming soon") + '</small></span>' + (z.q ? '<span class="ok">✓</span>' : '') + '</button>' +
       (VIEWNOW_FROM === "random" ? '<button class="pick" data-do="random">Pick another at random ›</button>' : '');
     VIEWNOW_FROM = "";
-    setTimeout(function(){ if (VIEWNOW === "topic" && !document.querySelector(".donebub")) bub(z.c && z.q ? "All done here! Pick another?" : z.c ? "Now try the questions!" : "Cards first, then the questions!", "say2", 3000); }, 500);
+    setTimeout(function(){ if (VIEWNOW === "topic" && !document.querySelector(".donebub")) if (z.c && z.q) bub("All done here! Pick another?", "say2", 3000); }, 500);
   } else if (v === "sess"){ drawItem(); }
 }
 var VIEWNOW_FROM = "";
@@ -509,7 +546,7 @@ function finish(){
   var won = all, ty = SESS.ty, r = SESS.right, n = SESS.asked; SESS = null; save(); feedSend(true);
   go("topic", k);
   if (won){ confetti(); layPose(5, 1800); LAY.box.classList.remove("jump"); void LAY.box.offsetWidth; LAY.box.classList.add("jump"); var say = document.createElement("div"); say.className = "donebub"; say.innerHTML = '<img src="img/b-happy.webp" alt=""><b>' + (ty === "q" ? "Well done, Layla! " + r + " out of " + n + " right." : "Well done, Layla! Cards done.") + '</b>';
-    app.appendChild(say); setTimeout(function(){ say.classList.add("off"); }, 2600); setTimeout(function(){ say.remove(); }, 3200); }
+    app.appendChild(say); say.addEventListener("click", function(){ say.remove(); }); setTimeout(function(){ say.classList.add("off"); }, 2800); setTimeout(function(){ say.remove(); }, 3400); }
 }
 
 /* ---------- taps ---------- */
