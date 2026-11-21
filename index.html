@@ -44,7 +44,7 @@
   } catch(e){}
 })();
 </script>
-<script>(function(){var B="20261121082504";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261121083331";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -4676,7 +4676,45 @@ details.cardsubj > ul.cardtopics{margin-top:6px!important}
 
 /* QA re-check 7: changing between side, front and back views cross-fades over a few frames instead of jumping */
 .jsv .jpair .jrig,.jsv .jpair .jfrig,.jsv .jpair .jbrig,.jsv .jpair .jbagF,.jsv .jpair .jbagB{transition:opacity 70ms linear}
+
+/* QA Peckham final (21 Nov): felt-tip stepped motion (about 8 frames a second) for the wheel, birds, fish, balloons, flags and the rest of the map's moving bits, like the sun, clouds and tiles */
+.jsv .jwh{animation-timing-function:steps(320,end)!important}
+.jsv .jwh-c{animation-timing-function:steps(320,end)!important}
+.jsv .jwh-sw{animation-timing-function:steps(40,end)!important}
+.jsv .jnbird{animation-timing-function:steps(34,end)!important}
+.jsv .jnflap{animation-timing-function:steps(3,end)!important}
+.jsv .jbflap{animation-timing-function:steps(3,end)!important}
+.jsv .jbfly{animation-timing-function:steps(22,end)!important}
+.jsv .jfish{animation-timing-function:steps(32,end)!important}
+.jsv .jnswim{animation-timing-function:steps(21,end)!important}
+.jsv .jnwag{animation-timing-function:steps(7,end)!important}
+.jsv .jnbal{animation-timing-function:steps(22,end)!important}
+.jsv .jrise{animation-timing-function:steps(24,end)!important}
+.jsv .jflag{animation-timing-function:steps(5,end)!important}
+.jsv .jrf-fl0{animation-timing-function:steps(3,end)!important}
+.jsv .jrf-fl1{animation-timing-function:steps(4,end)!important}
+.jsv .jrf-fl2{animation-timing-function:steps(3,end)!important}
+.jsv .jrf-fl3{animation-timing-function:steps(3,end)!important}
+.jsv .jrf-fl4{animation-timing-function:steps(3,end)!important}
+.jsv .jbob{animation-timing-function:steps(21,end)!important}
+.jsv .jplane{animation-timing-function:steps(27,end)!important}
+.jsv .jplanez{animation-timing-function:steps(24,end)!important}
+.jsv .jbigplane{animation-timing-function:steps(19,end)!important}
+.jsv .jrf-sk0{animation-timing-function:steps(10,end)!important}
+.jsv .jrf-sk1{animation-timing-function:steps(13,end)!important}
+.jsv .jnflow{animation-timing-function:steps(7,end)!important}
+.jsv .jnfoam{animation-timing-function:steps(11,end)!important}
+.jsv .jnparrot{animation-timing-function:steps(5,end)!important}
+.jsv .jlhdrop{animation-timing-function:steps(5,end)!important}
+.jsv .jzsleep{animation-timing-function:steps(14,end)!important}
+.jsv .jzz{animation-timing-function:steps(10,end)!important}
+.jsv .jnote{animation-timing-function:steps(12,end)!important}
+.jsv .japple{animation-timing-function:steps(13,end)!important}
+.jsv .jwheel{animation-timing-function:steps(320,end)!important}
+.jsv .jbeam{animation-timing-function:steps(80,end)!important}
+.jsv .jsspin{transform-box:view-box;transform-origin:0 0;animation:jm-spin 12s steps(96,end) infinite} /* sweet shop lollipop */
+@media (prefers-reduced-motion:reduce){.jsv .jsspin{animation:none!important}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
-<script src="js/d-7cfdbf3703.js"></script><script src="js/c-af7185ce49.js"></script><script>(function(){var L=window.SQE_LATE;if(!L)return;function go(n){var s=document.createElement("script");s.src="js/l-0a08f68334.js";s.onerror=function(){if(s.parentNode)s.parentNode.removeChild(s);if(n<6){setTimeout(function(){go(n+1);},1500*(n+1));return;}L.failed=1;var c=L.cb.splice(0);for(var i=0;i<c.length;i++)try{c[i]();}catch(e){}};document.body.appendChild(s);}go(0);})();</script></body></html>
+<script src="js/d-7cfdbf3703.js"></script><script src="js/c-1d613ec219.js"></script><script>(function(){var L=window.SQE_LATE;if(!L)return;function go(n){var s=document.createElement("script");s.src="js/l-0a08f68334.js";s.onerror=function(){if(s.parentNode)s.parentNode.removeChild(s);if(n<6){setTimeout(function(){go(n+1);},1500*(n+1));return;}L.failed=1;var c=L.cb.splice(0);for(var i=0;i<c.length;i++)try{c[i]();}catch(e){}};document.body.appendChild(s);}go(0);})();</script></body></html>
