@@ -76,10 +76,11 @@ function json_(o){ return ContentService.createTextOutput(JSON.stringify(o)).set
 function sumOf_(p, id){ try { return JSON.parse(getBig_(p, "sum:" + id) || "null"); } catch(e){ return null; } }
 function doGet(e){
   var q = (e && e.parameter) || {};
-  if (q.sync === "1"){
-    if (!SYNC_CODES[q.c]) return json_({ok:false});
+  if (q.sync === "1"){ /* "c" is reserved by Google, so the code comes as "code" */
+    var sc = String(q.code || "");
+    if (!SYNC_CODES[sc]) return json_({ok:false});
     var pz = props_();
-    return json_({ok:true, rev:+(pz.getProperty("acctrev:" + q.c) || 0), save:acctGet_(pz, q.c) || null});
+    return json_({ok:true, rev:+(pz.getProperty("acctrev:" + sc) || 0), save:acctGet_(pz, sc) || null});
   }
   if (q.pull === "1"){ /* minimal read for Layla's own apps (laptop site / phone app), guarded by the write token */
     if (q.t !== WRITE_TOK) return json_({ok:false});
