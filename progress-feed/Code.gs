@@ -65,7 +65,7 @@ function doGet(e){
     if (q.t !== WRITE_TOK) return json_({ok:false});
     var pp = props_(), dd = devs_(pp), lapD = null, out = {ok:true, lap:null, pocket:[]};
     dd.forEach(function(d){ if ((d.app || "laptop") === "laptop" && (!lapD || (d.topics || 0) > (lapD.topics || 0) || ((d.topics || 0) === (lapD.topics || 0) && d.last > lapD.last))) lapD = d; });
-    if (lapD){ var ls = sumOf_(pp, lapD.id), done = {}; if (ls) (ls.subjects || []).forEach(function(s){ (s.topics || []).forEach(function(t){ if (t.done) done[s.id + "/" + t.id] = t.conf != null ? t.conf : 1; }); }); out.lap = {at:lapD.last, done:done}; }
+    if (lapD){ var ls = sumOf_(pp, lapD.id), done = {}; if (ls) (ls.subjects || []).forEach(function(s){ (s.topics || []).forEach(function(t){ if (t.done) done[s.id + "/" + t.id] = {conf:t.conf != null ? t.conf : null, at:t.at || 0}; }); }); out.lap = {at:lapD.last, done:done}; }
     dd.forEach(function(d){ if (d.app === "pocket"){ var ps = sumOf_(pp, d.id); out.pocket.push({dev:d.id, last:d.last, logs:ps ? ps.logs || [] : [], ans:ps && ps.pocket ? ps.pocket.ans || [] : []}); } });
     return json_(out);
   }
