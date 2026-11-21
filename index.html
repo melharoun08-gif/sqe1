@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261121014822";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261121015617";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -4567,7 +4567,23 @@ details.cardsubj > ul.cardtopics{margin-top:6px!important}
 /* QA 22:03: the hand-over from the scoop spot to his carrying hand happens inside the turn (he is edge-on at 1.07s), as a short cross-fade */
 .grab .bnbird{animation:bscoopB .4s .55s ease-in both,bgone .1s 1.03s forwards!important}
 .grab .bcarry{opacity:0;animation:bshow .1s 1.04s forwards}
+/* Monnie 21 Nov 01:51: Bert's relaxed question clock (app.js bossTimer). Bert walks along the bar as the 2 minutes run down; nothing happens at zero but a foot-tap */
+.btimer{--f:0;display:flex;align-items:center;gap:12px;margin:0 0 12px;padding:6px 12px;border:2px solid #1d1d1b;border-radius:14px;background:#FFF8EC}
+.btt-bar{position:relative;flex:1 1 auto;height:14px;border-radius:8px;background:#E9DCC6;overflow:visible}
+.btt-bar i{position:absolute;left:0;top:0;bottom:0;width:calc(var(--f) * 100%);border-radius:8px;background:#7FC47A;transition:width .25s linear}
+.btimer.hurry .btt-bar i{background:#F2A33A}.btimer.late .btt-bar i{background:#E4573D}
+.btt-b{position:absolute;bottom:-4px;left:calc(var(--f) * 100%);height:44px;width:auto;translate:-50% 0;transition:left .25s linear;max-width:none}
+.btimer.hurry .btt-b{animation:bcbert .26s ease-in-out infinite alternate;transform-origin:50% 100%}
+.btimer.late .btt-b{animation:bttTap .5s steps(1) infinite}
+@keyframes bttTap{0%{rotate:0deg}50%{rotate:4deg}}
+.btt-say{flex:0 0 auto;font-family:var(--sharratt);font-weight:400;font-size:16px;min-width:13em;text-align:right}
+.btimer.late .btt-say{color:#B3261E}
+@media (max-width:560px){.btimer{flex-direction:column;align-items:stretch;gap:4px}.btt-say{min-width:0;text-align:left;font-size:14px}.btt-b{height:34px}}
+@media (prefers-reduced-motion:reduce){.btt-b,.btt-bar i{transition:none;animation:none!important}}
+/* town test strip: Bert walks on his jointed legs (town.js runHTML), no bob */
+.bts-bert .bkw{animation:none}
+.bts-bert .bk.bkrig{position:relative;display:block;width:100%;aspect-ratio:616/800;height:auto;animation:none}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
-<script src="js/d-64e6c72994.js"></script><script src="js/c-7c692506b5.js"></script><script>(function(){var L=window.SQE_LATE;if(!L)return;function go(n){var s=document.createElement("script");s.src="js/l-0a08f68334.js";s.onerror=function(){if(s.parentNode)s.parentNode.removeChild(s);if(n<6){setTimeout(function(){go(n+1);},1500*(n+1));return;}L.failed=1;var c=L.cb.splice(0);for(var i=0;i<c.length;i++)try{c[i]();}catch(e){}};document.body.appendChild(s);}go(0);})();</script></body></html>
+<script src="js/d-64e6c72994.js"></script><script src="js/c-2a3a5b004c.js"></script><script>(function(){var L=window.SQE_LATE;if(!L)return;function go(n){var s=document.createElement("script");s.src="js/l-0a08f68334.js";s.onerror=function(){if(s.parentNode)s.parentNode.removeChild(s);if(n<6){setTimeout(function(){go(n+1);},1500*(n+1));return;}L.failed=1;var c=L.cb.splice(0);for(var i=0;i<c.length;i++)try{c[i]();}catch(e){}};document.body.appendChild(s);}go(0);})();</script></body></html>
