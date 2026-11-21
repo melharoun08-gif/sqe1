@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#4A3B6B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&family=Patrick+Hand&family=Grandstander:wght@800&family=Sour+Gummy:wght@700&family=Delius&family=Carlito:wght@400;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A3B6B'/%3E%3Ctext x='32' y='42' font-size='26' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3ESQE%3C/text%3E%3C/svg%3E">
-<script>(function(){var B="20261121020933";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261121021704";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -4593,7 +4593,28 @@ details.cardsubj > ul.cardtopics{margin-top:6px!important}
 @keyframes coinfloat{0%{opacity:0;transform:translateY(6px) scale(.8)}12%{opacity:1;transform:translateY(0) scale(1.08)}22%{transform:translateY(-4px) scale(1)}78%{opacity:1}100%{opacity:0;transform:translateY(-42px)}}
 @media (prefers-reduced-motion:reduce){.coinpop.coinfloat{animation:coinfloatrm 2s ease-out forwards}}
 @keyframes coinfloatrm{0%{opacity:0}12%{opacity:1}78%{opacity:1}100%{opacity:0}}
+
+/* 21 Nov: all of today's activities done - celebration card + Layla's cloud jump */
+.celeb{position:fixed;inset:0;z-index:9000;display:flex;align-items:center;justify-content:center;background:rgba(20,16,40,.45);padding:16px;animation:celIn .3s ease-out;font-family:Calibri,Carlito,"Segoe UI",sans-serif}
+.celeb.out{opacity:0;transition:opacity .3s}
+.celeb .cconf{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.celeb .cf{position:absolute;top:-20px;width:11px;height:16px;border:2px solid #2A1B2E;border-radius:3px;animation:cfFall 3s linear infinite}
+.celeb .ccard{position:relative;background:#FFFBEA;border:4px solid #2A1B2E;border-radius:26px 30px 24px 32px;box-shadow:6px 7px 0 #2A1B2E;padding:34px 40px 28px;text-align:center;max-width:460px;width:100%;animation:celPop .55s cubic-bezier(.2,1.6,.4,1)}
+.celeb .cbig{font-size:38px;font-weight:900;color:#E2236F;line-height:1.1;-webkit-text-stroke:1px #2A1B2E;transform:rotate(-2deg)}
+.celeb .csub{font-size:21px;font-weight:700;color:#2A1B2E;margin:10px 0 20px}
+.celeb .cgo{font-size:18px;padding:10px 20px}
+.celeb .cstr{position:absolute;width:26px;height:110px;top:-70px;animation:cstrW 1.6s ease-in-out infinite alternate}
+.celeb .cstr0{left:6%}.celeb .cstr1{left:24%;top:-80px;animation-delay:.2s}.celeb .cstr2{left:44%;top:-64px;animation-delay:.4s}.celeb .cstr3{left:62%;top:-84px;animation-delay:.1s}.celeb .cstr4{left:80%;top:-70px;animation-delay:.3s}.celeb .cstr5{left:92%;top:-60px;animation-delay:.5s}
+@keyframes celIn{from{opacity:0}to{opacity:1}}
+@keyframes celPop{0%{transform:scale(.4) rotate(-6deg)}100%{transform:scale(1) rotate(0)}}
+@keyframes cfFall{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(110vh) rotate(var(--r,360deg))}}
+@keyframes cstrW{from{transform:rotate(-8deg)}to{transform:rotate(8deg)}}
+.stsvg .stlayla.stjump{transform-box:fill-box;transform-origin:50% 100%;animation:stJump 1.3s cubic-bezier(.3,.6,.4,1) 2}
+@keyframes stJump{0%{transform:translate(-34px,0) scale(1,1)}12%{transform:translate(-34px,0) scale(1.08,.88)}55%{transform:translate(-14px,-38px) scale(.96,1.06)}88%{transform:translate(0,0) scale(1.06,.9)}100%{transform:translate(0,0) scale(1,1)}}
+.stsvg.stglow{filter:drop-shadow(0 0 10px #FFE066)}
+@media (max-width:600px){.celeb .cbig{font-size:30px}.celeb .ccard{padding:28px 20px 22px}}
+@media (prefers-reduced-motion:reduce){.celeb .cf,.celeb .cstr{animation:none}.stsvg .stlayla.stjump{animation:none}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
-<script src="js/d-9f1f4dd252.js"></script><script src="js/c-c3fe86ac4b.js"></script><script>(function(){var L=window.SQE_LATE;if(!L)return;function go(n){var s=document.createElement("script");s.src="js/l-0a08f68334.js";s.onerror=function(){if(s.parentNode)s.parentNode.removeChild(s);if(n<6){setTimeout(function(){go(n+1);},1500*(n+1));return;}L.failed=1;var c=L.cb.splice(0);for(var i=0;i<c.length;i++)try{c[i]();}catch(e){}};document.body.appendChild(s);}go(0);})();</script></body></html>
+<script src="js/d-9f1f4dd252.js"></script><script src="js/c-87dd3fba70.js"></script><script>(function(){var L=window.SQE_LATE;if(!L)return;function go(n){var s=document.createElement("script");s.src="js/l-0a08f68334.js";s.onerror=function(){if(s.parentNode)s.parentNode.removeChild(s);if(n<6){setTimeout(function(){go(n+1);},1500*(n+1));return;}L.failed=1;var c=L.cb.splice(0);for(var i=0;i<c.length;i++)try{c[i]();}catch(e){}};document.body.appendChild(s);}go(0);})();</script></body></html>
