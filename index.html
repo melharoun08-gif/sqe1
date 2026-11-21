@@ -44,7 +44,7 @@
   } catch(e){}
 })();
 </script>
-<script>(function(){var B="20261121091605";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261121101237";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -2716,12 +2716,12 @@ html.dfv-on{overflow:hidden}
 .jsv .jzz1{animation-delay:1.2s}
 .jsv .jzz2{animation-delay:2.4s}
 /* sits 5s, zooms off up and right, gone about 8s, glides back in from the left, nose-down, and settles on its spot */
-@keyframes jmz-big{0%,20%{opacity:1;transform:translate(0,0) rotate(0);animation-timing-function:cubic-bezier(.5,0,.9,.4)}
+@keyframes jmz-big{0%,20%{opacity:1;transform:translate(0,0) rotate(0)}
   29%{opacity:1;transform:translate(520px,-300px) rotate(-6deg)}30%{opacity:0;transform:translate(560px,-320px) rotate(-6deg)}
   31%,62%{opacity:0;transform:translate(-420px,-300px) rotate(12deg)}64%{opacity:1;transform:translate(-360px,-255px) rotate(12deg);animation-timing-function:cubic-bezier(.2,.6,.35,1)}
   80%{transform:translate(0,4px) rotate(2deg);animation-timing-function:ease-in-out}84%{transform:translate(0,-3px) rotate(-1deg)}88%,100%{opacity:1;transform:translate(0,0) rotate(0)}}
-@keyframes jmz-small{0%,32%{opacity:0;transform:translate(0,0) rotate(0)}35%{opacity:1;transform:translate(0,0) rotate(0);animation-timing-function:ease-in}
-  48%{transform:translate(110px,0) rotate(0);animation-timing-function:ease-in-out}51%{transform:translate(150px,-12px) rotate(-12deg);animation-timing-function:ease-out}
+@keyframes jmz-small{0%,32%{opacity:0;transform:translate(0,0) rotate(0)}35%{opacity:1;transform:translate(0,0) rotate(0)}
+  48%{transform:translate(110px,0) rotate(0)}51%{transform:translate(150px,-12px) rotate(-12deg)}
   57%{opacity:1}61%{opacity:0;transform:translate(225px,-100px) rotate(-15deg)}62%,100%{opacity:0;transform:translate(0,0) rotate(0)}}
 @keyframes jmz-snore{0%,100%{transform:scale(1,1)}45%{transform:scale(1.008,1.018)}}
 @keyframes jmz-z{0%{opacity:0;transform:translate(0,0) scale(.5)}20%{opacity:1}70%{opacity:.9}100%{opacity:0;transform:translate(var(--zx,18px),-52px) scale(1.15)}}
@@ -3035,10 +3035,10 @@ html.dfv-on{overflow:hidden}
 
 /* 04:19 Monnie: the big plane takes off up and away to the right, and comes back in from high above the library, gliding down onto the runway, never across the path where Layla walks */
 .jsv .jbigplane{animation:jmz-big2 24s linear infinite}
-@keyframes jmz-big2{0%,20%{opacity:1;transform:translate(0,0) rotate(0);animation-timing-function:cubic-bezier(.5,0,.9,.4)}
+@keyframes jmz-big2{0%,20%{opacity:1;transform:translate(0,0) rotate(0)}
   29%{opacity:1;transform:translate(520px,-300px) rotate(-6deg)}30%{opacity:0;transform:translate(560px,-320px) rotate(-6deg)}
-  31%,62%{opacity:0;transform:translate(-40px,-700px) rotate(16deg)}64%{opacity:1;transform:translate(-30px,-620px) rotate(16deg);animation-timing-function:cubic-bezier(.2,.6,.35,1)}
-  80%{transform:translate(0,4px) rotate(2deg);animation-timing-function:ease-in-out}84%{transform:translate(0,-3px) rotate(-1deg)}88%,100%{opacity:1;transform:translate(0,0) rotate(0)}}
+  31%,62%{opacity:0;transform:translate(-40px,-700px) rotate(16deg)}64%{opacity:1;transform:translate(-30px,-620px) rotate(16deg)}
+  80%{transform:translate(0,4px) rotate(2deg)}84%{transform:translate(0,-3px) rotate(-1deg)}88%,100%{opacity:1;transform:translate(0,0) rotate(0)}}
 
 /* 04:21 Monnie: camp clock ticks, parrot sings, butterflies by the rainforest */
 .jsv .jclk-s{transform-box:view-box;transform-origin:0 0;animation:jclk 60s steps(60) infinite}
@@ -4714,7 +4714,8 @@ details.cardsubj > ul.cardtopics{margin-top:6px!important}
 .jsv .jbeam{animation-timing-function:steps(80,end)!important}
 .jsv .jsspin{transform-box:view-box;transform-origin:0 0;animation:jm-spin 12s steps(96,end) infinite} /* sweet shop lollipop */
 @media (prefers-reduced-motion:reduce){.jsv .jsspin{animation:none!important}}
+.jsv .jring{animation-timing-function:steps(48,end)!important}.jsv .jclk-m{animation-timing-function:steps(60,end)!important}.jsv .jstar{animation-timing-function:steps(16,end)!important}.jsv .jglow{animation-timing-function:steps(10,end)!important} /* QA Peckham re-check: the stop ring, camp clock minute hand, stars and window glow step too */
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
-<script src="js/d-7cfdbf3703.js"></script><script src="js/c-35146fd0c6.js"></script><script>(function(){var L=window.SQE_LATE;if(!L)return;function go(n){var s=document.createElement("script");s.src="js/l-0a08f68334.js";s.onerror=function(){if(s.parentNode)s.parentNode.removeChild(s);if(n<6){setTimeout(function(){go(n+1);},1500*(n+1));return;}L.failed=1;var c=L.cb.splice(0);for(var i=0;i<c.length;i++)try{c[i]();}catch(e){}};document.body.appendChild(s);}go(0);})();</script></body></html>
+<script src="js/d-7cfdbf3703.js"></script><script src="js/c-401885cd74.js"></script><script>(function(){var L=window.SQE_LATE;if(!L)return;function go(n){var s=document.createElement("script");s.src="js/l-0a08f68334.js";s.onerror=function(){if(s.parentNode)s.parentNode.removeChild(s);if(n<6){setTimeout(function(){go(n+1);},1500*(n+1));return;}L.failed=1;var c=L.cb.splice(0);for(var i=0;i<c.length;i++)try{c[i]();}catch(e){}};document.body.appendChild(s);}go(0);})();</script></body></html>
