@@ -222,7 +222,7 @@ body{font:18px/1.4 var(--font);color:var(--ink);background:#CDEBFA;overscroll-be
   <div class="bri2" id="bri2"><span class="pb sb" id="peekb"></span><img id="briimg" src="img/b-neutral.webp" alt="Britney"></div>
 </div>
 <div class="deskhint">This is Layla's phone app. On a phone it opens full screen from the home screen.</div>
-<script src="data.js?v=92559e47"></script>
+<script src="data.js?v=138bc2f3"></script>
 <script>
 (function(){
 "use strict";
@@ -383,7 +383,7 @@ function bird(){ /* a little flock crosses now and then, keeping below the sun *
 drawSky(); setInterval(drawSky, 60000); setTimeout(bird, 3000); setInterval(function(){ if (Math.random() < .6) bird(); }, 15000);
 /* ---------- Layla stands on the grass: small natural moves (wave, hands together), cheers when Layla gets one right ---------- */
 var LAY = {img:document.getElementById("layimg"), box:document.getElementById("lay"), busy:0};
-["img/l-1.webp", "img/l-2.webp", "img/l-3.webp", "img/l-5.webp", "img/b-happy.webp", "img/b-excited.webp", "img/b-thinking.webp"].forEach(function(u){ var i = new Image(); i.src = u; });
+["img/l-1.webp", "img/l-2.webp", "img/l-3.webp", "img/l-5.webp", "img/b-happy.webp"].forEach(function(u){ var i = new Image(); i.src = u; });
 function layPose(n, ms){ LAY.img.src = "img/l-" + n + ".webp"; clearTimeout(LAY.t); LAY.busy = 1; LAY.t = setTimeout(function(){ LAY.img.src = "img/l-0.webp"; LAY.busy = 0; }, ms); }
 setInterval(function(){ if (document.hidden || LAY.busy) return; var r = Math.random(); if (r < .35) layPose(1, 1600); else if (r < .6) layPose(2, 2200); }, 7000);
 function briFace(f, ms){ var im = document.getElementById("briimg"); im.src = "img/b-" + f + ".webp"; clearTimeout(briFace.t); briFace.t = setTimeout(function(){ im.src = "img/b-neutral.webp"; }, ms); }
@@ -396,7 +396,7 @@ function coinPop(el, n){
 }
 var PEEKT = 0, LINES = ["Yes!", "Brilliant!", "Go Layla!", "Spot on!", "Clever!", "Cluck yes!"];
 var THINK = ["I wonder what's for tea…", "Corn, corn, lovely corn…", "Layla is SO clever.", "One more card?", "Cluck cluck…", "I hope Bert isn't about…", "Is it feeding time yet?", "Nearly there, Layla!"];
-function bub(text, kind, ms){ var b = document.getElementById("peekb"); b.innerHTML = esc(text) + TAILD; b.className = "pb sb on " + (kind || "say2"); clearTimeout(bub.t); bub.t = setTimeout(function(){ b.className = "pb sb"; }, ms || 1600); if (kind === "think") briFace("thinking", ms || 1600); }
+function bub(text, kind, ms){ var b = document.getElementById("peekb"); b.innerHTML = esc(text) + TAILD; b.className = "pb sb on " + (kind || "say2"); clearTimeout(bub.t); bub.t = setTimeout(function(){ b.className = "pb sb"; }, ms || 1600); }
 function cheer(){
   var p = document.getElementById("bri2");
   bub(LINES[Math.floor(Math.random() * LINES.length)], "say2", 1500); briFace("happy", 1500);
@@ -416,7 +416,7 @@ function topbar(back, title, sub){
     '<div class="ttl">' + (title || "Hi Layla!") + (sub ? '<small>' + sub + '</small>' : '') + '</div>' +
     (MONNIE ? '<span class="testb">TEST</span>' : '') + '<div class="bag" title="Your coins">' + BAGIC + '<span>' + bagCoins() + '</span></div>';
 }
-function hero(text, img){ return '<div class="hero"><div class="bri"><img src="img/' + (img || "b-excited.webp") + '" alt="Britney"></div><div class="say sb">' + text + TAILL + '</div></div>'; }
+function hero(text, img){ return '<div class="hero"><div class="bri"><img src="img/' + (img || "b-neutral.webp") + '" alt="Britney"></div><div class="say sb">' + text + TAILL + '</div></div>'; }
 function dn(k){ return P.done[k] || {}; }
 function go(v, arg){
   VIEWNOW = v; ACT.on = v === "sess"; main.scrollTop = 0; app.scrollTop = 0; app.classList.toggle("herohere", v === "home");
@@ -455,7 +455,7 @@ function randomTopic(){ /* from the topics she has covered on the laptop (if the
 function shuffleShow(){ /* a few topic names flash past, then it lands on one */
   var target = randomTopic(), all = Object.keys(TBY), n = 0;
   topbar("home", "Picking a topic…", "");
-  main.innerHTML = hero("Ooh, let me see…", "b-thinking.webp") + '<div class="roll" id="roll"></div>';
+  main.innerHTML = hero("Ooh, let me see…", "b-happy.webp") + '<div class="roll" id="roll"></div>';
   var el = document.getElementById("roll");
   (function spin(){ if (VIEWNOW !== "home" && VIEWNOW !== "roll") return; VIEWNOW = "roll";
     if (n < 12){ var k = all[Math.floor(Math.random() * all.length)], x = T(k); el.innerHTML = '<span style="' + themeVars(x.s) + '">' + esc(x.t.title) + '</span>'; n++; setTimeout(spin, 70 + n * 14); }
@@ -508,7 +508,7 @@ function finish(){
   if (SESS.i){ P.sessions.push({d:ymd(), at:Date.now(), k:k, ty:SESS.ty, all:all ? 1 : 0, n:SESS.i, r:SESS.right, mins:Math.max(1, Math.round((Date.now() - SESS.t0) / 60000))}); if (P.sessions.length > 400) P.sessions.shift(); }
   var won = all, ty = SESS.ty, r = SESS.right, n = SESS.asked; SESS = null; save(); feedSend(true);
   go("topic", k);
-  if (won){ confetti(); layPose(5, 1800); LAY.box.classList.remove("jump"); void LAY.box.offsetWidth; LAY.box.classList.add("jump"); var say = document.createElement("div"); say.className = "donebub"; say.innerHTML = '<img src="img/b-excited.webp" alt=""><b>' + (ty === "q" ? "Well done, Layla! " + r + " out of " + n + " right." : "Well done, Layla! Cards done.") + '</b>';
+  if (won){ confetti(); layPose(5, 1800); LAY.box.classList.remove("jump"); void LAY.box.offsetWidth; LAY.box.classList.add("jump"); var say = document.createElement("div"); say.className = "donebub"; say.innerHTML = '<img src="img/b-happy.webp" alt=""><b>' + (ty === "q" ? "Well done, Layla! " + r + " out of " + n + " right." : "Well done, Layla! Cards done.") + '</b>';
     app.appendChild(say); setTimeout(function(){ say.classList.add("off"); }, 2600); setTimeout(function(){ say.remove(); }, 3200); }
 }
 

@@ -1,6 +1,6 @@
 /* Pocket revision: keeps the app working with no signal. Network first for the page (so updates arrive), cache for everything else. */
-var V = "pocket-92559e47";
-var FILES = ["./", "index.html", "data.js?v=92559e47", "manifest.webmanifest", "img/l-0.webp", "img/l-1.webp", "img/l-2.webp", "img/l-3.webp", "img/l-5.webp", "img/b-neutral.webp", "img/b-happy.webp", "img/b-excited.webp", "img/b-thinking.webp", "img/icon-192.png", "img/apple-touch-icon.png"];
+var V = "pocket-138bc2f3";
+var FILES = ["./", "index.html", "data.js?v=138bc2f3", "manifest.webmanifest", "img/l-0.webp", "img/l-1.webp", "img/l-2.webp", "img/l-3.webp", "img/l-5.webp", "img/b-neutral.webp", "img/b-happy.webp", "img/icon-192.png", "img/apple-touch-icon.png"];
 self.addEventListener("install", function(e){ e.waitUntil(caches.open(V).then(function(c){ return c.addAll(FILES); }).then(function(){ return self.skipWaiting(); })); });
 self.addEventListener("activate", function(e){ e.waitUntil(caches.keys().then(function(ks){ return Promise.all(ks.filter(function(k){ return k.indexOf("pocket-") === 0 && k !== V; }).map(function(k){ return caches.delete(k); })); }).then(function(){ return self.clients.claim(); })); });
 self.addEventListener("fetch", function(e){
