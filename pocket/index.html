@@ -201,6 +201,7 @@ body{font:18px/1.4 var(--font);color:var(--ink);background:#CDEBFA;overscroll-be
 .confetti{position:absolute;top:-20px;width:10px;height:16px;z-index:5;pointer-events:none;animation:fall linear forwards}
 @keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
 .choice.go2{background:#FFF8D8}
+.choice.fix{background:#FFE9E7}
 .choice.tl{position:relative}.choice.tl[disabled]{opacity:.55}
 .choice.did{background:#EAF8EC}
 .choice .ok{margin-left:auto;width:40px;height:40px;flex:0 0 auto;border-radius:50%;background:var(--good);color:#fff;border:3px solid #111;display:flex;align-items:center;justify-content:center;font-size:24px;animation:pop .5s cubic-bezier(.2,1.6,.4,1) both}
@@ -232,7 +233,7 @@ body{font:18px/1.4 var(--font);color:var(--ink);background:#CDEBFA;overscroll-be
   <div class="bri2" id="bri2"><span class="pb sb" id="peekb"></span><span class="bflip"><img id="briimg" src="img/b-neutral.webp" alt="Britney"></span></div>
 </div>
 <div class="deskhint">This is Layla's phone app. On a phone it opens full screen from the home screen.</div>
-<script src="data.js?v=ef200336"></script>
+<script src="data.js?v=ccc1a409"></script>
 <script>
 (function(){
 "use strict";
@@ -275,6 +276,7 @@ var COIN = '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="#FFC83
 var BAGIC = '<svg viewBox="0 0 40 40"><path d="M14 9 Q20 4 26 9 L23 13 H17 Z" fill="#C98A4B" stroke="#111" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 13 Q5 20 7 30 Q9 37 20 37 Q31 37 33 30 Q35 20 23 13 Z" fill="#E2A65E" stroke="#111" stroke-width="2.5" stroke-linejoin="round"/><circle cx="20" cy="26" r="6" fill="#FFC83D" stroke="#111" stroke-width="2"/></svg>';
 var PINIC = '<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#E2EEFF" stroke="#111" stroke-width="3"/><path d="M32 12c-8 0-14 6-14 14 0 10 14 26 14 26s14-16 14-26c0-8-6-14-14-14z" fill="#E63946" stroke="#111" stroke-width="3" stroke-linejoin="round"/><circle cx="32" cy="26" r="5" fill="#fff" stroke="#111" stroke-width="2.5"/></svg>';
 var DICEIC = '<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#FFF3C4" stroke="#111" stroke-width="3"/><rect x="15" y="15" width="34" height="34" rx="7" fill="#fff" stroke="#111" stroke-width="3" transform="rotate(-10 32 32)"/><g fill="#E63946" transform="rotate(-10 32 32)"><circle cx="23" cy="23" r="3.6"/><circle cx="32" cy="32" r="3.6"/><circle cx="41" cy="41" r="3.6"/><circle cx="41" cy="23" r="3.6"/><circle cx="23" cy="41" r="3.6"/></g></svg>';
+var FIXIC = '<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#FFE3EF" stroke="#111" stroke-width="3"/><path d="M19 21l12 12M31 21L19 33" stroke="#E63946" stroke-width="5" stroke-linecap="round"/><path d="M33 41l6 6 12-14" fill="none" stroke="#2E9D4A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 var CARDIC = '<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#FFE3EF" stroke="#111" stroke-width="3"/><rect x="18" y="14" width="26" height="34" rx="4" fill="#FFC83D" stroke="#111" stroke-width="3" transform="rotate(-12 31 31)"/><rect x="22" y="18" width="26" height="34" rx="4" fill="#fff" stroke="#111" stroke-width="3" transform="rotate(6 35 35)"/><path d="M29 30h14M29 37h10" stroke="#111" stroke-width="3" stroke-linecap="round" transform="rotate(6 35 35)"/></svg>';
 var QIC = '<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#DDF5E3" stroke="#111" stroke-width="3"/><path d="M12 18h40v24H30l-10 9v-9h-8z" fill="#fff" stroke="#111" stroke-width="3" stroke-linejoin="round"/><path d="M27 26a5 5 0 1 1 7 4.6c-1.4.7-2 1.6-2 3" fill="none" stroke="#2B6CD8" stroke-width="3.2" stroke-linecap="round"/><circle cx="32" cy="38" r="1.9" fill="#2B6CD8"/></svg>';
 var BOOKIC = '<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#FFE3EF" stroke="#111" stroke-width="3"/><rect x="16" y="16" width="32" height="34" rx="3" fill="#FFF3C4" stroke="#111" stroke-width="3"/><path d="M22 24h20M22 31h20M22 38h13" stroke="#111" stroke-width="3" stroke-linecap="round"/><circle cx="46" cy="46" r="9" fill="#2E9D4A" stroke="#111" stroke-width="3"/><path d="M42 46l3 3 5-6" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -461,7 +463,8 @@ function go(v, arg){
     topbar(0, "Hi Layla!", todayMins() ? "Today on your phone: " + todayMins() + " min" : "Pocket revision");
     main.innerHTML = hero("Do you want to choose a topic, or shall I pick one at random?") +
       '<button class="choice" data-go="topics"><span class="ic">' + PINIC + '</span><span>Choose a topic<small>Scroll through the stops</small></span></button>' +
-      '<button class="choice go2" data-do="random"><span class="ic">' + DICEIC + '</span><span>Pick one at random<small>Britney chooses for you</small></span></button>';
+      '<button class="choice go2" data-do="random"><span class="ic">' + DICEIC + '</span><span>Pick one at random<small>Britney chooses for you</small></span></button>' +
+      (wrongList().length ? '<button class="choice fix" data-do="fix"><span class="ic">' + FIXIC + '</span><span>Questions I got wrong<small>' + wrongList().length + (wrongList().length === 1 ? ' question' : ' questions') + '. Get one right and it comes off the list</small></span></button>' : '');
   } else if (v === "topics"){
     topbar("home", "Choose a topic", "");
     main.innerHTML = '<div class="sect">Tap a stop, then a topic.</div>' + D.map(function(s){
@@ -501,6 +504,11 @@ function shuffleShow(){ /* a few topic names flash past, then it lands on one */
 
 /* ---------- going through cards or questions ---------- */
 function shuffle(a){ for (var i = a.length - 1; i > 0; i--){ var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+/* Monnie 22 Nov: "Fix my mistakes" = every phone question she last got wrong, any topic; a right answer takes it off the list */
+function wrongList(){ var out = []; for (var a in P.ans){ var x = P.ans[a], pp = a.split("|"); if (pp[1] !== "q" || x.ok) continue; var t = T(pp[0]); if (!t) continue;
+  var z = null; t.t.q.forEach(function(q){ if (q[0] === +pp[2]) z = q; }); if (z) out.push({ty:"q", k:pp[0], z:z, at:x.at || 0}); }
+  return out.sort(function(a, b){ return a.at - b.at; }); }
+function startFix(){ var L = wrongList(); if (!L.length) return go("home"); SESS = {ty:"q", fix:1, k:"", q:shuffle(L), i:0, t0:Date.now(), right:0, asked:0, coins:0}; ACT.subj = T(L[0].k).s.id; go("sess"); }
 function start(ty){
   var x = T(TOPIC); if (!x) return;
   var list = ty === "q" ? shuffle(x.t.q.slice()) : x.t.c.slice();
@@ -519,8 +527,8 @@ function drawItem(){
   if (!SESS) return go("home");
   if (SESS.i >= SESS.q.length) return finish();
   var it = SESS.q[SESS.i], x = T(it.k), s = x.s, N = SESS.q.length;
-  topbar(0, esc(x.t.title), (it.ty === "q" ? "Questions" : "Revision cards") + " · " + (SESS.i + 1) + " of " + N);
-  var h = '<div class="tbar"><i style="width:' + (SESS.i * 100 / N) + '%"></i></div><div class="tmeta"><span>' + (SESS.i + 1) + ' of ' + N + '</span><button data-do="stop">Back to the topic</button></div>';
+  topbar(0, esc(x.t.title), (SESS.fix ? "Questions I got wrong" : it.ty === "q" ? "Questions" : "Revision cards") + " · " + (SESS.i + 1) + " of " + N);
+  var h = '<div class="tbar"><i style="width:' + (SESS.i * 100 / N) + '%"></i></div><div class="tmeta"><span>' + (SESS.i + 1) + ' of ' + N + '</span><button data-do="stop">' + (SESS.fix ? "Stop" : "Back to the topic") + '</button></div>';
   if (it.ty === "q"){
     if (!it.ord) it.ord = shuffle([0, 1, 2, 3].slice(0, it.z[2].length));
     h += cardObj(s, '<div class="q">' + it.z[1] + '</div>', SESS.i + 1);
@@ -540,6 +548,12 @@ function answer(oi){ var it = SESS.q[SESS.i]; if (!it || it.pick != null) return
 function next(){ if (!SESS) return; var it = SESS.q[SESS.i]; if (it && it.ty === "c" && !it.seen){ it.seen = 1; mark(it, 1); } SESS.i++; drawItem(); main.scrollTop = 0; }
 function finish(){
   if (!SESS) return go("home");
+  if (SESS.fix){ var fr = SESS.right, fn = SESS.asked, fall = SESS.i >= SESS.q.length; if (SESS.i){ P.sessions.push({d:ymd(), at:Date.now(), k:"fix", ty:"fix", all:fall ? 1 : 0, n:SESS.i, r:fr, mins:Math.max(1, Math.round((Date.now() - SESS.t0) / 60000))}); if (P.sessions.length > 400) P.sessions.shift(); }
+    SESS = null; save(); feedSend(true); go("home");
+    if (fall && fn){ confetti(); var sb2 = document.createElement("div"); sb2.className = "donebub"; var left2 = wrongList().length;
+      sb2.innerHTML = '<img src="img/b-happy.webp" alt=""><b>Well done, Layla! ' + fr + ' out of ' + fn + ' right this time.' + (left2 ? ' ' + left2 + ' still on the list.' : ' None left!') + '</b>';
+      app.appendChild(sb2); sb2.addEventListener("click", function(){ sb2.remove(); }); setTimeout(function(){ sb2.classList.add("off"); }, 3000); setTimeout(function(){ sb2.remove(); }, 3600); }
+    return; }
   var all = SESS.i >= SESS.q.length, k = SESS.k, z = P.done[k] = P.done[k] || {};
   if (all){ if (SESS.ty === "c") z.c = Date.now(); else { z.q = Date.now(); z.qr = [SESS.right, SESS.asked]; } }
   if (SESS.i){ P.sessions.push({d:ymd(), at:Date.now(), k:k, ty:SESS.ty, all:all ? 1 : 0, n:SESS.i, r:SESS.right, mins:Math.max(1, Math.round((Date.now() - SESS.t0) / 60000))}); if (P.sessions.length > 400) P.sessions.shift(); }
@@ -570,6 +584,7 @@ function handle(e){
   else if (b.dataset.stop){ var st = b.parentNode, was = st.classList.contains("open"); [].forEach.call(main.querySelectorAll(".stop.open"), function(x){ x.classList.remove("open"); }); if (!was){ st.classList.add("open"); setTimeout(function(){ main.scrollTo({top:st.offsetTop - 8, behavior:"smooth"}); }, 30); } }
   else if (b.dataset.topic) go("topic", b.dataset.topic);
   else if (b.dataset.o != null) answer(+b.dataset.o);
+  else if (b.dataset.do === "fix") startFix();
   else if (b.dataset.do === "random"){ VIEWNOW = "home"; shuffleShow(); }
   else if (b.dataset.do === "cards") start("c");
   else if (b.dataset.do === "qs") start("q");
