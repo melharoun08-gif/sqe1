@@ -245,7 +245,7 @@ body{font:18px/1.4 var(--font);color:var(--ink);background:#CDEBFA;overscroll-be
   <div class="bri2" id="bri2"><span class="pb sb" id="peekb"></span><span class="bflip"><img id="briimg" src="img/b-neutral.webp" alt="Britney"></span></div>
 </div>
 <div class="deskhint">This is Layla's phone app. On a phone it opens full screen from the home screen.</div>
-<script src="data.js?v=25d48222"></script>
+<script src="data.js?v=56f8c586"></script>
 <script>
 (function(){
 "use strict";
@@ -374,7 +374,11 @@ function pull(){
     var j = JSON.parse(t); if (j && j.lap){ if (j.lap.done){ P.lap.done = j.lap.done; P.lap.at = j.lap.at || Date.now(); } if (j.lap.coins != null){ P.lap.coins = +j.lap.coins; P.lap.taken = (j.lap.pocketTaken || {})[P.dev] || 0; } save(); var bg = document.querySelector(".bag span"); if (bg) bg.textContent = bagCoins(); if (VIEWNOW === "topics") go(VIEWNOW); } }).catch(function(){}); } catch(e){}
 }
 setInterval(function(){ save(); feedSend(); }, 120000);
-document.addEventListener("visibilitychange", function(){ if (document.hidden){ save(); feedSend(true); } else pull(); });
+document.addEventListener("visibilitychange", function(){ if (document.hidden){ save(); feedSend(true); } else { pull(); checkUpdate(); } });
+/* iPhone home-screen apps often resume without reloading: check for a newer build and reload (not mid-session; her progress is saved first) */
+function checkUpdate(){ try { fetch("version.txt?" + Date.now(), {cache:"no-store"}).then(function(r){ return r.ok ? r.text() : ""; }).then(function(v){ v = (v || "").trim();
+  if (v && v !== "56f8c586" && /^[0-9a-f]{8}$/.test(v) && VIEWNOW !== "sess"){ save(); if (navigator.serviceWorker && navigator.serviceWorker.getRegistration) navigator.serviceWorker.getRegistration().then(function(g){ if (g) g.update(); }).catch(function(){}); setTimeout(function(){ location.reload(); }, 300); } }).catch(function(){}); } catch(e){} }
+setTimeout(checkUpdate, 3000); setInterval(function(){ if (!document.hidden) checkUpdate(); }, 300000);
 setTimeout(function(){ feedSend(); pull(); }, 8000);
 
 /* ---------- little animations ---------- */
