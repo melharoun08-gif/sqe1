@@ -44,7 +44,7 @@
   } catch(e){}
 })();
 </script>
-<script>(function(){var B="20261122081046";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
+<script>(function(){var B="20261122220000";if(!/^https?:/.test(location.protocol))return;try{fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(v){if(v&&v.b&&v.b!==B&&location.search.indexOf("v="+v.b)<0)location.replace(location.pathname+"?v="+v.b+location.hash);}).catch(function(){});}catch(e){}})();</script>
 <style>:root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17232D;--muted:#5A6874;--line:#D8DFE6;--alt:#EEF2F6;
   --bar-bg:#2D6CB5;--bar-ink:#FFFFFF;--bar-muted:#D6E6F8;
@@ -4715,7 +4715,31 @@ details.cardsubj > ul.cardtopics{margin-top:6px!important}
 .jsv .jsspin{transform-box:view-box;transform-origin:0 0;animation:jm-spin 12s steps(96,end) infinite} /* sweet shop lollipop */
 @media (prefers-reduced-motion:reduce){.jsv .jsspin{animation:none!important}}
 .jsv .jring{animation-timing-function:steps(48,end)!important}.jsv .jclk-m{animation-timing-function:steps(60,end)!important}.jsv .jstar{animation-timing-function:steps(16,end)!important}.jsv .jglow{animation-timing-function:steps(10,end)!important} /* QA Peckham re-check: the stop ring, camp clock minute hand, stars and window glow step too */
+
+/* PowerPoints tab (22 Nov, slides thread): Layla's BPP slides, #/slides */
+.bpph{margin:16px 0 6px!important;font-size:17px;color:var(--muted)}
+.bpplist{list-style:none;margin:0;padding:0}
+.bpplist li{margin:0 0 6px}
+.bpplist a{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;text-decoration:none;color:var(--ink);background:var(--surface);min-height:48px;box-sizing:border-box}
+.bpplist a:hover{background:var(--alt)}
+.bpplist .bppt{flex:1;font-weight:600;font-size:16px;line-height:1.3}
+.bppnum{flex:none;width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;background:var(--alt);border:1px solid var(--line)}
+.bpplist a.dn .bppnum,.bpplist a.seen .bppnum{background:var(--good-bg);color:var(--good);border-color:transparent}
+.bpplist a.on{border-color:var(--t5);box-shadow:inset 4px 0 0 var(--t5);background:var(--alt)}
+.bppws .muted{flex:none;text-align:right}
+.bppwrap{display:flex;flex-direction:column;gap:14px;margin-bottom:14px}
+.bppview{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.bppbar{display:flex;align-items:center;gap:10px;padding:8px 10px;border-bottom:1px solid var(--line)}
+.bppcap{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px}
+.bppcap b{font-size:16px}
+.bppframe{display:block;width:100%;height:calc(100vh - 120px);min-height:520px;border:0;background:#525659}
+.bppside .card{margin:0}
+.bpppdfs .bppt{font-size:15px}
+.bppfin{width:100%;justify-content:center;font-size:19px;padding:16px 18px}
+.bppnav{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px}
+@media (min-width:1200px){.bppwrap{display:grid;grid-template-columns:minmax(0,1fr) 300px;align-items:start}.bppside{position:sticky;top:10px}}
+@media (max-width:600px){.bppws a{flex-wrap:wrap}.bppws .muted{width:100%;text-align:left;padding-left:42px}.bppframe{height:70vh;min-height:420px}}
 </style></head><body>
 <div id="app"><p style="padding:20px;font-family:sans-serif">Loading your revision site…</p></div>
 <noscript><p style="padding:20px">This site needs JavaScript switched on.</p></noscript>
-<script src="js/d-ee35546674.js"></script><script src="js/c-99bd8e6b31.js"></script><script>(function(){var L=window.SQE_LATE;if(!L)return;function go(n){var s=document.createElement("script");s.src="js/l-0a08f68334.js";s.onerror=function(){if(s.parentNode)s.parentNode.removeChild(s);if(n<6){setTimeout(function(){go(n+1);},1500*(n+1));return;}L.failed=1;var c=L.cb.splice(0);for(var i=0;i<c.length;i++)try{c[i]();}catch(e){}};document.body.appendChild(s);}go(0);})();</script></body></html>
+<script src="js/d-98f3e36e89.js"></script><script src="js/c-6dc78fd7b0.js"></script><script>(function(){var L=window.SQE_LATE;if(!L)return;function go(n){var s=document.createElement("script");s.src="js/l-0a08f68334.js";s.onerror=function(){if(s.parentNode)s.parentNode.removeChild(s);if(n<6){setTimeout(function(){go(n+1);},1500*(n+1));return;}L.failed=1;var c=L.cb.splice(0);for(var i=0;i<c.length;i++)try{c[i]();}catch(e){}};document.body.appendChild(s);}go(0);})();</script></body></html>
