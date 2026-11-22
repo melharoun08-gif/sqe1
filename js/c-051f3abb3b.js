@@ -193325,7 +193325,7 @@ window.SQE_WEAK = function(A){
   function topicOfQa(s, id){ var hit = ''; s.topics.forEach(function(t){ if (!hit && A.topicQs(s, t.id).indexOf(id) >= 0) hit = t.id; }); return hit; }
 
   /* ---------- gather every wrong answer: key -> {wrong, lastWrong, lastAt, src:{}} ---------- */
-  var SRC_NAMES = {qf: 'Quick fire', qa: 'Model Q&A', mk: 'Mock exam', bt: 'Bert\'s tests'};
+  var SRC_NAMES = {qf: 'Quick fire', qa: 'Model Q&A', mk: 'Mock exam', bt: window.SQE_HIDEPK ? 'Subject tests' : 'Bert\'s tests'};
   function gather(){
     var s = S(), out = {};
     function hit(key, src, ok, at){ var g = out[key] || (out[key] = {wrong: 0, lastWrong: 0, src: {}}); if (!ok){ g.wrong++; g.src[src] = 1; if ((at || 1) > g.lastWrong) g.lastWrong = at || 1; } }
@@ -193454,7 +193454,7 @@ window.SQE_WEAK = function(A){
     var bySrc = {}; L.forEach(function(z){ if (z.cleared) return; Object.keys(z.src).forEach(function(k){ bySrc[k] = (bySrc[k] || 0) + 1; }); });
     var nextAt = 0; L.forEach(function(z){ if (!z.due && !z.cleared && z.nextDue && (!nextAt || z.nextDue < nextAt)) nextAt = z.nextDue; });
     var ragN = Object.keys(TBYKEY).filter(function(k){ var c = conf(k); return c === 0 || c === 0.5; }).length;
-    var h = '<div class="card wk"><h2>Weak-spot drill</h2><p class="muted wkintro">Every question you have got wrong in Quick fire, Model Q&amp;A, Mock exam and Bert\'s tests, in one list, with the topics you rated red or amber first. Each one comes back until you get it right three times, a day and then three days apart.</p>';
+    var h = '<div class="card wk"><h2>Weak-spot drill</h2><p class="muted wkintro">Every question you have got wrong in Quick fire, Model Q&amp;A, ' + (window.SQE_HIDEPK ? 'and the Mock exam' : 'Mock exam and Bert\'s tests') + ', in one list, with the topics you rated red or amber first. Each one comes back until you get it right three times, a day and then three days apart.</p>';
     if (!L.length && !ragN) return h + '<p><b>No weak spots yet.</b> Once you get a question wrong anywhere on the site, it will appear here.</p><div class="btns"><a class="btn" href="#/quick">Go to Quick fire</a><a class="btn" href="#/home">Back to Today</a></div></div>';
     h += '<div class="wkstart"><div><div class="wkbig">' + (due ? due + ' due now' : 'Nothing due right now') + '</div><div class="small muted">' + open + ' still to fix · ' + fixed + ' fixed' + (!due && nextAt ? ' · next ones come back ' + whenText(nextAt) : '') + '</div></div>' +
       (due ? '<button class="btn primary" data-weak="start">Start a round (' + Math.min(ROUND, due) + ')</button>' : (ragN ? '<button class="btn" data-weak="start">Practise my red and amber topics</button>' : '')) + '</div>';
@@ -193877,6 +193877,16 @@ window.SQE_EXTRAS = function(api){
 ;
 (function(){
 "use strict";
+/* 22 Nov SLIDES MODE (Monnie, slides thread): Layla's site switches to her own BPP slides (PowerPoints tab), syllabus notes kept,
+   Peckham/town hidden from Layla (code kept; Monnie's ?monnie=1 view keeps it), Today plan + timetable rebuilt around BPP workshops.
+   SLIDES_LIVE=false until Monnie approves the preview. Preview: ?slides=1 (this browser, shows Layla's view even in monnie mode); ?slides=0 ends it. */
+var SLIDES_LIVE = true; /* 22 Nov 23:24 Monnie: switch on for Layla, revision from tomorrow */
+var SLIDES_PREVIEW = (function(){ try { if (/[?&#]slides=1/.test(location.href)) localStorage.setItem("sqe_slides", "1"); if (/[?&#]slides=0/.test(location.href)) localStorage.removeItem("sqe_slides"); return localStorage.getItem("sqe_slides") === "1"; } catch(e){ return false; } })();
+var SLIDES_MODE = SLIDES_LIVE || SLIDES_PREVIEW;
+var IS_MONNIE = (function(){ try { return /[?&#]monnie=1/.test(location.href) || !!localStorage.getItem("sqe_monnie"); } catch(e){ return false; } })();
+var HIDE_PECKHAM = SLIDES_MODE && (SLIDES_PREVIEW || !IS_MONNIE || !!window.SQE_ASLAYLA);
+window.SQE_HIDEPK = HIDE_PECKHAM; /* read by weakspot.js wording */
+var SLIDES = window.SQE_SLIDES || [];
 /* ============ DATA (filled by content files) ============ */
 var SUBJ = (window.SQE_SUBJECTS || []).slice().sort(function(a, b){ return (a.order || 0) - (b.order || 0); });
 var PENDING = window.SQE_PENDING || [];
@@ -193938,6 +193948,7 @@ function load(){
     window.localStorage.setItem(KEY + "-test", "1"); window.localStorage.removeItem(KEY + "-test");
   } catch(e) { storageOK = false; lastSaveErr = String(e && e.message || e); }
   try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(function(){}); } catch(e){}
+  bppS(); /* 22 Nov slides thread: S.bpp {seen, done} for the PowerPoints tab (old saves lack it) */
 }
 var saveTimer = 0;
 function save(){
@@ -194161,6 +194172,7 @@ function feedSummary(){
   o.fed = t(function(){ return Object.keys(gameS().fed || {}).sort().slice(-30); });
   o.ill = t(function(){ return !!gameS().ill; });
   o.pocketTaken = t(function(){ return S.pocketTaken || {}; });
+  o.bpp = t(function(){ var P = slpProgress(); return {mode:SLIDES_MODE ? 1 : 0, done:P.done, of:P.n, seen:P.seen, pdfs:P.pdfs, subjects:P.per.map(function(r){ return {id:r.id, done:r.done, of:r.n, seen:r.seen, pdfs:r.pdfs}; }), doneAt:(S.bpp && S.bpp.done) || {}}; }); /* 22 Nov slides: BPP workshop progress (added; nothing removed) */
   o.cloud = t(function(){ return {step:Math.min(presentStreak(), PRESENT_STEPS), of:PRESENT_STEPS, presents:(presS().claimed || []).length}; });
   return o;
 }
@@ -194456,7 +194468,7 @@ function nbStreakHTML(){
   var lsrc = NB_STEPMISS[st] ? STEP_IMG[st] : 'img/layla-step' + st + '.webp';
   /* Britney flies beside Layla's shoulder on clouds 1-5 (right side on 1-3, left on 4-5 to miss the rainbow); hidden if her picture is missing */
   /* r3: Britney on the open side with a clear gap (right on grass/1/2, left on 3/4/5), drawn after Layla so she is never covered; fly1 on the grass, flyN on step N */
-  var brit = ''; if (NB_FLY){ var BH = STEP_POSE[0][0] * 0.33, /* QA 20 Nov: Britney stays the same size on every step */ rt = st <= 2, bx = rt ? lp[0] + LW / 2 + 14 : lp[0] - LW / 2 - 14 - BH, by = Math.max(14, lp[1] - pz[2] - LH * (rt ? 0.76 : 0.62) - BH / 2); brit += '<g class="nbbrit"><image href="img/britney/fly' + ([1, 1, 2, 3, 4, 5][st]) + '.webp" onerror="if(this.dataset.fb){this.parentNode.style.display=\'none\'}else{this.dataset.fb=1;this.setAttribute(\'href\',\'img/britney/fly.webp\')}" x="' + bx.toFixed(1) + '" y="' + by.toFixed(1) + '" width="' + BH.toFixed(1) + '" height="' + BH.toFixed(1) + '"/></g>'; }
+  var brit = ''; if (NB_FLY && !HIDE_PECKHAM){ var BH = STEP_POSE[0][0] * 0.33, /* QA 20 Nov: Britney stays the same size on every step */ rt = st <= 2, bx = rt ? lp[0] + LW / 2 + 14 : lp[0] - LW / 2 - 14 - BH, by = Math.max(14, lp[1] - pz[2] - LH * (rt ? 0.76 : 0.62) - BH / 2); brit += '<g class="nbbrit"><image href="img/britney/fly' + ([1, 1, 2, 3, 4, 5][st]) + '.webp" onerror="if(this.dataset.fb){this.parentNode.style.display=\'none\'}else{this.dataset.fb=1;this.setAttribute(\'href\',\'img/britney/fly.webp\')}" x="' + bx.toFixed(1) + '" y="' + by.toFixed(1) + '" width="' + BH.toFixed(1) + '" height="' + BH.toFixed(1) + '"/></g>'; }
   var lgeo = '" x="' + (lp[0] - LW / 2).toFixed(1) + '" y="' + (lp[1] - LH - pz[2]).toFixed(1) + '" width="' + LW.toFixed(1) + '" height="' + LH + '" preserveAspectRatio="xMidYMax meet"/>';
   svg += '<g class="nblayg nbst' + st + '">'; /* girls-anim: she swings and bounces on her cloud and blinks (lids drawn over her own eyes) */
   svg += '<image class="nblayla nbst' + st + ' nbday" href="' + lsrc + '" onerror="NB_STEPMISS[' + st + ']=1;this.setAttribute(\'href\',STEP_IMG[' + st + '])' + lgeo;
@@ -194596,10 +194608,12 @@ var TABS = [
   ["quick","Quick|fire","--t11"],["cards","Revision|cards","--t6"],["podcasts","Podcasts","--t15"],["official","Official|resources","--t16"],["mock","Mock|exam","--t9"],
   ["hours","Hours|log","--t7"],["progress","Progress","--t8"],["settings","Settings","--t12"]
 ];
+if (SLIDES_MODE) TABS.splice(1, 0, ["slides","Power|Points","--t5"]); /* 22 Nov slides thread: PowerPoints tab right after Today, only in slides mode */
 function orderedTabs(){
   var ord = Array.isArray(S.tabOrder) ? S.tabOrder : [], out = [];
   ord.forEach(function(id){ TABS.forEach(function(t){ if (t[0] === id && out.indexOf(t) < 0) out.push(t); }); });
   TABS.forEach(function(t, i){ if (out.indexOf(t) >= 0) return; var j = i ? out.indexOf(TABS[i - 1]) : -1; if (ord.length && j >= 0) out.splice(j + 1, 0, t); else out.push(t); });
+  if (HIDE_PECKHAM) out = out.filter(function(t){ return t[0] !== "palace"; }); /* 22 Nov slides: no Peckham tab for Layla */
   return out;
 }
 function setTabOrder(ids){ S.tabOrder = ids; save(); }
@@ -195437,7 +195451,206 @@ function rotJoin(){
   if (ch) try { save(); } catch(e){}
   return j;
 }
+/* 22 Nov SLIDES MODE plan (Worker C): the study plan, Today and the timetable are built around Layla's BPP workshops (window.SQE_SLIDES).
+   Monnie's defaults below; change the numbers here. The plan starts the first day she opens it, runs to SLP_LAST_LEARN, then the old mock / revision days. */
+/* 22 Nov (Monnie approved): each day takes the next 1-2 workshops from 2-3 subjects (more at weekends); weekday = ~75 min slides + ~30 min Quick fire / Model Q&A on those workshops + ~15 min spaced repetition (45 at weekends); new material done by Sat 2 Jan, 3-5 Jan revision */
+var SLP_START = "2026-11-23", SLP_LAST_LEARN = "2027-01-02", SLP_OFF = ["12-25", "01-01"], SLP_SUBJ_WD = 3, SLP_SUBJ_WE = 6, SLP_PER_SUBJ = 2, SLP_SLIDES = 75, SLP_PRACT = 30, SLP_SR_WD = 15, SLP_SR_WE = 45, SLP_MIN_WS = 15, SLP_PER_PDF = 6;
+var SLP_ABBR = {blp:"BLP", dr:"DR", contract:"Contract", tort:"Tort", legalsys:"Legal Sys", wills:"Wills", trusts:"Trusts", land:"Land", property:"Property", crimlaw:"Crim Law", crimprac:"Crime", ethics:"Ethics", ls:"Bus of Law", accounts:"Accounts"};
+function slpHref(sid, n){ return typeof slidesHref === "function" ? slidesHref(sid, n) : "#/slides/" + sid + "/" + n; }
+function slpBpp(){ S.bpp = (S.bpp && typeof S.bpp === "object") ? S.bpp : {}; S.bpp.seen = S.bpp.seen || {}; S.bpp.done = S.bpp.done || {}; return S.bpp; }
+function slpDone(k){ return !!(S.bpp && S.bpp.done && S.bpp.done[k]); } /* same store as bppDone, read-only (the progress feed must not change S) */
+function slpDoneOn(k){ var t = (S.bpp && S.bpp.done || {})[k]; return t ? ymd(new Date(+t)) : ""; }
+function slpMins(s, n){ var m = 0; try { if (typeof bppMins === "function") m = +bppMins(s.id, n) || 0; } catch(e){} if (!m){ var w = s.w[n - 1]; m = Math.max(SLP_MIN_WS, SLP_PER_PDF * ((w && w.f) || []).length); } return m; }
+var SLP_ALL = null;
+function slpWS(){ if (SLP_ALL) return SLP_ALL; var out = []; (SLIDES || []).forEach(function(s, si){ (s.w || []).forEach(function(w, i){ out.push({k:s.id + "/" + (i + 1), sid:s.id, n:i + 1, s:s, si:si, t:w.t, rm:slpMins(s, i + 1)}); }); }); return (SLP_ALL = out); }
+function slpGoal(d){ var ds = ymd(d); if (SLP_OFF.indexOf(ds.slice(5)) >= 0) return 0; return goalMins(d); }
+function slpSR(d){ return d.getDay() % 6 === 0 ? SLP_SR_WE : SLP_SR_WD; }
+function slpCap(d, g){ var rest = Math.max(0, g - slpSR(d)); return rest * SLP_SLIDES / (SLP_SLIDES + SLP_PRACT); }
+/* re-flows the unfinished workshops from today over the days left (once a day, or when the hours change); finished ones stay on the day they were planned */
+function slpReflow(all, tdy, key){
+  var sp = S.slidePlan, at = {}, orig = sp.orig || {}, end = SLP_LAST_LEARN, L = [], d = parseYmd(tdy < SLP_START ? SLP_START : tdy); /* 22 Nov 23:24 (Monnie): revision starts Mon 23 Nov */
+  all.forEach(function(w){ if (sp.at && sp.at[w.k] && slpDone(w.k) && slpDoneOn(w.k) < tdy) at[w.k] = sp.at[w.k]; });
+  while (ymd(d) <= end){ var g = slpGoal(d); if (g > 0) L.push({d:ymd(d), cap:slpCap(d, g), we:d.getDay() % 6 === 0}); d = new Date(d); d.setDate(d.getDate() + 1); }
+  var tot = {}, prog = {}; all.forEach(function(w){ tot[w.sid] = (tot[w.sid] || 0) + w.rm; if (slpDone(w.k) && !(slpDoneOn(w.k) === tdy)) prog[w.sid] = (prog[w.sid] || 0) + w.rm; });
+  var pend = all.filter(function(w){ return !at[w.k] && (!slpDone(w.k) || slpDoneOn(w.k) === tdy); });
+  var q = {}; pend.forEach(function(w){ (q[w.sid] = q[w.sid] || []).push(w); });
+  var Wp = 0, C = 0; pend.forEach(function(w){ Wp += w.rm; }); L.forEach(function(x){ C += x.cap; });
+  var sched = 0, cum = 0, idx = 0, lastS = null, order = (SLIDES || []).map(function(s){ return s.id; });
+  if (!L.length && pend.length) L.push({d:tdy, cap:120, we:false});
+  /* finished today: kept on today's list */
+  pend.filter(function(w){ return slpDone(w.k); }).forEach(function(w){ at[w.k] = [tdy, idx++]; q[w.sid].splice(q[w.sid].indexOf(w), 1); sched += w.rm; prog[w.sid] = (prog[w.sid] || 0) + w.rm; lastS = w.sid; });
+  L.forEach(function(x, li){
+    cum += x.cap; var T = C ? Wp * Math.min(1, 1.03 * cum / C) : Wp, /* runs about 3% ahead so the last day isn't a pile-up */ last = li === L.length - 1, maxS = x.we ? SLP_SUBJ_WE : SLP_SUBJ_WD, ds = [];
+    var cnt = {}; all.forEach(function(w){ if (at[w.k] && at[w.k][0] === x.d){ if (ds.indexOf(w.sid) < 0) ds.push(w.sid); cnt[w.sid] = (cnt[w.sid] || 0) + 1; } });
+    while (true){
+      var left = order.filter(function(s){ return q[s] && q[s].length; }); if (!left.length) break;
+      if (!last){ left = left.filter(function(s){ return (cnt[s] || 0) < SLP_PER_SUBJ; }); if (!left.length) break; }
+      var el = ds.length >= maxS ? left.filter(function(s){ return ds.indexOf(s) >= 0; }) : left; if (!el.length){ if (!last) break; el = left; }
+      var c2 = el.filter(function(s){ return s !== lastS; }); if (c2.length) el = c2;
+      el.sort(function(a, b){ var fa = (prog[a] || 0) / tot[a], fb = (prog[b] || 0) / tot[b]; return fa - fb || order.indexOf(a) - order.indexOf(b); });
+      var w = q[el[0]][0];
+      if (!last && sched + w.rm * 0.2 > T) break;
+      q[el[0]].shift(); at[w.k] = [x.d, idx++]; sched += w.rm; prog[w.sid] = (prog[w.sid] || 0) + w.rm; lastS = w.sid; cnt[w.sid] = (cnt[w.sid] || 0) + 1; if (ds.indexOf(w.sid) < 0) ds.push(w.sid);
+    }
+  });
+  all.forEach(function(w){ if (at[w.k] && !orig[w.k]) orig[w.k] = at[w.k][0]; });
+  S.slidePlan = {from:sp.from || tdy, day:tdy, key:key, at:at, orig:orig, v:(sp.v || 0) + 1};
+  try { save(); } catch(e){}
+}
+var PLANS = null;
+function buildPlanSlides(){
+  var st = S.settings, tdy = ymd(), key = JSON.stringify([st.weekday, st.weekend, st.daysOff, st.exam1, st.exam2, SLP_START, SLP_LAST_LEARN, SLP_OFF, SLP_SUBJ_WD, SLP_SUBJ_WE, SLP_PER_SUBJ, SLP_SLIDES, SLP_PRACT, SLP_SR_WD, SLP_SR_WE, (SLIDES || []).length, slpWS().length]);
+  S.slidePlan = (S.slidePlan && typeof S.slidePlan === "object") ? S.slidePlan : {};
+  var all = slpWS(), sp = S.slidePlan;
+  var miss = all.some(function(w){ return !(sp.at && sp.at[w.k]) && !(slpDone(w.k) && slpDoneOn(w.k) < (sp.day || tdy)); });
+  if (sp.day !== tdy || sp.key !== key || !sp.at || miss) slpReflow(all, tdy, key);
+  sp = S.slidePlan;
+  if (PLANS && PLANS.ck === sp.v + "|" + tdy) return PLANS;
+  var e1 = parseYmd(st.exam1), e2 = parseYmd(st.exam2), rev1 = new Date(e1); rev1.setDate(e1.getDate() - 5);
+  var days = [], byD = {}, d = parseYmd(sp.from < tdy ? sp.from : tdy);
+  while (d < e2){
+    var ds = ymd(d), ph = ds === st.exam1 ? "exam" : (d < rev1 && ds <= SLP_LAST_LEARN) ? "learn" : d < e1 ? "rev1" : "rev2";
+    var x = {d:ds, m:ph === "exam" ? 0 : slpGoal(d), ph:ph, items:[], reviews:[], mixed:0, ws:[]}; days.push(x); byD[ds] = x;
+    d = new Date(d); d.setDate(d.getDate() + 1);
+  }
+  all.forEach(function(w){ var a = sp.at[w.k]; if (a && byD[a[0]]) byD[a[0]].ws.push({k:w.k, sid:w.sid, n:w.n, s:w.s, t:w.t, rm:w.rm, ord:a[1], cu:!!(sp.orig[w.k] && sp.orig[w.k] < a[0])}); });
+  /* sizing: workshops at their own time (scaled down if they don't fit), the rest of the day's goal is practice, shared by that day's subjects */
+  var W = 0, C = 0; days.forEach(function(x){ if (x.ph === "learn" && x.d >= tdy){ x.ws.forEach(function(w){ W += w.rm; }); if (x.m) C += slpCap(parseYmd(x.d), x.m); } });
+  var sc = W > C && C > 0 ? C / W : 1;
+  days.forEach(function(x){
+    x.ws.sort(function(a, b){ return a.ord - b.ord; });
+    if (x.ph === "learn"){
+      var sm = 0, subs = []; x.ws.forEach(function(w){ w.m = w.rm * sc; sm += w.m; if (subs.indexOf(w.sid) < 0) subs.push(w.sid); });
+      x.srOn = x.m > 0 && slpPrior(x.d, tdy, days); x.sr = x.srOn ? slpSR(parseYmd(x.d)) : 0;
+      var sb = Math.max(0, x.m - x.sr) * SLP_SLIDES / (SLP_SLIDES + SLP_PRACT); /* keep the day's shape: if the slides run over their share, their times are shown shorter so practice keeps its ~30 min */
+      if (sm > sb && sb > 0){ var f = sb / sm; x.ws.forEach(function(w){ w.m *= f; }); sm = sb; }
+      var pr = x.ws.length ? Math.max(0, x.m - x.sr - sm) : 0;
+      x.ws.forEach(function(w){ w.p = pr / x.ws.length; });
+    }
+    if (x.ph === "rev1" || x.ph === "rev2"){
+      var p = x.ph === "rev1" ? "FLK1" : "FLK2", aft = new Date(e1); aft.setDate(e1.getDate() + 1);
+      if (x.d === dayBefore(st.exam1) || x.d === dayBefore(st.exam2) || ((x.d === ymd(rev1) || x.d === ymd(aft)) && x.m >= 90)) /* mocks 6 & 10 Jan (FLK1), 12 & 17 Jan (FLK2) */ x.rev = {t:p + " mock day: 1 or 2 mocks, nothing else", sub:"Do one or two timed mocks in Mock exam, then go through every answer you got wrong. No new workshops today.", href:"#/mock"};
+      else x.rev = {t:p + " revision", sub:"Quick fire refresh, redo wrong Model Q&A answers, 20 official SRA sample questions, then re-read your red and amber " + p + " topics.", href:"#/quick/review"};
+    }
+  });
+  var tot = 0; days.forEach(function(x){ tot += x.m; });
+  PLANS = {ck:sp.v + "|" + tdy, key:key, days:days, revs:{}, all:tot, cap:tot, rate:0, slides:true, sc:sc};
+  return PLANS;
+}
+/* the spaced repetition item shows once she has ticked a workshop before that day (future days: once one is planned earlier) */
+function slpPrior(ds, tdy, days){ var b = (S.bpp && S.bpp.done) || {}; for (var k in b) if (b[k] && ymd(new Date(+b[k])) < ds) return true; if (ds <= tdy) return false; for (var i = 0; i < days.length && days[i].d < ds; i++) if (days[i].d >= tdy && days[i].ws.length) return true; return false; }
+/* topics a workshop covers (window.SQE_SLIDEMAP, made from the slides; empty if not mapped yet) */
+function slpTopics(k){ var m = (window.SQE_SLIDEMAP || {})[k] || []; return m.map(function(tk){ return TBYKEY[tk]; }).filter(Boolean); }
+function slpQ(w){
+  var tp = slpTopics(w.k), s0 = BYID[w.sid], qf = tp.filter(function(x){ return (x.s.qq || []).some(function(q){ return q.t === x.t.id; }); }), qa = tp.filter(function(x){ return topicQs(x.s, x.t.id).length; });
+  var alt = function(L, base){ return L.length > 1 ? L.slice(1).map(function(x){ return ' <a class="tdalt" href="' + base + x.s.id + '/' + x.t.id + '">' + esc(x.t.title) + '</a>'; }).join("") : ''; };
+  return {qf: qf.length ? {h:"#/quick/" + qf[0].s.id + "/" + qf[0].t.id, l:"Quick fire: " + qf[0].t.title, alt:alt(qf, "#/quick/")} : {h:"#/quick/" + (s0 ? s0.id : w.sid), l:"Quick fire: " + w.s.t, alt:""},
+    qa: qa.length ? {h:"#/questions/" + qa[0].s.id + "/" + qa[0].t.id, l:"Model Q&A: " + qa[0].t.title, alt:alt(qa, "#/questions/")} : {h:"#/questions/" + (s0 ? s0.id : w.sid), l:"Model Q&A: " + w.s.t, alt:""}};
+}
+function slpSteps(w){ var b = "bp|" + w.k + "|", q = slpQ(w);
+  return [{k:b + "slides", l:"Go through the slides", h:slpHref(w.sid, w.n), m:w.m},
+    {k:b + "quick", l:q.qf.l, h:q.qf.h, alt:q.qf.alt, m:(w.p || 0) * 0.4},
+    {k:b + "qa", l:q.qa.l, h:q.qa.h, alt:q.qa.alt, m:(w.p || 0) * 0.6}]; }
+function slpStepLi(z, on){ return '<li><button class="tdbox' + (on ? " on" : "") + '" data-act="todo" data-k="' + z.k + '" aria-label="Tick off">' + (on ? "✓" : "") + '</button><a href="' + z.h + '">' + esc(z.l) + '</a>' + (z.alt || '') + (z.m >= 1 ? '<span class="tdmin">' + fmtM(z.m) + '</span>' : '') + '</li>'; }
+function slpTodoHTML(w){
+  var dn = slpDone(w.k), st = slpSteps(w), tm = 0; st.forEach(function(z){ tm += z.m || 0; });
+  return '<li class="tdtopic"><b>' + esc(w.s.t) + ', workshop ' + w.n + '</b> ' + esc(w.t) + ' <span class="muted small">' + fmtM(tm) + (w.cu ? ' · catch up' : '') + '</span>' + (dn ? ' <span class="pill g">Done ✓</span>' : '') + '<ul class="tdsteps">' +
+    st.map(function(z){ return slpStepLi(z, dn || !!(S.todo && S.todo[z.k])); }).join("") + '</ul></li>';
+}
+function slpSRSteps(pd){ return [{k:"sr|" + pd.d + "|qf", l:"Quick fire refresh (workshops you've ticked)", h:"#/quick/review", m:pd.sr * 0.5}, {k:"sr|" + pd.d + "|qa", l:"Redo the Model Q&A you got wrong", h:"#/questions/wrong", m:pd.sr * 0.5}]; }
+function slpSRHTML(pd){ if (!pd.srOn) return ""; return '<li class="tdtopic"><b>Spaced repetition</b> <span class="muted small">' + fmtM(pd.sr) + ' · going back over what you\'ve done</span><ul class="tdsteps">' + slpSRSteps(pd).map(function(z){ return slpStepLi(z, !!(S.todo && S.todo[z.k])); }).join("") + '</ul></li>'; }
+function slpDayHTML(pd){ return pd.ws.map(slpTodoHTML).join("") + slpSRHTML(pd); }
+/* unfinished workshops planned for days before ds (normally none: the plan re-flows every morning) */
+function slpBehind(ds){ var out = []; buildPlan().days.forEach(function(x){ if (x.d < ds) x.ws.forEach(function(w){ if (!slpDone(w.k)) out.push(w); }); }); return out; }
+/* ticking all three steps marks the workshop finished (same as the PowerPoints tab button); unticking one takes that back */
+function bppTodoSync(k){
+  var a = String(k).split("|"); if (a[0] !== "bp" || !a[1]) return;
+  var b = slpBpp(), wk = a[1], all3 = ["slides", "quick", "qa"].every(function(s){ return S.todo["bp|" + wk + "|" + s]; });
+  b.auto = b.auto || {};
+  if (all3 && !b.done[wk]){ b.done[wk] = Date.now(); b.auto[wk] = 1; }
+  else if (!all3 && b.auto[wk]){ delete b.done[wk]; delete b.auto[wk]; }
+}
+function slpDayTasks(ds){
+  var pd = planDay(ds), out = [];
+  if (!pd || SLP_OFF.indexOf(ds.slice(5)) >= 0 || pd.ph === "exam" || !pd.m) return out;
+  if (pd.ph === "learn"){ pd.ws.forEach(function(w){ slpSteps(w).forEach(function(z){ out.push({k:z.k, kind:"bpp", w:w.k}); }); }); if (pd.srOn) slpSRSteps(pd).forEach(function(z){ out.push({k:z.k, kind:"sr"}); }); }
+  else if (pd.rev) revSteps(pd).forEach(function(z){ out.push({k:z.k, kind:z.kind}); });
+  return out;
+}
+/* in slides mode "covered" (for Quick fire refresh and the extras) = the topics of the workshops she has ticked */
+function slpCovered(){ var o = {}, b = (S.bpp && S.bpp.done) || {}; for (var k in b) if (b[k]) slpTopics(k).forEach(function(x){ o[x.key] = 1; }); return o; }
+function viewPlanSlides(){
+  var p = buildPlan(), tdy = ymd(), nW = 0, nD = 0; p.days.forEach(function(x){ nW += x.ws.length; x.ws.forEach(function(w){ if (slpDone(w.k)) nD++; }); });
+  var h = '<div class="card"><h2>📅 Revision timetable</h2><p class="muted" style="margin:0">Your BPP workshops in order, the next one or two from two or three subjects each day (more at weekends). Every workshop is done by ' + esc(fmtDate(SLP_LAST_LEARN)) + '. Then revision, and mocks before each paper.</p>' +
+    '<div class="plansum"><span><b>' + nD + ' of ' + nW + '</b> workshops done</span><span><b>' + S.settings.weekday + 'h</b> on weekdays</span><span><b>' + S.settings.weekend + 'h</b> at weekends</span><span>Days off: 25 Dec, 1 Jan</span></div>' +
+    '<p class="small muted">Each workshop: go through the slides, then Quick fire and Model Q&amp;A on its topics. Each day ends with a short spaced repetition of what you have done. Fall behind? The plan moves the rest along each morning. You can change the hours in Settings.</p></div>';
+  var weeks = [], cur = null;
+  p.days.forEach(function(x){ var w = (parseYmd(x.d).getDay() + 6) % 7; if (!cur || w === 0){ cur = []; weeks.push(cur); while (cur.length < w) cur.push(null); } cur.push(x); });
+  h += '<div class="card"><h3 style="margin-top:0">At a glance</h3><div class="cal"><div class="calh">Mon</div><div class="calh">Tue</div><div class="calh">Wed</div><div class="calh">Thu</div><div class="calh">Fri</div><div class="calh">Sat</div><div class="calh">Sun</div>';
+  weeks.forEach(function(wk){ for (var c = 0; c < 7; c++){ var x = wk[c];
+    if (!x){ h += '<div class="calc empty"></div>'; continue; }
+    var dd = parseYmd(x.d), col = x.ws.length ? SUBJCOL[x.ws[0].sid] : null, lab, cls = "calc";
+    if (x.ph === "exam"){ lab = "🎓 FLK1"; cls += " exam"; }
+    else if (x.d === S.settings.exam2){ lab = "🎓 FLK2"; cls += " exam"; }
+    else if (!x.m){ lab = x.d.slice(5) === "12-25" ? "🎄 XMAS" : x.d.slice(5) === "01-01" ? "🎆 NEW YEAR" : "off"; cls += " off"; }
+    else if (x.rev){ lab = /mock/i.test(x.rev.t) ? "📝 Mocks" : "🔁 Revise"; cls += /mock/i.test(x.rev.t) ? " mock" : " rev"; }
+    else { var g = {}, ord = []; x.ws.forEach(function(w){ if (!g[w.sid]){ g[w.sid] = []; ord.push(w.sid); } g[w.sid].push(w.n); }); lab = ord.map(function(s){ return (SLP_ABBR[s] || (g[s].length && x.ws.filter(function(w){ return w.sid === s; })[0].s.t) || s) + " " + g[s].join(", "); }).join("; "); }
+    h += '<a href="#d' + x.d + '" data-act="caljump" data-d="' + x.d + '" class="' + cls + (x.d === tdy ? " today" : "") + (x.ws.length && x.ws.every(function(w){ return slpDone(w.k); }) ? " done" : "") + '" style="' + (col ? 'background:' + col[0] + ';border-color:' + col[1] : '') + '"><b>' + dd.getDate() + (dd.getDate() === 1 || x === p.days[0] ? ' ' + dd.toLocaleDateString("en-GB", {month:"short"}) : '') + '</b><span>' + esc(lab) + '</span></a>';
+  } });
+  h += '</div><div class="callegend">' + (SLIDES || []).map(function(s){ var c = SUBJCOL[s.id] || ["#eee", "#ccc"]; return '<span><i style="background:' + c[0] + ';border-color:' + c[1] + '"></i>' + esc(s.t) + '</span>'; }).join("") + '</div></div>';
+  weeks.forEach(function(wk){
+    var wm = 0, f0 = wk.filter(Boolean)[0]; wk.forEach(function(x){ if (x) wm += x.m; });
+    h += '<div class="card planweek"><h3>Week of ' + parseYmd(f0.d).toLocaleDateString("en-GB", {day:"numeric", month:"short"}) + ' <span class="muted small">' + fmtH(wm) + '</span></h3>';
+    wk.forEach(function(x){
+      if (!x) return;
+      var dd = parseYmd(x.d), lab = dd.toLocaleDateString("en-GB", {weekday:"short", day:"numeric", month:"short"}), isEx = x.ph === "exam" || x.d === S.settings.exam2;
+      h += '<div id="d' + x.d + '" class="pday' + (x.d === tdy ? " today" : "") + (x.d < tdy ? " past" : "") + '"><div class="pdate"><b>' + lab + '</b><span class="small muted">' + (isEx ? "exam" : x.m ? fmtH(x.m) : "day off") + '</span></div><div class="pitems">';
+      if (isEx) h += '<b>🎓 ' + (x.d === S.settings.exam2 ? "FLK2" : "FLK1") + ' exam day. You\'ve got this!</b>';
+      else if (!x.m) h += x.d.slice(5) === "12-25" ? '<b class="hol">CHRISTMAS DAY!!! 🎄</b>' : x.d.slice(5) === "01-01" ? '<b class="hol">NEW YEAR\'S DAY!!! 🎆</b>' : '<span class="muted">Day off. Rest is part of revision.</span>';
+      else if (x.rev) h += '<a href="' + x.rev.href + '"><b>' + esc(x.rev.t) + '</b></a><div class="small muted">' + esc(x.rev.sub) + '</div>';
+      else if (!x.ws.length) h += '<span class="muted">' + (x.d < tdy ? 'Nothing planned.' : 'Free day: catch up or revise.') + '</span>';
+      else h += '<ul class="plist">' + x.ws.map(function(w){ var dn = slpDone(w.k); return '<li class="' + (dn ? "pdone" : "") + '"><a href="' + slpHref(w.sid, w.n) + '"><b>' + esc(SLP_ABBR[w.sid] || w.s.t) + ' ' + w.n + '</b> ' + esc(w.t) + '</a> <span class="muted small">' + fmtM(w.m + (w.p || 0)) + (w.cu ? ' · catch up' : '') + '</span>' + (dn ? ' <span class="pill g">✓</span>' : '') + '</li>'; }).join("") + '</ul>' + (x.srOn ? '<div class="small revline">+ spaced repetition (' + fmtM(x.sr) + ')</div>' : '');
+      h += '</div></div>';
+    });
+    h += '</div>';
+  });
+  return h;
+}
+/* 22 Nov SLIDES MODE (Worker C): Progress is counted in BPP workshops (S.bpp.done) and slides opened (S.bpp.seen); old topic data is kept, just not shown */
+function slpProgress(){
+  var b = (S.bpp && typeof S.bpp === "object") ? S.bpp : {}, seen = 0, per = [], dn = 0, tot = 0, pdfs = 0, seenSet = {};
+  for (var k in (b.seen || {})) if (b.seen[k]) seenSet[k] = 1;
+  (SLIDES || []).forEach(function(s){
+    var d = 0, sv = 0, pf = 0; (s.w || []).forEach(function(w, i){ if (slpDone(s.id + "/" + (i + 1))) d++; (w.f || []).forEach(function(f){ pf++; if (seenSet[f[1]]) sv++; }); });
+    per.push({id:s.id, s:s, n:(s.w || []).length, done:d, pdfs:pf, seen:sv}); dn += d; tot += (s.w || []).length; pdfs += pf; seen += sv;
+  });
+  return {per:per, done:dn, n:tot, pdfs:pdfs, seen:seen};
+}
+function viewProgressSlides(){
+  var P = slpProgress(), pct = Math.round(P.done / Math.max(1, P.n) * 100);
+  var qAll = allQs(), tAll = qAll.filter(function(x){ return S.qa[x.id]; }), rAll = tAll.filter(function(x){ return S.qa[x.id].last === 1; }).length, wrongN = tAll.filter(function(x){ return S.qa[x.id].last === -1; }).length;
+  var minsOf = function(id){ var m = 0; allLogs().forEach(function(l){ if (l.s === id) m += +l.m || 0; }); return m; };
+  var h = '<div class="card"><h2>Progress</h2><div class="charts">' +
+    '<div><h3>Workshops done</h3>' + donut([{n:P.done, c:"var(--good)", l:"Done"}, {n:P.n - P.done, c:"var(--line)", l:"Not done yet"}], pct + "%", "done", "Workshops done") + '<p class="small muted" style="margin:6px 0 0">' + P.done + ' of ' + P.n + ' workshops</p></div>' +
+    '<div><h3>Slides opened</h3>' + donut([{n:P.seen, c:"var(--accent)", l:"Opened"}, {n:P.pdfs - P.seen, c:"var(--line)", l:"Not opened yet"}], Math.round(P.seen / Math.max(1, P.pdfs) * 100) + "%", "opened", "Slides opened") + '<p class="small muted" style="margin:6px 0 0">' + P.seen + ' of ' + P.pdfs + ' PDFs</p></div>' +
+    '<div><h3>Model questions</h3>' + donut([{n:rAll, c:"var(--good)", l:"Right last time"}, {n:wrongN, c:"var(--bad)", l:"Wrong last time"}, {n:qAll.length - tAll.length, c:"var(--line)", l:"Not tried yet"}], tAll.length ? Math.round(rAll / tAll.length * 100) + "%" : "0", tAll.length ? "right" : "tried", "Model questions") + '</div>' +
+    '</div></div>';
+  h += '<div class="card"><h3>Workshops by subject</h3><p class="small muted" style="margin:0 0 8px">Each bar is one subject\'s BPP workshops. Tap a subject to open its slides.</p><div class="cov">' + P.per.map(function(r){
+      var c = SUBJCOL[r.id] || ["#E3ECFB", "#8FB0E8"];
+      return '<a class="covrow" href="' + (typeof slidesHref === "function" ? "#/slides/" + r.id : "#/slides/" + r.id) + '"><span class="covname">' + esc(r.s.t) + '</span><span class="covbar">' + (r.done ? '<i style="width:' + (r.done / Math.max(1, r.n) * 100) + '%;background:' + c[1] + '" title="Done: ' + r.done + '"></i>' : '') + '</span><span class="covn">' + r.done + '/' + r.n + '</span></a>';
+    }).join("") + '</div></div>';
+  h += '<div class="grid2">' +
+    '<div class="card"><h3>Workshops done</h3><p style="font-size:26px;margin:0"><b>' + P.done + '</b> / ' + P.n + '</p><div class="bar"><i style="width:' + pct + '%"></i></div></div>' +
+    '<div class="card"><h3>Model questions</h3><p style="font-size:26px;margin:0">' + (tAll.length ? '<b>' + Math.round(rAll / tAll.length * 100) + '%</b> right' : '<b>None tried yet</b>') + '</p><div class="small muted">' + tAll.length + ' of ' + qAll.length + ' tried</div></div>' +
+    '<div class="card"><h3>Hours</h3><p style="font-size:26px;margin:0"><b>' + fmtH(totalMins()) + '</b></p><div class="small muted">Your routine adds about ' + Math.round(plannedUntil(S.settings.exam1) / 60) + 'h more before FLK1 and ' + Math.round(plannedUntil(S.settings.exam2) / 60) + 'h before FLK2.</div></div>' +
+    '<div class="card"><h3>Mocks</h3><p style="font-size:26px;margin:0"><b>' + (S.mocks || []).filter(function(m){ return m && m.mock; }).length + '</b> done</p><div class="small muted"><a href="#/mock">Mock exam</a></div></div></div>';
+  h += '<div class="card"><h3>Subject by subject</h3><div style="overflow-x:auto"><table class="t"><tr><th>Subject</th><th>Workshops</th><th>Slides opened</th><th>Questions</th><th>Right</th><th>Hours</th></tr>' +
+    P.per.map(function(r){ var sj = BYID[r.id], ids = sj ? (sj.qs || []).map(function(q, i){ return sj.id + "#" + i; }) : [], tr = ids.filter(function(id){ return S.qa[id]; }), rt = tr.filter(function(id){ return S.qa[id].last === 1; }).length, acc = tr.length ? Math.round(rt / tr.length * 100) : null;
+      return '<tr><td><a href="#/slides/' + r.id + '">' + esc(r.s.t) + '</a></td><td>' + mring(r.done, r.n, "var(--good)", r.done + "/" + r.n) + '</td><td>' + r.seen + '/' + r.pdfs + '</td><td>' + tr.length + '/' + ids.length + '</td><td>' + (acc === null ? '<span class="muted">-</span>' : '<span class="pill ' + (acc >= 70 ? "g" : acc >= 55 ? "w" : "b") + '">' + acc + '%</span>') + '</td><td>' + fmtH(minsOf(r.id)) + '</td></tr>'; }).join("") + '</table></div></div>';
+  return h;
+}
 function buildPlan(){
+  if (SLIDES_MODE) return buildPlanSlides();
   var st = S.settings, RJ = rotJoin(), key = JSON.stringify([st.weekday, st.weekend, st.daysOff, st.exam1, st.exam2, RJ]);
   if (PLAN && PLAN.key === key) return PLAN;
   var e1 = parseYmd(st.exam1), e2 = parseYmd(st.exam2), rev1 = new Date(e1); rev1.setDate(e1.getDate() - 5);
@@ -195545,7 +195758,7 @@ function showExtra(){ return !!(S.settings && S.settings.showExtra); }
 function topicCards(s, tid, mode){ return (s.cards || []).map(function(c, i){ return i; }).filter(function(i){ if (cardTopic(s, i) !== tid) return false; var k = isCore(s, i); return mode === "all" ? true : mode === "extra" ? !k : k; }); }
 function topicQs(s, tid){ return (s.qs || []).map(function(q, i){ var k = s.id + "#" + i; if (!(k in QTOP) && q.t) QTOP[k] = q.t; if (!(k in QTOP)){ var sec = null; try { sec = findSection(s, null, q.q + " " + q.o[q.a] + " " + q.e); } catch(e){} QTOP[k] = sec ? sec.t : ""; } return QTOP[k] === tid && !ND["qa:" + hashStr(q.q)] ? k : null; }).filter(Boolean); }
 /* "Read the notes" goes to the topic's immersive scene when it has one (src/scene.js), else the notes page */
-function notesHref(x){ return (window.SQE_SCENES || {})[x.key] ? "#/scene/" + x.key : "#/topic/" + x.s.id + "/" + x.t.id; }
+function notesHref(x){ return !HIDE_PECKHAM && (window.SQE_SCENES || {})[x.key] ? "#/scene/" + x.key : "#/topic/" + x.s.id + "/" + x.t.id; }
 /* the first step of this topic still to do after step k (then any earlier one), for "Next:" buttons */
 function stepLabel(z){ return z.k === "rate" ? "Rate this topic" : String(z.l).replace(/^Step \d+:\s*/, "").replace(/<[^>]+>/g, "").replace(/^(?:\p{Extended_Pictographic}\uFE0F?\s*)+/u, "").trim(); }
 function nextUndone(x, k){ var rest = topicSteps(x); /* 16:20 (QA): the FIRST unticked step, so an unticked Room 1 comes before later steps */
@@ -195563,12 +195776,12 @@ function swIco(n, sz){ var K = ' stroke="#1b1b1b" stroke-width="3.2" stroke-line
 function swStepIco(z){ return z.k === "quick" ? swIco("bolt") : z.k === "qa" ? swIco("pencil") : z.k === "bert" ? swIco("glove") : z.k === "notes" && /Room \d|Ride \d/.test(z.l) ? swIco("sweet") : swIco("notes"); }
 function topicSteps(x){
   var s = x.s, t = x.t, base = "#/topic/" + s.id + "/" + t.id, nq = (s.qq || []).filter(function(q){ return q.t === t.id; }).length, nc = topicCards(s, t.id).length, nm = topicQs(s, t.id).length;
-  var rmS = (window.SQE_SCENES || {})[x.key], stO = (window.SQE_STOP_OF || {})[x.key], rmOn = rmS && window.SQE_ROOMS_ON && (s.id === "blp" || stO); /* Monnie 05:45: step 1 = visit the topic's room (the syllabus notes and cartoons stay in their own tabs) */
+  var rmS = (window.SQE_SCENES || {})[x.key], stO = (window.SQE_STOP_OF || {})[x.key], rmOn = !HIDE_PECKHAM && rmS && window.SQE_ROOMS_ON && (s.id === "blp" || stO); /* 22 Nov slides: no rooms for Layla, step 1 = read the notes */ /* Monnie 05:45: step 1 = visit the topic's room (the syllabus notes and cartoons stay in their own tabs) */
   var st = [rmOn ? (stO ? {k:"notes", l:"Visit " + (stO === "dr" ? "Ride " : "Room ") + (((window.SQE_STOP_IDX || {})[x.key] || 0) + 1) + " at " + esc(String(((window.SQE_STOPDATA || {})[stO] || {hub: {}}).hub.title || "the stop").replace(/^The /, "the ")) + ": " + esc(t.title), h:"#/scene/" + x.key + "/inside"} : {k:"notes", l:"🍬 Visit Room " + (x.i + 1) + " in the Sweet Shop: " + esc(t.title), h:"#/scene/" + x.key + "/inside"} /* 15:52 (QA): step 1 opens the room itself, not the shop front */) : {k:"notes", l:"📝 Learn it: read the notes", h:notesHref(x), alt:!NO_CT && (window.SQE_SCENES || {})[x.key] && DFPH[x.key] && DFPH[x.key].length ? ' <a class="tdalt" href="' + base + '/cartoon">🖼️ Cartoon (' + DFPH[x.key].length + ' pages)</a>' : ''}]; /* 20 Nov Monnie: framework only in the day-6 review, not on the learning day */
   if (nq) st.push({k:"quick", l:"⚡ Quick fire (" + nq + ")", h:"#/quick/" + s.id + "/" + t.id});
   if (nm) st.push({k:"qa", l:"✍️ Model Q&A (" + nm + ")", h:"#/questions/" + s.id + "/" + t.id});
   /* Monnie 20 Nov 05:43: the topic's final boss step = Face Bert (10-question topic game); ticks itself when she beats him */
-  if (typeof bossQs === "function" && bossQs(x.key).length) st.push({k:"bert", l:"🥊 Final boss: Face the Butcher (10 questions)", h:"#/boss/" + s.id + "/" + t.id, auto:true, autoT:"Ticks itself when you beat Bert"});
+  if (!HIDE_PECKHAM && typeof bossQs === "function" && bossQs(x.key).length) st.push({k:"bert", l:"🥊 Final boss: Face the Butcher (10 questions)", h:"#/boss/" + s.id + "/" + t.id, auto:true, autoT:"Ticks itself when you beat Bert"});
   st.forEach(function(z, i){ z.l = "Step " + (i + 1) + ": " + z.l; });
   st.push({k:"rate", l:"Then rate it<span class=\"ragdots\"><svg class=\"ragdot\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" aria-hidden=\"true\"><circle cx=\"9\" cy=\"9\" r=\"7\" fill=\"#e53935\" stroke=\"#333\" stroke-width=\"1.5\"/></svg><svg class=\"ragdot\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" aria-hidden=\"true\"><circle cx=\"9\" cy=\"9\" r=\"7\" fill=\"#ffb300\" stroke=\"#333\" stroke-width=\"1.5\"/></svg><svg class=\"ragdot\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" aria-hidden=\"true\"><circle cx=\"9\" cy=\"9\" r=\"7\" fill=\"#43a047\" stroke=\"#333\" stroke-width=\"1.5\"/></svg></span><span class=\"sr-only\"> red, amber or green</span>", h:base + "/rate", auto:true});
   return st;
@@ -195614,6 +195827,7 @@ function planItemHTML(it){
   return '<li class="' + (done ? "pdone" : "") + '"><a href="#/topic/' + it.x.s.id + '/' + it.x.t.id + '"><b>' + esc(tnum(it.x)) + '</b> ' + esc(it.x.t.title) + '</a> <span class="muted small">' + fmtM(it.m) + (it.part === "start" ? " · start" : it.part === "continue" ? " · carry on" : it.part === "finish" ? " · finish" : "") + '</span>' + (done ? ' <span class="pill g">✓</span>' : (function(){ var c = topicStepCount(it.x); return c[0] ? ' <span class="pill">' + c[0] + '/' + c[1] + ' ticked</span>' : ''; })()) + '</li>';
 }
 function viewPlan(){
+  if (SLIDES_MODE) return viewPlanSlides();
   var p = buildPlan(), tdy = ymd(), hrs = Math.round(p.cap / 60), wpm = Math.round(p.rate);
   var h = '<div class="card"><h2>📅 Revision timetable</h2><p class="muted" style="margin:0">Starts ' + fmtDate(PLAN_START) + ' and takes the subjects in turn: a new stop joins every few days, and each day mixes rooms from different stops (two on weekdays, up to four at weekends), so every subject is started early. Every topic is learned by ' + fmtDate(ymd(new Date(parseYmd(S.settings.exam1).getTime() - 6 * 86400000))) + '. The days before each paper are for revision and a mock.</p>' +
     '<div class="plansum"><span><b>' + S.settings.weekday + 'h</b> on weekdays</span><span><b>' + S.settings.weekend + 'h</b> at weekends</span><span><b>' + Math.round(p.all / 60) + 'h</b> in total</span><span>6h mock day before each paper</span><span>Days off: 25 Dec, 1 Jan</span></div>' +
@@ -195711,6 +195925,7 @@ function sidebar(curKey, r){
   r = r || [];
   if (r[0] === "questions" || r[0] === "play") return sideQuestions(r);
   if (r[0] === "quick") return sideQuick(r);
+  if (SLIDES_MODE && SLIDES.length) return sideSlides(r); /* 22 Nov slides thread: in slides mode the right-hand list is the PowerPoints workshops */
   var doneN = TOPICS.filter(function(x){ return S.done[x.key]; }).length;
   var qDone = Object.keys(S.qa).length, qAll = allQs().length;
   var h = '<h4>Topic list</h4><div class="sidestats">' + mring(doneN, TOPICS.length, "var(--good)", doneN + " of " + TOPICS.length + " topics") + mring(qDone, qAll, "var(--accent)", qDone + " of " + qAll + " questions") + '</div><div class="small muted">🔴 not confident yet · 🟠 getting there · 🟢 confident</div>';
@@ -195765,24 +195980,26 @@ VIEW.home = function(r){
     (canPrev ? '<a class="btn dnav" href="#/home/' + prev + '" aria-label="Previous day">‹</a>' : '<span class="btn dnav off">‹</span>') +
     '<div class="dtitle"><h2>' + lab + '</h2><div class="muted">' + dt.toLocaleDateString("en-GB", {weekday:"long", day:"numeric", month:"long"}) + (goal && (planDay(tdy) || {}).m ? ' · ' + fmtH(goal) + ' of study' : '') + '</div>' + (isToday ? '' : '<a class="small" href="#/home">Back to today</a>') + '</div>' +
     (canNext ? '<a class="btn dnav" href="#/home/' + next + '" aria-label="Next day">›</a>' : '<span class="btn dnav off">›</span>') + '</div>';
-  var pd = planDay(tdy), behind = isToday ? planItemsBefore(tdy) : [];
+  var pd = planDay(tdy), behind = isToday && !SLIDES_MODE ? planItemsBefore(tdy) : [], slBehind = isToday && SLIDES_MODE ? slpBehind(tdy) : [];
   if (isToday) h += feedPanel("home");
-  else { var dcn = dayCount(tdy); if (dcn.n) h += '<div class="small muted daycnt">' + dcn.d + ' of ' + dcn.n + ' tasks done on this day (Britney\'s feed unlocks at ' + dcn.need + ')</div>'; }
+  else { var dcn = dayCount(tdy); if (dcn.n) h += '<div class="small muted daycnt">' + dcn.d + ' of ' + dcn.n + ' tasks done on this day' + (SLIDES_MODE ? '' : ' (Britney\'s feed unlocks at ' + dcn.need + ')') + '</div>'; }
   var md = tdy.slice(5);
   if (md === "12-25") h += '<div class="holiday">CHRISTMAS DAY!!! 🎄<div class="small muted">No revision today. Enjoy it!</div></div>';
   else if (md === "01-01") h += '<div class="holiday">NEW YEAR\'S DAY!!! 🎆<div class="small muted">No revision today. Happy New Year!</div></div>';
   else if ((pd && pd.ph === "exam") || tdy === S.settings.exam1 || tdy === S.settings.exam2) h += '<div class="holiday">🎓 ' + (tdy === S.settings.exam2 ? 'FLK2' : 'FLK1') + ' exam day. You\'ve got this!</div>'; /* 18:25 (QA): FLK2 day too */
-  else if (tdy < PLAN_START) h += '<div class="holiday" style="font-size:18px">Your plan starts on ' + esc(parseYmd(PLAN_START).toLocaleDateString("en-GB", {weekday:"short", day:"numeric", month:"short"})) + '</div>';
+  else if (tdy < PLAN_START && !SLIDES_MODE) h += '<div class="holiday" style="font-size:18px">Your plan starts on ' + esc(parseYmd(PLAN_START).toLocaleDateString("en-GB", {weekday:"short", day:"numeric", month:"short"})) + '</div>';
   else if (dayHasList(pd)){
     if (behind.length >= 3) h += '<div class="banner warn">You are ' + plural(behind.length, "topic") + ' behind. That\'s fine: catch up at your own pace.</div>';
     if (behind.length) h += item(false, 'Catch up first: ' + esc(tnum(behind[0])) + ' ' + esc(behind[0].t.title), behind.length > 1 ? plural(behind.length, "topic") + ' from earlier days are not finished yet.' : 'From an earlier day.', '<a class="btn" href="#/topic/' + behind[0].s.id + '/' + behind[0].t.id + '">Open</a>');
-    h += '<h3 style="margin:14px 0 6px">' + (isToday ? "Today's" : "This day's") + ' to-do list</h3><div class="small muted">Work down the list and tick each step off as you go.</div><ul class="tdlist">' + pd.items.map(todoHTML).join("") + reviewHTML(pd) + (TOWNHOOK && TOWNHOOK.todo ? TOWNHOOK.todo(pd) : '') + (WEAKHOOK && WEAKHOOK.todo ? WEAKHOOK.todo(pd) : '') + '</ul>';
+    h += '<h3 style="margin:14px 0 6px">' + (isToday ? "Today's" : "This day's") + ' to-do list</h3><div class="small muted">Work down the list and tick each step off as you go.</div><ul class="tdlist">' + (SLIDES_MODE ? slBehind.map(slpTodoHTML).join("") + slpDayHTML(pd) : pd.items.map(todoHTML).join("") + reviewHTML(pd) + (TOWNHOOK && TOWNHOOK.todo ? TOWNHOOK.todo(pd) : '') + (WEAKHOOK && WEAKHOOK.todo ? WEAKHOOK.todo(pd) : '')) + '</ul>';
   } else if (pd && pd.rev && pd.m){
-    h += '<h3 style="margin:14px 0 6px">' + esc(pd.rev.t) + '</h3><div class="small muted">' + esc(pd.rev.sub) + '</div><ul class="tdlist"><li class="tdtopic"><b>' + (/mock/i.test(pd.rev.t) ? "📝 Mock day" : "🔁 Revision day") + '</b><ul class="tdsteps">' + revSteps(pd).map(function(z){ var dn = taskDone(z); return '<li><button class="tdbox' + (dn ? " on" : "") + '" data-act="todo" data-k="' + z.k + '" aria-label="Tick off">' + (dn ? "✓" : "") + '</button><a href="' + z.h + '">' + esc(z.l) + '</a>' + (z.m ? '<span class="tdmin">' + fmtM(z.m) + '</span>' : '') + '</li>'; }).join("") + '</ul></li>' + reviewHTML(pd) + (TOWNHOOK && TOWNHOOK.todo ? TOWNHOOK.todo(pd) : '') + (WEAKHOOK && WEAKHOOK.todo ? WEAKHOOK.todo(pd) : '') + '</ul>';
+    h += '<h3 style="margin:14px 0 6px">' + esc(pd.rev.t) + '</h3><div class="small muted">' + esc(pd.rev.sub) + '</div><ul class="tdlist"><li class="tdtopic"><b>' + (/mock/i.test(pd.rev.t) ? "📝 Mock day" : "🔁 Revision day") + '</b><ul class="tdsteps">' + revSteps(pd).map(function(z){ var dn = taskDone(z); return '<li><button class="tdbox' + (dn ? " on" : "") + '" data-act="todo" data-k="' + z.k + '" aria-label="Tick off">' + (dn ? "✓" : "") + '</button><a href="' + z.h + '">' + esc(z.l) + '</a>' + (z.m ? '<span class="tdmin">' + fmtM(z.m) + '</span>' : '') + '</li>'; }).join("") + '</ul></li>' + (SLIDES_MODE ? '' : reviewHTML(pd) + (TOWNHOOK && TOWNHOOK.todo ? TOWNHOOK.todo(pd) : '') + (WEAKHOOK && WEAKHOOK.todo ? WEAKHOOK.todo(pd) : '')) + '</ul>';
+  } else if (SLIDES_MODE && pd && pd.ph === "learn" && pd.m){
+    h += '<div class="holiday" style="font-size:18px">No workshops today<div class="small muted">Catch up, or revise what you have done.</div></div>';
   } else if (!pd || !pd.m){
     h += '<div class="holiday" style="font-size:18px">Day off 😴<div class="small muted">Rest is part of revision.</div></div>';
   }
-  if (isToday && coveredQQ().length){ var due = qfDue().length; if (due) h += item(false, '⭐ Optional extra: Quick fire refresh, ' + plural(Math.min(10, due), "question"), 'Not part of today\'s list. Only if you fancy more: questions from topics you\'ve already covered.', '<a class="btn" href="#/quick/review">Start</a>'); }
+  if (isToday && !SLIDES_MODE && coveredQQ().length){ var due = qfDue().length; if (due) h += item(false, '⭐ Optional extra: Quick fire refresh, ' + plural(Math.min(10, due), "question"), 'Not part of today\'s list. Only if you fancy more: questions from topics you\'ve already covered.', '<a class="btn" href="#/quick/review">Start</a>'); }
   h += '</div>';
   return h;
 };
@@ -195827,7 +196044,81 @@ VIEW.subject = function(r){
   return h;
 };
 
+/* ============ POWERPOINTS (22 Nov, slides thread, Worker A): Layla's BPP course slides (window.SQE_SLIDES, PDFs in bpp/).
+   Only reachable in SLIDES_MODE. Routes: #/slides (index), #/slides/<sid> (workshops), #/slides/<sid>/<n>[/<k>] (workshop n, PDF k).
+   Progress: S.bpp.seen[relPath] = ts when a PDF is shown; S.bpp.done["sid/n"] = ts from the "I've finished this workshop" button.
+   Helpers for the Today list / timetable: slidesHref(sid,n), bppDone(sid,n), bppMins(sid,n). ============ */
+var SL_BY = {}; SLIDES.forEach(function(s){ SL_BY[s.id] = s; });
+function bppS(){ if (!S.bpp || typeof S.bpp !== "object") S.bpp = {}; if (!S.bpp.seen || typeof S.bpp.seen !== "object") S.bpp.seen = {}; if (!S.bpp.done || typeof S.bpp.done !== "object") S.bpp.done = {}; return S.bpp; }
+function slidesHref(sid, n){ return "#/slides" + (sid ? "/" + sid : "") + (sid && n ? "/" + n : ""); }
+function bppDone(sid, n){ return !!bppS().done[sid + "/" + n]; }
+function bppMins(sid, n){ var s = SL_BY[sid], w = s && s.w[n - 1]; return Math.max(15, (w ? w.f.length : 0) * 6); }
+function bppDoneCount(s){ var c = 0; s.w.forEach(function(w, i){ if (bppDone(s.id, i + 1)) c++; }); return c; }
+function bppPaper(p){ return p === "Both" ? "Both papers" : p; }
+function bppBox(sid, n){ var dn = bppDone(sid, n); return '<button class="tdbox' + (dn ? ' on' : '') + '" data-bppdone="' + esc(sid + "/" + n) + '" aria-label="' + (dn ? 'Workshop done (tap to untick)' : 'Tick off this workshop') + '">' + (dn ? '✓' : '') + '</button>'; }
+function sideSlides(r){ /* right-hand list in slides mode: the 12 subjects and their numbered workshops, tick box = S.bpp.done */
+  var tot = 0, dn = 0; SLIDES.forEach(function(s){ tot += s.w.length; dn += bppDoneCount(s); });
+  var h = '<h4>PowerPoints</h4><div class="sidestats">' + mring(dn, tot, "var(--good)", dn + " of " + tot + " workshops done") + '</div>';
+  SLIDES.forEach(function(s, i){
+    if (!i || SLIDES[i - 1].paper !== s.paper) h += '<div class="grp">' + esc(bppPaper(s.paper)) + '</div>';
+    var here = r[0] === "slides" && r[1] === s.id, d = bppDoneCount(s);
+    h += '<details' + (here ? ' open' : '') + '><summary class="subj"><span>' + (i + 1) + '. ' + esc(s.t) + '</span><span>' + d + '/' + s.w.length + '</span></summary>';
+    s.w.forEach(function(w, j){ var on = bppDone(s.id, j + 1);
+      h += '<a class="tp' + (on ? ' done' : '') + (here && +r[2] === j + 1 ? ' cur' : '') + '" href="' + slidesHref(s.id, j + 1) + '"><span class="ck" role="checkbox" aria-checked="' + on + '" aria-label="Tick off" data-bppdone="' + esc(s.id + "/" + (j + 1)) + '">' + (on ? '✓' : '') + '</span><span style="flex:1">' + (j + 1) + '. ' + esc(w.t) + '</span></a>'; });
+    h += '</details>';
+  });
+  return h;
+}
+VIEW.slides = function(r){
+  if (!SLIDES_MODE) return VIEW.home(["home"]);
+  if (!SLIDES.length) return '<div class="card"><h2>PowerPoints</h2><p class="muted">Your slides are loading. Reload the page if this stays.</p></div>';
+  var s = SL_BY[r[1]], b = bppS();
+  if (!s){
+    return '<div class="card bpp"><h2>PowerPoints</h2><p class="muted">Your BPP course slides. Pick a subject.</p>' +
+      SLIDES.map(function(x, i){ /* in SQE_SLIDES order, numbered; a paper heading wherever the paper changes */
+        var d = bppDoneCount(x), all = x.w.length, hd = !i || SLIDES[i - 1].paper !== x.paper;
+        return (hd ? (i ? '</ul>' : '') + '<h3 class="bpph">' + esc(bppPaper(x.paper)) + '</h3><ul class="bpplist">' : '') +
+          '<li><a href="' + slidesHref(x.id) + '"' + (d >= all ? ' class="dn"' : '') + '><span class="bppnum">' + (d >= all ? '✓' : (i + 1)) + '</span><span class="bppt">' + esc(x.t) + '</span><span class="bppprog"><span class="pill' + (d >= all ? ' g' : '') + '">' + d + ' of ' + all + ' done</span><span class="bppbar2" aria-hidden="true"><i style="width:' + Math.round(d / all * 100) + '%"></i></span></span></a></li>';
+      }).join("") + '</ul></div>';
+  }
+  var notes = BYID[s.id] ? '<a class="btn" href="#/subject/' + s.id + '">Read the notes for ' + esc(BYID[s.id].title || s.t) + '</a>' : '';
+  var n = +r[2], w = n ? s.w[n - 1] : null;
+  if (!w){
+    var dc = bppDoneCount(s);
+    return '<div class="card bpp"><div class="small muted"><a href="#/slides">PowerPoints</a> › ' + esc(bppPaper(s.paper)) + '</div><h2>' + esc(s.t) + '</h2>' +
+      '<p class="muted">' + dc + ' of ' + s.w.length + ' workshops done.</p><ol class="bpplist bppws">' + s.w.map(function(x, i){
+        var dn = bppDone(s.id, i + 1);
+        return '<li class="bppck">' + bppBox(s.id, i + 1) + '<a href="' + slidesHref(s.id, i + 1) + '"' + (dn ? ' class="dn"' : '') + '><span class="bppnum">' + (i + 1) + '</span><span class="bppt">' + esc(x.t) + '</span><span class="muted small">' + x.f.length + ' PDF' + (x.f.length === 1 ? '' : 's') + '</span></a></li>';
+      }).join("") + '</ol><div class="btns">' + notes + '</div></div>';
+  }
+  var k = Math.min(Math.max(1, +r[3] || 1), w.f.length), f = w.f[k - 1], wd = bppDone(s.id, n), base = slidesHref(s.id, n);
+  if (f && !b.seen[f[1]]){ b.seen[f[1]] = Date.now(); setTimeout(save, 0); }
+  var src = f ? "bpp/" + f[1].split("/").map(encodeURIComponent).join("/") : "";
+  var viewer = f ? '<div class="bppview"><div class="bppbar">' +
+      '<a class="btn dnav' + (k > 1 ? '' : ' off') + '" href="' + base + '/' + (k - 1) + '" aria-label="Previous PDF">‹</a>' +
+      '<div class="bppcap"><b>' + esc(f[0]) + '</b><span class="muted small">PDF ' + k + ' of ' + w.f.length + ' · <a href="' + src + '" target="_blank" rel="noopener">Open full screen ↗</a></span></div>' +
+      '<a class="btn dnav' + (k < w.f.length ? '' : ' off') + '" href="' + base + '/' + (k + 1) + '" aria-label="Next PDF">›</a></div>' +
+      '<iframe class="bppframe" src="' + src + '#view=FitH" title="' + esc(f[0]) + '"></iframe></div>' : '';
+  var list = '<ol class="bpplist bpppdfs">' + w.f.map(function(x, i){
+      return '<li><a href="' + base + '/' + (i + 1) + '" class="' + (i + 1 === k ? 'on' : '') + (b.seen[x[1]] ? ' seen' : '') + '"><span class="bppnum">' + (b.seen[x[1]] ? '✓' : (i + 1)) + '</span><span class="bppt">' + esc(x[0]) + '</span></a></li>';
+    }).join("") + '</ol>';
+  return '<div class="card bpp"><div class="small muted"><a href="#/slides">PowerPoints</a> › <a href="' + slidesHref(s.id) + '">' + esc(s.t) + '</a></div>' +
+    '<h2 class="bpph2">' + bppBox(s.id, n) + '<span>Workshop ' + n + ': ' + esc(w.t) + '</span></h2><p class="muted" style="margin:0">' + w.f.length + ' PDF' + (w.f.length === 1 ? '' : 's') + '</p></div>' +
+    '<div class="bppwrap">' + viewer + '<div class="bppside"><div class="card">' + list + '</div></div></div>' +
+    '<div class="card bpp"><button class="btn big bppfin' + (wd ? ' good' : ' primary') + '" data-bppdone="' + esc(s.id + "/" + n) + '">' + (wd ? '✓ Workshop finished. Tap to undo' : 'I\'ve finished this workshop') + '</button>' +
+    '<div class="btns bppnav">' + (n > 1 ? '<a class="btn" href="' + slidesHref(s.id, n - 1) + '">‹ Previous workshop</a>' : '') +
+      (n < s.w.length ? '<a class="btn" href="' + slidesHref(s.id, n + 1) + '">Next workshop ›</a>' : '') + notes + '</div></div>';
+};
+document.addEventListener("click", function(e){
+  var el = e.target && e.target.closest ? e.target.closest("[data-bppdone]") : null; if (!el) return;
+  e.preventDefault(); e.stopPropagation(); /* a box inside a link ticks without opening the workshop */
+  var k = el.getAttribute("data-bppdone"), b = bppS();
+  if (b.done[k]) delete b.done[k]; else b.done[k] = Date.now();
+  save(); render();
+});
+
 var FWTEST = false, FWHASH = "";
+
 VIEW.topic = function(r){
   var x = TBYKEY[r[1] + "/" + r[2]]; if (!x) return VIEW.syllabus();
   var s = x.s, t = x.t, k = x.key, mode = r[3] || "notes", smp = SAMPLES[k] || {}, hl = -1;
@@ -196498,7 +196789,7 @@ VIEW.play = function(){
 /* ---------- Quick fire (short 4-option questions + spaced repetition) ---------- */
 var QF = null, SR_DAYS = [1, 3, 7, 14, 30, 60];
 function allQQ(){ var a = []; SUBJ.forEach(function(s){ a = a.concat(s.qq || []); }); return a; }
-function coveredQQ(){ return allQQ().filter(function(x){ return S.done[x.s.id + "/" + x.t]; }); }
+function coveredQQ(){ if (SLIDES_MODE){ var cv = slpCovered(); return allQQ().filter(function(x){ return cv[x.s.id + "/" + x.t]; }); } return allQQ().filter(function(x){ return S.done[x.s.id + "/" + x.t]; }); }
 function qfDue(){ var now = Date.now(); return coveredQQ().filter(function(x){ var r = S.qf[x.id]; return !r || r.due <= now; }); }
 function qfRecord(x, ok){
   var r = S.qf[x.id] || {b:0, n:0, c:0, due:0, at:0};
@@ -196518,7 +196809,7 @@ VIEW.mistakes = function(){
   var q = qfMistakes().length, w = wrongIds().length, c = cardMistakes();
   var row = function(n, href, t, d){ return '<div class="mxrow"><div><b>' + t + '</b><div class="small muted">' + d + '</div></div>' + (n ? '<a class="btn primary" href="' + href + '">Start (' + n + ')</a>' : '<span class="pill g">None ✓</span>') + '</div>'; };
   return '<div class="card"><h2>🧩 Weekly mistakes mix</h2><p class="muted">Everything you\'ve got wrong so far, from every topic, in one place. A question drops out once you get it right twice in a row; a card drops out once you mark it 🟢.</p>' +
-    (WEAKHOOK && WEAKHOOK.count ? row(WEAKHOOK.count(), "#/weak", "Weak-spot drill", "Wrong answers from Quick fire, Model Q&A, Mock exam and Bert's tests, spaced out until you get them right.") : "") +
+    (WEAKHOOK && WEAKHOOK.count ? row(WEAKHOOK.count(), "#/weak", "Weak-spot drill", (HIDE_PECKHAM ? "Wrong answers from Quick fire, Model Q&A and the Mock exam, spaced out until you get them right." : "Wrong answers from Quick fire, Model Q&A, Mock exam and Bert's tests, spaced out until you get them right.")) : "") +
     row(q, "#/quick/mistakes", "⚡ Quick fire questions you got wrong", "From all the topics you've covered.") +
     row(c, "#/cards/all/mistakes", "🃏 Revision cards still 🔴 or 🟠", "Cards you marked as not known yet or getting there.") +
     row(w, "#/questions/wrong", "✍️ Exam-style questions you got wrong", "Have another go, then read the explanation.") +
@@ -196595,7 +196886,7 @@ VIEW.quick = function(r){
       return '<div class="card qfend' + qfSk + '" style="text-align:center">' + (qfSk ? '<div class="swend" aria-hidden="true">' + SWJAR + '</div>' : '') + '<h2>' + (QF.score >= n * 0.7 ? 'Well done!' : QF.score >= n * 0.4 ? 'Good effort!' : 'Round over') + '</h2><p style="font-size:26px;margin:6px"><b>' + QF.score + ' / ' + n + '</b></p><p class="muted">in ' + secs + ' seconds. Anything you got wrong will come back sooner.</p>' +
         '<div class="btns" style="justify-content:center">' +
         (key === "review" ? (after ? '<button class="btn primary" data-act="qfagain">Next ' + Math.min(10, after) + ' (' + after + ' still due)</button>' : '<span class="pill g">All caught up for now ✓</span>') : (qfNx ? '<a class="btn primary" href="' + qfNx.h + '">Next: ' + esc(stepLabel(qfNx)) + ' ›</a><button class="btn" data-act="qfagain">Another round</button>' : '<button class="btn primary" data-act="qfagain">Another round</button>')) +
-        (qfNx ? '<a class="btn" href="' + notesHref(qfX) + '">Back to the ' + (STOPSHORT[qfX.s.id] && (window.SQE_SCENES || {})[qfX.key] ? 'Sweet Shop' : 'notes') + '</a>' : '<a class="btn" href="#/quick">Back to Quick fire</a>') + '</div></div>';
+        (qfNx ? '<a class="btn" href="' + notesHref(qfX) + '">Back to the ' + (STOPSHORT[qfX.s.id] && !HIDE_PECKHAM && (window.SQE_SCENES || {})[qfX.key] ? 'Sweet Shop' : 'notes') + '</a>' : '<a class="btn" href="#/quick">Back to Quick fire</a>') + '</div></div>';
     }
     var it = QF.items[QF.i], x = it.x;
     if (QF.atI !== QF.i || QF.atK !== QF.key){ QF.atI = QF.i; QF.atK = QF.key; QF.at = Date.now(); }
@@ -197106,6 +197397,7 @@ VIEW.hours = function(){
 
 /* ---------- Progress ---------- */
 VIEW.progress = function(){
+  if (SLIDES_MODE) return viewProgressSlides();
   var rows = [], weak = [];
   SUBJ.forEach(function(s){
     var td = s.topics.filter(function(t){ return S.done[s.id + "/" + t.id]; }).length;
@@ -197265,7 +197557,7 @@ function coinFloat(n, A){
   return true;
 }
 function showPops(){
-  var q = POPQ; POPQ = []; if (!q.length) return;
+  var q = POPQ; POPQ = []; if (!q.length || HIDE_PECKHAM) return; /* 22 Nov slides: no coin pop-ups */
   var n = 0, rep = false; q.forEach(function(v){ if (v > 0) n += v; else if (v < 0) rep = true; });
   if (n > 0 && q.indexOf(0) < 0 && coinFloat(n, tapAnchor())) return; /* QA 21 Nov: beside the answer she tapped */
   var bag = document.getElementById("mbag"), x = window.innerWidth - 24, y = 84, r = bag && bag.getBoundingClientRect();
@@ -197307,8 +197599,9 @@ function revSteps(pd){
     {k:"rv|" + pd.d + "|sra", kind:"rv", l:"🏛️ Do 20 official SRA sample questions for " + p + " (about 40 min)", h:"#/sra/paper/" + p},
     {k:"rv|" + pd.d + "|re", kind:"rv", l:"📝 Re-read your 🔴 and 🟠 " + p + " topics and their frameworks", h:"#/progress"}];
 }
-function dayHasList(pd){ return !!(pd && pd.ph === "learn" && (pd.items.length || (pd.reviews && pd.reviews.length) || pd.mixed)); }
+function dayHasList(pd){ if (SLIDES_MODE) return !!(pd && pd.ph === "learn" && pd.ws && pd.ws.length); return !!(pd && pd.ph === "learn" && (pd.items.length || (pd.reviews && pd.reviews.length) || pd.mixed)); }
 function dayTaskList(ds){
+  if (SLIDES_MODE) return slpDayTasks(ds);
   var pd = planDay(ds), out = [], seen = {};
   if (!pd || ds.slice(5) === "12-25" || ds.slice(5) === "01-01" || pd.ph === "exam") return out;
   var add = function(k, kind, x, st){ if (seen[k]) return; seen[k] = 1; out.push({k:k, kind:kind, x:x, st:st}); };
@@ -197331,6 +197624,7 @@ window.SQE_CONF = function(k){ try { var r = trec(k); return r && r.conf != null
 window.SQE_RATE = function(k){ try { return '<div class="btns scn-rate" style="justify-content:center">' + CONF.slice().reverse().map(function(c){ var cur = trec(k) && trec(k).conf === c.v; return '<button class="rate' + (cur ? " on" : "") + '" data-act="trate" data-k="' + k + '" data-v="' + c.v + '">' + c.e + '<span>' + esc(c.l) + '</span></button>'; }).join("") + '</div>'; } catch(e){ return ''; } };
 function mockDoneOn(ds){ return S.mocks.some(function(r){ return r && r.d === ds && r.mock; }); }
 function taskDone(z){
+  if (z.kind === "bpp" && z.w && slpDone(z.w)) return true;
   if (z.st) return stepDone(z.x, z.st);
   if (/^mk\|.*\|mock$/.test(z.k) && mockDoneOn(z.k.split("|")[1])) return true;
   return !!(S.todo && S.todo[z.k]);
@@ -197577,6 +197871,7 @@ function nbBagSVG(f){
     '<path d="M13.5 36.5C14.2 32.8 16 30 18.4 28" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>';
 }
 function bagHTML(){
+  if (HIDE_PECKHAM) return ""; /* 22 Nov slides: no coin bag */
   var c = cbaS(), it = nextPrize(), f = it ? Math.min(1, c.coins / it.p) : 1;
   var nd0 = henNeed(), lockd = nd0 && it && nd0.it.id === it.id && nd0.ok === false;
   var sub = it ? (c.coins >= it.p ? esc(it.n) + ' ready to buy!' : (it.p - c.coins) + ' more for ' + esc(it.n)) : 'Every prize won! 👑';
@@ -197599,6 +197894,7 @@ function henPic(L, m, extra){
 }
 /* ---------- feed panel (Today and the Palace) ---------- */
 function feedPanel(where){
+  if (HIDE_PECKHAM) return ""; /* 22 Nov slides: no Britney feeding */
   var t = ymd(), c = dayCount(t), g = gameS(), L = henLife(), m = henMood(L), more = Math.max(0, c.need - c.d), nm = henName(L), nd = henNeed();
   var btn, line, half = false, bags = feedLeft();
   if (g.fed[t]) line = '<b>Fed today ✓</b> Next feed tomorrow.';
@@ -198631,6 +198927,7 @@ function render(){
   try { syncCovered(); } catch(esc0){ if (window.console) console.error(esc0); }
   var r = route();
   if (!VIEW[r[0]]) r = ["home"];
+  if (HIDE_PECKHAM && /^(palace|map|scene|town|mount|boss|bosschase|cba)$/.test(r[0] || "")){ try { location.replace("#/home"); } catch(eRp){} r = ["home"]; } /* 22 Nov slides: Peckham/town/game pages go to Today */
   var curKey = r[0] === "topic" ? r[1] + "/" + r[2] : (r[0] === "subject" ? r[1] + "/" : null);
   var body, LT = window.SQE_LATE;
   if (LT && !LT.ready && lateGate(r)) body = LT.failed ? '<div class="card"><h2>This page couldn\'t load</h2><p class="muted">Check your internet connection, then reload the page.</p><button class="btn" type="button" onclick="location.reload()">Reload</button></div>' : '<div class="card"><p class="muted" style="margin:0">Loading…</p></div>'; /* speed (19:40): CBA, Bert's tests, mind maps and notes checks arrive in js/l-*.js after the first render */
@@ -198659,6 +198956,7 @@ function render(){
   var cur = $(".side a.tp.cur"); if (cur && cur.scrollIntoView && window.innerWidth > 900){ try { cur.scrollIntoView({block:"nearest"}); } catch(e){} }
   applyTheme(); blApply();
   try { ragFaces(app); } catch(eR){ if (window.console) console.error(eR); }
+  if (HIDE_PECKHAM) try { peckSweep(app); } catch(ePS){ if (window.console) console.error(ePS); }
   try { topicLinks(app); } catch(eTL){ if (window.console) console.error(eTL); } /* topic-links (20 Nov) */
 }
 var LATE_RX = /^(cba|boss|weak|mistakes)$/; /* 20:00 (QA): only the pages that truly need js/l-*.js (CBA levels, Bert tests) wait for it; scenes, shops, the Mount and notes draw at once and redraw when it lands */
@@ -198713,7 +199011,7 @@ document.addEventListener("click", function(e){
       if (QF.ans === 0){ if (Date.now() - (QF.at || 0) >= READ_MS.quick) earn(COIN.quick, "qf|" + qx.id); else if (!earnedToday("qf|" + qx.id)) tooQuick(READ_MS.quick); }
       save(); render(); break; }
     case "qfnext": QF.i++; QF.ans = QF.ansA && QF.ansA[QF.i] != null ? QF.ansA[QF.i] : null; render(); break;
-    case "todo": { var tk2 = el.getAttribute("data-k"); S.todo = S.todo || {}; if (S.todo[tk2]) delete S.todo[tk2]; else S.todo[tk2] = Date.now(); save(); render(); break; }
+    case "todo": { var tk2 = el.getAttribute("data-k"); S.todo = S.todo || {}; if (S.todo[tk2]) delete S.todo[tk2]; else S.todo[tk2] = Date.now(); if (SLIDES_MODE) try { bppTodoSync(tk2); } catch(eBS){} save(); render(); break; }
     case "qfgo": if (QF){ QF.i = +el.getAttribute("data-n"); QF.ans = QF.ansA[QF.i] != null ? QF.ansA[QF.i] : null; render(); } break;
     case "cbaq": if (CB && CB.phase === "learn" && Date.now() >= CB.learnAt + cbaLock() - 20){ CB.phase = "q"; CB.qAt = Date.now(); render(); cbaFocus(); } break;
     case "cbapick": if (CB && CB.phase === "q" && CB.ans === null){ cbaAnswer(+el.getAttribute("data-o")); render(); } break;
@@ -198918,7 +199216,20 @@ function stopTheme(r){
   var x = key && TBYKEY[key]; if (!x || THEMED_SUBJECTS.indexOf(x.s.id) < 0) return null;
   var th = JTHEME(x.s.id, (STOPSHORT[x.s.id] || x.s.title) + " " + (x.s.topics.indexOf(x.t) + 1));
   if (th && x.s.id !== "blp") th.style = String(th.style).replace(/--stbunt:[^;]*;?/, "--stbunt:none;"); /* bunting belongs to the sweet shop only (Monnie 13:30 rule) */
+  if (th && HIDE_PECKHAM) th = {i:th.i, land:th.land, style:th.style, strip:""}; /* 22 Nov slides: keep the colours, drop the strip that links to the Peckham map */
   return th;
+}
+/* 22 Nov slides: with Peckham hidden, take every link, button and card that leads into the game (Peckham, map, rooms, town, The Mount, Bert, CBA coin levels, Britney) out of the page */
+var PECK_SEL = ["palace","map","scene","town","mount","boss","bosschase","cba"].map(function(p){ return 'a[href^="#/' + p + '"],[data-go^="#/' + p + '"]'; }).join(",") +
+  ',.feedp,.cbapal,.palcard,.tdboss,.swn-shop,.montool,.mbag,.ststrip,.fwshop,.nbbrit,[data-act="feed"],[data-act^="boss"],[data-act="resqcollect"],[data-act="gdemo"],[data-act="greset"]';
+var PECK_MO = null;
+function peckSweep(root){
+  if (!HIDE_PECKHAM || !root || !root.querySelectorAll) return;
+  [].slice.call(root.querySelectorAll(PECK_SEL)).forEach(function(el){
+    var p = el.parentNode; if (!p) return; p.removeChild(el);
+    for (var k = 0; k < 2 && p && p !== root && p.parentNode && !p.textContent.trim() && !p.querySelector("img,svg,input,select,textarea"); k++){ var q = p.parentNode; q.removeChild(p); p = q; }
+  });
+  if (!PECK_MO && window.MutationObserver){ var app = document.getElementById("app"), pend = 0; if (app){ PECK_MO = new MutationObserver(function(){ if (pend) return; pend = 1; setTimeout(function(){ pend = 0; try { peckSweep(app); } catch(e){} }, 0); }); PECK_MO.observe(app, {childList:true, subtree:true}); } }
 }
 var JPIC = null, JMAP = null; /* Journey to Cluckington Palace (top of the palace tab; #/map/<subj> opens a stop's panel there): journey.js defines window.SQE_JOURNEY; it adds VIEW.map and makes the palace scene's backdrop follow Britney along the path */
 if (window.SQE_JOURNEY) try { var JX = window.SQE_JOURNEY({S:function(){ return S; }, VIEW:VIEW, buildPlan:buildPlan, parseYmd:parseYmd, ymd:ymd, fmtDate:fmtDate, SUBJ:SUBJ, route:route, todoHTML:todoHTML}); if (JX && JX.scene) cbaScene = JX.scene(cbaScene); if (JX && JX.map) JMAP = JX.map; if (JX && JX.theme) JTHEME = JX.theme; if (JX && JX.pic) JPIC = JX.pic; } catch(ej){ if (window.console) console.error(ej); }
@@ -198926,7 +199237,7 @@ if (window.SQE_JOURNEY) try { var JX = window.SQE_JOURNEY({S:function(){ return 
 if (window.SQE_SCENE) try { window.SQE_SCENE({seenToday:seenToday, S:function(){ return S; }, VIEW:VIEW, save:save, earn:earn, render:render, route:route, esc:esc, inl:inl, md:md, tnum:tnum, TBYKEY:TBYKEY, NOTECHECK:NOTECHECK, learnDeck:learnDeck, learnCard:learnCard, bigIdeaHTML:bigIdeaHTML, learnBigLines:learnBigLines, nckS:nckS, topicQs:topicQs, qById:qById, record:record, qfRecord:qfRecord, nck:function(k, head){ var p = NCK; NCK = k; try { return nckHTML(head); } finally { NCK = p; } }}); } catch(es){ if (window.console) console.error(es); }
 /* the town beside the palace (#/town/jobs, #/town/butcher, #/town/shop): town.js defines window.SQE_TOWN; preview only (?town=1), otherwise #/town goes back to #/palace */
 var TOWNHOOK = TOWNHOOK || {}; /* set by town.js (preview only): plan(days), todo(pd), tasks(pd) */
-if (window.SQE_TOWN) try { window.SQE_TOWN({hooks:function(h){ TOWNHOOK = h || {}; PLAN = null; }, S:function(){ return S; }, VIEW:VIEW, save:save, earn:earn, render:render, route:route, esc:esc, inl:inl, md:md, ymd:ymd, planDay:planDay, tnum:tnum, fmtM:fmtM, topicCards:topicCards, topicQs:topicQs, topicRes:topicRes, qById:qById, shuffle:shuffle, TBYKEY:TBYKEY, SUBJ:SUBJ, cbaS:cbaS, cbaCoin:cbaCoin, cbaItem:cbaItem, cbaItemPic:cbaItemPic, cbaAte:cbaAte, cbaBuy:cbaBuy, broodS:broodS, broodReady:broodReady, CBA_SHOP:function(){ return CBA_SHOP; }}); } catch(et){ if (window.console) console.error(et); }
+if (window.SQE_TOWN) try { window.SQE_TOWN({hooks:function(h){ TOWNHOOK = HIDE_PECKHAM ? {} : (h || {}); /* 22 Nov slides: no town steps when Peckham is hidden */ PLAN = null; }, S:function(){ return S; }, VIEW:VIEW, save:save, earn:earn, render:render, route:route, esc:esc, inl:inl, md:md, ymd:ymd, planDay:planDay, tnum:tnum, fmtM:fmtM, topicCards:topicCards, topicQs:topicQs, topicRes:topicRes, qById:qById, shuffle:shuffle, TBYKEY:TBYKEY, SUBJ:SUBJ, cbaS:cbaS, cbaCoin:cbaCoin, cbaItem:cbaItem, cbaItemPic:cbaItemPic, cbaAte:cbaAte, cbaBuy:cbaBuy, broodS:broodS, broodReady:broodReady, CBA_SHOP:function(){ return CBA_SHOP; }}); } catch(et){ if (window.console) console.error(et); }
 /* The Mount (#/mount): Britney's garden with the hens she owns; mount.js defines window.SQE_MOUNT; on unless ?town=0 (like the town), then #/mount goes back to #/palace */
 if (window.SQE_MOUNT) try { window.SQE_MOUNT({S:function(){ return S; }, VIEW:VIEW, save:save, render:render, route:route, esc:esc, ymd:ymd, cbaS:cbaS, cbaItem:cbaItem, cbaAte:cbaAte, cbaBuy:cbaBuy, prizePic:prizePic, britneyLook:britneyLook, cbaCoin:cbaCoin, cbaItemPic:cbaItemPic, henLife:henLife, henMood:henMood, henName:henName, feedLeft:feedLeft, medShopCard:medShopCard, mountHens:mountHens, henFedToday:henFedToday, feedOne:feedOne, henHungry:henHungry, henPic:henPic, feedPanel:feedPanel, broodScene:broodScene, broodCard:broodCard, bossCaptivePanel:bossCaptivePanel}); } catch(emt){ if (window.console) console.error(emt); }
 /* Weak-spot drill (#/weak): weakspot.js defines window.SQE_WEAK; it adds a "Weak-spot drill" step to Today (WEAKHOOK.todo) when wrong answers are due */
