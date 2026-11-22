@@ -245,7 +245,7 @@ body{font:18px/1.4 var(--font);color:var(--ink);background:#CDEBFA;overscroll-be
   <div class="bri2" id="bri2"><span class="pb sb" id="peekb"></span><span class="bflip"><img id="briimg" src="img/b-neutral.webp" alt="Britney"></span></div>
 </div>
 <div class="deskhint">This is Layla's phone app. On a phone it opens full screen from the home screen.</div>
-<script src="data.js?v=2ac1f33c"></script>
+<script src="data.js?v=25d48222"></script>
 <script>
 (function(){
 "use strict";
@@ -481,16 +481,16 @@ function go(v, arg){
       (statTopics().length ? '<button class="choice st" data-go="stats"><span class="ic">' + STATIC + '</span><span>How I\'m doing<small>My strong and weak topics</small></span></button>' : '');
   } else if (v === "topics"){
     topbar("home", "Choose a topic", "");
-    main.innerHTML = '<div class="sect">Tap a stop, then a topic.</div>' + D.map(function(s){
+    main.innerHTML = '<div class="sect">Tap a subject, then a topic.</div>' + D.map(function(s){
       var t = th(s), nd = s.topics.filter(function(tp){ var z = dn(s.id + "/" + tp.id); return z.c && z.q; }).length;
-      return '<div class="stop" style="' + themeVars(s) + '"><button data-stop="' + s.id + '"><span class="pic">' + s.pic + '</span><span>Stop ' + s.stop + ': ' + t.land + '<small>' + esc(s.title) + (nd ? ' · ' + nd + ' done' : '') + '</small></span><span class="chev">›</span></button>' +
+      return '<div class="stop" style="' + themeVars(s) + '"><button data-stop="' + s.id + '"><span>' + esc(s.title) + '<small>' + s.topics.length + ' topics' + (nd ? ' · ' + nd + ' done' : '') + '</small></span><span class="chev">›</span></button>' +
         '<div class="tlist">' + s.topics.map(function(tp, i){ var k = s.id + "/" + tp.id, z = dn(k); return '<button class="tbt" data-topic="' + k + '"><span class="n">' + (i + 1) + '</span><span>' + esc(tp.title) + '</span>' + (z.c && z.q ? '<span class="tick">✓ done</span>' : z.c || z.q ? '<span class="tick half">✓ half</span>' : '') + '</button>'; }).join("") + '</div></div>';
     }).join("");
   } else if (v === "topic"){
     TOPIC = arg || TOPIC; var x = T(TOPIC); if (!x) return go("home"); var s = x.s, z = dn(TOPIC);
-    topbar(VIEWNOW_FROM === "stats" ? "stats" : arg === undefined || VIEWNOW_FROM === "random" ? "home" : "topics", "Stop " + s.stop + ": " + th(s).land, esc(s.title));
+    topbar(VIEWNOW_FROM === "stats" ? "stats" : arg === undefined || VIEWNOW_FROM === "random" ? "home" : "topics", esc(s.title), "Topic " + x.i + " of " + s.topics.length);
     var nq = x.t.q.length, nc = x.t.c.length;
-    main.innerHTML = '<div class="tpage" style="' + themeVars(s) + '"><div class="tpic">' + s.pic + '</div><div class="tno">Topic ' + x.i + '</div><h2 class="tname' + (VIEWNOW_FROM === "random" ? " flash" : "") + '">' + esc(x.t.title) + '</h2></div>' +
+    main.innerHTML = '<div class="tpage" style="' + themeVars(s) + '"><div class="tno">' + esc(s.title) + '</div><h2 class="tname' + (VIEWNOW_FROM === "random" ? " flash" : "") + '">' + esc(x.t.title) + '</h2></div>' +
       '<button class="choice tl' + (z.c ? " did" : "") + '" data-do="cards"' + (nc ? "" : " disabled") + '><span class="ic">' + CARDIC + '</span><span>Revision cards<small>' + (nc ? nc + " cards" : "Coming soon") + '</small></span>' + (z.c ? '<span class="ok">✓</span>' : '') + '</button>' +
       '<button class="choice tl' + (z.q ? " did" : "") + '" data-do="qs"' + (nq ? "" : " disabled") + '><span class="ic">' + QIC + '</span><span>Questions<small>' + (nq ? nq + " quick questions" + (z.qr ? " · last time " + z.qr[0] + " of " + z.qr[1] + " right" : "") : "Coming soon") + '</small></span>' + (z.q ? '<span class="ok">✓</span>' : '') + '</button>' +
       (VIEWNOW_FROM === "random" ? '<button class="pick" data-do="random">Pick another at random ›</button>' : '');
@@ -506,7 +506,7 @@ function statTopics(){ var by = {};
     z.n += x.n || 1; z.r += Math.min(x.n || 1, x.r != null ? x.r : (x.ok ? 1 : 0)); z.qs++; }
   return Object.keys(by).map(function(k){ var z = by[k]; z.p = Math.round(z.r * 100 / z.n); return z; }); }
 function sCol(p){ return p >= 80 ? "#4CC36A" : p >= 50 ? "#FFC83D" : "#F2645B"; }
-function sRow(z){ var x = T(z.k); return '<button class="srow" data-topic="' + z.k + '"><div class="nm"><span>' + esc(x.t.title) + '<small>Stop ' + x.s.stop + ': ' + th(x.s).land + ' · ' + z.n + ' answers</small></span><span>' + z.p + '%</span></div><div class="sbar"><i style="width:' + Math.max(3, z.p) + '%;background:' + sCol(z.p) + '"></i></div></button>'; }
+function sRow(z){ var x = T(z.k); return '<button class="srow" data-topic="' + z.k + '"><div class="nm"><span>' + esc(x.t.title) + '<small>' + esc(x.s.title) + ' · ' + z.n + ' answers</small></span><span>' + z.p + '%</span></div><div class="sbar"><i style="width:' + Math.max(3, z.p) + '%;background:' + sCol(z.p) + '"></i></div></button>'; }
 function drawStats(){
   topbar("home", "How I'm doing", "Your phone questions");
   var L = statTopics(), n = 0, r = 0; L.forEach(function(z){ n += z.n; r += z.r; });
@@ -518,7 +518,7 @@ function drawStats(){
   if (strong.length) h += '<div class="sbox"><h3>Strong topics</h3>' + strong.map(sRow).join("") + '</div>';
   if (mid.length) h += '<div class="sbox"><h3>Getting there</h3>' + mid.map(sRow).join("") + '</div>';
   if (weak.length) h += '<div class="sbox"><h3>Needs more practice</h3>' + weak.map(sRow).join("") + '</div>';
-  if (wait.length) h += '<div class="sbox"><h3>Not enough answers yet</h3><div class="swait">These show up above after ' + STAT_MIN + ' answers each.</div>' + wait.map(function(z){ var x = T(z.k); return '<button class="srow" data-topic="' + z.k + '"><div class="nm"><span>' + esc(x.t.title) + '<small>Stop ' + x.s.stop + ': ' + th(x.s).land + '</small></span><span>' + z.n + ' of ' + STAT_MIN + '</span></div><div class="sbar"><i style="width:' + (z.n * 100 / STAT_MIN) + '%;background:#BFD8FF"></i></div></button>'; }).join("") + '</div>';
+  if (wait.length) h += '<div class="sbox"><h3>Not enough answers yet</h3><div class="swait">These show up above after ' + STAT_MIN + ' answers each.</div>' + wait.map(function(z){ var x = T(z.k); return '<button class="srow" data-topic="' + z.k + '"><div class="nm"><span>' + esc(x.t.title) + '<small>' + esc(x.s.title) + '</small></span><span>' + z.n + ' of ' + STAT_MIN + '</span></div><div class="sbar"><i style="width:' + (z.n * 100 / STAT_MIN) + '%;background:#BFD8FF"></i></div></button>'; }).join("") + '</div>';
   main.innerHTML = h;
 }
 var VIEWNOW_FROM = "";
@@ -552,7 +552,10 @@ function start(ty){
   SESS = {ty:ty, k:TOPIC, q:list.map(function(z){ return {ty:ty, k:TOPIC, z:z}; }), i:0, t0:Date.now(), right:0, asked:0, coins:0};
   ACT.subj = x.s.id; go("sess");
 }
-function cardObj(s, inner, n){
+/* Monnie 22 Nov: no stops / places in the phone app; plain card that says the subject and topic (old place cards kept behind PLACES) */
+var PLACES = false;
+function cardObj(s, inner, n, tt){
+  if (!PLACES) return '<div class="rcard" style="' + themeVars(s) + '"><div class="ftop"><span class="fnm"><b>' + esc(s.title) + '</b><span>' + esc(tt || "") + '</span></span></div>' + inner + '</div>';
   var X = CARDX[s.stop - 1], sh = X.sh || "";
   return '<div class="rcard ' + sh + '" style="' + themeVars(s) + '">' +
     (sh === "sweet" ? '<span class="wend wl">' + WEND + '</span><span class="wend wr">' + WEND + '</span>' : '') +
@@ -568,13 +571,13 @@ function drawItem(){
   var h = '<div class="tbar"><i style="width:' + (SESS.i * 100 / N) + '%"></i></div><div class="tmeta"><span>' + (SESS.i + 1) + ' of ' + N + '</span><button data-do="stop">' + (SESS.fix ? "Stop" : "Back to the topic") + '</button></div>';
   if (it.ty === "q"){
     if (!it.ord) it.ord = shuffle([0, 1, 2, 3].slice(0, it.z[2].length));
-    h += cardObj(s, '<div class="q">' + it.z[1] + '</div>', SESS.i + 1);
+    h += cardObj(s, '<div class="q">' + it.z[1] + '</div>', SESS.i + 1, x.t.title);
     h += '<div class="opts">' + it.ord.map(function(oi, pos){ var cls = "opt"; if (it.pick != null){ if (oi === 0) cls += " right"; else if (oi === it.pick) cls += " wrong"; }
       return '<button class="' + cls + '" data-o="' + oi + '"' + (it.pick != null ? " disabled" : "") + '><span class="L">' + "ABCDE".charAt(pos) + '</span><span>' + it.z[2][oi] + '</span></button>'; }).join("") + '</div>';
     if (it.pick != null){ var ok = it.pick === 0;
       h += '<div class="why"><h4 style="color:' + (ok ? "var(--good)" : "var(--bad)") + '">' + (ok ? "✓ Correct" : "Not quite. It's " + "ABCDE".charAt(it.ord.indexOf(0))) + '</h4>' + it.z[3] + '</div><button class="btn" data-do="next">' + (SESS.i + 1 < N ? "Next ›" : "Finish ›") + '</button>'; }
   } else {
-    h += cardObj(s, '<div class="q">' + it.z[1] + '</div>' + (it.shown ? '<div class="ans">' + it.z[2] + '</div>' : '<button class="reveal" data-do="show">Tap to see the answer</button>'), SESS.i + 1);
+    h += cardObj(s, '<div class="q">' + it.z[1] + '</div>' + (it.shown ? '<div class="ans">' + it.z[2] + '</div>' : '<button class="reveal" data-do="show">Tap to see the answer</button>'), SESS.i + 1, x.t.title);
     h += '<div class="two">' + (SESS.i ? '<button class="btn soft" data-do="prev">‹ Back</button>' : '<span></span>') + '<button class="btn" data-do="next">' + (SESS.i + 1 < N ? "Next card ›" : "Finish ›") + '</button></div>';
   }
   main.innerHTML = '<div class="item">' + h + '</div>';
