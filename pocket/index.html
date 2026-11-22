@@ -202,6 +202,18 @@ body{font:18px/1.4 var(--font);color:var(--ink);background:#CDEBFA;overscroll-be
 @keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
 .choice.go2{background:#FFF8D8}
 .choice.fix{background:#FFE9E7}
+.choice.st{background:#E8F0FF}
+.sbox{background:#fff;border:3px solid #111;border-radius:22px;box-shadow:0 4px 0 #111;padding:14px 14px 6px;margin:0 0 14px}
+.sbox h3{font:700 19px/1.2 var(--font);margin:0 0 10px}
+.sbig{display:flex;gap:10px;margin:0 0 14px}.sbig div{flex:1;background:#fff;border:3px solid #111;border-radius:18px;box-shadow:0 4px 0 #111;padding:10px 6px;text-align:center;font-size:14px;color:var(--mut)}
+.sbig b{display:block;font-size:30px;line-height:1.1;color:var(--ink)}
+.srow{display:block;width:100%;text-align:left;background:none;border:0;padding:0 0 12px;font:inherit;color:var(--ink);cursor:pointer}
+.srow .nm{display:flex;justify-content:space-between;gap:8px;font-size:16px;font-weight:700;margin-bottom:4px}.srow .nm span:last-child{white-space:nowrap}
+.srow .nm small{display:block;font-weight:400;font-size:13px;color:var(--mut)}
+.sbar{height:18px;border:2.5px solid #111;border-radius:10px;background:#F1F1F1;overflow:hidden}.sbar i{display:block;height:100%;border-right:2.5px solid #111;animation:grow .8s ease-out both}
+@keyframes grow{from{width:0!important}}
+.skey{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 14px;font-size:13px;color:var(--ink);background:#fff;border:2.5px solid #111;border-radius:14px;padding:6px 10px;margin:0 0 14px}.skey span:before{content:"";display:inline-block;width:12px;height:12px;border:2px solid #111;border-radius:4px;margin-right:5px;vertical-align:-2px;background:var(--k)}
+.swait{font-size:15px;color:var(--mut);margin:0 0 10px}
 .choice.tl{position:relative}.choice.tl[disabled]{opacity:.55}
 .choice.did{background:#EAF8EC}
 .choice .ok{margin-left:auto;width:40px;height:40px;flex:0 0 auto;border-radius:50%;background:var(--good);color:#fff;border:3px solid #111;display:flex;align-items:center;justify-content:center;font-size:24px;animation:pop .5s cubic-bezier(.2,1.6,.4,1) both}
@@ -233,7 +245,7 @@ body{font:18px/1.4 var(--font);color:var(--ink);background:#CDEBFA;overscroll-be
   <div class="bri2" id="bri2"><span class="pb sb" id="peekb"></span><span class="bflip"><img id="briimg" src="img/b-neutral.webp" alt="Britney"></span></div>
 </div>
 <div class="deskhint">This is Layla's phone app. On a phone it opens full screen from the home screen.</div>
-<script src="data.js?v=ccc1a409"></script>
+<script src="data.js?v=2ac1f33c"></script>
 <script>
 (function(){
 "use strict";
@@ -276,6 +288,7 @@ var COIN = '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="#FFC83
 var BAGIC = '<svg viewBox="0 0 40 40"><path d="M14 9 Q20 4 26 9 L23 13 H17 Z" fill="#C98A4B" stroke="#111" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 13 Q5 20 7 30 Q9 37 20 37 Q31 37 33 30 Q35 20 23 13 Z" fill="#E2A65E" stroke="#111" stroke-width="2.5" stroke-linejoin="round"/><circle cx="20" cy="26" r="6" fill="#FFC83D" stroke="#111" stroke-width="2"/></svg>';
 var PINIC = '<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#E2EEFF" stroke="#111" stroke-width="3"/><path d="M32 12c-8 0-14 6-14 14 0 10 14 26 14 26s14-16 14-26c0-8-6-14-14-14z" fill="#E63946" stroke="#111" stroke-width="3" stroke-linejoin="round"/><circle cx="32" cy="26" r="5" fill="#fff" stroke="#111" stroke-width="2.5"/></svg>';
 var DICEIC = '<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#FFF3C4" stroke="#111" stroke-width="3"/><rect x="15" y="15" width="34" height="34" rx="7" fill="#fff" stroke="#111" stroke-width="3" transform="rotate(-10 32 32)"/><g fill="#E63946" transform="rotate(-10 32 32)"><circle cx="23" cy="23" r="3.6"/><circle cx="32" cy="32" r="3.6"/><circle cx="41" cy="41" r="3.6"/><circle cx="41" cy="23" r="3.6"/><circle cx="23" cy="41" r="3.6"/></g></svg>';
+var STATIC = '<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#E3ECFF" stroke="#111" stroke-width="3"/><rect x="15" y="34" width="9" height="14" rx="2" fill="#F2645B" stroke="#111" stroke-width="2.5"/><rect x="28" y="26" width="9" height="22" rx="2" fill="#FFC83D" stroke="#111" stroke-width="2.5"/><rect x="41" y="16" width="9" height="32" rx="2" fill="#4CC36A" stroke="#111" stroke-width="2.5"/></svg>';
 var FIXIC = '<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#FFE3EF" stroke="#111" stroke-width="3"/><path d="M19 21l12 12M31 21L19 33" stroke="#E63946" stroke-width="5" stroke-linecap="round"/><path d="M33 41l6 6 12-14" fill="none" stroke="#2E9D4A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 var CARDIC = '<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#FFE3EF" stroke="#111" stroke-width="3"/><rect x="18" y="14" width="26" height="34" rx="4" fill="#FFC83D" stroke="#111" stroke-width="3" transform="rotate(-12 31 31)"/><rect x="22" y="18" width="26" height="34" rx="4" fill="#fff" stroke="#111" stroke-width="3" transform="rotate(6 35 35)"/><path d="M29 30h14M29 37h10" stroke="#111" stroke-width="3" stroke-linecap="round" transform="rotate(6 35 35)"/></svg>';
 var QIC = '<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#DDF5E3" stroke="#111" stroke-width="3"/><path d="M12 18h40v24H30l-10 9v-9h-8z" fill="#fff" stroke="#111" stroke-width="3" stroke-linejoin="round"/><path d="M27 26a5 5 0 1 1 7 4.6c-1.4.7-2 1.6-2 3" fill="none" stroke="#2B6CD8" stroke-width="3.2" stroke-linecap="round"/><circle cx="32" cy="38" r="1.9" fill="#2B6CD8"/></svg>';
@@ -464,7 +477,8 @@ function go(v, arg){
     main.innerHTML = hero("Do you want to choose a topic, or shall I pick one at random?") +
       '<button class="choice" data-go="topics"><span class="ic">' + PINIC + '</span><span>Choose a topic<small>Scroll through the stops</small></span></button>' +
       '<button class="choice go2" data-do="random"><span class="ic">' + DICEIC + '</span><span>Pick one at random<small>Britney chooses for you</small></span></button>' +
-      (wrongList().length ? '<button class="choice fix" data-do="fix"><span class="ic">' + FIXIC + '</span><span>Questions I got wrong<small>' + wrongList().length + (wrongList().length === 1 ? ' question' : ' questions') + '. Get one right and it comes off the list</small></span></button>' : '');
+      (wrongList().length ? '<button class="choice fix" data-do="fix"><span class="ic">' + FIXIC + '</span><span>Questions I got wrong<small>' + wrongList().length + (wrongList().length === 1 ? ' question' : ' questions') + '. Get one right and it comes off the list</small></span></button>' : '') +
+      (statTopics().length ? '<button class="choice st" data-go="stats"><span class="ic">' + STATIC + '</span><span>How I\'m doing<small>My strong and weak topics</small></span></button>' : '');
   } else if (v === "topics"){
     topbar("home", "Choose a topic", "");
     main.innerHTML = '<div class="sect">Tap a stop, then a topic.</div>' + D.map(function(s){
@@ -474,7 +488,7 @@ function go(v, arg){
     }).join("");
   } else if (v === "topic"){
     TOPIC = arg || TOPIC; var x = T(TOPIC); if (!x) return go("home"); var s = x.s, z = dn(TOPIC);
-    topbar(arg === undefined || VIEWNOW_FROM === "random" ? "home" : "topics", "Stop " + s.stop + ": " + th(s).land, esc(s.title));
+    topbar(VIEWNOW_FROM === "stats" ? "stats" : arg === undefined || VIEWNOW_FROM === "random" ? "home" : "topics", "Stop " + s.stop + ": " + th(s).land, esc(s.title));
     var nq = x.t.q.length, nc = x.t.c.length;
     main.innerHTML = '<div class="tpage" style="' + themeVars(s) + '"><div class="tpic">' + s.pic + '</div><div class="tno">Topic ' + x.i + '</div><h2 class="tname' + (VIEWNOW_FROM === "random" ? " flash" : "") + '">' + esc(x.t.title) + '</h2></div>' +
       '<button class="choice tl' + (z.c ? " did" : "") + '" data-do="cards"' + (nc ? "" : " disabled") + '><span class="ic">' + CARDIC + '</span><span>Revision cards<small>' + (nc ? nc + " cards" : "Coming soon") + '</small></span>' + (z.c ? '<span class="ok">✓</span>' : '') + '</button>' +
@@ -483,6 +497,29 @@ function go(v, arg){
     VIEWNOW_FROM = "";
     setTimeout(function(){ if (VIEWNOW === "topic" && !document.querySelector(".donebub")) if (z.c && z.q) bub("All done here! Pick another?", "say2", 3000); }, 500);
   } else if (v === "sess"){ drawItem(); }
+  else if (v === "stats"){ drawStats(); }
+}
+/* Monnie 22 Nov: track the questions she's done and her scores; chart of strong and weak topics once there is enough */
+var STAT_MIN = 5;
+function statTopics(){ var by = {};
+  for (var a in P.ans){ var pp = a.split("|"); if (pp[1] !== "q" || !T(pp[0])) continue; var x = P.ans[a], z = by[pp[0]] = by[pp[0]] || {k:pp[0], n:0, r:0, qs:0};
+    z.n += x.n || 1; z.r += Math.min(x.n || 1, x.r != null ? x.r : (x.ok ? 1 : 0)); z.qs++; }
+  return Object.keys(by).map(function(k){ var z = by[k]; z.p = Math.round(z.r * 100 / z.n); return z; }); }
+function sCol(p){ return p >= 80 ? "#4CC36A" : p >= 50 ? "#FFC83D" : "#F2645B"; }
+function sRow(z){ var x = T(z.k); return '<button class="srow" data-topic="' + z.k + '"><div class="nm"><span>' + esc(x.t.title) + '<small>Stop ' + x.s.stop + ': ' + th(x.s).land + ' · ' + z.n + ' answers</small></span><span>' + z.p + '%</span></div><div class="sbar"><i style="width:' + Math.max(3, z.p) + '%;background:' + sCol(z.p) + '"></i></div></button>'; }
+function drawStats(){
+  topbar("home", "How I'm doing", "Your phone questions");
+  var L = statTopics(), n = 0, r = 0; L.forEach(function(z){ n += z.n; r += z.r; });
+  var ready = L.filter(function(z){ return z.n >= STAT_MIN; }).sort(function(a, b){ return b.p - a.p || b.n - a.n; }), wait = L.filter(function(z){ return z.n < STAT_MIN; });
+  var strong = ready.filter(function(z){ return z.p >= 80; }), mid = ready.filter(function(z){ return z.p >= 50 && z.p < 80; }), weak = ready.filter(function(z){ return z.p < 50; }).reverse();
+  var h = hero(ready.length ? (strong.length ? "You're flying in " + esc(T(strong[0].k).t.title) + "!" : "Look how much you've done!") : "Answer " + STAT_MIN + " questions in a topic and it shows up here!", "b-happy.webp");
+  h += '<div class="sbig"><div><b>' + n + '</b>answers</div><div><b>' + (n ? Math.round(r * 100 / n) : 0) + '%</b>right</div><div><b>' + L.length + '</b>topics</div></div>';
+  if (ready.length) h += '<div class="skey"><span style="--k:#4CC36A">80% or more</span><span style="--k:#FFC83D">50 to 79%</span><span style="--k:#F2645B">under 50%</span></div>';
+  if (strong.length) h += '<div class="sbox"><h3>Strong topics</h3>' + strong.map(sRow).join("") + '</div>';
+  if (mid.length) h += '<div class="sbox"><h3>Getting there</h3>' + mid.map(sRow).join("") + '</div>';
+  if (weak.length) h += '<div class="sbox"><h3>Needs more practice</h3>' + weak.map(sRow).join("") + '</div>';
+  if (wait.length) h += '<div class="sbox"><h3>Not enough answers yet</h3><div class="swait">These show up above after ' + STAT_MIN + ' answers each.</div>' + wait.map(function(z){ var x = T(z.k); return '<button class="srow" data-topic="' + z.k + '"><div class="nm"><span>' + esc(x.t.title) + '<small>Stop ' + x.s.stop + ': ' + th(x.s).land + '</small></span><span>' + z.n + ' of ' + STAT_MIN + '</span></div><div class="sbar"><i style="width:' + (z.n * 100 / STAT_MIN) + '%;background:#BFD8FF"></i></div></button>'; }).join("") + '</div>';
+  main.innerHTML = h;
 }
 var VIEWNOW_FROM = "";
 function randomTopic(){ /* from the topics she has covered on the laptop (if the phone knows them) and hasn't finished on the phone; otherwise any topic that has questions */
@@ -542,7 +579,7 @@ function drawItem(){
   }
   main.innerHTML = '<div class="item">' + h + '</div>';
 }
-function mark(it, ok){ var key = it.k + "|" + it.ty + "|" + it.z[0], a = P.ans[key] || {n:0}; a.n = (a.n || 0) + 1; a.ok = ok ? 1 : 0; a.at = Date.now(); P.ans[key] = a; save(); }
+function mark(it, ok){ var key = it.k + "|" + it.ty + "|" + it.z[0], a = P.ans[key] || {n:0}; if (a.r == null) a.r = a.n && a.ok ? 1 : 0; a.n = (a.n || 0) + 1; if (ok) a.r++; a.ok = ok ? 1 : 0; a.at = Date.now(); P.ans[key] = a; save(); }
 function answer(oi){ var it = SESS.q[SESS.i]; if (!it || it.pick != null) return; it.pick = oi; var ok = oi === 0; SESS.asked++; if (ok){ SESS.right++; SESS.coins++; P.coins++; }
   mark(it, ok); drawItem(); if (ok){ var b = main.querySelector(".opt.right"); coinPop(b || main, 1); cheer(); } else { uncheer(); var w = main.querySelector(".why"); if (w && w.offsetTop + w.offsetHeight > main.scrollTop + main.clientHeight) main.scrollTo({top:w.offsetTop + w.offsetHeight - main.clientHeight + 70, behavior:"smooth"}); } }
 function next(){ if (!SESS) return; var it = SESS.q[SESS.i]; if (it && it.ty === "c" && !it.seen){ it.seen = 1; mark(it, 1); } SESS.i++; drawItem(); main.scrollTop = 0; }
@@ -582,7 +619,7 @@ function handle(e){
   var b = e.target.closest("button"); if (!b || b.disabled) return;
   if (b.dataset.go){ if (VIEWNOW === "sess" && SESS) return finish(); go(b.dataset.go); }
   else if (b.dataset.stop){ var st = b.parentNode, was = st.classList.contains("open"); [].forEach.call(main.querySelectorAll(".stop.open"), function(x){ x.classList.remove("open"); }); if (!was){ st.classList.add("open"); setTimeout(function(){ main.scrollTo({top:st.offsetTop - 8, behavior:"smooth"}); }, 30); } }
-  else if (b.dataset.topic) go("topic", b.dataset.topic);
+  else if (b.dataset.topic){ if (VIEWNOW === "stats") VIEWNOW_FROM = "stats"; go("topic", b.dataset.topic); }
   else if (b.dataset.o != null) answer(+b.dataset.o);
   else if (b.dataset.do === "fix") startFix();
   else if (b.dataset.do === "random"){ VIEWNOW = "home"; shuffleShow(); }
