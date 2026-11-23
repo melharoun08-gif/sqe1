@@ -195454,7 +195454,9 @@ function rotJoin(){
 /* 22 Nov SLIDES MODE plan (Worker C): the study plan, Today and the timetable are built around Layla's BPP workshops (window.SQE_SLIDES).
    Monnie's defaults below; change the numbers here. The plan starts the first day she opens it, runs to SLP_LAST_LEARN, then the old mock / revision days. */
 /* 22 Nov (Monnie approved): each day takes the next 1-2 workshops from 2-3 subjects (more at weekends); weekday = ~75 min slides + ~30 min Quick fire / Model Q&A on those workshops + ~15 min spaced repetition (45 at weekends); new material done by Sat 2 Jan, 3-5 Jan revision */
-var SLP_START = "2026-11-23", SLP_LAST_LEARN = "2027-01-02", SLP_OFF = ["12-25", "01-01"], SLP_SUBJ_WD = 3, SLP_SUBJ_WE = 6, SLP_PER_SUBJ = 2, SLP_SLIDES = 75, SLP_PRACT = 30, SLP_SR_WD = 15, SLP_SR_WE = 45, SLP_MIN_WS = 15, SLP_PER_PDF = 6;
+/* 23 Nov 16:00 (Monnie): don't start with Business Law. Rotation order: core law first (Contract, then Criminal, Tort, Land...), alternating FLK1/FLK2, practice subjects that build on them later */
+var SLP_ORDER = ["contract", "crimprac", "tort", "land", "legalsys", "trusts", "dr", "property", "blp", "wills", "accounts", "ethics"];
+var SLP_START = "2026-11-23", SLP_LAST_LEARN = "2027-01-05", /* 23 Nov 02:00 Monnie: no free revision days before the first mock */ SLP_OFF = ["12-25", "01-01"], SLP_SUBJ_WD = 2, SLP_SUBJ_WE = 4, SLP_PER_SUBJ = 2, SLP_SLIDES = 75, SLP_PRACT = 30, SLP_SR_WD = 15, SLP_SR_WE = 45, SLP_MIN_WS = 15, SLP_PER_PDF = 6;
 var SLP_ABBR = {blp:"BLP", dr:"DR", contract:"Contract", tort:"Tort", legalsys:"Legal Sys", wills:"Wills", trusts:"Trusts", land:"Land", property:"Property", crimlaw:"Crim Law", crimprac:"Crime", ethics:"Ethics", ls:"Bus of Law", accounts:"Accounts"};
 function slpHref(sid, n){ return typeof slidesHref === "function" ? slidesHref(sid, n) : "#/slides/" + sid + "/" + n; }
 function slpBpp(){ S.bpp = (S.bpp && typeof S.bpp === "object") ? S.bpp : {}; S.bpp.seen = S.bpp.seen || {}; S.bpp.done = S.bpp.done || {}; return S.bpp; }
@@ -195475,23 +195477,38 @@ function slpReflow(all, tdy, key){
   var pend = all.filter(function(w){ return !at[w.k] && (!slpDone(w.k) || slpDoneOn(w.k) === tdy); });
   var q = {}; pend.forEach(function(w){ (q[w.sid] = q[w.sid] || []).push(w); });
   var Wp = 0, C = 0; pend.forEach(function(w){ Wp += w.rm; }); L.forEach(function(x){ C += x.cap; });
-  var sched = 0, cum = 0, idx = 0, lastS = null, order = (SLIDES || []).map(function(s){ return s.id; });
+  var sched = 0, cum = 0, idx = 0, lastS = null, order = (SLIDES || []).map(function(s){ return s.id; }).sort(function(x, y){ var i = SLP_ORDER.indexOf(x), j = SLP_ORDER.indexOf(y); return (i < 0 ? 99 : i) - (j < 0 ? 99 : j); });
   if (!L.length && pend.length) L.push({d:tdy, cap:120, we:false});
   /* finished today: kept on today's list */
   pend.filter(function(w){ return slpDone(w.k); }).forEach(function(w){ at[w.k] = [tdy, idx++]; q[w.sid].splice(q[w.sid].indexOf(w), 1); sched += w.rm; prog[w.sid] = (prog[w.sid] || 0) + w.rm; lastS = w.sid; });
+  /* 23 Nov 16:30 (Monnie approved): each day = a few subjects with up to 2 workshops IN A ROW from each (weekdays 2 subjects, weekends up to 4).
+     Subjects picked: not yesterday's, then the one furthest behind for its size (ties: SLP_ORDER). Round 1 = one workshop per chosen subject (always),
+     round 2 = the next workshop of the same subject while the day is within the pace that finishes everything by SLP_LAST_LEARN. */
+  var prevDay = [];
   L.forEach(function(x, li){
-    cum += x.cap; var T = C ? Wp * Math.min(1, 1.03 * cum / C) : Wp, /* runs about 3% ahead so the last day isn't a pile-up */ last = li === L.length - 1, maxS = x.we ? SLP_SUBJ_WE : SLP_SUBJ_WD, ds = [];
-    var cnt = {}; all.forEach(function(w){ if (at[w.k] && at[w.k][0] === x.d){ if (ds.indexOf(w.sid) < 0) ds.push(w.sid); cnt[w.sid] = (cnt[w.sid] || 0) + 1; } });
-    while (true){
-      var left = order.filter(function(s){ return q[s] && q[s].length; }); if (!left.length) break;
-      if (!last){ left = left.filter(function(s){ return (cnt[s] || 0) < SLP_PER_SUBJ; }); if (!left.length) break; }
-      var el = ds.length >= maxS ? left.filter(function(s){ return ds.indexOf(s) >= 0; }) : left; if (!el.length){ if (!last) break; el = left; }
-      var c2 = el.filter(function(s){ return s !== lastS; }); if (c2.length) el = c2;
-      el.sort(function(a, b){ var fa = (prog[a] || 0) / tot[a], fb = (prog[b] || 0) / tot[b]; return fa - fb || order.indexOf(a) - order.indexOf(b); });
-      var w = q[el[0]][0];
-      if (!last && sched + w.rm * 0.2 > T) break;
-      q[el[0]].shift(); at[w.k] = [x.d, idx++]; sched += w.rm; prog[w.sid] = (prog[w.sid] || 0) + w.rm; lastS = w.sid; cnt[w.sid] = (cnt[w.sid] || 0) + 1; if (ds.indexOf(w.sid) < 0) ds.push(w.sid);
+    cum += x.cap; var T = C ? Wp * Math.min(1, 1.03 * cum / C) : Wp, last = li === L.length - 1, k = x.we ? SLP_SUBJ_WE : SLP_SUBJ_WD, ds = [];
+    all.forEach(function(w){ if (at[w.k] && at[w.k][0] === x.d && ds.indexOf(w.sid) < 0) ds.push(w.sid); });
+    var left = order.filter(function(s){ return q[s] && q[s].length; }); if (!left.length) return;
+    var behind = function(a, b){ var fa = (prog[a] || 0) / tot[a], fb = (prog[b] || 0) / tot[b]; return fa - fb || order.indexOf(a) - order.indexOf(b); };
+    var picks;
+    if (last) picks = left.slice();
+    else {
+      var cand = left.filter(function(s){ return prevDay.indexOf(s) < 0 && ds.indexOf(s) < 0; });
+      if (cand.length < k - ds.length) cand = left.filter(function(s){ return ds.indexOf(s) < 0; });
+      cand.sort(behind);
+      picks = ds.filter(function(s){ return left.indexOf(s) >= 0; }).concat(cand).slice(0, Math.max(k, ds.length));
     }
+    var take = function(sid){ var w = q[sid].shift(); at[w.k] = [x.d, idx++]; sched += w.rm; prog[sid] = (prog[sid] || 0) + w.rm; };
+    for (var r = 0; r < (last ? 999 : SLP_PER_SUBJ); r++){
+      picks.forEach(function(sid){
+        if (!q[sid] || !q[sid].length) return;
+        var have = 0; all.forEach(function(w){ if (w.sid === sid && at[w.k] && at[w.k][0] === x.d) have++; });
+        if (!last && have > r) return;
+        if (!last && have > 0 && sched + q[sid][0].rm * 0.5 > T) return;
+        take(sid);
+      });
+    }
+    prevDay = picks;
   });
   all.forEach(function(w){ if (at[w.k] && !orig[w.k]) orig[w.k] = at[w.k][0]; });
   S.slidePlan = {from:sp.from || tdy, day:tdy, key:key, at:at, orig:orig, v:(sp.v || 0) + 1};
@@ -195499,7 +195516,7 @@ function slpReflow(all, tdy, key){
 }
 var PLANS = null;
 function buildPlanSlides(){
-  var st = S.settings, tdy = ymd(), key = JSON.stringify([st.weekday, st.weekend, st.daysOff, st.exam1, st.exam2, SLP_START, SLP_LAST_LEARN, SLP_OFF, SLP_SUBJ_WD, SLP_SUBJ_WE, SLP_PER_SUBJ, SLP_SLIDES, SLP_PRACT, SLP_SR_WD, SLP_SR_WE, (SLIDES || []).length, slpWS().length]);
+  var st = S.settings, tdy = ymd(), key = JSON.stringify([st.weekday, st.weekend, st.daysOff, st.exam1, st.exam2, SLP_ORDER.join(), SLP_START, SLP_LAST_LEARN, SLP_OFF, SLP_SUBJ_WD, SLP_SUBJ_WE, SLP_PER_SUBJ, SLP_SLIDES, SLP_PRACT, SLP_SR_WD, SLP_SR_WE, (SLIDES || []).length, slpWS().length]);
   S.slidePlan = (S.slidePlan && typeof S.slidePlan === "object") ? S.slidePlan : {};
   var all = slpWS(), sp = S.slidePlan;
   var miss = all.some(function(w){ return !(sp.at && sp.at[w.k]) && !(slpDone(w.k) && slpDoneOn(w.k) < (sp.day || tdy)); });
@@ -195530,7 +195547,7 @@ function buildPlanSlides(){
     if (x.ph === "rev1" || x.ph === "rev2"){
       var p = x.ph === "rev1" ? "FLK1" : "FLK2", aft = new Date(e1); aft.setDate(e1.getDate() + 1);
       if (x.d === dayBefore(st.exam1) || x.d === dayBefore(st.exam2) || ((x.d === ymd(rev1) || x.d === ymd(aft)) && x.m >= 90)) /* mocks 6 & 10 Jan (FLK1), 12 & 17 Jan (FLK2) */ x.rev = {t:p + " mock day: 1 or 2 mocks, nothing else", sub:"Do one or two timed mocks in Mock exam, then go through every answer you got wrong. No new workshops today.", href:"#/mock"};
-      else x.rev = {t:p + " revision", sub:"Quick fire refresh, redo wrong Model Q&A answers, 20 official SRA sample questions, then re-read your red and amber " + p + " topics.", href:"#/quick/review"};
+      else x.rev = {t:p + " revision", sub:"Daily review questions, 20 official SRA sample questions, then go back over the " + p + " slides.", href:"#/quick/daily/" + x.d};
     }
   });
   var tot = 0; days.forEach(function(x){ tot += x.m; });
@@ -195557,8 +195574,32 @@ function slpTodoHTML(w){
   return '<li class="tdtopic"><b>' + esc(w.s.t) + ', workshop ' + w.n + '</b> ' + esc(w.t) + ' <span class="muted small">' + fmtM(tm) + (w.cu ? ' · catch up' : '') + '</span>' + (dn ? ' <span class="pill g">Done ✓</span>' : '') + '<ul class="tdsteps">' +
     st.map(function(z){ return slpStepLi(z, dn || !!(S.todo && S.todo[z.k])); }).join("") + '</ul></li>';
 }
-function slpSRSteps(pd){ return [{k:"sr|" + pd.d + "|qf", l:"Quick fire refresh (workshops you've ticked)", h:"#/quick/review", m:pd.sr * 0.5}, {k:"sr|" + pd.d + "|qa", l:"Redo the Model Q&A you got wrong", h:"#/questions/wrong", m:pd.sr * 0.5}]; }
-function slpSRHTML(pd){ if (!pd.srOn) return ""; return '<li class="tdtopic"><b>Spaced repetition</b> <span class="muted small">' + fmtM(pd.sr) + ' · going back over what you\'ve done</span><ul class="tdsteps">' + slpSRSteps(pd).map(function(z){ return slpStepLi(z, !!(S.todo && S.todo[z.k])); }).join("") + '</ul></li>'; }
+/* 23 Nov (Monnie): Daily review = a short mix (about 10 questions on weekdays, 20 at weekends), half Quick fire, half Model Q&A:
+   questions she got wrong first, then ones she has never answered from the topics of workshops ticked before today. Never ones she last got right. */
+var SLP_DR_WD = 10, SLP_DR_WE = 20;
+function slpDRTopics(tdy){ var o = {}, b = (S.bpp && S.bpp.done) || {}; for (var k in b) if (b[k] && ymd(new Date(+b[k])) < tdy) slpTopics(k).forEach(function(x){ o[x.key] = 1; }); return o; }
+function slpDRPick(ds){
+  ds = ds || ymd(); var tdy = ymd(), T = slpDRTopics(tdy), n = parseYmd(ds).getDay() % 6 === 0 ? SLP_DR_WE : SLP_DR_WD, pd0 = null; try { pd0 = planDay(ds); } catch(e){} if (pd0 && pd0.rev && !/mock/i.test(pd0.rev.t)) n *= 2; /* revision days: 20 / 40 */
+  var hs = function(id){ return hashStr(id + "|" + ds); };
+  var byT = function(a, b){ return (T[b.tk] ? 1 : 0) - (T[a.tk] ? 1 : 0) || b.at - a.at; };
+  var qfW = [], qfN = [], qaW = [], qaN = [];
+  SUBJ.forEach(function(s){
+    (s.qq || []).forEach(function(x){ var r = S.qf[x.id], tk = s.id + "/" + x.t; if (r && r.n > 0 && !(r.b > 0)) qfW.push({id:x.id, x:x, tk:tk, at:r.at || 0}); else if (!r && T[tk]) qfN.push({id:x.id, x:x, h:hs(x.id)}); });
+    (s.qs || []).forEach(function(q, i){ var id = s.id + "#" + i, a = S.qa[id], tk = s.id + "/" + (q.t || ""); if (a && a.last === -1) qaW.push({id:id, tk:tk, at:a.at || 0}); });
+    s.topics.forEach(function(t){ if (!T[s.id + "/" + t.id]) return; topicQs(s, t.id).forEach(function(id){ if (!S.qa[id]) qaN.push({id:id, h:hs(id)}); }); });
+  });
+  qfW.sort(byT); qaW.sort(byT); qfN.sort(function(a, b){ return a.h < b.h ? -1 : a.h > b.h ? 1 : 0; }); qaN.sort(function(a, b){ return a.h < b.h ? -1 : a.h > b.h ? 1 : 0; });
+  var QF = qfW.concat(qfN), QA = qaW.concat(qaN), seenA = {}; QA = QA.filter(function(z){ if (seenA[z.id]) return false; seenA[z.id] = 1; return true; });
+  var nf = Math.min(QF.length, Math.ceil(n / 2)), na = Math.min(QA.length, n - nf); nf = Math.min(QF.length, n - na);
+  return {qf:QF.slice(0, nf).map(function(z){ return z.x; }), qa:QA.slice(0, na).map(function(z){ return z.id; }), n:n};
+}
+function slpSRSteps(pd){
+  var tdy = ymd(), cnt = pd.d === tdy ? slpDRPick(pd.d) : null, st = [];
+  if (!cnt || cnt.qf.length) st.push({k:"sr|" + pd.d + "|qf", l:"Quick fire" + (cnt ? " (" + plural(cnt.qf.length, "question") + ")" : ""), h:"#/quick/daily/" + pd.d, m:pd.sr * 0.3});
+  if (!cnt || cnt.qa.length) st.push({k:"sr|" + pd.d + "|qa", l:"Model Q&A" + (cnt ? " (" + plural(cnt.qa.length, "question") + ")" : ""), h:"#/questions/daily", m:pd.sr * 0.7});
+  return st;
+}
+function slpSRHTML(pd){ if (!pd.srOn) return ""; var st = slpSRSteps(pd); if (!st.length) return ""; return '<li class="tdtopic"><b>Daily review</b> <span class="muted small">' + fmtM(pd.sr) + '</span><div class="small muted">Questions you got wrong, plus new ones from workshops you\'ve done.</div><ul class="tdsteps">' + st.map(function(z){ return slpStepLi(z, !!(S.todo && S.todo[z.k])); }).join("") + '</ul></li>'; }
 function slpDayHTML(pd){ return pd.ws.map(slpTodoHTML).join("") + slpSRHTML(pd); }
 /* unfinished workshops planned for days before ds (normally none: the plan re-flows every morning) */
 function slpBehind(ds){ var out = []; buildPlan().days.forEach(function(x){ if (x.d < ds) x.ws.forEach(function(w){ if (!slpDone(w.k)) out.push(w); }); }); return out; }
@@ -196672,9 +196713,15 @@ function fwkSteps(f, skin, k){
 var QZ = null; // {title, items:[{id, order}], i, ans:[], back}
 function startQuiz(title, ids, back, ordered, start){
   QZ = {title:title, items:(ordered ? ids.slice() : shuffle(ids)).map(function(id){ return {id:id, order:shuffle([0,1,2,3,4])}; }), i:start || 0, ans:[], back:back || "#/questions"};
-  if (location.hash === "#/play") render(); else { try { history[/^#\/questions\/(wrong|[^\/]+\/(go|shuffle))(\/|$)/.test(location.hash) ? "replaceState" : "pushState"](null, "", "#/play"); } catch(e){ location.hash = "#/play"; } render(); } /* QA 20 Nov: Back from a quiz returns to the page it started from */
+  if (location.hash === "#/play") render(); else { try { history[/^#\/questions\/(wrong|daily|[^\/]+\/(go|shuffle))(\/|$)/.test(location.hash) ? "replaceState" : "pushState"](null, "", "#/play"); } catch(e){ location.hash = "#/play"; } render(); } /* QA 20 Nov: Back from a quiz returns to the page it started from */
 }
 VIEW.questions = function(r){
+  if (SLIDES_MODE && r[1] === "daily"){ /* Daily review (slides mode): wrong ones first, then new ones from ticked workshops */
+    var dq = slpDRPick().qa;
+    if (!dq.length) return '<div class="card"><h2>Daily review</h2><p>No Model Q&amp;A to go over today. Well done!</p><a class="btn" href="#/home">Back to Today</a></div>';
+    setTimeout(function(){ startQuiz("Daily review", dq, "#/home", true); }, 0);
+    return '<div class="card">Loading…</div>';
+  }
   if (r[1] === "wrong"){
     var w = wrongIds();
     if (!w.length) return '<div class="card"><h2>Questions I got wrong</h2><p>Nothing here. Every question you\'ve tried, you got right the last time. 🎉</p><a class="btn" href="#/questions">Back to Model Q&amp;A</a></div>';
@@ -196823,6 +196870,7 @@ function qfPool(key){
     var fresh = shuffle(due.filter(function(x){ return !S.qf[x.id]; }));
     return seenDue.concat(fresh).slice(0, 10);
   }
+  if (SLIDES_MODE && parts[0] === "daily") return slpDRPick(parts[1]).qf; /* Daily review (slides mode) */
   if (key === "extra") return coveredQQ().sort(function(a, b){ return ((S.qf[a.id] || {}).at || 0) - ((S.qf[b.id] || {}).at || 0); }).slice(0, 10);
   if (key === "mix") return shuffle(allQQ()).slice(0, 10);
   if (key === "mistakes") return shuffle(qfMistakes());
@@ -196832,6 +196880,7 @@ function qfPool(key){
 }
 function qfTitle(key){
   var parts = key.split("/");
+  if (parts[0] === "daily") return "Daily review";
   if (key === "review") return "Refresh what you've covered"; if (key === "extra") return "Extra refresh"; if (key === "mix") return "Mixed"; if (key === "mistakes") return "Mistakes mix";
   var s = BYID[parts[0]]; if (!s) return "";
   if (parts[1]){ var t = TBYKEY[s.id + "/" + parts[1]]; return t ? t.t.title : s.title; }
@@ -196874,6 +196923,7 @@ VIEW.quick = function(r){
         if (!cov) return '<div class="card"><h2>🔁 Refresh what you\'ve covered</h2><p>This brings back questions from topics you have already reviewed, spaced out so they come back just as you might forget them.</p><p class="muted">You haven\'t rated any topics yet. Open a topic in <a href="#/syllabus">Syllabus &amp; notes</a>, read it, then tap 🔴, 🟠 or 🟢 at the bottom. Its questions will then appear here.</p><a class="btn" href="#/quick">Back</a></div>';
         return '<div class="card" style="text-align:center"><h2>🎉 All caught up</h2><p>Nothing is due to refresh right now. The next questions come back ' + esc(nextDueText() || "soon") + '.</p><div class="btns" style="justify-content:center"><a class="btn primary" href="#/quick/extra">Do an extra round anyway</a><a class="btn" href="#/quick">Pick a topic instead</a></div></div>';
       }
+      if (/^daily(\/|$)/.test(key)) return '<div class="card"><h2>Daily review</h2><p>Nothing to go over here today. Well done!</p><a class="btn" href="#/home">Back to Today</a></div>';
       return '<div class="card">Quick fire questions for this part are coming soon. <a href="#/quick">Back</a></div>';
     }
     if (QF.i >= QF.items.length){
@@ -197593,6 +197643,11 @@ function revSteps(pd){
   if (/mock/i.test(pd.rev.t)) return [
     {k:"mk|" + pd.d + "|mock", kind:"mk", l:"📝 Do a timed " + p + " mock (ticks itself when you finish one)", h:"#/mock", m:240},
     {k:"mk|" + pd.d + "|wrong", kind:"mk", l:"🔍 Go through every answer you got wrong", h:"#/mock", m:120}];
+  if (SLIDES_MODE) return [ /* 23 Nov (Monnie): revision days use the Daily review rule (wrong first, then new; never ones she got right) and go back over the slides */
+    {k:"rv|" + pd.d + "|qf", kind:"rv", l:"⚡ Daily review: Quick fire", h:"#/quick/daily/" + pd.d},
+    {k:"rv|" + pd.d + "|qa", kind:"rv", l:"✍️ Daily review: Model Q&A", h:"#/questions/daily"},
+    {k:"rv|" + pd.d + "|sra", kind:"rv", l:"🏛️ Do 20 official SRA sample questions for " + p + " (about 40 min)", h:"#/sra/paper/" + p},
+    {k:"rv|" + pd.d + "|re", kind:"rv", l:"📝 Go back over the slides for the " + p + " subjects", h:"#/slides"}];
   return [
     {k:"rv|" + pd.d + "|qf", kind:"rv", l:"⚡ Quick fire refresh", h:"#/quick/review"},
     {k:"rv|" + pd.d + "|qa", kind:"rv", l:"✍️ Redo the Model Q&A answers you got wrong", h:"#/questions/wrong"},
