@@ -193880,7 +193880,7 @@ window.SQE_EXTRAS = function(api){
 /* 22 Nov SLIDES MODE (Monnie, slides thread): Layla's site switches to her own BPP slides (PowerPoints tab), syllabus notes kept,
    Peckham/town hidden from Layla (code kept; Monnie's ?monnie=1 view keeps it), Today plan + timetable rebuilt around BPP workshops.
    SLIDES_LIVE=false until Monnie approves the preview. Preview: ?slides=1 (this browser, shows Layla's view even in monnie mode); ?slides=0 ends it. */
-var SLIDES_LIVE = false;
+var SLIDES_LIVE = true; /* 22 Nov 23:24 Monnie: switch on for Layla, revision from tomorrow */
 var SLIDES_PREVIEW = (function(){ try { if (/[?&#]slides=1/.test(location.href)) localStorage.setItem("sqe_slides", "1"); if (/[?&#]slides=0/.test(location.href)) localStorage.removeItem("sqe_slides"); return localStorage.getItem("sqe_slides") === "1"; } catch(e){ return false; } })();
 var SLIDES_MODE = SLIDES_LIVE || SLIDES_PREVIEW;
 var IS_MONNIE = (function(){ try { return /[?&#]monnie=1/.test(location.href) || !!localStorage.getItem("sqe_monnie"); } catch(e){ return false; } })();
@@ -195453,7 +195453,8 @@ function rotJoin(){
 }
 /* 22 Nov SLIDES MODE plan (Worker C): the study plan, Today and the timetable are built around Layla's BPP workshops (window.SQE_SLIDES).
    Monnie's defaults below; change the numbers here. The plan starts the first day she opens it, runs to SLP_LAST_LEARN, then the old mock / revision days. */
-var SLP_LAST_LEARN = "2027-01-05", SLP_OFF = ["12-25", "01-01"], SLP_SUBJ_WD = 2, SLP_SUBJ_WE = 4, SLP_PRACT = 20, SLP_MIN_WS = 15, SLP_PER_PDF = 6;
+/* 22 Nov (Monnie approved): each day takes the next 1-2 workshops from 2-3 subjects (more at weekends); weekday = ~75 min slides + ~30 min Quick fire / Model Q&A on those workshops + ~15 min spaced repetition (45 at weekends); new material done by Sat 2 Jan, 3-5 Jan revision */
+var SLP_START = "2026-11-23", SLP_LAST_LEARN = "2027-01-05", /* 23 Nov 02:00 Monnie: no free revision days before the first mock */ SLP_OFF = ["12-25", "01-01"], SLP_SUBJ_WD = 3, SLP_SUBJ_WE = 6, SLP_PER_SUBJ = 2, SLP_SLIDES = 75, SLP_PRACT = 30, SLP_SR_WD = 15, SLP_SR_WE = 45, SLP_MIN_WS = 15, SLP_PER_PDF = 6;
 var SLP_ABBR = {blp:"BLP", dr:"DR", contract:"Contract", tort:"Tort", legalsys:"Legal Sys", wills:"Wills", trusts:"Trusts", land:"Land", property:"Property", crimlaw:"Crim Law", crimprac:"Crime", ethics:"Ethics", ls:"Bus of Law", accounts:"Accounts"};
 function slpHref(sid, n){ return typeof slidesHref === "function" ? slidesHref(sid, n) : "#/slides/" + sid + "/" + n; }
 function slpBpp(){ S.bpp = (S.bpp && typeof S.bpp === "object") ? S.bpp : {}; S.bpp.seen = S.bpp.seen || {}; S.bpp.done = S.bpp.done || {}; return S.bpp; }
@@ -195463,10 +195464,11 @@ function slpMins(s, n){ var m = 0; try { if (typeof bppMins === "function") m = 
 var SLP_ALL = null;
 function slpWS(){ if (SLP_ALL) return SLP_ALL; var out = []; (SLIDES || []).forEach(function(s, si){ (s.w || []).forEach(function(w, i){ out.push({k:s.id + "/" + (i + 1), sid:s.id, n:i + 1, s:s, si:si, t:w.t, rm:slpMins(s, i + 1)}); }); }); return (SLP_ALL = out); }
 function slpGoal(d){ var ds = ymd(d); if (SLP_OFF.indexOf(ds.slice(5)) >= 0) return 0; return goalMins(d); }
-function slpCap(d, g){ var we = d.getDay() % 6 === 0; return Math.max(g * 0.3, g - SLP_PRACT * (we ? SLP_SUBJ_WE : SLP_SUBJ_WD)); }
+function slpSR(d){ return d.getDay() % 6 === 0 ? SLP_SR_WE : SLP_SR_WD; }
+function slpCap(d, g){ var rest = Math.max(0, g - slpSR(d)); return rest * SLP_SLIDES / (SLP_SLIDES + SLP_PRACT); }
 /* re-flows the unfinished workshops from today over the days left (once a day, or when the hours change); finished ones stay on the day they were planned */
 function slpReflow(all, tdy, key){
-  var sp = S.slidePlan, at = {}, orig = sp.orig || {}, end = SLP_LAST_LEARN, L = [], d = parseYmd(tdy);
+  var sp = S.slidePlan, at = {}, orig = sp.orig || {}, end = SLP_LAST_LEARN, L = [], d = parseYmd(tdy < SLP_START ? SLP_START : tdy); /* 22 Nov 23:24 (Monnie): revision starts Mon 23 Nov */
   all.forEach(function(w){ if (sp.at && sp.at[w.k] && slpDone(w.k) && slpDoneOn(w.k) < tdy) at[w.k] = sp.at[w.k]; });
   while (ymd(d) <= end){ var g = slpGoal(d); if (g > 0) L.push({d:ymd(d), cap:slpCap(d, g), we:d.getDay() % 6 === 0}); d = new Date(d); d.setDate(d.getDate() + 1); }
   var tot = {}, prog = {}; all.forEach(function(w){ tot[w.sid] = (tot[w.sid] || 0) + w.rm; if (slpDone(w.k) && !(slpDoneOn(w.k) === tdy)) prog[w.sid] = (prog[w.sid] || 0) + w.rm; });
@@ -195479,15 +195481,16 @@ function slpReflow(all, tdy, key){
   pend.filter(function(w){ return slpDone(w.k); }).forEach(function(w){ at[w.k] = [tdy, idx++]; q[w.sid].splice(q[w.sid].indexOf(w), 1); sched += w.rm; prog[w.sid] = (prog[w.sid] || 0) + w.rm; lastS = w.sid; });
   L.forEach(function(x, li){
     cum += x.cap; var T = C ? Wp * Math.min(1, 1.03 * cum / C) : Wp, /* runs about 3% ahead so the last day isn't a pile-up */ last = li === L.length - 1, maxS = x.we ? SLP_SUBJ_WE : SLP_SUBJ_WD, ds = [];
-    all.forEach(function(w){ if (at[w.k] && at[w.k][0] === x.d && ds.indexOf(w.sid) < 0) ds.push(w.sid); });
+    var cnt = {}; all.forEach(function(w){ if (at[w.k] && at[w.k][0] === x.d){ if (ds.indexOf(w.sid) < 0) ds.push(w.sid); cnt[w.sid] = (cnt[w.sid] || 0) + 1; } });
     while (true){
       var left = order.filter(function(s){ return q[s] && q[s].length; }); if (!left.length) break;
+      if (!last){ left = left.filter(function(s){ return (cnt[s] || 0) < SLP_PER_SUBJ; }); if (!left.length) break; }
       var el = ds.length >= maxS ? left.filter(function(s){ return ds.indexOf(s) >= 0; }) : left; if (!el.length){ if (!last) break; el = left; }
       var c2 = el.filter(function(s){ return s !== lastS; }); if (c2.length) el = c2;
       el.sort(function(a, b){ var fa = (prog[a] || 0) / tot[a], fb = (prog[b] || 0) / tot[b]; return fa - fb || order.indexOf(a) - order.indexOf(b); });
       var w = q[el[0]][0];
       if (!last && sched + w.rm * 0.2 > T) break;
-      q[el[0]].shift(); at[w.k] = [x.d, idx++]; sched += w.rm; prog[w.sid] = (prog[w.sid] || 0) + w.rm; lastS = w.sid; if (ds.indexOf(w.sid) < 0) ds.push(w.sid);
+      q[el[0]].shift(); at[w.k] = [x.d, idx++]; sched += w.rm; prog[w.sid] = (prog[w.sid] || 0) + w.rm; lastS = w.sid; cnt[w.sid] = (cnt[w.sid] || 0) + 1; if (ds.indexOf(w.sid) < 0) ds.push(w.sid);
     }
   });
   all.forEach(function(w){ if (at[w.k] && !orig[w.k]) orig[w.k] = at[w.k][0]; });
@@ -195496,7 +195499,7 @@ function slpReflow(all, tdy, key){
 }
 var PLANS = null;
 function buildPlanSlides(){
-  var st = S.settings, tdy = ymd(), key = JSON.stringify([st.weekday, st.weekend, st.daysOff, st.exam1, st.exam2, SLP_LAST_LEARN, SLP_OFF, SLP_SUBJ_WD, SLP_SUBJ_WE, SLP_PRACT, (SLIDES || []).length, slpWS().length]);
+  var st = S.settings, tdy = ymd(), key = JSON.stringify([st.weekday, st.weekend, st.daysOff, st.exam1, st.exam2, SLP_START, SLP_LAST_LEARN, SLP_OFF, SLP_SUBJ_WD, SLP_SUBJ_WE, SLP_PER_SUBJ, SLP_SLIDES, SLP_PRACT, SLP_SR_WD, SLP_SR_WE, (SLIDES || []).length, slpWS().length]);
   S.slidePlan = (S.slidePlan && typeof S.slidePlan === "object") ? S.slidePlan : {};
   var all = slpWS(), sp = S.slidePlan;
   var miss = all.some(function(w){ return !(sp.at && sp.at[w.k]) && !(slpDone(w.k) && slpDoneOn(w.k) < (sp.day || tdy)); });
@@ -195506,7 +195509,7 @@ function buildPlanSlides(){
   var e1 = parseYmd(st.exam1), e2 = parseYmd(st.exam2), rev1 = new Date(e1); rev1.setDate(e1.getDate() - 5);
   var days = [], byD = {}, d = parseYmd(sp.from < tdy ? sp.from : tdy);
   while (d < e2){
-    var ds = ymd(d), ph = ds === st.exam1 ? "exam" : d < rev1 ? "learn" : d < e1 ? "rev1" : "rev2";
+    var ds = ymd(d), ph = ds === st.exam1 ? "exam" : (d < rev1 && ds <= SLP_LAST_LEARN) ? "learn" : d < e1 ? "rev1" : "rev2";
     var x = {d:ds, m:ph === "exam" ? 0 : slpGoal(d), ph:ph, items:[], reviews:[], mixed:0, ws:[]}; days.push(x); byD[ds] = x;
     d = new Date(d); d.setDate(d.getDate() + 1);
   }
@@ -195518,12 +195521,15 @@ function buildPlanSlides(){
     x.ws.sort(function(a, b){ return a.ord - b.ord; });
     if (x.ph === "learn"){
       var sm = 0, subs = []; x.ws.forEach(function(w){ w.m = w.rm * sc; sm += w.m; if (subs.indexOf(w.sid) < 0) subs.push(w.sid); });
-      var pr = subs.length ? Math.max(SLP_PRACT * Math.min(1, sc), (x.m - sm) / subs.length) : 0;
-      x.ws.forEach(function(w){ var nS = x.ws.filter(function(y){ return y.sid === w.sid; }).length; w.p = pr / nS; });
+      x.srOn = x.m > 0 && slpPrior(x.d, tdy, days); x.sr = x.srOn ? slpSR(parseYmd(x.d)) : 0;
+      var sb = Math.max(0, x.m - x.sr) * SLP_SLIDES / (SLP_SLIDES + SLP_PRACT); /* keep the day's shape: if the slides run over their share, their times are shown shorter so practice keeps its ~30 min */
+      if (sm > sb && sb > 0){ var f = sb / sm; x.ws.forEach(function(w){ w.m *= f; }); sm = sb; }
+      var pr = x.ws.length ? Math.max(0, x.m - x.sr - sm) : 0;
+      x.ws.forEach(function(w){ w.p = pr / x.ws.length; });
     }
     if (x.ph === "rev1" || x.ph === "rev2"){
-      var p = x.ph === "rev1" ? "FLK1" : "FLK2", firstRev = days.some(function(y){ return y.d === dayBefore(x.d) && y.ph !== x.ph; });
-      if (x.d === dayBefore(st.exam1) || x.d === dayBefore(st.exam2) || (firstRev && x.m >= 90)) x.rev = {t:p + " mock day: 1 or 2 mocks, nothing else", sub:"Do one or two timed mocks in Mock exam, then go through every answer you got wrong. No new workshops today.", href:"#/mock"};
+      var p = x.ph === "rev1" ? "FLK1" : "FLK2", aft = new Date(e1); aft.setDate(e1.getDate() + 1);
+      if (x.d === dayBefore(st.exam1) || x.d === dayBefore(st.exam2) || ((x.d === ymd(rev1) || x.d === ymd(aft)) && x.m >= 90)) /* mocks 6 & 10 Jan (FLK1), 12 & 17 Jan (FLK2) */ x.rev = {t:p + " mock day: 1 or 2 mocks, nothing else", sub:"Do one or two timed mocks in Mock exam, then go through every answer you got wrong. No new workshops today.", href:"#/mock"};
       else x.rev = {t:p + " revision", sub:"Quick fire refresh, redo wrong Model Q&A answers, 20 official SRA sample questions, then re-read your red and amber " + p + " topics.", href:"#/quick/review"};
     }
   });
@@ -195531,39 +195537,53 @@ function buildPlanSlides(){
   PLANS = {ck:sp.v + "|" + tdy, key:key, days:days, revs:{}, all:tot, cap:tot, rate:0, slides:true, sc:sc};
   return PLANS;
 }
-function slpSteps(w){ var b = "bp|" + w.k + "|";
+/* the spaced repetition item shows once she has ticked a workshop before that day (future days: once one is planned earlier) */
+function slpPrior(ds, tdy, days){ var b = (S.bpp && S.bpp.done) || {}; for (var k in b) if (b[k] && ymd(new Date(+b[k])) < ds) return true; if (ds <= tdy) return false; for (var i = 0; i < days.length && days[i].d < ds; i++) if (days[i].d >= tdy && days[i].ws.length) return true; return false; }
+/* topics a workshop covers (window.SQE_SLIDEMAP, made from the slides; empty if not mapped yet) */
+function slpTopics(k){ var m = (window.SQE_SLIDEMAP || {})[k] || []; return m.map(function(tk){ return TBYKEY[tk]; }).filter(Boolean); }
+function slpQ(w){
+  var tp = slpTopics(w.k), s0 = BYID[w.sid], qf = tp.filter(function(x){ return (x.s.qq || []).some(function(q){ return q.t === x.t.id; }); }), qa = tp.filter(function(x){ return topicQs(x.s, x.t.id).length; });
+  var alt = function(L, base){ return L.length > 1 ? L.slice(1).map(function(x){ return ' <a class="tdalt" href="' + base + x.s.id + '/' + x.t.id + '">' + esc(x.t.title) + '</a>'; }).join("") : ''; };
+  return {qf: qf.length ? {h:"#/quick/" + qf[0].s.id + "/" + qf[0].t.id, l:"Quick fire: " + qf[0].t.title, alt:alt(qf, "#/quick/")} : {h:"#/quick/" + (s0 ? s0.id : w.sid), l:"Quick fire: " + w.s.t, alt:""},
+    qa: qa.length ? {h:"#/questions/" + qa[0].s.id + "/" + qa[0].t.id, l:"Model Q&A: " + qa[0].t.title, alt:alt(qa, "#/questions/")} : {h:"#/questions/" + (s0 ? s0.id : w.sid), l:"Model Q&A: " + w.s.t, alt:""}};
+}
+function slpSteps(w){ var b = "bp|" + w.k + "|", q = slpQ(w);
   return [{k:b + "slides", l:"Go through the slides", h:slpHref(w.sid, w.n), m:w.m},
-    {k:b + "notes", l:"Read the notes", h:"#/subject/" + w.sid, m:(w.p || 0) * 0.4},
-    {k:b + "quick", l:"Quick fire", h:"#/quick/" + w.sid, m:(w.p || 0) * 0.3},
-    {k:b + "qa", l:"Model Q&A", h:"#/questions/" + w.sid, m:(w.p || 0) * 0.3}]; }
+    {k:b + "quick", l:q.qf.l, h:q.qf.h, alt:q.qf.alt, m:(w.p || 0) * 0.4},
+    {k:b + "qa", l:q.qa.l, h:q.qa.h, alt:q.qa.alt, m:(w.p || 0) * 0.6}]; }
+function slpStepLi(z, on){ return '<li><button class="tdbox' + (on ? " on" : "") + '" data-act="todo" data-k="' + z.k + '" aria-label="Tick off">' + (on ? "✓" : "") + '</button><a href="' + z.h + '">' + esc(z.l) + '</a>' + (z.alt || '') + (z.m >= 1 ? '<span class="tdmin">' + fmtM(z.m) + '</span>' : '') + '</li>'; }
 function slpTodoHTML(w){
   var dn = slpDone(w.k), st = slpSteps(w), tm = 0; st.forEach(function(z){ tm += z.m || 0; });
   return '<li class="tdtopic"><b>' + esc(w.s.t) + ', workshop ' + w.n + '</b> ' + esc(w.t) + ' <span class="muted small">' + fmtM(tm) + (w.cu ? ' · catch up' : '') + '</span>' + (dn ? ' <span class="pill g">Done ✓</span>' : '') + '<ul class="tdsteps">' +
-    st.map(function(z){ var on = dn || !!(S.todo && S.todo[z.k]); return '<li><button class="tdbox' + (on ? " on" : "") + '" data-act="todo" data-k="' + z.k + '" aria-label="Tick off">' + (on ? "✓" : "") + '</button><a href="' + z.h + '">' + esc(z.l) + '</a>' + (z.m >= 1 ? '<span class="tdmin">' + fmtM(z.m) + '</span>' : '') + '</li>'; }).join("") + '</ul></li>';
+    st.map(function(z){ return slpStepLi(z, dn || !!(S.todo && S.todo[z.k])); }).join("") + '</ul></li>';
 }
-function slpDayHTML(pd){ return pd.ws.map(slpTodoHTML).join(""); }
+function slpSRSteps(pd){ return [{k:"sr|" + pd.d + "|qf", l:"Quick fire refresh (workshops you've ticked)", h:"#/quick/review", m:pd.sr * 0.5}, {k:"sr|" + pd.d + "|qa", l:"Redo the Model Q&A you got wrong", h:"#/questions/wrong", m:pd.sr * 0.5}]; }
+function slpSRHTML(pd){ if (!pd.srOn) return ""; return '<li class="tdtopic"><b>Spaced repetition</b> <span class="muted small">' + fmtM(pd.sr) + ' · going back over what you\'ve done</span><ul class="tdsteps">' + slpSRSteps(pd).map(function(z){ return slpStepLi(z, !!(S.todo && S.todo[z.k])); }).join("") + '</ul></li>'; }
+function slpDayHTML(pd){ return pd.ws.map(slpTodoHTML).join("") + slpSRHTML(pd); }
 /* unfinished workshops planned for days before ds (normally none: the plan re-flows every morning) */
 function slpBehind(ds){ var out = []; buildPlan().days.forEach(function(x){ if (x.d < ds) x.ws.forEach(function(w){ if (!slpDone(w.k)) out.push(w); }); }); return out; }
-/* ticking all four steps marks the workshop finished (same as the PowerPoints tab button); unticking one takes that back */
+/* ticking all three steps marks the workshop finished (same as the PowerPoints tab button); unticking one takes that back */
 function bppTodoSync(k){
   var a = String(k).split("|"); if (a[0] !== "bp" || !a[1]) return;
-  var b = slpBpp(), wk = a[1], all4 = ["slides", "notes", "quick", "qa"].every(function(s){ return S.todo["bp|" + wk + "|" + s]; });
+  var b = slpBpp(), wk = a[1], all3 = ["slides", "quick", "qa"].every(function(s){ return S.todo["bp|" + wk + "|" + s]; });
   b.auto = b.auto || {};
-  if (all4 && !b.done[wk]){ b.done[wk] = Date.now(); b.auto[wk] = 1; }
-  else if (!all4 && b.auto[wk]){ delete b.done[wk]; delete b.auto[wk]; }
+  if (all3 && !b.done[wk]){ b.done[wk] = Date.now(); b.auto[wk] = 1; }
+  else if (!all3 && b.auto[wk]){ delete b.done[wk]; delete b.auto[wk]; }
 }
 function slpDayTasks(ds){
   var pd = planDay(ds), out = [];
   if (!pd || SLP_OFF.indexOf(ds.slice(5)) >= 0 || pd.ph === "exam" || !pd.m) return out;
-  if (pd.ph === "learn") pd.ws.forEach(function(w){ slpSteps(w).forEach(function(z){ out.push({k:z.k, kind:"bpp", w:w.k}); }); });
+  if (pd.ph === "learn"){ pd.ws.forEach(function(w){ slpSteps(w).forEach(function(z){ out.push({k:z.k, kind:"bpp", w:w.k}); }); }); if (pd.srOn) slpSRSteps(pd).forEach(function(z){ out.push({k:z.k, kind:"sr"}); }); }
   else if (pd.rev) revSteps(pd).forEach(function(z){ out.push({k:z.k, kind:z.kind}); });
   return out;
 }
+/* in slides mode "covered" (for Quick fire refresh and the extras) = the topics of the workshops she has ticked */
+function slpCovered(){ var o = {}, b = (S.bpp && S.bpp.done) || {}; for (var k in b) if (b[k]) slpTopics(k).forEach(function(x){ o[x.key] = 1; }); return o; }
 function viewPlanSlides(){
   var p = buildPlan(), tdy = ymd(), nW = 0, nD = 0; p.days.forEach(function(x){ nW += x.ws.length; x.ws.forEach(function(w){ if (slpDone(w.k)) nD++; }); });
-  var h = '<div class="card"><h2>📅 Revision timetable</h2><p class="muted" style="margin:0">Your BPP workshops, a few each day. Two subjects on weekdays, up to four at weekends. Every workshop is done by ' + esc(fmtDate(SLP_LAST_LEARN)) + '. Then mocks and revision before each paper.</p>' +
+  var h = '<div class="card"><h2>📅 Revision timetable</h2><p class="muted" style="margin:0">Your BPP workshops in order, the next one or two from two or three subjects each day (more at weekends). Every workshop is done by ' + esc(fmtDate(SLP_LAST_LEARN)) + '. Then revision, and mocks before each paper.</p>' +
     '<div class="plansum"><span><b>' + nD + ' of ' + nW + '</b> workshops done</span><span><b>' + S.settings.weekday + 'h</b> on weekdays</span><span><b>' + S.settings.weekend + 'h</b> at weekends</span><span>Days off: 25 Dec, 1 Jan</span></div>' +
-    '<p class="small muted">Each workshop: go through the slides, read the notes, then Quick fire and Model Q&amp;A for that subject. Fall behind? The plan moves the rest along each morning. You can change the hours in Settings.</p></div>';
+    '<p class="small muted">Each workshop: go through the slides, then Quick fire and Model Q&amp;A on its topics. Each day ends with a short spaced repetition of what you have done. Fall behind? The plan moves the rest along each morning. You can change the hours in Settings.</p></div>';
   var weeks = [], cur = null;
   p.days.forEach(function(x){ var w = (parseYmd(x.d).getDay() + 6) % 7; if (!cur || w === 0){ cur = []; weeks.push(cur); while (cur.length < w) cur.push(null); } cur.push(x); });
   h += '<div class="card"><h3 style="margin-top:0">At a glance</h3><div class="cal"><div class="calh">Mon</div><div class="calh">Tue</div><div class="calh">Wed</div><div class="calh">Thu</div><div class="calh">Fri</div><div class="calh">Sat</div><div class="calh">Sun</div>';
@@ -195589,7 +195609,7 @@ function viewPlanSlides(){
       else if (!x.m) h += x.d.slice(5) === "12-25" ? '<b class="hol">CHRISTMAS DAY!!! 🎄</b>' : x.d.slice(5) === "01-01" ? '<b class="hol">NEW YEAR\'S DAY!!! 🎆</b>' : '<span class="muted">Day off. Rest is part of revision.</span>';
       else if (x.rev) h += '<a href="' + x.rev.href + '"><b>' + esc(x.rev.t) + '</b></a><div class="small muted">' + esc(x.rev.sub) + '</div>';
       else if (!x.ws.length) h += '<span class="muted">' + (x.d < tdy ? 'Nothing planned.' : 'Free day: catch up or revise.') + '</span>';
-      else h += '<ul class="plist">' + x.ws.map(function(w){ var dn = slpDone(w.k); return '<li class="' + (dn ? "pdone" : "") + '"><a href="' + slpHref(w.sid, w.n) + '"><b>' + esc(SLP_ABBR[w.sid] || w.s.t) + ' ' + w.n + '</b> ' + esc(w.t) + '</a> <span class="muted small">' + fmtM(w.m + (w.p || 0)) + (w.cu ? ' · catch up' : '') + '</span>' + (dn ? ' <span class="pill g">✓</span>' : '') + '</li>'; }).join("") + '</ul>';
+      else h += '<ul class="plist">' + x.ws.map(function(w){ var dn = slpDone(w.k); return '<li class="' + (dn ? "pdone" : "") + '"><a href="' + slpHref(w.sid, w.n) + '"><b>' + esc(SLP_ABBR[w.sid] || w.s.t) + ' ' + w.n + '</b> ' + esc(w.t) + '</a> <span class="muted small">' + fmtM(w.m + (w.p || 0)) + (w.cu ? ' · catch up' : '') + '</span>' + (dn ? ' <span class="pill g">✓</span>' : '') + '</li>'; }).join("") + '</ul>' + (x.srOn ? '<div class="small revline">+ spaced repetition (' + fmtM(x.sr) + ')</div>' : '');
       h += '</div></div>';
     });
     h += '</div>';
@@ -196032,7 +196052,7 @@ var SL_BY = {}; SLIDES.forEach(function(s){ SL_BY[s.id] = s; });
 function bppS(){ if (!S.bpp || typeof S.bpp !== "object") S.bpp = {}; if (!S.bpp.seen || typeof S.bpp.seen !== "object") S.bpp.seen = {}; if (!S.bpp.done || typeof S.bpp.done !== "object") S.bpp.done = {}; return S.bpp; }
 function slidesHref(sid, n){ return "#/slides" + (sid ? "/" + sid : "") + (sid && n ? "/" + n : ""); }
 function bppDone(sid, n){ return !!bppS().done[sid + "/" + n]; }
-function bppMins(sid, n){ var s = SL_BY[sid], w = s && s.w[n - 1]; return Math.max(15, (w ? w.f.length : 0) * 6); }
+function bppMins(sid, n){ var s = SL_BY[sid], w = s && s.w[n - 1]; if (!w) return 15; var pg = 0; w.f.forEach(function(f){ pg += +f[3] || 10; }); return Math.max(10, Math.round(pg * 0.44)); } /* 22 Nov 23:30 (Monnie): time by real slide count (f[3] = pages; 10,863 slides fit the time to 2 Jan at ~0.44 min each) */
 function bppDoneCount(s){ var c = 0; s.w.forEach(function(w, i){ if (bppDone(s.id, i + 1)) c++; }); return c; }
 function bppPaper(p){ return p === "Both" ? "Both papers" : p; }
 function bppBox(sid, n){ var dn = bppDone(sid, n); return '<button class="tdbox' + (dn ? ' on' : '') + '" data-bppdone="' + esc(sid + "/" + n) + '" aria-label="' + (dn ? 'Workshop done (tap to untick)' : 'Tick off this workshop') + '">' + (dn ? '✓' : '') + '</button>'; }
@@ -196769,7 +196789,7 @@ VIEW.play = function(){
 /* ---------- Quick fire (short 4-option questions + spaced repetition) ---------- */
 var QF = null, SR_DAYS = [1, 3, 7, 14, 30, 60];
 function allQQ(){ var a = []; SUBJ.forEach(function(s){ a = a.concat(s.qq || []); }); return a; }
-function coveredQQ(){ return allQQ().filter(function(x){ return S.done[x.s.id + "/" + x.t]; }); }
+function coveredQQ(){ if (SLIDES_MODE){ var cv = slpCovered(); return allQQ().filter(function(x){ return cv[x.s.id + "/" + x.t]; }); } return allQQ().filter(function(x){ return S.done[x.s.id + "/" + x.t]; }); }
 function qfDue(){ var now = Date.now(); return coveredQQ().filter(function(x){ var r = S.qf[x.id]; return !r || r.due <= now; }); }
 function qfRecord(x, ok){
   var r = S.qf[x.id] || {b:0, n:0, c:0, due:0, at:0};
