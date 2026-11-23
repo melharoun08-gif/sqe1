@@ -193880,7 +193880,7 @@ window.SQE_EXTRAS = function(api){
 /* 22 Nov SLIDES MODE (Monnie, slides thread): Layla's site switches to her own BPP slides (PowerPoints tab), syllabus notes kept,
    Peckham/town hidden from Layla (code kept; Monnie's ?monnie=1 view keeps it), Today plan + timetable rebuilt around BPP workshops.
    SLIDES_LIVE=false until Monnie approves the preview. Preview: ?slides=1 (this browser, shows Layla's view even in monnie mode); ?slides=0 ends it. */
-var SLIDES_LIVE = false;
+var SLIDES_LIVE = true; /* 22 Nov 23:24 Monnie: switch on for Layla, revision from tomorrow */
 var SLIDES_PREVIEW = (function(){ try { if (/[?&#]slides=1/.test(location.href)) localStorage.setItem("sqe_slides", "1"); if (/[?&#]slides=0/.test(location.href)) localStorage.removeItem("sqe_slides"); return localStorage.getItem("sqe_slides") === "1"; } catch(e){ return false; } })();
 var SLIDES_MODE = SLIDES_LIVE || SLIDES_PREVIEW;
 var IS_MONNIE = (function(){ try { return /[?&#]monnie=1/.test(location.href) || !!localStorage.getItem("sqe_monnie"); } catch(e){ return false; } })();
@@ -195454,7 +195454,9 @@ function rotJoin(){
 /* 22 Nov SLIDES MODE plan (Worker C): the study plan, Today and the timetable are built around Layla's BPP workshops (window.SQE_SLIDES).
    Monnie's defaults below; change the numbers here. The plan starts the first day she opens it, runs to SLP_LAST_LEARN, then the old mock / revision days. */
 /* 22 Nov (Monnie approved): each day takes the next 1-2 workshops from 2-3 subjects (more at weekends); weekday = ~75 min slides + ~30 min Quick fire / Model Q&A on those workshops + ~15 min spaced repetition (45 at weekends); new material done by Sat 2 Jan, 3-5 Jan revision */
-var SLP_LAST_LEARN = "2027-01-02", SLP_OFF = ["12-25", "01-01"], SLP_SUBJ_WD = 3, SLP_SUBJ_WE = 6, SLP_PER_SUBJ = 2, SLP_SLIDES = 75, SLP_PRACT = 30, SLP_SR_WD = 15, SLP_SR_WE = 45, SLP_MIN_WS = 15, SLP_PER_PDF = 6;
+/* 23 Nov 16:00 (Monnie): don't start with Business Law. Rotation order: core law first (Contract, then Criminal, Tort, Land...), alternating FLK1/FLK2, practice subjects that build on them later */
+var SLP_ORDER = ["contract", "crimprac", "tort", "land", "legalsys", "trusts", "dr", "property", "blp", "wills", "accounts", "ethics"];
+var SLP_START = "2026-11-23", SLP_LAST_LEARN = "2027-01-05", /* 23 Nov 02:00 Monnie: no free revision days before the first mock */ SLP_OFF = ["12-25", "01-01"], SLP_SUBJ_WD = 3, SLP_SUBJ_WE = 6, SLP_PER_SUBJ = 2, SLP_SLIDES = 75, SLP_PRACT = 30, SLP_SR_WD = 15, SLP_SR_WE = 45, SLP_MIN_WS = 15, SLP_PER_PDF = 6;
 var SLP_ABBR = {blp:"BLP", dr:"DR", contract:"Contract", tort:"Tort", legalsys:"Legal Sys", wills:"Wills", trusts:"Trusts", land:"Land", property:"Property", crimlaw:"Crim Law", crimprac:"Crime", ethics:"Ethics", ls:"Bus of Law", accounts:"Accounts"};
 function slpHref(sid, n){ return typeof slidesHref === "function" ? slidesHref(sid, n) : "#/slides/" + sid + "/" + n; }
 function slpBpp(){ S.bpp = (S.bpp && typeof S.bpp === "object") ? S.bpp : {}; S.bpp.seen = S.bpp.seen || {}; S.bpp.done = S.bpp.done || {}; return S.bpp; }
@@ -195468,14 +195470,14 @@ function slpSR(d){ return d.getDay() % 6 === 0 ? SLP_SR_WE : SLP_SR_WD; }
 function slpCap(d, g){ var rest = Math.max(0, g - slpSR(d)); return rest * SLP_SLIDES / (SLP_SLIDES + SLP_PRACT); }
 /* re-flows the unfinished workshops from today over the days left (once a day, or when the hours change); finished ones stay on the day they were planned */
 function slpReflow(all, tdy, key){
-  var sp = S.slidePlan, at = {}, orig = sp.orig || {}, end = SLP_LAST_LEARN, L = [], d = parseYmd(tdy);
+  var sp = S.slidePlan, at = {}, orig = sp.orig || {}, end = SLP_LAST_LEARN, L = [], d = parseYmd(tdy < SLP_START ? SLP_START : tdy); /* 22 Nov 23:24 (Monnie): revision starts Mon 23 Nov */
   all.forEach(function(w){ if (sp.at && sp.at[w.k] && slpDone(w.k) && slpDoneOn(w.k) < tdy) at[w.k] = sp.at[w.k]; });
   while (ymd(d) <= end){ var g = slpGoal(d); if (g > 0) L.push({d:ymd(d), cap:slpCap(d, g), we:d.getDay() % 6 === 0}); d = new Date(d); d.setDate(d.getDate() + 1); }
   var tot = {}, prog = {}; all.forEach(function(w){ tot[w.sid] = (tot[w.sid] || 0) + w.rm; if (slpDone(w.k) && !(slpDoneOn(w.k) === tdy)) prog[w.sid] = (prog[w.sid] || 0) + w.rm; });
   var pend = all.filter(function(w){ return !at[w.k] && (!slpDone(w.k) || slpDoneOn(w.k) === tdy); });
   var q = {}; pend.forEach(function(w){ (q[w.sid] = q[w.sid] || []).push(w); });
   var Wp = 0, C = 0; pend.forEach(function(w){ Wp += w.rm; }); L.forEach(function(x){ C += x.cap; });
-  var sched = 0, cum = 0, idx = 0, lastS = null, order = (SLIDES || []).map(function(s){ return s.id; });
+  var sched = 0, cum = 0, idx = 0, lastS = null, order = (SLIDES || []).map(function(s){ return s.id; }).sort(function(x, y){ var i = SLP_ORDER.indexOf(x), j = SLP_ORDER.indexOf(y); return (i < 0 ? 99 : i) - (j < 0 ? 99 : j); });
   if (!L.length && pend.length) L.push({d:tdy, cap:120, we:false});
   /* finished today: kept on today's list */
   pend.filter(function(w){ return slpDone(w.k); }).forEach(function(w){ at[w.k] = [tdy, idx++]; q[w.sid].splice(q[w.sid].indexOf(w), 1); sched += w.rm; prog[w.sid] = (prog[w.sid] || 0) + w.rm; lastS = w.sid; });
@@ -195489,7 +195491,7 @@ function slpReflow(all, tdy, key){
       var c2 = el.filter(function(s){ return s !== lastS; }); if (c2.length) el = c2;
       el.sort(function(a, b){ var fa = (prog[a] || 0) / tot[a], fb = (prog[b] || 0) / tot[b]; return fa - fb || order.indexOf(a) - order.indexOf(b); });
       var w = q[el[0]][0];
-      if (!last && sched + w.rm * 0.2 > T) break;
+      if (!last && sched + w.rm * 0.2 > T && Object.keys(cnt).length) break; /* 23 Nov: every study day gets at least one workshop */
       q[el[0]].shift(); at[w.k] = [x.d, idx++]; sched += w.rm; prog[w.sid] = (prog[w.sid] || 0) + w.rm; lastS = w.sid; cnt[w.sid] = (cnt[w.sid] || 0) + 1; if (ds.indexOf(w.sid) < 0) ds.push(w.sid);
     }
   });
@@ -195499,7 +195501,7 @@ function slpReflow(all, tdy, key){
 }
 var PLANS = null;
 function buildPlanSlides(){
-  var st = S.settings, tdy = ymd(), key = JSON.stringify([st.weekday, st.weekend, st.daysOff, st.exam1, st.exam2, SLP_LAST_LEARN, SLP_OFF, SLP_SUBJ_WD, SLP_SUBJ_WE, SLP_PER_SUBJ, SLP_SLIDES, SLP_PRACT, SLP_SR_WD, SLP_SR_WE, (SLIDES || []).length, slpWS().length]);
+  var st = S.settings, tdy = ymd(), key = JSON.stringify([st.weekday, st.weekend, st.daysOff, st.exam1, st.exam2, SLP_ORDER.join(), SLP_START, SLP_LAST_LEARN, SLP_OFF, SLP_SUBJ_WD, SLP_SUBJ_WE, SLP_PER_SUBJ, SLP_SLIDES, SLP_PRACT, SLP_SR_WD, SLP_SR_WE, (SLIDES || []).length, slpWS().length]);
   S.slidePlan = (S.slidePlan && typeof S.slidePlan === "object") ? S.slidePlan : {};
   var all = slpWS(), sp = S.slidePlan;
   var miss = all.some(function(w){ return !(sp.at && sp.at[w.k]) && !(slpDone(w.k) && slpDoneOn(w.k) < (sp.day || tdy)); });
@@ -196052,7 +196054,7 @@ var SL_BY = {}; SLIDES.forEach(function(s){ SL_BY[s.id] = s; });
 function bppS(){ if (!S.bpp || typeof S.bpp !== "object") S.bpp = {}; if (!S.bpp.seen || typeof S.bpp.seen !== "object") S.bpp.seen = {}; if (!S.bpp.done || typeof S.bpp.done !== "object") S.bpp.done = {}; return S.bpp; }
 function slidesHref(sid, n){ return "#/slides" + (sid ? "/" + sid : "") + (sid && n ? "/" + n : ""); }
 function bppDone(sid, n){ return !!bppS().done[sid + "/" + n]; }
-function bppMins(sid, n){ var s = SL_BY[sid], w = s && s.w[n - 1]; return Math.max(15, (w ? w.f.length : 0) * 6); }
+function bppMins(sid, n){ var s = SL_BY[sid], w = s && s.w[n - 1]; if (!w) return 15; var pg = 0; w.f.forEach(function(f){ pg += +f[3] || 10; }); return Math.max(10, Math.round(pg * 0.44)); } /* 22 Nov 23:30 (Monnie): time by real slide count (f[3] = pages; 10,863 slides fit the time to 2 Jan at ~0.44 min each) */
 function bppDoneCount(s){ var c = 0; s.w.forEach(function(w, i){ if (bppDone(s.id, i + 1)) c++; }); return c; }
 function bppPaper(p){ return p === "Both" ? "Both papers" : p; }
 function bppBox(sid, n){ var dn = bppDone(sid, n); return '<button class="tdbox' + (dn ? ' on' : '') + '" data-bppdone="' + esc(sid + "/" + n) + '" aria-label="' + (dn ? 'Workshop done (tap to untick)' : 'Tick off this workshop') + '">' + (dn ? '✓' : '') + '</button>'; }
